@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { quoteFormSchema } from "@shared/schema";
+import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 import bcrypt from "bcryptjs";
@@ -372,13 +372,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.patch("/api/admin/carriers/:id", isAdmin, async (req, res) => {
     try {
-      const carrier = await storage.updateCarrier(req.params.id, req.body);
+      // Validate and parse the input
+      const validatedData = insertCarrierSchema.partial().parse(req.body);
+      const carrier = await storage.updateCarrier(req.params.id, validatedData);
       if (!carrier) {
         return res.status(404).json({ error: "Carrier not found" });
       }
       res.json(carrier);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to update carrier" });
+    } catch (error: any) {
+      console.error("Error updating carrier:", error);
+      res.status(400).json({ error: "Failed to update carrier", details: error.message });
     }
   });
 

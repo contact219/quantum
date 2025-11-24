@@ -237,6 +237,13 @@ export default function Admin() {
         return;
       }
 
+      // Normalize the form data - convert strings to numbers if needed
+      const payload = {
+        ...carrierFormData,
+        commissionRate: carrierFormData.commissionRate ? parseFloat(String(carrierFormData.commissionRate)) : undefined,
+        minCreditScore: carrierFormData.minCreditScore ? parseInt(String(carrierFormData.minCreditScore), 10) : undefined,
+      };
+
       const url = editingCarrier
         ? `/api/admin/carriers/${editingCarrier.id}`
         : "/api/admin/carriers";
@@ -245,10 +252,13 @@ export default function Admin() {
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(carrierFormData),
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Failed to save");
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.details || error.error || "Failed to save");
+      }
 
       await fetchCarriers();
       setShowCarrierForm(false);
@@ -264,8 +274,8 @@ export default function Admin() {
         notes: "",
       });
       toast({ title: "Success", description: editingCarrier ? "Carrier updated" : "Carrier created" });
-    } catch (error) {
-      toast({ title: "Error", description: "Failed to save carrier", variant: "destructive" });
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message || "Failed to save carrier", variant: "destructive" });
     }
   };
 

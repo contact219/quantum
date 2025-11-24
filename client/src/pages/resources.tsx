@@ -35,6 +35,23 @@ interface Resource {
   active: boolean;
 }
 
+// Helper function to convert YouTube URL to embed format
+function getYoutubeEmbedUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  
+  // Already in embed format
+  if (url.includes('/embed/')) return url;
+  
+  // Convert from watch format: https://www.youtube.com/watch?v=VIDEO_ID
+  const watchMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\&\n?#]+)/);
+  if (watchMatch && watchMatch[1]) {
+    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  }
+  
+  // Return as-is if we can't parse it
+  return url;
+}
+
 const DEFAULT_GUIDES: Resource[] = [
   {
     id: "default-1",
@@ -347,7 +364,7 @@ export default function Resources() {
                 <iframe
                   width="100%"
                   height="100%"
-                  src={selectedVideo.videoUrl}
+                  src={getYoutubeEmbedUrl(selectedVideo.videoUrl)}
                   title={selectedVideo.title}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

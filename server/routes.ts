@@ -963,6 +963,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Analytics endpoints
+  app.get("/api/admin/analytics", isAdmin, async (req, res) => {
+    try {
+      const analytics = await storage.getAnalyticsSnapshot();
+      res.json(analytics);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch analytics" });
+    }
+  });
+
+  // Admin user management
+  app.get("/api/admin/users", isAdmin, async (req, res) => {
+    try {
+      const admins = await storage.getAdminUsers();
+      res.json(admins);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch admin users" });
+    }
+  });
+
+  app.patch("/api/admin/users/:userId/role", isAdmin, async (req: any, res) => {
+    try {
+      const { role, permission } = req.body;
+      if (!role || !permission) {
+        return res.status(400).json({ error: "Role and permission are required" });
+      }
+      const updated = await storage.updateUserRole(req.params.userId, role, permission);
+      if (!updated) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      res.json(updated);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to update user role" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

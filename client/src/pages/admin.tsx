@@ -237,10 +237,10 @@ export default function Admin() {
         return;
       }
 
-      // Normalize the form data - convert strings to numbers if needed
+      // Normalize the form data - commissionRate stays as string (decimal), minCreditScore as number (integer)
       const payload = {
         ...carrierFormData,
-        commissionRate: carrierFormData.commissionRate ? parseFloat(String(carrierFormData.commissionRate)) : undefined,
+        commissionRate: carrierFormData.commissionRate ? String(carrierFormData.commissionRate) : undefined,
         minCreditScore: carrierFormData.minCreditScore ? parseInt(String(carrierFormData.minCreditScore), 10) : undefined,
       };
 

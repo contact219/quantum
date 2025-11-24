@@ -26,8 +26,12 @@ import {
   Phone,
   Mail,
   MapPin,
-  Globe
+  Globe,
+  Plus,
+  Video,
+  BookOpen
 } from "lucide-react";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import {
   AlertDialog,
@@ -48,13 +52,90 @@ export default function Admin() {
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [settingsSaving, setSettingsSaving] = useState(false);
   const [activeTab, setActiveTab] = useState("quotes");
+  const [resources, setResources] = useState<any[]>([]);
+  const [editingResource, setEditingResource] = useState<any>(null);
+  const [showResourceForm, setShowResourceForm] = useState(false);
+  const [formData, setFormData] = useState<any>({
+    type: "guide",
+    title: "",
+    description: "",
+    category: "Guide",
+    downloadable: false,
+    downloadUrl: "",
+    videoUrl: "",
+    duration: "",
+    order: 0,
+  });
   const { toast } = useToast();
 
   useEffect(() => {
     if (activeTab === "settings") {
       fetchSettings();
+    } else if (activeTab === "resources") {
+      fetchResources();
     }
   }, [activeTab]);
+
+  const fetchResources = async () => {
+    try {
+      const response = await fetch("/api/admin/resources");
+      const data = await response.json();
+      setResources(Array.isArray(data) ? data : []);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to load resources", variant: "destructive" });
+    }
+  };
+
+  const handleSaveResource = async () => {
+    try {
+      if (!formData.title) {
+        toast({ title: "Error", description: "Title is required", variant: "destructive" });
+        return;
+      }
+
+      const url = editingResource
+        ? `/api/admin/resources/${editingResource.id}`
+        : "/api/admin/resources";
+      const method = editingResource ? "PATCH" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Failed to save");
+
+      await fetchResources();
+      setShowResourceForm(false);
+      setEditingResource(null);
+      setFormData({
+        type: "guide",
+        title: "",
+        description: "",
+        category: "Guide",
+        downloadable: false,
+        downloadUrl: "",
+        videoUrl: "",
+        duration: "",
+        order: 0,
+      });
+      toast({ title: "Success", description: editingResource ? "Resource updated" : "Resource created" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to save resource", variant: "destructive" });
+    }
+  };
+
+  const handleDeleteResource = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/resources/${id}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Failed to delete");
+      await fetchResources();
+      toast({ title: "Success", description: "Resource deleted" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to delete resource", variant: "destructive" });
+    }
+  };
 
   const fetchSettings = async () => {
     try {
@@ -248,6 +329,7 @@ export default function Admin() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="mb-8">
             <TabsTrigger value="quotes" data-testid="tab-quotes">Quotes</TabsTrigger>
+            <TabsTrigger value="resources" data-testid="tab-resources">Resources</TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -491,6 +573,234 @@ export default function Admin() {
             </Card>
           </div>
         </div>
+          </TabsContent>
+
+          <TabsContent value="resources" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Resource Management</CardTitle>
+                    <CardDescription>Manage guides, videos, and educational resources</CardDescription>
+                  </div>
+                  <Button 
+                    onClick={() => {
+                      setShowResourceForm(true);
+                      setEditingResource(null);
+                      setFormData({ type: "guide", title: "", description: "", category: "Guide", downloadable: false, downloadUrl: "", videoUrl: "", duration: "", order: 0 });
+                    }}
+                    data-testid="button-add-resource"
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add Resource
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {showResourceForm && (
+                  <div className="mb-8 p-6 bg-card border rounded-lg space-y-4">
+                    <h3 className="font-semibold text-lg">{editingResource ? "Edit Resource" : "New Resource"}</h3>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>Type</Label>
+                        <Select value={formData.type} onValueChange={(v) => setFormData({ ...formData, type: v })}>
+                          <SelectTrigger data-testid="select-resource-type">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="guide">Guide</SelectItem>
+                            <SelectItem value="video">Video</SelectItem>
+                            <SelectItem value="tool">Tool</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label>Title</Label>
+                        <Input
+                          value={formData.title}
+                          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                          placeholder="Resource title"
+                          data-testid="input-resource-title"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label>Description</Label>
+                      <Textarea
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        placeholder="Resource description"
+                        className="min-h-20"
+                        data-testid="textarea-resource-description"
+                      />
+                    </div>
+
+                    {(formData.type === "guide" || formData.type === "video") && (
+                      <div className="grid grid-cols-2 gap-4">
+                        {formData.type === "guide" && (
+                          <>
+                            <div>
+                              <Label className="flex items-center gap-2">
+                                <input
+                                  type="checkbox"
+                                  checked={formData.downloadable}
+                                  onChange={(e) => setFormData({ ...formData, downloadable: e.target.checked })}
+                                  data-testid="checkbox-downloadable"
+                                />
+                                Downloadable
+                              </Label>
+                            </div>
+                            {formData.downloadable && (
+                              <div>
+                                <Label>Download URL</Label>
+                                <Input
+                                  value={formData.downloadUrl}
+                                  onChange={(e) => setFormData({ ...formData, downloadUrl: e.target.value })}
+                                  placeholder="https://example.com/file.pdf"
+                                  type="url"
+                                  data-testid="input-download-url"
+                                />
+                              </div>
+                            )}
+                          </>
+                        )}
+                        {formData.type === "video" && (
+                          <>
+                            <div>
+                              <Label>Video URL</Label>
+                              <Input
+                                value={formData.videoUrl}
+                                onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })}
+                                placeholder="https://youtube.com/embed/..."
+                                data-testid="input-video-url"
+                              />
+                            </div>
+                            <div>
+                              <Label>Duration</Label>
+                              <Input
+                                value={formData.duration}
+                                onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                                placeholder="5:23"
+                                data-testid="input-duration"
+                              />
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    )}
+
+                    {formData.type === "tool" && (
+                      <div>
+                        <Label>Link</Label>
+                        <Input
+                          value={formData.link || ""}
+                          onChange={(e) => setFormData({ ...formData, link: e.target.value })}
+                          placeholder="/ai-bond-finder"
+                          data-testid="input-tool-link"
+                        />
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>Category</Label>
+                        <Input
+                          value={formData.category}
+                          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                          placeholder="Guide"
+                          data-testid="input-category"
+                        />
+                      </div>
+                      <div>
+                        <Label>Order</Label>
+                        <Input
+                          type="number"
+                          value={formData.order}
+                          onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) })}
+                          data-testid="input-order"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex gap-3 justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setShowResourceForm(false);
+                          setEditingResource(null);
+                        }}
+                        data-testid="button-cancel-form"
+                      >
+                        Cancel
+                      </Button>
+                      <Button onClick={handleSaveResource} data-testid="button-save-resource">
+                        {editingResource ? "Update Resource" : "Create Resource"}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {resources.map((resource) => (
+                    <div key={resource.id} className="flex items-start gap-4 p-4 border rounded-lg hover-elevate">
+                      <div className="flex-shrink-0 mt-1">
+                        {resource.type === "guide" && <BookOpen className="w-5 h-5 text-primary" />}
+                        {resource.type === "video" && <Video className="w-5 h-5 text-primary" />}
+                        {resource.type === "tool" && <FileText className="w-5 h-5 text-primary" />}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold">{resource.title}</h3>
+                        <p className="text-sm text-muted-foreground">{resource.description}</p>
+                        <div className="flex gap-2 mt-2">
+                          <Badge variant="secondary" className="text-xs">{resource.type}</Badge>
+                          {resource.category && <Badge variant="outline" className="text-xs">{resource.category}</Badge>}
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setEditingResource(resource);
+                            setFormData(resource);
+                            setShowResourceForm(true);
+                          }}
+                          data-testid={`button-edit-resource-${resource.id}`}
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="sm" data-testid={`button-delete-resource-${resource.id}`}>
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Delete Resource</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Are you sure you want to delete "{resource.title}"? This action cannot be undone.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <div className="flex justify-end gap-3">
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction
+                                onClick={() => handleDeleteResource(resource.id)}
+                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                              >
+                                Delete
+                              </AlertDialogAction>
+                            </div>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="settings" className="space-y-6">

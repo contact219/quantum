@@ -80,33 +80,33 @@ const DEFAULT_VIDEOS: Resource[] = [
   {
     id: "default-v1",
     type: "video",
-    title: "How Surety Bonds Work",
-    description: "Quick overview of the surety bond process",
-    duration: "5:23",
+    title: "Introduction to Surety Bonds",
+    description: "Learn the basics of surety bonds and how they work in construction",
+    duration: "4:32",
     downloadable: false,
-    videoUrl: "https://www.youtube.com/embed/VBv-nQfZPRo",
+    videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
     order: 0,
     active: true,
   },
   {
     id: "default-v2",
     type: "video",
-    title: "Construction Bonds Explained",
-    description: "Understanding the three main construction bond types",
-    duration: "8:15",
+    title: "Performance Bonds Explained",
+    description: "Understanding performance bonds and contractor obligations",
+    duration: "5:18",
     downloadable: false,
-    videoUrl: "https://www.youtube.com/embed/5TEkBkPOE-0",
+    videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
     order: 1,
     active: true,
   },
   {
     id: "default-v3",
     type: "video",
-    title: "Growing Your Bond Capacity",
-    description: "Strategies to qualify for larger projects",
-    duration: "12:40",
+    title: "Building Contractor Financial Health",
+    description: "How to strengthen your finances for better bonding capacity",
+    duration: "6:45",
     downloadable: false,
-    videoUrl: "https://www.youtube.com/embed/d9Q_P8g8SHQ",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     order: 2,
     active: true,
   },
@@ -256,13 +256,15 @@ export default function Resources() {
               <Card key={video.id} className="hover-elevate">
                 <CardHeader>
                   {video.videoUrl && video.videoUrl.includes('embed') ? (
-                    <iframe
-                      className="w-full aspect-video rounded-lg mb-4"
-                      src={video.videoUrl}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+                    <div className="relative w-full aspect-video rounded-lg mb-4 overflow-hidden bg-black">
+                      <iframe
+                        className="absolute inset-0 w-full h-full"
+                        src={video.videoUrl + "?rel=0"}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
                   ) : (
                     <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
                       <Video className="w-12 h-12 text-primary" />
@@ -276,21 +278,19 @@ export default function Resources() {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <Badge variant="outline">{video.duration}</Badge>
-                    {!video.videoUrl || !video.videoUrl.includes('embed') && (
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        data-testid={`button-video-${index}`}
-                        onClick={() => {
-                          if (video.videoUrl) {
-                            window.open(video.videoUrl.replace('/embed/', '/watch?v='), '_blank');
-                          }
-                        }}
-                      >
-                        Watch Now
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </Button>
-                    )}
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      data-testid={`button-video-${index}`}
+                      onClick={() => {
+                        if (video.videoUrl) {
+                          window.open(video.videoUrl.replace('/embed/', '/watch?v='), '_blank');
+                        }
+                      }}
+                    >
+                      Watch on YouTube
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

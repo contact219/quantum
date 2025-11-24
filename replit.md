@@ -134,9 +134,34 @@ Preferred communication style: Simple, everyday language.
 - Frontend `ProtectedRoute` component enforces `requireAdmin` flag for `/admin` routes
 - Non-admin users accessing admin endpoints receive 403 Forbidden response
 
+**Admin Username/Password Authentication**:
+- Two separate authentication flows for admins:
+  1. **OAuth (Replit Auth)**: Users can log in with Google, GitHub, X, Apple, or email (existing flow)
+  2. **Username/Password Login**: Admin-only traditional username/password authentication
+  
+**Admin Setup Flow** (`/admin-setup`):
+- First-time admin user creation endpoint
+- Creates admin account with username and password
+- Password is securely hashed using bcryptjs
+- Only allows one admin user to be created (prevents multiple setup attempts)
+- Redirects to `/admin-login` after successful setup
+
+**Admin Login** (`/admin-login`):
+- Dedicated admin login page with username/password form
+- Authenticates admin user against stored credentials
+- Creates secure session on successful login
+- Redirects to `/admin` dashboard after authentication
+- Username/password checks both username validity and role verification
+
+**Protected Admin Resources**:
+- `/admin` dashboard - requires admin login via username/password or OAuth
+- All admin endpoints protected by `isAdmin` middleware
+- Returns 401 for missing authentication, 403 for non-admin users
+
 **Future Enhancements**:
 - Permission-based access control for specific features
-- Admin user creation/management interface
+- Admin user management interface (create additional admins)
+- Password reset functionality for admin users
 
 ### External Dependencies
 

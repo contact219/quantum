@@ -32,6 +32,7 @@ export interface IStorage {
   // Legacy user methods
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  getAllUsers(): Promise<User[]>;
 
   // Quote methods
   createQuote(quote: InsertQuote): Promise<Quote>;
@@ -185,6 +186,43 @@ export class MemStorage implements IStorage {
     return user;
   }
 
+  async getAllUsers(): Promise<User[]> {
+    return Array.from(this.users.values());
+  }
+
+  async upsertUser(userData: UpsertUser): Promise<User> {
+    const user = this.users.get(userData.id);
+    if (user) {
+      // Update existing user
+      const updated = {
+        ...user,
+        email: userData.email ?? user.email,
+        firstName: userData.firstName ?? user.firstName,
+        lastName: userData.lastName ?? user.lastName,
+        profileImageUrl: userData.profileImageUrl ?? user.profileImageUrl,
+      };
+      this.users.set(userData.id, updated);
+      return updated;
+    } else {
+      // Create new user
+      const newUser: User = {
+        id: userData.id,
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        profileImageUrl: userData.profileImageUrl,
+        username: null,
+        password: null,
+        companyName: null,
+        role: "client",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      this.users.set(userData.id, newUser);
+      return newUser;
+    }
+  }
+
   // Quote methods
   async createQuote(insertQuote: InsertQuote): Promise<Quote> {
     const id = `QS-${Date.now()}`;
@@ -313,6 +351,10 @@ export class DbStorage implements IStorage {
   async createUser(insertUser: InsertUser): Promise<User> {
     const result = await this.db.insert(users).values(insertUser).returning();
     return result[0];
+  }
+
+  async getAllUsers(): Promise<User[]> {
+    return await this.db.select().from(users);
   }
 
   async upsertUser(userData: UpsertUser): Promise<User> {

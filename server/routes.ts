@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
+import bcrypt from "bcryptjs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
@@ -225,6 +226,103 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Health check
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
+  // Admin setup endpoint - create first admin user
+  app.post("/api/admin/setup", async (req, res) => {
+    try {
+      const { username, password, email } = req.body;
+
+      if (!username || !password || !email) {
+        return res.status(400).json({ message: "Username, password, and email are required" });
+      }
+
+      // Check if any admin user exists
+      const allUsers = await storage.getAllUsers();
+      const existingAdmins = allUsers.filter((u: any) => u.role === "admin");
+      if (existingAdmins.length > 0) {
+        return res.status(403).json({ message: "Admin user already exists" });
+      }
+
+      // Check if username is taken
+      const existingUser = await storage.getUserByUsername(username);
+      if (existingUser) {
+        return res.status(400).json({ message: "Username already exists" });
+      }
+
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Create admin user
+      const user = await storage.createUser({
+        username,
+        password: hashedPassword,
+        email,
+        role: "admin",
+      });
+
+      res.json({ 
+        success: true, 
+        message: "Admin user created successfully",
+        user: { id: user.id, username: user.username, email: user.email }
+      });
+    } catch (error: any) {
+      console.error("Admin setup error:", error);
+      res.status(500).json({ message: "Failed to create admin user", error: error.message });
+    }
+  });
+
+  // Admin login endpoint - authenticate with username/password
+  app.post("/api/admin/login", async (req: any, res) => {
+    try {
+      const { username, password } = req.body;
+
+      if (!username || !password) {
+        return res.status(400).json({ message: "Username and password are required" });
+      }
+
+      // Find user by username
+      const user = await storage.getUserByUsername(username);
+      if (!user) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
+
+      // Check if user is admin
+      if (user.role !== "admin") {
+        return res.status(403).json({ message: "Admin access required" });
+      }
+
+      // Verify password
+      if (!user.password) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
+
+      // Create session
+      req.login({ claims: { sub: user.id }, user }, (err: any) => {
+        if (err) {
+          return res.status(500).json({ message: "Failed to create session" });
+        }
+
+        res.json({
+          success: true,
+          message: "Login successful",
+          user: {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            role: user.role
+          }
+        });
+      });
+    } catch (error: any) {
+      console.error("Admin login error:", error);
+      res.status(500).json({ message: "Failed to log in", error: error.message });
+    }
   });
 
   // Seed database endpoint (development only)

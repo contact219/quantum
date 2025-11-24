@@ -12,6 +12,8 @@ import AIBondFinder from "@/pages/ai-bond-finder";
 import Quote from "@/pages/quote";
 import Portal from "@/pages/portal";
 import Admin from "@/pages/admin";
+import AdminLogin from "@/pages/admin-login";
+import AdminSetup from "@/pages/admin-setup";
 import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
 import Glossary from "@/pages/glossary";
@@ -26,6 +28,8 @@ function Router() {
       <Route path="/construction" component={Construction} />
       <Route path="/ai-bond-finder" component={AIBondFinder} />
       <Route path="/quote" component={Quote} />
+      <Route path="/admin-login" component={AdminLogin} />
+      <Route path="/admin-setup" component={AdminSetup} />
       <Route path="/portal">
         <ProtectedRoute>
           <Portal />
@@ -53,8 +57,9 @@ function Router() {
 
 function Layout({ children }: { children: React.ReactNode }) {
   const isPortalOrAdmin = window.location.pathname.startsWith("/portal") || window.location.pathname.startsWith("/admin");
+  const isAdminAuth = window.location.pathname.startsWith("/admin-login") || window.location.pathname.startsWith("/admin-setup");
   
-  if (isPortalOrAdmin) {
+  if (isPortalOrAdmin || isAdminAuth) {
     return <>{children}</>;
   }
 

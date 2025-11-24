@@ -29,135 +29,143 @@ interface Resource {
   active: boolean;
 }
 
+const DEFAULT_GUIDES: Resource[] = [
+  {
+    id: "default-1",
+    type: "guide",
+    title: "Construction Bond Guide for General Contractors",
+    description: "Complete guide to bid, performance, and payment bonds for GCs",
+    category: "Guide",
+    downloadable: true,
+    downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Surety-Bonds-508.pdf",
+    order: 0,
+    active: true,
+  },
+  {
+    id: "default-2",
+    type: "guide",
+    title: "First-Time Bonding: A Subcontractor's Handbook",
+    description: "Step-by-step process for subcontractors getting their first bond",
+    category: "Guide",
+    downloadable: true,
+    downloadUrl: "https://www.naic.org/documents/committees/ci/single_docs/22_csc_101_11.pdf",
+    order: 1,
+    active: true,
+  },
+  {
+    id: "default-3",
+    type: "guide",
+    title: "Understanding Bond Capacity",
+    description: "How sureties calculate your bonding capacity and how to increase it",
+    category: "Article",
+    downloadable: false,
+    link: "#",
+    order: 2,
+    active: true,
+  },
+  {
+    id: "default-4",
+    type: "guide",
+    title: "Financial Statement Preparation for Bonding",
+    description: "What underwriters look for and how to present your financials",
+    category: "Guide",
+    downloadable: true,
+    downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Financial-Statements-508.pdf",
+    order: 3,
+    active: true,
+  },
+];
+
+const DEFAULT_VIDEOS: Resource[] = [
+  {
+    id: "default-v1",
+    type: "video",
+    title: "How Surety Bonds Work",
+    description: "Quick overview of the surety bond process",
+    duration: "5:23",
+    downloadable: false,
+    videoUrl: "https://www.youtube.com/embed/VBv-nQfZPRo",
+    order: 0,
+    active: true,
+  },
+  {
+    id: "default-v2",
+    type: "video",
+    title: "Construction Bonds Explained",
+    description: "Understanding the three main construction bond types",
+    duration: "8:15",
+    downloadable: false,
+    videoUrl: "https://www.youtube.com/embed/5TEkBkPOE-0",
+    order: 1,
+    active: true,
+  },
+  {
+    id: "default-v3",
+    type: "video",
+    title: "Growing Your Bond Capacity",
+    description: "Strategies to qualify for larger projects",
+    duration: "12:40",
+    downloadable: false,
+    videoUrl: "https://www.youtube.com/embed/d9Q_P8g8SHQ",
+    order: 2,
+    active: true,
+  },
+];
+
+const DEFAULT_TOOLS: Resource[] = [
+  {
+    id: "default-t1",
+    type: "tool",
+    title: "AI Bond Finder",
+    description: "Get instant bond recommendations based on your project",
+    link: "/ai-bond-finder",
+    downloadable: false,
+    order: 0,
+    active: true,
+  },
+  {
+    id: "default-t2",
+    type: "tool",
+    title: "Premium Calculator",
+    description: "Estimate your bond premium in seconds",
+    link: "/quote",
+    downloadable: false,
+    order: 1,
+    active: true,
+  },
+  {
+    id: "default-t3",
+    type: "tool",
+    title: "State Requirements Database",
+    description: "Bond requirements by state and project type",
+    link: "#",
+    downloadable: false,
+    order: 2,
+    active: true,
+  },
+];
+
 export default function Resources() {
-  const [guides, setGuides] = useState<Resource[]>([]);
-  const [videos, setVideos] = useState<Resource[]>([]);
-  const [tools, setTools] = useState<Resource[]>([]);
+  const [guides, setGuides] = useState<Resource[]>(DEFAULT_GUIDES);
+  const [videos, setVideos] = useState<Resource[]>(DEFAULT_VIDEOS);
+  const [tools, setTools] = useState<Resource[]>(DEFAULT_TOOLS);
 
   const { data: allResources = [], isLoading } = useQuery({
     queryKey: ["/api/resources"],
   });
 
   useEffect(() => {
-    if (allResources && Array.isArray(allResources)) {
+    if (allResources && Array.isArray(allResources) && allResources.length > 0) {
       const guideResources = allResources.filter((r: Resource) => r.type === "guide").slice(0, 4);
       const videoResources = allResources.filter((r: Resource) => r.type === "video").slice(0, 3);
       const toolResources = allResources.filter((r: Resource) => r.type === "tool").slice(0, 3);
       
-      setGuides(guideResources.length > 0 ? guideResources : getDefaultGuides());
-      setVideos(videoResources.length > 0 ? videoResources : getDefaultVideos());
-      setTools(toolResources.length > 0 ? toolResources : getDefaultTools());
+      if (guideResources.length > 0) setGuides(guideResources);
+      if (videoResources.length > 0) setVideos(videoResources);
+      if (toolResources.length > 0) setTools(toolResources);
     }
   }, [allResources]);
 
-  const getDefaultGuides = () => [
-    {
-      id: "default-1",
-      type: "guide" as const,
-      title: "Construction Bond Guide for General Contractors",
-      description: "Complete guide to bid, performance, and payment bonds for GCs",
-      category: "Guide",
-      downloadable: true,
-      order: 0,
-      active: true,
-    },
-    {
-      id: "default-2",
-      type: "guide" as const,
-      title: "First-Time Bonding: A Subcontractor's Handbook",
-      description: "Step-by-step process for subcontractors getting their first bond",
-      category: "Guide",
-      downloadable: true,
-      order: 1,
-      active: true,
-    },
-    {
-      id: "default-3",
-      type: "guide" as const,
-      title: "Understanding Bond Capacity",
-      description: "How sureties calculate your bonding capacity and how to increase it",
-      category: "Article",
-      downloadable: false,
-      order: 2,
-      active: true,
-    },
-    {
-      id: "default-4",
-      type: "guide" as const,
-      title: "Financial Statement Preparation for Bonding",
-      description: "What underwriters look for and how to present your financials",
-      category: "Guide",
-      downloadable: true,
-      order: 3,
-      active: true,
-    },
-  ];
-
-  const getDefaultVideos = () => [
-    {
-      id: "default-v1",
-      type: "video" as const,
-      title: "How Surety Bonds Work (5 min)",
-      description: "Quick overview of the surety bond process",
-      duration: "5:23",
-      downloadable: false,
-      order: 0,
-      active: true,
-    },
-    {
-      id: "default-v2",
-      type: "video" as const,
-      title: "Bid Bond vs Performance Bond vs Payment Bond",
-      description: "Understanding the three main construction bond types",
-      duration: "8:15",
-      downloadable: false,
-      order: 1,
-      active: true,
-    },
-    {
-      id: "default-v3",
-      type: "video" as const,
-      title: "Improving Your Bond Capacity",
-      description: "Strategies to qualify for larger projects",
-      duration: "12:40",
-      downloadable: false,
-      order: 2,
-      active: true,
-    },
-  ];
-
-  const getDefaultTools = () => [
-    {
-      id: "default-t1",
-      type: "tool" as const,
-      title: "AI Bond Finder",
-      description: "Get instant bond recommendations based on your project",
-      link: "/ai-bond-finder",
-      downloadable: false,
-      order: 0,
-      active: true,
-    },
-    {
-      id: "default-t2",
-      type: "tool" as const,
-      title: "Premium Calculator",
-      description: "Estimate your bond premium in seconds",
-      link: "/quote",
-      downloadable: false,
-      order: 1,
-      active: true,
-    },
-    {
-      id: "default-t3",
-      type: "tool" as const,
-      title: "State Requirements Database",
-      description: "Bond requirements by state and project type",
-      link: "#",
-      downloadable: false,
-      order: 2,
-      active: true,
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -247,9 +255,19 @@ export default function Resources() {
             {videos.map((video, index) => (
               <Card key={video.id} className="hover-elevate">
                 <CardHeader>
-                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
-                    <Video className="w-12 h-12 text-primary" />
-                  </div>
+                  {video.videoUrl && video.videoUrl.includes('embed') ? (
+                    <iframe
+                      className="w-full aspect-video rounded-lg mb-4"
+                      src={video.videoUrl}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
+                      <Video className="w-12 h-12 text-primary" />
+                    </div>
+                  )}
                   <CardTitle className="text-lg" data-testid={`text-video-${index}`}>
                     {video.title}
                   </CardTitle>
@@ -258,19 +276,21 @@ export default function Resources() {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <Badge variant="outline">{video.duration}</Badge>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      data-testid={`button-video-${index}`}
-                      onClick={() => {
-                        if (video.videoUrl) {
-                          window.open(video.videoUrl, '_blank');
-                        }
-                      }}
-                    >
-                      Watch Now
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
+                    {!video.videoUrl || !video.videoUrl.includes('embed') && (
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        data-testid={`button-video-${index}`}
+                        onClick={() => {
+                          if (video.videoUrl) {
+                            window.open(video.videoUrl.replace('/embed/', '/watch?v='), '_blank');
+                          }
+                        }}
+                      >
+                        Watch Now
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>

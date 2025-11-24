@@ -48,7 +48,7 @@ export default function Quote() {
     },
     onSuccess: (result) => {
       setQuoteResult({
-        quoteId: result.quote.id,
+        quoteId: result.quote.quoteNumber || result.quote.id,
         suggestedPremiumRange: result.suggestedPremiumRange,
         riskNotes: result.riskNotes,
         nextSteps: result.nextSteps

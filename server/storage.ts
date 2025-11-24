@@ -8,9 +8,21 @@ import {
   type Project,
   type InsertProject,
   type ChatMessage,
-  type InsertChatMessage
+  type InsertChatMessage,
+  users,
+  quotes,
+  bonds,
+  projects,
+  chatMessages
 } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { drizzle } from "drizzle-orm/neon-serverless";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import { eq } from "drizzle-orm";
+import ws from "ws";
+
+// Configure WebSocket for Node.js environment
+neonConfig.webSocketConstructor = ws;
 
 export interface IStorage {
   // User methods
@@ -274,4 +286,118 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DbStorage implements IStorage {
+  private db;
+
+  constructor() {
+    const pool = new Pool({ 
+      connectionString: process.env.DATABASE_URL,
+    });
+    this.db = drizzle(pool);
+  }
+
+  // User methods
+  async getUser(id: string): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.id, id));
+    return result[0];
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.username, username));
+    return result[0];
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const result = await this.db.insert(users).values(insertUser).returning();
+    return result[0];
+  }
+
+  // Quote methods
+  async createQuote(insertQuote: InsertQuote): Promise<Quote> {
+    const quoteNumber = `QS-${Date.now()}`;
+    const estimatedPremium = this.calculatePremium(insertQuote.contractValue || "0");
+    
+    const result = await this.db.insert(quotes).values({
+      ...insertQuote,
+      quoteNumber,
+      estimatedPremium,
+    }).returning();
+    
+    return result[0];
+  }
+
+  async getQuote(id: string): Promise<Quote | undefined> {
+    const result = await this.db.select().from(quotes).where(eq(quotes.id, id));
+    return result[0];
+  }
+
+  async getAllQuotes(): Promise<Quote[]> {
+    return await this.db.select().from(quotes);
+  }
+
+  async updateQuoteStatus(id: string, status: string): Promise<Quote | undefined> {
+    const result = await this.db
+      .update(quotes)
+      .set({ status })
+      .where(eq(quotes.id, id))
+      .returning();
+    return result[0];
+  }
+
+  // Bond methods
+  async createBond(insertBond: InsertBond): Promise<Bond> {
+    const result = await this.db.insert(bonds).values(insertBond).returning();
+    return result[0];
+  }
+
+  async getBond(id: string): Promise<Bond | undefined> {
+    const result = await this.db.select().from(bonds).where(eq(bonds.id, id));
+    return result[0];
+  }
+
+  async getBondsByUserId(userId: string): Promise<Bond[]> {
+    return await this.db.select().from(bonds).where(eq(bonds.userId, userId));
+  }
+
+  async getAllBonds(): Promise<Bond[]> {
+    return await this.db.select().from(bonds);
+  }
+
+  // Project methods
+  async createProject(insertProject: InsertProject): Promise<Project> {
+    const result = await this.db.insert(projects).values(insertProject).returning();
+    return result[0];
+  }
+
+  async getProject(id: string): Promise<Project | undefined> {
+    const result = await this.db.select().from(projects).where(eq(projects.id, id));
+    return result[0];
+  }
+
+  async getProjectsByUserId(userId: string): Promise<Project[]> {
+    return await this.db.select().from(projects).where(eq(projects.userId, userId));
+  }
+
+  async getAllProjects(): Promise<Project[]> {
+    return await this.db.select().from(projects);
+  }
+
+  // Chat message methods
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    const result = await this.db.insert(chatMessages).values(insertMessage).returning();
+    return result[0];
+  }
+
+  async getChatMessagesBySession(sessionId: string): Promise<ChatMessage[]> {
+    return await this.db.select().from(chatMessages).where(eq(chatMessages.sessionId, sessionId));
+  }
+
+  // Helper methods
+  private calculatePremium(contractValue: string): string {
+    const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;
+    const premium = value * 0.02; // 2% premium rate
+    return premium.toFixed(2);
+  }
+}
+
+export const storage = new DbStorage();

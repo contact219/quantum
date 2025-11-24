@@ -168,6 +168,118 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
+  // Seed database endpoint (development only)
+  app.post("/api/seed", async (req, res) => {
+    // Only allow seeding in development mode
+    if (process.env.NODE_ENV !== "development") {
+      return res.status(403).json({ error: "Seeding is only allowed in development mode" });
+    }
+
+    try {
+      // Check if demo user already exists (idempotent)
+      const existingUser = await storage.getUserByUsername("demo");
+      if (existingUser) {
+        return res.json({ 
+          success: true, 
+          message: "Database already seeded",
+          userId: existingUser.id
+        });
+      }
+
+      // Create demo user
+      const demoUser = await storage.createUser({
+        username: "demo",
+        password: "demo123",
+        email: "john@abcconstruction.com",
+        companyName: "ABC Construction LLC",
+        role: "client",
+      });
+
+      // Create demo projects
+      const project1 = await storage.createProject({
+        userId: demoUser.id,
+        name: "City Hall Renovation",
+        description: "Complete renovation of municipal building",
+        contractValue: "500000",
+        state: "IL",
+        status: "active",
+        startDate: new Date("2023-06-15"),
+        completionDate: new Date("2024-12-31"),
+        obligee: "City of Springfield",
+        bondIds: [],
+      });
+
+      const project2 = await storage.createProject({
+        userId: demoUser.id,
+        name: "Highway Bridge Project",
+        description: "Bridge construction and road improvements",
+        contractValue: "750000",
+        state: "IL",
+        status: "active",
+        startDate: new Date("2023-09-01"),
+        completionDate: new Date("2024-08-15"),
+        obligee: "State DOT",
+        bondIds: [],
+      });
+
+      // Create demo bonds
+      const bond1 = await storage.createBond({
+        userId: demoUser.id,
+        quoteId: null,
+        bondType: "Performance Bond",
+        penalSum: "500000",
+        premium: "7500",
+        effectiveDate: new Date("2023-06-15"),
+        expirationDate: new Date("2024-12-31"),
+        status: "active",
+        bondNumber: "QS-2023-4892",
+        projectName: "City Hall Renovation",
+        obligee: "City of Springfield",
+      });
+
+      const bond2 = await storage.createBond({
+        userId: demoUser.id,
+        quoteId: null,
+        bondType: "Payment Bond",
+        penalSum: "500000",
+        premium: "7500",
+        effectiveDate: new Date("2023-06-15"),
+        expirationDate: new Date("2024-12-31"),
+        status: "active",
+        bondNumber: "QS-2023-4893",
+        projectName: "City Hall Renovation",
+        obligee: "City of Springfield",
+      });
+
+      const bond3 = await storage.createBond({
+        userId: demoUser.id,
+        quoteId: null,
+        bondType: "Performance Bond",
+        penalSum: "750000",
+        premium: "11250",
+        effectiveDate: new Date("2023-09-01"),
+        expirationDate: new Date("2024-08-15"),
+        status: "active",
+        bondNumber: "QS-2023-5103",
+        projectName: "Highway Bridge Project",
+        obligee: "State DOT",
+      });
+
+      res.json({ 
+        success: true, 
+        message: "Database seeded successfully",
+        created: {
+          user: demoUser.id,
+          projects: [project1.id, project2.id],
+          bonds: [bond1.id, bond2.id, bond3.id]
+        }
+      });
+    } catch (error: any) {
+      console.error("Seed error:", error);
+      res.status(500).json({ error: "Failed to seed database", details: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

@@ -14,6 +14,7 @@ export const users = pgTable("users", {
 
 export const quotes = pgTable("quotes", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  quoteNumber: text("quote_number"),
   bondType: text("bond_type").notNull(),
   contractValue: decimal("contract_value"),
   projectName: text("project_name"),
@@ -37,7 +38,7 @@ export const bonds = pgTable("bonds", {
   userId: varchar("user_id").references(() => users.id),
   quoteId: varchar("quote_id").references(() => quotes.id),
   bondType: text("bond_type").notNull(),
-  penal_sum: decimal("penal_sum").notNull(),
+  penalSum: decimal("penal_sum").notNull(),
   premium: decimal("premium").notNull(),
   effectiveDate: timestamp("effective_date"),
   expirationDate: timestamp("expiration_date"),

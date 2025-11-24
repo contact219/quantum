@@ -25,7 +25,8 @@ function Router() {
       <Route path="/construction" component={Construction} />
       <Route path="/ai-bond-finder" component={AIBondFinder} />
       <Route path="/quote" component={Quote} />
-      <Route path="/portal/:rest*" component={Portal} />
+      <Route path="/portal" component={Portal} />
+      <Route path="/portal/:rest+" component={Portal} />
       <Route path="/admin" component={Admin} />
       <Route path="/faq" component={FAQ} />
       <Route path="/resources" component={Resources} />

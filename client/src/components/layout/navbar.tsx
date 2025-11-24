@@ -1,11 +1,22 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, LogIn, LogOut, User } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Navbar() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isAuthenticated, isLoading } = useAuth();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -50,6 +61,51 @@ export function Navbar() {
                 Call Us
               </Button>
             </a>
+
+            {!isLoading && (
+              <>
+                {isAuthenticated ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="ml-2" data-testid="button-user-menu">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage src={user?.profileImageUrl || undefined} alt={user?.email || "User"} />
+                          <AvatarFallback>
+                            {user?.firstName?.[0]}{user?.lastName?.[0]}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" data-testid="menu-user">
+                      <DropdownMenuLabel>
+                        {user?.firstName} {user?.lastName}
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/portal" data-testid="link-portal-menu">
+                          <User className="w-4 h-4 mr-2" />
+                          Portal
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <a href="/api/logout" data-testid="link-logout">
+                          <LogOut className="w-4 h-4 mr-2" />
+                          Log Out
+                        </a>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <a href="/api/login" data-testid="link-login">
+                    <Button variant="outline" className="ml-2">
+                      <LogIn className="w-4 h-4 mr-2" />
+                      Log In
+                    </Button>
+                  </a>
+                )}
+              </>
+            )}
           </div>
 
           <Button
@@ -82,6 +138,33 @@ export function Navbar() {
                 Call Us
               </Button>
             </a>
+
+            {!isLoading && (
+              <>
+                {isAuthenticated ? (
+                  <>
+                    <div className="pt-2 border-t">
+                      <div className="px-4 py-2 text-sm text-muted-foreground">
+                        {user?.firstName} {user?.lastName}
+                      </div>
+                    </div>
+                    <a href="/api/logout" className="block" data-testid="mobile-link-logout">
+                      <Button variant="ghost" className="w-full justify-start" onClick={() => setMobileMenuOpen(false)}>
+                        <LogOut className="w-4 h-4 mr-2" />
+                        Log Out
+                      </Button>
+                    </a>
+                  </>
+                ) : (
+                  <a href="/api/login" className="block" data-testid="mobile-link-login">
+                    <Button variant="outline" className="w-full">
+                      <LogIn className="w-4 h-4 mr-2" />
+                      Log In
+                    </Button>
+                  </a>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>

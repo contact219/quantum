@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,11 +19,41 @@ import {
   DollarSign,
   Clock
 } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Admin() {
   const [selectedQuote, setSelectedQuote] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const { isAuthenticated, isLoading, isUnauthorized, user } = useAuth();
+
+  // Redirect to login if unauthorized (401 error) or not authenticated
+  useEffect(() => {
+    if (isUnauthorized || (!isLoading && !isAuthenticated)) {
+      window.location.replace("/api/login");
+    }
+    // TODO: Add admin role check when implemented
+    // if (!isLoading && isAuthenticated && user?.role !== "admin") {
+    //   window.location.replace("/");
+    // }
+  }, [isAuthenticated, isLoading, isUnauthorized, user]);
+
+  // Show loading while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold">Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render anything while redirecting
+  if (isUnauthorized || !isAuthenticated) {
+    return null;
+  }
 
   const quotes = [
     {

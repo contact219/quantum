@@ -3,8 +3,35 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { quoteFormSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
+import { setupAuth, isAuthenticated } from "./replitAuth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Setup authentication
+  await setupAuth(app);
+
+  // Auth routes - this endpoint MUST NOT use isAuthenticated middleware
+  // so that the frontend can check auth status
+  app.get('/api/auth/user', async (req: any, res) => {
+    try {
+      // Check if user is authenticated
+      if (!req.isAuthenticated() || !req.user) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+
+      const userId = req.user.claims.sub;
+      const user = await storage.getUser(userId);
+      
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      res.status(500).json({ message: "Failed to fetch user" });
+    }
+  });
+
   // Quote submission endpoint
   app.post("/api/quotes", async (req, res) => {
     try {

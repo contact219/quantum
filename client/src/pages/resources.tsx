@@ -180,9 +180,9 @@ export default function Resources() {
 
   useEffect(() => {
     if (allResources && Array.isArray(allResources) && allResources.length > 0) {
-      const guideResources = allResources.filter((r: Resource) => r.type === "guide").slice(0, 4);
-      const videoResources = allResources.filter((r: Resource) => r.type === "video").slice(0, 3);
-      const toolResources = allResources.filter((r: Resource) => r.type === "tool").slice(0, 3);
+      const guideResources = allResources.filter((r: Resource) => r.type === "guide");
+      const videoResources = allResources.filter((r: Resource) => r.type === "video");
+      const toolResources = allResources.filter((r: Resource) => r.type === "tool");
       
       if (guideResources.length > 0) setGuides(guideResources);
       if (videoResources.length > 0) setVideos(videoResources);

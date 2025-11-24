@@ -22,12 +22,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Admin-specific route protection
   app.use(['/admin', '/admin/*'], (req: any, res, next) => {
     if (!req.isAuthenticated()) {
-      return res.redirect('/api/login');
+      // Redirect to admin login page (username/password) instead of OAuth
+      return res.redirect('/admin-login');
     }
-    // Check admin role
-    const userId = req.user?.claims?.sub;
-    if (!userId) {
-      return res.redirect('/api/login');
+    // Check if user has Replit Auth claims (OAuth user)
+    const hasReplitAuth = !!req.user?.claims?.sub;
+    if (!hasReplitAuth && !req.user?.id) {
+      // If no Replit Auth and no local user ID, redirect to admin login
+      return res.redirect('/admin-login');
     }
     // Continue to serve the SPA - role check will happen in ProtectedRoute component
     next();

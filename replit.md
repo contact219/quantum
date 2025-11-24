@@ -140,27 +140,40 @@ Preferred communication style: Simple, everyday language.
 - Admin panel includes print functionality for quotes and ability to delete quotes with confirmation dialog
 - User portal bonds page includes print functionality for individual bonds
 
-**Admin Username/Password Authentication**:
+**Admin Authentication Architecture**:
 - Two separate authentication flows for admins:
-  1. **OAuth (Replit Auth)**: Users can log in with Google, GitHub, X, Apple, or email (existing flow)
-  2. **Username/Password Login**: Admin-only traditional username/password authentication
-  
+  1. **Username/Password Login** (Primary for Admin): Traditional username/password authentication via `/admin-login`
+  2. **Replit Auth (OAuth)**: Users can log in with Google, GitHub, X, Apple, or email, but must be pre-marked as admin
+
 **Admin Setup Flow** (`/admin-setup`):
 - First-time admin user creation endpoint
 - Creates admin account with username and password
 - Password is securely hashed using bcryptjs
 - Only allows one admin user to be created (prevents multiple setup attempts)
 - Redirects to `/admin-login` after successful setup
+- User ID based on username (not Replit ID)
 
-**Admin Login** (`/admin-login`):
-- Dedicated admin login page with username/password form
-- Authenticates admin user against stored credentials
-- Creates secure session on successful login
-- Redirects to `/admin` dashboard after authentication
-- Username/password checks both username validity and role verification
+**Admin Login Flow**:
+1. **Via Username/Password** (`/admin-login`):
+   - Dedicated admin login page with username/password form
+   - Authenticates admin user against stored credentials in database
+   - Creates secure session on successful login
+   - Redirects to `/admin` dashboard after authentication
+   
+2. **Via Replit Auth** (Restricted):
+   - When accessing `/admin` without authentication, redirects to `/admin-login` (not Replit Auth)
+   - This ensures admins use the proper username/password flow
+   - Replit Auth users can be made admins by manually marking their user record with `role: "admin"` in the database
+   - Once marked as admin, their role is preserved across subsequent Replit Auth logins
+
+**Admin Role Preservation**:
+- When admin users authenticate via Replit Auth, their `role: "admin"` status is preserved
+- This allows admins to use Replit Auth if explicitly marked as admin in the database
+- New Replit Auth users default to `role: "client"` until manually promoted to admin
 
 **Protected Admin Resources**:
-- `/admin` dashboard - requires admin login via username/password or OAuth
+- `/admin` dashboard - accessible after username/password login via `/admin-login`
+- Unauthenticated access redirects to `/admin-login` (not OAuth)
 - All admin endpoints protected by `isAdmin` middleware
 - Returns 401 for missing authentication, 403 for non-admin users
 

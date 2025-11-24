@@ -405,9 +405,17 @@ export class DbStorage implements IStorage {
   }
 
   async upsertUser(userData: UpsertUser): Promise<User> {
+    // First check if user exists to preserve their role if they're an admin
+    const existingUser = await this.getUser(userData.id);
+    
     const result = await this.db
       .insert(users)
-      .values(userData)
+      .values({
+        ...userData,
+        // If user exists and is admin, keep them as admin
+        // Otherwise, default to "client" role for new users
+        role: existingUser?.role || "client",
+      })
       .onConflictDoUpdate({
         target: users.id,
         set: {
@@ -416,6 +424,9 @@ export class DbStorage implements IStorage {
           lastName: userData.lastName,
           profileImageUrl: userData.profileImageUrl,
           updatedAt: new Date(),
+          // Preserve existing role - do NOT overwrite it
+          // This ensures admin users stay admin when logging in via OAuth
+          role: existingUser?.role || "client",
         },
       })
       .returning();

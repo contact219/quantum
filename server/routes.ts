@@ -252,6 +252,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
+  // Company settings endpoints - PROTECTED (admin only)
+  app.get("/api/admin/settings", isAdmin, async (req, res) => {
+    try {
+      const settings = await storage.getCompanySettings();
+      res.json(settings || { companyName: "Quantum Surety", phone: "", email: "", address: "", website: "" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch settings" });
+    }
+  });
+
+  app.patch("/api/admin/settings", isAdmin, async (req, res) => {
+    try {
+      const settings = await storage.updateCompanySettings(req.body);
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update settings" });
+    }
+  });
+
   // Admin setup endpoint - create first admin user
   app.post("/api/admin/setup", async (req, res) => {
     try {

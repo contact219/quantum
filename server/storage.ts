@@ -10,11 +10,14 @@ import {
   type InsertProject,
   type ChatMessage,
   type InsertChatMessage,
+  type CompanySettings,
+  type InsertCompanySettings,
   users,
   quotes,
   bonds,
   projects,
-  chatMessages
+  chatMessages,
+  companySettings
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -57,6 +60,10 @@ export interface IStorage {
   // Chat message methods
   createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
   getChatMessagesBySession(sessionId: string): Promise<ChatMessage[]>;
+
+  // Company settings methods
+  getCompanySettings(): Promise<CompanySettings | undefined>;
+  updateCompanySettings(data: Partial<InsertCompanySettings>): Promise<CompanySettings>;
 }
 
 export class MemStorage implements IStorage {
@@ -335,6 +342,30 @@ export class MemStorage implements IStorage {
     return Array.from(this.chatMessages.values()).filter(m => m.sessionId === sessionId);
   }
 
+  // Company settings methods
+  private companySettings: CompanySettings = {
+    id: "default",
+    companyName: "Quantum Surety",
+    phone: "",
+    email: "",
+    address: "",
+    website: "",
+    updatedAt: new Date(),
+  };
+
+  async getCompanySettings(): Promise<CompanySettings> {
+    return this.companySettings;
+  }
+
+  async updateCompanySettings(data: Partial<InsertCompanySettings>): Promise<CompanySettings> {
+    this.companySettings = {
+      ...this.companySettings,
+      ...data,
+      updatedAt: new Date(),
+    };
+    return this.companySettings;
+  }
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;
@@ -486,6 +517,29 @@ export class DbStorage implements IStorage {
 
   async getChatMessagesBySession(sessionId: string): Promise<ChatMessage[]> {
     return await this.db.select().from(chatMessages).where(eq(chatMessages.sessionId, sessionId));
+  }
+
+  // Company settings methods
+  async getCompanySettings(): Promise<CompanySettings | undefined> {
+    const result = await this.db.select().from(companySettings).limit(1);
+    return result[0];
+  }
+
+  async updateCompanySettings(data: Partial<InsertCompanySettings>): Promise<CompanySettings> {
+    const existing = await this.getCompanySettings();
+    if (existing) {
+      const result = await this.db
+        .update(companySettings)
+        .set({ ...data, updatedAt: new Date() })
+        .where(eq(companySettings.id, existing.id))
+        .returning();
+      return result[0];
+    }
+    const result = await this.db
+      .insert(companySettings)
+      .values({ ...data })
+      .returning();
+    return result[0];
   }
 
   // Helper methods

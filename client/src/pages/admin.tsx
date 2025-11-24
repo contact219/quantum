@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   FileText, 
   Filter, 
@@ -20,7 +21,12 @@ import {
   Clock,
   Printer,
   Trash2,
-  Edit2
+  Edit2,
+  Settings,
+  Phone,
+  Mail,
+  MapPin,
+  Globe
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -38,7 +44,47 @@ export default function Admin() {
   const [selectedQuote, setSelectedQuote] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [settings, setSettings] = useState<any>(null);
+  const [settingsLoading, setSettingsLoading] = useState(false);
+  const [settingsSaving, setSettingsSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState("quotes");
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (activeTab === "settings") {
+      fetchSettings();
+    }
+  }, [activeTab]);
+
+  const fetchSettings = async () => {
+    try {
+      setSettingsLoading(true);
+      const response = await fetch("/api/admin/settings");
+      const data = await response.json();
+      setSettings(data);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to load settings", variant: "destructive" });
+    } finally {
+      setSettingsLoading(false);
+    }
+  };
+
+  const handleSaveSettings = async () => {
+    try {
+      setSettingsSaving(true);
+      const response = await fetch("/api/admin/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(settings),
+      });
+      if (!response.ok) throw new Error("Failed to save");
+      toast({ title: "Success", description: "Settings saved successfully" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to save settings", variant: "destructive" });
+    } finally {
+      setSettingsSaving(false);
+    }
+  };
 
   const handlePrintQuote = (quote: any) => {
     const printWindow = window.open("", "", "width=800,height=600");
@@ -195,31 +241,38 @@ export default function Admin() {
             Admin Console
           </h1>
           <p className="text-muted-foreground text-lg">
-            Manage quotes, clients, and bond applications
+            Manage quotes, clients, and company settings
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, i) => (
-            <Card key={i}>
-              <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  {stat.label}
-                </CardTitle>
-                <stat.icon className="w-5 h-5 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold mb-1" data-testid={`text-admin-stat-${i}`}>{stat.value}</div>
-                <p className="text-xs text-muted-foreground flex items-center gap-1">
-                  <TrendingUp className="w-3 h-3" />
-                  {stat.change} from last month
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="mb-8">
+            <TabsTrigger value="quotes" data-testid="tab-quotes">Quotes</TabsTrigger>
+            <TabsTrigger value="settings" data-testid="tab-settings">Settings</TabsTrigger>
+          </TabsList>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <TabsContent value="quotes" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {stats.map((stat, i) => (
+                <Card key={i}>
+                  <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      {stat.label}
+                    </CardTitle>
+                    <stat.icon className="w-5 h-5 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-bold mb-1" data-testid={`text-admin-stat-${i}`}>{stat.value}</div>
+                    <p className="text-xs text-muted-foreground flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3" />
+                      {stat.change} from last month
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
@@ -438,6 +491,123 @@ export default function Admin() {
             </Card>
           </div>
         </div>
+          </TabsContent>
+
+          <TabsContent value="settings" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Settings className="w-5 h-5" />
+                  Company Settings
+                </CardTitle>
+                <CardDescription>Manage your company's contact information</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {settingsLoading ? (
+                  <div className="text-center py-12 text-muted-foreground">
+                    <p>Loading settings...</p>
+                  </div>
+                ) : settings ? (
+                  <div className="space-y-6 max-w-2xl">
+                    <div className="space-y-2">
+                      <Label htmlFor="company-name" className="flex items-center gap-2">
+                        <Globe className="w-4 h-4" />
+                        Company Name
+                      </Label>
+                      <Input
+                        id="company-name"
+                        value={settings.companyName || ""}
+                        onChange={(e) => setSettings({ ...settings, companyName: e.target.value })}
+                        placeholder="Enter company name"
+                        data-testid="input-company-name"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="flex items-center gap-2">
+                        <Phone className="w-4 h-4" />
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="phone"
+                        value={settings.phone || ""}
+                        onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
+                        placeholder="Enter phone number"
+                        type="tel"
+                        data-testid="input-phone"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="flex items-center gap-2">
+                        <Mail className="w-4 h-4" />
+                        Email Address
+                      </Label>
+                      <Input
+                        id="email"
+                        value={settings.email || ""}
+                        onChange={(e) => setSettings({ ...settings, email: e.target.value })}
+                        placeholder="Enter email address"
+                        type="email"
+                        data-testid="input-email"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="address" className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4" />
+                        Address
+                      </Label>
+                      <Input
+                        id="address"
+                        value={settings.address || ""}
+                        onChange={(e) => setSettings({ ...settings, address: e.target.value })}
+                        placeholder="Enter company address"
+                        data-testid="input-address"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="website" className="flex items-center gap-2">
+                        <Globe className="w-4 h-4" />
+                        Website
+                      </Label>
+                      <Input
+                        id="website"
+                        value={settings.website || ""}
+                        onChange={(e) => setSettings({ ...settings, website: e.target.value })}
+                        placeholder="Enter website URL"
+                        type="url"
+                        data-testid="input-website"
+                      />
+                    </div>
+
+                    <div className="flex justify-end gap-3">
+                      <Button
+                        variant="outline"
+                        onClick={() => fetchSettings()}
+                        data-testid="button-cancel"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        onClick={handleSaveSettings}
+                        disabled={settingsSaving}
+                        data-testid="button-save-settings"
+                      >
+                        {settingsSaving ? "Saving..." : "Save Settings"}
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center py-12 text-muted-foreground">
+                    <p>Failed to load settings</p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

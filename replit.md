@@ -51,6 +51,7 @@ Preferred communication style: Simple, everyday language.
 - RESTful endpoints under `/api` prefix
 - Quote submission and retrieval (`/api/quotes`)
 - AI chat interaction (`/api/ai/chat`)
+- Company settings management (`GET /api/admin/settings`, `PATCH /api/admin/settings`) - admin only
 - Endpoints return JSON responses with consistent error handling
 
 **Request Handling**:
@@ -78,6 +79,7 @@ Preferred communication style: Simple, everyday language.
 - Bonds: Issued bonds with penal sum, premium, dates, and project details
 - Projects: Construction project tracking
 - ChatMessages: AI conversation history with session management
+- CompanySettings: Company contact information (name, phone, email, address, website) - editable via admin panel
 
 ### Authentication and Authorization
 
@@ -162,15 +164,24 @@ Preferred communication style: Simple, everyday language.
 - All admin endpoints protected by `isAdmin` middleware
 - Returns 401 for missing authentication, 403 for non-admin users
 
-**Admin Quote Management Features**:
-- View all quotes in searchable/filterable table
-- Click on quotes to view detailed information in side panel
-- Print quotes: Generates formatted print-friendly document with all quote details
-- Delete quotes: With confirmation dialog to prevent accidental deletion
-- Edit quote status: Dropdown to change status between pending/under_review/approved/rejected
-- Add internal notes: Free-form text field for admin notes (persisted via updateQuote endpoint)
-- Real-time status filtering by quote status (All/Pending/Under Review/Approved/Rejected)
-- Search by business name or quote number
+**Admin Features**:
+
+1. **Quote Management**:
+   - View all quotes in searchable/filterable table
+   - Click on quotes to view detailed information in side panel
+   - Print quotes: Generates formatted print-friendly document with all quote details
+   - Delete quotes: With confirmation dialog to prevent accidental deletion
+   - Edit quote status: Dropdown to change status between pending/under_review/approved/rejected
+   - Add internal notes: Free-form text field for admin notes (persisted via updateQuote endpoint)
+   - Real-time status filtering by quote status (All/Pending/Under Review/Approved/Rejected)
+   - Search by business name or quote number
+
+2. **Company Settings**:
+   - Dedicated Settings tab in admin console
+   - Manage company contact information: name, phone, email, address, website
+   - Persist settings to PostgreSQL database
+   - Real-time form validation and error handling
+   - Clean, intuitive UI with icon labels for each field
 
 **Future Enhancements**:
 - Permission-based access control for specific features

@@ -27,10 +27,8 @@ export default function AIBondFinder() {
 
   const chatMutation = useMutation({
     mutationFn: async (messages: { role: string; content: string }[]) => {
-      return apiRequest<{ message: string }>("/api/ai/chat", {
-        method: "POST",
-        body: JSON.stringify({ messages }),
-      });
+      const response = await apiRequest("POST", "/api/ai/chat", { messages });
+      return response.json() as Promise<{ message: string }>;
     },
     onSuccess: (data) => {
       const assistantMessage: Message = {

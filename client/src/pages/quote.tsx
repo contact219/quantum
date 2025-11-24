@@ -43,10 +43,8 @@ export default function Quote() {
 
   const quoteMutation = useMutation({
     mutationFn: async (data: QuoteFormData) => {
-      return apiRequest<{ quote: any; suggestedPremiumRange: string; riskNotes: string; nextSteps: string[] }>("/api/quotes", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+      const response = await apiRequest("POST", "/api/quotes", data);
+      return response.json() as Promise<{ quote: any; suggestedPremiumRange: string; riskNotes: string; nextSteps: string[] }>;
     },
     onSuccess: (result) => {
       setQuoteResult({

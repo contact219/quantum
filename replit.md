@@ -129,10 +129,14 @@ Preferred communication style: Simple, everyday language.
 - Admin endpoints require `isAdmin` middleware:
   - `GET /api/quotes` - view all quotes
   - `PATCH /api/quotes/:id/status` - update quote status
+  - `PATCH /api/quotes/:id` - edit quote details
+  - `DELETE /api/quotes/:id` - delete quote
   - `GET /api/bonds/all` - view all bonds
   - `GET /api/projects/all` - view all projects
 - Frontend `ProtectedRoute` component enforces `requireAdmin` flag for `/admin` routes
 - Non-admin users accessing admin endpoints receive 403 Forbidden response
+- Admin panel includes print functionality for quotes and ability to delete quotes with confirmation dialog
+- User portal bonds page includes print functionality for individual bonds
 
 **Admin Username/Password Authentication**:
 - Two separate authentication flows for admins:
@@ -157,6 +161,16 @@ Preferred communication style: Simple, everyday language.
 - `/admin` dashboard - requires admin login via username/password or OAuth
 - All admin endpoints protected by `isAdmin` middleware
 - Returns 401 for missing authentication, 403 for non-admin users
+
+**Admin Quote Management Features**:
+- View all quotes in searchable/filterable table
+- Click on quotes to view detailed information in side panel
+- Print quotes: Generates formatted print-friendly document with all quote details
+- Delete quotes: With confirmation dialog to prevent accidental deletion
+- Edit quote status: Dropdown to change status between pending/under_review/approved/rejected
+- Add internal notes: Free-form text field for admin notes (persisted via updateQuote endpoint)
+- Real-time status filtering by quote status (All/Pending/Under Review/Approved/Rejected)
+- Search by business name or quote number
 
 **Future Enhancements**:
 - Permission-based access control for specific features

@@ -17,14 +17,83 @@ import {
   TrendingUp,
   Users,
   DollarSign,
-  Clock
+  Clock,
+  Printer,
+  Trash2,
+  Edit2
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function Admin() {
   const [selectedQuote, setSelectedQuote] = useState<any>(null);
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const { toast } = useToast();
+
+  const handlePrintQuote = (quote: any) => {
+    const printWindow = window.open("", "", "width=800,height=600");
+    if (printWindow) {
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Quote ${quote.id}</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 40px; }
+              h1 { color: #333; border-bottom: 2px solid #6366f1; padding-bottom: 10px; }
+              .section { margin-top: 20px; }
+              .row { display: flex; margin-top: 10px; }
+              .label { font-weight: bold; width: 150px; }
+              .value { flex: 1; }
+              .print-btn { display: none; }
+              @media print { body { margin: 20px; } }
+            </style>
+          </head>
+          <body>
+            <h1>Quote #${quote.id}</h1>
+            <div class="section">
+              <div class="row"><div class="label">Business:</div><div class="value">${quote.businessName}</div></div>
+              <div class="row"><div class="label">Contact:</div><div class="value">${quote.contactName}</div></div>
+              <div class="row"><div class="label">Email:</div><div class="value">${quote.contactEmail || "N/A"}</div></div>
+              <div class="row"><div class="label">Phone:</div><div class="value">${quote.contactPhone || "N/A"}</div></div>
+            </div>
+            <div class="section">
+              <div class="row"><div class="label">Bond Type:</div><div class="value">${quote.bondType}</div></div>
+              <div class="row"><div class="label">Contract Value:</div><div class="value">${quote.contractValue}</div></div>
+              <div class="row"><div class="label">Estimated Premium:</div><div class="value">${quote.estimatedPremium}</div></div>
+              <div class="row"><div class="label">State:</div><div class="value">${quote.state}</div></div>
+              <div class="row"><div class="label">Status:</div><div class="value">${quote.status}</div></div>
+            </div>
+            <button onclick="window.print()" style="margin-top: 20px; padding: 10px 20px; background: #6366f1; color: white; border: none; border-radius: 5px; cursor: pointer;">Print</button>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 250);
+    }
+  };
+
+  const handleDeleteQuote = async (id: string) => {
+    try {
+      const response = await fetch(`/api/quotes/${id}`, { method: "DELETE" });
+      if (response.ok) {
+        toast({ title: "Success", description: "Quote deleted successfully" });
+        setSelectedQuote(null);
+        // Refresh would happen in real app with React Query
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to delete quote", variant: "destructive" });
+    }
+  };
 
   const quotes = [
     {
@@ -323,9 +392,37 @@ export default function Admin() {
                     </div>
 
                     <div className="flex gap-2">
-                      <Button className="flex-1" data-testid="button-save">
-                        Save Changes
+                      <Button 
+                        className="flex-1" 
+                        data-testid="button-save"
+                        onClick={() => handlePrintQuote(selectedQuote)}
+                        variant="outline"
+                      >
+                        <Printer className="w-4 h-4 mr-2" />
+                        Print
                       </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="destructive" size="icon" data-testid="button-delete">
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Delete Quote?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This action cannot be undone. The quote will be permanently deleted.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction 
+                            onClick={() => handleDeleteQuote(selectedQuote.id)}
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogContent>
+                      </AlertDialog>
                       <Button variant="outline" onClick={() => setSelectedQuote(null)} data-testid="button-close">
                         Close
                       </Button>

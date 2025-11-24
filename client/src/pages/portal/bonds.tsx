@@ -2,9 +2,52 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Shield, Download, AlertCircle } from "lucide-react";
+import { Shield, Download, AlertCircle, Printer } from "lucide-react";
+import { useState } from "react";
 
 export default function PortalBonds() {
+  const [selectedBond, setSelectedBond] = useState<any>(null);
+
+  const handlePrintBond = (bond: any) => {
+    const printWindow = window.open("", "", "width=800,height=600");
+    if (printWindow) {
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Bond ${bond.bondNumber}</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 40px; }
+              h1 { color: #333; border-bottom: 2px solid #6366f1; padding-bottom: 10px; }
+              .section { margin-top: 30px; }
+              .row { display: flex; margin-top: 10px; }
+              .label { font-weight: bold; width: 180px; }
+              .value { flex: 1; }
+              @media print { body { margin: 20px; } }
+            </style>
+          </head>
+          <body>
+            <h1>Surety Bond Certificate</h1>
+            <div class="section">
+              <div class="row"><div class="label">Bond Number:</div><div class="value">${bond.bondNumber}</div></div>
+              <div class="row"><div class="label">Bond Type:</div><div class="value">${bond.type}</div></div>
+              <div class="row"><div class="label">Project:</div><div class="value">${bond.project}</div></div>
+              <div class="row"><div class="label">Penal Sum:</div><div class="value">${bond.penalSum}</div></div>
+              <div class="row"><div class="label">Premium:</div><div class="value">${bond.premium}</div></div>
+            </div>
+            <div class="section">
+              <div class="row"><div class="label">Effective Date:</div><div class="value">${new Date(bond.effectiveDate).toLocaleDateString()}</div></div>
+              <div class="row"><div class="label">Expiration Date:</div><div class="value">${new Date(bond.expirationDate).toLocaleDateString()}</div></div>
+              <div class="row"><div class="label">Status:</div><div class="value">${bond.status}</div></div>
+            </div>
+            <button onclick="window.print()" style="margin-top: 30px; padding: 10px 20px; background: #6366f1; color: white; border: none; border-radius: 5px; cursor: pointer;">Print</button>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 250);
+    }
+  };
+
   const bonds = [
     {
       id: "1",
@@ -176,8 +219,13 @@ export default function PortalBonds() {
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button variant="ghost" size="sm" data-testid={`button-download-${bond.id}`}>
-                      <Download className="w-4 h-4" />
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      onClick={() => handlePrintBond(bond)}
+                      data-testid={`button-print-${bond.id}`}
+                    >
+                      <Printer className="w-4 h-4" />
                     </Button>
                   </TableCell>
                 </TableRow>

@@ -39,6 +39,8 @@ export interface IStorage {
   getQuote(id: string): Promise<Quote | undefined>;
   getAllQuotes(): Promise<Quote[]>;
   updateQuoteStatus(id: string, status: string): Promise<Quote | undefined>;
+  updateQuote(id: string, data: Partial<InsertQuote>): Promise<Quote | undefined>;
+  deleteQuote(id: string): Promise<boolean>;
 
   // Bond methods
   createBond(bond: InsertBond): Promise<Bond>;
@@ -255,6 +257,20 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
+  async updateQuote(id: string, data: Partial<InsertQuote>): Promise<Quote | undefined> {
+    const quote = this.quotes.get(id);
+    if (quote) {
+      const updated = { ...quote, ...data };
+      this.quotes.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  async deleteQuote(id: string): Promise<boolean> {
+    return this.quotes.delete(id);
+  }
+
   // Bond methods
   async createBond(insertBond: InsertBond): Promise<Bond> {
     const id = randomUUID();
@@ -405,6 +421,23 @@ export class DbStorage implements IStorage {
       .where(eq(quotes.id, id))
       .returning();
     return result[0];
+  }
+
+  async updateQuote(id: string, data: Partial<InsertQuote>): Promise<Quote | undefined> {
+    const result = await this.db
+      .update(quotes)
+      .set(data)
+      .where(eq(quotes.id, id))
+      .returning();
+    return result[0];
+  }
+
+  async deleteQuote(id: string): Promise<boolean> {
+    const result = await this.db
+      .delete(quotes)
+      .where(eq(quotes.id, id))
+      .returning();
+    return result.length > 0;
   }
 
   // Bond methods

@@ -125,6 +125,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Update quote - PROTECTED (admin only)
+  app.patch("/api/quotes/:id", isAdmin, async (req, res) => {
+    try {
+      const quote = await storage.updateQuote(req.params.id, req.body);
+      if (quote) {
+        res.json(quote);
+      } else {
+        res.status(404).json({ error: "Quote not found" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: "Failed to update quote" });
+    }
+  });
+
+  // Delete quote - PROTECTED (admin only)
+  app.delete("/api/quotes/:id", isAdmin, async (req, res) => {
+    const success = await storage.deleteQuote(req.params.id);
+    if (success) {
+      res.json({ success: true, message: "Quote deleted" });
+    } else {
+      res.status(404).json({ error: "Quote not found" });
+    }
+  });
+
   // Get bonds for user - PROTECTED
   app.get("/api/bonds", isAuthenticated, async (req: any, res) => {
     // Use authenticated user's ID from session

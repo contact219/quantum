@@ -142,6 +142,21 @@ export interface IStorage {
   // Credit Pull methods
   createCreditPull(pull: InsertCreditPull): Promise<CreditPull>;
   getLatestCreditPull(applicationId: string): Promise<CreditPull | undefined>;
+
+  // Email Notification methods
+  createEmailNotification(notification: any): Promise<any>;
+  getEmailNotificationsByUser(userId: string): Promise<any[]>;
+  getEmailNotificationsByApplication(applicationId: string): Promise<any[]>;
+  updateEmailNotificationStatus(id: string, status: string): Promise<any | undefined>;
+
+  // Analytics methods
+  getAnalyticsSnapshot(): Promise<any>;
+  recordAnalytics(data: any): Promise<any>;
+  getAnalyticsHistory(days?: number): Promise<any[]>;
+
+  // Admin role & permission methods
+  getAdminUsers(): Promise<User[]>;
+  updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined>;
 }
 
 export class MemStorage implements IStorage {

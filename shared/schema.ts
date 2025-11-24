@@ -26,7 +26,8 @@ export const users = pgTable("users", {
   username: text("username").unique(),
   password: text("password"),
   companyName: text("company_name"),
-  role: text("role").notNull().default("client"),
+  role: text("role").notNull().default("client"), // client, underwriter, sales, finance, admin
+  permission: text("permission").default("view"), // view, edit, approve (role-based)
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -280,6 +281,37 @@ export const insertChatMessageSchema = createInsertSchema(chatMessages).omit({ i
 export const insertCompanySettingsSchema = createInsertSchema(companySettings).omit({ id: true, updatedAt: true });
 export const insertResourceSchema = createInsertSchema(resources).omit({ id: true, createdAt: true, updatedAt: true });
 
+// Email Notification table
+export const emailNotifications = pgTable("email_notifications", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  applicationId: varchar("application_id").references(() => suretyApplications.id),
+  quoteId: varchar("quote_id").references(() => quotes.id),
+  type: text("type").notNull(), // quote_ready, document_needed, status_changed, bond_issued
+  subject: text("subject").notNull(),
+  content: text("content").notNull(),
+  recipientEmail: text("recipient_email").notNull(),
+  status: text("status").notNull().default("pending"), // pending, sent, failed
+  sentAt: timestamp("sent_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Admin Analytics Snapshot (daily)
+export const analyticsSnapshots = pgTable("analytics_snapshots", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  snapshotDate: timestamp("snapshot_date").notNull().defaultNow(),
+  totalQuotes: integer("total_quotes").default(0),
+  totalApplications: integer("total_applications").default(0),
+  totalBonds: integer("total_bonds").default(0),
+  approvedApplications: integer("approved_applications").default(0),
+  rejectedApplications: integer("rejected_applications").default(0),
+  totalPremium: decimal("total_premium").default("0"),
+  totalCommissions: decimal("total_commissions").default("0"),
+  averageApprovalTime: integer("average_approval_time_ms"),
+  conversionRate: decimal("conversion_rate", { precision: 5, scale: 2 }), // percentage
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type UpsertUser = z.infer<typeof upsertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -312,6 +344,16 @@ export type InsertApplicationDocument = z.infer<typeof insertApplicationDocument
 export type ApplicationDocument = typeof applicationDocuments.$inferSelect;
 export type InsertCreditPull = z.infer<typeof insertCreditPullSchema>;
 export type CreditPull = typeof creditPulls.$inferSelect;
+
+// Email Notifications
+export const insertEmailNotificationSchema = createInsertSchema(emailNotifications).omit({ id: true, createdAt: true });
+export type InsertEmailNotification = z.infer<typeof insertEmailNotificationSchema>;
+export type EmailNotification = typeof emailNotifications.$inferSelect;
+
+// Analytics
+export const insertAnalyticsSnapshotSchema = createInsertSchema(analyticsSnapshots).omit({ id: true, createdAt: true });
+export type InsertAnalyticsSnapshot = z.infer<typeof insertAnalyticsSnapshotSchema>;
+export type AnalyticsSnapshot = typeof analyticsSnapshots.$inferSelect;
 
 export const quoteFormSchema = z.object({
   bondType: z.string().min(1, "Bond type is required"),

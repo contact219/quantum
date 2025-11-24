@@ -9,6 +9,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
   await setupAuth(app);
 
+  // Server-side protection for portal and admin routes
+  // This middleware runs BEFORE the SPA is served
+  app.use(['/portal', '/portal/*', '/admin', '/admin/*'], (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      // Redirect to login - this is a full server-side redirect
+      return res.redirect('/api/login');
+    }
+    // User is authenticated, continue to serve the SPA
+    next();
+  });
+
   // Auth routes - this endpoint MUST NOT use isAuthenticated middleware
   // so that the frontend can check auth status
   app.get('/api/auth/user', async (req: any, res) => {
@@ -18,7 +29,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ message: "Unauthorized" });
       }
 
-      const userId = req.user.claims.sub;
+      // Get user ID from claims (session stores the full user object with claims)
+      const userId = req.user.claims?.sub;
+      
+      if (!userId) {
+        console.error("User session missing claims.sub:", req.user);
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+
       const user = await storage.getUser(userId);
       
       if (!user) {
@@ -67,14 +85,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get all quotes (admin)
-  app.get("/api/quotes", async (req, res) => {
+  // Get all quotes (admin only) - PROTECTED
+  app.get("/api/quotes", isAuthenticated, async (req, res) => {
     const quotes = await storage.getAllQuotes();
     res.json(quotes);
   });
 
-  // Get specific quote
-  app.get("/api/quotes/:id", async (req, res) => {
+  // Get specific quote - PROTECTED
+  app.get("/api/quotes/:id", isAuthenticated, async (req, res) => {
     const quote = await storage.getQuote(req.params.id);
     if (quote) {
       res.json(quote);
@@ -83,8 +101,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Update quote status
-  app.patch("/api/quotes/:id/status", async (req, res) => {
+  // Update quote status - PROTECTED
+  app.patch("/api/quotes/:id/status", isAuthenticated, async (req, res) => {
     const { status } = req.body;
     const quote = await storage.updateQuoteStatus(req.params.id, status);
     if (quote) {
@@ -94,21 +112,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get bonds for user
-  app.get("/api/bonds", async (req, res) => {
-    const userId = req.query.userId as string || "user-1";
+  // Get bonds for user - PROTECTED
+  app.get("/api/bonds", isAuthenticated, async (req: any, res) => {
+    // Use authenticated user's ID from session
+    const userId = req.user.claims?.sub;
     const bonds = await storage.getBondsByUserId(userId);
     res.json(bonds);
   });
 
-  // Get all bonds (admin)
-  app.get("/api/bonds/all", async (req, res) => {
+  // Get all bonds (admin only) - PROTECTED
+  app.get("/api/bonds/all", isAuthenticated, async (req, res) => {
     const bonds = await storage.getAllBonds();
     res.json(bonds);
   });
 
-  // Create bond
-  app.post("/api/bonds", async (req, res) => {
+  // Create bond - PROTECTED
+  app.post("/api/bonds", isAuthenticated, async (req, res) => {
     try {
       const bond = await storage.createBond(req.body);
       res.json(bond);
@@ -117,21 +136,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get projects for user
-  app.get("/api/projects", async (req, res) => {
-    const userId = req.query.userId as string || "user-1";
+  // Get projects for user - PROTECTED
+  app.get("/api/projects", isAuthenticated, async (req: any, res) => {
+    // Use authenticated user's ID from session
+    const userId = req.user.claims?.sub;
     const projects = await storage.getProjectsByUserId(userId);
     res.json(projects);
   });
 
-  // Get all projects (admin)
-  app.get("/api/projects/all", async (req, res) => {
+  // Get all projects (admin only) - PROTECTED
+  app.get("/api/projects/all", isAuthenticated, async (req, res) => {
     const projects = await storage.getAllProjects();
     res.json(projects);
   });
 
-  // Create project
-  app.post("/api/projects", async (req, res) => {
+  // Create project - PROTECTED
+  app.post("/api/projects", isAuthenticated, async (req, res) => {
     try {
       const project = await storage.createProject(req.body);
       res.json(project);

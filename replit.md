@@ -81,17 +81,51 @@ Preferred communication style: Simple, everyday language.
 
 ### Authentication and Authorization
 
-**Current State**: Basic structure in place but not fully implemented
+**Status**: ✅ **Production-Ready Multi-Layer Security Architecture**
 
-**Planned Approach**:
-- User authentication with username/password
-- Role-based access (client vs admin)
-- Session management using express-session with PostgreSQL store (connect-pg-simple)
+**Implementation**: Replit Auth via OpenID Connect (Passport.js)
+- Users can log in with Google, GitHub, X (Twitter), Apple, or email
+- No API keys required - managed by Replit platform
+- OAuth flow handled by `/api/login`, `/api/callback`, `/api/logout` endpoints
 
-**Integration Points**:
-- Auth middleware hooks in routing layer
-- User context propagation to API handlers
-- Protected routes for Portal and Admin sections
+**Session Management**:
+- PostgreSQL session store (connect-pg-simple)
+- Sessions table stores authentication state
+- Users table stores profile data from Replit Auth (id, email, firstName, lastName, profileImageUrl)
+- Session serialization/deserialization via Passport
+
+**Security Layers**:
+
+1. **Server-Side Route Protection** (`server/routes.ts`)
+   - Express middleware guards `/portal/*` and `/admin/*` routes
+   - Returns 302 redirect to `/api/login` for unauthenticated requests
+   - Protects against direct URL access and page refreshes
+
+2. **Router-Level Guard** (`client/src/components/auth/ProtectedRoute.tsx`)
+   - Wrapper component checks authentication before rendering protected pages
+   - Handles SPA navigation via Wouter
+   - Shows loading state while checking auth
+   - Triggers full-page redirect with `window.location.assign('/api/login')` if unauthorized
+
+3. **API Endpoint Protection**
+   - All sensitive endpoints use `isAuthenticated` middleware
+   - Protected: `/api/quotes`, `/api/bonds`, `/api/projects` (and admin variants)
+   - User-specific data fetched using `req.user.claims?.sub` from session (not query params)
+   - Public endpoints: `POST /api/quotes` (quote submission), `POST /api/ai/chat` (AI chatbot)
+
+4. **Client-Side Utilities**
+   - `useAuth()` hook provides authentication state
+   - `/api/auth/user` endpoint returns user data (401 when not authenticated)
+   - Navbar displays login/logout with user avatar dropdown
+
+**Token Management**:
+- `isAuthenticated` middleware includes token refresh logic
+- Automatically refreshes expired tokens
+- Handles authentication errors gracefully
+
+**Future Enhancements**:
+- Role-based authorization (admin vs client roles)
+- Permission-based access control for specific features
 
 ### External Dependencies
 

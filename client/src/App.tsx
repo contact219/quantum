@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import Home from "@/pages/home";
 import Construction from "@/pages/construction";
 import AIBondFinder from "@/pages/ai-bond-finder";
@@ -25,9 +26,21 @@ function Router() {
       <Route path="/construction" component={Construction} />
       <Route path="/ai-bond-finder" component={AIBondFinder} />
       <Route path="/quote" component={Quote} />
-      <Route path="/portal" component={Portal} />
-      <Route path="/portal/:rest+" component={Portal} />
-      <Route path="/admin" component={Admin} />
+      <Route path="/portal">
+        <ProtectedRoute>
+          <Portal />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/portal/:rest+">
+        <ProtectedRoute>
+          <Portal />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/admin">
+        <ProtectedRoute>
+          <Admin />
+        </ProtectedRoute>
+      </Route>
       <Route path="/faq" component={FAQ} />
       <Route path="/resources" component={Resources} />
       <Route path="/glossary" component={Glossary} />

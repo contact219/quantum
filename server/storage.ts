@@ -12,12 +12,15 @@ import {
   type InsertChatMessage,
   type CompanySettings,
   type InsertCompanySettings,
+  type Resource,
+  type InsertResource,
   users,
   quotes,
   bonds,
   projects,
   chatMessages,
-  companySettings
+  companySettings,
+  resources
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -64,6 +67,14 @@ export interface IStorage {
   // Company settings methods
   getCompanySettings(): Promise<CompanySettings | undefined>;
   updateCompanySettings(data: Partial<InsertCompanySettings>): Promise<CompanySettings>;
+
+  // Resource methods
+  createResource(resource: InsertResource): Promise<Resource>;
+  getResource(id: string): Promise<Resource | undefined>;
+  getResourcesByType(type: string): Promise<Resource[]>;
+  getAllResources(): Promise<Resource[]>;
+  updateResource(id: string, data: Partial<InsertResource>): Promise<Resource | undefined>;
+  deleteResource(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -366,6 +377,51 @@ export class MemStorage implements IStorage {
     return this.companySettings;
   }
 
+  // Resource methods
+  private resourcesMap: Map<string, Resource> = new Map();
+
+  async createResource(resource: InsertResource): Promise<Resource> {
+    const id = randomUUID();
+    const newResource: Resource = {
+      ...resource,
+      id,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as Resource;
+    this.resourcesMap.set(id, newResource);
+    return newResource;
+  }
+
+  async getResource(id: string): Promise<Resource | undefined> {
+    return this.resourcesMap.get(id);
+  }
+
+  async getResourcesByType(type: string): Promise<Resource[]> {
+    return Array.from(this.resourcesMap.values())
+      .filter(r => r.type === type && r.active)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+  }
+
+  async getAllResources(): Promise<Resource[]> {
+    return Array.from(this.resourcesMap.values())
+      .filter(r => r.active)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+  }
+
+  async updateResource(id: string, data: Partial<InsertResource>): Promise<Resource | undefined> {
+    const resource = this.resourcesMap.get(id);
+    if (resource) {
+      const updated = { ...resource, ...data, updatedAt: new Date() };
+      this.resourcesMap.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  async deleteResource(id: string): Promise<boolean> {
+    return this.resourcesMap.delete(id);
+  }
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;
@@ -551,6 +607,43 @@ export class DbStorage implements IStorage {
       .values({ ...data })
       .returning();
     return result[0];
+  }
+
+  // Resource methods
+  async createResource(resource: InsertResource): Promise<Resource> {
+    const result = await this.db.insert(resources).values(resource).returning();
+    return result[0];
+  }
+
+  async getResource(id: string): Promise<Resource | undefined> {
+    const result = await this.db.select().from(resources).where(eq(resources.id, id));
+    return result[0];
+  }
+
+  async getResourcesByType(type: string): Promise<Resource[]> {
+    return await this.db
+      .select()
+      .from(resources)
+      .where(eq(resources.type, type))
+      .orderBy(resources.order);
+  }
+
+  async getAllResources(): Promise<Resource[]> {
+    return await this.db.select().from(resources).orderBy(resources.order);
+  }
+
+  async updateResource(id: string, data: Partial<InsertResource>): Promise<Resource | undefined> {
+    const result = await this.db
+      .update(resources)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(resources.id, id))
+      .returning();
+    return result[0];
+  }
+
+  async deleteResource(id: string): Promise<boolean> {
+    const result = await this.db.delete(resources).where(eq(resources.id, id));
+    return !!result;
   }
 
   // Helper methods

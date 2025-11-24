@@ -284,6 +284,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Resource endpoints
+  // Public endpoint to get all resources
+  app.get("/api/resources", async (req, res) => {
+    try {
+      const resources = await storage.getAllResources();
+      res.json(resources);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch resources" });
+    }
+  });
+
+  // Public endpoint to get resources by type
+  app.get("/api/resources/type/:type", async (req, res) => {
+    try {
+      const resources = await storage.getResourcesByType(req.params.type);
+      res.json(resources);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch resources" });
+    }
+  });
+
+  // Admin endpoint to create a resource
+  app.post("/api/admin/resources", isAdmin, async (req, res) => {
+    try {
+      const resource = await storage.createResource(req.body);
+      res.json(resource);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create resource" });
+    }
+  });
+
+  // Admin endpoint to update a resource
+  app.patch("/api/admin/resources/:id", isAdmin, async (req, res) => {
+    try {
+      const resource = await storage.updateResource(req.params.id, req.body);
+      if (!resource) {
+        return res.status(404).json({ error: "Resource not found" });
+      }
+      res.json(resource);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update resource" });
+    }
+  });
+
+  // Admin endpoint to delete a resource
+  app.delete("/api/admin/resources/:id", isAdmin, async (req, res) => {
+    try {
+      const success = await storage.deleteResource(req.params.id);
+      if (!success) {
+        return res.status(404).json({ error: "Resource not found" });
+      }
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete resource" });
+    }
+  });
+
+  // Admin endpoint to fetch all resources for management
+  app.get("/api/admin/resources", isAdmin, async (req, res) => {
+    try {
+      const resources = await storage.getAllResources();
+      res.json(resources);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch resources" });
+    }
+  });
+
   // Admin setup endpoint - create first admin user
   app.post("/api/admin/setup", async (req, res) => {
     try {
@@ -478,13 +545,79 @@ export async function registerRoutes(app: Express): Promise<Server> {
         obligee: "State DOT",
       });
 
+      // Create demo resources
+      const resources = [
+        // Guides
+        await storage.createResource({
+          type: "guide",
+          title: "Construction Bond Guide for General Contractors",
+          description: "Complete guide to bid, performance, and payment bonds for GCs",
+          category: "Guide",
+          downloadable: true,
+          order: 0,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "First-Time Bonding: A Subcontractor's Handbook",
+          description: "Step-by-step process for subcontractors getting their first bond",
+          category: "Guide",
+          downloadable: true,
+          order: 1,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "Understanding Bond Capacity",
+          description: "How sureties calculate your bonding capacity and how to increase it",
+          category: "Article",
+          downloadable: false,
+          order: 2,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "Financial Statement Preparation for Bonding",
+          description: "What underwriters look for and how to present your financials",
+          category: "Guide",
+          downloadable: true,
+          order: 3,
+        }),
+        // Videos
+        await storage.createResource({
+          type: "video",
+          title: "How Surety Bonds Work (5 min)",
+          description: "Quick overview of the surety bond process",
+          duration: "5:23",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/watch?v=example1",
+          order: 0,
+        }),
+        await storage.createResource({
+          type: "video",
+          title: "Bid Bond vs Performance Bond vs Payment Bond",
+          description: "Understanding the three main construction bond types",
+          duration: "8:15",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/watch?v=example2",
+          order: 1,
+        }),
+        await storage.createResource({
+          type: "video",
+          title: "Improving Your Bond Capacity",
+          description: "Strategies to qualify for larger projects",
+          duration: "12:40",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/watch?v=example3",
+          order: 2,
+        }),
+      ];
+
       res.json({ 
         success: true, 
         message: "Database seeded successfully",
         created: {
           user: demoUser.id,
           projects: [project1.id, project2.id],
-          bonds: [bond1.id, bond2.id, bond3.id]
+          bonds: [bond1.id, bond2.id, bond3.id],
+          resources: resources.map(r => r.id)
         }
       });
     } catch (error: any) {

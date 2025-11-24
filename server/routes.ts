@@ -394,6 +394,89 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Carrier Rules endpoints
+  app.get("/api/admin/carriers/:carrierId/rules", isAdmin, async (req, res) => {
+    try {
+      const rules = await storage.getCarrierRules(req.params.carrierId);
+      res.json(rules || {});
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/admin/carriers/:carrierId/rules", isAdmin, async (req, res) => {
+    try {
+      const rules = await storage.createCarrierRules({
+        carrierId: req.params.carrierId,
+        ...req.body,
+      });
+      res.json(rules);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.patch("/api/admin/carriers/:carrierId/rules", isAdmin, async (req, res) => {
+    try {
+      const rules = await storage.updateCarrierRules(req.params.carrierId, req.body);
+      res.json(rules || {});
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Carrier Capacity endpoints
+  app.get("/api/admin/carriers/:carrierId/capacity/:year", isAdmin, async (req, res) => {
+    try {
+      const capacity = await storage.getCarrierCapacity(req.params.carrierId, parseInt(req.params.year));
+      res.json(capacity || {});
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/admin/carriers/:carrierId/capacity", isAdmin, async (req, res) => {
+    try {
+      const capacity = await storage.createOrUpdateCapacity({
+        carrierId: req.params.carrierId,
+        ...req.body,
+      });
+      res.json(capacity);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Carrier Metrics endpoints
+  app.get("/api/admin/carriers/:carrierId/metrics", isAdmin, async (req, res) => {
+    try {
+      const metrics = await storage.getCarrierMetrics(req.params.carrierId);
+      res.json(metrics || {});
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.patch("/api/admin/carriers/:carrierId/metrics", isAdmin, async (req, res) => {
+    try {
+      const metrics = await storage.updateCarrierMetrics(req.params.carrierId, req.body);
+      res.json(metrics || {});
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Quote recommendation endpoint
+  app.post("/api/quotes/recommend-carriers", async (req, res) => {
+    try {
+      const quote = req.body as any;
+      const recommended = await storage.recommendCarriers(quote);
+      res.json(recommended);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // Admin setup endpoint - create first admin user
   app.post("/api/admin/setup", async (req, res) => {
     try {

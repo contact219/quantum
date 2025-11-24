@@ -50,8 +50,13 @@ Preferred communication style: Simple, everyday language.
 **API Structure**:
 - RESTful endpoints under `/api` prefix
 - Quote submission and retrieval (`/api/quotes`)
+- Quote auto-routing recommendations (`POST /api/quotes/recommend-carriers`)
 - AI chat interaction (`/api/ai/chat`)
 - Company settings management (`GET /api/admin/settings`, `PATCH /api/admin/settings`) - admin only
+- Carrier management (`GET/POST/PATCH/DELETE /api/admin/carriers/:id`) - admin only
+- Carrier underwriting rules (`GET/POST/PATCH /api/admin/carriers/:carrierId/rules`) - admin only
+- Carrier capacity management (`GET/POST /api/admin/carriers/:carrierId/capacity/:year`) - admin only
+- Carrier performance metrics (`GET/PATCH /api/admin/carriers/:carrierId/metrics`) - admin only
 - Endpoints return JSON responses with consistent error handling
 
 **Request Handling**:
@@ -80,6 +85,11 @@ Preferred communication style: Simple, everyday language.
 - Projects: Construction project tracking
 - ChatMessages: AI conversation history with session management
 - CompanySettings: Company contact information (name, phone, email, address, website) - editable via admin panel
+- Carriers: Surety carrier partnerships with commission rates and contact info
+- QuoteCarriers: Junction table linking quotes to carriers with status and commission tracking
+- CarrierRules: Underwriting rules per carrier (bond types, contract value limits, credit score requirements, years in business, revenue minimums, geography)
+- CarrierCapacity: Annual bonding capacity tracking per carrier with utilization monitoring
+- CarrierMetrics: Performance metrics per carrier (quotes submitted/approved/rejected, approval rate, average premium, satisfaction score, commission totals)
 
 ### Authentication and Authorization
 
@@ -231,6 +241,63 @@ Preferred communication style: Simple, everyday language.
 - Construction-themed hero images and professional photography
 - Google Fonts (Inter) for typography
 
+### Carrier Management System (Phase 1.5 Enhancements)
+
+**Status**: ✅ **Complete**
+
+**Features Implemented**:
+
+1. **Underwriting Rules Engine** - Define carrier-specific underwriting requirements:
+   - Accepted bond types (bid, performance, payment)
+   - Contract value limits (minimum/maximum)
+   - Business experience requirements (years in business)
+   - Financial requirements (credit score, annual revenue)
+   - Geographic restrictions (accepted states)
+   - Annual bonding limits (max bonds per year)
+   - Custom rule support via JSONB
+
+2. **Capacity Management** - Track and monitor carrier bonding capacity:
+   - Annual capacity limits per carrier
+   - Real-time capacity utilization tracking
+   - Year-based capacity segmentation
+   - Visual progress bars showing capacity usage
+   - Alerts when nearing capacity limits (80%+)
+
+3. **Commission Dashboard** - Real-time commission tracking:
+   - Total commissions earned per carrier (YTD)
+   - Commission per quote issued
+   - Approval rates and statistics
+   - Average premium tracking
+   - Revenue projections by carrier
+
+4. **Performance Metrics** - Monitor carrier performance:
+   - Approval rate tracking (% of submitted quotes approved)
+   - Quote submission and approval counts
+   - Average approval time calculation
+   - Customer satisfaction scoring
+   - Historical performance trends
+
+5. **Quote Auto-Routing/Recommendation** - Intelligent carrier matching:
+   - Automatic carrier recommendations based on quote details
+   - Matching logic evaluates:
+     - Contractor's credit score vs. carrier requirements
+     - Contract value vs. carrier capacity
+     - Project type vs. carrier specialties
+     - Geographic availability
+   - Admin override capability for manual carrier assignment
+
+**Database Tables**:
+- `carrier_rules` - Underwriting rules per carrier
+- `carrier_capacity` - Annual capacity tracking
+- `carrier_metrics` - Performance metrics per carrier
+
+**Admin UI Enhancements**:
+- New "Rules Engine" tab for configuring underwriting criteria
+- New "Capacity" tab for managing annual bonding limits
+- New "Commissions" dashboard tab for revenue tracking
+- New "Metrics" tab for performance monitoring
+- All features fully integrated with existing carrier management interface
+
 ### Key Architectural Decisions
 
 **Monorepo Structure**: 
@@ -243,6 +310,12 @@ Preferred communication style: Simple, everyday language.
 - Shared Zod schemas for runtime validation and type inference
 - Drizzle ORM for database type safety
 - Path aliases (@/, @shared/, @assets/) for clean imports
+
+**Carrier Management Architecture**:
+- Rules Engine: Interface-based approach allows carriers to define custom underwriting criteria
+- Auto-Routing: Intelligent matching algorithm evaluates multiple criteria in parallel
+- Capacity Tracking: Year-based segmentation allows multi-year planning
+- Metrics Collection: Event-driven updates whenever quotes change status
 
 **Responsive Design**:
 - Mobile-first Tailwind utilities

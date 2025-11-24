@@ -18,6 +18,12 @@ import {
   type InsertCarrier,
   type QuoteCarrier,
   type InsertQuoteCarrier,
+  type CarrierRules,
+  type InsertCarrierRules,
+  type CarrierCapacity,
+  type InsertCarrierCapacity,
+  type CarrierMetrics,
+  type InsertCarrierMetrics,
   users,
   quotes,
   bonds,
@@ -26,7 +32,10 @@ import {
   companySettings,
   resources,
   carriers,
-  quoteCarriers
+  quoteCarriers,
+  carrierRules,
+  carrierCapacity,
+  carrierMetrics
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -93,6 +102,22 @@ export interface IStorage {
   createQuoteCarrier(quoteCarrier: InsertQuoteCarrier): Promise<QuoteCarrier>;
   getQuoteCarriers(quoteId: string): Promise<QuoteCarrier[]>;
   updateQuoteCarrier(id: string, data: Partial<InsertQuoteCarrier>): Promise<QuoteCarrier | undefined>;
+
+  // Carrier Rules methods
+  createCarrierRules(rules: InsertCarrierRules): Promise<CarrierRules>;
+  getCarrierRules(carrierId: string): Promise<CarrierRules | undefined>;
+  updateCarrierRules(carrierId: string, rules: Partial<InsertCarrierRules>): Promise<CarrierRules | undefined>;
+
+  // Carrier Capacity methods
+  getCarrierCapacity(carrierId: string, year: number): Promise<CarrierCapacity | undefined>;
+  createOrUpdateCapacity(capacity: InsertCarrierCapacity): Promise<CarrierCapacity>;
+
+  // Carrier Metrics methods
+  getCarrierMetrics(carrierId: string): Promise<CarrierMetrics | undefined>;
+  updateCarrierMetrics(carrierId: string, metrics: Partial<InsertCarrierMetrics>): Promise<CarrierMetrics | undefined>;
+
+  // Auto-routing/recommendation
+  recommendCarriers(quote: Quote): Promise<Carrier[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -709,6 +734,113 @@ export class DbStorage implements IStorage {
       .where(eq(quoteCarriers.id, id))
       .returning();
     return result[0];
+  }
+
+  // Carrier Rules methods
+  async createCarrierRules(rules: InsertCarrierRules): Promise<CarrierRules> {
+    const result = await this.db.insert(carrierRules).values(rules).returning();
+    return result[0];
+  }
+
+  async getCarrierRules(carrierId: string): Promise<CarrierRules | undefined> {
+    const result = await this.db.select().from(carrierRules).where(eq(carrierRules.carrierId, carrierId));
+    return result[0];
+  }
+
+  async updateCarrierRules(carrierId: string, rules: Partial<InsertCarrierRules>): Promise<CarrierRules | undefined> {
+    const result = await this.db
+      .update(carrierRules)
+      .set(rules)
+      .where(eq(carrierRules.carrierId, carrierId))
+      .returning();
+    return result[0];
+  }
+
+  // Carrier Capacity methods
+  async getCarrierCapacity(carrierId: string, year: number): Promise<CarrierCapacity | undefined> {
+    const result = await this.db.select().from(carrierCapacity)
+      .where(eq(carrierCapacity.carrierId, carrierId) && eq(carrierCapacity.capacityYear, year));
+    return result[0];
+  }
+
+  async createOrUpdateCapacity(capacity: InsertCarrierCapacity): Promise<CarrierCapacity> {
+    const existing = await this.getCarrierCapacity(capacity.carrierId, capacity.capacityYear);
+    if (existing) {
+      const updated = await this.db
+        .update(carrierCapacity)
+        .set(capacity)
+        .where(eq(carrierCapacity.id, existing.id))
+        .returning();
+      return updated[0];
+    }
+    const result = await this.db.insert(carrierCapacity).values(capacity).returning();
+    return result[0];
+  }
+
+  // Carrier Metrics methods
+  async getCarrierMetrics(carrierId: string): Promise<CarrierMetrics | undefined> {
+    const result = await this.db.select().from(carrierMetrics).where(eq(carrierMetrics.carrierId, carrierId));
+    return result[0];
+  }
+
+  async updateCarrierMetrics(carrierId: string, metrics: Partial<InsertCarrierMetrics>): Promise<CarrierMetrics | undefined> {
+    const existing = await this.getCarrierMetrics(carrierId);
+    if (existing) {
+      const updated = await this.db
+        .update(carrierMetrics)
+        .set(metrics)
+        .where(eq(carrierMetrics.id, existing.id))
+        .returning();
+      return updated[0];
+    }
+    const result = await this.db.insert(carrierMetrics).values({ carrierId, ...metrics }).returning();
+    return result[0];
+  }
+
+  // Auto-routing recommendation logic
+  async recommendCarriers(quote: Quote): Promise<Carrier[]> {
+    const contractValue = parseFloat(quote.contractValue || "0");
+    const creditScore = parseInt(quote.creditScore || "600");
+    const yearsInBusiness = quote.yearsInBusiness || 0;
+    const revenue = parseFloat(quote.annualRevenue || "0");
+    
+    const allCarriers = await this.getAllCarriers();
+    const recommended: Carrier[] = [];
+
+    for (const carrier of allCarriers) {
+      if (!carrier.active) continue;
+
+      const rules = await this.getCarrierRules(carrier.id);
+      if (!rules) continue;
+
+      // Check bond type
+      if (rules.acceptedBondTypes && !rules.acceptedBondTypes.includes(quote.bondType)) continue;
+
+      // Check credit score
+      if (creditScore < (rules.minCreditScore || 600)) continue;
+
+      // Check years in business
+      if (yearsInBusiness < (rules.minYearsInBusiness || 0)) continue;
+
+      // Check revenue requirement
+      if (rules.minAnnualRevenue && revenue < parseFloat(rules.minAnnualRevenue.toString())) continue;
+
+      // Check contract value limits
+      if (rules.minContractValue && contractValue < parseFloat(rules.minContractValue.toString())) continue;
+      if (rules.maxContractValue && contractValue > parseFloat(rules.maxContractValue.toString())) continue;
+
+      // Check capacity
+      const year = new Date().getFullYear();
+      const capacity = await this.getCarrierCapacity(carrier.id, year);
+      if (capacity && capacity.usedCapacity && capacity.annualCapacityLimit) {
+        const available = parseFloat(capacity.annualCapacityLimit.toString()) - parseFloat(capacity.usedCapacity.toString());
+        if (contractValue > available) continue;
+      }
+
+      recommended.push(carrier);
+    }
+
+    return recommended;
   }
 
   // Helper methods

@@ -79,6 +79,38 @@ export default function Admin() {
     phone: "",
     notes: "",
   });
+
+  // Carrier Rules state
+  const [selectedCarrierForRules, setSelectedCarrierForRules] = useState<string | null>(null);
+  const [carrierRules, setCarrierRules] = useState<any>(null);
+  const [rulesFormData, setRulesFormData] = useState<any>({
+    acceptedBondTypes: ["bid", "performance", "payment"],
+    minContractValue: "",
+    maxContractValue: "",
+    acceptedProjectTypes: [],
+    minYearsInBusiness: 0,
+    minAnnualRevenue: "",
+    minCreditScore: 600,
+    acceptedStates: [],
+    maxBondsPerYear: "",
+  });
+
+  // Carrier Capacity state
+  const [selectedCarrierForCapacity, setSelectedCarrierForCapacity] = useState<string | null>(null);
+  const [capacityData, setCapacityData] = useState<any>(null);
+  const [capacityFormData, setCapacityFormData] = useState<any>({
+    annualCapacityLimit: "",
+    usedCapacity: "",
+    capacityYear: new Date().getFullYear(),
+  });
+
+  // Carrier Metrics state
+  const [selectedCarrierForMetrics, setSelectedCarrierForMetrics] = useState<string | null>(null);
+  const [metricsData, setMetricsData] = useState<any>(null);
+
+  // Commission Dashboard
+  const [commissionData, setCommissionData] = useState<any[]>([]);
+
   const { toast } = useToast();
 
   useEffect(() => {
@@ -88,8 +120,105 @@ export default function Admin() {
       fetchResources();
     } else if (activeTab === "carriers") {
       fetchCarriers();
+      loadCommissionDashboard();
+    } else if (activeTab === "rules" || activeTab === "capacity" || activeTab === "metrics") {
+      fetchCarriers();
     }
   }, [activeTab]);
+
+  const loadCommissionDashboard = async () => {
+    try {
+      const carriersList = await fetch("/api/admin/carriers").then(r => r.json());
+      const withMetrics = await Promise.all(
+        carriersList.map(async (carrier: any) => {
+          const metrics = await fetch(`/api/admin/carriers/${carrier.id}/metrics`).then(r => r.json());
+          return { ...carrier, metrics };
+        })
+      );
+      setCommissionData(withMetrics);
+    } catch (error) {
+      console.error("Failed to load commission data", error);
+    }
+  };
+
+  const loadCarrierRules = async (carrierId: string) => {
+    try {
+      const rules = await fetch(`/api/admin/carriers/${carrierId}/rules`).then(r => r.json());
+      setCarrierRules(rules);
+      if (rules.id) {
+        setRulesFormData(rules);
+      }
+    } catch (error) {
+      console.error("Failed to load rules", error);
+    }
+  };
+
+  const loadCarrierCapacity = async (carrierId: string) => {
+    try {
+      const year = new Date().getFullYear();
+      const capacity = await fetch(`/api/admin/carriers/${carrierId}/capacity/${year}`).then(r => r.json());
+      setCapacityData(capacity);
+      if (capacity.id) {
+        setCapacityFormData(capacity);
+      } else {
+        setCapacityFormData({
+          annualCapacityLimit: "",
+          usedCapacity: "0",
+          capacityYear: year,
+        });
+      }
+    } catch (error) {
+      console.error("Failed to load capacity", error);
+    }
+  };
+
+  const loadCarrierMetrics = async (carrierId: string) => {
+    try {
+      const metrics = await fetch(`/api/admin/carriers/${carrierId}/metrics`).then(r => r.json());
+      setMetricsData(metrics);
+    } catch (error) {
+      console.error("Failed to load metrics", error);
+    }
+  };
+
+  const handleSaveRules = async () => {
+    try {
+      if (!selectedCarrierForRules) return;
+      const url = carrierRules?.id
+        ? `/api/admin/carriers/${selectedCarrierForRules}/rules`
+        : `/api/admin/carriers/${selectedCarrierForRules}/rules`;
+      const method = carrierRules?.id ? "PATCH" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(rulesFormData),
+      });
+
+      if (!response.ok) throw new Error("Failed to save");
+      await loadCarrierRules(selectedCarrierForRules);
+      toast({ title: "Success", description: "Underwriting rules saved" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to save rules", variant: "destructive" });
+    }
+  };
+
+  const handleSaveCapacity = async () => {
+    try {
+      if (!selectedCarrierForCapacity) return;
+      const response = await fetch(`/api/admin/carriers/${selectedCarrierForCapacity}/capacity`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(capacityFormData),
+      });
+
+      if (!response.ok) throw new Error("Failed to save");
+      await loadCarrierCapacity(selectedCarrierForCapacity);
+      toast({ title: "Success", description: "Capacity settings saved" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to save capacity", variant: "destructive" });
+    }
+  };
 
   const fetchCarriers = async () => {
     try {
@@ -426,6 +555,10 @@ export default function Admin() {
             <TabsTrigger value="quotes" data-testid="tab-quotes">Quotes</TabsTrigger>
             <TabsTrigger value="resources" data-testid="tab-resources">Resources</TabsTrigger>
             <TabsTrigger value="carriers" data-testid="tab-carriers">Carriers</TabsTrigger>
+            <TabsTrigger value="rules" data-testid="tab-rules">Rules Engine</TabsTrigger>
+            <TabsTrigger value="capacity" data-testid="tab-capacity">Capacity</TabsTrigger>
+            <TabsTrigger value="commission" data-testid="tab-commission">Commissions</TabsTrigger>
+            <TabsTrigger value="metrics" data-testid="tab-metrics">Metrics</TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -1098,6 +1231,383 @@ export default function Admin() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Rules Engine Tab */}
+          <TabsContent value="rules" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="w-5 h-5" />
+                  Underwriting Rules Engine
+                </CardTitle>
+                <CardDescription>Define carrier-specific underwriting rules and requirements</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <Label htmlFor="rules-carrier-select">Select Carrier</Label>
+                    <Select value={selectedCarrierForRules || ""} onValueChange={(value) => {
+                      setSelectedCarrierForRules(value);
+                      loadCarrierRules(value);
+                    }}>
+                      <SelectTrigger data-testid="select-carrier-rules">
+                        <SelectValue placeholder="Choose a carrier..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {carriers.map(carrier => (
+                          <SelectItem key={carrier.id} value={carrier.id}>{carrier.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {selectedCarrierForRules && (
+                    <div className="space-y-4 max-w-2xl pt-4 border-t">
+                      <div className="space-y-3">
+                        <Label>Accepted Bond Types</Label>
+                        <div className="flex flex-wrap gap-3">
+                          {["bid", "performance", "payment"].map(type => (
+                            <Button
+                              key={type}
+                              variant={rulesFormData.acceptedBondTypes?.includes(type) ? "default" : "outline"}
+                              size="sm"
+                              onClick={() => {
+                                const updated = rulesFormData.acceptedBondTypes?.includes(type)
+                                  ? rulesFormData.acceptedBondTypes.filter((t: string) => t !== type)
+                                  : [...(rulesFormData.acceptedBondTypes || []), type];
+                                setRulesFormData({ ...rulesFormData, acceptedBondTypes: updated });
+                              }}
+                              data-testid={`button-bond-type-${type}`}
+                            >
+                              {type.charAt(0).toUpperCase() + type.slice(1)}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="min-contract">Min Contract Value ($)</Label>
+                          <Input
+                            id="min-contract"
+                            type="number"
+                            value={rulesFormData.minContractValue || ""}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, minContractValue: e.target.value })}
+                            placeholder="e.g., 50000"
+                            data-testid="input-min-contract"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="max-contract">Max Contract Value ($)</Label>
+                          <Input
+                            id="max-contract"
+                            type="number"
+                            value={rulesFormData.maxContractValue || ""}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, maxContractValue: e.target.value })}
+                            placeholder="e.g., 5000000"
+                            data-testid="input-max-contract"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="min-years">Min Years in Business</Label>
+                          <Input
+                            id="min-years"
+                            type="number"
+                            value={rulesFormData.minYearsInBusiness || 0}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, minYearsInBusiness: parseInt(e.target.value) || 0 })}
+                            placeholder="0"
+                            data-testid="input-min-years"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="min-credit">Min Credit Score</Label>
+                          <Input
+                            id="min-credit"
+                            type="number"
+                            value={rulesFormData.minCreditScore || 600}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, minCreditScore: parseInt(e.target.value) || 600 })}
+                            placeholder="600"
+                            data-testid="input-min-credit"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="min-revenue">Min Annual Revenue ($)</Label>
+                          <Input
+                            id="min-revenue"
+                            type="number"
+                            value={rulesFormData.minAnnualRevenue || ""}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, minAnnualRevenue: e.target.value })}
+                            placeholder="e.g., 500000"
+                            data-testid="input-min-revenue"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="max-bonds">Max Bonds Per Year</Label>
+                          <Input
+                            id="max-bonds"
+                            type="number"
+                            value={rulesFormData.maxBondsPerYear || ""}
+                            onChange={(e) => setRulesFormData({ ...rulesFormData, maxBondsPerYear: e.target.value })}
+                            placeholder="e.g., 100"
+                            data-testid="input-max-bonds"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex justify-end gap-3 pt-4">
+                        <Button variant="outline" data-testid="button-cancel-rules">Cancel</Button>
+                        <Button onClick={handleSaveRules} data-testid="button-save-rules">Save Rules</Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Capacity Management Tab */}
+          <TabsContent value="capacity" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5" />
+                  Carrier Capacity Management
+                </CardTitle>
+                <CardDescription>Track and manage annual bonding capacity for each carrier</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <Label htmlFor="capacity-carrier-select">Select Carrier</Label>
+                    <Select value={selectedCarrierForCapacity || ""} onValueChange={(value) => {
+                      setSelectedCarrierForCapacity(value);
+                      loadCarrierCapacity(value);
+                    }}>
+                      <SelectTrigger data-testid="select-carrier-capacity">
+                        <SelectValue placeholder="Choose a carrier..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {carriers.map(carrier => (
+                          <SelectItem key={carrier.id} value={carrier.id}>{carrier.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {selectedCarrierForCapacity && (
+                    <div className="space-y-4 max-w-2xl pt-4 border-t">
+                      <div className="space-y-2">
+                        <Label htmlFor="annual-limit">Annual Capacity Limit ($)</Label>
+                        <Input
+                          id="annual-limit"
+                          type="number"
+                          value={capacityFormData.annualCapacityLimit || ""}
+                          onChange={(e) => setCapacityFormData({ ...capacityFormData, annualCapacityLimit: e.target.value })}
+                          placeholder="e.g., 10000000"
+                          data-testid="input-annual-limit"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="used-capacity">Currently Used Capacity ($)</Label>
+                        <Input
+                          id="used-capacity"
+                          type="number"
+                          value={capacityFormData.usedCapacity || "0"}
+                          onChange={(e) => setCapacityFormData({ ...capacityFormData, usedCapacity: e.target.value })}
+                          placeholder="0"
+                          data-testid="input-used-capacity"
+                        />
+                      </div>
+
+                      {capacityFormData.annualCapacityLimit && (
+                        <div className="p-4 bg-accent/10 rounded-lg">
+                          <div className="flex justify-between mb-2">
+                            <span className="font-medium">Capacity Used</span>
+                            <span className="text-sm text-muted-foreground">
+                              ${capacityFormData.usedCapacity || 0} / ${capacityFormData.annualCapacityLimit}
+                            </span>
+                          </div>
+                          <div className="w-full bg-secondary rounded-full h-2">
+                            <div
+                              className="bg-accent h-2 rounded-full transition-all"
+                              style={{
+                                width: `${Math.min(100, (parseFloat(capacityFormData.usedCapacity || "0") / parseFloat(capacityFormData.annualCapacityLimit || "1")) * 100)}%`
+                              }}
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex justify-end gap-3 pt-4">
+                        <Button variant="outline" data-testid="button-cancel-capacity">Cancel</Button>
+                        <Button onClick={handleSaveCapacity} data-testid="button-save-capacity">Save Capacity</Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Commission Dashboard Tab */}
+          <TabsContent value="commission" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <DollarSign className="w-5 h-5" />
+                  Commission Dashboard
+                </CardTitle>
+                <CardDescription>Track commissions earned from each carrier partnership</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Carrier Name</TableHead>
+                        <TableHead className="text-right">Commission Rate</TableHead>
+                        <TableHead className="text-right">Total Commissions (YTD)</TableHead>
+                        <TableHead className="text-right">Avg Premium</TableHead>
+                        <TableHead className="text-right">Quotes Submitted</TableHead>
+                        <TableHead className="text-right">Quotes Approved</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {commissionData.map(carrier => {
+                        const metrics = carrier.metrics || {};
+                        return (
+                          <TableRow key={carrier.id} data-testid={`row-carrier-commission-${carrier.id}`}>
+                            <TableCell className="font-medium">{carrier.name}</TableCell>
+                            <TableCell className="text-right">{carrier.commissionRate}%</TableCell>
+                            <TableCell className="text-right text-accent font-semibold">
+                              ${parseFloat(metrics.totalCommissionsEarned || "0").toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              ${parseFloat(metrics.averagePremium || "0").toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            </TableCell>
+                            <TableCell className="text-right">{metrics.quotesSubmitted || 0}</TableCell>
+                            <TableCell className="text-right">
+                              <Badge variant="default">{metrics.quotesApproved || 0}</Badge>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </div>
+
+                {commissionData.length === 0 && (
+                  <div className="text-center py-12 text-muted-foreground">
+                    <p>No carriers configured yet</p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Performance Metrics Tab */}
+          <TabsContent value="metrics" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5" />
+                  Carrier Performance Metrics
+                </CardTitle>
+                <CardDescription>Monitor carrier performance and approval rates</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <Label htmlFor="metrics-carrier-select">Select Carrier</Label>
+                    <Select value={selectedCarrierForMetrics || ""} onValueChange={(value) => {
+                      setSelectedCarrierForMetrics(value);
+                      loadCarrierMetrics(value);
+                    }}>
+                      <SelectTrigger data-testid="select-carrier-metrics">
+                        <SelectValue placeholder="Choose a carrier..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {carriers.map(carrier => (
+                          <SelectItem key={carrier.id} value={carrier.id}>{carrier.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {selectedCarrierForMetrics && metricsData && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t">
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-accent">{metricsData.quotesSubmitted || 0}</div>
+                            <div className="text-sm text-muted-foreground mt-1">Quotes Submitted</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-green-600">{metricsData.quotesApproved || 0}</div>
+                            <div className="text-sm text-muted-foreground mt-1">Quotes Approved</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold text-red-600">{metricsData.quotesRejected || 0}</div>
+                            <div className="text-sm text-muted-foreground mt-1">Quotes Rejected</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold">
+                              {metricsData.quotesSubmitted ? Math.round((metricsData.quotesApproved / metricsData.quotesSubmitted) * 100) : 0}%
+                            </div>
+                            <div className="text-sm text-muted-foreground mt-1">Approval Rate</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold">
+                              {metricsData.averageApprovalTimeMs ? `${Math.round(metricsData.averageApprovalTimeMs / 1000 / 60)}m` : "N/A"}
+                            </div>
+                            <div className="text-sm text-muted-foreground mt-1">Avg Approval Time</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardContent className="pt-6">
+                          <div className="text-center">
+                            <div className="text-3xl font-bold">
+                              {metricsData.customerSatisfactionScore ? parseFloat(metricsData.customerSatisfactionScore).toFixed(1) : "N/A"}
+                            </div>
+                            <div className="text-sm text-muted-foreground mt-1">Satisfaction Score</div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>

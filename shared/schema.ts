@@ -148,8 +148,58 @@ export const quoteCarriers = pgTable("quote_carriers", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const carrierRules = pgTable("carrier_rules", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  carrierId: varchar("carrier_id").notNull().references(() => carriers.id),
+  // Bond type rules (bid, performance, payment)
+  acceptedBondTypes: text("accepted_bond_types").array().default(sql`'{bid,performance,payment}'`),
+  // Contract value limits
+  minContractValue: decimal("min_contract_value"),
+  maxContractValue: decimal("max_contract_value"),
+  // Project type rules
+  acceptedProjectTypes: text("accepted_project_types").array(), // commercial, residential, infrastructure, etc
+  // Experience & financial requirements
+  minYearsInBusiness: integer("min_years_in_business").default(0),
+  minAnnualRevenue: decimal("min_annual_revenue"),
+  minCreditScore: integer("min_credit_score").default(600),
+  // Geographic rules
+  acceptedStates: text("accepted_states").array(), // null = all states
+  // Capacity rules
+  maxBondsPerYear: integer("max_bonds_per_year"),
+  // Custom rules
+  customRules: jsonb("custom_rules"), // For additional carrier-specific rules
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const carrierCapacity = pgTable("carrier_capacity", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  carrierId: varchar("carrier_id").notNull().references(() => carriers.id),
+  annualCapacityLimit: decimal("annual_capacity_limit").notNull(),
+  usedCapacity: decimal("used_capacity").default("0"),
+  capacityYear: integer("capacity_year").notNull(), // Year for tracking
+  lastUpdated: timestamp("last_updated").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const carrierMetrics = pgTable("carrier_metrics", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  carrierId: varchar("carrier_id").notNull().references(() => carriers.id),
+  quotesSubmitted: integer("quotes_submitted").default(0),
+  quotesApproved: integer("quotes_approved").default(0),
+  quotesRejected: integer("quotes_rejected").default(0),
+  averageApprovalTimeMs: integer("average_approval_time_ms"),
+  totalCommissionsEarned: decimal("total_commissions_earned").default("0"),
+  averagePremium: decimal("average_premium"),
+  customerSatisfactionScore: decimal("customer_satisfaction_score", { precision: 3, scale: 2 }),
+  lastUpdated: timestamp("last_updated").defaultNow(),
+});
+
 export const insertCarrierSchema = createInsertSchema(carriers).omit({ id: true, createdAt: true, updatedAt: true });
 export const insertQuoteCarrierSchema = createInsertSchema(quoteCarriers).omit({ id: true, createdAt: true });
+export const insertCarrierRulesSchema = createInsertSchema(carrierRules).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertCarrierCapacitySchema = createInsertSchema(carrierCapacity).omit({ id: true, createdAt: true });
+export const insertCarrierMetricsSchema = createInsertSchema(carrierMetrics).omit({ id: true, createdAt: true });
 
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, updatedAt: true });
 export const upsertUserSchema = createInsertSchema(users).pick({ 
@@ -185,6 +235,12 @@ export type InsertCarrier = z.infer<typeof insertCarrierSchema>;
 export type Carrier = typeof carriers.$inferSelect;
 export type InsertQuoteCarrier = z.infer<typeof insertQuoteCarrierSchema>;
 export type QuoteCarrier = typeof quoteCarriers.$inferSelect;
+export type InsertCarrierRules = z.infer<typeof insertCarrierRulesSchema>;
+export type CarrierRules = typeof carrierRules.$inferSelect;
+export type InsertCarrierCapacity = z.infer<typeof insertCarrierCapacitySchema>;
+export type CarrierCapacity = typeof carrierCapacity.$inferSelect;
+export type InsertCarrierMetrics = z.infer<typeof insertCarrierMetricsSchema>;
+export type CarrierMetrics = typeof carrierMetrics.$inferSelect;
 
 export const quoteFormSchema = z.object({
   bondType: z.string().min(1, "Bond type is required"),

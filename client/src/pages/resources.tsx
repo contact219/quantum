@@ -9,10 +9,16 @@ import {
   Download,
   ExternalLink,
   ArrowRight,
-  Loader2
+  Loader2,
+  X
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Resource {
   id: string;
@@ -149,6 +155,7 @@ export default function Resources() {
   const [guides, setGuides] = useState<Resource[]>(DEFAULT_GUIDES);
   const [videos, setVideos] = useState<Resource[]>(DEFAULT_VIDEOS);
   const [tools, setTools] = useState<Resource[]>(DEFAULT_TOOLS);
+  const [selectedVideo, setSelectedVideo] = useState<Resource | null>(null);
 
   const { data: allResources = [], isLoading } = useQuery({
     queryKey: ["/api/resources"],
@@ -270,6 +277,7 @@ export default function Resources() {
                       variant="ghost" 
                       size="sm" 
                       data-testid={`button-video-${index}`}
+                      onClick={() => setSelectedVideo(video)}
                     >
                       View Resource
                       <ExternalLink className="w-4 h-4 ml-2" />
@@ -330,6 +338,47 @@ export default function Resources() {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!selectedVideo} onOpenChange={(open) => !open && setSelectedVideo(null)}>
+        <DialogContent className="max-w-3xl w-full p-0 border-0" data-testid="dialog-video-player">
+          <div className="bg-black rounded-lg overflow-hidden">
+            <div className="relative aspect-video bg-black">
+              {selectedVideo?.videoUrl && (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={selectedVideo.videoUrl}
+                  title={selectedVideo.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  data-testid="iframe-video-player"
+                />
+              )}
+            </div>
+            <div className="p-6 bg-card">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex-1">
+                  <DialogTitle className="text-xl mb-2">{selectedVideo?.title}</DialogTitle>
+                  <p className="text-sm text-muted-foreground">{selectedVideo?.description}</p>
+                </div>
+                <button
+                  onClick={() => setSelectedVideo(null)}
+                  className="text-muted-foreground hover:text-foreground"
+                  data-testid="button-close-video"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              {selectedVideo?.duration && (
+                <Badge variant="outline" className="mt-2">
+                  Duration: {selectedVideo.duration}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

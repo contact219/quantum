@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@shared/schema";
-import { queryClient, apiRequest } from "@lib/queryClient";
+import { queryClient } from "@/lib/queryClient";
+import { apiRequest } from "@/lib/queryClient";
 import { Mail, Shield } from "lucide-react";
 
 export default function AdminUsers() {

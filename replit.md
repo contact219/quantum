@@ -24,6 +24,9 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - **Authentication**: Production-ready multi-layer security using Replit Auth (OpenID Connect via Passport.js) for clients and a separate username/password system for administrators. Includes session management, route protection, API endpoint protection, and role-based access control (RBAC) for admin users. Admin setup and login flows are distinct, with admin role preservation across Replit Auth logins.
 - **Admin Features**: Quote management (view, print, delete, edit status, add notes), Company Settings management, Carrier Management System (underwriting rules engine, capacity management, commission dashboard, performance metrics, quote auto-routing/recommendation).
 - **AI Integration**: OpenAI API (GPT-5) for conversational bond recommendations, with system prompt engineering for domain expertise.
+- **Email System**: SendGrid integration for transactional emails, notification tracking, and email notification logs.
+- **Analytics**: Admin analytics dashboard with charts showing quotes, applications, approvals, and performance metrics.
+- **User Management**: Role-based permissions system for admins, underwriters, sales, finance, and client roles with view/edit/approve permissions.
 
 ### System Design Choices
 - **Monorepo**: Facilitates shared types and schemas between frontend and backend.
@@ -36,9 +39,11 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - **AI**: OpenAI API (via Replit AI Integrations service) utilizing GPT-5.
 - **Database**: PostgreSQL (Neon serverless database).
 - **ORM**: Drizzle ORM.
-- **UI Libraries**: Radix UI, Embla Carousel, CMDK, React Hook Form, Zod.
+- **Email**: SendGrid API for transactional emails and notifications.
+- **UI Libraries**: Radix UI, Embla Carousel, CMDK, React Hook Form, Zod, Recharts (for analytics dashboards).
 - **Development Tools**: Replit-specific plugins (Cartographer, dev banner, runtime error overlay), TypeScript, ESBuild.
 - **Design Assets**: Google Fonts (Inter), generated construction-themed imagery.
+
 ## Surety Application Portal (Phase 2 - Production-Ready Implementation)
 
 **Status**: ✅ **Complete**
@@ -91,6 +96,8 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - `surety_applications` - Application records with full underwriting status
 - `application_documents` - Document uploads with validation status
 - `credit_pulls` - Credit verification records and results
+- `emailNotifications` - Email notification logs with status tracking
+- `analytics` - Platform analytics snapshots
 
 ### API Endpoints
 - `POST /api/applications` - Create new application
@@ -102,11 +109,17 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - `POST /api/applications/:id/quote` - Generate preliminary quote
 - `POST /api/applications/:id/e-sign` - Prepare for e-signature
 
+### Admin Features & Endpoints
+- `GET /api/admin/analytics` - Retrieve analytics snapshot (total quotes, applications, approvals, conversion rates)
+- `GET /api/admin/users` - List admin users with roles
+- `PATCH /api/admin/users/:userId/role` - Update user role and permissions
+
 ### Integration Points
 - **Stripe**: Ready for premium payment processing
 - **Plaid/Credit Bureaus**: Ready for automated credit pulls
 - **DocuSign/PandaDoc**: Ready for e-signature workflow
-- **Email**: Ready for document submission and signing notifications
+- **Email**: SendGrid configured for document submission and signing notifications
+- **Analytics**: Recharts visualization for admin dashboards
 - Environment variable support for all external services
 
 ### Security & Access Control
@@ -114,3 +127,48 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - User-specific application access (can only view own applications)
 - Admin oversight capability for quote management
 - Session-based authentication throughout
+- Role-based permissions (admin, underwriter, sales, finance, client)
+
+## Admin Dashboard Features
+
+**Status**: ✅ **Complete**
+
+### Quote Management
+- View all submitted quotes with advanced filtering
+- Edit quote details and status
+- Add notes and internal comments
+- Print quote documents
+- Delete quotes with confirmation
+
+### Analytics Dashboard (`/admin/analytics`)
+- Real-time metrics: total quotes, applications, bonds, approvals/rejections
+- Monthly activity trends (line charts)
+- Application status distribution (pie chart)
+- Performance metrics (avg approval time, total commissions)
+- Data export ready
+
+### User Management (`/admin/users`)
+- Admin user management interface
+- Role assignment (admin, underwriter, sales, finance, client)
+- Permission control (view, edit, approve)
+- Bulk user updates support
+
+### Company Settings
+- Email configuration and testing
+- Bond types and limits
+- Commission structure
+- System preferences
+
+### Carrier Management
+- Carrier profiles with contact details
+- Commission tracking per carrier
+- Underwriting rules configuration
+- Capacity management by year
+- Performance metrics tracking
+
+### Email Notifications System
+- Automated notifications for quote updates
+- Application status change emails
+- Document request notifications
+- SendGrid integration for reliable delivery
+- Notification tracking and logging

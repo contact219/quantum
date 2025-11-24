@@ -16,6 +16,7 @@ import Admin from "@/pages/admin";
 import AdminLogin from "@/pages/admin-login";
 import AdminSetup from "@/pages/admin-setup";
 import AdminAnalytics from "@/pages/admin-analytics";
+import AdminUsers from "@/pages/admin-users";
 import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
 import Glossary from "@/pages/glossary";
@@ -55,6 +56,11 @@ function Router() {
       <Route path="/admin/analytics">
         <ProtectedRoute requireAdmin>
           <AdminAnalytics />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/admin/users">
+        <ProtectedRoute requireAdmin>
+          <AdminUsers />
         </ProtectedRoute>
       </Route>
       <Route path="/faq" component={FAQ} />

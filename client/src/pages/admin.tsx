@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -548,16 +549,28 @@ export default function Admin() {
     { label: "Avg. Processing", value: "2.3d", icon: Clock, change: "-10%" },
   ];
 
+  const [, navigate] = useLocation();
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2" data-testid="text-admin-title">
-            Admin Console
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            Manage quotes, clients, and company settings
-          </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2" data-testid="text-admin-title">
+              Admin Console
+            </h1>
+            <p className="text-muted-foreground text-lg">
+              Manage quotes, clients, and company settings
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" onClick={() => navigate("/admin/analytics")} data-testid="button-analytics">
+              Analytics
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => navigate("/admin/users")} data-testid="button-users">
+              Users
+            </Button>
+          </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

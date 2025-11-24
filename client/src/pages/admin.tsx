@@ -104,7 +104,7 @@ export default function Admin() {
   };
 
   const filteredQuotes = quotes.filter(quote => {
-    const matchesStatus = !statusFilter || quote.status === statusFilter;
+    const matchesStatus = !statusFilter || statusFilter === "all" || quote.status === statusFilter;
     const matchesSearch = !searchTerm || 
       quote.businessName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       quote.id.toLowerCase().includes(searchTerm.toLowerCase());
@@ -182,19 +182,19 @@ export default function Admin() {
                       <SelectValue placeholder="All Statuses" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Statuses</SelectItem>
+                      <SelectItem value="all">All Statuses</SelectItem>
                       <SelectItem value="pending">Pending</SelectItem>
                       <SelectItem value="under_review">Under Review</SelectItem>
                       <SelectItem value="approved">Approved</SelectItem>
                       <SelectItem value="rejected">Rejected</SelectItem>
                     </SelectContent>
                   </Select>
-                  {(statusFilter || searchTerm) && (
+                  {((statusFilter && statusFilter !== "all") || searchTerm) && (
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => {
-                        setStatusFilter("");
+                        setStatusFilter("all");
                         setSearchTerm("");
                       }}
                       data-testid="button-clear-filters"

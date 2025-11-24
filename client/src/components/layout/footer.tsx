@@ -1,6 +1,28 @@
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
+
+interface CompanySettings {
+  phone?: string;
+  email?: string;
+}
 
 export function Footer() {
+  const { data: settings } = useQuery<CompanySettings>({
+    queryKey: ["/api/settings"],
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+  });
+
+  const contactLinks = useMemo(() => {
+    const phone = settings?.phone || "1-800-QUANTUM";
+    const email = settings?.email || "support@quantumsurety.com";
+    
+    return [
+      { href: `tel:${phone}`, label: phone },
+      { href: `mailto:${email}`, label: email },
+    ];
+  }, [settings]);
+
   const linkGroups = [
     {
       title: "Learn",
@@ -27,10 +49,7 @@ export function Footer() {
     },
     {
       title: "Contact",
-      links: [
-        { href: "tel:1-800-QUANTUM", label: "1-800-QUANTUM" },
-        { href: "mailto:support@quantumsurety.com", label: "support@quantumsurety.com" },
-      ],
+      links: contactLinks,
     },
   ];
 

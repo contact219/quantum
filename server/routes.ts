@@ -254,7 +254,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
-  // Company settings endpoints - PROTECTED (admin only)
+  // Company settings endpoints
+  // Public GET endpoint for displaying on homepage
+  app.get("/api/settings", async (req, res) => {
+    try {
+      const settings = await storage.getCompanySettings();
+      res.json(settings || { companyName: "Quantum Surety", phone: "", email: "", address: "", website: "" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch settings" });
+    }
+  });
+
+  // Admin-only endpoints for managing settings
   app.get("/api/admin/settings", isAdmin, async (req, res) => {
     try {
       const settings = await storage.getCompanySettings();

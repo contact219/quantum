@@ -1,8 +1,9 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X, LogIn, LogOut, User } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,10 +14,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+interface CompanySettings {
+  phone?: string;
+}
+
 export function Navbar() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isAuthenticated, isLoading } = useAuth();
+  const { data: settings } = useQuery<CompanySettings>({
+    queryKey: ["/api/settings"],
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+  });
+  
+  const phoneNumber = useMemo(() => settings?.phone || "1-800-QUANTUM", [settings]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -55,7 +66,7 @@ export function Navbar() {
                 </Button>
               </Link>
             ))}
-            <a href="tel:1-800-QUANTUM" data-testid="link-call">
+            <a href={`tel:${phoneNumber}`} data-testid="link-call">
               <Button className="ml-2">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Us
@@ -132,7 +143,7 @@ export function Navbar() {
                 </Button>
               </Link>
             ))}
-            <a href="tel:1-800-QUANTUM" className="block" data-testid="mobile-link-call">
+            <a href={`tel:${phoneNumber}`} className="block" data-testid="mobile-link-call">
               <Button className="w-full">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Us

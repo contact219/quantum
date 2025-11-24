@@ -255,21 +255,9 @@ export default function Resources() {
             {videos.map((video, index) => (
               <Card key={video.id} className="hover-elevate">
                 <CardHeader>
-                  {video.videoUrl && video.videoUrl.includes('embed') ? (
-                    <div className="relative w-full aspect-video rounded-lg mb-4 overflow-hidden bg-black">
-                      <iframe
-                        className="absolute inset-0 w-full h-full"
-                        src={video.videoUrl + "?rel=0"}
-                        title={video.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  ) : (
-                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
-                      <Video className="w-12 h-12 text-primary" />
-                    </div>
-                  )}
+                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center mb-4">
+                    <Video className="w-12 h-12 text-primary" />
+                  </div>
                   <CardTitle className="text-lg" data-testid={`text-video-${index}`}>
                     {video.title}
                   </CardTitle>
@@ -282,13 +270,8 @@ export default function Resources() {
                       variant="ghost" 
                       size="sm" 
                       data-testid={`button-video-${index}`}
-                      onClick={() => {
-                        if (video.videoUrl) {
-                          window.open(video.videoUrl.replace('/embed/', '/watch?v='), '_blank');
-                        }
-                      }}
                     >
-                      Watch on YouTube
+                      View Resource
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </Button>
                   </div>

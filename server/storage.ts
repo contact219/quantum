@@ -49,7 +49,7 @@ import {
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import { Pool, neonConfig } from "@neondatabase/serverless";
-import { eq } from "drizzle-orm";
+import { eq, or } from "drizzle-orm";
 import ws from "ws";
 
 // Configure WebSocket for Node.js environment
@@ -815,7 +815,7 @@ export class MemStorage implements IStorage {
   async updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined> {
     const user = this.users.get(userId);
     if (user) {
-      const updated = { ...user, role, permission };
+      const updated = { ...user, role };
       this.users.set(userId, updated);
       return updated;
     }
@@ -1326,16 +1326,19 @@ export class DbStorage implements IStorage {
     const result = await this.db
       .select()
       .from(users)
-      .where((u) => {
-        return u.role === "admin" || u.role === "underwriter";
-      });
+      .where(
+        or(
+          eq(users.role, "admin"),
+          eq(users.role, "underwriter")
+        )
+      );
     return result;
   }
 
   async updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined> {
     const [updated] = await this.db
       .update(users)
-      .set({ role, permission })
+      .set({ role })
       .where(eq(users.id, userId))
       .returning();
     return updated;

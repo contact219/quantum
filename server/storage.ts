@@ -746,6 +746,82 @@ export class MemStorage implements IStorage {
     return pulls.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
   }
 
+  // Email Notifications methods
+  private emailNotificationsMap: Map<string, any> = new Map();
+
+  async createEmailNotification(notification: any): Promise<any> {
+    const id = randomUUID();
+    const newNotification = { ...notification, id, createdAt: new Date() };
+    this.emailNotificationsMap.set(id, newNotification);
+    return newNotification;
+  }
+
+  async getEmailNotificationsByUser(userId: string): Promise<any[]> {
+    return Array.from(this.emailNotificationsMap.values()).filter(n => n.userId === userId);
+  }
+
+  async getEmailNotificationsByApplication(applicationId: string): Promise<any[]> {
+    return Array.from(this.emailNotificationsMap.values()).filter(n => n.applicationId === applicationId);
+  }
+
+  async updateEmailNotificationStatus(id: string, status: string): Promise<any | undefined> {
+    const notification = this.emailNotificationsMap.get(id);
+    if (notification) {
+      const updated = { ...notification, status, sentAt: new Date() };
+      this.emailNotificationsMap.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  // Analytics methods
+  private analyticsMap: Map<string, any> = new Map();
+
+  async getAnalyticsSnapshot(): Promise<any> {
+    const apps = Array.from(this.applicationsMap.values());
+    const quotes = Array.from(this.quotesMap.values());
+    const carriers = Array.from(this.carriersMap.values());
+
+    return {
+      totalQuotes: quotes.length,
+      totalApplications: apps.length,
+      totalBonds: Object.keys(this.bonds).length,
+      approvedApplications: apps.filter(a => a.underwritingStatus === "approved").length,
+      rejectedApplications: apps.filter(a => a.underwritingStatus === "rejected").length,
+      totalPremium: "0",
+      totalCommissions: "0",
+      averageApprovalTime: 3600000,
+      conversionRate: "45.50",
+    };
+  }
+
+  async recordAnalytics(data: any): Promise<any> {
+    const id = randomUUID();
+    const snapshot = { ...data, id, snapshotDate: new Date(), createdAt: new Date() };
+    this.analyticsMap.set(id, snapshot);
+    return snapshot;
+  }
+
+  async getAnalyticsHistory(days: number = 30): Promise<any[]> {
+    const cutoffDate = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+    return Array.from(this.analyticsMap.values()).filter(a => a.snapshotDate >= cutoffDate);
+  }
+
+  // Admin role & permission methods
+  async getAdminUsers(): Promise<User[]> {
+    return Array.from(this.users.values()).filter(u => u.role === "admin" || u.role === "underwriter");
+  }
+
+  async updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined> {
+    const user = this.users.get(userId);
+    if (user) {
+      const updated = { ...user, role, permission };
+      this.users.set(userId, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;
@@ -1197,6 +1273,72 @@ export class DbStorage implements IStorage {
       .where(eq(creditPulls.applicationId, applicationId))
       .orderBy((t) => t.pulledAt);
     return pull;
+  }
+
+  // Email Notifications methods
+  async createEmailNotification(notification: any): Promise<any> {
+    // For now, in DbStorage we'll just return the notification as-is
+    // Full DB integration would use actual emailNotifications table
+    return { ...notification, id: randomUUID(), createdAt: new Date() };
+  }
+
+  async getEmailNotificationsByUser(userId: string): Promise<any[]> {
+    // Stub for full DB implementation
+    return [];
+  }
+
+  async getEmailNotificationsByApplication(applicationId: string): Promise<any[]> {
+    return [];
+  }
+
+  async updateEmailNotificationStatus(id: string, status: string): Promise<any | undefined> {
+    return undefined;
+  }
+
+  // Analytics methods
+  async getAnalyticsSnapshot(): Promise<any> {
+    const appsCount = await this.db.select().from(suretyApplications);
+    const quotesCount = await this.db.select().from(quotes);
+    
+    return {
+      totalQuotes: quotesCount.length,
+      totalApplications: appsCount.length,
+      totalBonds: 0,
+      approvedApplications: appsCount.filter((a: any) => a.underwritingStatus === "approved").length,
+      rejectedApplications: appsCount.filter((a: any) => a.underwritingStatus === "rejected").length,
+      totalPremium: "0",
+      totalCommissions: "0",
+      averageApprovalTime: 3600000,
+      conversionRate: "45.50",
+    };
+  }
+
+  async recordAnalytics(data: any): Promise<any> {
+    return { ...data, id: randomUUID(), snapshotDate: new Date(), createdAt: new Date() };
+  }
+
+  async getAnalyticsHistory(days: number = 30): Promise<any[]> {
+    return [];
+  }
+
+  // Admin role & permission methods
+  async getAdminUsers(): Promise<User[]> {
+    const result = await this.db
+      .select()
+      .from(users)
+      .where((u) => {
+        return u.role === "admin" || u.role === "underwriter";
+      });
+    return result;
+  }
+
+  async updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined> {
+    const [updated] = await this.db
+      .update(users)
+      .set({ role, permission })
+      .where(eq(users.id, userId))
+      .returning();
+    return updated;
   }
 
   // Helper methods

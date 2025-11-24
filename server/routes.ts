@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { quoteFormSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
-import { setupAuth, isAuthenticated } from "./replitAuth";
+import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
@@ -11,12 +11,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Server-side protection for portal and admin routes
   // This middleware runs BEFORE the SPA is served
-  app.use(['/portal', '/portal/*', '/admin', '/admin/*'], (req, res, next) => {
+  app.use(['/portal', '/portal/*'], (req, res, next) => {
     if (!req.isAuthenticated()) {
-      // Redirect to login - this is a full server-side redirect
       return res.redirect('/api/login');
     }
-    // User is authenticated, continue to serve the SPA
+    next();
+  });
+
+  // Admin-specific route protection
+  app.use(['/admin', '/admin/*'], (req: any, res, next) => {
+    if (!req.isAuthenticated()) {
+      return res.redirect('/api/login');
+    }
+    // Check admin role
+    const userId = req.user?.claims?.sub;
+    if (!userId) {
+      return res.redirect('/api/login');
+    }
+    // Continue to serve the SPA - role check will happen in ProtectedRoute component
     next();
   });
 
@@ -86,7 +98,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get all quotes (admin only) - PROTECTED
-  app.get("/api/quotes", isAuthenticated, async (req, res) => {
+  app.get("/api/quotes", isAdmin, async (req, res) => {
     const quotes = await storage.getAllQuotes();
     res.json(quotes);
   });
@@ -101,8 +113,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Update quote status - PROTECTED
-  app.patch("/api/quotes/:id/status", isAuthenticated, async (req, res) => {
+  // Update quote status - PROTECTED (admin only)
+  app.patch("/api/quotes/:id/status", isAdmin, async (req, res) => {
     const { status } = req.body;
     const quote = await storage.updateQuoteStatus(req.params.id, status);
     if (quote) {
@@ -121,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get all bonds (admin only) - PROTECTED
-  app.get("/api/bonds/all", isAuthenticated, async (req, res) => {
+  app.get("/api/bonds/all", isAdmin, async (req, res) => {
     const bonds = await storage.getAllBonds();
     res.json(bonds);
   });
@@ -145,7 +157,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get all projects (admin only) - PROTECTED
-  app.get("/api/projects/all", isAuthenticated, async (req, res) => {
+  app.get("/api/projects/all", isAdmin, async (req, res) => {
     const projects = await storage.getAllProjects();
     res.json(projects);
   });

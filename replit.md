@@ -123,9 +123,20 @@ Preferred communication style: Simple, everyday language.
 - Automatically refreshes expired tokens
 - Handles authentication errors gracefully
 
+**Admin Role-Based Access Control**:
+- Admin role defined at user registration/creation
+- Only users with `role: "admin"` can access `/admin` dashboard
+- Admin endpoints require `isAdmin` middleware:
+  - `GET /api/quotes` - view all quotes
+  - `PATCH /api/quotes/:id/status` - update quote status
+  - `GET /api/bonds/all` - view all bonds
+  - `GET /api/projects/all` - view all projects
+- Frontend `ProtectedRoute` component enforces `requireAdmin` flag for `/admin` routes
+- Non-admin users accessing admin endpoints receive 403 Forbidden response
+
 **Future Enhancements**:
-- Role-based authorization (admin vs client roles)
 - Permission-based access control for specific features
+- Admin user creation/management interface
 
 ### External Dependencies
 

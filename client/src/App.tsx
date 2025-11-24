@@ -37,7 +37,7 @@ function Router() {
         </ProtectedRoute>
       </Route>
       <Route path="/admin">
-        <ProtectedRoute>
+        <ProtectedRoute requireAdmin>
           <Admin />
         </ProtectedRoute>
       </Route>

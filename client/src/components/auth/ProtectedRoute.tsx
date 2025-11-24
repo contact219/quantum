@@ -3,10 +3,11 @@ import { useAuth } from "@/hooks/useAuth";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
+  requireAdmin?: boolean;
 }
 
-export function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isAuthenticated, isLoading, isUnauthorized } = useAuth();
+export function ProtectedRoute({ children, requireAdmin = false }: ProtectedRouteProps) {
+  const { isAuthenticated, isLoading, isUnauthorized, isAdmin } = useAuth();
 
   // Redirect to login immediately if unauthorized
   useEffect(() => {
@@ -14,7 +15,11 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
       // Use window.location.assign for full page navigation to OAuth flow
       window.location.assign("/api/login");
     }
-  }, [isUnauthorized, isAuthenticated, isLoading]);
+    // Redirect to home if admin access required but user is not admin
+    if (!isLoading && isAuthenticated && requireAdmin && !isAdmin) {
+      window.location.assign("/");
+    }
+  }, [isUnauthorized, isAuthenticated, isLoading, requireAdmin, isAdmin]);
 
   // Show loading while checking auth
   if (isLoading) {
@@ -33,6 +38,11 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     return null;
   }
 
-  // User is authenticated, render the protected content
+  // Check admin requirement
+  if (requireAdmin && !isAdmin) {
+    return null;
+  }
+
+  // User is authenticated and has proper role, render the protected content
   return <>{children}</>;
 }

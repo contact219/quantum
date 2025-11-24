@@ -93,6 +93,20 @@ export default function Admin() {
         return;
       }
 
+      // Normalize form data - remove undefined/null optional fields
+      const payload = {
+        type: formData.type,
+        title: formData.title,
+        description: formData.description || null,
+        category: formData.category || null,
+        link: formData.type === "tool" ? (formData.link || null) : null,
+        videoUrl: formData.type === "video" ? (formData.videoUrl || null) : null,
+        duration: formData.type === "video" ? (formData.duration || null) : null,
+        downloadable: formData.downloadable,
+        downloadUrl: formData.downloadable ? (formData.downloadUrl || null) : null,
+        order: formData.order || 0,
+      };
+
       const url = editingResource
         ? `/api/admin/resources/${editingResource.id}`
         : "/api/admin/resources";
@@ -101,10 +115,14 @@ export default function Admin() {
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Failed to save");
+      if (!response.ok) {
+        const error = await response.text();
+        console.error("Save error:", error);
+        throw new Error("Failed to save");
+      }
 
       await fetchResources();
       setShowResourceForm(false);
@@ -118,10 +136,12 @@ export default function Admin() {
         downloadUrl: "",
         videoUrl: "",
         duration: "",
+        link: "",
         order: 0,
       });
       toast({ title: "Success", description: editingResource ? "Resource updated" : "Resource created" });
     } catch (error) {
+      console.error("Error saving resource:", error);
       toast({ title: "Error", description: "Failed to save resource", variant: "destructive" });
     }
   };
@@ -764,7 +784,18 @@ export default function Admin() {
                           size="sm"
                           onClick={() => {
                             setEditingResource(resource);
-                            setFormData(resource);
+                            setFormData({
+                              type: resource.type,
+                              title: resource.title || "",
+                              description: resource.description || "",
+                              category: resource.category || "Guide",
+                              link: resource.link || "",
+                              videoUrl: resource.videoUrl || "",
+                              duration: resource.duration || "",
+                              downloadable: resource.downloadable || false,
+                              downloadUrl: resource.downloadUrl || "",
+                              order: resource.order || 0,
+                            });
                             setShowResourceForm(true);
                           }}
                           data-testid={`button-edit-resource-${resource.id}`}

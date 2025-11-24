@@ -635,7 +635,7 @@ export class DbStorage implements IStorage {
   async updateResource(id: string, data: Partial<InsertResource>): Promise<Resource | undefined> {
     const result = await this.db
       .update(resources)
-      .set({ ...data, updatedAt: new Date() })
+      .set(data)
       .where(eq(resources.id, id))
       .returning();
     return result[0];

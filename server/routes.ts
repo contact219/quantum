@@ -755,6 +755,211 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Surety Application Portal endpoints
+  
+  // Create new application
+  app.post("/api/applications", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims?.sub;
+      const { companyName, contactName, contactEmail, contactPhone, businessType, yearsInBusiness, annualRevenue } = req.body;
+
+      const app = await storage.createApplication({
+        userId,
+        companyName,
+        contactName,
+        contactEmail,
+        contactPhone,
+        businessType,
+        yearsInBusiness: yearsInBusiness ? parseInt(yearsInBusiness) : 0,
+        annualRevenue: annualRevenue ? annualRevenue.toString() : undefined,
+        status: "draft",
+      });
+
+      res.json({ success: true, application: app });
+    } catch (error: any) {
+      res.status(400).json({ error: "Failed to create application" });
+    }
+  });
+
+  // Get user's applications
+  app.get("/api/applications", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims?.sub;
+      const apps = await storage.getApplicationsByUserId(userId);
+      res.json(apps);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch applications" });
+    }
+  });
+
+  // Get specific application
+  app.get("/api/applications/:id", isAuthenticated, async (req: any, res) => {
+    try {
+      const application = await storage.getApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+      
+      const documents = await storage.getApplicationDocuments(req.params.id);
+      const creditPull = await storage.getLatestCreditPull(req.params.id);
+
+      res.json({ application, documents, creditPull });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch application" });
+    }
+  });
+
+  // Upload document
+  app.post("/api/applications/:id/documents", isAuthenticated, async (req: any, res) => {
+    try {
+      const { documentType, fileName, fileUrl, fileSize, mimeType } = req.body;
+
+      const doc = await storage.addDocument({
+        applicationId: req.params.id,
+        documentType,
+        fileName,
+        fileUrl,
+        fileSize,
+        mimeType,
+        validationStatus: "pending",
+      });
+
+      // Validate document type exists
+      const requiredDocs = ["bond_request", "contract", "financials", "credit_auth", "resume", "job_breakdown", "prior_bonds", "work_schedule"];
+      if (!requiredDocs.includes(documentType)) {
+        await storage.updateDocumentValidation(doc.id, "invalid", ["Invalid document type"]);
+        return res.status(400).json({ error: "Invalid document type" });
+      }
+
+      await storage.updateDocumentValidation(doc.id, "valid");
+      res.json({ success: true, document: doc });
+    } catch (error: any) {
+      res.status(400).json({ error: "Failed to upload document" });
+    }
+  });
+
+  // Get application documents
+  app.get("/api/applications/:id/documents", isAuthenticated, async (req: any, res) => {
+    try {
+      const docs = await storage.getApplicationDocuments(req.params.id);
+      res.json(docs);
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to fetch documents" });
+    }
+  });
+
+  // Evaluate application (run underwriting rules)
+  app.post("/api/applications/:id/evaluate", isAuthenticated, async (req: any, res) => {
+    try {
+      const application = await storage.getApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      const docs = await storage.getApplicationDocuments(req.params.id);
+      const requiredDocs = ["bond_request", "contract", "financials", "credit_auth"];
+      const uploadedDocs = docs.map(d => d.documentType);
+      const missingDocs = requiredDocs.filter(d => !uploadedDocs.includes(d));
+
+      // Evaluate underwriting rules
+      const ruleValidationResults = {
+        creditScorePassed: application.creditScore ? application.creditScore >= 600 : false,
+        yearsInBusinessPassed: application.yearsInBusiness ? application.yearsInBusiness >= 1 : false,
+        revenuePasssed: application.annualRevenue ? parseFloat(application.annualRevenue.toString()) >= 100000 : false,
+      };
+
+      const underwritingStatus = missingDocs.length === 0 && Object.values(ruleValidationResults).every(v => v) ? "approved" : "in_review";
+
+      const updated = await storage.updateApplication(req.params.id, {
+        underwritingStatus,
+        ruleValidationResults: ruleValidationResults as any,
+        missingDocuments: missingDocs,
+        status: missingDocs.length === 0 ? "submitted" : "draft",
+      });
+
+      res.json({ 
+        success: true, 
+        application: updated,
+        evaluation: {
+          missingDocuments: missingDocs,
+          ruleValidationResults,
+          underwritingStatus,
+        }
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Evaluation failed" });
+    }
+  });
+
+  // Generate preliminary quote
+  app.post("/api/applications/:id/quote", isAuthenticated, async (req: any, res) => {
+    try {
+      const application = await storage.getApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      // Calculate preliminary premium (2% of estimated bond amount)
+      const bondAmount = 50000; // Default for demo
+      const preliminaryPremium = (bondAmount * 0.02).toFixed(2);
+
+      const quote = await storage.createQuote({
+        bondType: "Performance Bond",
+        contractValue: bondAmount.toString(),
+        businessName: application.companyName,
+        contactName: application.contactName,
+        contactEmail: application.contactEmail,
+        contactPhone: application.contactPhone,
+        businessType: application.businessType,
+        yearsInBusiness: application.yearsInBusiness,
+        annualRevenue: application.annualRevenue?.toString(),
+        creditScore: application.creditScore?.toString(),
+        projectName: `${application.companyName} Project`,
+        projectState: "IL",
+      });
+
+      await storage.updateApplication(req.params.id, {
+        preliminaryQuoteId: quote.id,
+        preliminaryPremium: preliminaryPremium as any,
+      });
+
+      res.json({ 
+        success: true, 
+        quote,
+        preliminaryPremium,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to generate quote" });
+    }
+  });
+
+  // Prepare for e-signature
+  app.post("/api/applications/:id/e-sign", isAuthenticated, async (req: any, res) => {
+    try {
+      const application = await storage.getApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      // Simulate creating DocuSign envelope
+      const envelopeId = `ENV-${Date.now()}`;
+
+      const updated = await storage.updateApplication(req.params.id, {
+        eSignatureStatus: "sent",
+        eSignatureDocumentId: envelopeId,
+      });
+
+      res.json({
+        success: true,
+        eSignatureDocumentId: envelopeId,
+        application: updated,
+        signatureLink: `/sign/${envelopeId}`,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to prepare e-signature" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

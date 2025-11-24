@@ -11,6 +11,7 @@ import Construction from "@/pages/construction";
 import AIBondFinder from "@/pages/ai-bond-finder";
 import Quote from "@/pages/quote";
 import Portal from "@/pages/portal";
+import Application from "@/pages/application";
 import Admin from "@/pages/admin";
 import AdminLogin from "@/pages/admin-login";
 import AdminSetup from "@/pages/admin-setup";
@@ -30,6 +31,11 @@ function Router() {
       <Route path="/quote" component={Quote} />
       <Route path="/admin-login" component={AdminLogin} />
       <Route path="/admin-setup" component={AdminSetup} />
+      <Route path="/portal/application">
+        <ProtectedRoute>
+          <Application />
+        </ProtectedRoute>
+      </Route>
       <Route path="/portal">
         <ProtectedRoute>
           <Portal />

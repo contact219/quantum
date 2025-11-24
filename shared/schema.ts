@@ -195,11 +195,75 @@ export const carrierMetrics = pgTable("carrier_metrics", {
   lastUpdated: timestamp("last_updated").defaultNow(),
 });
 
+export const suretyApplications = pgTable("surety_applications", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  applicationNumber: text("application_number").notNull().unique(),
+  companyName: text("company_name").notNull(),
+  contactName: text("contact_name").notNull(),
+  contactEmail: text("contact_email").notNull(),
+  contactPhone: text("contact_phone"),
+  businessType: text("business_type"),
+  yearsInBusiness: integer("years_in_business"),
+  annualRevenue: decimal("annual_revenue"),
+  creditScore: integer("credit_score"),
+  // Credit pull data
+  creditPullStatus: text("credit_pull_status").default("pending"), // pending, completed, failed
+  creditPullData: jsonb("credit_pull_data"), // Plaid response data
+  // Underwriting
+  underwritingStatus: text("underwriting_status").default("pending"), // pending, in_review, approved, rejected
+  ruleValidationResults: jsonb("rule_validation_results"), // Results from underwriting rules
+  missingDocuments: text("missing_documents").array(), // Document types still needed
+  // Quote
+  preliminaryQuoteId: varchar("preliminary_quote_id"),
+  preliminaryPremium: decimal("preliminary_premium"),
+  // E-signature
+  eSignatureStatus: text("e_signature_status").default("pending"), // pending, sent, signed, completed
+  eSignatureDocumentId: text("e_signature_document_id"), // DocuSign/PandaDoc envelope ID
+  // Status
+  status: text("status").notNull().default("draft"), // draft, submitted, approved, rejected, bonded
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const applicationDocuments = pgTable("application_documents", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  applicationId: varchar("application_id").notNull().references(() => suretyApplications.id),
+  documentType: text("document_type").notNull(), // bond_request, contract, financials, credit_auth, resume, job_breakdown, prior_bonds, work_schedule
+  fileName: text("file_name").notNull(),
+  fileUrl: text("file_url").notNull(), // S3 or storage URL
+  fileSize: integer("file_size"),
+  mimeType: text("mime_type"),
+  uploadedAt: timestamp("uploaded_at").defaultNow(),
+  validationStatus: text("validation_status").default("pending"), // pending, valid, invalid
+  validationErrors: text("validation_errors").array(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const creditPulls = pgTable("credit_pulls", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  applicationId: varchar("application_id").notNull().references(() => suretyApplications.id),
+  provider: text("provider").notNull(), // plaid, dun_and_bradstreet, equifax
+  externalId: text("external_id"), // Provider's transaction/report ID
+  creditScore: integer("credit_score"),
+  debtToIncomeRatio: decimal("debt_to_income_ratio"),
+  businessRating: integer("business_rating"),
+  riskLevel: text("risk_level"), // low, medium, high
+  details: jsonb("details"), // Raw provider response
+  pulledAt: timestamp("pulled_at").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const insertCarrierSchema = createInsertSchema(carriers).omit({ id: true, createdAt: true, updatedAt: true });
 export const insertQuoteCarrierSchema = createInsertSchema(quoteCarriers).omit({ id: true, createdAt: true });
 export const insertCarrierRulesSchema = createInsertSchema(carrierRules).omit({ id: true, createdAt: true, updatedAt: true });
 export const insertCarrierCapacitySchema = createInsertSchema(carrierCapacity).omit({ id: true, createdAt: true });
 export const insertCarrierMetricsSchema = createInsertSchema(carrierMetrics).omit({ id: true, createdAt: true });
+
+export const insertSuretyApplicationSchema = createInsertSchema(suretyApplications).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertApplicationDocumentSchema = createInsertSchema(applicationDocuments).omit({ id: true, createdAt: true });
+export const insertCreditPullSchema = createInsertSchema(creditPulls).omit({ id: true, createdAt: true });
 
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, updatedAt: true });
 export const upsertUserSchema = createInsertSchema(users).pick({ 
@@ -241,6 +305,13 @@ export type InsertCarrierCapacity = z.infer<typeof insertCarrierCapacitySchema>;
 export type CarrierCapacity = typeof carrierCapacity.$inferSelect;
 export type InsertCarrierMetrics = z.infer<typeof insertCarrierMetricsSchema>;
 export type CarrierMetrics = typeof carrierMetrics.$inferSelect;
+
+export type InsertSuretyApplication = z.infer<typeof insertSuretyApplicationSchema>;
+export type SuretyApplication = typeof suretyApplications.$inferSelect;
+export type InsertApplicationDocument = z.infer<typeof insertApplicationDocumentSchema>;
+export type ApplicationDocument = typeof applicationDocuments.$inferSelect;
+export type InsertCreditPull = z.infer<typeof insertCreditPullSchema>;
+export type CreditPull = typeof creditPulls.$inferSelect;
 
 export const quoteFormSchema = z.object({
   bondType: z.string().min(1, "Bond type is required"),

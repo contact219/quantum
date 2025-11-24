@@ -24,6 +24,12 @@ import {
   type InsertCarrierCapacity,
   type CarrierMetrics,
   type InsertCarrierMetrics,
+  type SuretyApplication,
+  type InsertSuretyApplication,
+  type ApplicationDocument,
+  type InsertApplicationDocument,
+  type CreditPull,
+  type InsertCreditPull,
   users,
   quotes,
   bonds,
@@ -35,7 +41,10 @@ import {
   quoteCarriers,
   carrierRules,
   carrierCapacity,
-  carrierMetrics
+  carrierMetrics,
+  suretyApplications,
+  applicationDocuments,
+  creditPulls
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -118,6 +127,21 @@ export interface IStorage {
 
   // Auto-routing/recommendation
   recommendCarriers(quote: Quote): Promise<Carrier[]>;
+
+  // Surety Application methods
+  createApplication(app: InsertSuretyApplication): Promise<SuretyApplication>;
+  getApplication(id: string): Promise<SuretyApplication | undefined>;
+  getApplicationsByUserId(userId: string): Promise<SuretyApplication[]>;
+  updateApplication(id: string, data: Partial<InsertSuretyApplication>): Promise<SuretyApplication | undefined>;
+
+  // Application Document methods
+  addDocument(doc: InsertApplicationDocument): Promise<ApplicationDocument>;
+  getApplicationDocuments(applicationId: string): Promise<ApplicationDocument[]>;
+  updateDocumentValidation(docId: string, validationStatus: string, errors?: string[]): Promise<ApplicationDocument | undefined>;
+
+  // Credit Pull methods
+  createCreditPull(pull: InsertCreditPull): Promise<CreditPull>;
+  getLatestCreditPull(applicationId: string): Promise<CreditPull | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -841,6 +865,81 @@ export class DbStorage implements IStorage {
     }
 
     return recommended;
+  }
+
+  // Application methods
+  async createApplication(app: InsertSuretyApplication): Promise<SuretyApplication> {
+    const appNum = `APP-${Date.now()}`;
+    const [created] = await this.db
+      .insert(suretyApplications)
+      .values({ ...app, applicationNumber: appNum })
+      .returning();
+    return created;
+  }
+
+  async getApplication(id: string): Promise<SuretyApplication | undefined> {
+    const [app] = await this.db
+      .select()
+      .from(suretyApplications)
+      .where(eq(suretyApplications.id, id));
+    return app;
+  }
+
+  async getApplicationsByUserId(userId: string): Promise<SuretyApplication[]> {
+    return await this.db
+      .select()
+      .from(suretyApplications)
+      .where(eq(suretyApplications.userId, userId));
+  }
+
+  async updateApplication(id: string, data: Partial<InsertSuretyApplication>): Promise<SuretyApplication | undefined> {
+    const [updated] = await this.db
+      .update(suretyApplications)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(suretyApplications.id, id))
+      .returning();
+    return updated;
+  }
+
+  async addDocument(doc: InsertApplicationDocument): Promise<ApplicationDocument> {
+    const [created] = await this.db
+      .insert(applicationDocuments)
+      .values(doc)
+      .returning();
+    return created;
+  }
+
+  async getApplicationDocuments(applicationId: string): Promise<ApplicationDocument[]> {
+    return await this.db
+      .select()
+      .from(applicationDocuments)
+      .where(eq(applicationDocuments.applicationId, applicationId));
+  }
+
+  async updateDocumentValidation(docId: string, validationStatus: string, errors?: string[]): Promise<ApplicationDocument | undefined> {
+    const [updated] = await this.db
+      .update(applicationDocuments)
+      .set({ validationStatus, validationErrors: errors || [] })
+      .where(eq(applicationDocuments.id, docId))
+      .returning();
+    return updated;
+  }
+
+  async createCreditPull(pull: InsertCreditPull): Promise<CreditPull> {
+    const [created] = await this.db
+      .insert(creditPulls)
+      .values(pull)
+      .returning();
+    return created;
+  }
+
+  async getLatestCreditPull(applicationId: string): Promise<CreditPull | undefined> {
+    const [pull] = await this.db
+      .select()
+      .from(creditPulls)
+      .where(eq(creditPulls.applicationId, applicationId))
+      .orderBy((t) => t.pulledAt);
+    return pull;
   }
 
   // Helper methods

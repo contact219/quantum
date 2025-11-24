@@ -351,6 +351,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Carrier management endpoints
+  app.get("/api/admin/carriers", isAdmin, async (req, res) => {
+    try {
+      const allCarriers = await storage.getAllCarriers();
+      res.json(allCarriers);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch carriers" });
+    }
+  });
+
+  app.post("/api/admin/carriers", isAdmin, async (req, res) => {
+    try {
+      const carrier = await storage.createCarrier(req.body);
+      res.json(carrier);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create carrier" });
+    }
+  });
+
+  app.patch("/api/admin/carriers/:id", isAdmin, async (req, res) => {
+    try {
+      const carrier = await storage.updateCarrier(req.params.id, req.body);
+      if (!carrier) {
+        return res.status(404).json({ error: "Carrier not found" });
+      }
+      res.json(carrier);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update carrier" });
+    }
+  });
+
+  app.delete("/api/admin/carriers/:id", isAdmin, async (req, res) => {
+    try {
+      const success = await storage.deleteCarrier(req.params.id);
+      if (!success) {
+        return res.status(404).json({ error: "Carrier not found" });
+      }
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete carrier" });
+    }
+  });
+
   // Admin setup endpoint - create first admin user
   app.post("/api/admin/setup", async (req, res) => {
     try {

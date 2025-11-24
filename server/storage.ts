@@ -14,13 +14,19 @@ import {
   type InsertCompanySettings,
   type Resource,
   type InsertResource,
+  type Carrier,
+  type InsertCarrier,
+  type QuoteCarrier,
+  type InsertQuoteCarrier,
   users,
   quotes,
   bonds,
   projects,
   chatMessages,
   companySettings,
-  resources
+  resources,
+  carriers,
+  quoteCarriers
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -75,6 +81,18 @@ export interface IStorage {
   getAllResources(): Promise<Resource[]>;
   updateResource(id: string, data: Partial<InsertResource>): Promise<Resource | undefined>;
   deleteResource(id: string): Promise<boolean>;
+
+  // Carrier methods
+  createCarrier(carrier: InsertCarrier): Promise<Carrier>;
+  getCarrier(id: string): Promise<Carrier | undefined>;
+  getAllCarriers(): Promise<Carrier[]>;
+  updateCarrier(id: string, data: Partial<InsertCarrier>): Promise<Carrier | undefined>;
+  deleteCarrier(id: string): Promise<boolean>;
+
+  // Quote-Carrier methods
+  createQuoteCarrier(quoteCarrier: InsertQuoteCarrier): Promise<QuoteCarrier>;
+  getQuoteCarriers(quoteId: string): Promise<QuoteCarrier[]>;
+  updateQuoteCarrier(id: string, data: Partial<InsertQuoteCarrier>): Promise<QuoteCarrier | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -644,6 +662,53 @@ export class DbStorage implements IStorage {
   async deleteResource(id: string): Promise<boolean> {
     const result = await this.db.delete(resources).where(eq(resources.id, id));
     return !!result;
+  }
+
+  // Carrier methods
+  async createCarrier(carrier: InsertCarrier): Promise<Carrier> {
+    const result = await this.db.insert(carriers).values(carrier).returning();
+    return result[0];
+  }
+
+  async getCarrier(id: string): Promise<Carrier | undefined> {
+    const result = await this.db.select().from(carriers).where(eq(carriers.id, id));
+    return result[0];
+  }
+
+  async getAllCarriers(): Promise<Carrier[]> {
+    return await this.db.select().from(carriers).orderBy(carriers.name);
+  }
+
+  async updateCarrier(id: string, data: Partial<InsertCarrier>): Promise<Carrier | undefined> {
+    const result = await this.db
+      .update(carriers)
+      .set(data)
+      .where(eq(carriers.id, id))
+      .returning();
+    return result[0];
+  }
+
+  async deleteCarrier(id: string): Promise<boolean> {
+    const result = await this.db.delete(carriers).where(eq(carriers.id, id));
+    return !!result;
+  }
+
+  async createQuoteCarrier(quoteCarrier: InsertQuoteCarrier): Promise<QuoteCarrier> {
+    const result = await this.db.insert(quoteCarriers).values(quoteCarrier).returning();
+    return result[0];
+  }
+
+  async getQuoteCarriers(quoteId: string): Promise<QuoteCarrier[]> {
+    return await this.db.select().from(quoteCarriers).where(eq(quoteCarriers.quoteId, quoteId));
+  }
+
+  async updateQuoteCarrier(id: string, data: Partial<InsertQuoteCarrier>): Promise<QuoteCarrier | undefined> {
+    const result = await this.db
+      .update(quoteCarriers)
+      .set(data)
+      .where(eq(quoteCarriers.id, id))
+      .returning();
+    return result[0];
   }
 
   // Helper methods

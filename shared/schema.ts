@@ -119,6 +119,38 @@ export const resources = pgTable("resources", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+export const carriers = pgTable("carriers", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(), // e.g., "RLI Surety", "Liberty Mutual"
+  website: text("website"),
+  logo: text("logo"), // URL to carrier logo
+  commissionRate: decimal("commission_rate", { precision: 5, scale: 2 }).default("15"), // Default 15%
+  capacityLimit: decimal("capacity_limit"), // Max bonding capacity
+  minCreditScore: integer("min_credit_score").default(600),
+  contact: text("contact"), // Contact person name
+  email: text("email"),
+  phone: text("phone"),
+  notes: text("notes"),
+  active: boolean("active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const quoteCarriers = pgTable("quote_carriers", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  quoteId: varchar("quote_id").notNull().references(() => quotes.id),
+  carrierId: varchar("carrier_id").notNull().references(() => carriers.id),
+  status: text("status").notNull().default("pending"), // pending, submitted, approved, rejected, issued
+  submittedAt: timestamp("submitted_at"),
+  approvedAt: timestamp("approved_at"),
+  commissionEarned: decimal("commission_earned"),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertCarrierSchema = createInsertSchema(carriers).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertQuoteCarrierSchema = createInsertSchema(quoteCarriers).omit({ id: true, createdAt: true });
+
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, updatedAt: true });
 export const upsertUserSchema = createInsertSchema(users).pick({ 
   id: true, 
@@ -149,6 +181,10 @@ export type InsertCompanySettings = z.infer<typeof insertCompanySettingsSchema>;
 export type CompanySettings = typeof companySettings.$inferSelect;
 export type InsertResource = z.infer<typeof insertResourceSchema>;
 export type Resource = typeof resources.$inferSelect;
+export type InsertCarrier = z.infer<typeof insertCarrierSchema>;
+export type Carrier = typeof carriers.$inferSelect;
+export type InsertQuoteCarrier = z.infer<typeof insertQuoteCarrierSchema>;
+export type QuoteCarrier = typeof quoteCarriers.$inferSelect;
 
 export const quoteFormSchema = z.object({
   bondType: z.string().min(1, "Bond type is required"),

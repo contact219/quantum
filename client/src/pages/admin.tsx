@@ -66,6 +66,19 @@ export default function Admin() {
     duration: "",
     order: 0,
   });
+  const [carriers, setCarriers] = useState<any[]>([]);
+  const [editingCarrier, setEditingCarrier] = useState<any>(null);
+  const [showCarrierForm, setShowCarrierForm] = useState(false);
+  const [carrierFormData, setCarrierFormData] = useState<any>({
+    name: "",
+    website: "",
+    commissionRate: 15,
+    minCreditScore: 600,
+    contact: "",
+    email: "",
+    phone: "",
+    notes: "",
+  });
   const { toast } = useToast();
 
   useEffect(() => {
@@ -73,8 +86,70 @@ export default function Admin() {
       fetchSettings();
     } else if (activeTab === "resources") {
       fetchResources();
+    } else if (activeTab === "carriers") {
+      fetchCarriers();
     }
   }, [activeTab]);
+
+  const fetchCarriers = async () => {
+    try {
+      const response = await fetch("/api/admin/carriers");
+      const data = await response.json();
+      setCarriers(Array.isArray(data) ? data : []);
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to load carriers", variant: "destructive" });
+    }
+  };
+
+  const handleSaveCarrier = async () => {
+    try {
+      if (!carrierFormData.name) {
+        toast({ title: "Error", description: "Carrier name is required", variant: "destructive" });
+        return;
+      }
+
+      const url = editingCarrier
+        ? `/api/admin/carriers/${editingCarrier.id}`
+        : "/api/admin/carriers";
+      const method = editingCarrier ? "PATCH" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(carrierFormData),
+      });
+
+      if (!response.ok) throw new Error("Failed to save");
+
+      await fetchCarriers();
+      setShowCarrierForm(false);
+      setEditingCarrier(null);
+      setCarrierFormData({
+        name: "",
+        website: "",
+        commissionRate: 15,
+        minCreditScore: 600,
+        contact: "",
+        email: "",
+        phone: "",
+        notes: "",
+      });
+      toast({ title: "Success", description: editingCarrier ? "Carrier updated" : "Carrier created" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to save carrier", variant: "destructive" });
+    }
+  };
+
+  const handleDeleteCarrier = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/carriers/${id}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Failed to delete");
+      await fetchCarriers();
+      toast({ title: "Success", description: "Carrier deleted" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to delete carrier", variant: "destructive" });
+    }
+  };
 
   const fetchResources = async () => {
     try {
@@ -350,6 +425,7 @@ export default function Admin() {
           <TabsList className="mb-8">
             <TabsTrigger value="quotes" data-testid="tab-quotes">Quotes</TabsTrigger>
             <TabsTrigger value="resources" data-testid="tab-resources">Resources</TabsTrigger>
+            <TabsTrigger value="carriers" data-testid="tab-carriers">Carriers</TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -819,6 +895,199 @@ export default function Admin() {
                               <AlertDialogCancel>Cancel</AlertDialogCancel>
                               <AlertDialogAction
                                 onClick={() => handleDeleteResource(resource.id)}
+                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                              >
+                                Delete
+                              </AlertDialogAction>
+                            </div>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="carriers" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>Carrier Management</CardTitle>
+                    <CardDescription>Manage insurance carrier partnerships</CardDescription>
+                  </div>
+                  <Button 
+                    onClick={() => {
+                      setShowCarrierForm(true);
+                      setEditingCarrier(null);
+                      setCarrierFormData({
+                        name: "",
+                        website: "",
+                        commissionRate: 15,
+                        minCreditScore: 600,
+                        contact: "",
+                        email: "",
+                        phone: "",
+                        notes: "",
+                      });
+                    }}
+                    data-testid="button-add-carrier"
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add Carrier
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {showCarrierForm && (
+                  <div className="mb-8 p-6 bg-card border rounded-lg space-y-4">
+                    <h3 className="font-semibold text-lg">{editingCarrier ? "Edit Carrier" : "New Carrier"}</h3>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>Carrier Name</Label>
+                        <Input
+                          value={carrierFormData.name}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, name: e.target.value })}
+                          placeholder="e.g., RLI Surety"
+                          data-testid="input-carrier-name"
+                        />
+                      </div>
+                      <div>
+                        <Label>Website</Label>
+                        <Input
+                          value={carrierFormData.website || ""}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, website: e.target.value })}
+                          placeholder="https://example.com"
+                          data-testid="input-carrier-website"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>Commission Rate (%)</Label>
+                        <Input
+                          type="number"
+                          value={carrierFormData.commissionRate}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, commissionRate: parseFloat(e.target.value) })}
+                          placeholder="15"
+                          data-testid="input-commission-rate"
+                        />
+                      </div>
+                      <div>
+                        <Label>Min Credit Score</Label>
+                        <Input
+                          type="number"
+                          value={carrierFormData.minCreditScore}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, minCreditScore: parseInt(e.target.value) })}
+                          data-testid="input-min-credit-score"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>Contact Person</Label>
+                        <Input
+                          value={carrierFormData.contact || ""}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, contact: e.target.value })}
+                          placeholder="Contact name"
+                          data-testid="input-contact-person"
+                        />
+                      </div>
+                      <div>
+                        <Label>Email</Label>
+                        <Input
+                          value={carrierFormData.email || ""}
+                          onChange={(e) => setCarrierFormData({ ...carrierFormData, email: e.target.value })}
+                          placeholder="email@example.com"
+                          data-testid="input-carrier-email"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label>Phone</Label>
+                      <Input
+                        value={carrierFormData.phone || ""}
+                        onChange={(e) => setCarrierFormData({ ...carrierFormData, phone: e.target.value })}
+                        placeholder="(555) 123-4567"
+                        data-testid="input-carrier-phone"
+                      />
+                    </div>
+
+                    <div>
+                      <Label>Notes</Label>
+                      <Textarea
+                        value={carrierFormData.notes || ""}
+                        onChange={(e) => setCarrierFormData({ ...carrierFormData, notes: e.target.value })}
+                        placeholder="Carrier details and requirements"
+                        className="min-h-20"
+                        data-testid="textarea-carrier-notes"
+                      />
+                    </div>
+
+                    <div className="flex gap-3 justify-end">
+                      <Button
+                        variant="outline"
+                        onClick={() => setShowCarrierForm(false)}
+                        data-testid="button-cancel-carrier-form"
+                      >
+                        Cancel
+                      </Button>
+                      <Button onClick={handleSaveCarrier} data-testid="button-save-carrier">
+                        {editingCarrier ? "Update Carrier" : "Create Carrier"}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {carriers.map((carrier) => (
+                    <div key={carrier.id} className="flex items-start gap-4 p-4 border rounded-lg hover-elevate">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg">{carrier.name}</h3>
+                        <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground mt-2">
+                          <p>Commission: {carrier.commissionRate}%</p>
+                          <p>Min Credit Score: {carrier.minCreditScore}</p>
+                          {carrier.contact && <p>Contact: {carrier.contact}</p>}
+                          {carrier.email && <p>Email: {carrier.email}</p>}
+                          {carrier.phone && <p>Phone: {carrier.phone}</p>}
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setEditingCarrier(carrier);
+                            setCarrierFormData(carrier);
+                            setShowCarrierForm(true);
+                          }}
+                          data-testid={`button-edit-carrier-${carrier.id}`}
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="sm" data-testid={`button-delete-carrier-${carrier.id}`}>
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Delete Carrier</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Are you sure you want to delete "{carrier.name}"? This action cannot be undone.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <div className="flex justify-end gap-3">
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction
+                                onClick={() => handleDeleteCarrier(carrier.id)}
                                 className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                               >
                                 Delete

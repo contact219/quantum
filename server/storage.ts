@@ -489,6 +489,248 @@ export class MemStorage implements IStorage {
     return this.resourcesMap.delete(id);
   }
 
+  // Carrier methods
+  private carriersMap: Map<string, Carrier> = new Map();
+
+  async createCarrier(carrier: InsertCarrier): Promise<Carrier> {
+    const id = randomUUID();
+    const newCarrier: Carrier = { ...carrier, id, createdAt: new Date(), updatedAt: new Date() } as Carrier;
+    this.carriersMap.set(id, newCarrier);
+    return newCarrier;
+  }
+
+  async getCarrier(id: string): Promise<Carrier | undefined> {
+    return this.carriersMap.get(id);
+  }
+
+  async getAllCarriers(): Promise<Carrier[]> {
+    return Array.from(this.carriersMap.values()).sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  async updateCarrier(id: string, data: Partial<InsertCarrier>): Promise<Carrier | undefined> {
+    const carrier = this.carriersMap.get(id);
+    if (carrier) {
+      const updated = { ...carrier, ...data, updatedAt: new Date() };
+      this.carriersMap.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  async deleteCarrier(id: string): Promise<boolean> {
+    return this.carriersMap.delete(id);
+  }
+
+  // Quote-Carrier methods
+  private quoteCarriersMap: Map<string, QuoteCarrier> = new Map();
+
+  async createQuoteCarrier(quoteCarrier: InsertQuoteCarrier): Promise<QuoteCarrier> {
+    const id = randomUUID();
+    const newQC: QuoteCarrier = { ...quoteCarrier, id, createdAt: new Date() } as QuoteCarrier;
+    this.quoteCarriersMap.set(id, newQC);
+    return newQC;
+  }
+
+  async getQuoteCarriers(quoteId: string): Promise<QuoteCarrier[]> {
+    return Array.from(this.quoteCarriersMap.values()).filter(qc => qc.quoteId === quoteId);
+  }
+
+  async updateQuoteCarrier(id: string, data: Partial<InsertQuoteCarrier>): Promise<QuoteCarrier | undefined> {
+    const qc = this.quoteCarriersMap.get(id);
+    if (qc) {
+      const updated = { ...qc, ...data };
+      this.quoteCarriersMap.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  // Carrier Rules methods
+  private carrierRulesMap: Map<string, CarrierRules> = new Map();
+
+  async createCarrierRules(rules: InsertCarrierRules): Promise<CarrierRules> {
+    const id = randomUUID();
+    const newRules: CarrierRules = { ...rules, id, createdAt: new Date() } as CarrierRules;
+    this.carrierRulesMap.set(id, newRules);
+    return newRules;
+  }
+
+  async getCarrierRules(carrierId: string): Promise<CarrierRules | undefined> {
+    return Array.from(this.carrierRulesMap.values()).find(r => r.carrierId === carrierId);
+  }
+
+  async updateCarrierRules(carrierId: string, rules: Partial<InsertCarrierRules>): Promise<CarrierRules | undefined> {
+    const existing = await this.getCarrierRules(carrierId);
+    if (existing) {
+      const updated = { ...existing, ...rules };
+      this.carrierRulesMap.set(existing.id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  // Carrier Capacity methods
+  private carrierCapacityMap: Map<string, CarrierCapacity> = new Map();
+
+  async getCarrierCapacity(carrierId: string, year: number): Promise<CarrierCapacity | undefined> {
+    return Array.from(this.carrierCapacityMap.values()).find(
+      c => c.carrierId === carrierId && c.capacityYear === year
+    );
+  }
+
+  async createOrUpdateCapacity(capacity: InsertCarrierCapacity): Promise<CarrierCapacity> {
+    const existing = await this.getCarrierCapacity(capacity.carrierId, capacity.capacityYear);
+    if (existing) {
+      const updated = { ...existing, ...capacity };
+      this.carrierCapacityMap.set(existing.id, updated);
+      return updated;
+    }
+    const id = randomUUID();
+    const newCapacity: CarrierCapacity = { ...capacity, id, createdAt: new Date() } as CarrierCapacity;
+    this.carrierCapacityMap.set(id, newCapacity);
+    return newCapacity;
+  }
+
+  // Carrier Metrics methods
+  private carrierMetricsMap: Map<string, CarrierMetrics> = new Map();
+
+  async getCarrierMetrics(carrierId: string): Promise<CarrierMetrics | undefined> {
+    return Array.from(this.carrierMetricsMap.values()).find(m => m.carrierId === carrierId);
+  }
+
+  async updateCarrierMetrics(carrierId: string, metrics: Partial<InsertCarrierMetrics>): Promise<CarrierMetrics | undefined> {
+    const existing = await this.getCarrierMetrics(carrierId);
+    if (existing) {
+      const updated = { ...existing, ...metrics };
+      this.carrierMetricsMap.set(existing.id, updated);
+      return updated;
+    }
+    const id = randomUUID();
+    const newMetrics: CarrierMetrics = { carrierId, ...metrics, id, createdAt: new Date() } as CarrierMetrics;
+    this.carrierMetricsMap.set(id, newMetrics);
+    return newMetrics;
+  }
+
+  // Auto-routing recommendation
+  async recommendCarriers(quote: Quote): Promise<Carrier[]> {
+    const contractValue = parseFloat(quote.contractValue || "0");
+    const creditScore = parseInt(quote.creditScore || "600");
+    const yearsInBusiness = quote.yearsInBusiness || 0;
+    const revenue = parseFloat(quote.annualRevenue || "0");
+    
+    const allCarriers = await this.getAllCarriers();
+    const recommended: Carrier[] = [];
+
+    for (const carrier of allCarriers) {
+      if (!carrier.active) continue;
+
+      const rules = await this.getCarrierRules(carrier.id);
+      if (!rules) continue;
+
+      // Check bond type
+      if (rules.acceptedBondTypes && !rules.acceptedBondTypes.includes(quote.bondType)) continue;
+
+      // Check credit score
+      if (creditScore < (rules.minCreditScore || 600)) continue;
+
+      // Check years in business
+      if (yearsInBusiness < (rules.minYearsInBusiness || 0)) continue;
+
+      // Check revenue requirement
+      if (rules.minAnnualRevenue && revenue < parseFloat(rules.minAnnualRevenue.toString())) continue;
+
+      // Check contract value limits
+      if (rules.minContractValue && contractValue < parseFloat(rules.minContractValue.toString())) continue;
+      if (rules.maxContractValue && contractValue > parseFloat(rules.maxContractValue.toString())) continue;
+
+      // Check capacity
+      const year = new Date().getFullYear();
+      const capacity = await this.getCarrierCapacity(carrier.id, year);
+      if (capacity && capacity.usedCapacity && capacity.annualCapacityLimit) {
+        const available = parseFloat(capacity.annualCapacityLimit.toString()) - parseFloat(capacity.usedCapacity.toString());
+        if (contractValue > available) continue;
+      }
+
+      recommended.push(carrier);
+    }
+
+    return recommended;
+  }
+
+  // Surety Application methods
+  private applicationsMap: Map<string, SuretyApplication> = new Map();
+
+  async createApplication(app: InsertSuretyApplication): Promise<SuretyApplication> {
+    const id = randomUUID();
+    const appNum = `APP-${Date.now()}`;
+    const newApp: SuretyApplication = {
+      ...app,
+      id,
+      applicationNumber: appNum,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as SuretyApplication;
+    this.applicationsMap.set(id, newApp);
+    return newApp;
+  }
+
+  async getApplication(id: string): Promise<SuretyApplication | undefined> {
+    return this.applicationsMap.get(id);
+  }
+
+  async getApplicationsByUserId(userId: string): Promise<SuretyApplication[]> {
+    return Array.from(this.applicationsMap.values()).filter(app => app.userId === userId);
+  }
+
+  async updateApplication(id: string, data: Partial<InsertSuretyApplication>): Promise<SuretyApplication | undefined> {
+    const app = this.applicationsMap.get(id);
+    if (app) {
+      const updated = { ...app, ...data, updatedAt: new Date() };
+      this.applicationsMap.set(id, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  // Application Document methods
+  private documentsMap: Map<string, ApplicationDocument> = new Map();
+
+  async addDocument(doc: InsertApplicationDocument): Promise<ApplicationDocument> {
+    const id = randomUUID();
+    const newDoc: ApplicationDocument = { ...doc, id, createdAt: new Date(), updatedAt: new Date() } as ApplicationDocument;
+    this.documentsMap.set(id, newDoc);
+    return newDoc;
+  }
+
+  async getApplicationDocuments(applicationId: string): Promise<ApplicationDocument[]> {
+    return Array.from(this.documentsMap.values()).filter(d => d.applicationId === applicationId);
+  }
+
+  async updateDocumentValidation(docId: string, validationStatus: string, errors?: string[]): Promise<ApplicationDocument | undefined> {
+    const doc = this.documentsMap.get(docId);
+    if (doc) {
+      const updated = { ...doc, validationStatus, validationErrors: errors || [] };
+      this.documentsMap.set(docId, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  // Credit Pull methods
+  private creditPullsMap: Map<string, CreditPull> = new Map();
+
+  async createCreditPull(pull: InsertCreditPull): Promise<CreditPull> {
+    const id = randomUUID();
+    const newPull: CreditPull = { ...pull, id, createdAt: new Date() } as CreditPull;
+    this.creditPullsMap.set(id, newPull);
+    return newPull;
+  }
+
+  async getLatestCreditPull(applicationId: string): Promise<CreditPull | undefined> {
+    const pulls = Array.from(this.creditPullsMap.values()).filter(p => p.applicationId === applicationId);
+    return pulls.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
+  }
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;

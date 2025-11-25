@@ -1031,16 +1031,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/users", isAdmin, async (req: any, res) => {
     try {
-      const { email, firstName, lastName, role, permission } = req.body;
-      if (!email) {
-        return res.status(400).json({ error: "Email is required" });
+      const { email, firstName, lastName, username, password, role, permission } = req.body;
+      if (!email || !username || !password) {
+        return res.status(400).json({ error: "Email, username, and password are required" });
       }
+      
+      if (password.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters" });
+      }
+
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(password, 10);
       
       // Create new admin user
       const newUser = await storage.createUser({
         email,
         firstName: firstName || "",
         lastName: lastName || "",
+        username,
+        password: hashedPassword,
         role: role || "admin",
         permission: permission || "view",
       });

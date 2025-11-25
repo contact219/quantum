@@ -14,7 +14,15 @@ import { Mail, Shield, Plus } from "lucide-react";
 export default function AdminUsers() {
   const { toast } = useToast();
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [formData, setFormData] = useState({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+  const [formData, setFormData] = useState({ 
+    email: "", 
+    firstName: "", 
+    lastName: "", 
+    username: "",
+    password: "",
+    role: "admin", 
+    permission: "view" 
+  });
   const [isCreating, setIsCreating] = useState(false);
   
   const { data: admins, isLoading, refetch } = useQuery<User[]>({
@@ -38,36 +46,41 @@ export default function AdminUsers() {
   });
 
   const createUserMutation = useMutation({
-    mutationFn: async (data: { email: string; firstName: string; lastName: string; role: string; permission: string }) => {
+    mutationFn: async (data: any) => {
       const response = await fetch("/api/admin/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!response.ok) throw new Error("Failed to create user");
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to create user");
+      }
       return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
       toast({ title: "Success", description: "Admin user created successfully" });
       setShowCreateForm(false);
-      setFormData({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+      setFormData({ email: "", firstName: "", lastName: "", username: "", password: "", role: "admin", permission: "view" });
       refetch();
     },
-    onError: () => {
-      toast({ title: "Error", description: "Failed to create admin user", variant: "destructive" });
+    onError: (error: any) => {
+      toast({ title: "Error", description: error.message || "Failed to create admin user", variant: "destructive" });
     },
   });
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email) {
-      toast({ title: "Error", description: "Email is required", variant: "destructive" });
+    if (!formData.email || !formData.username || !formData.password) {
+      toast({ title: "Error", description: "Email, username, and password are required", variant: "destructive" });
       return;
     }
-    setIsCreating(true);
+    if (formData.password.length < 6) {
+      toast({ title: "Error", description: "Password must be at least 6 characters", variant: "destructive" });
+      return;
+    }
     createUserMutation.mutate(formData);
-    setIsCreating(false);
   };
 
   if (isLoading) {
@@ -142,6 +155,31 @@ export default function AdminUsers() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
+                  <Label htmlFor="username">Username</Label>
+                  <Input
+                    id="username"
+                    placeholder="john.doe"
+                    value={formData.username}
+                    onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                    required
+                    data-testid="input-create-username"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Min. 6 characters"
+                    value={formData.password}
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    required
+                    data-testid="input-create-password"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
                   <Label htmlFor="role">Role</Label>
                   <Select value={formData.role} onValueChange={(role) => setFormData({ ...formData, role })}>
                     <SelectTrigger id="role" data-testid="select-create-role">
@@ -179,7 +217,7 @@ export default function AdminUsers() {
                   variant="outline"
                   onClick={() => {
                     setShowCreateForm(false);
-                    setFormData({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+                    setFormData({ email: "", firstName: "", lastName: "", username: "", password: "", role: "admin", permission: "view" });
                   }}
                   data-testid="button-cancel-create"
                 >

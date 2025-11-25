@@ -68,6 +68,7 @@ export interface IStorage {
   createQuote(quote: InsertQuote): Promise<Quote>;
   getQuote(id: string): Promise<Quote | undefined>;
   getAllQuotes(): Promise<Quote[]>;
+  getQuotesByUserId(userId: string): Promise<Quote[]>;
   updateQuoteStatus(id: string, status: string): Promise<Quote | undefined>;
   updateQuote(id: string, data: Partial<InsertQuote>): Promise<Quote | undefined>;
   deleteQuote(id: string): Promise<boolean>;
@@ -345,6 +346,10 @@ export class MemStorage implements IStorage {
 
   async getAllQuotes(): Promise<Quote[]> {
     return Array.from(this.quotes.values());
+  }
+
+  async getQuotesByUserId(userId: string): Promise<Quote[]> {
+    return Array.from(this.quotes.values()).filter(q => q.userId === userId);
   }
 
   async updateQuoteStatus(id: string, status: string): Promise<Quote | undefined> {
@@ -910,6 +915,10 @@ export class DbStorage implements IStorage {
 
   async getAllQuotes(): Promise<Quote[]> {
     return await this.db.select().from(quotes);
+  }
+
+  async getQuotesByUserId(userId: string): Promise<Quote[]> {
+    return await this.db.select().from(quotes).where(eq(quotes.userId, userId));
   }
 
   async updateQuoteStatus(id: string, status: string): Promise<Quote | undefined> {

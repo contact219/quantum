@@ -66,10 +66,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Quote submission endpoint
-  app.post("/api/quotes", async (req, res) => {
+  app.post("/api/quotes", async (req: any, res) => {
     try {
       const validatedData = quoteFormSchema.parse(req.body);
+      const userId = req.isAuthenticated() ? req.user?.claims?.sub : undefined;
       const quote = await storage.createQuote({
+        userId,
         bondType: validatedData.bondType,
         contractValue: validatedData.contractValue,
         projectName: validatedData.projectName,
@@ -104,6 +106,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/quotes", isAdmin, async (req, res) => {
     const quotes = await storage.getAllQuotes();
     res.json(quotes);
+  });
+
+  // Get user's quotes - PROTECTED
+  app.get("/api/user/quotes", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user?.claims?.sub;
+      if (!userId) {
+        return res.status(401).json({ error: "User not authenticated" });
+      }
+      const userQuotes = await storage.getQuotesByUserId(userId);
+      res.json(userQuotes);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch user quotes" });
+    }
   });
 
   // Get specific quote - PROTECTED

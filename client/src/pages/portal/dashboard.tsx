@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,12 +13,49 @@ import {
   ArrowRight,
   Calendar
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+interface Quote {
+  id: string;
+  bondType: string;
+  projectName: string;
+  contractValue?: string;
+  status: string;
+  estimatedPremium?: string;
+  createdAt: string;
+}
 
 export default function PortalDashboard() {
+  const { toast } = useToast();
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchUserQuotes();
+  }, []);
+
+  const fetchUserQuotes = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/user/quotes");
+      if (response.ok) {
+        const data = await response.json();
+        setQuotes(data);
+      } else {
+        console.error("Failed to fetch quotes");
+      }
+    } catch (error) {
+      console.error("Error fetching quotes:", error);
+      toast({ title: "Error", description: "Failed to load quotes", variant: "destructive" });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const stats = [
     { label: "Active Bonds", value: "4", icon: Shield, color: "text-primary" },
     { label: "Total Projects", value: "12", icon: FileText, color: "text-accent" },
-    { label: "Pending Quotes", value: "2", icon: Clock, color: "text-yellow-600" },
+    { label: "Pending Quotes", value: quotes.filter(q => q.status === "pending").length.toString(), icon: Clock, color: "text-yellow-600" },
     { label: "Expiring Soon", value: "1", icon: AlertCircle, color: "text-destructive" },
   ];
 
@@ -28,11 +66,11 @@ export default function PortalDashboard() {
     { id: "4", type: "Maintenance Bond", project: "Plaza Development", amount: "$250,000", status: "Expiring", expiresIn: "28 days" },
   ];
 
-  const upcomingDeadlines = [
-    { task: "Submit financial docs for Quote #QS-2024-1789", date: "Jan 28, 2024", priority: "high" },
-    { task: "Renew Performance Bond for City Hall", date: "Feb 15, 2024", priority: "medium" },
-    { task: "Project completion docs for Plaza", date: "Mar 2, 2024", priority: "low" },
-  ];
+  const upcomingDeadlines = quotes.map((quote, i) => ({
+    task: `Quote #${quote.id.slice(0, 8)} - ${quote.bondType}`,
+    date: new Date(quote.createdAt).toLocaleDateString(),
+    priority: quote.status === "pending" ? "high" : quote.status === "approved" ? "low" : "medium" as const,
+  })).slice(0, 3);
 
   return (
     <div className="space-y-8">

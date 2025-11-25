@@ -1016,7 +1016,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      res.json({ success: true, document: doc, documentsComplete: missingDocs.length === 0 });
+      res.json({ 
+        success: true, 
+        document: doc, 
+        documentsComplete: missingDocs.length === 0,
+        applicationId: application.id 
+      });
     } catch (error: any) {
       console.error("[Routes] Document upload error:", error);
       res.status(400).json({ error: "Failed to upload document" });

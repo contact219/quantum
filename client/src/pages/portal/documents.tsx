@@ -94,6 +94,7 @@ export default function PortalDocuments() {
     }
 
     setIsUploading(true);
+    let actualApplicationId = applicationId;
     try {
       for (const file of Array.from(files)) {
         // Upload document to API
@@ -111,13 +112,19 @@ export default function PortalDocuments() {
           }),
         });
 
+        const uploadResult = await response.json();
         if (!response.ok) {
           throw new Error("Failed to upload document");
         }
+
+        if (uploadResult.applicationId) {
+          actualApplicationId = uploadResult.applicationId;
+          setApplicationId(uploadResult.applicationId);
+        }
       }
       
-      // Refresh documents list
-      await fetchDocuments(applicationId);
+      // Refresh documents list using the correct application ID
+      await fetchDocuments(actualApplicationId);
       
       toast({
         title: "Success",

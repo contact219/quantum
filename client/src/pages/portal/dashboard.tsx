@@ -59,6 +59,7 @@ export default function PortalDashboard() {
   const pendingQuotes = quotes.filter(q => q.status === "pending");
 
   const upcomingDeadlines = quotes.map((quote, i) => ({
+    id: quote.id,
     task: `Quote #${quote.id.slice(0, 8)} - ${quote.bondType}`,
     date: new Date(quote.createdAt).toLocaleDateString(),
     priority: quote.status === "pending" ? "high" : quote.status === "approved" ? "low" : "medium" as const,
@@ -166,21 +167,26 @@ export default function PortalDashboard() {
           <CardContent>
             <div className="space-y-4">
               {upcomingDeadlines.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg border">
-                  <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
-                    item.priority === "high" ? "bg-destructive" : 
-                    item.priority === "medium" ? "bg-yellow-500" : "bg-green-500"
-                  }`} />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium" data-testid={`text-deadline-${i}`}>{item.task}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{item.date}</p>
+                <Link key={i} href={`/portal/quote/${item.id}`}>
+                  <div className="flex items-start gap-3 p-3 rounded-lg border hover-elevate cursor-pointer transition-all">
+                    <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
+                      item.priority === "high" ? "bg-destructive" : 
+                      item.priority === "medium" ? "bg-yellow-500" : "bg-green-500"
+                    }`} />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium" data-testid={`text-deadline-${i}`}>{item.task}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{item.date}</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-            <Button variant="outline" className="w-full mt-4" data-testid="button-view-tasks">
-              View All Tasks
-            </Button>
+            <Link href={approvedQuotes.length > 0 ? `/portal/quote/${approvedQuotes[0].id}` : "/portal/projects"}>
+              <Button variant="outline" className="w-full mt-4" data-testid="button-view-tasks">
+                View All Tasks
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </div>

@@ -46,6 +46,18 @@ import {
 } from "@/components/ui/alert-dialog";
 
 export default function Admin() {
+  // Fetch quotes from API
+  const { data: quotes = [], isLoading: quotesLoading } = useQuery({
+    queryKey: ['/api/quotes'],
+    queryFn: async () => {
+      const response = await fetch('/api/quotes');
+      if (!response.ok) throw new Error('Failed to fetch quotes');
+      return response.json();
+    },
+    refetchOnMount: true,
+    staleTime: 0, // Always fetch fresh data
+  });
+
   const [selectedQuote, setSelectedQuote] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
@@ -450,70 +462,13 @@ export default function Admin() {
       if (response.ok) {
         toast({ title: "Success", description: "Quote deleted successfully" });
         setSelectedQuote(null);
-        // Refresh would happen in real app with React Query
+        // Refetch quotes after deletion
+        window.location.reload();
       }
     } catch (error) {
       toast({ title: "Error", description: "Failed to delete quote", variant: "destructive" });
     }
   };
-
-  const quotes = [
-    {
-      id: "QS-2024-1789",
-      businessName: "Smith Construction LLC",
-      contactName: "Robert Smith",
-      bondType: "Performance Bond",
-      contractValue: "$450,000",
-      status: "pending",
-      submittedDate: "2024-01-22",
-      estimatedPremium: "$6,750",
-      state: "CA",
-    },
-    {
-      id: "QS-2024-1790",
-      businessName: "BuildRight Contractors",
-      contactName: "Maria Garcia",
-      bondType: "Bid Bond",
-      contractValue: "$1,200,000",
-      status: "approved",
-      submittedDate: "2024-01-21",
-      estimatedPremium: "$18,000",
-      state: "TX",
-    },
-    {
-      id: "QS-2024-1791",
-      businessName: "Metro Plumbing Co",
-      contactName: "James Wilson",
-      bondType: "Payment Bond",
-      contractValue: "$275,000",
-      status: "under_review",
-      submittedDate: "2024-01-20",
-      estimatedPremium: "$4,125",
-      state: "NY",
-    },
-    {
-      id: "QS-2024-1792",
-      businessName: "Elite Electrical Services",
-      contactName: "Jennifer Lee",
-      bondType: "Performance Bond",
-      contractValue: "$680,000",
-      status: "pending",
-      submittedDate: "2024-01-19",
-      estimatedPremium: "$10,200",
-      state: "FL",
-    },
-    {
-      id: "QS-2024-1793",
-      businessName: "Apex Roofing Inc",
-      contactName: "Michael Brown",
-      bondType: "License Bond",
-      contractValue: "$50,000",
-      status: "approved",
-      submittedDate: "2024-01-18",
-      estimatedPremium: "$500",
-      state: "IL",
-    },
-  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -747,7 +702,7 @@ export default function Admin() {
                       </div>
                       <div>
                         <Label className="text-xs text-muted-foreground">Submitted Date</Label>
-                        <p className="font-medium">{new Date(selectedQuote.submittedDate).toLocaleDateString()}</p>
+                        <p className="font-medium">{new Date(selectedQuote.createdAt).toLocaleDateString()}</p>
                       </div>
                     </div>
 

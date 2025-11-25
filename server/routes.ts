@@ -114,7 +114,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Get all quotes (admin only) - PROTECTED
   app.get("/api/quotes", isAdmin, async (req, res) => {
+    // Disable caching for this endpoint to ensure fresh data
+    res.set("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+
     const quotes = await storage.getAllQuotes();
+    console.log(`[Routes] Admin fetching all quotes, found ${quotes.length} quotes`);
     res.json(quotes);
   });
 

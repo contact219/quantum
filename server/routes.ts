@@ -894,9 +894,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/applications/:id/documents", isAuthenticated, async (req: any, res) => {
     try {
       const { documentType, fileName, fileUrl, fileSize, mimeType } = req.body;
+      const userId = req.user?.claims?.sub;
+      let applicationId = req.params.id;
+      
+      // Try to get the application
+      let application = await storage.getApplication(applicationId);
+      
+      // If application doesn't exist, try to find one by preliminaryQuoteId or create one
+      if (!application) {
+        const quote = await storage.getQuote(applicationId);
+        if (quote) {
+          // Try to find an application linked to this quote
+          const userApps = await storage.getApplicationsByUserId(userId);
+          application = userApps.find(app => app.preliminaryQuoteId === applicationId);
+          
+          if (!application && quote.businessName) {
+            // Create a new application from the quote
+            application = await storage.createApplication({
+              userId,
+              companyName: quote.businessName,
+              contactName: quote.contactName || "",
+              contactEmail: quote.contactEmail || "",
+              contactPhone: quote.contactPhone || "",
+              businessType: "contractor",
+              yearsInBusiness: 0,
+              status: "draft",
+            });
+            
+            // Link the quote to the application
+            if (application) {
+              applicationId = application.id;
+              await storage.updateApplication(application.id, {
+                preliminaryQuoteId: applicationId,
+                preliminaryPremium: parseFloat(quote.estimatedPremium || "0"),
+              });
+            }
+          } else if (application) {
+            applicationId = application.id;
+          }
+        }
+      }
+
+      if (!application) {
+        return res.status(404).json({ error: "Application not found and could not be created" });
+      }
 
       const doc = await storage.addDocument({
-        applicationId: req.params.id,
+        applicationId: application.id,
         documentType,
         fileName,
         fileUrl,
@@ -913,12 +957,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       await storage.updateDocumentValidation(doc.id, "valid");
-      
-      // Get the application
-      const application = await storage.getApplication(req.params.id);
-      if (!application) {
-        return res.status(404).json({ error: "Application not found" });
-      }
 
       // Get all admin users and notify them
       const adminUsers = await storage.getAdminUsers();
@@ -950,7 +988,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Check if all required documents are now uploaded
-      const allDocuments = await storage.getApplicationDocuments(req.params.id);
+      const allDocuments = await storage.getApplicationDocuments(application.id);
       const uploadedDocTypes = allDocuments
         .filter(d => d.validationStatus === "valid")
         .map(d => d.documentType);
@@ -973,7 +1011,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
 
         // Update the application status to indicate documents are complete
-        await storage.updateApplication(req.params.id, {
+        await storage.updateApplication(application.id, {
           status: "documents_complete",
         });
       }

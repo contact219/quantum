@@ -876,13 +876,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get specific application
   app.get("/api/applications/:id", isAuthenticated, async (req: any, res) => {
     try {
-      const application = await storage.getApplication(req.params.id);
+      const userId = req.user?.claims?.sub;
+      let application = await storage.getApplication(req.params.id);
+      
+      // If not found by ID, try to find by quote ID (preliminaryQuoteId)
+      if (!application) {
+        const userApps = await storage.getApplicationsByUserId(userId);
+        application = userApps.find(app => app.preliminaryQuoteId === req.params.id);
+      }
+      
       if (!application) {
         return res.status(404).json({ error: "Application not found" });
       }
       
-      const documents = await storage.getApplicationDocuments(req.params.id);
-      const creditPull = await storage.getLatestCreditPull(req.params.id);
+      const documents = await storage.getApplicationDocuments(application.id);
+      const creditPull = await storage.getLatestCreditPull(application.id);
 
       res.json({ application, documents, creditPull });
     } catch (error: any) {
@@ -1031,7 +1039,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get application documents
   app.get("/api/applications/:id/documents", isAuthenticated, async (req: any, res) => {
     try {
-      const docs = await storage.getApplicationDocuments(req.params.id);
+      const userId = req.user?.claims?.sub;
+      let applicationId = req.params.id;
+      
+      // If ID is a quote ID, find the associated application
+      const application = await storage.getApplication(applicationId);
+      if (!application) {
+        const userApps = await storage.getApplicationsByUserId(userId);
+        const foundApp = userApps.find(app => app.preliminaryQuoteId === applicationId);
+        if (foundApp) {
+          applicationId = foundApp.id;
+        }
+      }
+      
+      const docs = await storage.getApplicationDocuments(applicationId);
       res.json(docs);
     } catch (error: any) {
       res.status(500).json({ error: "Failed to fetch documents" });

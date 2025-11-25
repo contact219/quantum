@@ -148,24 +148,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`[Routes] Got ${userQuotes.length} quotes from storage:`, userQuotes.map(q => ({ id: q.id, quoteNumber: q.quoteNumber, userId: q.userId })));
       
       // Enrich quotes with application status
-      const enrichedQuotes = await Promise.all(
-        userQuotes.map(async (quote) => {
-          // Try to find an associated application
-          const applications = await storage.getApplicationsByUserId(userId);
-          const relatedApp = applications.find(app => 
-            app.preliminaryQuoteId === quote.id || 
-            // Also match by similar business names
-            (app.companyName && quote.businessName && 
-             app.companyName.toLowerCase() === quote.businessName.toLowerCase())
-          );
-          
-          return {
-            ...quote,
-            applicationStatus: relatedApp?.status || "draft"
-          };
-        })
-      );
+      const applications = await storage.getApplicationsByUserId(userId);
+      console.log(`[Routes] Found ${applications.length} applications for user ${userId}:`, applications.map(a => ({ id: a.id, preliminaryQuoteId: a.preliminaryQuoteId, status: a.status })));
       
+      const enrichedQuotes = userQuotes.map((quote) => {
+        const relatedApp = applications.find(app => 
+          app.preliminaryQuoteId === quote.id || 
+          // Also match by similar business names
+          (app.companyName && quote.businessName && 
+           app.companyName.toLowerCase() === quote.businessName.toLowerCase())
+        );
+        
+        console.log(`[Routes] Quote ${quote.id}: found related app ${relatedApp?.id} with status ${relatedApp?.status}`);
+        
+        return {
+          ...quote,
+          applicationStatus: relatedApp?.status || "draft"
+        };
+      });
+      
+      console.log(`[Routes] Returning enriched quotes:`, enrichedQuotes.map(q => ({ id: q.id, applicationStatus: q.applicationStatus })));
       res.json(enrichedQuotes);
     } catch (error) {
       console.error("Error fetching user quotes:", error);

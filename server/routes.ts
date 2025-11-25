@@ -623,6 +623,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Logout endpoint - destroy session
+  app.post("/api/auth/logout", (req: any, res) => {
+    req.logout((err: any) => {
+      if (err) {
+        console.error("Logout error:", err);
+        return res.status(500).json({ message: "Failed to logout" });
+      }
+      res.json({ success: true, message: "Logged out successfully" });
+    });
+  });
+
   // Seed database endpoint (development only)
   app.post("/api/seed", async (req, res) => {
     // Only allow seeding in development mode

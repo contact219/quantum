@@ -559,7 +559,8 @@ export default function Admin() {
       const response = await fetch("/api/auth/logout", { method: "POST" });
       if (response.ok) {
         toast({ title: "Success", description: "Logged out successfully" });
-        navigate("/");
+        // Redirect to admin login page after logout
+        setTimeout(() => navigate("/admin-login"), 500);
       } else {
         toast({ title: "Error", description: "Failed to logout", variant: "destructive" });
       }

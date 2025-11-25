@@ -172,3 +172,71 @@ The application is built as a monorepo with a React/TypeScript frontend (Vite, W
 - Document request notifications
 - SendGrid integration for reliable delivery
 - Notification tracking and logging
+
+## Admin Notification & Workflow Triggering System (NEWLY IMPLEMENTED)
+
+### Document Upload Notification Flow
+
+**When a user uploads a document to their application:**
+
+1. **Individual Document Notification**
+   - All admin/underwriter users are notified immediately
+   - Email includes: Applicant name, Application number, Document type
+   - Admin portal link provided for quick access and document review
+   - Notification is logged in email_notifications table
+
+2. **Workflow Status Check**
+   - System automatically checks if all 4 required documents are now uploaded:
+     - Bond Request Form
+     - Project Contract/Bid Specs
+     - Financial Statements
+     - Credit Authorization
+   - Optional documents (Resume, Job Breakdown, Prior Bonds, Work Schedule) do NOT block progress
+
+3. **Documents Complete Notification** (When all required docs are uploaded)
+   - Special notification sent to all admins
+   - Subject: "All Required Documents Received - Ready for Underwriting"
+   - Includes call-to-action button: "Proceed with Underwriting"
+   - Application status updated to: `documents_complete`
+   - This triggers the workflow to enable the next steps
+
+### Quote Status Workflow Transitions
+
+**Step-by-Step Activation Process:**
+
+| Step | Trigger | Status | Action |
+|------|---------|--------|--------|
+| 1. Upload Documents | User uploads all 4 required docs | `documents_complete` | Admins notified → Next step enabled |
+| 2. Sign Agreement | Admin approves & initiates e-sign | `sign_agreement_pending` | System sends e-signature package to user |
+| 3. User Signs | User completes DocuSign/PandaDoc | `agreement_signed` | System confirms signature |
+| 4. Confirm & Activate | Admin reviews signed docs & approves | `confirm_activate_pending` | Final approval step |
+| 5. Bonded | Admin finalizes & issues bond | `bonded` | Bond is active, user receives bond documents |
+
+### Email Templates Implemented
+
+1. **sendDocumentUploadNotificationEmail()**
+   - Notifies admins when ANY document is uploaded
+   - Includes document type and quick review link
+
+2. **sendDocumentsCompleteNotificationEmail()**
+   - Notifies admins when ALL required documents are received
+   - Encourages immediate underwriting review
+   - Provides link to proceed
+
+3. **sendApplicationStatusEmail()** (Existing)
+   - Sends to user when application status changes
+   - Keeps contractors informed of progress
+
+### API Endpoints for Workflow
+
+- `POST /api/applications/:id/documents` - Upload document (now sends notifications)
+- `POST /api/applications/:id/evaluate` - Run underwriting rules
+- `POST /api/applications/:id/quote` - Generate preliminary quote
+- `PATCH /api/applications/:id` - Update application status for next steps (to be implemented)
+
+### Admin Portal Integration Points
+
+- **Document Upload Section**: Shows notification badge when new documents arrive
+- **Underwriting Queue**: Documents-complete applications appear as "Ready for Review"
+- **E-Signature Management**: Admins can send e-signature packages from quote detail page
+- **Status Tracking**: Dashboard shows pipeline (draft → documents_complete → sign_agreement → bonded)

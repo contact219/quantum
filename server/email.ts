@@ -115,6 +115,44 @@ export async function sendDocumentRequestEmail(
   return sendEmail(to, "Additional Documents Required", htmlContent);
 }
 
+export async function sendDocumentUploadNotificationEmail(
+  adminEmail: string,
+  applicantName: string,
+  applicationNumber: string,
+  documentType: string,
+  portalUrl: string
+): Promise<boolean> {
+  const htmlContent = `
+    <h2>Document Upload Notification</h2>
+    <p>A new document has been uploaded to an application.</p>
+    <p><strong>Applicant:</strong> ${applicantName}</p>
+    <p><strong>Application Number:</strong> ${applicationNumber}</p>
+    <p><strong>Document Type:</strong> ${documentType}</p>
+    <p><a href="${portalUrl}" style="display: inline-block; padding: 10px 20px; background-color: #4f46e5; color: white; text-decoration: none; border-radius: 4px;">Review in Admin Portal</a></p>
+    <p>Please review and validate the uploaded document.</p>
+  `;
+  
+  return sendEmail(adminEmail, `Document Upload: ${applicationNumber}`, htmlContent);
+}
+
+export async function sendDocumentsCompleteNotificationEmail(
+  adminEmail: string,
+  applicantName: string,
+  applicationNumber: string,
+  portalUrl: string
+): Promise<boolean> {
+  const htmlContent = `
+    <h2>All Required Documents Received</h2>
+    <p>The applicant has uploaded all required documents.</p>
+    <p><strong>Applicant:</strong> ${applicantName}</p>
+    <p><strong>Application Number:</strong> ${applicationNumber}</p>
+    <p><a href="${portalUrl}" style="display: inline-block; padding: 10px 20px; background-color: #4f46e5; color: white; text-decoration: none; border-radius: 4px;">Proceed with Underwriting</a></p>
+    <p>The application is ready for underwriting review and quote generation.</p>
+  `;
+  
+  return sendEmail(adminEmail, `Ready for Underwriting: ${applicationNumber}`, htmlContent);
+}
+
 export async function sendQuoteReadyEmail(
   to: string,
   quoteNumber: string,

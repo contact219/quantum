@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
+import { sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
 import bcrypt from "bcryptjs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -892,8 +893,74 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       await storage.updateDocumentValidation(doc.id, "valid");
-      res.json({ success: true, document: doc });
+      
+      // Get the application
+      const application = await storage.getApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      // Get all admin users and notify them
+      const adminUsers = await storage.getAdminUsers();
+      console.log(`[Routes] Found ${adminUsers.length} admin users to notify`);
+      
+      for (const admin of adminUsers) {
+        if (admin.email) {
+          // Send email notification to admin
+          await sendDocumentUploadNotificationEmail(
+            admin.email,
+            application.companyName,
+            application.applicationNumber,
+            documentType,
+            `${process.env.APP_URL || "http://localhost:5000"}/admin`
+          );
+          
+          // Create email notification record
+          await storage.createEmailNotification({
+            userId: admin.id,
+            applicationId: application.id,
+            type: "document_uploaded",
+            subject: `Document Upload: ${application.applicationNumber}`,
+            content: `New document uploaded: ${documentType}`,
+            recipientEmail: admin.email,
+            status: "sent",
+            sentAt: new Date(),
+          });
+        }
+      }
+
+      // Check if all required documents are now uploaded
+      const allDocuments = await storage.getApplicationDocuments(req.params.id);
+      const uploadedDocTypes = allDocuments
+        .filter(d => d.validationStatus === "valid")
+        .map(d => d.documentType);
+      const requiredDocTypes = ["bond_request", "contract", "financials", "credit_auth"];
+      const missingDocs = requiredDocTypes.filter(d => !uploadedDocTypes.includes(d));
+
+      // If all required documents are uploaded, notify admins to proceed with underwriting
+      if (missingDocs.length === 0) {
+        console.log(`[Routes] All required documents uploaded for application ${application.id}`);
+        
+        for (const admin of adminUsers) {
+          if (admin.email) {
+            await sendDocumentsCompleteNotificationEmail(
+              admin.email,
+              application.companyName,
+              application.applicationNumber,
+              `${process.env.APP_URL || "http://localhost:5000"}/admin`
+            );
+          }
+        }
+
+        // Update the application status to indicate documents are complete
+        await storage.updateApplication(req.params.id, {
+          status: "documents_complete",
+        });
+      }
+
+      res.json({ success: true, document: doc, documentsComplete: missingDocs.length === 0 });
     } catch (error: any) {
+      console.error("[Routes] Document upload error:", error);
       res.status(400).json({ error: "Failed to upload document" });
     }
   });

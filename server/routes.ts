@@ -121,6 +121,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get user's quotes - PROTECTED
   app.get("/api/user/quotes", async (req: any, res) => {
     try {
+      // Disable caching for this endpoint to ensure fresh data
+      res.set("Cache-Control", "no-cache, no-store, must-revalidate");
+      res.set("Pragma", "no-cache");
+      res.set("Expires", "0");
+
       // Check if user is authenticated (simpler check without strict token validation)
       if (!req.isAuthenticated()) {
         return res.status(401).json({ error: "User not authenticated" });
@@ -131,7 +136,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ error: "User not authenticated" });
       }
 
+      console.log(`[Routes] Getting quotes for user: ${userId}`);
       const userQuotes = await storage.getQuotesByUserId(userId);
+      console.log(`[Routes] Got ${userQuotes.length} quotes from storage:`, userQuotes.map(q => ({ id: q.id, quoteNumber: q.quoteNumber, userId: q.userId })));
       res.json(userQuotes);
     } catch (error) {
       console.error("Error fetching user quotes:", error);

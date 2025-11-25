@@ -899,12 +899,14 @@ export class DbStorage implements IStorage {
     const quoteNumber = `QS-${Date.now()}`;
     const estimatedPremium = this.calculatePremium(insertQuote.contractValue || "0");
     
+    console.log(`[DbStorage] Creating quote with userId: ${insertQuote.userId}`);
     const result = await this.db.insert(quotes).values({
       ...insertQuote,
       quoteNumber,
       estimatedPremium,
     }).returning();
     
+    console.log(`[DbStorage] Quote created:`, { id: result[0]?.id, userId: result[0]?.userId, quoteNumber: result[0]?.quoteNumber });
     return result[0];
   }
 
@@ -914,11 +916,16 @@ export class DbStorage implements IStorage {
   }
 
   async getAllQuotes(): Promise<Quote[]> {
-    return await this.db.select().from(quotes);
+    const result = await this.db.select().from(quotes);
+    console.log(`[DbStorage] getAllQuotes returned ${result.length} quotes`);
+    return result;
   }
 
   async getQuotesByUserId(userId: string): Promise<Quote[]> {
-    return await this.db.select().from(quotes).where(eq(quotes.userId, userId));
+    console.log(`[DbStorage] Querying quotes for user: ${userId}`);
+    const result = await this.db.select().from(quotes).where(eq(quotes.userId, userId));
+    console.log(`[DbStorage] Found ${result.length} quotes for user ${userId}:`, result.map(q => ({ id: q.id, quoteNumber: q.quoteNumber })));
+    return result;
   }
 
   async updateQuoteStatus(id: string, status: string): Promise<Quote | undefined> {

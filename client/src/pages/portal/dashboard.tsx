@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import {
   ArrowRight,
   Calendar
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
 
 interface Quote {
   id: string;
@@ -26,31 +25,18 @@ interface Quote {
 }
 
 export default function PortalDashboard() {
-  const { toast } = useToast();
-  const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetchUserQuotes();
-  }, []);
-
-  const fetchUserQuotes = async () => {
-    try {
-      setIsLoading(true);
+  // Use TanStack Query to fetch user quotes with proper caching and refetch
+  const { data: quotes = [], isLoading } = useQuery({
+    queryKey: ['/api/user/quotes'],
+    queryFn: async () => {
       const response = await fetch("/api/user/quotes");
-      if (response.ok) {
-        const data = await response.json();
-        setQuotes(data);
-      } else {
-        console.error("Failed to fetch quotes");
-      }
-    } catch (error) {
-      console.error("Error fetching quotes:", error);
-      toast({ title: "Error", description: "Failed to load quotes", variant: "destructive" });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      if (!response.ok) throw new Error("Failed to fetch quotes");
+      return response.json() as Promise<Quote[]>;
+    },
+    // Refetch whenever user navigates to this page
+    refetchOnMount: true,
+    staleTime: 0, // Always consider data stale, refetch on mount
+  });
 
   const stats = [
     { label: "Active Bonds", value: "4", icon: Shield, color: "text-primary" },

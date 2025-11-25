@@ -158,6 +158,9 @@ export interface IStorage {
   // Admin role & permission methods
   getAdminUsers(): Promise<User[]>;
   updateUserRole(userId: string, role: string, permission: string): Promise<User | undefined>;
+  updateUser(userId: string, data: { email?: string; firstName?: string; lastName?: string; username?: string }): Promise<User | undefined>;
+  deleteUser(userId: string): Promise<boolean>;
+  changeUserPassword(userId: string, newPassword: string): Promise<User | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -827,6 +830,30 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
+  async updateUser(userId: string, data: { email?: string; firstName?: string; lastName?: string; username?: string }): Promise<User | undefined> {
+    const user = this.users.get(userId);
+    if (user) {
+      const updated = { ...user, ...data };
+      this.users.set(userId, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
+  async deleteUser(userId: string): Promise<boolean> {
+    return this.users.delete(userId);
+  }
+
+  async changeUserPassword(userId: string, newPassword: string): Promise<User | undefined> {
+    const user = this.users.get(userId);
+    if (user) {
+      const updated = { ...user, password: newPassword };
+      this.users.set(userId, updated);
+      return updated;
+    }
+    return undefined;
+  }
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;
@@ -1355,6 +1382,39 @@ export class DbStorage implements IStorage {
     const [updated] = await this.db
       .update(users)
       .set({ role })
+      .where(eq(users.id, userId))
+      .returning();
+    return updated;
+  }
+
+  async updateUser(userId: string, data: { email?: string; firstName?: string; lastName?: string; username?: string }): Promise<User | undefined> {
+    const updateData: any = {};
+    if (data.email !== undefined) updateData.email = data.email;
+    if (data.firstName !== undefined) updateData.firstName = data.firstName;
+    if (data.lastName !== undefined) updateData.lastName = data.lastName;
+    if (data.username !== undefined) updateData.username = data.username;
+    
+    if (Object.keys(updateData).length === 0) return await this.getUser(userId);
+    
+    const [updated] = await this.db
+      .update(users)
+      .set(updateData)
+      .where(eq(users.id, userId))
+      .returning();
+    return updated;
+  }
+
+  async deleteUser(userId: string): Promise<boolean> {
+    const result = await this.db
+      .delete(users)
+      .where(eq(users.id, userId));
+    return true;
+  }
+
+  async changeUserPassword(userId: string, newPassword: string): Promise<User | undefined> {
+    const [updated] = await this.db
+      .update(users)
+      .set({ password: newPassword })
       .where(eq(users.id, userId))
       .returning();
     return updated;

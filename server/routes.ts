@@ -1079,6 +1079,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.patch("/api/admin/users/:userId", isAdmin, async (req: any, res) => {
+    try {
+      const { email, firstName, lastName, username } = req.body;
+      const updated = await storage.updateUser(req.params.userId, {
+        email,
+        firstName,
+        lastName,
+        username,
+      });
+      if (!updated) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      res.json(updated);
+    } catch (error: any) {
+      console.error("Error updating user:", error);
+      res.status(500).json({ error: "Failed to update user" });
+    }
+  });
+
+  app.delete("/api/admin/users/:userId", isAdmin, async (req: any, res) => {
+    try {
+      const deleted = await storage.deleteUser(req.params.userId);
+      if (!deleted) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
+      res.json({ success: true });
+    } catch (error: any) {
+      console.error("Error deleting user:", error);
+      res.status(500).json({ error: "Failed to delete user" });
+    }
+  });
+
+  app.post("/api/admin/users/:userId/change-password", isAdmin, async (req: any, res) => {
+    try {
+      const { newPassword } = req.body;
+      if (!newPassword || newPassword.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters" });
+      }
+      
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      const updated = await storage.changeUserPassword(req.params.userId, hashedPassword);
+      if (!updated) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      res.json({ success: true, message: "Password changed successfully" });
+    } catch (error: any) {
+      console.error("Error changing password:", error);
+      res.status(500).json({ error: "Failed to change password" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

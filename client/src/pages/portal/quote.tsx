@@ -26,10 +26,10 @@ interface Quote {
   createdAt: string;
 }
 
-export default function QuoteDetailPage() {
-  const params = useParams();
+export default function QuoteDetail() {
+  const params = useParams<{ id?: string }>();
   const [, navigate] = useLocation();
-  const quoteId = params.id as string;
+  const quoteId = params?.id || "";
 
   const { data: quote, isLoading } = useQuery({
     queryKey: ["/api/user/quotes", quoteId],

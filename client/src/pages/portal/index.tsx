@@ -13,7 +13,6 @@ import PortalProjects from "./projects";
 import PortalBonds from "./bonds";
 import PortalDocuments from "./documents";
 import PortalSettings from "./settings";
-import QuoteDetailPage from "./quote";
 
 export default function Portal() {
   const [location] = useLocation();
@@ -67,7 +66,6 @@ export default function Portal() {
           <div className="p-8">
             <Switch>
               <Route path="/portal" component={PortalDashboard} />
-              <Route path="/portal/quote/:id" component={QuoteDetailPage} />
               <Route path="/portal/projects" component={PortalProjects} />
               <Route path="/portal/bonds" component={PortalBonds} />
               <Route path="/portal/documents" component={PortalDocuments} />

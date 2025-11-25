@@ -65,11 +65,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Quote submission endpoint
-  app.post("/api/quotes", async (req: any, res) => {
+  // Quote submission endpoint - PROTECTED (requires authentication)
+  app.post("/api/quotes", isAuthenticated, async (req: any, res) => {
     try {
       const validatedData = quoteFormSchema.parse(req.body);
-      const userId = req.isAuthenticated() ? req.user?.claims?.sub : undefined;
+      const userId = req.user?.claims?.sub;
+      
+      if (!userId) {
+        return res.status(401).json({ success: false, error: "User not authenticated" });
+      }
+
       const quote = await storage.createQuote({
         userId,
         bondType: validatedData.bondType,
@@ -109,15 +114,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get user's quotes - PROTECTED
-  app.get("/api/user/quotes", isAuthenticated, async (req: any, res) => {
+  app.get("/api/user/quotes", async (req: any, res) => {
     try {
+      // Check if user is authenticated (simpler check without strict token validation)
+      if (!req.isAuthenticated()) {
+        return res.status(401).json({ error: "User not authenticated" });
+      }
+
       const userId = req.user?.claims?.sub;
       if (!userId) {
         return res.status(401).json({ error: "User not authenticated" });
       }
+
       const userQuotes = await storage.getQuotesByUserId(userId);
       res.json(userQuotes);
     } catch (error) {
+      console.error("Error fetching user quotes:", error);
       res.status(500).json({ error: "Failed to fetch user quotes" });
     }
   });

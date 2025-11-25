@@ -152,12 +152,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`[Routes] Found ${applications.length} applications for user ${userId}:`, applications.map(a => ({ id: a.id, preliminaryQuoteId: a.preliminaryQuoteId, status: a.status })));
       
       const enrichedQuotes = userQuotes.map((quote) => {
-        const relatedApp = applications.find(app => 
-          app.preliminaryQuoteId === quote.id || 
-          // Also match by similar business names
-          (app.companyName && quote.businessName && 
-           app.companyName.toLowerCase() === quote.businessName.toLowerCase())
-        );
+        // First try exact match by preliminaryQuoteId
+        let relatedApp = applications.find(app => app.preliminaryQuoteId === quote.id);
+        
+        // If no exact match, then try by business name (only as fallback)
+        if (!relatedApp) {
+          relatedApp = applications.find(app =>
+            app.companyName && quote.businessName &&
+            app.companyName.toLowerCase() === quote.businessName.toLowerCase()
+          );
+        }
         
         console.log(`[Routes] Quote ${quote.id}: found related app ${relatedApp?.id} with status ${relatedApp?.status}`);
         

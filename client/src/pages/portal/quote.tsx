@@ -89,19 +89,19 @@ export default function QuoteDetail() {
   const getWorkflowStep = () => {
     switch (appStatus) {
       case "bonded":
-        return 4;
+        return 5; // All complete
       case "confirm_activate_pending":
-        return 3;
+        return 4; // On confirm step
       case "agreement_signed":
-        return 3;
+        return 4; // On confirm step
       case "sign_agreement_pending":
-        return 2;
+        return 3; // On sign agreement step
       case "documents_complete":
-        return 2;
+        return 3; // Ready for signing (next step is sign agreement)
       case "submitted":
-        return 2;
+        return 2; // On document upload step
       default:
-        return 1;
+        return 2; // Default to document upload
     }
   };
 
@@ -233,7 +233,7 @@ export default function QuoteDetail() {
         </Card>
       </div>
 
-      {quote.status === "approved" && (
+      {(quote.status === "approved" || quote.status === "bonded") && (
         <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -265,8 +265,14 @@ export default function QuoteDetail() {
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-sm">{step.title}</p>
                       <p className="text-xs text-muted-foreground mt-1">{step.description}</p>
+                      {step.completed && (
+                        <p className="text-xs text-green-600 dark:text-green-400 mt-2 font-medium">Completed</p>
+                      )}
                       {!step.completed && step.step === currentStep && (
-                        <p className="text-xs text-primary mt-2 font-medium">Current step</p>
+                        <p className="text-xs text-primary mt-2 font-medium">Current step - Awaiting action</p>
+                      )}
+                      {!step.completed && step.step > currentStep && (
+                        <p className="text-xs text-muted-foreground mt-2 font-medium">Pending</p>
                       )}
                     </div>
                     {!step.completed && step.step === currentStep && (

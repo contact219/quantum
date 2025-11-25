@@ -903,18 +903,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { documentType, fileName, fileUrl, fileSize, mimeType } = req.body;
       const userId = req.user?.claims?.sub;
-      let applicationId = req.params.id;
+      const quoteId = req.params.id;  // Save the quote ID
+      let applicationId = quoteId;
       
       // Try to get the application
       let application = await storage.getApplication(applicationId);
       
       // If application doesn't exist, try to find one by preliminaryQuoteId or create one
       if (!application) {
-        const quote = await storage.getQuote(applicationId);
+        const quote = await storage.getQuote(quoteId);
         if (quote) {
           // Try to find an application linked to this quote
           const userApps = await storage.getApplicationsByUserId(userId);
-          application = userApps.find(app => app.preliminaryQuoteId === applicationId);
+          application = userApps.find(app => app.preliminaryQuoteId === quoteId);
           
           if (!application && quote.businessName) {
             // Create a new application from the quote
@@ -931,9 +932,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
             
             // Link the quote to the application
             if (application) {
-              applicationId = application.id;
               await storage.updateApplication(application.id, {
-                preliminaryQuoteId: applicationId,
+                preliminaryQuoteId: quoteId,
                 preliminaryPremium: parseFloat(quote.estimatedPremium || "0"),
               });
             }

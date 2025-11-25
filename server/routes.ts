@@ -146,7 +146,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log(`[Routes] Getting quotes for user: ${userId}`);
       const userQuotes = await storage.getQuotesByUserId(userId);
       console.log(`[Routes] Got ${userQuotes.length} quotes from storage:`, userQuotes.map(q => ({ id: q.id, quoteNumber: q.quoteNumber, userId: q.userId })));
-      res.json(userQuotes);
+      
+      // Enrich quotes with application status
+      const enrichedQuotes = await Promise.all(
+        userQuotes.map(async (quote) => {
+          // Try to find an associated application
+          const applications = await storage.getApplicationsByUserId(userId);
+          const relatedApp = applications.find(app => 
+            app.preliminaryQuoteId === quote.id || 
+            // Also match by similar business names
+            (app.companyName && quote.businessName && 
+             app.companyName.toLowerCase() === quote.businessName.toLowerCase())
+          );
+          
+          return {
+            ...quote,
+            applicationStatus: relatedApp?.status || "draft"
+          };
+        })
+      );
+      
+      res.json(enrichedQuotes);
     } catch (error) {
       console.error("Error fetching user quotes:", error);
       res.status(500).json({ error: "Failed to fetch user quotes" });

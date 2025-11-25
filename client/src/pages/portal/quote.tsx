@@ -24,6 +24,7 @@ interface Quote {
   status: string;
   estimatedPremium?: string;
   createdAt: string;
+  applicationStatus?: string;
 }
 
 export default function QuoteDetail() {
@@ -82,31 +83,61 @@ export default function QuoteDetail() {
 
   const StatusIcon = statusIcon;
 
+  // Determine workflow step based on application status
+  const appStatus = quote.applicationStatus || "draft";
+  
+  const getWorkflowStep = () => {
+    switch (appStatus) {
+      case "bonded":
+        return 4;
+      case "confirm_activate_pending":
+        return 3;
+      case "agreement_signed":
+        return 3;
+      case "sign_agreement_pending":
+        return 2;
+      case "documents_complete":
+        return 2;
+      case "submitted":
+        return 2;
+      default:
+        return 1;
+    }
+  };
+
+  const currentStep = getWorkflowStep();
+
   const nextSteps = [
     {
       icon: Eye,
       title: "Review Quote Details",
       description: "Review the approved quote terms and conditions",
-      completed: true,
+      completed: currentStep > 1,
+      step: 1,
     },
     {
       icon: FileUp,
       title: "Upload Required Documents",
       description: "Submit required documents for underwriting",
       href: "/portal/documents",
-      completed: false,
+      completed: currentStep > 2,
+      step: 2,
     },
     {
       icon: PenTool,
       title: "Sign Agreement",
       description: "Complete e-signature process for your bond",
-      completed: false,
+      completed: currentStep > 3,
+      step: 3,
+      action: () => alert("E-signature workflow coming soon. Admin will send you signing documents."),
     },
     {
       icon: CheckCircle,
       title: "Confirm & Activate",
       description: "Confirm your information and activate the bond",
-      completed: false,
+      completed: currentStep > 4,
+      step: 4,
+      action: () => alert("Bond activation pending admin final approval."),
     },
   ];
 
@@ -234,13 +265,25 @@ export default function QuoteDetail() {
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-sm">{step.title}</p>
                       <p className="text-xs text-muted-foreground mt-1">{step.description}</p>
+                      {!step.completed && step.step === currentStep && (
+                        <p className="text-xs text-primary mt-2 font-medium">Current step</p>
+                      )}
                     </div>
-                    {step.href && !step.completed && (
-                      <Link href={step.href}>
-                        <Button size="sm" variant="outline" data-testid={`button-action-${step.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </Link>
+                    {!step.completed && step.step === currentStep && (
+                      <>
+                        {step.href && (
+                          <Link href={step.href}>
+                            <Button size="sm" variant="default" data-testid={`button-action-${step.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                              <ArrowRight className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                        )}
+                        {step.action && (
+                          <Button size="sm" variant="default" onClick={step.action} data-testid={`button-action-${step.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                        )}
+                      </>
                     )}
                   </div>
                 );

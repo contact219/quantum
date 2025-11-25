@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +31,7 @@ const REQUIRED_DOCUMENTS = [
 
 export default function PortalDocuments() {
   const { toast } = useToast();
+  const queryClient = useQueryClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [documents, setDocuments] = useState<ApplicationDocument[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -125,6 +126,9 @@ export default function PortalDocuments() {
       
       // Refresh documents list using the correct application ID
       await fetchDocuments(actualApplicationId);
+      
+      // Invalidate quotes query to refresh application status on quote page
+      queryClient.invalidateQueries({ queryKey: ["/api/user/quotes"] });
       
       toast({
         title: "Success",

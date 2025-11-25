@@ -10,7 +10,10 @@ import {
   TrendingUp, 
   CheckCircle,
   ArrowRight,
-  Calendar
+  Calendar,
+  FileUp,
+  PenTool,
+  Eye
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
@@ -52,11 +55,39 @@ export default function PortalDashboard() {
     { id: "4", type: "Maintenance Bond", project: "Plaza Development", amount: "$250,000", status: "Expiring", expiresIn: "28 days" },
   ];
 
+  const approvedQuotes = quotes.filter(q => q.status === "approved");
+  const pendingQuotes = quotes.filter(q => q.status === "pending");
+
   const upcomingDeadlines = quotes.map((quote, i) => ({
     task: `Quote #${quote.id.slice(0, 8)} - ${quote.bondType}`,
     date: new Date(quote.createdAt).toLocaleDateString(),
     priority: quote.status === "pending" ? "high" : quote.status === "approved" ? "low" : "medium" as const,
   })).slice(0, 3);
+
+  const nextStepsByStatus = (quoteId: string): Array<{icon: any, title: string, description: string, href?: string, action?: () => void}> => [
+    {
+      icon: Eye,
+      title: "Review Quote Details",
+      description: "Review the approved quote terms and conditions",
+      href: `/portal/quote/${quoteId}`
+    },
+    {
+      icon: FileUp,
+      title: "Upload Required Documents",
+      description: "Submit required documents for underwriting",
+      href: "/portal/documents"
+    },
+    {
+      icon: PenTool,
+      title: "Sign Agreement",
+      description: "Complete e-signature process for your bond"
+    },
+    {
+      icon: CheckCircle,
+      title: "Confirm & Activate",
+      description: "Confirm your information and activate the bond"
+    }
+  ];
 
   return (
     <div className="space-y-8">
@@ -153,6 +184,52 @@ export default function PortalDashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {approvedQuotes.length > 0 && (
+        <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              Approved Quotes - Next Steps
+            </CardTitle>
+            <CardDescription>Your quotes have been approved. Complete the following steps to activate your bonds.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {approvedQuotes.map((quote) => (
+              <div key={quote.id} className="border rounded-lg p-4 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold flex items-center gap-2">
+                      {quote.projectName || quote.bondType}
+                      <Badge className="bg-green-600">Approved</Badge>
+                    </h3>
+                    <p className="text-sm text-muted-foreground">Quote #{quote.id.slice(0, 8)} • Premium: ${quote.estimatedPremium || "0"}</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {nextStepsByStatus(quote.id).map((step, idx) => (
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-white dark:bg-slate-800 rounded-md border border-border/50">
+                      <step.icon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">{step.title}</p>
+                        <p className="text-xs text-muted-foreground">{step.description}</p>
+                      </div>
+                      {step.href && (
+                        <Link href={step.href}>
+                          <Button size="sm" variant="ghost" data-testid={`button-action-${step.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">

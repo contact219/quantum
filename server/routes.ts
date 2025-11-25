@@ -1029,6 +1029,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.post("/api/admin/users", isAdmin, async (req: any, res) => {
+    try {
+      const { email, firstName, lastName, role, permission } = req.body;
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+      
+      // Create new admin user
+      const newUser = await storage.createUser({
+        email,
+        firstName: firstName || "",
+        lastName: lastName || "",
+        role: role || "admin",
+        permission: permission || "view",
+      });
+      
+      // Update user role and permission
+      const updatedUser = await storage.updateUserRole(newUser.id, role || "admin", permission || "view");
+      res.status(201).json(updatedUser);
+    } catch (error: any) {
+      console.error("Error creating admin user:", error);
+      res.status(500).json({ error: "Failed to create admin user" });
+    }
+  });
+
   app.patch("/api/admin/users/:userId/role", isAdmin, async (req: any, res) => {
     try {
       const { role, permission } = req.body;

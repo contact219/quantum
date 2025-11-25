@@ -1,16 +1,23 @@
+import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@shared/schema";
 import { queryClient } from "@/lib/queryClient";
 import { apiRequest } from "@/lib/queryClient";
-import { Mail, Shield } from "lucide-react";
+import { Mail, Shield, Plus } from "lucide-react";
 
 export default function AdminUsers() {
   const { toast } = useToast();
-  const { data: admins, isLoading } = useQuery<User[]>({
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [formData, setFormData] = useState({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+  const [isCreating, setIsCreating] = useState(false);
+  
+  const { data: admins, isLoading, refetch } = useQuery<User[]>({
     queryKey: ["/api/admin/users"],
   });
 
@@ -29,6 +36,39 @@ export default function AdminUsers() {
       toast({ title: "Error", description: "Failed to update user role", variant: "destructive" });
     },
   });
+
+  const createUserMutation = useMutation({
+    mutationFn: async (data: { email: string; firstName: string; lastName: string; role: string; permission: string }) => {
+      const response = await fetch("/api/admin/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error("Failed to create user");
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
+      toast({ title: "Success", description: "Admin user created successfully" });
+      setShowCreateForm(false);
+      setFormData({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+      refetch();
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Failed to create admin user", variant: "destructive" });
+    },
+  });
+
+  const handleCreateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email) {
+      toast({ title: "Error", description: "Email is required", variant: "destructive" });
+      return;
+    }
+    setIsCreating(true);
+    createUserMutation.mutate(formData);
+    setIsCreating(false);
+  };
 
   if (isLoading) {
     return <div className="p-6">Loading users...</div>;
@@ -58,10 +98,114 @@ export default function AdminUsers() {
         <p className="text-muted-foreground mt-2">Manage admin users and their permissions</p>
       </div>
 
+      {showCreateForm && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Add New Admin User</CardTitle>
+            <CardDescription>Create a new admin account and assign roles</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleCreateUser} className="space-y-4">
+              <div>
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  data-testid="input-create-email"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="firstName">First Name</Label>
+                  <Input
+                    id="firstName"
+                    placeholder="John"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    data-testid="input-create-first-name"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="lastName">Last Name</Label>
+                  <Input
+                    id="lastName"
+                    placeholder="Doe"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    data-testid="input-create-last-name"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="role">Role</Label>
+                  <Select value={formData.role} onValueChange={(role) => setFormData({ ...formData, role })}>
+                    <SelectTrigger id="role" data-testid="select-create-role">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="admin">Administrator</SelectItem>
+                      <SelectItem value="underwriter">Underwriter</SelectItem>
+                      <SelectItem value="sales">Sales</SelectItem>
+                      <SelectItem value="finance">Finance</SelectItem>
+                      <SelectItem value="client">Client</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="permission">Permission</Label>
+                  <Select value={formData.permission} onValueChange={(permission) => setFormData({ ...formData, permission })}>
+                    <SelectTrigger id="permission" data-testid="select-create-permission">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="view">View Only</SelectItem>
+                      <SelectItem value="edit">Edit</SelectItem>
+                      <SelectItem value="approve">Approve</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <Button type="submit" disabled={isCreating} data-testid="button-create-user">
+                  {isCreating ? "Creating..." : "Create User"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setShowCreateForm(false);
+                    setFormData({ email: "", firstName: "", lastName: "", role: "admin", permission: "view" });
+                  }}
+                  data-testid="button-cancel-create"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      )}
+
       <Card>
         <CardHeader>
-          <CardTitle>Admin Users</CardTitle>
-          <CardDescription>Manage roles and permissions for team members</CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Admin Users</CardTitle>
+              <CardDescription>Manage roles and permissions for team members</CardDescription>
+            </div>
+            <Button
+              onClick={() => setShowCreateForm(!showCreateForm)}
+              data-testid="button-add-user"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add User
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">

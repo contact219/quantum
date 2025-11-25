@@ -61,6 +61,9 @@ export default function Admin() {
   const [selectedQuote, setSelectedQuote] = useState<any>(null);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [notesDraft, setNotesDraft] = useState("");
+  const [statusDraft, setStatusDraft] = useState("");
+  const [isSavingQuote, setIsSavingQuote] = useState(false);
   const [settings, setSettings] = useState<any>(null);
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [settingsSaving, setSettingsSaving] = useState(false);
@@ -470,6 +473,50 @@ export default function Admin() {
     }
   };
 
+  const handleSaveChanges = async () => {
+    if (!selectedQuote) return;
+    
+    setIsSavingQuote(true);
+    try {
+      const updateData: any = {};
+      
+      // Only include fields that changed
+      if (notesDraft !== selectedQuote.notes) {
+        updateData.notes = notesDraft;
+      }
+      if (statusDraft && statusDraft !== selectedQuote.status) {
+        updateData.status = statusDraft;
+      }
+      
+      if (Object.keys(updateData).length === 0) {
+        toast({ title: "Info", description: "No changes to save" });
+        return;
+      }
+      
+      const response = await fetch(`/api/quotes/${selectedQuote.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateData),
+      });
+      
+      if (response.ok) {
+        const updatedQuote = await response.json();
+        setSelectedQuote(updatedQuote);
+        setNotesDraft(updatedQuote.notes || "");
+        setStatusDraft(updatedQuote.status);
+        toast({ title: "Success", description: "Quote updated successfully" });
+        // Refetch quotes to reflect changes
+        window.location.reload();
+      } else {
+        toast({ title: "Error", description: "Failed to update quote", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to update quote", variant: "destructive" });
+    } finally {
+      setIsSavingQuote(false);
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "pending":
@@ -631,7 +678,11 @@ export default function Admin() {
                       <TableRow 
                         key={quote.id} 
                         className="cursor-pointer hover-elevate"
-                        onClick={() => setSelectedQuote(quote)}
+                        onClick={() => {
+                          setSelectedQuote(quote);
+                          setNotesDraft(quote.notes || "");
+                          setStatusDraft(quote.status);
+                        }}
                         data-testid={`row-quote-${quote.id}`}
                       >
                         <TableCell className="font-mono text-sm">{quote.id}</TableCell>
@@ -650,6 +701,8 @@ export default function Admin() {
                             onClick={(e) => {
                               e.stopPropagation();
                               setSelectedQuote(quote);
+                              setNotesDraft(quote.notes || "");
+                              setStatusDraft(quote.status);
                             }}
                             data-testid={`button-view-${quote.id}`}
                           >
@@ -714,13 +767,15 @@ export default function Admin() {
                         id="internal-notes"
                         placeholder="Add internal notes about this quote..."
                         rows={4}
+                        value={notesDraft}
+                        onChange={(e) => setNotesDraft(e.target.value)}
                         data-testid="textarea-notes"
                       />
                     </div>
 
                     <div className="space-y-3">
                       <Label htmlFor="update-status">Update Status</Label>
-                      <Select defaultValue={selectedQuote.status}>
+                      <Select value={statusDraft} onValueChange={setStatusDraft}>
                         <SelectTrigger id="update-status" data-testid="select-update-status">
                           <SelectValue />
                         </SelectTrigger>
@@ -737,11 +792,19 @@ export default function Admin() {
                       <Button 
                         className="flex-1" 
                         data-testid="button-save"
-                        onClick={() => handlePrintQuote(selectedQuote)}
-                        variant="outline"
+                        onClick={handleSaveChanges}
+                        disabled={isSavingQuote}
                       >
-                        <Printer className="w-4 h-4 mr-2" />
-                        Print
+                        {isSavingQuote ? "Saving..." : "Save Changes"}
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        size="icon"
+                        onClick={() => handlePrintQuote(selectedQuote)}
+                        data-testid="button-print"
+                        disabled={isSavingQuote}
+                      >
+                        <Printer className="w-4 h-4" />
                       </Button>
                       <AlertDialog>
                         <AlertDialogTrigger asChild>

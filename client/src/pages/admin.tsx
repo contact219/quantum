@@ -813,6 +813,36 @@ export default function Admin() {
                       </Select>
                     </div>
 
+                    <Separator />
+
+                    <div className="space-y-3">
+                      <Label className="text-xs text-muted-foreground font-semibold">Workflow Steps</Label>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-600" />
+                          <span>Review Quote Details</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-600" />
+                          <span>Upload Required Documents</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-primary" />
+                          <span>Sign Agreement</span>
+                          <Button size="sm" variant="outline" className="ml-auto h-6 text-xs" data-testid="button-initiate-sign">
+                            Initiate
+                          </Button>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-muted" />
+                          <span>Confirm & Activate</span>
+                          <Button size="sm" variant="outline" className="ml-auto h-6 text-xs" disabled data-testid="button-confirm-activate">
+                            Pending
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="flex gap-2">
                       <Button 
                         className="flex-1" 

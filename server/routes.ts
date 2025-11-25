@@ -1144,6 +1144,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Initiate sign agreement workflow
+  app.post("/api/applications/:id/sign", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user?.claims?.sub;
+      let applicationId = req.params.id;
+      
+      // Try to get the application
+      let application = await storage.getApplication(applicationId);
+      
+      // If not found by ID, try to find by quote ID (preliminaryQuoteId)
+      if (!application) {
+        const userApps = await storage.getApplicationsByUserId(userId);
+        application = userApps.find(app => app.preliminaryQuoteId === applicationId);
+        if (application) {
+          applicationId = application.id;
+        }
+      }
+      
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      // Update status to sign_agreement_pending
+      const updated = await storage.updateApplication(applicationId, {
+        status: "sign_agreement_pending",
+      });
+
+      res.json({
+        success: true,
+        application: updated,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to initiate signing" });
+    }
+  });
+
+  // Complete sign agreement workflow
+  app.post("/api/applications/:id/sign/complete", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user?.claims?.sub;
+      let applicationId = req.params.id;
+      
+      // Try to get the application
+      let application = await storage.getApplication(applicationId);
+      
+      // If not found by ID, try to find by quote ID (preliminaryQuoteId)
+      if (!application) {
+        const userApps = await storage.getApplicationsByUserId(userId);
+        application = userApps.find(app => app.preliminaryQuoteId === applicationId);
+        if (application) {
+          applicationId = application.id;
+        }
+      }
+      
+      if (!application) {
+        return res.status(404).json({ error: "Application not found" });
+      }
+
+      // Update status to agreement_signed
+      const updated = await storage.updateApplication(applicationId, {
+        status: "agreement_signed",
+      });
+
+      // Notify admins that user has signed
+      const adminUsers = await storage.getAdminUsers();
+      for (const admin of adminUsers) {
+        if (admin.email) {
+          await sendApplicationStatusEmail(
+            admin.email,
+            application.companyName,
+            application.applicationNumber,
+            "User has signed the agreement",
+            `${process.env.APP_URL || "http://localhost:5000"}/admin`
+          );
+        }
+      }
+
+      res.json({
+        success: true,
+        application: updated,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: "Failed to complete signing" });
+    }
+  });
+
   // Prepare for e-signature
   app.post("/api/applications/:id/e-sign", isAuthenticated, async (req: any, res) => {
     try {

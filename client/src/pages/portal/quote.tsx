@@ -15,6 +15,7 @@ import {
   Eye,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { SigningModal } from "@/components/signing-modal";
 
 interface Quote {
   id: string;
@@ -31,6 +32,7 @@ export default function QuoteDetail() {
   const params = useParams<{ id?: string }>();
   const [, navigate] = useLocation();
   const quoteId = params?.id || "";
+  const [signingModalOpen, setSigningModalOpen] = useState(false);
 
   const { data: quote, isLoading } = useQuery({
     queryKey: ["/api/user/quotes", quoteId],
@@ -129,7 +131,7 @@ export default function QuoteDetail() {
       description: "Complete e-signature process for your bond",
       completed: currentStep > 3,
       step: 3,
-      action: () => alert("E-signature workflow coming soon. Admin will send you signing documents."),
+      action: () => setSigningModalOpen(true),
     },
     {
       icon: CheckCircle,
@@ -320,6 +322,13 @@ export default function QuoteDetail() {
           </CardContent>
         </Card>
       )}
+
+      <SigningModal
+        open={signingModalOpen}
+        onOpenChange={setSigningModalOpen}
+        quoteId={quoteId}
+        companyName={quote?.companyName || quote?.projectName || "Your Company"}
+      />
     </div>
   );
 }

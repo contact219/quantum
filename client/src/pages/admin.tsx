@@ -30,7 +30,8 @@ import {
   Globe,
   Plus,
   Video,
-  BookOpen
+  BookOpen,
+  LogOut
 } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
@@ -553,6 +554,20 @@ export default function Admin() {
 
   const [, navigate] = useLocation();
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/auth/logout", { method: "POST" });
+      if (response.ok) {
+        toast({ title: "Success", description: "Logged out successfully" });
+        navigate("/");
+      } else {
+        toast({ title: "Error", description: "Failed to logout", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to logout", variant: "destructive" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -571,6 +586,15 @@ export default function Admin() {
             </Button>
             <Button variant="outline" size="sm" onClick={() => navigate("/admin/users")} data-testid="button-users">
               Users
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleLogout}
+              data-testid="button-logout"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
             </Button>
           </div>
         </div>

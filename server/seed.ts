@@ -5,16 +5,32 @@ async function seed() {
 
   console.log("Seeding database...");
 
-  // Create demo user
-  const demoUser = await storage.createUser({
-    username: "demo",
-    password: "demo123",
-    email: "john@abcconstruction.com",
-    companyName: "ABC Construction LLC",
-    role: "client",
-  });
-
-  console.log("Created demo user:", demoUser.id);
+  // Create demo user if it doesn't exist
+  let demoUser: any;
+  try {
+    demoUser = await storage.createUser({
+      username: "demo",
+      password: "demo123",
+      email: "john@abcconstruction.com",
+      companyName: "ABC Construction LLC",
+      role: "client",
+    });
+    console.log("Created demo user:", demoUser.id);
+  } catch (error: any) {
+    if (error.code === '23505') {
+      // Duplicate key error - user already exists
+      console.log("Demo user already exists, skipping creation");
+      // Fetch existing user
+      const users = await storage.getAllUsers?.() || [];
+      demoUser = users.find((u: any) => u.email === "john@abcconstruction.com");
+      if (!demoUser) {
+        throw new Error("Could not find or create demo user");
+      }
+      console.log("Using existing demo user:", demoUser.id);
+    } else {
+      throw error;
+    }
+  }
 
   // Create demo projects
   const project1 = await storage.createProject({

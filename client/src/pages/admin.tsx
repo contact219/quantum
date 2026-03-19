@@ -474,6 +474,33 @@ export default function Admin() {
     }
   };
 
+  const handleInitiateSign = async (quoteId: string | undefined) => {
+    if (!quoteId) {
+      toast({ title: "Error", description: "No quote selected", variant: "destructive" });
+      return;
+    }
+
+    setIsSavingQuote(true);
+    try {
+      const response = await fetch(`/api/applications/${quoteId}/sign`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        toast({ title: "Success", description: "Sign agreement workflow initiated" });
+        // Refetch to get updated status
+        window.location.reload();
+      } else {
+        toast({ title: "Error", description: "Failed to initiate signing", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to initiate signing", variant: "destructive" });
+    } finally {
+      setIsSavingQuote(false);
+    }
+  };
+
   const handleSaveChanges = async () => {
     if (!selectedQuote) return;
     
@@ -829,7 +856,13 @@ export default function Admin() {
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full bg-primary" />
                           <span>Sign Agreement</span>
-                          <Button size="sm" variant="outline" className="ml-auto h-6 text-xs" data-testid="button-initiate-sign">
+                          <Button 
+                            size="sm" 
+                            variant="outline" 
+                            className="ml-auto h-6 text-xs" 
+                            data-testid="button-initiate-sign"
+                            onClick={() => handleInitiateSign(selectedQuote?.id)}
+                          >
                             Initiate
                           </Button>
                         </div>

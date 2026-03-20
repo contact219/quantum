@@ -6,6 +6,7 @@ import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
 import bcrypt from "bcryptjs";
+import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
@@ -1069,36 +1070,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const docs = await storage.getApplicationDocuments(req.params.id);
-      const requiredDocs = ["bond_request", "contract", "financials", "credit_auth"];
-      const uploadedDocs = docs.map(d => d.documentType);
-      const missingDocs = requiredDocs.filter(d => !uploadedDocs.includes(d));
+      const bureauScore = application.creditScore ?? generateSyntheticCreditScore(application);
+      const assessment = evaluateRiskModel({ ...application, creditScore: bureauScore }, docs);
 
-      // Evaluate underwriting rules
-      const ruleValidationResults = {
-        creditScorePassed: application.creditScore ? application.creditScore >= 600 : false,
-        yearsInBusinessPassed: application.yearsInBusiness ? application.yearsInBusiness >= 1 : false,
-        revenuePasssed: application.annualRevenue ? parseFloat(application.annualRevenue.toString()) >= 100000 : false,
-      };
+      const latestCreditPull = await storage.getLatestCreditPull(req.params.id);
+      if (!latestCreditPull) {
+        await storage.createCreditPull({
+          applicationId: req.params.id,
+          provider: "internal_model",
+          externalId: `MODEL-${Date.now()}`,
+          creditScore: bureauScore,
+          debtToIncomeRatio: bureauScore >= 700 ? "0.28" : bureauScore >= 650 ? "0.37" : "0.49",
+          businessRating: Math.round(assessment.score),
+          riskLevel: assessment.riskLevel,
+          details: assessment as any,
+          pulledAt: new Date(),
+        });
+      }
 
-      const underwritingStatus = missingDocs.length === 0 && Object.values(ruleValidationResults).every(v => v) ? "approved" : "in_review";
+      const status = assessment.missingDocuments.length === 0 ? "submitted" : "draft";
+      const underwritingStatus = assessment.recommendedStatus === "rejected"
+        ? "rejected"
+        : assessment.recommendedStatus === "approved"
+          ? "approved"
+          : "in_review";
 
       const updated = await storage.updateApplication(req.params.id, {
+        creditScore: bureauScore,
+        creditPullStatus: "completed",
+        creditPullData: {
+          provider: "internal_model",
+          bureauScore,
+          refreshedAt: new Date().toISOString(),
+        } as any,
         underwritingStatus,
-        ruleValidationResults: ruleValidationResults as any,
-        missingDocuments: missingDocs,
-        status: missingDocs.length === 0 ? "submitted" : "draft",
+        ruleValidationResults: assessment as any,
+        missingDocuments: assessment.missingDocuments,
+        status,
       });
 
       res.json({ 
         success: true, 
         application: updated,
-        evaluation: {
-          missingDocuments: missingDocs,
-          ruleValidationResults,
-          underwritingStatus,
-        }
+        evaluation: assessment,
       });
     } catch (error: any) {
+      console.error("[Routes] Evaluation failed", error);
       res.status(500).json({ error: "Evaluation failed" });
     }
   });
@@ -1111,9 +1128,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Application not found" });
       }
 
-      // Calculate preliminary premium (2% of estimated bond amount)
-      const bondAmount = 50000; // Default for demo
-      const preliminaryPremium = (bondAmount * 0.02).toFixed(2);
+      const docs = await storage.getApplicationDocuments(req.params.id);
+      const assessment = evaluateRiskModel({
+        ...application,
+        creditScore: application.creditScore ?? generateSyntheticCreditScore(application),
+      }, docs);
+
+      const bondAmount = assessment.estimatedBondCapacity;
+      const preliminaryPremium = (bondAmount * assessment.recommendedPremiumRate).toFixed(2);
 
       const quote = await storage.createQuote({
         bondType: "Performance Bond",
@@ -1139,6 +1161,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: true, 
         quote,
         preliminaryPremium,
+        premiumRate: assessment.recommendedPremiumRate,
+        estimatedBondCapacity: assessment.estimatedBondCapacity,
       });
     } catch (error: any) {
       res.status(500).json({ error: "Failed to generate quote" });

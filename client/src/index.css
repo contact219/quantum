@@ -2,287 +2,9934 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
+/* Enterprise Palette */
 :root {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
-  --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
-  --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
-  --border: 220 13% 91%;
-  --card: 0 0% 98%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 220 13% 93%;
-  --sidebar: 220 14% 96%;
-  --sidebar-foreground: 222 47% 11%;
-  --sidebar-border: 220 13% 91%;
-  --sidebar-primary: 217 91% 60%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 220 14% 92%;
-  --sidebar-accent-foreground: 222 47% 11%;
-  --sidebar-ring: 217 91% 60%;
-  --popover: 220 14% 94%;
-  --popover-foreground: 222 47% 11%;
-  --popover-border: 220 13% 89%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 220 14% 91%;
-  --secondary-foreground: 222 47% 11%;
-  --muted: 220 13% 92%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 175 84% 32%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --input: 220 13% 85%;
-  --ring: 217 91% 60%;
-  --chart-1: 217 91% 60%;
-  --chart-2: 175 84% 32%;
-  --chart-3: 262 83% 58%;
-  --chart-4: 271 91% 65%;
-  --chart-5: 41 96% 58%;
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
-  --radius: .5rem;
-  --shadow-2xs: 0px 2px 0px 0px hsl(220 13% 91% / 0.00);
-  --shadow-xs: 0px 2px 0px 0px hsl(220 13% 91% / 0.00);
-  --shadow-sm: 0px 2px 0px 0px hsl(220 13% 91% / 0.00), 0px 1px 2px -1px hsl(220 13% 91% / 0.00);
-  --shadow: 0px 2px 0px 0px hsl(220 13% 91% / 0.00), 0px 1px 2px -1px hsl(220 13% 91% / 0.00);
-  --shadow-md: 0px 2px 0px 0px hsl(220 13% 91% / 0.00), 0px 2px 4px -1px hsl(220 13% 91% / 0.00);
-  --shadow-lg: 0px 2px 0px 0px hsl(220 13% 91% / 0.00), 0px 4px 6px -1px hsl(220 13% 91% / 0.00);
-  --shadow-xl: 0px 2px 0px 0px hsl(220 13% 91% / 0.00), 0px 8px 10px -1px hsl(220 13% 91% / 0.00);
-  --shadow-2xl: 0px 2px 0px 0px hsl(220 13% 91% / 0.00);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
-
-/* Fallback for older browsers */
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-}
-
-.dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
-  --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
-  --background: 222 47% 4%;
-  --foreground: 0 0% 98%;
-  --border: 217 33% 14%;
-  --card: 222 47% 6%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 217 33% 9%;
-  --sidebar: 222 47% 8%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 217 33% 12%;
-  --sidebar-primary: 217 91% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 222 47% 11%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 217 91% 60%;
-  --popover: 222 47% 10%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 217 33% 14%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 222 47% 13%;
-  --secondary-foreground: 0 0% 98%;
+  --slate-900: 0 0% 4%;
+  --slate-800: 222 47% 6%;
+  --slate-700: 222 47% 8%;
+  --slate-600: 222 47% 10%;
+  --slate-500: 222 47% 12%;
+  --slate-400: 222 47% 15%;
+  --slate-300: 222 47% 18%;
+  --slate-200: 222 47% 22%;
+  --slate-100: 222 47% 26%;
+  --slate-50: 222 47% 30%;
+  --slate-25: 222 47% 34%;
+  --slate-10: 222 47% 38%;
+  --indigo-900: 217 91% 60%;
+  --indigo-800: 217 91% 65%;
+  --indigo-700: 217 91% 70%;
+  --indigo-600: 217 91% 75%;
+  --indigo-500: 217 91% 80%;
+  --indigo-400: 217 91% 85%;
+  --indigo-300: 217 91% 90%;
+  --indigo-200: 217 91% 95%;
+  --indigo-100: 217 91% 100%;
+  --cyan-900: 175 84% 32%;
+  --cyan-800: 175 84% 37%;
+  --cyan-700: 175 84% 42%;
+  --cyan-600: 175 84% 47%;
+  --cyan-500: 175 84% 52%;
+  --cyan-400: 175 84% 57%;
+  --cyan-300: 175 84% 62%;
+  --cyan-200: 175 84% 67%;
+  --cyan-100: 175 84% 72%;
+  --violet-900: 262 83% 58%;
+  --violet-800: 262 83% 63%;
+  --violet-700: 262 83% 68%;
+  --violet-600: 262 83% 73%;
+  --violet-500: 262 83% 78%;
+  --violet-400: 262 83% 83%;
+  --violet-300: 262 83% 88%;
+  --violet-200: 262 83% 93%;
+  --violet-100: 262 83% 98%;
+  --success: 41 96% 58%;
+  --warning: 41 96% 58%;
+  --error: 0 84% 60%;
   --muted: 222 47% 12%;
   --muted-foreground: 215 20% 65%;
-  --accent: 175 84% 32%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --input: 217 33% 18%;
-  --ring: 217 91% 60%;
-  --chart-1: 217 91% 75%;
-  --chart-2: 175 84% 50%;
-  --chart-3: 262 83% 70%;
-  --chart-4: 271 91% 75%;
-  --chart-5: 41 96% 65%;
-  --shadow-2xs: 0px 2px 0px 0px hsl(222 47% 4% / 0.00);
-  --shadow-xs: 0px 2px 0px 0px hsl(222 47% 4% / 0.00);
-  --shadow-sm: 0px 2px 0px 0px hsl(222 47% 4% / 0.00), 0px 1px 2px -1px hsl(222 47% 4% / 0.00);
-  --shadow: 0px 2px 0px 0px hsl(222 47% 4% / 0.00), 0px 1px 2px -1px hsl(222 47% 4% / 0.00);
-  --shadow-md: 0px 2px 0px 0px hsl(222 47% 4% / 0.00), 0px 2px 4px -1px hsl(222 47% 4% / 0.00);
-  --shadow-lg: 0px 2px 0px 0px hsl(222 47% 4% / 0.00), 0px 4px 6px -1px hsl(222 47% 4% / 0.00);
-  --shadow-xl: 0px 2px 0px 0px hsl(222 47% 4% / 0.00), 0px 8px 10px -1px hsl(222 47% 4% / 0.00);
-  --shadow-2xl: 0px 2px 0px 0px hsl(222 47% 4% / 0.00);
-
-/* Fallback for older browsers */
-  --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --primary-border: hsl(var(--primary));
-  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --muted-border: hsl(var(--muted));
-  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --accent-border: hsl(var(--accent));
-  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
-
-  /* Fallback for older browsers */
-  --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply font-sans antialiased bg-background text-foreground;
-  }
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/**
- * Using the elevate system.
- * Automatic contrast adjustment.
- *
- * <element className="hover-elevate" />
- * <element className="active-elevate-2" />
- *
- * // Using the tailwind utility when a data attribute is "on"
- * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
- * // Or manually controlling the toggle state
- * <element className="toggle-elevate toggle-elevated" />
- *
- * Elevation systems have to handle many states.
- * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
- * - toggled or not
- * - focused or not (this is not handled with these utilities)
- *
- * Even without handling focused or not, this is six possible combinations that
- * need to be distinguished from eachother visually.
- */
-@layer utilities {
-
-  /* Hide ugly search cancel button in Chrome until we can style it properly */
-  input[type="search"]::-webkit-search-cancel-button {
-    @apply hidden;
-  }
-
-  /* Placeholder styling for contentEditable div */
-  [contenteditable][data-placeholder]:empty::before {
-    content: attr(data-placeholder);
-    color: hsl(var(--muted-foreground));
-    pointer-events: none;
-  }
-
-  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
-   * buttons/badges can remove the automatic brightness adjustment on interactions
-   * and program their own. */
-  .no-default-hover-elevate {}
-
-  .no-default-active-elevate {}
-
-
-  /**
-   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
-   * This way they can stack/compound. Both will overlap the parent's borders!
-   * So borders will be automatically adjusted both on toggle, and hover/active,
-   * and they will be compounded.
-   */
-  .toggle-elevate::before,
-  .toggle-elevate-2::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0px;
-    /*border-radius: inherit;   match rounded corners */
-    border-radius: inherit;
-    z-index: -1;
-    /* sits behind content but above backdrop */
-  }
-
-  .toggle-elevate.toggle-elevated::before {
-    background-color: var(--elevate-2);
-  }
-
-  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
-  .border.toggle-elevate::before {
-    inset: -1px;
-  }
-
-  /* Does not work on elements with overflow:hidden! */
-  .hover-elevate:not(.no-default-hover-elevate),
-  .active-elevate:not(.no-default-active-elevate),
-  .hover-elevate-2:not(.no-default-hover-elevate),
-  .active-elevate-2:not(.no-default-active-elevate) {
-    position: relative;
-    z-index: 0;
-  }
-
-  .hover-elevate:not(.no-default-hover-elevate)::after,
-  .active-elevate:not(.no-default-active-elevate)::after,
-  .hover-elevate-2:not(.no-default-hover-elevate)::after,
-  .active-elevate-2:not(.no-default-active-elevate)::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0px;
-    /*border-radius: inherit;   match rounded corners */
-    border-radius: inherit;
-    z-index: 999;
-    /* sits in front of content */
-  }
-
-  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
-  .active-elevate:active:not(.no-default-active-elevate)::after {
-    background-color: var(--elevate-1);
-  }
-
-  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
-  .active-elevate-2:active:not(.no-default-active-elevate)::after {
-    background-color: var(--elevate-2);
-  }
-
-  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
-    inset: -1px;
-  }
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
+
+.glass-header {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-footer {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enterprise Color Gradients */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--indigo-600), var(--indigo-400));
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--slate-600), var(--slate-400));
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--cyan-600), var(--cyan-400));
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, var(--success), var(--success));
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, var(--warning), var(--warning));
+}
+
+.gradient-error {
+  background: linear-gradient(135deg, var(--error), var(--error));
+}
+
+/* Enterprise Text Colors */
+.text-primary {
+  color: var(--indigo-500);
+}
+
+.text-secondary {
+  color: var(--slate-500);
+}
+
+.text-accent {
+  color: var(--cyan-500);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+/* Enterprise Border Colors */
+.border-primary {
+  border-color: var(--indigo-500);
+}
+
+.border-secondary {
+  border-color: var(--slate-500);
+}
+
+.border-accent {
+  border-color: var(--cyan-500);
+}
+
+.border-success {
+  border-color: var(--success);
+}
+
+.border-warning {
+  border-color: var(--warning);
+}
+
+.border-error {
+  border-color: var(--error);
+}
+
+/* Enterprise Background Colors */
+.bg-primary {
+  background-color: var(--indigo-500);
+}
+
+.bg-secondary {
+  background-color: var(--slate-500);
+}
+
+.bg-accent {
+  background-color: var(--cyan-500);
+}
+
+.bg-success {
+  background-color: var(--success);
+}
+
+.bg-warning {
+  background-color: var(--warning);
+}
+
+.bg-error {
+  background-color: var(--error);
+}
+
+/* Enterprise Hover Effects */
+.hover-primary:hover {
+  background-color: var(--indigo-600);
+  border-color: var(--indigo-600);
+}
+
+.hover-secondary:hover {
+  background-color: var(--slate-600);
+  border-color: var(--slate-600);
+}
+
+.hover-accent:hover {
+  background-color: var(--cyan-600);
+  border-color: var(--cyan-600);
+}
+
+.hover-success:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.hover-warning:hover {
+  background-color: var(--warning);
+  border-color: var(--warning);
+}
+
+.hover-error:hover {
+  background-color: var(--error);
+  border-color: var(--error);
+}
+
+/* Enterprise Focus Effects */
+.focus-primary:focus {
+  border-color: var(--indigo-600);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.focus-secondary:focus {
+  border-color: var(--slate-600);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.focus-accent:focus {
+  border-color: var(--cyan-600);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.focus-success:focus {
+  border-color: var(--success);
+  box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.2);
+}
+
+.focus-warning:focus {
+  border-color: var(--warning);
+  box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.2);
+}
+
+.focus-error:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.2);
+}
+
+/* Enterprise Button Variants */
+.btn-primary {
+  background-color: var(--indigo-500);
+  border-color: var(--indigo-500);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--indigo-600);
+  border-color: var(--indigo-600);
+}
+
+.btn-secondary {
+  background-color: var(--slate-500);
+  border-color: var(--slate-500);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--slate-600);
+  border-color: var(--slate-600);
+}
+
+.btn-accent {
+  background-color: var(--cyan-500);
+  border-color: var(--cyan-500);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: var(--cyan-600);
+  border-color: var(--cyan-600);
+}
+
+.btn-success {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-warning {
+  background-color: var(--warning);
+  border-color: var(--warning);
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: var(--warning);
+  border-color: var(--warning);
+}
+
+.btn-error {
+  background-color: var(--error);
+  border-color: var(--error);
+  color: white;
+}
+
+.btn-error:hover {
+  background-color: var(--error);
+  border-color: var(--error);
+}
+
+/* Enterprise Card Variants */
+.card-primary {
+  background-color: var(--indigo-500);
+  border-color: var(--indigo-500);
+}
+
+.card-secondary {
+  background-color: var(--slate-500);
+  border-color: var(--slate-500);
+}
+
+.card-accent {
+  background-color: var(--cyan-500);
+  border-color: var(--cyan-500);
+}
+
+.card-success {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.card-warning {
+  background-color: var(--warning);
+  border-color: var(--warning);
+}
+
+.card-error {
+  background-color: var(--error);
+  border-color: var(--error);
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Input Variants */
+.input-primary {
+  background-color: var(--indigo-500);
+  border-color: var(--indigo-500);
+  color: white;
+}
+
+.input-primary::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-secondary {
+  background-color: var(--slate-500);
+  border-color: var(--slate-500);
+  color: white;
+}
+
+.input-secondary::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-accent {
+  background-color: var(--cyan-500);
+  border-color: var(--cyan-500);
+  color: white;
+}
+
+.input-accent::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Enterprise Textarea Variants */
+.textarea-primary {
+  background-color: var(--indigo-500);
+  border-color: var(--indigo-500);
+  color: white;
+}
+
+.textarea-primary::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.textarea-secondary {
+  background-color: var(--slate-500);
+  border-color: var(--slate-500);
+  color: white;
+}
+
+.textarea-secondary::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.textarea-accent {
+  background-color: var(--cyan-500);
+  border-color: var(--cyan-500);
+  color: white;
+}
+
+.textarea-accent::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Enterprise Select Variants */
+.select-primary {
+  background-color: var(--indigo-500);
+  border-color: var(--indigo-500);
+  color: white;
+}
+
+.select-secondary {
+  background-color: var(--slate-500);
+  border-color: var(--slate-500);
+  color: white;
+}
+
+.select-accent {
+  background-color: var(--cyan-500);
+  border-color: var(--cyan-500);
+  color: white;
+}
+
+/* Enterprise Progress Variants */
+.progress-primary {
+  background-color: var(--indigo-500);
+}
+
+.progress-secondary {
+  background-color: var(--slate-500);
+}
+
+.progress-accent {
+  background-color: var(--cyan-500);
+}
+
+.progress-success {
+  background-color: var(--success);
+}
+
+.progress-warning {
+  background-color: var(--warning);
+}
+
+.progress-error {
+  background-color: var(--error);
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;
+}
+
+/* Enterprise Badge Variants */
+.badge-primary {
+  background-color: var(--indigo-500);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--slate-500);
+  color: white;
+}
+
+.badge-accent {
+  background-color: var(--cyan-500);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--error);
+  color: white;

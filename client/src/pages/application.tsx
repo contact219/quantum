@@ -7,8 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { suretyPortalBlueprint } from "@/lib/suretyBlueprint";
 import { useLocation } from "wouter";
-import { Upload, CheckCircle, AlertCircle, FileText, DollarSign, PenTool } from "lucide-react";
+import { Upload, CheckCircle, AlertCircle, FileText, DollarSign, PenTool, Sparkles } from "lucide-react";
 
 type ApplicationStatus = "draft" | "submitted" | "approved" | "rejected" | "bonded";
 type DocumentType = "bond_request" | "contract" | "financials" | "credit_auth" | "resume" | "job_breakdown" | "prior_bonds" | "work_schedule";
@@ -63,16 +64,12 @@ export default function ApplicationPortal() {
     annualRevenue: "",
   });
 
-  const documentTypes: { value: DocumentType; label: string; required: boolean }[] = [
-    { value: "bond_request", label: "Bond Request Form", required: true },
-    { value: "contract", label: "Project Contract / Bid Specs", required: true },
-    { value: "financials", label: "Financial Statements", required: true },
-    { value: "credit_auth", label: "Credit Authorization", required: true },
-    { value: "resume", label: "Resume / Experience", required: false },
-    { value: "job_breakdown", label: "Job Cost Breakdown", required: false },
-    { value: "prior_bonds", label: "Prior Bond History", required: false },
-    { value: "work_schedule", label: "Work-on-Hand Schedule", required: false },
-  ];
+  const documentTypes: { value: DocumentType; label: string; required: boolean }[] =
+    suretyPortalBlueprint.contractorUploads.map((document) => ({
+      value: document.type as DocumentType,
+      label: document.label,
+      required: document.required,
+    }));
 
   useEffect(() => {
     fetchApplications();
@@ -247,6 +244,51 @@ export default function ApplicationPortal() {
 
           {/* Applications List Tab */}
           <TabsContent value="list" className="space-y-6">
+            <Card className="border-primary/20 bg-gradient-to-br from-primary/5 via-background to-background">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                  {suretyPortalBlueprint.intakeLabel}
+                </CardTitle>
+                <CardDescription>
+                  This portal is structured around a contractor upload checklist plus an automated underwriting workflow.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-6 lg:grid-cols-2">
+                <div className="space-y-3">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                    Contractor uploads
+                  </p>
+                  <div className="space-y-2">
+                    {suretyPortalBlueprint.contractorUploads.map((document) => (
+                      <div key={document.type} className="flex items-center justify-between rounded-lg border bg-background/80 px-3 py-2">
+                        <span className="text-sm">{document.label}</span>
+                        <Badge variant={document.required ? "default" : "outline"}>
+                          {document.required ? "Required" : "Optional"}
+                        </Badge>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                    Portal automation
+                  </p>
+                  <div className="space-y-2">
+                    {suretyPortalBlueprint.automatedSteps.map((step, index) => (
+                      <div key={step.id} className="rounded-lg border bg-background/80 p-3">
+                        <p className="text-sm font-medium">
+                          {index + 1}. {step.title}
+                        </p>
+                        <p className="mt-1 text-sm text-muted-foreground">{step.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card>
               <CardHeader>
                 <CardTitle>Start New Application</CardTitle>

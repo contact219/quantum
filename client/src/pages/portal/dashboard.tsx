@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { suretyPortalBlueprint } from "@/lib/suretyBlueprint";
 import { 
   FileText, 
   Shield, 
@@ -116,6 +117,50 @@ export default function PortalDashboard() {
           </Card>
         ))}
       </div>
+
+      <Card className="border-primary/20 bg-gradient-to-br from-primary/5 via-background to-background">
+        <CardHeader>
+          <CardTitle>Quantum Surety intake blueprint</CardTitle>
+          <CardDescription>
+            The current portal flow is organized around document intake, automated underwriting checks, preliminary pricing, and digital bond execution.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Contractor submission package
+            </p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {suretyPortalBlueprint.contractorUploads.map((document) => (
+                <div key={document.type} className="rounded-lg border bg-background/80 px-3 py-2 text-sm">
+                  <div className="flex items-center justify-between gap-3">
+                    <span>{document.label}</span>
+                    <Badge variant={document.required ? "default" : "outline"}>
+                      {document.required ? "Required" : "Optional"}
+                    </Badge>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Automated portal actions
+            </p>
+            <div className="space-y-2">
+              {suretyPortalBlueprint.automatedSteps.map((step, index) => (
+                <div key={step.id} className="rounded-lg border bg-background/80 p-3">
+                  <p className="text-sm font-medium">
+                    {index + 1}. {step.title}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>

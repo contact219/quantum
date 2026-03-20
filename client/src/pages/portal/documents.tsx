@@ -6,8 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { FileText, Upload, X, CheckCircle, AlertCircle } from "lucide-react";
+import { FileText, Upload, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { requiredSuretyDocuments, suretyPortalBlueprint } from "@/lib/suretyBlueprint";
 
 interface ApplicationDocument {
   id: string;
@@ -18,16 +19,7 @@ interface ApplicationDocument {
   createdAt: string;
 }
 
-const REQUIRED_DOCUMENTS = [
-  { type: "bond_request", label: "Bond Request Form", required: true },
-  { type: "contract", label: "Project Contract/Bid Specs", required: true },
-  { type: "financials", label: "Financial Statements", required: true },
-  { type: "credit_auth", label: "Credit Authorization", required: true },
-  { type: "resume", label: "Resume/Experience", required: false },
-  { type: "job_breakdown", label: "Job Cost Breakdown", required: false },
-  { type: "prior_bonds", label: "Prior Bond History", required: false },
-  { type: "work_schedule", label: "Work-on-Hand Schedule", required: false },
-];
+const REQUIRED_DOCUMENTS = suretyPortalBlueprint.contractorUploads;
 
 export default function PortalDocuments() {
   const { toast } = useToast();
@@ -164,7 +156,7 @@ export default function PortalDocuments() {
     return documents.filter(d => d.documentType === type).length;
   };
 
-  const allRequiredDocsUploaded = REQUIRED_DOCUMENTS.filter(d => d.required).every(
+  const allRequiredDocsUploaded = requiredSuretyDocuments.every(
     d => getUploadedCount(d.type) > 0
   );
 
@@ -178,6 +170,43 @@ export default function PortalDocuments() {
           Submit your required documents for underwriting review
         </p>
       </div>
+
+      <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-background">
+        <CardHeader>
+          <CardTitle>Portal Blueprint</CardTitle>
+          <CardDescription>
+            This page now mirrors the intended intake flow: contractor uploads first, then automated processing takes over.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-6 lg:grid-cols-2">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contractor uploads</p>
+            <div className="space-y-2">
+              {REQUIRED_DOCUMENTS.map((doc) => (
+                <div key={doc.type} className="flex items-center justify-between rounded-lg border bg-background/80 px-3 py-2">
+                  <span className="text-sm">{doc.label}</span>
+                  <Badge variant={doc.required ? "default" : "outline"}>
+                    {doc.required ? "Required" : "Optional"}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">What the portal does automatically</p>
+            <div className="space-y-2">
+              {suretyPortalBlueprint.automatedSteps.map((step, index) => (
+                <div key={step.id} className="rounded-lg border bg-background/80 p-3">
+                  <p className="text-sm font-medium">
+                    {index + 1}. {step.title}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {allRequiredDocsUploaded && (
         <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/20">

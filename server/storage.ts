@@ -841,18 +841,29 @@ export class MemStorage implements IStorage {
   async getAnalyticsSnapshot(): Promise<any> {
     const apps = Array.from(this.applicationsMap.values());
     const quotes = Array.from(this.quotes.values());
-    const carriers = Array.from(this.carriersMap.values());
+    const approvedApplications = apps.filter(a => a.underwritingStatus === "approved").length;
+    const rejectedApplications = apps.filter(a => a.underwritingStatus === "rejected").length;
+    const averageScore = apps.length
+      ? Math.round(apps.reduce((total, app) => total + Number((app.ruleValidationResults as any)?.score || 0), 0) / apps.length)
+      : 0;
+    const lowRiskApplications = apps.filter(a => (a.ruleValidationResults as any)?.riskLevel === "low").length;
+    const highRiskApplications = apps.filter(a => (a.ruleValidationResults as any)?.riskLevel === "high").length;
+    const automatedReady = apps.filter(a => ((a.ruleValidationResults as any)?.workflowTriggers || []).includes("generate_preliminary_quote")).length;
 
     return {
       totalQuotes: quotes.length,
       totalApplications: apps.length,
       totalBonds: this.bonds.size,
-      approvedApplications: apps.filter(a => a.underwritingStatus === "approved").length,
-      rejectedApplications: apps.filter(a => a.underwritingStatus === "rejected").length,
+      approvedApplications,
+      rejectedApplications,
       totalPremium: "0",
       totalCommissions: "0",
       averageApprovalTime: 3600000,
-      conversionRate: "45.50",
+      conversionRate: apps.length ? ((approvedApplications / apps.length) * 100).toFixed(2) : "0.00",
+      averageRiskScore: averageScore,
+      lowRiskApplications,
+      highRiskApplications,
+      automatedReady,
     };
   }
 
@@ -1395,17 +1406,29 @@ export class DbStorage implements IStorage {
   async getAnalyticsSnapshot(): Promise<any> {
     const appsCount = await this.db.select().from(suretyApplications);
     const quotesCount = await this.db.select().from(quotes);
+    const approvedApplications = appsCount.filter((a: any) => a.underwritingStatus === "approved").length;
+    const rejectedApplications = appsCount.filter((a: any) => a.underwritingStatus === "rejected").length;
+    const averageRiskScore = appsCount.length
+      ? Math.round(appsCount.reduce((total: number, app: any) => total + Number(app.ruleValidationResults?.score || 0), 0) / appsCount.length)
+      : 0;
+    const lowRiskApplications = appsCount.filter((a: any) => a.ruleValidationResults?.riskLevel === "low").length;
+    const highRiskApplications = appsCount.filter((a: any) => a.ruleValidationResults?.riskLevel === "high").length;
+    const automatedReady = appsCount.filter((a: any) => (a.ruleValidationResults?.workflowTriggers || []).includes("generate_preliminary_quote")).length;
     
     return {
       totalQuotes: quotesCount.length,
       totalApplications: appsCount.length,
       totalBonds: 0,
-      approvedApplications: appsCount.filter((a: any) => a.underwritingStatus === "approved").length,
-      rejectedApplications: appsCount.filter((a: any) => a.underwritingStatus === "rejected").length,
+      approvedApplications,
+      rejectedApplications,
       totalPremium: "0",
       totalCommissions: "0",
       averageApprovalTime: 3600000,
-      conversionRate: "45.50",
+      conversionRate: appsCount.length ? ((approvedApplications / appsCount.length) * 100).toFixed(2) : "0.00",
+      averageRiskScore,
+      lowRiskApplications,
+      highRiskApplications,
+      automatedReady,
     };
   }
 

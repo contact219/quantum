@@ -254,27 +254,27 @@ export default function PortalDocuments() {
               const isComplete = uploadedCount > 0;
               
               return (
-                <div key={doc.type} className="flex items-center justify-between p-3 border rounded-lg">
-                  <div className="flex items-center gap-3">
+                <div key={doc.type} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 border rounded-lg">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     {isComplete ? (
-                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
                     ) : (
-                      <div className="w-5 h-5 border-2 border-muted-foreground rounded-full" />
+                      <div className="w-5 h-5 border-2 border-muted-foreground rounded-full flex-shrink-0" />
                     )}
-                    <div>
-                      <p className="font-medium text-sm">{doc.label}</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-sm break-words">{doc.label}</p>
                       {doc.required && (
-                        <Badge variant="outline" className="text-xs mt-1">Required</Badge>
+                        <Badge variant="outline" className="text-xs mt-1 w-fit">Required</Badge>
                       )}
                     </div>
                   </div>
                   <div className="text-right">
                     {uploadedCount > 0 ? (
-                      <Badge variant="default" className="bg-green-600">
+                      <Badge variant="default" className="bg-green-600 whitespace-nowrap">
                         {uploadedCount} file{uploadedCount !== 1 ? 's' : ''}
                       </Badge>
                     ) : (
-                      <p className="text-xs text-muted-foreground">Not uploaded</p>
+                      <p className="text-xs text-muted-foreground whitespace-nowrap">Not uploaded</p>
                     )}
                   </div>
                 </div>
@@ -296,47 +296,92 @@ export default function PortalDocuments() {
               <p className="text-muted-foreground">No documents uploaded yet</p>
             </div>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Document Name</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Upload Date</TableHead>
-                  <TableHead>Size</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+            <>
+              {/* Mobile-friendly card view */}
+              <div className="space-y-3 md:hidden">
                 {documents.map((doc) => (
-                  <TableRow key={doc.id} data-testid={`row-document-${doc.id}`}>
-                    <TableCell className="font-medium">
-                      <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-muted-foreground" />
-                        {doc.fileName}
+                  <div key={doc.id} className="border rounded-lg p-4 space-y-2" data-testid={`card-document-${doc.id}`}>
+                    <div className="flex items-start gap-2">
+                      <FileText className="w-4 h-4 text-muted-foreground mt-1 flex-shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm break-words">{doc.fileName}</p>
                       </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline">{getDocumentLabel(doc.documentType)}</Badge>
-                    </TableCell>
-                    <TableCell className="text-sm text-muted-foreground">
-                      {new Date(doc.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell className="text-sm text-muted-foreground">
-                      {formatFileSize(doc.fileSize)}
-                    </TableCell>
-                    <TableCell>
-                      {doc.validationStatus === 'valid' ? (
-                        <Badge variant="default" className="bg-green-600">Valid</Badge>
-                      ) : doc.validationStatus === 'invalid' ? (
-                        <Badge variant="destructive">Invalid</Badge>
-                      ) : (
-                        <Badge variant="outline">Pending</Badge>
-                      )}
-                    </TableCell>
-                  </TableRow>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <p className="text-muted-foreground">Type</p>
+                        <Badge variant="outline" className="mt-1">{getDocumentLabel(doc.documentType)}</Badge>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Upload Date</p>
+                        <p className="mt-1">{new Date(doc.createdAt).toLocaleDateString()}</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Size</p>
+                        <p className="mt-1">{formatFileSize(doc.fileSize)}</p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground">Status</p>
+                        <div className="mt-1">
+                          {doc.validationStatus === 'valid' ? (
+                            <Badge variant="default" className="bg-green-600">Valid</Badge>
+                          ) : doc.validationStatus === 'invalid' ? (
+                            <Badge variant="destructive">Invalid</Badge>
+                          ) : (
+                            <Badge variant="outline">Pending</Badge>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
+              </div>
+
+              {/* Desktop table view */}
+              <div className="hidden md:block overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Document Name</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Upload Date</TableHead>
+                      <TableHead>Size</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {documents.map((doc) => (
+                      <TableRow key={doc.id} data-testid={`row-document-${doc.id}`}>
+                        <TableCell className="font-medium">
+                          <div className="flex items-center gap-2">
+                            <FileText className="w-4 h-4 text-muted-foreground" />
+                            {doc.fileName}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{getDocumentLabel(doc.documentType)}</Badge>
+                        </TableCell>
+                        <TableCell className="text-sm text-muted-foreground">
+                          {new Date(doc.createdAt).toLocaleDateString()}
+                        </TableCell>
+                        <TableCell className="text-sm text-muted-foreground">
+                          {formatFileSize(doc.fileSize)}
+                        </TableCell>
+                        <TableCell>
+                          {doc.validationStatus === 'valid' ? (
+                            <Badge variant="default" className="bg-green-600">Valid</Badge>
+                          ) : doc.validationStatus === 'invalid' ? (
+                            <Badge variant="destructive">Invalid</Badge>
+                          ) : (
+                            <Badge variant="outline">Pending</Badge>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </>
           )}
         </CardContent>
       </Card>

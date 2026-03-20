@@ -21,6 +21,7 @@ interface Quote {
   id: string;
   bondType: string;
   projectName: string;
+  businessName?: string;
   contractValue?: string;
   status: string;
   estimatedPremium?: string;
@@ -327,7 +328,7 @@ export default function QuoteDetail() {
         open={signingModalOpen}
         onOpenChange={setSigningModalOpen}
         quoteId={quoteId}
-        companyName={quote?.companyName || quote?.projectName || "Your Company"}
+        companyName={quote?.businessName || quote?.projectName || "Your Company"}
       />
     </div>
   );

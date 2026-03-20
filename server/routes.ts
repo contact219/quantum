@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
+import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
 import bcrypt from "bcryptjs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -852,7 +852,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         contactPhone,
         businessType,
         yearsInBusiness: yearsInBusiness ? parseInt(yearsInBusiness) : 0,
-        annualRevenue: annualRevenue ? annualRevenue.toString() : undefined,
+        annualRevenue: annualRevenue ? annualRevenue.toString() : null,
         status: "draft",
       });
 
@@ -927,6 +927,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               contactPhone: quote.contactPhone || "",
               businessType: "contractor",
               yearsInBusiness: 0,
+              annualRevenue: null,
               status: "draft",
             });
             
@@ -934,7 +935,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             if (application) {
               await storage.updateApplication(application.id, {
                 preliminaryQuoteId: quoteId,
-                preliminaryPremium: parseFloat(quote.estimatedPremium || "0"),
+                preliminaryPremium: quote.estimatedPremium || "0",
               });
             }
           } else if (application) {
@@ -1213,10 +1214,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         if (admin.email) {
           await sendApplicationStatusEmail(
             admin.email,
-            application.companyName,
             application.applicationNumber,
-            "User has signed the agreement",
-            `${process.env.APP_URL || "http://localhost:5000"}/admin`
+            "agreement_signed",
+            `${application.companyName} has signed the agreement. Review it here: ${process.env.APP_URL || "http://localhost:5000"}/admin`
           );
         }
       }

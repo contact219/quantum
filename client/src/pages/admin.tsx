@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
+import type { Quote } from "@shared/schema";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -48,7 +49,7 @@ import {
 
 export default function Admin() {
   // Fetch quotes from API
-  const { data: quotes = [], isLoading: quotesLoading } = useQuery({
+  const { data: quotes = [], isLoading: quotesLoading } = useQuery<Quote[]>({
     queryKey: ['/api/quotes'],
     queryFn: async () => {
       const response = await fetch('/api/quotes');

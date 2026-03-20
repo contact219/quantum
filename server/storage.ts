@@ -185,8 +185,14 @@ export class MemStorage implements IStorage {
       username: "demo",
       password: "demo123",
       email: "john@abcconstruction.com",
+      firstName: "John",
+      lastName: "Doe",
+      profileImageUrl: null,
       companyName: "ABC Construction LLC",
       role: "client",
+      permission: "view",
+      createdAt: new Date("2023-01-01"),
+      updatedAt: new Date("2023-01-01"),
     };
     this.users.set(demoUser.id, demoUser);
 
@@ -229,7 +235,7 @@ export class MemStorage implements IStorage {
         userId: "user-1",
         quoteId: null,
         bondType: "Performance Bond",
-        penal_sum: "500000",
+        penalSum: "500000",
         premium: "7500",
         effectiveDate: new Date("2023-06-15"),
         expirationDate: new Date("2024-12-31"),
@@ -244,7 +250,7 @@ export class MemStorage implements IStorage {
         userId: "user-1",
         quoteId: null,
         bondType: "Payment Bond",
-        penal_sum: "500000",
+        penalSum: "500000",
         premium: "7500",
         effectiveDate: new Date("2023-06-15"),
         expirationDate: new Date("2024-12-31"),
@@ -259,7 +265,7 @@ export class MemStorage implements IStorage {
         userId: "user-1",
         quoteId: null,
         bondType: "Performance Bond",
-        penal_sum: "750000",
+        penalSum: "750000",
         premium: "11250",
         effectiveDate: new Date("2023-09-01"),
         expirationDate: new Date("2024-08-15"),
@@ -287,7 +293,7 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
+    const user: User = { firstName: null, lastName: null, profileImageUrl: null, username: null, password: null, email: null, companyName: null, role: "client", permission: "view", createdAt: new Date(), updatedAt: new Date(), ...insertUser, id };
     this.users.set(id, user);
     return user;
   }
@@ -300,12 +306,13 @@ export class MemStorage implements IStorage {
     const user = this.users.get(userData.id);
     if (user) {
       // Update existing user
-      const updated = {
+      const updated: User = {
         ...user,
         email: userData.email ?? user.email,
         firstName: userData.firstName ?? user.firstName,
         lastName: userData.lastName ?? user.lastName,
         profileImageUrl: userData.profileImageUrl ?? user.profileImageUrl,
+        updatedAt: new Date(),
       };
       this.users.set(userData.id, updated);
       return updated;
@@ -313,14 +320,15 @@ export class MemStorage implements IStorage {
       // Create new user
       const newUser: User = {
         id: userData.id,
-        email: userData.email,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        profileImageUrl: userData.profileImageUrl,
+        email: userData.email ?? null,
+        firstName: userData.firstName ?? null,
+        lastName: userData.lastName ?? null,
+        profileImageUrl: userData.profileImageUrl ?? null,
         username: null,
         password: null,
         companyName: null,
         role: "client",
+        permission: "view",
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -333,6 +341,17 @@ export class MemStorage implements IStorage {
   async createQuote(insertQuote: InsertQuote): Promise<Quote> {
     const id = `QS-${Date.now()}`;
     const quote: Quote = {
+      userId: null,
+      quoteNumber: null,
+      contractValue: null,
+      projectName: null,
+      projectState: null,
+      contactPhone: null,
+      businessType: null,
+      yearsInBusiness: null,
+      annualRevenue: null,
+      creditScore: null,
+      notes: null,
       ...insertQuote,
       id,
       status: "pending",
@@ -383,6 +402,14 @@ export class MemStorage implements IStorage {
   async createBond(insertBond: InsertBond): Promise<Bond> {
     const id = randomUUID();
     const bond: Bond = {
+      userId: null,
+      quoteId: null,
+      effectiveDate: null,
+      expirationDate: null,
+      status: "active",
+      bondNumber: null,
+      projectName: null,
+      obligee: null,
       ...insertBond,
       id,
       createdAt: new Date(),
@@ -407,6 +434,15 @@ export class MemStorage implements IStorage {
   async createProject(insertProject: InsertProject): Promise<Project> {
     const id = randomUUID();
     const project: Project = {
+      userId: null,
+      description: null,
+      contractValue: null,
+      state: null,
+      status: "active",
+      startDate: null,
+      completionDate: null,
+      obligee: null,
+      bondIds: null,
       ...insertProject,
       id,
       createdAt: new Date(),
@@ -431,6 +467,7 @@ export class MemStorage implements IStorage {
   async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
     const id = randomUUID();
     const message: ChatMessage = {
+      metadata: null,
       ...insertMessage,
       id,
       createdAt: new Date(),
@@ -573,7 +610,7 @@ export class MemStorage implements IStorage {
 
   async createCarrierRules(rules: InsertCarrierRules): Promise<CarrierRules> {
     const id = randomUUID();
-    const newRules: CarrierRules = { ...rules, id, createdAt: new Date() } as CarrierRules;
+    const newRules: CarrierRules = { ...rules, id, createdAt: new Date(), updatedAt: new Date() } as CarrierRules;
     this.carrierRulesMap.set(id, newRules);
     return newRules;
   }
@@ -604,12 +641,12 @@ export class MemStorage implements IStorage {
   async createOrUpdateCapacity(capacity: InsertCarrierCapacity): Promise<CarrierCapacity> {
     const existing = await this.getCarrierCapacity(capacity.carrierId, capacity.capacityYear);
     if (existing) {
-      const updated = { ...existing, ...capacity };
+      const updated = { ...existing, ...capacity, lastUpdated: new Date() };
       this.carrierCapacityMap.set(existing.id, updated);
       return updated;
     }
     const id = randomUUID();
-    const newCapacity: CarrierCapacity = { ...capacity, id, createdAt: new Date() } as CarrierCapacity;
+    const newCapacity: CarrierCapacity = { ...capacity, id, createdAt: new Date(), lastUpdated: new Date() } as CarrierCapacity;
     this.carrierCapacityMap.set(id, newCapacity);
     return newCapacity;
   }
@@ -624,12 +661,12 @@ export class MemStorage implements IStorage {
   async updateCarrierMetrics(carrierId: string, metrics: Partial<InsertCarrierMetrics>): Promise<CarrierMetrics | undefined> {
     const existing = await this.getCarrierMetrics(carrierId);
     if (existing) {
-      const updated = { ...existing, ...metrics };
+      const updated = { ...existing, ...metrics, lastUpdated: new Date() };
       this.carrierMetricsMap.set(existing.id, updated);
       return updated;
     }
     const id = randomUUID();
-    const newMetrics: CarrierMetrics = { carrierId, ...metrics, id, createdAt: new Date() } as CarrierMetrics;
+    const newMetrics: CarrierMetrics = { carrierId, quotesSubmitted: 0, quotesApproved: 0, quotesRejected: 0, averageApprovalTimeMs: null, totalCommissionsEarned: "0", averagePremium: null, customerSatisfactionScore: null, lastUpdated: new Date(), ...metrics, id } as CarrierMetrics;
     this.carrierMetricsMap.set(id, newMetrics);
     return newMetrics;
   }
@@ -687,6 +724,22 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const appNum = `APP-${Date.now()}`;
     const newApp: SuretyApplication = {
+      contactPhone: null,
+      businessType: null,
+      yearsInBusiness: null,
+      annualRevenue: null,
+      creditScore: null,
+      creditPullStatus: "pending",
+      creditPullData: null,
+      underwritingStatus: "pending",
+      ruleValidationResults: null,
+      missingDocuments: null,
+      preliminaryQuoteId: null,
+      preliminaryPremium: null,
+      eSignatureStatus: "pending",
+      eSignatureDocumentId: null,
+      status: "draft",
+      notes: null,
       ...app,
       id,
       applicationNumber: appNum,
@@ -720,7 +773,7 @@ export class MemStorage implements IStorage {
 
   async addDocument(doc: InsertApplicationDocument): Promise<ApplicationDocument> {
     const id = randomUUID();
-    const newDoc: ApplicationDocument = { ...doc, id, createdAt: new Date(), updatedAt: new Date() } as ApplicationDocument;
+    const newDoc: ApplicationDocument = { ...doc, id, uploadedAt: new Date(), createdAt: new Date() } as ApplicationDocument;
     this.documentsMap.set(id, newDoc);
     return newDoc;
   }
@@ -751,7 +804,7 @@ export class MemStorage implements IStorage {
 
   async getLatestCreditPull(applicationId: string): Promise<CreditPull | undefined> {
     const pulls = Array.from(this.creditPullsMap.values()).filter(p => p.applicationId === applicationId);
-    return pulls.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())[0];
+    return pulls.sort((a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0))[0];
   }
 
   // Email Notifications methods
@@ -787,13 +840,13 @@ export class MemStorage implements IStorage {
 
   async getAnalyticsSnapshot(): Promise<any> {
     const apps = Array.from(this.applicationsMap.values());
-    const quotes = Array.from(this.quotesMap.values());
+    const quotes = Array.from(this.quotes.values());
     const carriers = Array.from(this.carriersMap.values());
 
     return {
       totalQuotes: quotes.length,
       totalApplications: apps.length,
-      totalBonds: Object.keys(this.bonds).length,
+      totalBonds: this.bonds.size,
       approvedApplications: apps.filter(a => a.underwritingStatus === "approved").length,
       rejectedApplications: apps.filter(a => a.underwritingStatus === "rejected").length,
       totalPremium: "0",

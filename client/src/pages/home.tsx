@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import LogoStrip from "@/components/marketing/LogoStrip";
-import aiOrbit from "@assets/lottie/ai-orbit.json";
+import aiOrbit from "../../../attached_assets/lottie/ai-orbit.json";
 import {
   FileText,
   CheckCircle,

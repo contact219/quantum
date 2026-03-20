@@ -261,20 +261,38 @@ export const insertCarrierSchema = createInsertSchema(carriers).omit({ id: true,
 export const insertQuoteCarrierSchema = createInsertSchema(quoteCarriers).omit({ id: true, createdAt: true });
 export const insertCarrierRulesSchema = createInsertSchema(carrierRules).omit({ id: true, createdAt: true, updatedAt: true });
 export const insertCarrierCapacitySchema = createInsertSchema(carrierCapacity).omit({ id: true, createdAt: true });
-export const insertCarrierMetricsSchema = createInsertSchema(carrierMetrics).omit({ id: true, createdAt: true });
+export const insertCarrierMetricsSchema = z.object({
+  carrierId: z.string(),
+  quotesSubmitted: z.number().int().optional().nullable(),
+  quotesApproved: z.number().int().optional().nullable(),
+  quotesRejected: z.number().int().optional().nullable(),
+  averageApprovalTimeMs: z.number().int().optional().nullable(),
+  totalCommissionsEarned: z.string().optional().nullable(),
+  averagePremium: z.string().optional().nullable(),
+  customerSatisfactionScore: z.string().optional().nullable(),
+  lastUpdated: z.date().optional().nullable(),
+});
 
-export const insertSuretyApplicationSchema = createInsertSchema(suretyApplications).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertSuretyApplicationSchema = createInsertSchema(suretyApplications).omit({ id: true, applicationNumber: true, createdAt: true, updatedAt: true });
 export const insertApplicationDocumentSchema = createInsertSchema(applicationDocuments).omit({ id: true, createdAt: true });
 export const insertCreditPullSchema = createInsertSchema(creditPulls).omit({ id: true, createdAt: true });
 
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, updatedAt: true });
-export const upsertUserSchema = createInsertSchema(users).pick({ 
-  id: true, 
-  email: true, 
-  firstName: true, 
-  lastName: true, 
-  profileImageUrl: true 
-});
+export const upsertUserSchema = createInsertSchema(users)
+  .pick({
+    id: true,
+    email: true,
+    firstName: true,
+    lastName: true,
+    profileImageUrl: true,
+  })
+  .extend({
+    id: z.string(),
+    email: z.string().nullable().optional(),
+    firstName: z.string().nullable().optional(),
+    lastName: z.string().nullable().optional(),
+    profileImageUrl: z.string().nullable().optional(),
+  });
 export const insertQuoteSchema = createInsertSchema(quotes).omit({ id: true, createdAt: true, status: true });
 export const insertBondSchema = createInsertSchema(bonds).omit({ id: true, createdAt: true });
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true, createdAt: true });

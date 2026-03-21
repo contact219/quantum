@@ -367,6 +367,10 @@ export default function ApplicationPortal() {
                   </div>
                 </div>
 
+                <p className="mt-4 text-xs text-gray-500" data-testid="text-application-disclaimer">
+                  By submitting this request, you authorize Quantum Surety to pre-qualify your bond application and submit it to appointed insurance carriers for underwriting review. Submission does not guarantee bond approval or issuance.
+                </p>
+
                 <Button onClick={handleCreateApplication} disabled={loading} className="w-full" data-testid="button-create-application">Create Application</Button>
               </CardContent>
             </Card>

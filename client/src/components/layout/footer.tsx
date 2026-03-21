@@ -100,10 +100,7 @@ export function Footer() {
 
           <div className="mx-auto mt-6 max-w-6xl text-center text-sm" data-testid="text-disclaimer">
             <p>
-              Quantum Surety is a licensed insurance producer in the State of Texas and other states where authorized. Bond placement services are provided through appointed insurance carriers and are subject to carrier underwriting and approval.
-            </p>
-            <p className="mt-2">
-              Quantum Surety does not issue surety bonds on its own paper.
+              Quantum Surety is a licensed insurance producer in Texas and other states where authorized. Bond placement services are provided through appointed carrier partners and are subject to carrier underwriting and approval. Quantum Surety does not issue surety bonds on its own paper.
             </p>
           </div>
         </div>

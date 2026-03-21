@@ -1,13 +1,42 @@
 const trustMetrics = [
-  { value: "<24 hrs", label: "Response window" },
-  { value: "$250M+", label: "Program capacity" },
-  { value: "A-rated", label: "Carrier network" },
+  { value: "A-rated", label: "Carrier partners" },
+  { value: "Compliant", label: "Submission process" },
+  { value: "Texas", label: "Licensed producer" },
 ];
 
-const capabilities = [
-  "Delegated intake orchestration",
-  "Executive-level underwriting visibility",
-  "Secure, rapid bond placement workflows",
+const serviceCards = [
+  {
+    title: "License & Permit Surety Bonds",
+    description:
+      "We assist principals in securing surety bonds required by licensing authorities. Submissions are pre-qualified through our underwriting checklist and placed with appointed carriers based on carrier approval.",
+  },
+  {
+    title: "Commercial Surety Bonds",
+    description:
+      "We provide placement services for commercial surety bonds through carrier partners. All bonds are subject to carrier underwriting and approval.",
+  },
+];
+
+const processSteps = [
+  {
+    title: "Submit Your Request",
+    description: "Complete a bond request form with principal details.",
+  },
+  {
+    title: "Pre-Underwriting Review",
+    description:
+      "We evaluate submitted information using our internal criteria aligned with carrier underwriting standards.",
+  },
+  {
+    title: "Carrier Submission",
+    description:
+      "We deliver the pre-qualified submission to the appropriate carrier’s underwriting team for approval.",
+  },
+  {
+    title: "Issuer Approval & Bond Issuance",
+    description:
+      "Once the carrier approves, the bond is executed under carrier authority and delivered to you.",
+  },
 ];
 
 export default function Home() {
@@ -37,14 +66,14 @@ export default function Home() {
               className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
               data-testid="text-hero-headline"
             >
-              Enterprise surety built for secure velocity.
+              Fast, Compliant License &amp; Permit Bond Placement
             </h1>
 
             <p
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              Quantum Surety blends disciplined underwriting, digital precision, and executive-grade service to accelerate bond placement without compromising control.
+              We place surety bonds through A-rated carrier partners using disciplined underwriting and a technology-enabled submission process.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -53,14 +82,14 @@ export default function Home() {
                 className="inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.18)] transition hover:-translate-y-0.5 hover:bg-cyan-200"
                 data-testid="link-hero-primary-cta"
               >
-                Request Executive Review
+                Request Bond Placement
               </a>
               <a
-                href="/construction"
+                href="/resources"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/10"
                 data-testid="link-hero-secondary-cta"
               >
-                Explore Capabilities
+                Review Resources
               </a>
             </div>
 
@@ -80,7 +109,7 @@ export default function Home() {
               className="mt-8 max-w-2xl text-sm leading-6 text-slate-400"
               data-testid="text-hero-disclaimer"
             >
-              All bonds are underwritten by appointed carrier partners and remain subject to final carrier approval. Quantum Surety does not independently issue bonds.
+              All bonds are underwritten and approved by appointed insurance carriers. Quantum Surety does not issue bonds independently.
             </p>
           </div>
 
@@ -93,10 +122,10 @@ export default function Home() {
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(34,211,238,0.15),_transparent_28%),linear-gradient(180deg,_transparent,_rgba(0,0,0,0.2))]" />
                   <div className="relative flex items-start justify-between">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">Live placement matrix</div>
-                      <div className="mt-3 text-2xl font-semibold tracking-tight">Quantum corridor</div>
+                      <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">Placement dashboard</div>
+                      <div className="mt-3 text-2xl font-semibold tracking-tight">Carrier-ready workflow</div>
                     </div>
-                    <div className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">Protected flow</div>
+                    <div className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">Secure intake</div>
                   </div>
 
                   <div className="relative mt-8 h-[28rem] overflow-hidden rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(255,255,255,0.02),_rgba(255,255,255,0.01))]">
@@ -124,35 +153,110 @@ export default function Home() {
 
                 <div className="flex flex-col gap-4">
                   <div className="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(255,255,255,0.07),_rgba(255,255,255,0.03))] p-5 backdrop-blur-xl">
-                    <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Executive signal</div>
-                    <div className="mt-4 text-4xl font-semibold tracking-tight text-white">98.4%</div>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">Submission completeness score across digitally prepared accounts entering carrier review.</p>
+                    <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Placement status</div>
+                    <div className="mt-4 text-4xl font-semibold tracking-tight text-white">Carrier aligned</div>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">Disciplined submissions prepared for appointed carrier underwriting teams.</p>
                   </div>
                   <div className="rounded-[1.6rem] border border-cyan-300/20 bg-cyan-300/10 p-5 backdrop-blur-xl">
-                    <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">System posture</div>
+                    <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">Compliance posture</div>
                     <ul className="mt-4 space-y-3 text-sm text-slate-100/90">
-                      {capabilities.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
+                        <span>Internal review aligned with carrier underwriting standards</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
+                        <span>Technology-enabled intake built for efficient bond placement</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
+                        <span>Final approval and issuance remain with carrier partners</span>
+                      </li>
                     </ul>
                   </div>
                   <div className="rounded-[1.6rem] border border-white/10 bg-[#081122]/80 p-5 backdrop-blur-xl">
                     <div className="flex items-center justify-between text-sm text-slate-400">
                       <span>Operational cadence</span>
-                      <span className="text-cyan-200">Rapid + controlled</span>
+                      <span className="text-cyan-200">Efficient + controlled</span>
                     </div>
                     <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
                       <div className="h-full w-[82%] rounded-full bg-[linear-gradient(90deg,_rgba(125,211,252,0.45),_rgba(34,211,238,1),_rgba(147,197,253,0.7))] shadow-[0_0_20px_rgba(34,211,238,0.5)]" />
                     </div>
-                    <p className="mt-4 text-sm leading-6 text-slate-400">Built to reassure sophisticated buyers while expressing the speed and energy of a modern underwriting interface.</p>
+                    <p className="mt-4 text-sm leading-6 text-slate-400">A modern interface style with conservative, compliance-forward messaging for business buyers.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f5f7fb] py-20 text-slate-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Services</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-services-headline">
+              License &amp; Permit Bonds
+            </h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              License &amp; Permit Surety Bonds and commercial surety placements delivered through appointed carrier relationships.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {serviceCards.map((service) => (
+              <div
+                key={service.title}
+                className="rounded-[1.75rem] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
+              >
+                <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{service.title}</h3>
+                <p className="mt-4 text-base leading-7 text-slate-600">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 text-slate-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">How it works</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-process-headline">
+              Efficient Bond Placement, Carrier-Approved
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <div
+                key={step.title}
+                className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
+              >
+                <div className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">0{index + 1}</div>
+                <h3 className="mt-4 text-xl font-semibold text-slate-950">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mx-auto mt-10 max-w-4xl text-sm leading-7 text-slate-500" data-testid="text-process-disclaimer">
+            Bond placement is subject to carrier underwriting and approval. Quantum Surety does not independently underwrite or issue bonds.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#eef4f8] py-20 text-slate-900">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Why choose us</p>
+          <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-about-headline">
+            About Quantum Surety
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-slate-700" data-testid="text-about-body-primary">
+            Quantum Surety is a licensed Texas insurance producer specializing in surety bond placement.
+          </p>
+          <p className="mt-4 text-base leading-8 text-slate-600" data-testid="text-about-body-secondary">
+            We work with appointed A-rated carriers to match qualified principals with carrier underwriting standards while delivering efficient and compliant submissions. All bonds are ultimately underwritten and issued by our carrier partners.
+          </p>
         </div>
       </section>
     </div>

@@ -9934,3 +9934,65 @@
   background-color: var(--error);
   color: white;
 }
+
+.quantum-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+}
+
+.quantum-filaments {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(34, 211, 238, 0.25), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(56, 189, 248, 0.22), transparent 16%),
+    linear-gradient(115deg, transparent 18%, rgba(34, 211, 238, 0.16) 28%, transparent 38%),
+    linear-gradient(145deg, transparent 42%, rgba(125, 211, 252, 0.12) 52%, transparent 64%),
+    linear-gradient(75deg, transparent 58%, rgba(96, 165, 250, 0.12) 68%, transparent 78%);
+  filter: blur(0.5px);
+}
+
+.flash-motion-left,
+.flash-motion-right {
+  filter: blur(28px);
+  opacity: 0.85;
+}
+
+.hero-glass-frame::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(2rem - 1px);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+  pointer-events: none;
+}
+
+.building-reflection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mix-blend-mode: screen;
+}
+
+.building-reflection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.25), transparent 22%, transparent 78%, rgba(255, 255, 255, 0.06));
+}
+
+.circuit-arc {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.08);
+  filter: blur(0.2px);
+}
+
+.circuit-node {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 9999px;
+  background: rgba(103, 232, 249, 0.95);
+  box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.08), 0 0 18px rgba(103, 232, 249, 0.85);
+}

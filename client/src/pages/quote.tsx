@@ -14,6 +14,7 @@ import { Link } from "wouter";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 
 const BOND_TYPES = [
   { value: "bid", label: "Bid Bond" },
@@ -36,6 +37,7 @@ const US_STATES = [
 ];
 
 export default function Quote() {
+  useSEO(SEO_PAGES.quote);
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [quoteResult, setQuoteResult] = useState<any>(null);

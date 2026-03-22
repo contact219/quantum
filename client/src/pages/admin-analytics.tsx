@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, Users, FileText, CheckCircle, XCircle, DollarSign, Bot, ShieldAlert } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 interface AnalyticsData {
   totalQuotes: number;
@@ -21,6 +22,12 @@ interface AnalyticsData {
 }
 
 export default function AdminAnalytics() {
+  useSEO({
+    title: "Admin Analytics | Quantum Surety",
+    description: "Monitor Quantum Surety analytics for quotes, applications, approvals, and automation readiness.",
+    canonical: "/admin-analytics",
+    noIndex: true,
+  });
   const { data: analytics, isLoading } = useQuery<AnalyticsData>({
     queryKey: ["/api/admin/analytics"],
   });

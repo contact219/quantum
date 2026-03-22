@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { LogIn } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 const adminLoginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -18,6 +19,12 @@ const adminLoginSchema = z.object({
 type AdminLoginForm = z.infer<typeof adminLoginSchema>;
 
 export default function AdminLogin() {
+  useSEO({
+    title: "Admin Login | Quantum Surety",
+    description: "Secure login for Quantum Surety administrators.",
+    canonical: "/admin-login",
+    noIndex: true,
+  });
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);

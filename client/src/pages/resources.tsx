@@ -19,6 +19,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 
 interface Resource {
   id: string;
@@ -169,6 +170,7 @@ const DEFAULT_TOOLS: Resource[] = [
 ];
 
 export default function Resources() {
+  useSEO(SEO_PAGES.resources);
   const [guides, setGuides] = useState<Resource[]>(DEFAULT_GUIDES);
   const [videos, setVideos] = useState<Resource[]>(DEFAULT_VIDEOS);
   const [tools, setTools] = useState<Resource[]>(DEFAULT_TOOLS);

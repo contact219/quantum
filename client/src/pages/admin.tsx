@@ -46,8 +46,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 
 export default function Admin() {
+  useSEO(SEO_PAGES.admin);
   // Fetch quotes from API
   const { data: quotes = [], isLoading: quotesLoading } = useQuery<Quote[]>({
     queryKey: ['/api/quotes'],

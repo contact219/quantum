@@ -7,6 +7,7 @@ import { Sparkles, Send, Bot, User, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { useSEO } from "@/hooks/useSEO";
 
 type Message = {
   id: string;
@@ -15,6 +16,11 @@ type Message = {
 };
 
 export default function AIBondFinder() {
+  useSEO({
+    title: "AI Bond Finder | Quantum Surety",
+    description: "Use the Quantum Surety AI assistant to identify the right bond for your project in under a minute.",
+    canonical: "/ai-bond-finder",
+  });
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",

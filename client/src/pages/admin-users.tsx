@@ -19,8 +19,15 @@ import type { User } from "@shared/schema";
 import { queryClient } from "@/lib/queryClient";
 import { apiRequest } from "@/lib/queryClient";
 import { Mail, Shield, Plus, Edit2, Trash2, Key } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function AdminUsers() {
+  useSEO({
+    title: "Admin Users | Quantum Surety",
+    description: "Manage Quantum Surety admin users, permissions, and account access controls.",
+    canonical: "/admin-users",
+    noIndex: true,
+  });
   const { toast } = useToast();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);

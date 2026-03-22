@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { suretyPortalBlueprint } from "@/lib/suretyBlueprint";
 import { Upload, CheckCircle, AlertCircle, FileText, DollarSign, PenTool, Sparkles, Bot, ShieldCheck, Workflow } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 type ApplicationStatus = "draft" | "submitted" | "approved" | "rejected" | "bonded" | "documents_complete" | "sign_agreement_pending" | "agreement_signed";
 type DocumentType = "bond_request" | "contract" | "financials" | "credit_auth" | "resume" | "job_breakdown" | "prior_bonds" | "work_schedule";
@@ -81,6 +82,12 @@ const impactBadgeVariant: Record<RiskFactor["impact"], "default" | "secondary" |
 };
 
 export default function ApplicationPortal() {
+  useSEO({
+    title: "Application Portal | Quantum Surety",
+    description: "Create and manage surety bond applications, upload documents, and track underwriting automation status.",
+    canonical: "/application",
+    noIndex: true,
+  });
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState("list");
   const [applications, setApplications] = useState<Application[]>([]);

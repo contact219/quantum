@@ -1,3 +1,5 @@
+import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
+
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
   { value: "Compliant", label: "Submission process" },
@@ -40,6 +42,7 @@ const processSteps = [
 ];
 
 export default function Home() {
+  useSEO(SEO_PAGES.home);
   return (
     <div className="min-h-screen bg-[#020816] text-white">
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(0,245,255,0.16),_transparent_30%),linear-gradient(135deg,_#020816_0%,_#07111f_38%,_#0f1724_68%,_#161b28_100%)]">

@@ -3,8 +3,14 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { BookMarked, Search } from "lucide-react";
 import { useState } from "react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Glossary() {
+  useSEO({
+    title: "Surety Bond Glossary | Quantum Surety",
+    description: "Learn common surety bond terms, definitions, and concepts used in construction and commercial bonding.",
+    canonical: "/glossary",
+  });
   const [searchTerm, setSearchTerm] = useState("");
 
   const terms = [

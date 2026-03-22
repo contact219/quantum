@@ -6,11 +6,17 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Building2, Users, CheckCircle, FileText, Shield, Clock, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useSEO } from "@/hooks/useSEO";
 import constructionHero from "@assets/generated_images/contractor_with_digital_blueprints.png";
 import gcImage from "@assets/generated_images/general_contractor_in_office.png";
 import subImage from "@assets/generated_images/subcontractor_team_at_work.png";
 
 export default function Construction() {
+  useSEO({
+    title: "Construction Bonds for Contractors | Quantum Surety",
+    description: "Explore construction bond options for general contractors and subcontractors, including bid, performance, and payment bonds.",
+    canonical: "/construction",
+  });
   const [role, setRole] = useState("");
   const [projectSize, setProjectSize] = useState("");
   const [showRecommendation, setShowRecommendation] = useState(false);

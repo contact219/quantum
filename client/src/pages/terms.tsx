@@ -1,4 +1,11 @@
+import { useSEO } from "@/hooks/useSEO";
+
 export default function Terms() {
+  useSEO({
+    title: "Terms of Service | Quantum Surety",
+    description: "Review Quantum Surety's terms of service for bond applications, underwriting, financial responsibility, and liability limitations.",
+    canonical: "/terms",
+  });
   return (
     <div className="min-h-screen bg-background py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

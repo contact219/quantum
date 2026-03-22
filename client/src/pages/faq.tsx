@@ -7,8 +7,14 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { HelpCircle } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function FAQ() {
+  useSEO({
+    title: "Surety Bond FAQ | Quantum Surety",
+    description: "Browse frequently asked questions about construction bonds, bond costs, approvals, and surety terminology.",
+    canonical: "/faq",
+  });
   const constructionFAQs = [
     {
       question: "What's the difference between bid, performance, and payment bonds?",

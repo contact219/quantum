@@ -44,7 +44,7 @@ const processSteps = [
 export default function Home() {
   useSEO(SEO_PAGES.home);
   return (
-    <div className="min-h-screen bg-[#020816] text-white">
+    <div className="bg-[#020816] text-white">
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(0,245,255,0.16),_transparent_30%),linear-gradient(135deg,_#020816_0%,_#07111f_38%,_#0f1724_68%,_#161b28_100%)]">
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />

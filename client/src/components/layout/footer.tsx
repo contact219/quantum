@@ -37,6 +37,10 @@ export function Footer() {
       links: [
         { href: "/construction", label: "Construction" },
         { href: "/ai-bond-finder", label: "AI Bond Finder" },
+        { href: "/bonds/texas-contractor", label: "Texas Bonds" },
+        { href: "/bonds/bid-bond-texas", label: "Bid Bonds (TX)" },
+        { href: "/bonds/performance-bond-texas", label: "Performance Bonds (TX)" },
+        { href: "/bonds/license-bond-texas", label: "License Bonds (TX)" },
         { href: "/quote", label: "Get Quote" },
       ],
     },

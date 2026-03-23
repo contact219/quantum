@@ -239,13 +239,13 @@ export default function Quote() {
                           <FormLabel>Bond Type *</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger data-testid="select-bond-type">
+                              <SelectTrigger data-testid="select-bond-type" className="h-11 text-base bg-white border-2 border-gray-300 hover:border-primary focus:ring-2 focus:ring-primary">
                                 <SelectValue placeholder="Select bond type" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="z-50">
+                            <SelectContent className="z-50 w-full min-w-[300px] bg-white border-2 border-gray-300 shadow-2xl">
                               {BOND_TYPES.map((type) => (
-                                <SelectItem key={type.value} value={type.value}>
+                                <SelectItem key={type.value} value={type.value} className="py-3 px-4 text-base font-medium cursor-pointer hover:bg-primary hover:text-white">
                                   {type.label}
                                 </SelectItem>
                               ))}
@@ -263,13 +263,13 @@ export default function Quote() {
                           <FormLabel>Project State *</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger data-testid="select-state">
+                              <SelectTrigger data-testid="select-state" className="h-11 text-base bg-white border-2 border-gray-300 hover:border-primary focus:ring-2 focus:ring-primary">
                                 <SelectValue placeholder="Select state" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent className="z-50">
+                            <SelectContent className="z-50 w-full min-w-[250px] bg-white border-2 border-gray-300 shadow-2xl">
                               {US_STATES.map((state) => (
-                                <SelectItem key={state} value={state}>
+                                <SelectItem key={state} value={state} className="py-3 px-4 text-base font-medium cursor-pointer hover:bg-primary hover:text-white">
                                   {state}
                                 </SelectItem>
                               ))}

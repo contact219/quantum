@@ -353,10 +353,117 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Helper function to auto-seed default resources
+  const autoSeedResources = async () => {
+    try {
+      const existing = await storage.getAllResources();
+      if (existing.length > 0) return; // Already seeded
+
+      // Create default resources
+      await Promise.all([
+        // Guides
+        storage.createResource({
+          type: "guide",
+          title: "Construction Bond Guide for General Contractors",
+          description: "Complete guide to bid, performance, and payment bonds for GCs",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Surety-Bonds-508.pdf",
+          order: 0,
+        }),
+        storage.createResource({
+          type: "guide",
+          title: "First-Time Bonding: A Subcontractor's Handbook",
+          description: "Step-by-step process for subcontractors getting their first bond",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.naic.org/documents/committees/ci/single_docs/22_csc_101_11.pdf",
+          order: 1,
+        }),
+        storage.createResource({
+          type: "guide",
+          title: "Understanding Bond Capacity",
+          description: "How sureties calculate your bonding capacity and how to increase it",
+          category: "Article",
+          downloadable: false,
+          order: 2,
+        }),
+        storage.createResource({
+          type: "guide",
+          title: "Financial Statement Preparation for Bonding",
+          description: "What underwriters look for and how to present your financials",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Financial-Statements-508.pdf",
+          order: 3,
+        }),
+        // Videos
+        storage.createResource({
+          type: "video",
+          title: "Introduction to Surety Bonds",
+          description: "Learn the basics of surety bonds and how they work in construction",
+          duration: "4:32",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
+          order: 0,
+        }),
+        storage.createResource({
+          type: "video",
+          title: "Performance Bonds Explained",
+          description: "Understanding performance bonds and contractor obligations",
+          duration: "5:18",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+          order: 1,
+        }),
+        storage.createResource({
+          type: "video",
+          title: "Building Contractor Financial Health",
+          description: "How to strengthen your finances for better bonding capacity",
+          duration: "6:45",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          order: 2,
+        }),
+        // Tools
+        storage.createResource({
+          type: "tool",
+          title: "AI Bond Finder",
+          description: "Get instant bond recommendations based on your project",
+          link: "/ai-bond-finder",
+          downloadable: false,
+          order: 0,
+        }),
+        storage.createResource({
+          type: "tool",
+          title: "Premium Calculator",
+          description: "Estimate your bond premium in seconds",
+          link: "/quote",
+          downloadable: false,
+          order: 1,
+        }),
+        storage.createResource({
+          type: "tool",
+          title: "State Requirements Database",
+          description: "Bond requirements by state and project type",
+          link: "#",
+          downloadable: false,
+          order: 2,
+        }),
+      ]);
+    } catch (error) {
+      console.error("Auto-seed resources error:", error);
+      // Silently fail - don't disrupt the request
+    }
+  };
+
   // Resource endpoints
   // Public endpoint to get all resources
   app.get("/api/resources", async (req, res) => {
     try {
+      // Auto-seed on first access if empty
+      await autoSeedResources();
+      
       const resources = await storage.getAllResources();
       res.json(resources);
     } catch (error) {
@@ -367,6 +474,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Public endpoint to get resources by type
   app.get("/api/resources/type/:type", async (req, res) => {
     try {
+      // Auto-seed on first access if empty
+      await autoSeedResources();
+      
       const resources = await storage.getResourcesByType(req.params.type);
       res.json(resources);
     } catch (error) {

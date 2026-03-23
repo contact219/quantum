@@ -3,29 +3,27 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
-  { value: "Compliant", label: "Submission process" },
+  { value: "All 50", label: "States served" },
+  { value: "24-hr", label: "Typical filing time" },
   { value: "Texas", label: "Licensed producer" },
 ];
 
 const processSteps = [
   {
     title: "Submit Your Request",
-    description: "Complete a bond request form with principal details.",
+    description: "Tell us about your bond in minutes — bond type, project size, and basic business info. No lengthy paperwork, no phone tag.",
   },
   {
-    title: "Pre-Underwriting Review",
-    description:
-      "We evaluate submitted information using our internal criteria aligned with carrier underwriting standards.",
+    title: "AI Pre-Qualification",
+    description: "Our system instantly evaluates your submission and matches it to the right carrier program. Most applicants get a quote the same day.",
   },
   {
-    title: "Carrier Submission",
-    description:
-      "We deliver the pre-qualified submission to the appropriate carrier’s underwriting team for approval.",
+    title: "Carrier Approval",
+    description: "We submit a clean, carrier-ready package to our A-rated underwriting partners. You stay informed at every step.",
   },
   {
-    title: "Issuer Approval & Bond Issuance",
-    description:
-      "Once the carrier approves, the bond is executed under carrier authority and delivered to you.",
+    title: "Bond Issued & Delivered",
+    description: "Once approved, your bond is executed and delivered — by email or directly to the obligee. Fast, simple, done.",
   },
 ];
 
@@ -57,14 +55,14 @@ export default function Home() {
               className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
               data-testid="text-hero-headline"
             >
-              Fast, Compliant License &amp; Permit Bond Placement
+              Fast, AI-Powered Surety Bonds for Contractors
             </h1>
 
             <p
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              We place surety bonds through A-rated carrier partners using disciplined underwriting and a technology-enabled submission process.
+              Quantum Surety delivers bid bonds, performance bonds, payment bonds, license bonds, and freight broker bonds — faster than traditional agencies. AI-assisted underwriting, A-rated carriers, licensed in Texas and all 50 states.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -189,7 +187,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">How it works</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-process-headline">
-              Efficient Bond Placement, Carrier-Approved
+              Get Bonded in 4 Simple Steps
             </h2>
           </div>
 
@@ -209,6 +207,48 @@ export default function Home() {
           <p className="mx-auto mt-10 max-w-4xl text-sm leading-7 text-slate-500" data-testid="text-process-disclaimer">
             Bond placement is subject to carrier underwriting and approval. Quantum Surety does not independently underwrite or issue bonds.
           </p>
+
+          {/* Testimonials */}
+          <div className="mt-16 border-t border-slate-200 pt-14">
+            <p className="mb-8 text-center text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">
+              What clients say
+            </p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  quote: "Quantum Surety got our bid bond issued same-day. We were able to submit our bid on time and won the contract. Fast and professional.",
+                  name: "Marcus T.",
+                  title: "General Contractor, Dallas TX",
+                },
+                {
+                  quote: "Switching from our BMC-85 trust to a BMC-84 bond was seamless. The team walked us through everything and filed with FMCSA within 24 hours.",
+                  name: "Jennifer R.",
+                  title: "Freight Broker, Houston TX",
+                },
+                {
+                  quote: "We needed a performance bond for a public school project fast. Quantum had us approved and bonded in two days. Will use again.",
+                  name: "David L.",
+                  title: "Subcontractor, Austin TX",
+                },
+              ].map((t) => (
+                <div
+                  key={t.name}
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+                >
+                  <p className="mb-4 text-sm leading-relaxed text-slate-700">
+                    "{t.quote}"
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">{t.name}</p>
+                    <p className="text-xs text-slate-500">{t.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-xs text-slate-400">
+              Testimonials represent typical client experiences. Results vary by bond type and applicant qualifications.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -219,10 +259,10 @@ export default function Home() {
             About Quantum Surety
           </h2>
           <p className="mt-6 text-lg leading-8 text-slate-700" data-testid="text-about-body-primary">
-            Quantum Surety is a licensed Texas insurance producer specializing in surety bond placement.
+            Quantum Surety is a licensed Texas insurance producer and surety bond agency specializing in placement for contractors, freight brokers, and businesses across Texas and all 50 states.
           </p>
           <p className="mt-4 text-base leading-8 text-slate-600" data-testid="text-about-body-secondary">
-            We work with appointed A-rated carriers to match qualified principals with carrier underwriting standards while delivering efficient and compliant submissions. All bonds are ultimately underwritten and issued by our carrier partners.
+            We combine AI-powered underwriting technology with deep surety expertise to deliver faster bond approvals than traditional agencies. Our carrier network includes A-rated, T-listed companies authorized to issue bonds on federal and public projects nationwide. From a $5,000 license bond to a $10 million performance bond — we handle it.
           </p>
         </div>
       </section>

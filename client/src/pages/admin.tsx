@@ -340,6 +340,28 @@ export default function Admin() {
     }
   };
 
+  const handleSeedCarriers = async () => {
+    try {
+      const response = await fetch("/api/admin/carriers/seed", { method: "POST" });
+      if (!response.ok) throw new Error("Failed to seed carriers");
+      const result = await response.json();
+      // Re-fetch carriers from API
+      const carriersResponse = await fetch("/api/admin/carriers");
+      const carriersData = await carriersResponse.json();
+      setCarriers(Array.isArray(carriersData) ? carriersData : []);
+      toast({ 
+        title: "Success", 
+        description: result.message || "Carriers seeded successfully" 
+      });
+    } catch (error: any) {
+      toast({ 
+        title: "Error", 
+        description: error.message || "Failed to seed carriers", 
+        variant: "destructive" 
+      });
+    }
+  };
+
   const handleSaveResource = async () => {
     try {
       if (!formData.title) {
@@ -1209,31 +1231,41 @@ export default function Admin() {
           <TabsContent value="carriers" className="space-y-6">
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-3">
                   <div>
                     <CardTitle>Carrier Management</CardTitle>
                     <CardDescription>Manage insurance carrier partnerships</CardDescription>
                   </div>
-                  <Button 
-                    onClick={() => {
-                      setShowCarrierForm(true);
-                      setEditingCarrier(null);
-                      setCarrierFormData({
-                        name: "",
-                        website: "",
-                        commissionRate: 15,
-                        minCreditScore: 600,
-                        contact: "",
-                        email: "",
-                        phone: "",
-                        notes: "",
-                      });
-                    }}
-                    data-testid="button-add-carrier"
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add Carrier
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button 
+                      variant="outline"
+                      onClick={handleSeedCarriers}
+                      data-testid="button-seed-carriers"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Seed Defaults
+                    </Button>
+                    <Button 
+                      onClick={() => {
+                        setShowCarrierForm(true);
+                        setEditingCarrier(null);
+                        setCarrierFormData({
+                          name: "",
+                          website: "",
+                          commissionRate: 15,
+                          minCreditScore: 600,
+                          contact: "",
+                          email: "",
+                          phone: "",
+                          notes: "",
+                        });
+                      }}
+                      data-testid="button-add-carrier"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Carrier
+                    </Button>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>

@@ -543,6 +543,80 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin endpoint to seed default carriers
+  app.post("/api/admin/carriers/seed", isAdmin, async (req, res) => {
+    try {
+      // Check if carriers already exist
+      const existingCarriers = await storage.getAllCarriers();
+      if (existingCarriers.length > 0) {
+        return res.json({ success: true, message: "Carriers already exist", count: existingCarriers.length });
+      }
+
+      // Create default carriers
+      const defaultCarriers = [
+        await storage.createCarrier({
+          name: "RLI Surety",
+          website: "https://www.rlicorp.com",
+          commissionRate: 15,
+          minCreditScore: 650,
+          contact: "John Smith",
+          email: "john.smith@rli.com",
+          phone: "(555) 123-4567",
+          notes: "Leading surety carrier. Specializes in construction bonds.",
+        }),
+        await storage.createCarrier({
+          name: "Liberty Surety",
+          website: "https://www.libertysurety.com",
+          commissionRate: 12,
+          minCreditScore: 600,
+          contact: "Sarah Johnson",
+          email: "sarah@libertysurety.com",
+          phone: "(555) 234-5678",
+          notes: "Competitive rates on performance and payment bonds.",
+        }),
+        await storage.createCarrier({
+          name: "Travelers Surety",
+          website: "https://www.travelers.com",
+          commissionRate: 18,
+          minCreditScore: 700,
+          contact: "Mike Davis",
+          email: "mike.davis@travelers.com",
+          phone: "(555) 345-6789",
+          notes: "Premium carrier with strict underwriting standards.",
+        }),
+        await storage.createCarrier({
+          name: "American Surety",
+          website: "https://www.americansurety.com",
+          commissionRate: 14,
+          minCreditScore: 620,
+          contact: "Lisa Chen",
+          email: "lisa.chen@americansurety.com",
+          phone: "(555) 456-7890",
+          notes: "Good capacity for highway and bridge projects.",
+        }),
+        await storage.createCarrier({
+          name: "Hartford Surety",
+          website: "https://www.thehartford.com",
+          commissionRate: 16,
+          minCreditScore: 680,
+          contact: "Robert Martinez",
+          email: "robert@hartsurety.com",
+          phone: "(555) 567-8901",
+          notes: "Fast approvals on bid bonds. Experience with small contractors.",
+        }),
+      ];
+
+      res.json({
+        success: true,
+        message: "Carriers seeded successfully",
+        count: defaultCarriers.length
+      });
+    } catch (error: any) {
+      console.error("Seed carriers error:", error);
+      res.status(500).json({ error: "Failed to seed carriers", details: error.message });
+    }
+  });
+
   app.post("/api/admin/carriers", isAdmin, async (req, res) => {
     try {
       const carrier = await storage.createCarrier(req.body);

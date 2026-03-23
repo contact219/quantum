@@ -321,6 +321,25 @@ export default function Admin() {
     }
   };
 
+  const handleSeedResources = async () => {
+    try {
+      const response = await fetch("/api/admin/resources/seed", { method: "POST" });
+      if (!response.ok) throw new Error("Failed to seed resources");
+      const result = await response.json();
+      await fetchResources();
+      toast({ 
+        title: "Success", 
+        description: result.message || "Resources seeded successfully" 
+      });
+    } catch (error: any) {
+      toast({ 
+        title: "Error", 
+        description: error.message || "Failed to seed resources", 
+        variant: "destructive" 
+      });
+    }
+  };
+
   const handleSaveResource = async () => {
     try {
       if (!formData.title) {
@@ -941,22 +960,32 @@ export default function Admin() {
           <TabsContent value="resources" className="space-y-6">
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-3">
                   <div>
                     <CardTitle>Resource Management</CardTitle>
                     <CardDescription>Manage guides, videos, and educational resources</CardDescription>
                   </div>
-                  <Button 
-                    onClick={() => {
-                      setShowResourceForm(true);
-                      setEditingResource(null);
-                      setFormData({ type: "guide", title: "", description: "", category: "Guide", downloadable: false, downloadUrl: "", videoUrl: "", duration: "", order: 0 });
-                    }}
-                    data-testid="button-add-resource"
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add Resource
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button 
+                      variant="outline"
+                      onClick={handleSeedResources}
+                      data-testid="button-seed-resources"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Seed Defaults
+                    </Button>
+                    <Button 
+                      onClick={() => {
+                        setShowResourceForm(true);
+                        setEditingResource(null);
+                        setFormData({ type: "guide", title: "", description: "", category: "Guide", downloadable: false, downloadUrl: "", videoUrl: "", duration: "", order: 0 });
+                      }}
+                      data-testid="button-add-resource"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Resource
+                    </Button>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>

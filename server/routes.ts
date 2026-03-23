@@ -420,6 +420,119 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin endpoint to seed default resources
+  app.post("/api/admin/resources/seed", isAdmin, async (req, res) => {
+    try {
+      // Check if resources already exist
+      const existingResources = await storage.getAllResources();
+      if (existingResources.length > 0) {
+        return res.json({ success: true, message: "Resources already exist", count: existingResources.length });
+      }
+
+      // Create default resources
+      const defaultResources = [
+        // Guides
+        await storage.createResource({
+          type: "guide",
+          title: "Construction Bond Guide for General Contractors",
+          description: "Complete guide to bid, performance, and payment bonds for GCs",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Surety-Bonds-508.pdf",
+          order: 0,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "First-Time Bonding: A Subcontractor's Handbook",
+          description: "Step-by-step process for subcontractors getting their first bond",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.naic.org/documents/committees/ci/single_docs/22_csc_101_11.pdf",
+          order: 1,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "Understanding Bond Capacity",
+          description: "How sureties calculate your bonding capacity and how to increase it",
+          category: "Article",
+          downloadable: false,
+          order: 2,
+        }),
+        await storage.createResource({
+          type: "guide",
+          title: "Financial Statement Preparation for Bonding",
+          description: "What underwriters look for and how to present your financials",
+          category: "Guide",
+          downloadable: true,
+          downloadUrl: "https://www.sba.gov/sites/default/files/2022-06/Financial-Statements-508.pdf",
+          order: 3,
+        }),
+        // Videos
+        await storage.createResource({
+          type: "video",
+          title: "Introduction to Surety Bonds",
+          description: "Learn the basics of surety bonds and how they work in construction",
+          duration: "4:32",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
+          order: 0,
+        }),
+        await storage.createResource({
+          type: "video",
+          title: "Performance Bonds Explained",
+          description: "Understanding performance bonds and contractor obligations",
+          duration: "5:18",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/9bZkp7q19f0",
+          order: 1,
+        }),
+        await storage.createResource({
+          type: "video",
+          title: "Building Contractor Financial Health",
+          description: "How to strengthen your finances for better bonding capacity",
+          duration: "6:45",
+          downloadable: false,
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          order: 2,
+        }),
+        // Tools
+        await storage.createResource({
+          type: "tool",
+          title: "AI Bond Finder",
+          description: "Get instant bond recommendations based on your project",
+          link: "/ai-bond-finder",
+          downloadable: false,
+          order: 0,
+        }),
+        await storage.createResource({
+          type: "tool",
+          title: "Premium Calculator",
+          description: "Estimate your bond premium in seconds",
+          link: "/quote",
+          downloadable: false,
+          order: 1,
+        }),
+        await storage.createResource({
+          type: "tool",
+          title: "State Requirements Database",
+          description: "Bond requirements by state and project type",
+          link: "#",
+          downloadable: false,
+          order: 2,
+        }),
+      ];
+
+      res.json({ 
+        success: true, 
+        message: "Resources seeded successfully",
+        count: defaultResources.length
+      });
+    } catch (error: any) {
+      console.error("Seed resources error:", error);
+      res.status(500).json({ error: "Failed to seed resources", details: error.message });
+    }
+  });
+
   // Carrier management endpoints
   app.get("/api/admin/carriers", isAdmin, async (req, res) => {
     try {

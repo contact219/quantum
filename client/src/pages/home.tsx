@@ -1,22 +1,10 @@
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
+import { ServicesSection } from "@/components/home/ServicesSection";
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
   { value: "Compliant", label: "Submission process" },
   { value: "Texas", label: "Licensed producer" },
-];
-
-const serviceCards = [
-  {
-    title: "License & Permit Surety Bonds",
-    description:
-      "We assist principals in securing surety bonds required by licensing authorities. Submissions are pre-qualified through our underwriting checklist and placed with appointed carriers based on carrier approval.",
-  },
-  {
-    title: "Commercial Surety Bonds",
-    description:
-      "We provide placement services for commercial surety bonds through carrier partners. All bonds are subject to carrier underwriting and approval.",
-  },
 ];
 
 const processSteps = [
@@ -194,31 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f5f7fb] py-20 text-slate-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Services</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-services-headline">
-              License &amp; Permit Bonds
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              License &amp; Permit Surety Bonds and commercial surety placements delivered through appointed carrier relationships.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {serviceCards.map((service) => (
-              <div
-                key={service.title}
-                className="rounded-[1.75rem] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
-              >
-                <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{service.title}</h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
 
       <section className="bg-white py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

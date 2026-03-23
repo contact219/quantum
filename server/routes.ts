@@ -446,7 +446,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           type: "tool",
           title: "State Requirements Database",
           description: "Bond requirements by state and project type",
-          link: "#",
+          link: "/quote",
           downloadable: false,
           order: 2,
         }),

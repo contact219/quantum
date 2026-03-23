@@ -20,6 +20,7 @@ const BOND_TYPES = [
   { value: "bid", label: "Bid Bond" },
   { value: "performance", label: "Performance Bond" },
   { value: "payment", label: "Payment Bond" },
+  { value: "bmc84", label: "Freight Broker Bond (BMC-84)" },
   { value: "maintenance", label: "Maintenance/Warranty Bond" },
   { value: "supply", label: "Supply Bond" },
   { value: "license", label: "Contractor License Bond" },
@@ -242,7 +243,7 @@ export default function Quote() {
                                 <SelectValue placeholder="Select bond type" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
+                            <SelectContent className="z-50">
                               {BOND_TYPES.map((type) => (
                                 <SelectItem key={type.value} value={type.value}>
                                   {type.label}
@@ -266,7 +267,7 @@ export default function Quote() {
                                 <SelectValue placeholder="Select state" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
+                            <SelectContent className="z-50">
                               {US_STATES.map((state) => (
                                 <SelectItem key={state} value={state}>
                                   {state}

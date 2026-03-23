@@ -35,14 +35,13 @@ export function Footer() {
     {
       title: "Bonds",
       links: [
-        { href: "/construction", label: "Construction" },
-        { href: "/ai-bond-finder", label: "AI Bond Finder" },
-        { href: "/bonds/texas-contractor", label: "Texas Bonds" },
-        { href: "/bonds/bid-bond-texas", label: "Bid Bonds (TX)" },
-        { href: "/bonds/performance-bond-texas", label: "Performance Bonds (TX)" },
-        { href: "/bonds/license-bond-texas", label: "License Bonds (TX)" },
+        { href: "/construction", label: "Construction Bonds" },
+        { href: "/bonds/texas-contractor", label: "Texas Contractor Bonds" },
+        { href: "/bonds/bid-bond-texas", label: "Texas Bid Bonds" },
+        { href: "/bonds/performance-bond-texas", label: "Texas Performance Bonds" },
+        { href: "/bonds/license-bond-texas", label: "Texas License Bonds" },
         { href: "/bonds/bmc-84-freight-broker", label: "Freight Broker Bond (BMC-84)" },
-        { href: "/quote", label: "Get Quote" },
+        { href: "/quote", label: "Get a Quote" },
       ],
     },
     {

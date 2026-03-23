@@ -47,6 +47,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
+import { Bmc84AdminPanel } from "@/components/admin/Bmc84AdminPanel";
 
 export default function Admin() {
   useSEO(SEO_PAGES.admin);
@@ -639,6 +640,7 @@ export default function Admin() {
             <TabsTrigger value="capacity" data-testid="tab-capacity">Capacity</TabsTrigger>
             <TabsTrigger value="commission" data-testid="tab-commission">Commissions</TabsTrigger>
             <TabsTrigger value="metrics" data-testid="tab-metrics">Metrics</TabsTrigger>
+            <TabsTrigger value="bmc84" data-testid="tab-bmc84">BMC-84 Bonds</TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -1743,6 +1745,10 @@ export default function Admin() {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="bmc84" className="space-y-6">
+            <Bmc84AdminPanel />
           </TabsContent>
 
           <TabsContent value="settings" className="space-y-6">

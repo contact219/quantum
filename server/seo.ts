@@ -271,6 +271,28 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/quote">Get My License Bond</a>
       </main>`,
   },
+
+  "/bonds/bmc-84-freight-broker": {
+    title: "BMC-84 Freight Broker Bond | $75,000 FMCSA Bond | Quantum Surety",
+    description:
+      "Get your BMC-84 freight broker surety bond fast. $75,000 FMCSA-required bond for freight brokers and forwarders. Rates from $938/year. Same-day filing with FMCSA. AI-powered approvals.",
+    canonical: `${BASE_URL}/bonds/bmc-84-freight-broker`,
+    content: `
+      <main>
+        <h1>BMC-84 Freight Broker Bond</h1>
+        <p>The $75,000 FMCSA surety bond every freight broker needs to operate legally. AI-powered approvals, same-day FMCSA filing, rates from $938/year.</p>
+        <p>Previously on a BMC-85 trust? New FMCSA rules effective January 2026 — switching to BMC-84 is fast and affordable.</p>
+        <section>
+          <h2>What is a BMC-84 Bond?</h2>
+          <p>A BMC-84 is the surety bond required by the Federal Motor Carrier Safety Administration (FMCSA) for all licensed freight brokers and freight forwarders operating in the United States. The bond amount is $75,000 and it must be on file with the FMCSA before your broker license is activated.</p>
+        </section>
+        <section>
+          <h2>BMC-84 Bond Rates</h2>
+          <p>Rates start at $938 per year for freight brokers with good credit and established business history. Electronic FMCSA filing within 24 hours of payment.</p>
+        </section>
+        <a href="/quote?type=bmc84">Get Your BMC-84 Quote</a>
+      </main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────

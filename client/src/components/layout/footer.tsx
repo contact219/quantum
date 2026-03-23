@@ -41,6 +41,7 @@ export function Footer() {
         { href: "/bonds/bid-bond-texas", label: "Bid Bonds (TX)" },
         { href: "/bonds/performance-bond-texas", label: "Performance Bonds (TX)" },
         { href: "/bonds/license-bond-texas", label: "License Bonds (TX)" },
+        { href: "/bonds/bmc-84-freight-broker", label: "Freight Broker Bond (BMC-84)" },
         { href: "/quote", label: "Get Quote" },
       ],
     },

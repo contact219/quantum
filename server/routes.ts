@@ -7,6 +7,7 @@ import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
+import { registerBmc84Routes } from "./routes-bmc84";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
@@ -1401,6 +1402,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ error: "Failed to change password" });
     }
   });
+
+  // Register BMC-84 routes
+  registerBmc84Routes(app);
 
   const httpServer = createServer(app);
   return httpServer;

@@ -79,7 +79,7 @@ export function ServicesSection() {
         {/* Header */}
         <div className="max-w-3xl mb-14">
           <div className="flex items-center gap-3 mb-2">
-            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-6 h-6 object-contain" />
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-10 h-10 object-contain" />
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">
               Services
             </p>

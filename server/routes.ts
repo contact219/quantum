@@ -465,24 +465,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await autoSeedResources();
       
       let resources = await storage.getAllResources();
+      let needsUpdate = false;
       
-      // Ensure State Requirements Database exists
-      const stateReqResource = resources.find((r: any) => r.title === "State Requirements Database");
-      if (!stateReqResource) {
-        // Create it if missing
-        await storage.createResource({
-          type: "tool",
+      // Ensure all three interactive tools exist
+      const tools = [
+        {
+          title: "AI Bond Finder",
+          description: "Get instant bond recommendations based on your project",
+          link: "/ai-bond-finder",
+          order: 0,
+        },
+        {
+          title: "Premium Calculator",
+          description: "Estimate your bond premium in seconds",
+          link: "/quote",
+          order: 1,
+        },
+        {
           title: "State Requirements Database",
           description: "Bond requirements by state and project type",
           link: "/resources/state-requirements",
-          downloadable: false,
           order: 2,
-        });
-        // Re-fetch to include the new resource
-        resources = await storage.getAllResources();
-      } else if (stateReqResource.link !== "/resources/state-requirements") {
-        // Fix the link if it's wrong
-        await storage.updateResource(stateReqResource.id, { link: "/resources/state-requirements" });
+        },
+      ];
+      
+      for (const tool of tools) {
+        const exists = resources.find((r: any) => r.title === tool.title);
+        if (!exists) {
+          await storage.createResource({
+            type: "tool",
+            ...tool,
+            downloadable: false,
+          });
+          needsUpdate = true;
+        } else if (exists.link !== tool.link) {
+          // Fix the link if it's wrong
+          await storage.updateResource(exists.id, { link: tool.link });
+          needsUpdate = true;
+        }
+      }
+      
+      // Re-fetch if we made any changes
+      if (needsUpdate) {
         resources = await storage.getAllResources();
       }
       

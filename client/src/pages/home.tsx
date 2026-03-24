@@ -185,7 +185,10 @@ export default function Home() {
       <section className="bg-white py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">How it works</p>
+            <div className="flex items-center gap-3 mb-2">
+              <img src="/QS_Logo.png" alt="Quantum Surety" className="w-6 h-6 object-contain" />
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">How it works</p>
+            </div>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-process-headline">
               Get Bonded in 4 Simple Steps
             </h2>
@@ -254,7 +257,10 @@ export default function Home() {
 
       <section className="bg-[#eef4f8] py-20 text-slate-900">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Why choose us</p>
+          <div className="flex items-center gap-3 mb-2">
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-6 h-6 object-contain" />
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Why choose us</p>
+          </div>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-about-headline">
             About Quantum Surety
           </h2>

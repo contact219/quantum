@@ -78,9 +78,12 @@ export function ServicesSection() {
 
         {/* Header */}
         <div className="max-w-3xl mb-14">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700 mb-3">
-            Services
-          </p>
+          <div className="flex items-center gap-3 mb-2">
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-6 h-6 object-contain" />
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">
+              Services
+            </p>
+          </div>
           <h2 className="text-4xl font-bold text-slate-900 leading-tight mb-4">
             Surety Bond Solutions for Every Need
           </h2>

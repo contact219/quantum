@@ -92,9 +92,7 @@ export function Footer() {
         <div className="border-t border-slate-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-sm">QS</span>
-              </div>
+              <img src="/QS_Logo.png" alt="Quantum Surety" className="w-10 h-10 object-contain" />
               <span className="text-lg font-bold text-white">Quantum Surety</span>
             </div>
             <p className="text-sm text-gray-400 text-center" data-testid="text-copyright">

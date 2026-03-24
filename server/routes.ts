@@ -464,7 +464,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Auto-seed on first access if empty
       await autoSeedResources();
       
-      const resources = await storage.getAllResources();
+      let resources = await storage.getAllResources();
+      
+      // Auto-fix State Requirements link if it's wrong
+      const stateReqResource = resources.find((r: any) => r.title === "State Requirements Database");
+      if (stateReqResource && stateReqResource.link !== "/resources/state-requirements") {
+        await storage.updateResource(stateReqResource.id, { link: "/resources/state-requirements" });
+        // Re-fetch to get the updated resource
+        resources = await storage.getAllResources();
+      }
+      
       res.json(resources);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch resources" });
@@ -527,6 +536,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(resources);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch resources" });
+    }
+  });
+
+  // Admin endpoint to fix State Requirements link
+  app.post("/api/admin/resources/fix-state-requirements", isAdmin, async (req, res) => {
+    try {
+      const resources = await storage.getAllResources();
+      const stateReqResource = resources.find((r: any) => r.title === "State Requirements Database");
+      
+      if (!stateReqResource) {
+        return res.json({ success: true, message: "State Requirements Database not found" });
+      }
+
+      await storage.updateResource(stateReqResource.id, {
+        link: "/resources/state-requirements"
+      });
+
+      res.json({ success: true, message: "State Requirements link updated successfully" });
+    } catch (error: any) {
+      console.error("Fix state requirements error:", error);
+      res.status(500).json({ error: "Failed to fix link", details: error.message });
     }
   });
 

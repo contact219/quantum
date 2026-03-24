@@ -362,6 +362,25 @@ export default function Admin() {
     }
   };
 
+  const handleFixStateRequirementsLink = async () => {
+    try {
+      const response = await fetch("/api/admin/resources/fix-state-requirements", { method: "POST" });
+      if (!response.ok) throw new Error("Failed to fix link");
+      const result = await response.json();
+      await fetchResources();
+      toast({ 
+        title: "Success", 
+        description: result.message || "State Requirements link fixed successfully" 
+      });
+    } catch (error: any) {
+      toast({ 
+        title: "Error", 
+        description: error.message || "Failed to fix link", 
+        variant: "destructive" 
+      });
+    }
+  };
+
   const handleSaveResource = async () => {
     try {
       if (!formData.title) {
@@ -988,6 +1007,14 @@ export default function Admin() {
                     <CardDescription>Manage guides, videos, and educational resources</CardDescription>
                   </div>
                   <div className="flex gap-2">
+                    <Button 
+                      variant="outline"
+                      size="sm"
+                      onClick={handleFixStateRequirementsLink}
+                      data-testid="button-fix-state-requirements-link"
+                    >
+                      Fix State Requirements Link
+                    </Button>
                     <Button 
                       variant="outline"
                       onClick={handleSeedResources}

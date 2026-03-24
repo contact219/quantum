@@ -20,6 +20,7 @@ import AdminAnalytics from "@/pages/admin-analytics";
 import AdminUsers from "@/pages/admin-users";
 import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
+import StateRequirements from "@/pages/state-requirements";
 import Glossary from "@/pages/glossary";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
@@ -78,6 +79,7 @@ function Router() {
       </Route>
       <Route path="/faq" component={FAQ} />
       <Route path="/resources" component={Resources} />
+      <Route path="/resources/state-requirements" component={StateRequirements} />
       <Route path="/glossary" component={Glossary} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />

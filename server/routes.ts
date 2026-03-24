@@ -466,11 +466,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       let resources = await storage.getAllResources();
       
-      // Auto-fix State Requirements link if it's wrong
+      // Ensure State Requirements Database exists
       const stateReqResource = resources.find((r: any) => r.title === "State Requirements Database");
-      if (stateReqResource && stateReqResource.link !== "/resources/state-requirements") {
+      if (!stateReqResource) {
+        // Create it if missing
+        await storage.createResource({
+          type: "tool",
+          title: "State Requirements Database",
+          description: "Bond requirements by state and project type",
+          link: "/resources/state-requirements",
+          downloadable: false,
+          order: 2,
+        });
+        // Re-fetch to include the new resource
+        resources = await storage.getAllResources();
+      } else if (stateReqResource.link !== "/resources/state-requirements") {
+        // Fix the link if it's wrong
         await storage.updateResource(stateReqResource.id, { link: "/resources/state-requirements" });
-        // Re-fetch to get the updated resource
         resources = await storage.getAllResources();
       }
       

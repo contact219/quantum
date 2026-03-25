@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendQuoteSubmissionNotificationEmail } from "./email";
+import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 import { registerBmc84Routes } from "./routes-bmc84";
@@ -93,7 +93,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
       
       // Send admin notification email
-      await sendQuoteSubmissionNotificationEmail(
+      await sendBondRequestNotification(
         validatedData.businessName,
         validatedData.contactName,
         validatedData.contactEmail,

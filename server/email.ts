@@ -1,8 +1,44 @@
 import sgMail from "@sendgrid/mail";
+import nodemailer from "nodemailer";
 
-let connectionSettings: any;
+let zohoTransporter: any = null;
+let sendGridApiKey: string | null = null;
 
-async function getCredentials() {
+async function initZohoTransporter() {
+  if (zohoTransporter) return zohoTransporter;
+
+  const zohoEmail = process.env.ZOHO_EMAIL;
+  const zohoPassword = process.env.ZOHO_PASSWORD;
+
+  if (!zohoEmail || !zohoPassword) {
+    console.log("Zoho SMTP credentials not configured - will use SendGrid only");
+    return null;
+  }
+
+  try {
+    zohoTransporter = nodemailer.createTransport({
+      host: "smtp.zoho.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: zohoEmail,
+        pass: zohoPassword,
+      },
+    });
+
+    await zohoTransporter.verify();
+    console.log("Zoho SMTP transporter initialized successfully");
+    return zohoTransporter;
+  } catch (error) {
+    console.error("Failed to initialize Zoho SMTP:", error);
+    zohoTransporter = null;
+    return null;
+  }
+}
+
+async function getSendGridApiKey(): Promise<string | null> {
+  if (sendGridApiKey) return sendGridApiKey;
+
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY
     ? "repl " + process.env.REPL_IDENTITY
@@ -11,12 +47,12 @@ async function getCredentials() {
     : null;
 
   if (!xReplitToken) {
-    console.warn("X_REPLIT_TOKEN not found - email notifications will not be sent");
+    console.log("Replit token not found - SendGrid fallback unavailable");
     return null;
   }
 
   try {
-    connectionSettings = await fetch(
+    const response = await fetch(
       "https://" + hostname + "/api/v2/connection?include_secrets=true&connector_names=sendgrid",
       {
         headers: {
@@ -24,32 +60,18 @@ async function getCredentials() {
           X_REPLIT_TOKEN: xReplitToken,
         },
       }
-    )
-      .then((res) => res.json())
-      .then((data) => data.items?.[0]);
+    );
+    const data = await response.json();
+    const connectionSettings = data.items?.[0];
 
-    if (!connectionSettings) {
-      console.warn("SendGrid integration not found in Replit connectors - email notifications will not be sent");
-      return null;
+    if (connectionSettings?.settings?.api_key) {
+      sendGridApiKey = connectionSettings.settings.api_key;
+      console.log("SendGrid API key loaded successfully");
+      return sendGridApiKey;
     }
 
-    if (
-      !connectionSettings.settings.api_key ||
-      !connectionSettings.settings.from_email
-    ) {
-      console.warn("SendGrid not properly configured - missing api_key or from_email");
-      console.warn("SendGrid settings:", {
-        hasApiKey: !!connectionSettings.settings.api_key,
-        hasFromEmail: !!connectionSettings.settings.from_email
-      });
-      return null;
-    }
-    
-    console.log("SendGrid credentials loaded successfully");
-    return {
-      apiKey: connectionSettings.settings.api_key,
-      email: connectionSettings.settings.from_email,
-    };
+    console.log("SendGrid not configured in Replit connectors");
+    return null;
   } catch (error) {
     console.error("Error fetching SendGrid credentials:", error);
     return null;
@@ -62,31 +84,57 @@ export async function sendEmail(
   htmlContent: string,
   textContent?: string
 ): Promise<boolean> {
+  console.log(`[EMAIL] Attempting to send email to ${to}: ${subject}`);
+
+  const fromEmail = process.env.ZOHO_EMAIL || "noreply@quantumsurety.bond";
+
+  // Try Zoho SMTP first
+  const zohoTransporter = await initZohoTransporter();
+  if (zohoTransporter) {
+    try {
+      console.log(`[EMAIL] Sending via Zoho SMTP to ${to}`);
+      await zohoTransporter.sendMail({
+        from: fromEmail,
+        to,
+        subject,
+        html: htmlContent,
+        text: textContent || subject,
+      });
+      console.log(`[EMAIL] Successfully sent via Zoho SMTP to ${to}`);
+      return true;
+    } catch (error) {
+      console.error(`[EMAIL] Zoho SMTP failed:`, error);
+      console.log(`[EMAIL] Falling back to SendGrid for ${to}`);
+    }
+  }
+
+  // Fallback to SendGrid
   try {
-    const creds = await getCredentials();
-    if (!creds) {
-      console.log("Email service not available, skipping send");
+    const apiKey = await getSendGridApiKey();
+    if (!apiKey) {
+      console.error(`[EMAIL] SendGrid not available and Zoho failed - email not sent to ${to}`);
       return false;
     }
 
-    sgMail.setApiKey(creds.apiKey);
-    const msg = {
+    console.log(`[EMAIL] Sending via SendGrid to ${to}`);
+    sgMail.setApiKey(apiKey);
+    await sgMail.send({
+      from: fromEmail,
       to,
-      from: creds.email,
       subject,
-      text: textContent || subject,
       html: htmlContent,
-    };
-
-    await sgMail.send(msg);
+      text: textContent || subject,
+    });
+    console.log(`[EMAIL] Successfully sent via SendGrid to ${to}`);
     return true;
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error(`[EMAIL] SendGrid failed:`, error);
+    console.error(`[EMAIL] Failed to send email to ${to} via all methods`);
     return false;
   }
 }
 
-export async function sendQuoteSubmissionNotificationEmail(
+export async function sendBondRequestNotification(
   businessName: string,
   contactName: string,
   contactEmail: string,
@@ -95,7 +143,7 @@ export async function sendQuoteSubmissionNotificationEmail(
   contractValue: number
 ): Promise<boolean> {
   const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
-  
+
   const htmlContent = `
     <h2>New Bond Quote Request</h2>
     <p><strong>From:</strong> ${contactName}</p>
@@ -111,6 +159,24 @@ export async function sendQuoteSubmissionNotificationEmail(
   `;
 
   return sendEmail(adminEmail, `New Bond Quote Request - ${businessName}`, htmlContent);
+}
+
+export async function sendQuoteSubmissionNotificationEmail(
+  businessName: string,
+  contactName: string,
+  contactEmail: string,
+  bondType: string,
+  projectState: string,
+  contractValue: number
+): Promise<boolean> {
+  return sendBondRequestNotification(
+    businessName,
+    contactName,
+    contactEmail,
+    bondType,
+    projectState,
+    contractValue
+  );
 }
 
 export async function sendApplicationStatusEmail(
@@ -173,7 +239,7 @@ export async function sendDocumentUploadNotificationEmail(
     <p><a href="${portalUrl}" style="display: inline-block; padding: 10px 20px; background-color: #4f46e5; color: white; text-decoration: none; border-radius: 4px;">Review in Admin Portal</a></p>
     <p>Please review and validate the uploaded document.</p>
   `;
-  
+
   return sendEmail(adminEmail, `Document Upload: ${applicationNumber}`, htmlContent);
 }
 
@@ -191,7 +257,7 @@ export async function sendDocumentsCompleteNotificationEmail(
     <p><a href="${portalUrl}" style="display: inline-block; padding: 10px 20px; background-color: #4f46e5; color: white; text-decoration: none; border-radius: 4px;">Proceed with Underwriting</a></p>
     <p>The application is ready for underwriting review and quote generation.</p>
   `;
-  
+
   return sendEmail(adminEmail, `Ready for Underwriting: ${applicationNumber}`, htmlContent);
 }
 

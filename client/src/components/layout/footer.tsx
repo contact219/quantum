@@ -30,6 +30,8 @@ export function Footer() {
         { href: "/faq", label: "FAQ" },
         { href: "/resources", label: "Resources" },
         { href: "/glossary", label: "Glossary" },
+        { href: "/obligee-lookup", label: "Obligee Lookup" },
+        { href: "/renewals", label: "Bond Renewal Reminders" },
       ],
     },
     {

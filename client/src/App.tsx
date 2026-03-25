@@ -22,6 +22,8 @@ import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
 import StateRequirements from "@/pages/state-requirements";
 import Glossary from "@/pages/glossary";
+import Renewals from "@/pages/renewals";
+import ObligeeLookup from "@/pages/obligee-lookup";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import NotFound from "@/pages/not-found";
@@ -81,6 +83,8 @@ function Router() {
       <Route path="/resources" component={Resources} />
       <Route path="/resources/state-requirements" component={StateRequirements} />
       <Route path="/glossary" component={Glossary} />
+      <Route path="/renewals" component={Renewals} />
+      <Route path="/obligee-lookup" component={ObligeeLookup} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
 

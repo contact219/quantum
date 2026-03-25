@@ -44,7 +44,8 @@ import {
   carrierMetrics,
   suretyApplications,
   applicationDocuments,
-  creditPulls
+  creditPulls,
+  renewalReminders
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -149,6 +150,10 @@ export interface IStorage {
   getEmailNotificationsByUser(userId: string): Promise<any[]>;
   getEmailNotificationsByApplication(applicationId: string): Promise<any[]>;
   updateEmailNotificationStatus(id: string, status: string): Promise<any | undefined>;
+
+  // Renewal Reminder methods
+  createRenewalReminder(reminder: any): Promise<any>;
+  getRenewalReminders(): Promise<any[]>;
 
   // Analytics methods
   getAnalyticsSnapshot(): Promise<any>;
@@ -835,6 +840,20 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
+  // Renewal Reminder methods
+  private renewalRemindersMap: Map<string, any> = new Map();
+
+  async createRenewalReminder(reminder: any): Promise<any> {
+    const id = randomUUID();
+    const newReminder = { ...reminder, id, createdAt: new Date() };
+    this.renewalRemindersMap.set(id, newReminder);
+    return newReminder;
+  }
+
+  async getRenewalReminders(): Promise<any[]> {
+    return Array.from(this.renewalRemindersMap.values());
+  }
+
   // Analytics methods
   private analyticsMap: Map<string, any> = new Map();
 
@@ -1400,6 +1419,18 @@ export class DbStorage implements IStorage {
 
   async updateEmailNotificationStatus(id: string, status: string): Promise<any | undefined> {
     return undefined;
+  }
+
+  // Renewal Reminder methods
+  async createRenewalReminder(reminder: any): Promise<any> {
+    const [created] = await this.db.insert(renewalReminders).values({
+      ...reminder,
+    }).returning();
+    return created;
+  }
+
+  async getRenewalReminders(): Promise<any[]> {
+    return this.db.select().from(renewalReminders).orderBy(renewalReminders.createdAt);
   }
 
   // Analytics methods

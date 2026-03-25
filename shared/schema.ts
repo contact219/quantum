@@ -331,6 +331,22 @@ export const analyticsSnapshots = pgTable("analytics_snapshots", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const renewalReminders = pgTable("renewal_reminders", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  email: text("email").notNull(),
+  contactName: text("contact_name"),
+  companyName: text("company_name"),
+  bondType: text("bond_type").notNull(),
+  bondNumber: text("bond_number"),
+  expirationDate: text("expiration_date").notNull(),
+  notifyDays: text("notify_days").default("90,60,30"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertRenewalReminderSchema = createInsertSchema(renewalReminders).omit({ id: true, createdAt: true });
+export type InsertRenewalReminder = z.infer<typeof insertRenewalReminderSchema>;
+export type RenewalReminder = typeof renewalReminders.$inferSelect;
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type UpsertUser = z.infer<typeof upsertUserSchema>;
 export type User = typeof users.$inferSelect;

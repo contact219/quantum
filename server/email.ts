@@ -15,30 +15,45 @@ async function getCredentials() {
     return null;
   }
 
-  connectionSettings = await fetch(
-    "https://" + hostname + "/api/v2/connection?include_secrets=true&connector_names=sendgrid",
-    {
-      headers: {
-        Accept: "application/json",
-        X_REPLIT_TOKEN: xReplitToken,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => data.items?.[0]);
+  try {
+    connectionSettings = await fetch(
+      "https://" + hostname + "/api/v2/connection?include_secrets=true&connector_names=sendgrid",
+      {
+        headers: {
+          Accept: "application/json",
+          X_REPLIT_TOKEN: xReplitToken,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => data.items?.[0]);
 
-  if (
-    !connectionSettings ||
-    !connectionSettings.settings.api_key ||
-    !connectionSettings.settings.from_email
-  ) {
-    console.warn("SendGrid not properly configured");
+    if (!connectionSettings) {
+      console.warn("SendGrid integration not found in Replit connectors - email notifications will not be sent");
+      return null;
+    }
+
+    if (
+      !connectionSettings.settings.api_key ||
+      !connectionSettings.settings.from_email
+    ) {
+      console.warn("SendGrid not properly configured - missing api_key or from_email");
+      console.warn("SendGrid settings:", {
+        hasApiKey: !!connectionSettings.settings.api_key,
+        hasFromEmail: !!connectionSettings.settings.from_email
+      });
+      return null;
+    }
+    
+    console.log("SendGrid credentials loaded successfully");
+    return {
+      apiKey: connectionSettings.settings.api_key,
+      email: connectionSettings.settings.from_email,
+    };
+  } catch (error) {
+    console.error("Error fetching SendGrid credentials:", error);
     return null;
   }
-  return {
-    apiKey: connectionSettings.settings.api_key,
-    email: connectionSettings.settings.from_email,
-  };
 }
 
 export async function sendEmail(

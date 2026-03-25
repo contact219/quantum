@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail } from "./email";
+import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendQuoteSubmissionNotificationEmail } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 import { registerBmc84Routes } from "./routes-bmc84";
@@ -98,6 +98,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         annualRevenue: validatedData.annualRevenue,
         creditScore: validatedData.creditScore,
       });
+      
+      // Send admin notification email
+      await sendQuoteSubmissionNotificationEmail(
+        validatedData.businessName,
+        validatedData.contactName,
+        validatedData.contactEmail,
+        validatedData.bondType,
+        validatedData.projectState,
+        validatedData.contractValue
+      );
       
       res.json({
         success: true,

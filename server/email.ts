@@ -71,6 +71,33 @@ export async function sendEmail(
   }
 }
 
+export async function sendQuoteSubmissionNotificationEmail(
+  businessName: string,
+  contactName: string,
+  contactEmail: string,
+  bondType: string,
+  projectState: string,
+  contractValue: number
+): Promise<boolean> {
+  const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
+  
+  const htmlContent = `
+    <h2>New Bond Quote Request</h2>
+    <p><strong>From:</strong> ${contactName}</p>
+    <p><strong>Company:</strong> ${businessName}</p>
+    <p><strong>Email:</strong> ${contactEmail}</p>
+    <h3>Request Details:</h3>
+    <ul>
+      <li><strong>Bond Type:</strong> ${bondType}</li>
+      <li><strong>Project State:</strong> ${projectState}</li>
+      <li><strong>Contract Value:</strong> $${contractValue.toLocaleString()}</li>
+    </ul>
+    <p>Log in to the admin portal to review and process this quote request.</p>
+  `;
+
+  return sendEmail(adminEmail, `New Bond Quote Request - ${businessName}`, htmlContent);
+}
+
 export async function sendApplicationStatusEmail(
   to: string,
   applicationNumber: string,

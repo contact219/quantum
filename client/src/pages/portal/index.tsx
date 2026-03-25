@@ -16,8 +16,15 @@ import PortalProjects from "./projects";
 import PortalBonds from "./bonds";
 import PortalDocuments from "./documents";
 import PortalSettings from "./settings";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Portal() {
+  useSEO({
+    title: "Client Portal | Quantum Surety",
+    description: "Quantum Surety client portal for managing projects, bond documents, and account settings.",
+    canonical: "/portal",
+    noIndex: true,
+  });
   const [location] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

@@ -85,7 +85,7 @@ export default function ApplicationPortal() {
   useSEO({
     title: "Application Portal | Quantum Surety",
     description: "Create and manage surety bond applications, upload documents, and track underwriting automation status.",
-    canonical: "/application",
+    canonical: "/portal/application",
     noIndex: true,
   });
   const { toast } = useToast();

@@ -48,6 +48,8 @@
   --error: 0 84% 60%;
   --muted: 222 47% 12%;
   --muted-foreground: 215 20% 65%;
+  --background: 222 47% 6%;
+  --foreground: 215 20% 95%;
 }
 
 /* Glassmorphism */

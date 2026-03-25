@@ -34,6 +34,7 @@ import BidBondTexas from "@/pages/bid-bond-texas";
 import PerformanceBondTexas from "@/pages/performance-bond-texas";
 import LicenseBondTexas from "@/pages/license-bond-texas";
 import BMC84FreightBrokerBond from "@/pages/bmc84-freight-broker-bond";
+import NotaryBondTexas from "@/pages/notary-bond-texas";
 
 function Router() {
   return (
@@ -94,6 +95,7 @@ function Router() {
       <Route path="/bonds/performance-bond-texas" component={PerformanceBondTexas} />
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/bmc-84-freight-broker" component={BMC84FreightBrokerBond} />
+      <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
 
       <Route component={NotFound} />
     </Switch>

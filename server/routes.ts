@@ -71,8 +71,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Quote submission endpoint - PROTECTED (requires authentication)
   app.post("/api/quotes", async (req: any, res) => {
     try {
-      // Allow both authenticated and public (guest) users to submit quotes
-      const userId = req.isAuthenticated() ? req.user?.claims?.sub : null;
+      // Check if user is authenticated (simpler check without strict token validation)
+      if (!req.isAuthenticated()) {
+        return res.status(401).json({ success: false, error: "User not authenticated" });
+      }
+
+      const userId = req.user?.claims?.sub;
+      if (!userId) {
+        return res.status(401).json({ success: false, error: "User not authenticated" });
+      }
 
       const validatedData = quoteFormSchema.parse(req.body);
 
@@ -91,16 +98,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         annualRevenue: validatedData.annualRevenue,
         creditScore: validatedData.creditScore,
       });
-      
-      // Send admin notification email
-      await sendBondRequestNotification(
-        validatedData.businessName,
-        validatedData.contactName,
-        validatedData.contactEmail,
-        validatedData.bondType,
-        validatedData.projectState,
-        validatedData.contractValue
-      );
+
+      // Notify administrator of new bond request submission
+      sendBondRequestNotification({
+        applicantName: validatedData.contactName,
+        companyName: validatedData.businessName,
+        bondType: validatedData.bondType,
+        contractValue: validatedData.contractValue,
+        contactEmail: validatedData.contactEmail,
+        quoteId: quote.id,
+      }).catch((err) => console.error("[Email] Bond request notification failed:", err));
       
       res.json({
         success: true,
@@ -338,26 +345,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Admin-only endpoints for managing settings
-  // Test email endpoint - admin only
-  app.post("/api/admin/test-email", isAdmin, async (req, res) => {
-    try {
-      const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
-      const { sendEmail } = await import("./email");
-      const success = await sendEmail(
-        adminEmail,
-        "Quantum Surety - Email Test",
-        `<h2>Email Test Successful</h2><p>This is a test email from the Quantum Surety admin panel.</p><p>Zoho SMTP is working correctly. Bond quote notifications will be delivered to this inbox.</p><p><em>Sent: ${new Date().toISOString()}</em></p>`
-      );
-      if (success) {
-        res.json({ success: true, message: `Test email sent to ${adminEmail}` });
-      } else {
-        res.status(500).json({ success: false, message: "Email failed to send — check server logs for details" });
-      }
-    } catch (error) {
-      res.status(500).json({ success: false, error: String(error) });
-    }
-  });
-
   app.get("/api/admin/settings", isAdmin, async (req, res) => {
     try {
       const settings = await storage.getCompanySettings();
@@ -482,59 +469,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Resource endpoints
   // Public endpoint to get all resources
-  // Renewal Reminders
-  app.post("/api/renewals", async (req, res) => {
-    try {
-      const { email, contactName, companyName, bondType, bondNumber, expirationDate } = req.body;
-      if (!email || !bondType || !expirationDate) {
-        return res.status(400).json({ success: false, error: "Email, bond type, and expiration date are required" });
-      }
-      const reminder = await storage.createRenewalReminder({
-        email, contactName, companyName, bondType, bondNumber, expirationDate,
-        notifyDays: "90,60,30",
-      });
-      // Send confirmation to user
-      const { sendEmail } = await import("./email");
-      await sendEmail(
-        email,
-        "Bond Renewal Reminder Registered — Quantum Surety",
-        `<h2>You're all set!</h2>
-        <p>Hi ${contactName || "there"},</p>
-        <p>We've registered a renewal reminder for your <strong>${bondType}</strong> bond expiring on <strong>${expirationDate}</strong>.</p>
-        <p>We'll send you reminders at <strong>90, 60, and 30 days</strong> before your bond expires so you're never caught without coverage.</p>
-        <p>Bond Number: ${bondNumber || "N/A"}</p>
-        <p>Questions? Reply to this email or call us anytime.</p>
-        <p><strong>— Quantum Surety Team</strong></p>`
-      );
-      // Notify admin
-      const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
-      await sendEmail(
-        adminEmail,
-        `New Renewal Reminder: ${companyName || email}`,
-        `<h2>New Renewal Reminder Signup</h2>
-        <p><strong>Name:</strong> ${contactName || "N/A"}</p>
-        <p><strong>Company:</strong> ${companyName || "N/A"}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Bond Type:</strong> ${bondType}</p>
-        <p><strong>Bond Number:</strong> ${bondNumber || "N/A"}</p>
-        <p><strong>Expiration Date:</strong> ${expirationDate}</p>`
-      );
-      res.json({ success: true, reminder });
-    } catch (error) {
-      console.error("Error creating renewal reminder:", error);
-      res.status(500).json({ success: false, error: "Failed to create reminder" });
-    }
-  });
-
-  app.get("/api/admin/renewals", isAdmin, async (req, res) => {
-    try {
-      const reminders = await storage.getRenewalReminders();
-      res.json(reminders);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to fetch renewal reminders" });
-    }
-  });
-
   app.get("/api/resources", async (req, res) => {
     try {
       // Auto-seed on first access if empty

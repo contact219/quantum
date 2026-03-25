@@ -71,15 +71,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Quote submission endpoint - PROTECTED (requires authentication)
   app.post("/api/quotes", async (req: any, res) => {
     try {
-      // Check if user is authenticated (simpler check without strict token validation)
-      if (!req.isAuthenticated()) {
-        return res.status(401).json({ success: false, error: "User not authenticated" });
-      }
-
-      const userId = req.user?.claims?.sub;
-      if (!userId) {
-        return res.status(401).json({ success: false, error: "User not authenticated" });
-      }
+      // Allow both authenticated and public (guest) users to submit quotes
+      const userId = req.isAuthenticated() ? req.user?.claims?.sub : null;
 
       const validatedData = quoteFormSchema.parse(req.body);
 

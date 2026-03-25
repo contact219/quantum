@@ -20,11 +20,13 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   noIndex?: boolean;
+  ogType?: "website" | "article";
 }
 
 const BASE_URL = "https://quantumsurety.bond";
+const DEFAULT_OG_IMAGE = `${BASE_URL}/QS_OG_2.png`;
 
-export function useSEO({ title, description, canonical, noIndex = false }: SEOProps) {
+export function useSEO({ title, description, canonical, noIndex = false, ogType = "website" }: SEOProps) {
   useEffect(() => {
     // Title
     document.title = title;
@@ -36,6 +38,14 @@ export function useSEO({ title, description, canonical, noIndex = false }: SEOPr
         el = document.createElement("meta");
         document.head.appendChild(el);
       }
+      if (selector.includes('name="')) {
+        const match = selector.match(/name="([^"]+)"/);
+        if (match) el.setAttribute("name", match[1]);
+      }
+      if (selector.includes('property="')) {
+        const match = selector.match(/property="([^"]+)"/);
+        if (match) el.setAttribute("property", match[1]);
+      }
       el.setAttribute(attr, value);
     }
 
@@ -46,28 +56,34 @@ export function useSEO({ title, description, canonical, noIndex = false }: SEOPr
     }
 
     setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:type"]', "content", ogType);
     setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    setMeta('meta[property="og:image"]', "content", DEFAULT_OG_IMAGE);
+    setMeta('meta[name="twitter:image"]', "content", DEFAULT_OG_IMAGE);
 
-    if (canonical) {
-      const fullUrl = canonical.startsWith("http")
-        ? canonical
-        : `${BASE_URL}${canonical}`;
-      setMeta('meta[property="og:url"]', "content", fullUrl);
-      let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-      if (!link) {
-        link = document.createElement("link");
-        link.rel = "canonical";
-        document.head.appendChild(link);
-      }
-      link.href = fullUrl;
+    const canonicalPath = canonical ?? window.location.pathname;
+    const fullUrl = canonicalPath.startsWith("http")
+      ? canonicalPath
+      : `${BASE_URL}${canonicalPath}`;
+
+    setMeta('meta[property="og:url"]', "content", fullUrl);
+    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
     }
+    link.href = fullUrl;
 
     if (noIndex) {
       setMeta('meta[name="robots"]', "content", "noindex, nofollow");
+      setMeta('meta[name="googlebot"]', "content", "noindex, nofollow");
     } else {
       setMeta('meta[name="robots"]', "content", "index, follow");
+      setMeta('meta[name="googlebot"]', "content", "index, follow");
     }
-  }, [title, description, canonical, noIndex]);
+  }, [title, description, canonical, noIndex, ogType]);
 }
 
 // ─── Pre-built page SEO configs ───────────────────────────────────────────────

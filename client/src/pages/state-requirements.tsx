@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useSEO } from "@/hooks/useSEO";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -201,6 +202,13 @@ function DetailPanel({ record, onClose }: { record: BondRecord; onClose: () => v
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function StateRequirements() {
+  useSEO({
+    title: "50-State Surety Bond Requirements Guide | Quantum Surety",
+    description:
+      "Explore public construction and license bond requirements by state, including thresholds, renewal cycles, and regulatory notes.",
+    canonical: "/resources/state-requirements",
+  });
+
   const [search,      setSearch]      = useState("");
   const [filterType,  setFilterType]  = useState("");
   const [filterStatus,setFilterStatus]= useState("");

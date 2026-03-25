@@ -338,6 +338,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Admin-only endpoints for managing settings
+  // Test email endpoint - admin only
+  app.post("/api/admin/test-email", isAdmin, async (req, res) => {
+    try {
+      const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
+      const { sendEmail } = await import("./email");
+      const success = await sendEmail(
+        adminEmail,
+        "Quantum Surety - Email Test",
+        `<h2>Email Test Successful</h2><p>This is a test email from the Quantum Surety admin panel.</p><p>Zoho SMTP is working correctly. Bond quote notifications will be delivered to this inbox.</p><p><em>Sent: ${new Date().toISOString()}</em></p>`
+      );
+      if (success) {
+        res.json({ success: true, message: `Test email sent to ${adminEmail}` });
+      } else {
+        res.status(500).json({ success: false, message: "Email failed to send — check server logs for details" });
+      }
+    } catch (error) {
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
   app.get("/api/admin/settings", isAdmin, async (req, res) => {
     try {
       const settings = await storage.getCompanySettings();

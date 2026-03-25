@@ -72,6 +72,7 @@ export default function Admin() {
   const [settings, setSettings] = useState<any>(null);
   const [settingsLoading, setSettingsLoading] = useState(false);
   const [settingsSaving, setSettingsSaving] = useState(false);
+  const [emailTesting, setEmailTesting] = useState(false);
   const [activeTab, setActiveTab] = useState("quotes");
   const [resources, setResources] = useState<any[]>([]);
   const [editingResource, setEditingResource] = useState<any>(null);
@@ -1950,6 +1951,47 @@ export default function Admin() {
                     <p>Failed to load settings</p>
                   </div>
                 )}
+              </CardContent>
+            </Card>
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Mail className="w-5 h-5" />
+                  Email Notifications
+                </CardTitle>
+                <CardDescription>
+                  Bond quote submissions automatically notify administrator@quantumsurety.bond via Zoho SMTP (with SendGrid as fallback). Use the button below to send a test email.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center gap-4">
+                  <Button
+                    variant="outline"
+                    disabled={emailTesting}
+                    data-testid="button-test-email"
+                    onClick={async () => {
+                      setEmailTesting(true);
+                      try {
+                        const res = await fetch("/api/admin/test-email", { method: "POST" });
+                        const data = await res.json();
+                        if (data.success) {
+                          toast({ title: "Test email sent", description: data.message });
+                        } else {
+                          toast({ title: "Email failed", description: data.message || "Check server logs", variant: "destructive" });
+                        }
+                      } catch {
+                        toast({ title: "Error", description: "Could not reach the server", variant: "destructive" });
+                      } finally {
+                        setEmailTesting(false);
+                      }
+                    }}
+                  >
+                    {emailTesting ? "Sending..." : "Send Test Email"}
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Sends to: <strong>administrator@quantumsurety.bond</strong>
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

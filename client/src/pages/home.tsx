@@ -182,6 +182,43 @@ export default function Home() {
 
       <ServicesSection />
 
+      <section className="bg-slate-950 py-20 text-slate-100">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <h2 className="text-3xl font-semibold tracking-tight text-white">AI-Powered Surety Bonds for Contractors</h2>
+          <p className="mt-5 text-base leading-8 text-slate-300">
+            Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide.
+            Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.
+          </p>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div>
+              <h3 className="text-xl font-semibold text-white">Bond Types We Offer</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+                <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
+                <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
+                <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
+                <li><strong>License &amp; Permit Bonds</strong> — Required by cities and states for contractor licenses.</li>
+                <li><strong>Miscellaneous Surety Bonds</strong> — Court bonds, fidelity bonds, and more.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-white">Why Quantum Surety?</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+                <li>AI-powered underwriting for faster approvals</li>
+                <li>Quotes delivered in minutes, not 24–48 hours</li>
+                <li>Serving Texas contractors and nationwide</li>
+                <li>Experienced surety professionals backed by top-rated carriers</li>
+              </ul>
+              <a
+                href="/quote"
+                className="mt-8 inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-6 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+              >
+                Get a Free Bond Quote
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">

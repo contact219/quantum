@@ -272,6 +272,72 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+
+  "/bonds/notary-bond-texas": {
+    title: "Texas Notary Bond | $50 Instant Online | Quantum Surety",
+    description:
+      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. Add E&O insurance. Download and file today. Quantum Surety.",
+    canonical: `${BASE_URL}/bonds/notary-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Texas Notary Public Surety Bond",
+      description: "Required 4-year $10,000 Texas notary surety bond. Instant online purchase and download.",
+      offers: {
+        "@type": "Offer",
+        price: "50.00",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "Quantum Surety",
+          url: "https://quantumsurety.bond",
+        },
+      },
+      brand: {
+        "@type": "Brand",
+        name: "Quantum Surety",
+      },
+    },
+    content: `
+      <main>
+        <h1>Texas Notary Bond — $50, Instant Online</h1>
+        <p>Get your required 4-year, $10,000 Texas notary public surety bond instantly. Quantum Surety issues Texas notary bonds for $50 — no credit check, instant download, 24/7 availability. File today with the Texas Secretary of State.</p>
+        <section>
+          <h2>What is a Texas Notary Bond?</h2>
+          <p>A Texas notary bond is a $10,000 surety bond required by the Texas Secretary of State for all notary public commissions. It protects the public from financial loss caused by notary errors or misconduct. The bond costs $50 for the full 4-year term and runs concurrent with your notary commission.</p>
+        </section>
+        <section>
+          <h2>2026 Texas Notary Law Changes (Senate Bill 693)</h2>
+          <p>Effective January 1, 2026, Texas Senate Bill 693 requires all new and renewing Texas notary applicants to complete a mandatory education course provided by the Texas Secretary of State (up to 2 hours, $20 fee per attempt). The bond requirement is unchanged — still a 4-year $10,000 bond for $50. New criminal penalties apply for improper notarizations. Record retention increased to 10 years.</p>
+        </section>
+        <section>
+          <h2>Texas Notary Bond Requirements</h2>
+          <ul>
+            <li>Bond amount: $10,000</li>
+            <li>Bond term: 4 years (concurrent with commission)</li>
+            <li>Bond cost: $50 flat — no credit check required</li>
+            <li>Must be issued by a surety company licensed in Texas</li>
+            <li>Filed via the Texas SOS Portal Notary System</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Notary Bond vs E&O Insurance</h2>
+          <p>The notary bond protects the public — not the notary. Errors and Omissions (E&O) insurance protects the notary against personal liability for unintentional mistakes. Most mobile notaries and signing agents carry both. E&O insurance is available to add at checkout alongside your bond.</p>
+        </section>
+        <section>
+          <h2>Notary Bonds in Neighboring States</h2>
+          <ul>
+            <li><a href="/bonds/notary-bond-oklahoma">Oklahoma Notary Bond</a> — $1,000 bond, 4-year term</li>
+            <li><a href="/bonds/notary-bond-louisiana">Louisiana Notary Bond</a> — $10,000–$50,000 depending on parish</li>
+            <li><a href="/bonds/notary-bond-arkansas">Arkansas Notary Bond</a> — $7,500 bond, 10-year term</li>
+            <li><a href="/bonds/notary-bond-new-mexico">New Mexico Notary Bond</a> — $10,000 bond, 4-year term</li>
+          </ul>
+        </section>
+        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+      </main>`,
+  },
+
   "/bonds/bmc-84-freight-broker": {
     title: "BMC-84 Freight Broker Bond | $75,000 FMCSA Bond | Quantum Surety",
     description:
@@ -413,17 +479,6 @@ export function seoMiddleware(distDir: string) {
       "" // remove existing title (we add it in metaTags)
     );
     html = html.replace("</head>", `${metaTags}\n</head>`);
-
-    // 2. Inject crawlable static content BEFORE <div id="root">
-    // React will hydrate over it — users see the React app,
-    // Google crawlers see real HTML content.
-    if (meta.content) {
-      const staticBlock = `
-        <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
-          ${meta.content}
-        </div>`;
-      html = html.replace('<div id="root">', `${staticBlock}\n<div id="root">`);
-    }
 
     res.setHeader("Content-Type", "text/html");
     res.send(html);

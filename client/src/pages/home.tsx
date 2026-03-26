@@ -182,39 +182,45 @@ export default function Home() {
 
       <ServicesSection />
 
-      <section className="bg-slate-950 py-20 text-slate-100">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-white">AI-Powered Surety Bonds for Contractors</h2>
-          <p className="mt-5 text-base leading-8 text-slate-300">
-            Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide.
-            Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.
-          </p>
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <div>
-              <h3 className="text-xl font-semibold text-white">Bond Types We Offer</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
-                <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
-                <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
-                <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
-                <li><strong>License &amp; Permit Bonds</strong> — Required by cities and states for contractor licenses.</li>
-                <li><strong>Miscellaneous Surety Bonds</strong> — Court bonds, fidelity bonds, and more.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-white">Why Quantum Surety?</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
-                <li>AI-powered underwriting for faster approvals</li>
-                <li>Quotes delivered in minutes, not 24–48 hours</li>
-                <li>Serving Texas contractors and nationwide</li>
-                <li>Experienced surety professionals backed by top-rated carriers</li>
-              </ul>
+      {/* Quick Tools */}
+      <section className="bg-white py-16 border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-2">
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-8 h-8 object-contain" />
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Free Tools</p>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
+              Tools for Contractors &amp; Bond Buyers
+            </h2>
+            <a href="/resources" className="text-sm font-medium text-cyan-700 hover:text-cyan-800 whitespace-nowrap">
+              View all resources →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: true },
+              { href: "/quote", label: "Bond Calculator", sub: "Estimate your premium", icon: "◈", accent: false },
+              { href: "/resources/state-requirements", label: "State Requirements", sub: "Requirements by state", icon: "◉", accent: false },
+              { href: "/obligee-lookup", label: "Obligee Lookup", sub: "Find the correct obligee name", icon: "⊕", accent: false },
+              { href: "/renewals", label: "Renewal Reminders", sub: "Never miss a bond renewal", icon: "◷", accent: false },
+            ].map((tool) => (
               <a
-                href="/quote"
-                className="mt-8 inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-6 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                key={tool.href}
+                href={tool.href}
+                className={`group flex flex-col gap-2 rounded-2xl border p-5 transition-all duration-150 hover:shadow-md hover:-translate-y-0.5 ${
+                  tool.accent ? "border-indigo-200 bg-indigo-50 ring-1 ring-indigo-100" : "border-slate-200 bg-slate-50"
+                }`}
               >
-                Get a Free Bond Quote
+                <span className={`text-xl font-light select-none ${tool.accent ? "text-indigo-500" : "text-slate-400"}`}>
+                  {tool.icon}
+                </span>
+                <p className={`text-sm font-semibold leading-snug ${tool.accent ? "text-indigo-800" : "text-slate-800"}`}>
+                  {tool.label}
+                </p>
+                <p className="text-xs text-slate-500 leading-relaxed">{tool.sub}</p>
               </a>
-            </div>
+            ))}
           </div>
         </div>
       </section>

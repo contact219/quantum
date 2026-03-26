@@ -270,6 +270,36 @@ export default function Home() {
           <p className="mt-4 text-base leading-8 text-slate-600" data-testid="text-about-body-secondary">
             We combine AI-powered underwriting technology with deep surety expertise to deliver faster bond approvals than traditional agencies. Our carrier network includes A-rated, T-listed companies authorized to issue bonds on federal and public projects nationwide. From a $5,000 license bond to a $10 million performance bond — we handle it.
           </p>
+          <p className="mt-4 text-base leading-8 text-slate-600">
+            Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide. Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.
+          </p>
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900">Bond Types We Offer</h3>
+              <ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
+                <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
+                <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
+                <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
+                <li><strong>License &amp; Permit Bonds</strong> — Required by cities and states for contractor licenses.</li>
+                <li><strong>Miscellaneous Surety Bonds</strong> — Court bonds, fidelity bonds, and more.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900">Why Quantum Surety?</h3>
+              <ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
+                <li>AI-powered underwriting for faster approvals</li>
+                <li>Quotes delivered in minutes, not 24–48 hours</li>
+                <li>Serving Texas contractors and nationwide</li>
+                <li>Experienced surety professionals backed by top-rated carriers</li>
+              </ul>
+            </div>
+          </div>
+          <a
+            href="/quote"
+            className="mt-8 inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-6 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+          >
+            Get a Free Bond Quote
+          </a>
         </div>
       </section>
     </div>

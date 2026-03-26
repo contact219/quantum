@@ -480,17 +480,6 @@ export function seoMiddleware(distDir: string) {
     );
     html = html.replace("</head>", `${metaTags}\n</head>`);
 
-    // 2. Inject crawlable static content BEFORE <div id="root">
-    // React will hydrate over it — users see the React app,
-    // Google crawlers see real HTML content.
-    if (meta.content) {
-      const staticBlock = `
-        <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
-          ${meta.content}
-        </div>`;
-      html = html.replace('<div id="root">', `${staticBlock}\n<div id="root">`);
-    }
-
     res.setHeader("Content-Type", "text/html");
     res.send(html);
   };

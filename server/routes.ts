@@ -308,7 +308,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // AI quote chatbot endpoint (PaperBot)
+  // AI quote chatbot endpoint (BondBot)
   app.post("/api/quote", async (req, res) => {
     try {
       const { bond_category, bond_type, bond_amount, business_details, email } = req.body ?? {};
@@ -368,7 +368,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Optional lead intake placeholder for future CRM integration.
       if (email) {
-        console.log(`[PaperBot] Lead captured for ${categoryLabel} quote: ${email}`);
+        console.log(`[BondBot] Lead captured for ${categoryLabel} quote: ${email}`);
       }
 
       return res.json({
@@ -384,7 +384,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         bond_category: category,
       });
     } catch (error) {
-      console.error("PaperBot quote error:", error);
+      console.error("BondBot quote error:", error);
       res.status(500).json({ error: "Failed to generate quote." });
     }
   });

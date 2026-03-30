@@ -10,6 +10,7 @@ import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import Home from "@/pages/home";
 import Construction from "@/pages/construction";
 import AIBondFinder from "@/pages/ai-bond-finder";
+import ChatbotPage from "@/pages/chatbot";
 import Quote from "@/pages/quote";
 import Portal from "@/pages/portal";
 import QuoteDetail from "@/pages/portal/quote";
@@ -64,6 +65,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/construction" component={Construction} />
       <Route path="/ai-bond-finder" component={AIBondFinder} />
+      <Route path="/chatbot" component={ChatbotPage} />
       <Route path="/quote" component={Quote} />
       <Route path="/admin-login" component={AdminLogin} />
       <Route path="/admin-setup" component={AdminSetup} />

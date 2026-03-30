@@ -308,6 +308,87 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // AI quote chatbot endpoint (PaperBot)
+  app.post("/api/quote", async (req, res) => {
+    try {
+      const { bond_category, bond_type, bond_amount, business_details, email } = req.body ?? {};
+
+      const category = String(bond_category || "").toLowerCase();
+      const bondType = String(bond_type || "").trim();
+      const amount = Number(bond_amount);
+
+      if (!category || !bondType || !Number.isFinite(amount) || amount <= 0) {
+        return res.status(400).json({ error: "bond_category, bond_type, and bond_amount are required." });
+      }
+
+      const PRICING: Record<string, Record<string, number>> = {
+        notary: {
+          sb693: 0.0075,
+          general: 0.009,
+        },
+        construction: {
+          performance: 0.012,
+          payment: 0.01,
+          bid: 0.0095,
+          general: 0.011,
+        },
+        lp: {
+          labor: 0.0085,
+          payment: 0.009,
+          general: 0.009,
+        },
+      };
+
+      const normalizedType = bondType.toLowerCase();
+      const categoryRates = PRICING[category] || { general: 0.011 };
+      const baseRate =
+        categoryRates[normalizedType] ??
+        (normalizedType.includes("sb-693") || normalizedType.includes("sb693")
+          ? categoryRates.sb693
+          : undefined) ??
+        categoryRates.general;
+
+      // Lightweight dynamic risk adjustment hook (can be replaced by internal API integration).
+      const amountFactor = amount >= 1_000_000 ? 1.2 : amount >= 250_000 ? 1.1 : 1.0;
+      const detailsText = String(business_details || "");
+      const hasLongTrackRecord = /([1-9]\d*)\s+years?/i.test(detailsText);
+      const experienceFactor = hasLongTrackRecord ? 0.95 : 1.0;
+      const riskFactor = amountFactor * experienceFactor;
+
+      const premium = Number((amount * baseRate * riskFactor).toFixed(2));
+
+      const isSB693 = normalizedType.includes("sb-693") || normalizedType.includes("sb693");
+      const eligibility =
+        isSB693 && amount < 10_000
+          ? "SB-693 Texas notary bonds typically require at least a $10,000 bond amount. Update the amount for a more accurate quote."
+          : "Based on your inputs, you appear preliminarily eligible. Final underwriting may request additional details.";
+
+      const mascot_action = premium > amount * 0.011 ? "thoughtful" : "smile";
+      const categoryLabel = category === "lp" ? "Labor & Payment" : category.charAt(0).toUpperCase() + category.slice(1);
+
+      // Optional lead intake placeholder for future CRM integration.
+      if (email) {
+        console.log(`[PaperBot] Lead captured for ${categoryLabel} quote: ${email}`);
+      }
+
+      return res.json({
+        premium,
+        currency: "USD",
+        quote_text: `Your estimated premium for a ${categoryLabel} ${bondType} bond is $${premium.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}.`,
+        eligibility,
+        cta_url: "/custom-quote",
+        mascot_action,
+        bond_category: category,
+      });
+    } catch (error) {
+      console.error("PaperBot quote error:", error);
+      res.status(500).json({ error: "Failed to generate quote." });
+    }
+  });
+
   // Bond recommendation endpoint
   app.post("/api/bond-recommendations", async (req, res) => {
     const { role, projectSize, state } = req.body;

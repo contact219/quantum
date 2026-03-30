@@ -33,7 +33,7 @@ export function Navbar() {
     { href: "/", label: "Home" },
     { href: "/construction", label: "Construction" },
     { href: "/blog", label: "Blog" },
-    { href: "/ai-bond-finder", label: "AI Bond Finder" },
+    { href: "/chatbot", label: "AI Bond Finder" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },
     { href: "/resources", label: "Resources" },

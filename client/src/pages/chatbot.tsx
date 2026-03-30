@@ -36,7 +36,7 @@ const BOND_TYPES: Record<string, { value: string; label: string }[]> = {
   ],
 };
 
-function BondBot({
+function QuantumQuoteAssistant({
   action,
   isThinking,
   hasResult,
@@ -108,7 +108,7 @@ function BondBot({
         )}
       </div>
       <p className="text-xs text-slate-500 font-medium">
-        {isThinking ? "BondBot is calculating…" : hasResult ? "Here's your estimate" : "Fill the form & ask me!"}
+        {isThinking ? "Calculating your quote…" : hasResult ? "Here's your estimate" : "Fill the form & ask me!"}
       </p>
     </div>
   );
@@ -125,7 +125,7 @@ export default function ChatbotPage() {
   useSEO({
     title: `Instant ${bondCategory === "lp" ? "Labor & Payment" : bondCategory} Quote – AI Powered | Quantum Surety`,
     description:
-      "Get an AI-driven quote for Notary, Construction, and Labor & Payment bonds with BondBot. Fast estimates, eligibility guidance, and a custom quote CTA.",
+      "Get an AI-driven quote for Notary, Construction, and Labor & Payment bonds with Quantum Quote Assistant. Fast estimates, eligibility guidance, and a custom quote CTA.",
     canonical: "/chatbot",
   });
 
@@ -137,16 +137,16 @@ export default function ChatbotPage() {
         {
           "@type": "Question",
           name: "How quickly can I get a Notary Bond quote?",
-          acceptedAnswer: { "@type": "Answer", text: "Under 2 seconds with BondBot's AI quote engine." },
+          acceptedAnswer: { "@type": "Answer", text: "Under 2 seconds with Quantum Quote Assistant's AI engine." },
         },
       ],
     };
     const script = document.createElement("script");
     script.type = "application/ld+json";
-    script.id = "bondbot-faq-schema";
+    script.id = "quantum-quote-faq-schema";
     script.text = JSON.stringify(schema);
     document.head.appendChild(script);
-    return () => { document.getElementById("bondbot-faq-schema")?.remove(); };
+    return () => { document.getElementById("quantum-quote-faq-schema")?.remove(); };
   }, []);
 
   const currentTypes = useMemo(() => BOND_TYPES[bondCategory], [bondCategory]);
@@ -189,13 +189,13 @@ export default function ChatbotPage() {
           <Badge className="mb-3 bg-indigo-100 text-indigo-700 border-indigo-200">
             <Sparkles className="h-3 w-3 mr-1" /> AI Quote Assistant
           </Badge>
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900">BondBot</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">Quantum Quote Assistant</h1>
           <p className="mt-2 text-slate-500">Notary, Construction, and Labor & Payment quotes in seconds.</p>
         </div>
 
-        {/* BondBot mascot — always visible at top */}
+        {/* Mascot — always visible at top */}
         <div className="flex justify-center mb-6">
-          <BondBot action={mascotAction} isThinking={quoteMutation.isPending} hasResult={hasResult} />
+          <QuantumQuoteAssistant action={mascotAction} isThinking={quoteMutation.isPending} hasResult={hasResult} />
         </div>
 
         {/* Result speech bubble */}
@@ -233,7 +233,7 @@ export default function ChatbotPage() {
         {/* Error state */}
         {quoteMutation.isError && (
           <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-            BondBot couldn't connect right now. Please try again or{" "}
+            Quantum Quote Assistant couldn't connect right now. Please try again or{" "}
             <Link href="/quote"><span className="underline cursor-pointer">get a manual quote</span></Link>.
           </div>
         )}
@@ -321,15 +321,15 @@ export default function ChatbotPage() {
               className="w-full text-base font-semibold bg-indigo-600 hover:bg-indigo-700 text-white"
               onClick={() => quoteMutation.mutate()}
               disabled={quoteMutation.isPending || Number(bondAmount) <= 0}
-              data-testid="btn-ask-bondbot"
+              data-testid="btn-get-quote"
             >
               {quoteMutation.isPending ? (
                 <span className="flex items-center gap-2">
-                  <RefreshCw className="w-4 h-4 animate-spin" /> BondBot is thinking…
+                  <RefreshCw className="w-4 h-4 animate-spin" /> Calculating…
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4" /> Ask BondBot
+                  <Sparkles className="w-4 h-4" /> Get My Quote
                 </span>
               )}
             </Button>

@@ -33,7 +33,7 @@ export function Navbar() {
     { href: "/", label: "Home" },
     { href: "/construction", label: "Construction" },
     { href: "/blog", label: "Blog" },
-    { href: "/chatbot", label: "BondBot" },
+    { href: "/chatbot", label: "Quantum Quote" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },
     { href: "/resources", label: "Resources" },

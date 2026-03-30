@@ -36,17 +36,6 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["Texas Notary Bond", "Bond Cost", "E&O Insurance"],
     featured: false,
   },
-  {
-    slug: "texas-notary-vs-notary-signing-agent",
-    title: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
-    description:
-      "A notary public and a notary signing agent are not the same thing. Here's what each role requires, what bonds and insurance you need, and which path makes more sense for your business.",
-    date: "2026-03-25",
-    readTime: "5 min read",
-    category: "Texas Notary",
-    tags: ["Notary Signing Agent", "Texas Notary", "E&O Insurance"],
-    featured: false,
-  },
 ];
 
 function formatDate(dateStr: string) {

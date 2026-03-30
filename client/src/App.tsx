@@ -102,10 +102,10 @@ function Router() {
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
       <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />
 
-      {/* Blog */}
-      <Route path="/blog" component={BlogIndex} />
+      {/* Blog — specific routes BEFORE the index so wouter doesn't swallow sub-paths */}
       <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />
       <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
+      <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />
     </Switch>

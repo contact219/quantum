@@ -1,0 +1,174 @@
+import { Link } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
+import { ArrowRight, Clock, Tag } from "lucide-react";
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  featured?: boolean;
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "texas-notary-bond-sb693-2026-requirements",
+    title: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
+    description:
+      "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention. Here's exactly what it means for your notary bond and commission.",
+    date: "2026-03-15",
+    readTime: "7 min read",
+    category: "Texas Notary",
+    tags: ["SB693", "Texas Notary Bond", "2026 Requirements", "Secretary of State"],
+    featured: true,
+  },
+  {
+    slug: "texas-notary-bond-cost-2026",
+    title: "How Much Does a Texas Notary Bond Cost in 2026?",
+    description:
+      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewals. Here's exactly what you get, what the SOS fees are, and why E&O insurance is worth adding.",
+    date: "2026-03-20",
+    readTime: "4 min read",
+    category: "Texas Notary",
+    tags: ["Texas Notary Bond", "Bond Cost", "E&O Insurance"],
+    featured: false,
+  },
+  {
+    slug: "texas-notary-vs-notary-signing-agent",
+    title: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
+    description:
+      "A notary public and a notary signing agent are not the same thing. Here's what each role requires, what bonds and insurance you need, and which path makes more sense for your business.",
+    date: "2026-03-25",
+    readTime: "5 min read",
+    category: "Texas Notary",
+    tags: ["Notary Signing Agent", "Texas Notary", "E&O Insurance"],
+    featured: false,
+  },
+];
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default function BlogIndex() {
+  useSEO({
+    title: "Texas Surety Bond Blog | Quantum Surety",
+    description:
+      "Texas surety bond guides, notary bond requirements, SB693 law changes, and licensing tips for Texas small business owners. Straight talk from a TDI-licensed agency.",
+    canonical: "/blog",
+    ogType: "website",
+  });
+
+  const featured = BLOG_POSTS.find((p) => p.featured);
+  const rest = BLOG_POSTS.filter((p) => !p.featured);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-indigo-300 text-sm font-medium mb-3 uppercase tracking-widest">
+            Quantum Surety Blog
+          </p>
+          <h1 className="text-4xl font-bold mb-4">Texas Surety Bond Guides</h1>
+          <p className="text-indigo-100 text-lg max-w-2xl">
+            Straight-talk guides on Texas bond requirements, law changes, and licensing — written by a
+            TDI-licensed Texas surety agency, not a content farm.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
+
+        {/* Featured post */}
+        {featured && (
+          <div className="mb-12">
+            <p className="text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-4">
+              Featured
+            </p>
+            <Link href={`/blog/${featured.slug}`}>
+              <div className="bg-white rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer p-8">
+                <div className="flex items-center gap-3 mb-4 flex-wrap">
+                  <span className="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
+                    {featured.category}
+                  </span>
+                  <span className="text-gray-400 text-xs flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> {featured.readTime}
+                  </span>
+                  <span className="text-gray-400 text-xs">{formatDate(featured.date)}</span>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-snug">
+                  {featured.title}
+                </h2>
+                <p className="text-gray-600 mb-5 leading-relaxed">{featured.description}</p>
+                <div className="flex items-center gap-2 flex-wrap mb-5">
+                  {featured.tags.map((tag) => (
+                    <span key={tag} className="text-xs text-gray-500 flex items-center gap-1">
+                      <Tag className="w-3 h-3" /> {tag}
+                    </span>
+                  ))}
+                </div>
+                <span className="text-indigo-600 font-semibold text-sm flex items-center gap-1">
+                  Read guide <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        )}
+
+        {/* Rest of posts */}
+        {rest.length > 0 && (
+          <>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+              All Articles
+            </p>
+            <div className="space-y-4">
+              {rest.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`}>
+                  <div className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer p-6">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full">
+                        {post.category}
+                      </span>
+                      <span className="text-gray-400 text-xs flex items-center gap-1">
+                        <Clock className="w-3 h-3" /> {post.readTime}
+                      </span>
+                      <span className="text-gray-400 text-xs">{formatDate(post.date)}</span>
+                    </div>
+                    <h2 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
+                      {post.title}
+                    </h2>
+                    <p className="text-gray-600 text-sm mb-3 leading-relaxed">{post.description}</p>
+                    <span className="text-indigo-600 font-semibold text-sm flex items-center gap-1">
+                      Read more <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* CTA */}
+        <div className="mt-16 bg-indigo-900 rounded-2xl p-8 text-center text-white">
+          <h2 className="text-2xl font-bold mb-3">Ready to Get Your Texas Bond?</h2>
+          <p className="text-indigo-200 mb-6">
+            Instant quotes. No credit check. TDI-licensed Texas agency.
+          </p>
+          <Link href="/quote?type=notary">
+            <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors">
+              Get Instant Quote <ArrowRight className="w-4 h-4 inline ml-1" />
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

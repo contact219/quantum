@@ -1,0 +1,1341 @@
+From 8823df1fff2256ced5b112605bb1303dd21c2344 Mon Sep 17 00:00:00 2001
+From: Claude <claude@anthropic.com>
+Date: Mon, 30 Mar 2026 02:45:22 +0000
+Subject: [PATCH] feat: add SB693 blog system, fix duplicate meta tags, remove
+ BMC-84
+
+- Add blog infrastructure: /blog index + 2 SB693-focused posts
+  - /blog/texas-notary-bond-sb693-2026-requirements (primary SEO target)
+  - /blog/texas-notary-bond-cost-2026
+- Add blog routes to App.tsx, replace Freight Bonds nav with Blog
+- Remove BMC-84 from App.tsx routes, navbar, and seo.ts PAGE_META
+- Fix duplicate meta tag issue in client/index.html:
+  strip all title/canonical/og:/twitter:/robots/ld+json from shell
+  server/seo.ts now owns 100% of per-page meta injection
+- Update seoMiddleware to strip ALL duplicate tags before injection
+  (previously only stripped <title>)
+- Add FAQPage structured data to /bonds/notary-bond-texas for rich results
+- Add Article structured data to both blog posts
+- Update sitemap generator with per-route priority/changefreq logic
+  (/bonds/notary-bond-texas: 0.9, /blog: 0.85, blog posts: 0.8)
+- Support structuredData as object | object[] in PageMeta type
+---
+ client/index.html                             |  57 +--
+ client/src/App.tsx                            |  12 +-
+ client/src/components/layout/navbar.tsx       |   2 +-
+ client/src/pages/blog/index.tsx               | 181 ++++++++
+ .../blog/texas-notary-bond-cost-2026.tsx      | 203 +++++++++
+ ...as-notary-bond-sb693-2026-requirements.tsx | 402 ++++++++++++++++++
+ server/seo.ts                                 | 305 +++++++++++--
+ 7 files changed, 1069 insertions(+), 93 deletions(-)
+ create mode 100644 client/src/pages/blog/index.tsx
+ create mode 100644 client/src/pages/blog/texas-notary-bond-cost-2026.tsx
+ create mode 100644 client/src/pages/blog/texas-notary-bond-sb693-2026-requirements.tsx
+
+diff --git a/client/index.html b/client/index.html
+index ec5f38f..c5367af 100644
+--- a/client/index.html
++++ b/client/index.html
+@@ -5,57 +5,22 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <meta name="theme-color" content="#0f172a" />
+ 
+-    <title>Quantum Surety | AI-Powered Surety Bonds for Texas Contractors</title>
+-    <link rel="canonical" href="https://quantumsurety.bond/" />
+-    <meta name="robots" content="index, follow" />
++    <!--
++      NOTE: title, description, canonical, og:*, twitter:*, robots, and ld+json
++      are ALL injected server-side by server/seo.ts for every route.
++      Do NOT add them here — they will create duplicate tags that hurt SEO.
++      The seoMiddleware strips and re-injects them with per-page values.
++    -->
+ 
+-    <!-- Open Graph -->
+-    <meta property="og:locale" content="en_US" />
+-    <meta property="og:site_name" content="Quantum Surety" />
+-    <meta property="og:url" content="https://quantumsurety.bond/" />
++    <!-- OG image dimensions (safe to keep — not duplicated by seo.ts) -->
+     <meta property="og:image" content="https://quantumsurety.bond/QS_OG_2.png" />
+     <meta property="og:image:width" content="1200" />
+     <meta property="og:image:height" content="630" />
+-    <meta property="og:image:alt" content="Quantum Surety — AI-Powered Surety Bonds" />
+-
+-    <!-- Twitter / X -->
+-    <meta name="twitter:card" content="summary_large_image" />
+-    <meta name="twitter:site" content="@quantumsurety" />
+-    <meta name="twitter:title" content="Quantum Surety | AI-Powered Surety Bonds for Texas Contractors" />
+-    <meta name="twitter:description" content="Fast, AI-powered surety bonds for contractors. Quotes in minutes." />
++    <meta property="og:image:alt" content="Quantum Surety — AI-Powered Texas Surety Bonds" />
+     <meta name="twitter:image" content="https://quantumsurety.bond/QS_OG_2.png" />
++    <meta name="twitter:site" content="@quantumsurety" />
+ 
+-    <!-- Structured Data: Organization -->
+-    <script type="application/ld+json">
+-    {
+-      "@context": "https://schema.org",
+-      "@type": "InsuranceAgency",
+-      "name": "Quantum Surety",
+-      "url": "https://quantumsurety.bond",
+-      "logo": "https://quantumsurety.bond/QS_OG_2.png",
+-      "description": "AI-powered surety bond agency specializing in construction bonds for contractors nationwide.",
+-      "address": {
+-        "@type": "PostalAddress",
+-        "addressRegion": "TX",
+-        "addressCountry": "US"
+-      },
+-      "areaServed": "US",
+-      "serviceType": [
+-        "Surety Bonds",
+-        "Construction Bonds",
+-        "Performance Bonds",
+-        "Bid Bonds",
+-        "Payment Bonds",
+-        "License & Permit Bonds"
+-      ]
+-    }
+-    </script>
+-
+-    <!-- ============================================================
+-         GOOGLE ANALYTICS 4
+-         IMPORTANT: Replace G-XXXXXXXXXX with your real GA4 Measurement ID
+-         Get it from: analytics.google.com → Admin → Data Streams → Web stream
+-         ============================================================ -->
++    <!-- Google Analytics 4 -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGDQ6JDMMH"></script>
+     <script>
+       window.dataLayer = window.dataLayer || [];
+@@ -71,8 +36,6 @@
+     <!-- Favicon -->
+     <link rel="icon" type="image/png" href="/QS_Logo.png" />
+     <link rel="apple-touch-icon" href="/QS_Logo.png" />
+-
+-    <!-- Fonts served via system stack to reduce render-blocking requests -->
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/client/src/App.tsx b/client/src/App.tsx
+index 4645482..615b227 100644
+--- a/client/src/App.tsx
++++ b/client/src/App.tsx
+@@ -33,9 +33,13 @@ import TexasContractorBonds from "@/pages/texas-contractor";
+ import BidBondTexas from "@/pages/bid-bond-texas";
+ import PerformanceBondTexas from "@/pages/performance-bond-texas";
+ import LicenseBondTexas from "@/pages/license-bond-texas";
+-import BMC84FreightBrokerBond from "@/pages/bmc84-freight-broker-bond";
+ import NotaryBondTexas from "@/pages/notary-bond-texas";
+ 
++// Blog
++import BlogIndex from "@/pages/blog/index";
++import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
++import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
++
+ function Router() {
+   return (
+     <Switch>
+@@ -94,9 +98,13 @@ function Router() {
+       <Route path="/bonds/bid-bond-texas" component={BidBondTexas} />
+       <Route path="/bonds/performance-bond-texas" component={PerformanceBondTexas} />
+       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
+-      <Route path="/bonds/bmc-84-freight-broker" component={BMC84FreightBrokerBond} />
+       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
+ 
++      {/* Blog */}
++      <Route path="/blog" component={BlogIndex} />
++      <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />
++      <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
++
+       <Route component={NotFound} />
+     </Switch>
+   );
+diff --git a/client/src/components/layout/navbar.tsx b/client/src/components/layout/navbar.tsx
+index 1ac36af..89e3583 100644
+--- a/client/src/components/layout/navbar.tsx
++++ b/client/src/components/layout/navbar.tsx
+@@ -32,7 +32,7 @@ export function Navbar() {
+   const navLinks = [
+     { href: "/", label: "Home" },
+     { href: "/construction", label: "Construction" },
+-    { href: "/bonds/bmc-84-freight-broker", label: "Freight Bonds" },
++    { href: "/blog", label: "Blog" },
+     { href: "/ai-bond-finder", label: "AI Bond Finder" },
+     { href: "/quote", label: "Get Quote" },
+     { href: "/portal", label: "Portal" },
+diff --git a/client/src/pages/blog/index.tsx b/client/src/pages/blog/index.tsx
+new file mode 100644
+index 0000000..164ddaa
+--- /dev/null
++++ b/client/src/pages/blog/index.tsx
+@@ -0,0 +1,181 @@
++import { Link } from "wouter";
++import { useSEO } from "@/hooks/useSEO";
++import { ArrowRight, Clock, Tag } from "lucide-react";
++
++export interface BlogPost {
++  slug: string;
++  title: string;
++  description: string;
++  date: string;
++  readTime: string;
++  category: string;
++  tags: string[];
++  featured?: boolean;
++}
++
++export const BLOG_POSTS: BlogPost[] = [
++  {
++    slug: "texas-notary-bond-sb693-2026-requirements",
++    title: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
++    description:
++      "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention. Here's exactly what it means for your notary bond and commission.",
++    date: "2026-03-15",
++    readTime: "7 min read",
++    category: "Texas Notary",
++    tags: ["SB693", "Texas Notary Bond", "2026 Requirements", "Secretary of State"],
++    featured: true,
++  },
++  {
++    slug: "texas-notary-bond-cost-2026",
++    title: "How Much Does a Texas Notary Bond Cost in 2026?",
++    description:
++      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewals. Here's exactly what you get, what the SOS fees are, and why E&O insurance is worth adding.",
++    date: "2026-03-20",
++    readTime: "4 min read",
++    category: "Texas Notary",
++    tags: ["Texas Notary Bond", "Bond Cost", "E&O Insurance"],
++    featured: false,
++  },
++  {
++    slug: "texas-notary-vs-notary-signing-agent",
++    title: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
++    description:
++      "A notary public and a notary signing agent are not the same thing. Here's what each role requires, what bonds and insurance you need, and which path makes more sense for your business.",
++    date: "2026-03-25",
++    readTime: "5 min read",
++    category: "Texas Notary",
++    tags: ["Notary Signing Agent", "Texas Notary", "E&O Insurance"],
++    featured: false,
++  },
++];
++
++function formatDate(dateStr: string) {
++  return new Date(dateStr).toLocaleDateString("en-US", {
++    year: "numeric",
++    month: "long",
++    day: "numeric",
++  });
++}
++
++export default function BlogIndex() {
++  useSEO({
++    title: "Texas Surety Bond Blog | Quantum Surety",
++    description:
++      "Texas surety bond guides, notary bond requirements, SB693 law changes, and licensing tips for Texas small business owners. Straight talk from a TDI-licensed agency.",
++    canonical: "/blog",
++    ogType: "website",
++  });
++
++  const featured = BLOG_POSTS.find((p) => p.featured);
++  const rest = BLOG_POSTS.filter((p) => !p.featured);
++
++  return (
++    <div className="min-h-screen bg-gray-50">
++      {/* Header */}
++      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-16 px-4">
++        <div className="max-w-4xl mx-auto">
++          <p className="text-indigo-300 text-sm font-medium mb-3 uppercase tracking-widest">
++            Quantum Surety Blog
++          </p>
++          <h1 className="text-4xl font-bold mb-4">
++            Texas Surety Bond Guides
++          </h1>
++          <p className="text-indigo-100 text-lg max-w-2xl">
++            Straight-talk guides on Texas bond requirements, law changes, and licensing — written by a
++            TDI-licensed Texas surety agency, not a content farm.
++          </p>
++        </div>
++      </section>
++
++      <div className="max-w-4xl mx-auto px-4 py-12">
++
++        {/* Featured post */}
++        {featured && (
++          <div className="mb-12">
++            <p className="text-xs font-semibold text-indigo-600 uppercase tracking-widest mb-4">
++              Featured
++            </p>
++            <Link href={`/blog/${featured.slug}`}>
++              <div className="bg-white rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer p-8">
++                <div className="flex items-center gap-3 mb-4">
++                  <span className="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
++                    {featured.category}
++                  </span>
++                  <span className="text-gray-400 text-xs flex items-center gap-1">
++                    <Clock className="w-3 h-3" /> {featured.readTime}
++                  </span>
++                  <span className="text-gray-400 text-xs">{formatDate(featured.date)}</span>
++                </div>
++                <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-snug">
++                  {featured.title}
++                </h2>
++                <p className="text-gray-600 mb-5 leading-relaxed">{featured.description}</p>
++                <div className="flex items-center gap-2 flex-wrap mb-5">
++                  {featured.tags.map((tag) => (
++                    <span
++                      key={tag}
++                      className="text-xs text-gray-500 flex items-center gap-1"
++                    >
++                      <Tag className="w-3 h-3" /> {tag}
++                    </span>
++                  ))}
++                </div>
++                <span className="text-indigo-600 font-semibold text-sm flex items-center gap-1">
++                  Read guide <ArrowRight className="w-4 h-4" />
++                </span>
++              </div>
++            </Link>
++          </div>
++        )}
++
++        {/* Rest of posts */}
++        {rest.length > 0 && (
++          <>
++            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
++              All Articles
++            </p>
++            <div className="space-y-4">
++              {rest.map((post) => (
++                <Link key={post.slug} href={`/blog/${post.slug}`}>
++                  <div className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer p-6">
++                    <div className="flex items-center gap-3 mb-2">
++                      <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full">
++                        {post.category}
++                      </span>
++                      <span className="text-gray-400 text-xs flex items-center gap-1">
++                        <Clock className="w-3 h-3" /> {post.readTime}
++                      </span>
++                      <span className="text-gray-400 text-xs">{formatDate(post.date)}</span>
++                    </div>
++                    <h2 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
++                      {post.title}
++                    </h2>
++                    <p className="text-gray-600 text-sm mb-3 leading-relaxed">
++                      {post.description}
++                    </p>
++                    <span className="text-indigo-600 font-semibold text-sm flex items-center gap-1">
++                      Read more <ArrowRight className="w-4 h-4" />
++                    </span>
++                  </div>
++                </Link>
++              ))}
++            </div>
++          </>
++        )}
++
++        {/* CTA */}
++        <div className="mt-16 bg-indigo-900 rounded-2xl p-8 text-center text-white">
++          <h2 className="text-2xl font-bold mb-3">Ready to Get Your Texas Bond?</h2>
++          <p className="text-indigo-200 mb-6">
++            Instant quotes. No credit check. TDI-licensed Texas agency.
++          </p>
++          <Link href="/quote?type=notary">
++            <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors">
++              Get Instant Quote <ArrowRight className="w-4 h-4 inline ml-1" />
++            </button>
++          </Link>
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/client/src/pages/blog/texas-notary-bond-cost-2026.tsx b/client/src/pages/blog/texas-notary-bond-cost-2026.tsx
+new file mode 100644
+index 0000000..d142ceb
+--- /dev/null
++++ b/client/src/pages/blog/texas-notary-bond-cost-2026.tsx
+@@ -0,0 +1,203 @@
++import { Link } from "wouter";
++import { useSEO } from "@/hooks/useSEO";
++import { Button } from "@/components/ui/button";
++import { ArrowRight, CheckCircle, Clock, Phone, ChevronRight } from "lucide-react";
++
++export default function BlogNotaryBondCost() {
++  useSEO({
++    title: "How Much Does a Texas Notary Bond Cost in 2026? | Quantum Surety",
++    description:
++      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Here's the complete cost breakdown including SOS fees, education, seal, and optional E&O insurance.",
++    canonical: "/blog/texas-notary-bond-cost-2026",
++    ogType: "article",
++  });
++
++  return (
++    <div className="min-h-screen bg-white">
++
++      {/* Hero */}
++      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-16 px-4">
++        <div className="max-w-3xl mx-auto">
++          <div className="flex items-center gap-2 text-indigo-300 text-sm mb-4">
++            <Link href="/blog">
++              <span className="hover:text-white cursor-pointer">Blog</span>
++            </Link>
++            <ChevronRight className="w-4 h-4" />
++            <span>Texas Notary</span>
++          </div>
++          <div className="flex items-center gap-3 mb-4">
++            <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">
++              Texas Notary
++            </span>
++            <span className="text-indigo-300 text-sm flex items-center gap-1">
++              <Clock className="w-3 h-3" /> 4 min read
++            </span>
++            <span className="text-indigo-300 text-sm">March 20, 2026</span>
++          </div>
++          <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
++            How Much Does a Texas Notary Bond Cost in 2026?
++          </h1>
++          <p className="text-indigo-100 text-lg leading-relaxed">
++            Short answer: <strong>$50 for the full 4-year term.</strong> But there are other costs
++            involved in becoming a Texas notary. Here's the complete picture.
++          </p>
++        </div>
++      </section>
++
++      <div className="max-w-3xl mx-auto px-4 py-12">
++        <article>
++
++          {/* Cost table */}
++          <section className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              Complete Texas notary cost breakdown (2026)
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-6">
++              Getting your Texas notary commission involves several separate fees. Here's every one of them,
++              in order:
++            </p>
++            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
++              {[
++                { item: "Education course (SOS, new in 2026)", cost: "$20", notes: "Per attempt, up to 3 attempts in 90 days", highlight: true },
++                { item: "Texas notary bond — 4-year, $10,000", cost: "$50", notes: "One-time flat fee, no credit check", highlight: false },
++                { item: "State application fee (SOS)", cost: "$21", notes: "Paid via SOS Portal to Secretary of State", highlight: false },
++                { item: "Notary seal / stamp", cost: "$17–$35", notes: "Required — must meet TX specs", highlight: false },
++                { item: "Notary journal (record book)", cost: "$8–$20", notes: "Now legally required under SB693", highlight: true },
++                { item: "E&O insurance (recommended)", cost: "$40–$100", notes: "Protects you personally; 4-year term", highlight: false },
++                { item: "Oath of office (county clerk)", cost: "Varies by county", notes: "Some counties charge $0–$10", highlight: false },
++              ].map((row, i) => (
++                <div
++                  key={row.item}
++                  className={`flex items-center px-6 py-4 border-b border-gray-100 last:border-0 ${row.highlight ? "bg-amber-50" : i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
++                >
++                  <div className="flex-1">
++                    <p className="text-sm font-medium text-gray-900">{row.item}</p>
++                    <p className="text-xs text-gray-500 mt-0.5">{row.notes}</p>
++                  </div>
++                  <div className="text-right ml-4">
++                    <span className="font-bold text-gray-900 text-sm">{row.cost}</span>
++                  </div>
++                </div>
++              ))}
++              <div className="flex items-center px-6 py-4 bg-indigo-50 border-t border-indigo-200">
++                <p className="flex-1 font-bold text-indigo-900 text-sm">Minimum total (bond + SOS fees only)</p>
++                <p className="font-bold text-indigo-900">$91</p>
++              </div>
++              <div className="flex items-center px-6 py-4 bg-indigo-100 border-t border-indigo-200">
++                <p className="flex-1 font-bold text-indigo-900 text-sm">Typical total (bond + all required items + E&O)</p>
++                <p className="font-bold text-indigo-900">$150–$200</p>
++              </div>
++            </div>
++          </section>
++
++          <section className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              Why the notary bond costs $50 (not more, not less)
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              Texas notary bonds are what the industry calls "flat-rate" bonds — the premium is not tied to
++              credit score, income, or any underwriting factors. The $10,000 bond amount is low enough and
++              the risk profile of notaries is consistent enough that carriers charge a standard flat fee.
++            </p>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              There is no annual renewal fee. You pay $50 once, and the bond covers you for the full 4-year
++              commission. When you renew your commission, you'll purchase a new bond — again, $50.
++            </p>
++            <p className="text-gray-700 leading-relaxed">
++              There is no credit check. Unlike contractor bonds or dealer bonds, which can cost hundreds or
++              thousands based on credit and bond amount, notary bonds are available to anyone who meets Texas
++              eligibility requirements — no financial history required.
++            </p>
++          </section>
++
++          <section className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              What's new in 2026 that costs money
++            </h2>
++            <div className="space-y-4">
++              {[
++                {
++                  title: "The SOS education course — $20 per attempt",
++                  body: "Before January 2026, becoming a Texas notary had no education requirement. SB693 changed that. The mandatory 2-hour online course is provided exclusively by the Texas Secretary of State through the SOS Portal. You pay $20 each time you attempt the 20-question assessment. You need a 70% to pass. Most applicants pass on the first attempt — but budget for one $20 fee.",
++                },
++                {
++                  title: "The notary journal — now legally required",
++                  body: "A notary journal (record book) was previously strongly recommended but not required by Texas law. SB693 made it a legal requirement. Journals cost $8–$20 from office supply stores or notary supply vendors. You need to keep completed journals for 10 years from the date of the notarial act — not just the duration of your commission.",
++                },
++              ].map((item) => (
++                <div key={item.title} className="bg-amber-50 border border-amber-200 rounded-xl p-6">
++                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
++                    <span className="text-amber-600">⚡</span> {item.title}
++                  </h3>
++                  <p className="text-amber-800 text-sm leading-relaxed">{item.body}</p>
++                </div>
++              ))}
++            </div>
++          </section>
++
++          <section className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              Should you add E&O insurance?
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              Your $50 notary bond protects the public — not you. If someone files a claim on your bond
++              and the surety pays it, you're personally on the hook to reimburse the surety company.
++            </p>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              Errors & Omissions (E&O) insurance protects you from lawsuits for honest mistakes — a missed
++              detail, an improper acknowledgment, a procedural error. Coverage ranges from $5,000 to
++              $100,000+ and costs $40–$100 for a 4-year term alongside your bond.
++            </p>
++            <div className="bg-teal-50 border border-teal-200 rounded-xl p-5">
++              <p className="text-teal-900 text-sm font-medium">
++                <CheckCircle className="w-4 h-4 text-teal-600 inline mr-2" />
++                E&O insurance is especially important if you're a <strong>mobile notary</strong>,{" "}
++                <strong>notary signing agent</strong>, or if you handle <strong>real estate documents</strong>,{" "}
++                <strong>loan closings</strong>, or <strong>legal filings</strong>. One lawsuit from a
++                procedural error can cost far more than $40.
++              </p>
++            </div>
++          </section>
++        </article>
++
++        {/* CTA */}
++        <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
++          <h2 className="text-2xl font-bold mb-2">Get Your Texas Notary Bond — $50</h2>
++          <p className="text-indigo-200 mb-6">
++            $10,000 · 4-year term · No credit check · Instant download · Add E&O at checkout
++          </p>
++          <div className="flex flex-col sm:flex-row gap-4 justify-center">
++            <Link href="/quote?type=notary">
++              <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
++                Get My Bond <ArrowRight className="w-4 h-4 ml-2" />
++              </Button>
++            </Link>
++            <a href="tel:9723799216">
++              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
++                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
++              </Button>
++            </a>
++          </div>
++        </div>
++
++        <div className="mt-12">
++          <h3 className="text-lg font-bold text-gray-900 mb-4">Related guides</h3>
++          <div className="grid sm:grid-cols-2 gap-4">
++            {[
++              { href: "/blog/texas-notary-bond-sb693-2026-requirements", title: "Texas Notary Bond 2026: What SB693 Changes", tag: "SB693 Guide" },
++              { href: "/bonds/notary-bond-texas", title: "Texas Notary Bond — Instant Online", tag: "Product Page" },
++            ].map((item) => (
++              <Link key={item.href} href={item.href}>
++                <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
++                  <span className="text-xs font-semibold text-indigo-600 mb-2 block">{item.tag}</span>
++                  <p className="text-gray-900 font-semibold text-sm leading-snug">{item.title}</p>
++                  <p className="text-indigo-600 text-xs mt-2 font-medium flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></p>
++                </div>
++              </Link>
++            ))}
++          </div>
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/client/src/pages/blog/texas-notary-bond-sb693-2026-requirements.tsx b/client/src/pages/blog/texas-notary-bond-sb693-2026-requirements.tsx
+new file mode 100644
+index 0000000..a7e7dfa
+--- /dev/null
++++ b/client/src/pages/blog/texas-notary-bond-sb693-2026-requirements.tsx
+@@ -0,0 +1,402 @@
++import { Link } from "wouter";
++import { useSEO } from "@/hooks/useSEO";
++import { Button } from "@/components/ui/button";
++import {
++  ArrowRight, AlertTriangle, CheckCircle, Clock,
++  BookOpen, FileText, Shield, Phone, ChevronRight
++} from "lucide-react";
++
++export default function BlogSB693() {
++  useSEO({
++    title: "Texas Notary Bond 2026: What SB693 Changes for New & Renewing Notaries | Quantum Surety",
++    description:
++      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your notary bond today.",
++    canonical: "/blog/texas-notary-bond-sb693-2026-requirements",
++    ogType: "article",
++  });
++
++  const tocItems = [
++    { id: "what-is-sb693", label: "What is SB693?" },
++    { id: "what-changed", label: "What changed on January 1, 2026" },
++    { id: "bond-unchanged", label: "What did NOT change (the bond)" },
++    { id: "how-to-apply", label: "How to apply step-by-step" },
++    { id: "eo-insurance", label: "Do you need E&O insurance too?" },
++    { id: "get-your-bond", label: "Get your bond today" },
++  ];
++
++  return (
++    <div className="min-h-screen bg-white">
++
++      {/* Hero */}
++      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-16 px-4">
++        <div className="max-w-3xl mx-auto">
++          <div className="flex items-center gap-2 text-indigo-300 text-sm mb-4">
++            <Link href="/blog">
++              <span className="hover:text-white cursor-pointer">Blog</span>
++            </Link>
++            <ChevronRight className="w-4 h-4" />
++            <span>Texas Notary</span>
++          </div>
++          <div className="flex items-center gap-3 mb-4">
++            <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">
++              Texas Notary
++            </span>
++            <span className="text-indigo-300 text-sm flex items-center gap-1">
++              <Clock className="w-3 h-3" /> 7 min read
++            </span>
++            <span className="text-indigo-300 text-sm">March 15, 2026</span>
++          </div>
++          <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
++            Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries
++          </h1>
++          <p className="text-indigo-100 text-lg leading-relaxed">
++            Senate Bill 693 became law on September 1, 2025, with key requirements kicking in January 1, 2026.
++            If you're a Texas notary — or about to become one — here's what changed, what didn't, and what
++            you need to do right now.
++          </p>
++        </div>
++      </section>
++
++      {/* Quick answer banner */}
++      <section className="bg-amber-50 border-b border-amber-200 py-5 px-4">
++        <div className="max-w-3xl mx-auto flex items-start gap-3">
++          <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
++          <div>
++            <p className="font-semibold text-amber-900">TL;DR — The short version</p>
++            <p className="text-amber-800 text-sm mt-1">
++              Your <strong>notary bond is still $10,000 for 4 years, still costs $50</strong>, and is still
++              required. What changed: new notaries and renewing notaries must now complete a mandatory 2-hour
++              online education course from the Texas Secretary of State ($20 fee) before applying. Plus new
++              criminal penalties and a 10-year journal retention rule.
++            </p>
++          </div>
++        </div>
++      </section>
++
++      <div className="max-w-3xl mx-auto px-4 py-12">
++
++        {/* Table of contents */}
++        <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 mb-12">
++          <p className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
++            <BookOpen className="w-4 h-4" /> In this guide
++          </p>
++          <ol className="space-y-2">
++            {tocItems.map((item, i) => (
++              <li key={item.id}>
++                <a
++                  href={`#${item.id}`}
++                  className="text-indigo-600 hover:text-indigo-800 text-sm flex items-center gap-2"
++                >
++                  <span className="text-gray-400 font-mono text-xs w-4">{i + 1}.</span>
++                  {item.label}
++                </a>
++              </li>
++            ))}
++          </ol>
++        </div>
++
++        {/* Article body */}
++        <article className="prose-like">
++
++          {/* Section 1 */}
++          <section id="what-is-sb693" className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">What is Texas SB693?</h2>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              Texas Senate Bill 693 (89th Legislature, 2025) is a comprehensive update to the Texas notary
++              public statutes. Governor Abbott signed it into law in May 2025, with an effective date of
++              September 1, 2025. The most significant consumer-facing changes — particularly the mandatory
++              education requirement — took effect <strong>January 1, 2026</strong>.
++            </p>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              The bill was designed to professionalize Texas notaries and reduce fraud. Texas previously had
++              no education or testing requirement to become a notary — one of only a handful of states with
++              that gap. SB693 closes it.
++            </p>
++            <p className="text-gray-700 leading-relaxed">
++              The Texas Secretary of State is updating the Texas Administrative Code (TAC) to implement the
++              new education standards and SOS Portal submission process changes that SB693 requires.
++            </p>
++          </section>
++
++          {/* Section 2 */}
++          <section id="what-changed" className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">What changed on January 1, 2026</h2>
++            <p className="text-gray-700 leading-relaxed mb-6">
++              Here are the four major changes from SB693 that affect Texas notaries:
++            </p>
++
++            <div className="space-y-5">
++              {[
++                {
++                  icon: <BookOpen className="w-5 h-5 text-indigo-600" />,
++                  title: "1. Mandatory education before applying",
++                  body: "All new notary applicants and renewing notaries must now complete an online education course from the Texas Secretary of State. The course covers notary duties, legal requirements, and proper notarization procedures. A 20-question assessment follows, requiring a minimum score of 70% to pass. You have up to three attempts within 90 days — each attempt costs a $20 non-refundable fee paid to the SOS. The course itself is provided exclusively through the SOS Portal; third-party courses do not satisfy the requirement.",
++                  note: "Previously, Texas had zero education requirements. This is a significant change.",
++                },
++                {
++                  icon: <AlertTriangle className="w-5 h-5 text-amber-600" />,
++                  title: "2. New criminal offense for improper notarization",
++                  body: "SB693 creates a new criminal offense for any notary who notarizes a document without the signer personally appearing before them. The classification of the offense scales with intent and harm. This is the most significant change for practicing notaries — the legal exposure for shortcut practices (common in remote or mail-away signings that bypass RON rules) is now a criminal matter, not just a civil one.",
++                  note: "This applies to traditional notaries. Remote Online Notarization (RON) has a separate, legal framework.",
++                },
++                {
++                  icon: <FileText className="w-5 h-5 text-teal-600" />,
++                  title: "3. Journal is now required — 10-year retention",
++                  body: "A notary journal (record book) is now legally required for all Texas notaries, and completed journal entries must be retained for 10 years from the date of the notarial act. Previously, Texas notaries were encouraged but not required to keep a journal. If you're renewing, your old records must also now be kept for the full 10-year window going forward. If you do not renew your commission, old records must be turned over to your county clerk.",
++                  note: "Journal destruction is no longer legal after your commission expires — records go to the county clerk.",
++                },
++                {
++                  icon: <Shield className="w-5 h-5 text-green-600" />,
++                  title: "4. Expanded Remote Online Notarization (RON)",
++                  body: "SB693 expands and clarifies the legal framework for Remote Online Notarization in Texas. RON-authorized notaries can perform notarizations via audiovisual technology without the signer being physically present. RON requires separate authorization from the SOS after your traditional commission is granted, plus an approved RON platform. The $10,000 surety bond requirement applies to all notaries regardless of RON status.",
++                  note: null,
++                },
++              ].map((item) => (
++                <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
++                  <div className="flex items-start gap-3 mb-3">
++                    <div className="mt-0.5 shrink-0">{item.icon}</div>
++                    <h3 className="text-base font-bold text-gray-900">{item.title}</h3>
++                  </div>
++                  <p className="text-gray-700 text-sm leading-relaxed ml-8 mb-3">{item.body}</p>
++                  {item.note && (
++                    <div className="ml-8 bg-amber-50 border-l-2 border-amber-300 pl-3 py-2 rounded-r">
++                      <p className="text-amber-800 text-xs font-medium">{item.note}</p>
++                    </div>
++                  )}
++                </div>
++              ))}
++            </div>
++          </section>
++
++          {/* Section 3 */}
++          <section id="bond-unchanged" className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              What did NOT change — the notary bond
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-6">
++              With all the attention SB693 is getting, one important thing is worth repeating clearly:
++              <strong> the notary bond requirement is completely unchanged.</strong>
++            </p>
++            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
++              <h3 className="font-bold text-green-900 mb-4 flex items-center gap-2">
++                <CheckCircle className="w-5 h-5 text-green-600" />
++                Texas Notary Bond — Still the same in 2026
++              </h3>
++              <div className="grid sm:grid-cols-2 gap-4">
++                {[
++                  { label: "Bond amount", value: "$10,000" },
++                  { label: "Bond term", value: "4 years (concurrent with commission)" },
++                  { label: "Bond cost", value: "$50 flat — no credit check" },
++                  { label: "Issuing authority", value: "TDI-licensed surety company" },
++                  { label: "Filing location", value: "Texas SOS Portal Notary System" },
++                  { label: "Credit check required", value: "No" },
++                ].map((row) => (
++                  <div key={row.label} className="bg-white rounded-lg p-4 border border-green-100">
++                    <p className="text-xs text-gray-500 mb-1">{row.label}</p>
++                    <p className="font-semibold text-gray-900 text-sm">{row.value}</p>
++                  </div>
++                ))}
++              </div>
++            </div>
++            <p className="text-gray-600 text-sm mt-4 leading-relaxed">
++              The bond must still be issued by a surety company licensed to do business in Texas as a surety.
++              It must be approved by the Office of the Texas Secretary of State, payable to the governor,
++              and conditioned on faithful performance of notary duties. None of that changed.
++            </p>
++          </section>
++
++          {/* Section 4 */}
++          <section id="how-to-apply" className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              How to become a Texas notary in 2026 — step by step
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-6">
++              Here is the complete process under SB693 rules, in order:
++            </p>
++            <div className="space-y-4">
++              {[
++                {
++                  step: "1",
++                  title: "Complete the SOS Education Course",
++                  body: "Log in to the Texas SOS Portal and complete the mandatory education course. This covers notary law, duties, and proper practices. After the course, pass the 20-question assessment with a 70%+ score. Each attempt costs $20 (non-refundable). You have up to 3 attempts within 90 days.",
++                  tag: "New in 2026",
++                  tagColor: "bg-amber-100 text-amber-700",
++                },
++                {
++                  step: "2",
++                  title: "Get your $10,000 notary surety bond",
++                  body: "Purchase a 4-year, $10,000 Texas notary bond from a TDI-licensed surety company. At Quantum Surety, this takes under 5 minutes and costs $50 flat — no credit check, instant download.",
++                  tag: "Required",
++                  tagColor: "bg-indigo-100 text-indigo-700",
++                },
++                {
++                  step: "3",
++                  title: "Submit your application via SOS Portal",
++                  body: "Log in to the Texas SOS Portal Notary System and submit your application. You'll upload your completed bond form (Form 2301-B, completed and signed by the surety company) as part of the application. The applicant name on the bond must exactly match the name on the SOS application.",
++                  tag: "Required",
++                  tagColor: "bg-indigo-100 text-indigo-700",
++                },
++                {
++                  step: "4",
++                  title: "Pay the state application fee",
++                  body: "The Texas Secretary of State charges a $21 application fee. This is separate from your bond premium and is paid directly to the state through the SOS Portal.",
++                  tag: "Required",
++                  tagColor: "bg-indigo-100 text-indigo-700",
++                },
++                {
++                  step: "5",
++                  title: "Receive your commission and take oath",
++                  body: "Once approved, you'll receive your notary commission. You then need to take your oath of office, which is administered by your county clerk. Some counties charge a small fee for this.",
++                  tag: "Required",
++                  tagColor: "bg-indigo-100 text-indigo-700",
++                },
++                {
++                  step: "6",
++                  title: "Purchase your notary seal and journal",
++                  body: "Your notary seal must meet Texas specifications. Your journal (record book) is now legally required under SB693. Keep all records for 10 years from the date of each notarial act.",
++                  tag: "Now required",
++                  tagColor: "bg-amber-100 text-amber-700",
++                },
++              ].map((item) => (
++                <div key={item.step} className="flex gap-4">
++                  <div className="shrink-0 w-9 h-9 rounded-full bg-indigo-900 text-white font-bold text-sm flex items-center justify-center">
++                    {item.step}
++                  </div>
++                  <div className="flex-1 pb-4 border-b border-gray-100">
++                    <div className="flex items-center gap-2 mb-1">
++                      <h3 className="font-semibold text-gray-900 text-base">{item.title}</h3>
++                      <span className={`text-xs font-semibold px-2 py-0.5 rounded ${item.tagColor}`}>
++                        {item.tag}
++                      </span>
++                    </div>
++                    <p className="text-gray-600 text-sm leading-relaxed">{item.body}</p>
++                  </div>
++                </div>
++              ))}
++            </div>
++          </section>
++
++          {/* Section 5 */}
++          <section id="eo-insurance" className="mb-12">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">
++              Do you need E&O insurance in addition to the bond?
++            </h2>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              The notary bond protects the <em>public</em> — not you. If a claim is filed against your bond
++              (because of an error, omission, or misconduct), the surety company pays the claimant up to
++              $10,000. Then they come to <em>you</em> for reimbursement.
++            </p>
++            <p className="text-gray-700 leading-relaxed mb-4">
++              Errors & Omissions (E&O) insurance protects <em>you personally</em> against lawsuits for
++              unintentional mistakes — missed details, incorrect acknowledgments, improper procedure. For
++              notaries who handle high volumes, mobile signings, loan documents, or real estate closings,
++              E&O coverage is strongly recommended.
++            </p>
++            <div className="bg-gray-50 rounded-xl border border-gray-200 p-6">
++              <div className="grid sm:grid-cols-2 gap-6">
++                <div>
++                  <h3 className="font-semibold text-gray-900 mb-2">Notary Bond ($50/4 yr)</h3>
++                  <ul className="space-y-2 text-sm text-gray-600">
++                    {[
++                      "Required by Texas law",
++                      "Protects the public",
++                      "You reimburse the surety if a claim pays",
++                      "$10,000 coverage",
++                    ].map((item) => (
++                      <li key={item} className="flex items-start gap-2">
++                        <CheckCircle className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />
++                        {item}
++                      </li>
++                    ))}
++                  </ul>
++                </div>
++                <div>
++                  <h3 className="font-semibold text-gray-900 mb-2">E&O Insurance (add-on)</h3>
++                  <ul className="space-y-2 text-sm text-gray-600">
++                    {[
++                      "Strongly recommended",
++                      "Protects you from lawsuits",
++                      "Covers legal defense costs",
++                      "$5,000–$100,000+ coverage available",
++                    ].map((item) => (
++                      <li key={item} className="flex items-start gap-2">
++                        <CheckCircle className="w-4 h-4 text-teal-500 mt-0.5 shrink-0" />
++                        {item}
++                      </li>
++                    ))}
++                  </ul>
++                </div>
++              </div>
++            </div>
++            <p className="text-gray-600 text-sm mt-4">
++              Quantum Surety lets you add E&O insurance at checkout alongside your notary bond — one
++              transaction, one download, everything you need to start notarizing legally.
++            </p>
++          </section>
++
++          {/* Section 6 — CTA */}
++          <section id="get-your-bond" className="mb-8">
++            <h2 className="text-2xl font-bold text-gray-900 mb-4">Get your Texas notary bond today</h2>
++            <p className="text-gray-700 leading-relaxed mb-6">
++              Quantum Surety is a TDI-licensed Texas surety bond agency. We issue Texas notary bonds
++              for $50 — instant download, no credit check, 24/7 availability. The bond is SB693-compliant
++              and includes step-by-step instructions for uploading to the Texas SOS Portal Notary System.
++            </p>
++          </section>
++        </article>
++
++        {/* Final CTA card */}
++        <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
++          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm mb-5">
++            <Clock className="w-4 h-4" /> Instant download — available 24/7
++          </div>
++          <h2 className="text-2xl font-bold mb-2">Get Your Texas Notary Bond — $50</h2>
++          <p className="text-indigo-200 mb-6">
++            $10,000 bond · 4-year term · No credit check · SB693 compliant · Instant PDF
++          </p>
++          <div className="flex flex-col sm:flex-row gap-4 justify-center">
++            <Link href="/quote?type=notary">
++              <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
++                Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
++              </Button>
++            </Link>
++            <a href="tel:9723799216">
++              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
++                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
++              </Button>
++            </a>
++          </div>
++        </div>
++
++        {/* Related posts */}
++        <div className="mt-12">
++          <h3 className="text-lg font-bold text-gray-900 mb-4">Related guides</h3>
++          <div className="grid sm:grid-cols-2 gap-4">
++            {[
++              {
++                href: "/blog/texas-notary-bond-cost-2026",
++                title: "How Much Does a Texas Notary Bond Cost in 2026?",
++                tag: "Texas Notary",
++              },
++              {
++                href: "/bonds/notary-bond-texas",
++                title: "Texas Notary Bond — $50 Instant Online",
++                tag: "Product Page",
++              },
++            ].map((item) => (
++              <Link key={item.href} href={item.href}>
++                <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
++                  <span className="text-xs font-semibold text-indigo-600 mb-2 block">{item.tag}</span>
++                  <p className="text-gray-900 font-semibold text-sm leading-snug">{item.title}</p>
++                  <p className="text-indigo-600 text-xs mt-2 font-medium flex items-center gap-1">
++                    Read more <ArrowRight className="w-3 h-3" />
++                  </p>
++                </div>
++              </Link>
++            ))}
++          </div>
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/server/seo.ts b/server/seo.ts
+index dab9080..61af39a 100644
+--- a/server/seo.ts
++++ b/server/seo.ts
+@@ -21,7 +21,7 @@ interface PageMeta {
+   description: string;
+   canonical: string;
+   ogType?: string;
+-  structuredData?: object;
++  structuredData?: object | object[];
+   content?: string; // crawlable static HTML (Google sees this)
+ }
+ 
+@@ -274,31 +274,84 @@ const PAGE_META: Record<string, PageMeta> = {
+ 
+ 
+   "/bonds/notary-bond-texas": {
+-    title: "Texas Notary Bond | $50 Instant Online | Quantum Surety",
++    title: "Texas Notary Bond | $50 Instant Online | SB693 Compliant | Quantum Surety",
+     description:
+-      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. Add E&O insurance. Download and file today. Quantum Surety.",
++      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. TDI-licensed Texas agency. Add E&O insurance. Download and file today.",
+     canonical: `${BASE_URL}/bonds/notary-bond-texas`,
+-    structuredData: {
+-      "@context": "https://schema.org",
+-      "@type": "Product",
+-      name: "Texas Notary Public Surety Bond",
+-      description: "Required 4-year $10,000 Texas notary surety bond. Instant online purchase and download.",
+-      offers: {
+-        "@type": "Offer",
+-        price: "50.00",
+-        priceCurrency: "USD",
+-        availability: "https://schema.org/InStock",
+-        seller: {
+-          "@type": "Organization",
+-          name: "Quantum Surety",
+-          url: "https://quantumsurety.bond",
++    structuredData: [
++      {
++        "@context": "https://schema.org",
++        "@type": "Product",
++        name: "Texas Notary Public Surety Bond",
++        description: "Required 4-year $10,000 Texas notary surety bond. Instant online purchase and download. SB693 compliant.",
++        offers: {
++          "@type": "Offer",
++          price: "50.00",
++          priceCurrency: "USD",
++          availability: "https://schema.org/InStock",
++          seller: {
++            "@type": "Organization",
++            name: "Quantum Surety",
++            url: BASE_URL,
++          },
+         },
++        brand: { "@type": "Brand", name: "Quantum Surety" },
+       },
+-      brand: {
+-        "@type": "Brand",
+-        name: "Quantum Surety",
++      {
++        "@context": "https://schema.org",
++        "@type": "FAQPage",
++        mainEntity: [
++          {
++            "@type": "Question",
++            name: "What is a Texas notary bond?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "A Texas notary bond is a $10,000 surety bond required by the Texas Secretary of State for all notary public commissions. It protects the public from financial loss caused by notary misconduct. The bond costs $50 for the full 4-year term.",
++            },
++          },
++          {
++            "@type": "Question",
++            name: "How much does a Texas notary bond cost?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "A Texas notary bond costs $50 for the full 4-year term. There are no annual renewal fees — it is a one-time payment. No credit check is required.",
++            },
++          },
++          {
++            "@type": "Question",
++            name: "What changed for Texas notaries in 2026 under SB693?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "Effective January 1, 2026, Senate Bill 693 requires all new and renewing Texas notary applicants to complete a mandatory 2-hour education course from the Texas Secretary of State ($20 fee per attempt, 70% passing score). The law also created a new criminal offense for notarizing without personal appearance, made notary journals legally required, and increased record retention to 10 years. The bond requirement is unchanged — still $10,000 for $50.",
++            },
++          },
++          {
++            "@type": "Question",
++            name: "Do I need E&O insurance in addition to a notary bond?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "The notary bond is required by law but protects the public, not you. Errors and Omissions (E&O) insurance protects you personally against lawsuits for unintentional mistakes. Most mobile notaries and signing agents carry both. E&O insurance is available to add at checkout.",
++            },
++          },
++          {
++            "@type": "Question",
++            name: "How do I file my Texas notary bond?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "After purchasing your bond, you upload the completed Form 2301-B through the Texas Secretary of State SOS Portal Notary System as part of your notary application. Quantum Surety provides step-by-step filing instructions with every bond purchase.",
++            },
++          },
++          {
++            "@type": "Question",
++            name: "Is there a credit check for a Texas notary bond?",
++            acceptedAnswer: {
++              "@type": "Answer",
++              text: "No. Texas notary bonds are issued without a credit check. Anyone who meets Texas eligibility requirements can purchase a bond instantly.",
++            },
++          },
++        ],
+       },
+-    },
++    ],
+     content: `
+       <main>
+         <h1>Texas Notary Bond — $50, Instant Online</h1>
+@@ -338,25 +391,144 @@ const PAGE_META: Record<string, PageMeta> = {
+       </main>`,
+   },
+ 
+-  "/bonds/bmc-84-freight-broker": {
+-    title: "BMC-84 Freight Broker Bond | $75,000 FMCSA Bond | Quantum Surety",
++  "/blog": {
++    title: "Texas Surety Bond Blog | Guides & Requirements | Quantum Surety",
++    description:
++      "Texas surety bond guides, notary bond requirements, SB693 2026 law changes, and licensing tips for Texas small business owners. Written by a TDI-licensed Texas surety agency.",
++    canonical: `${BASE_URL}/blog`,
++    ogType: "website",
++    content: `
++      <main>
++        <h1>Texas Surety Bond Blog</h1>
++        <p>Straight-talk guides on Texas bond requirements, law changes, and licensing — written by Quantum Surety, a TDI-licensed Texas surety bond agency.</p>
++        <ul>
++          <li><a href="/blog/texas-notary-bond-sb693-2026-requirements">Texas Notary Bond 2026: What SB693 Changes for New and Renewing Notaries</a></li>
++          <li><a href="/blog/texas-notary-bond-cost-2026">How Much Does a Texas Notary Bond Cost in 2026?</a></li>
++          <li><a href="/blog/texas-notary-vs-notary-signing-agent">Texas Notary vs. Notary Signing Agent: What's the Difference?</a></li>
++        </ul>
++      </main>`,
++  },
++
++  "/blog/texas-notary-bond-sb693-2026-requirements": {
++    title: "Texas Notary Bond 2026: What SB693 Changes for New & Renewing Notaries | Quantum Surety",
++    description:
++      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your bond.",
++    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
++    ogType: "article",
++    structuredData: {
++      "@context": "https://schema.org",
++      "@type": "Article",
++      headline: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
++      description:
++        "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention.",
++      datePublished: "2026-03-15",
++      dateModified: "2026-03-15",
++      author: {
++        "@type": "Organization",
++        name: "Quantum Surety",
++        url: "https://quantumsurety.bond",
++      },
++      publisher: {
++        "@type": "Organization",
++        name: "Quantum Surety",
++        url: "https://quantumsurety.bond",
++      },
++      mainEntityOfPage: {
++        "@type": "WebPage",
++        "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
++      },
++      about: {
++        "@type": "Thing",
++        name: "Texas Notary Bond SB693 2026",
++      },
++    },
++    content: `
++      <main>
++        <h1>Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries</h1>
++        <p>Senate Bill 693 became law on September 1, 2025, with key requirements effective January 1, 2026. If you are a Texas notary — or about to become one — here is what changed, what did not, and what you need to do right now.</p>
++        <section>
++          <h2>What is Texas SB693?</h2>
++          <p>Texas Senate Bill 693 (89th Legislature, 2025) is a comprehensive update to Texas notary public statutes. It created mandatory education requirements, new criminal penalties for improper notarization, a 10-year journal retention requirement, and expanded Remote Online Notarization (RON) authorization.</p>
++        </section>
++        <section>
++          <h2>What changed on January 1, 2026</h2>
++          <ul>
++            <li><strong>Mandatory education:</strong> All new and renewing notary applicants must complete a 2-hour education course from the Texas Secretary of State ($20 per attempt, 70% passing score required).</li>
++            <li><strong>New criminal offense:</strong> Notarizing a document without the signer personally appearing is now a criminal offense.</li>
++            <li><strong>Journal now required:</strong> A notary journal is legally required and records must be kept for 10 years from the date of each notarial act.</li>
++            <li><strong>Expanded RON:</strong> Remote Online Notarization framework expanded and clarified.</li>
++          </ul>
++        </section>
++        <section>
++          <h2>What did NOT change — the notary bond</h2>
++          <p>The Texas notary bond requirement is unchanged. The bond is still $10,000 for 4 years and costs $50 flat. No credit check required. Must be issued by a TDI-licensed surety company and filed via the Texas SOS Portal Notary System.</p>
++        </section>
++        <section>
++          <h2>How to become a Texas notary in 2026</h2>
++          <ol>
++            <li>Complete the SOS education course and assessment ($20 fee)</li>
++            <li>Purchase your $10,000 Texas notary surety bond ($50 at Quantum Surety)</li>
++            <li>Submit your application via the Texas SOS Portal, uploading the completed bond form</li>
++            <li>Pay the $21 state application fee</li>
++            <li>Take your oath of office with your county clerk</li>
++            <li>Purchase your notary seal and journal (now legally required)</li>
++          </ol>
++        </section>
++        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
++        <a href="/bonds/notary-bond-texas">Texas Notary Bond Product Page</a>
++      </main>`,
++  },
++
++  "/blog/texas-notary-bond-cost-2026": {
++    title: "How Much Does a Texas Notary Bond Cost in 2026? | Quantum Surety",
+     description:
+-      "Get your BMC-84 freight broker surety bond fast. $75,000 FMCSA-required bond for freight brokers and forwarders. Rates from $938/year. Same-day filing with FMCSA. AI-powered approvals.",
+-    canonical: `${BASE_URL}/bonds/bmc-84-freight-broker`,
++      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Complete cost breakdown including SOS fees, education, seal, journal, and E&O insurance.",
++    canonical: `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
++    ogType: "article",
++    structuredData: {
++      "@context": "https://schema.org",
++      "@type": "Article",
++      headline: "How Much Does a Texas Notary Bond Cost in 2026?",
++      description:
++        "A Texas notary bond costs $50 for the full 4-year term. Complete cost breakdown for 2026 including SOS fees, education requirement, and E&O insurance.",
++      datePublished: "2026-03-20",
++      dateModified: "2026-03-20",
++      author: {
++        "@type": "Organization",
++        name: "Quantum Surety",
++        url: "https://quantumsurety.bond",
++      },
++      publisher: {
++        "@type": "Organization",
++        name: "Quantum Surety",
++        url: "https://quantumsurety.bond",
++      },
++      mainEntityOfPage: {
++        "@type": "WebPage",
++        "@id": `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
++      },
++    },
+     content: `
+       <main>
+-        <h1>BMC-84 Freight Broker Bond</h1>
+-        <p>The $75,000 FMCSA surety bond every freight broker needs to operate legally. AI-powered approvals, same-day FMCSA filing, rates from $938/year.</p>
+-        <p>Previously on a BMC-85 trust? New FMCSA rules effective January 2026 — switching to BMC-84 is fast and affordable.</p>
++        <h1>How Much Does a Texas Notary Bond Cost in 2026?</h1>
++        <p>A Texas notary bond costs $50 for the full 4-year commission term. There is no credit check and no annual renewal — $50 is a one-time payment covering your entire commission period.</p>
+         <section>
+-          <h2>What is a BMC-84 Bond?</h2>
+-          <p>A BMC-84 is the surety bond required by the Federal Motor Carrier Safety Administration (FMCSA) for all licensed freight brokers and freight forwarders operating in the United States. The bond amount is $75,000 and it must be on file with the FMCSA before your broker license is activated.</p>
++          <h2>Complete Texas notary cost breakdown (2026)</h2>
++          <ul>
++            <li>Education course (SOS, new in 2026): $20 per attempt</li>
++            <li>Texas notary bond (4-year, $10,000): $50</li>
++            <li>State application fee (SOS): $21</li>
++            <li>Notary seal / stamp: $17–$35</li>
++            <li>Notary journal (now legally required): $8–$20</li>
++            <li>E&O insurance (recommended): $40–$100 for 4 years</li>
++          </ul>
++          <p>Minimum total (bond + SOS fees only): approximately $91. Typical total with all required items and E&O: $150–$200.</p>
+         </section>
+         <section>
+-          <h2>BMC-84 Bond Rates</h2>
+-          <p>Rates start at $938 per year for freight brokers with good credit and established business history. Electronic FMCSA filing within 24 hours of payment.</p>
++          <h2>Why E&O insurance matters</h2>
++          <p>The notary bond protects the public — not you. E&amp;O insurance protects you personally against lawsuits for unintentional mistakes. Especially important for mobile notaries and notary signing agents handling loan closings or real estate documents.</p>
+         </section>
+-        <a href="/quote?type=bmc84">Get Your BMC-84 Quote</a>
++        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+       </main>`,
+   },
+ };
+@@ -382,9 +554,15 @@ function getMetaForPath(urlPath: string): PageMeta {
+ // ─── HTML builder ─────────────────────────────────────────────────────────────
+ 
+ function buildMetaTags(meta: PageMeta): string {
+-  const sd = meta.structuredData
+-    ? `<script type="application/ld+json">${JSON.stringify(meta.structuredData)}</script>`
+-    : "";
++  let sd = "";
++  if (meta.structuredData) {
++    const items = Array.isArray(meta.structuredData)
++      ? meta.structuredData
++      : [meta.structuredData];
++    sd = items
++      .map((item) => `<script type="application/ld+json">${JSON.stringify(item)}</script>`)
++      .join("\n    ");
++  }
+ 
+   return `
+     <title>${meta.title}</title>
+@@ -407,14 +585,32 @@ function buildMetaTags(meta: PageMeta): string {
+ 
+ export function generateSitemap(): string {
+   const today = new Date().toISOString().split("T")[0];
++
++  function getPriority(path: string): string {
++    if (path === "/") return "1.0";
++    if (path === "/bonds/notary-bond-texas") return "0.9";
++    if (path === "/blog") return "0.85";
++    if (path.startsWith("/blog/")) return "0.8";
++    if (path.startsWith("/bonds/")) return "0.75";
++    return "0.6";
++  }
++
++  function getChangefreq(path: string): string {
++    if (path === "/") return "weekly";
++    if (path === "/blog") return "weekly";
++    if (path.startsWith("/blog/")) return "monthly";
++    if (path.startsWith("/bonds/")) return "monthly";
++    return "monthly";
++  }
++
+   const urls = Object.entries(PAGE_META)
+     .map(
+       ([path, meta]) => `
+   <url>
+     <loc>${meta.canonical}</loc>
+     <lastmod>${today}</lastmod>
+-    <changefreq>${path === "/" ? "weekly" : "monthly"}</changefreq>
+-    <priority>${path === "/" ? "1.0" : "0.8"}</priority>
++    <changefreq>${getChangefreq(path)}</changefreq>
++    <priority>${getPriority(path)}</priority>
+   </url>`
+     )
+     .join("");
+@@ -472,14 +668,37 @@ export function seoMiddleware(distDir: string) {
+     let html = fs.readFileSync(indexPath, "utf-8");
+     const meta = getMetaForPath(urlPath);
+ 
+-    // 1. Replace/inject <title> and add meta tags into <head>
++    // Strip ALL tags the server will re-inject to prevent duplicates.
++    // Order matters: strip first, then inject fresh tags before </head>.
++    html = html
++      // Title
++      .replace(/<title>[\s\S]*?<\/title>/, "")
++      // Canonical link
++      .replace(/<link\s[^>]*rel=["']canonical["'][^>]*>/gi, "")
++      // description
++      .replace(/<meta\s[^>]*name=["']description["'][^>]*>/gi, "")
++      // robots
++      .replace(/<meta\s[^>]*name=["']robots["'][^>]*>/gi, "")
++      // og: tags
++      .replace(/<meta\s[^>]*property=["']og:[^"']*["'][^>]*>/gi, "")
++      // twitter: tags
++      .replace(/<meta\s[^>]*name=["']twitter:[^"']*["'][^>]*>/gi, "")
++      // Inline ld+json (page-level — keep the global Organization schema in the shell only if desired,
++      // but to be safe we strip all so the per-page structured data is the only one present)
++      .replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, "");
++
++    // 1. Inject fresh, page-specific meta tags before </head>
+     const metaTags = buildMetaTags(meta);
+-    html = html.replace(
+-      /<title>.*?<\/title>/,
+-      "" // remove existing title (we add it in metaTags)
+-    );
+     html = html.replace("</head>", `${metaTags}\n</head>`);
+ 
++    // 2. Inject crawlable static HTML before <div id="root"> (for Google)
++    if (meta.content) {
++      html = html.replace(
++        '<div id="root"></div>',
++        `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">${meta.content}</div><div id="root"></div>`
++      );
++    }
++
+     res.setHeader("Content-Type", "text/html");
+     res.send(html);
+   };
+-- 
+2.43.0
+

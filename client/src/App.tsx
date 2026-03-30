@@ -36,6 +36,11 @@ import LicenseBondTexas from "@/pages/license-bond-texas";
 import NotaryBondTexas from "@/pages/notary-bond-texas";
 import SB693NotaryBondRequirements2026 from "@/pages/sb-693-notary-bond-requirements-2026";
 
+// Blog
+import BlogIndex from "@/pages/blog/index";
+import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
+import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
+
 function Router() {
   return (
     <Switch>
@@ -96,6 +101,11 @@ function Router() {
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
       <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />
+
+      {/* Blog */}
+      <Route path="/blog" component={BlogIndex} />
+      <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />
+      <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
 
       <Route component={NotFound} />
     </Switch>

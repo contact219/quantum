@@ -32,6 +32,7 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/construction", label: "Construction" },
+    { href: "/blog", label: "Blog" },
     { href: "/ai-bond-finder", label: "AI Bond Finder" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },

@@ -2,9 +2,6 @@
  * Quantum Surety - SEO Middleware
  * Injects server-side meta tags, structured data, and crawlable HTML
  * into the index.html shell before it reaches the browser / Google crawler.
- *
- * DROP THIS FILE into: server/seo.ts
- * Then wire it into your Express server (see instructions at bottom).
  */
 
 import { Request, Response, NextFunction } from "express";
@@ -12,16 +9,13 @@ import fs from "fs";
 import path from "path";
 
 // ─── Page metadata map ────────────────────────────────────────────────────────
-// Add / edit routes here. Each entry is keyed by the URL path.
-// "content" is crawlable HTML injected BEFORE <div id="root">
-// so Google can index it even without executing JavaScript.
 
 interface PageMeta {
   title: string;
   description: string;
   canonical: string;
   ogType?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
   content?: string; // crawlable static HTML (Google sees this)
 }
 
@@ -272,33 +266,85 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
-
   "/bonds/notary-bond-texas": {
-    title: "Texas Notary Bond | $50 Instant Online | Quantum Surety",
+    title: "Texas Notary Bond | $50 Instant Online | SB693 Compliant | Quantum Surety",
     description:
-      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. Add E&O insurance. Download and file today. Quantum Surety.",
+      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. TDI-licensed Texas agency. Add E&O insurance. Download and file today.",
     canonical: `${BASE_URL}/bonds/notary-bond-texas`,
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "Texas Notary Public Surety Bond",
-      description: "Required 4-year $10,000 Texas notary surety bond. Instant online purchase and download.",
-      offers: {
-        "@type": "Offer",
-        price: "50.00",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        seller: {
-          "@type": "Organization",
-          name: "Quantum Surety",
-          url: "https://quantumsurety.bond",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: "Texas Notary Public Surety Bond",
+        description: "Required 4-year $10,000 Texas notary surety bond. Instant online purchase and download. SB693 compliant.",
+        offers: {
+          "@type": "Offer",
+          price: "50.00",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "Organization",
+            name: "Quantum Surety",
+            url: BASE_URL,
+          },
         },
+        brand: { "@type": "Brand", name: "Quantum Surety" },
       },
-      brand: {
-        "@type": "Brand",
-        name: "Quantum Surety",
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is a Texas notary bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A Texas notary bond is a $10,000 surety bond required by the Texas Secretary of State for all notary public commissions. It protects the public from financial loss caused by notary misconduct. The bond costs $50 for the full 4-year term.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How much does a Texas notary bond cost?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A Texas notary bond costs $50 for the full 4-year term. There are no annual renewal fees — it is a one-time payment. No credit check is required.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What changed for Texas notaries in 2026 under SB693?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Effective January 1, 2026, Senate Bill 693 requires all new and renewing Texas notary applicants to complete a mandatory 2-hour education course from the Texas Secretary of State ($20 fee per attempt, 70% passing score). The law also created a new criminal offense for notarizing without personal appearance, made notary journals legally required, and increased record retention to 10 years. The bond requirement is unchanged — still $10,000 for $50.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I need E&O insurance in addition to a notary bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The notary bond is required by law but protects the public, not you. Errors and Omissions (E&O) insurance protects you personally against lawsuits for unintentional mistakes. Most mobile notaries and signing agents carry both. E&O insurance is available to add at checkout.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I file my Texas notary bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "After purchasing your bond, you upload the completed Form 2301-B through the Texas Secretary of State SOS Portal Notary System as part of your notary application. Quantum Surety provides step-by-step filing instructions with every bond purchase.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is there a credit check for a Texas notary bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. Texas notary bonds are issued without a credit check. Anyone who meets Texas eligibility requirements can purchase a bond instantly.",
+            },
+          },
+        ],
       },
-    },
+    ],
     content: `
       <main>
         <h1>Texas Notary Bond — $50, Instant Online</h1>
@@ -337,18 +383,156 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
       </main>`,
   },
+
+  "/blog": {
+    title: "Texas Surety Bond Blog | Guides & Requirements | Quantum Surety",
+    description:
+      "Texas surety bond guides, notary bond requirements, SB693 2026 law changes, and licensing tips for Texas small business owners. Written by a TDI-licensed Texas surety agency.",
+    canonical: `${BASE_URL}/blog`,
+    ogType: "website",
+    content: `
+      <main>
+        <h1>Texas Surety Bond Blog</h1>
+        <p>Straight-talk guides on Texas bond requirements, law changes, and licensing — written by Quantum Surety, a TDI-licensed Texas surety bond agency.</p>
+        <ul>
+          <li><a href="/blog/texas-notary-bond-sb693-2026-requirements">Texas Notary Bond 2026: What SB693 Changes for New and Renewing Notaries</a></li>
+          <li><a href="/blog/texas-notary-bond-cost-2026">How Much Does a Texas Notary Bond Cost in 2026?</a></li>
+          <li><a href="/blog/texas-notary-vs-notary-signing-agent">Texas Notary vs. Notary Signing Agent: What's the Difference?</a></li>
+        </ul>
+      </main>`,
+  },
+
+  "/blog/texas-notary-bond-sb693-2026-requirements": {
+    title: "Texas Notary Bond 2026: What SB693 Changes for New & Renewing Notaries | Quantum Surety",
+    description:
+      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your bond.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
+      description:
+        "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention.",
+      datePublished: "2026-03-15",
+      dateModified: "2026-03-15",
+      author: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
+      },
+      about: {
+        "@type": "Thing",
+        name: "Texas Notary Bond SB693 2026",
+      },
+    },
+    content: `
+      <main>
+        <h1>Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries</h1>
+        <p>Senate Bill 693 became law on September 1, 2025, with key requirements effective January 1, 2026. If you are a Texas notary — or about to become one — here is what changed, what did not, and what you need to do right now.</p>
+        <section>
+          <h2>What is Texas SB693?</h2>
+          <p>Texas Senate Bill 693 (89th Legislature, 2025) is a comprehensive update to Texas notary public statutes. It created mandatory education requirements, new criminal penalties for improper notarization, a 10-year journal retention requirement, and expanded Remote Online Notarization (RON) authorization.</p>
+        </section>
+        <section>
+          <h2>What changed on January 1, 2026</h2>
+          <ul>
+            <li><strong>Mandatory education:</strong> All new and renewing notary applicants must complete a 2-hour education course from the Texas Secretary of State ($20 per attempt, 70% passing score required).</li>
+            <li><strong>New criminal offense:</strong> Notarizing a document without the signer personally appearing is now a criminal offense.</li>
+            <li><strong>Journal now required:</strong> A notary journal is legally required and records must be kept for 10 years from the date of each notarial act.</li>
+            <li><strong>Expanded RON:</strong> Remote Online Notarization framework expanded and clarified.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>What did NOT change — the notary bond</h2>
+          <p>The Texas notary bond requirement is unchanged. The bond is still $10,000 for 4 years and costs $50 flat. No credit check required. Must be issued by a TDI-licensed surety company and filed via the Texas SOS Portal Notary System.</p>
+        </section>
+        <section>
+          <h2>How to become a Texas notary in 2026</h2>
+          <ol>
+            <li>Complete the SOS education course and assessment ($20 fee)</li>
+            <li>Purchase your $10,000 Texas notary surety bond ($50 at Quantum Surety)</li>
+            <li>Submit your application via the Texas SOS Portal, uploading the completed bond form</li>
+            <li>Pay the $21 state application fee</li>
+            <li>Take your oath of office with your county clerk</li>
+            <li>Purchase your notary seal and journal (now legally required)</li>
+          </ol>
+        </section>
+        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+        <a href="/bonds/notary-bond-texas">Texas Notary Bond Product Page</a>
+      </main>`,
+  },
+
+  "/blog/texas-notary-bond-cost-2026": {
+    title: "How Much Does a Texas Notary Bond Cost in 2026? | Quantum Surety",
+    description:
+      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Complete cost breakdown including SOS fees, education, seal, journal, and E&O insurance.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "How Much Does a Texas Notary Bond Cost in 2026?",
+      description:
+        "A Texas notary bond costs $50 for the full 4-year term. Complete cost breakdown for 2026 including SOS fees, education requirement, and E&O insurance.",
+      datePublished: "2026-03-20",
+      dateModified: "2026-03-20",
+      author: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
+      },
+    },
+    content: `
+      <main>
+        <h1>How Much Does a Texas Notary Bond Cost in 2026?</h1>
+        <p>A Texas notary bond costs $50 for the full 4-year commission term. There is no credit check and no annual renewal — $50 is a one-time payment covering your entire commission period.</p>
+        <section>
+          <h2>Complete Texas notary cost breakdown (2026)</h2>
+          <ul>
+            <li>Education course (SOS, new in 2026): $20 per attempt</li>
+            <li>Texas notary bond (4-year, $10,000): $50</li>
+            <li>State application fee (SOS): $21</li>
+            <li>Notary seal / stamp: $17–$35</li>
+            <li>Notary journal (now legally required): $8–$20</li>
+            <li>E&O insurance (recommended): $40–$100 for 4 years</li>
+          </ul>
+          <p>Minimum total (bond + SOS fees only): approximately $91. Typical total with all required items and E&O: $150–$200.</p>
+        </section>
+        <section>
+          <h2>Why E&O insurance matters</h2>
+          <p>The notary bond protects the public — not you. E&amp;O insurance protects you personally against lawsuits for unintentional mistakes. Especially important for mobile notaries and notary signing agents handling loan closings or real estate documents.</p>
+        </section>
+        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+      </main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────
 
 function getMetaForPath(urlPath: string): PageMeta {
-  // Exact match first
   if (PAGE_META[urlPath]) return PAGE_META[urlPath];
-  // Prefix match (e.g. /admin/*)
   for (const key of Object.keys(PAGE_META)) {
     if (key !== "/" && urlPath.startsWith(key)) return PAGE_META[key];
   }
-  // Default fallback
   return {
     title: "Quantum Surety | AI-Powered Surety Bonds",
     description:
@@ -360,9 +544,15 @@ function getMetaForPath(urlPath: string): PageMeta {
 // ─── HTML builder ─────────────────────────────────────────────────────────────
 
 function buildMetaTags(meta: PageMeta): string {
-  const sd = meta.structuredData
-    ? `<script type="application/ld+json">${JSON.stringify(meta.structuredData)}</script>`
-    : "";
+  let sd = "";
+  if (meta.structuredData) {
+    const items = Array.isArray(meta.structuredData)
+      ? meta.structuredData
+      : [meta.structuredData];
+    sd = items
+      .map((item) => `<script type="application/ld+json">${JSON.stringify(item)}</script>`)
+      .join("\n    ");
+  }
 
   return `
     <title>${meta.title}</title>
@@ -372,6 +562,7 @@ function buildMetaTags(meta: PageMeta): string {
     <meta property="og:description" content="${meta.description}" />
     <meta property="og:url" content="${meta.canonical}" />
     <meta property="og:type" content="${meta.ogType ?? "website"}" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Quantum Surety" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${meta.title}" />
@@ -385,14 +576,30 @@ function buildMetaTags(meta: PageMeta): string {
 
 export function generateSitemap(): string {
   const today = new Date().toISOString().split("T")[0];
+
+  function getPriority(p: string): string {
+    if (p === "/") return "1.0";
+    if (p === "/bonds/notary-bond-texas") return "0.9";
+    if (p === "/blog") return "0.85";
+    if (p.startsWith("/blog/")) return "0.8";
+    if (p.startsWith("/bonds/")) return "0.75";
+    return "0.6";
+  }
+
+  function getChangefreq(p: string): string {
+    if (p === "/" || p === "/blog") return "weekly";
+    if (p.startsWith("/blog/") || p.startsWith("/bonds/")) return "monthly";
+    return "monthly";
+  }
+
   const urls = Object.entries(PAGE_META)
     .map(
-      ([path, meta]) => `
+      ([p, meta]) => `
   <url>
     <loc>${meta.canonical}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${path === "/" ? "weekly" : "monthly"}</changefreq>
-    <priority>${path === "/" ? "1.0" : "0.8"}</priority>
+    <changefreq>${getChangefreq(p)}</changefreq>
+    <priority>${getPriority(p)}</priority>
   </url>`
     )
     .join("");
@@ -413,14 +620,11 @@ Sitemap: ${BASE_URL}/sitemap.xml
 `;
 
 // ─── Main middleware ───────────────────────────────────────────────────────────
-// Reads the built index.html and injects SEO content before serving.
 
 export function seoMiddleware(distDir: string) {
   return (req: Request, res: Response, next: NextFunction) => {
     const urlPath = req.path;
 
-    // ── Sitemap & robots MUST come before the dot-extension skip ──
-    // (sitemap.xml and robots.txt contain dots and would be skipped otherwise)
     if (urlPath === "/sitemap.xml") {
       res.setHeader("Content-Type", "application/xml; charset=utf-8");
       res.setHeader("X-Robots-Tag", "noindex");
@@ -432,7 +636,6 @@ export function seoMiddleware(distDir: string) {
       return res.send(ROBOTS_TXT);
     }
 
-    // Skip API routes and all other static assets (js, css, png, ico, etc.)
     if (
       urlPath.startsWith("/api/") ||
       urlPath.startsWith("/assets/") ||
@@ -441,22 +644,35 @@ export function seoMiddleware(distDir: string) {
       return next();
     }
 
-    // Read the built index.html
     const indexPath = path.join(distDir, "index.html");
     if (!fs.existsSync(indexPath)) {
-      return next(); // In dev mode, Vite handles this
+      return next();
     }
 
     let html = fs.readFileSync(indexPath, "utf-8");
     const meta = getMetaForPath(urlPath);
 
-    // 1. Replace/inject <title> and add meta tags into <head>
+    // Strip ALL tags the server will re-inject to prevent duplicates.
+    html = html
+      .replace(/<title>[\s\S]*?<\/title>/, "")
+      .replace(/<link\s[^>]*rel=["']canonical["'][^>]*>/gi, "")
+      .replace(/<meta\s[^>]*name=["']description["'][^>]*>/gi, "")
+      .replace(/<meta\s[^>]*name=["']robots["'][^>]*>/gi, "")
+      .replace(/<meta\s[^>]*property=["']og:[^"']*["'][^>]*>/gi, "")
+      .replace(/<meta\s[^>]*name=["']twitter:[^"']*["'][^>]*>/gi, "")
+      .replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, "");
+
+    // Inject fresh, page-specific meta tags before </head>
     const metaTags = buildMetaTags(meta);
-    html = html.replace(
-      /<title>.*?<\/title>/,
-      "" // remove existing title (we add it in metaTags)
-    );
     html = html.replace("</head>", `${metaTags}\n</head>`);
+
+    // Inject crawlable static HTML before <div id="root"> (for Google)
+    if (meta.content) {
+      html = html.replace(
+        '<div id="root"></div>',
+        `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">${meta.content}</div><div id="root"></div>`
+      );
+    }
 
     res.setHeader("Content-Type", "text/html");
     res.send(html);

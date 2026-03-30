@@ -35,6 +35,7 @@ import BidBondTexas from "@/pages/bid-bond-texas";
 import PerformanceBondTexas from "@/pages/performance-bond-texas";
 import LicenseBondTexas from "@/pages/license-bond-texas";
 import NotaryBondTexas from "@/pages/notary-bond-texas";
+import SB693NotaryBondRequirements2026 from "@/pages/sb-693-notary-bond-requirements-2026";
 // Blog
 import BlogIndex from "@/pages/blog/index";
 import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
@@ -106,15 +107,15 @@ function Router() {
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
 
-      {/* Permanent redirects for old/external URLs — these replace the old standalone landing pages */}
-      <Route path="/sb-693-notary-bond-requirements-2026">
-        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
-      </Route>
+      {/* SB-693 standalone guide page (has PDF download) */}
+      <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />
+
+      {/* Redirects for alternate/legacy spellings of the above */}
       <Route path="/sb693-notary-bond">
-        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
+        <ClientRedirect to="/sb-693-notary-bond-requirements-2026" />
       </Route>
       <Route path="/notary-bond-sb693">
-        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
+        <ClientRedirect to="/sb-693-notary-bond-requirements-2026" />
       </Route>
 
       {/* Blog — specific routes BEFORE the index so wouter doesn't swallow sub-paths */}

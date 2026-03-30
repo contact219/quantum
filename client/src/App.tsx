@@ -42,6 +42,14 @@ import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
 import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
 import BlogNotaryVsNSA from "@/pages/blog/texas-notary-vs-notary-signing-agent";
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location]);
+  return null;
+}
+
 function ClientRedirect({ to }: { to: string }) {
   const [, navigate] = useLocation();
   useEffect(() => { navigate(to, { replace: true }); }, []);
@@ -50,7 +58,9 @@ function ClientRedirect({ to }: { to: string }) {
 
 function Router() {
   return (
-    <Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
       <Route path="/" component={Home} />
       <Route path="/construction" component={Construction} />
       <Route path="/ai-bond-finder" component={AIBondFinder} />
@@ -127,6 +137,7 @@ function Router() {
 
       <Route component={NotFound} />
     </Switch>
+    </>
   );
 }
 

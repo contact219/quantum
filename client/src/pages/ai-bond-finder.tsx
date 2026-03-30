@@ -59,7 +59,11 @@ export default function AIBondFinder() {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // Only auto-scroll after the user has sent at least one message
+    // (initial state has 1 assistant message — don't scroll on load)
+    if (messages.length > 1) {
+      scrollToBottom();
+    }
   }, [messages]);
 
   const quickActions = [

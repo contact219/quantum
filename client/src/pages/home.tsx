@@ -197,13 +197,14 @@ export default function Home() {
               View all resources →
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
             {[
               { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: true },
               { href: "/quote", label: "Bond Calculator", sub: "Estimate your premium", icon: "◈", accent: false },
               { href: "/resources/state-requirements", label: "State Requirements", sub: "Requirements by state", icon: "◉", accent: false },
               { href: "/obligee-lookup", label: "Obligee Lookup", sub: "Find the correct obligee name", icon: "⊕", accent: false },
               { href: "/renewals", label: "Renewal Reminders", sub: "Never miss a bond renewal", icon: "◷", accent: false },
+              { href: "/sb-693-notary-bond-requirements-2026", label: "SB-693 2026 Guide", sub: "Texas notary bond compliance", icon: "◎", accent: false },
             ].map((tool) => (
               <a
                 key={tool.href}

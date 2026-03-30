@@ -41,6 +41,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://quantumsurety.bond/renewals</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/obligee-lookup</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://quantumsurety.bond/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -79,5 +89,25 @@
     <loc>https://quantumsurety.bond/sb-693-notary-bond-requirements-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-notary-bond-sb693-2026-requirements</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-notary-bond-cost-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-notary-vs-notary-signing-agent</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

@@ -524,6 +524,64 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
       </main>`,
   },
+
+  "/blog/texas-notary-vs-notary-signing-agent": {
+    title: "Texas Notary vs. Notary Signing Agent: What's the Difference? | Quantum Surety",
+    description:
+      "A Texas notary public and a notary signing agent (NSA) are not the same thing. Learn what each role requires, what bonds and insurance you need, and which path makes sense for your business.",
+    canonical: `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
+      description:
+        "A Texas notary public and a notary signing agent (NSA) are two distinct roles with different training, income potential, and insurance requirements. Here's how they compare.",
+      datePublished: "2026-03-25",
+      dateModified: "2026-03-25",
+      author: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Quantum Surety",
+        url: "https://quantumsurety.bond",
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent`,
+      },
+    },
+    content: `
+      <main>
+        <h1>Texas Notary vs. Notary Signing Agent: What's the Difference?</h1>
+        <p>Many people use "Texas notary" and "notary signing agent" interchangeably — but they are two distinct roles with different training requirements, income potential, and insurance needs.</p>
+        <section>
+          <h2>What is a Texas Notary Public?</h2>
+          <p>A Texas notary public is a state-commissioned official authorized by the Texas Secretary of State to take acknowledgments, administer oaths, certify copies, take depositions, and perform jurats. The commission lasts 4 years and requires a $10,000 surety bond. Under SB693 (effective January 1, 2026), applicants must also complete a 2-hour education course and pass a 20-question assessment.</p>
+        </section>
+        <section>
+          <h2>What is a Notary Signing Agent (NSA)?</h2>
+          <p>A notary signing agent is a notary public with specialized training to handle loan document signings — mortgage closings, refinances, and real estate transactions. NSAs must hold a valid Texas notary commission, complete NSA-specific training, pass a background screening, and typically carry $100,000+ in E&amp;O insurance coverage.</p>
+        </section>
+        <section>
+          <h2>Key differences: Texas Notary vs. Notary Signing Agent</h2>
+          <ul>
+            <li>Texas notary: general notarizations at $6 per act; NSA: loan signings at $75–$200 per signing</li>
+            <li>Both require the $10,000 surety bond ($50 flat, 4-year term)</li>
+            <li>NSA requires additional certification, background screen, and higher E&amp;O coverage</li>
+            <li>Every NSA must first obtain a Texas notary commission</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Bond and insurance requirements</h2>
+          <p>Both roles require the same $10,000 Texas notary surety bond — $50 for the full 4-year term, no credit check. E&amp;O insurance is recommended for notaries and typically contractually required for NSAs working with title companies (often $100,000 minimum coverage).</p>
+        </section>
+        <a href="/bonds/notary-bond-texas">Get your Texas Notary Bond — $50, instant PDF</a>
+      </main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────

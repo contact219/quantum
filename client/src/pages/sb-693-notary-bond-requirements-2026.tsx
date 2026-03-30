@@ -63,7 +63,7 @@ export default function SB693NotaryBondRequirements2026() {
               Save this file for onboarding, renewals, and internal training with your office or signing team.
             </p>
             <a
-              href="/downloads/sb-693-notary-bond-checklist-2026.pdf"
+              href="/downloads/Texas-Notary-SB693-2026-Checklist-QuantumSurety.pdf"
               download
               className="inline-flex mt-5 items-center gap-2 rounded-lg bg-cyan-400 text-slate-900 font-semibold px-4 py-2 hover:bg-cyan-300"
             >

@@ -125,6 +125,9 @@ export default function Construction() {
             <p className="text-lg leading-relaxed text-foreground mt-6">
               Our platform simplifies the complex world of construction surety — so you can focus on building, not paperwork.
             </p>
+            <p className="text-base leading-relaxed text-foreground mt-4">
+              Texas compliance update: if your team also manages notary services, review the <a href="/sb-693-notary-bond-requirements-2026" className="text-primary underline font-medium">SB-693 notary bond requirements 2026 guide</a> for filing checklists and deadlines.
+            </p>
           </div>
         </div>
       </section>

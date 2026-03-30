@@ -19,7 +19,6 @@ const BOND_TYPES = [
   "Site Improvement Bond",
   "Supply Bond",
   "Notary Bond",
-  "BMC-84 Freight Broker Bond",
   "Court / Judicial Bond",
   "Other",
 ];

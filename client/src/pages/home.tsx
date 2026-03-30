@@ -62,7 +62,7 @@ export default function Home() {
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              Quantum Surety delivers bid bonds, performance bonds, payment bonds, license bonds, and freight broker bonds — faster than traditional agencies. AI-assisted underwriting, A-rated carriers, licensed in Texas and all 50 states.
+              Quantum Surety delivers bid bonds, performance bonds, payment bonds, and license bonds — faster than traditional agencies. AI-assisted underwriting, A-rated carriers, licensed in Texas and all 50 states.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -265,11 +265,6 @@ export default function Home() {
                   quote: "Quantum Surety got our bid bond issued same-day. We were able to submit our bid on time and won the contract. Fast and professional.",
                   name: "Marcus T.",
                   title: "General Contractor, Dallas TX",
-                },
-                {
-                  quote: "Switching from our BMC-85 trust to a BMC-84 bond was seamless. The team walked us through everything and filed with FMCSA within 24 hours.",
-                  name: "Jennifer R.",
-                  title: "Freight Broker, Houston TX",
                 },
                 {
                   quote: "We needed a performance bond for a public school project fast. Quantum had us approved and bonded in two days. Will use again.",

@@ -415,4 +415,3 @@ export const bondFinderSchema = z.object({
 
 export type BondFinderData = z.infer<typeof bondFinderSchema>;
 
-export * from "./bmc84-schema";

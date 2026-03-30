@@ -56,9 +56,9 @@ async function getSendGridCredentials() {
 }
 
 // ─── Core send function ───────────────────────────────────────────────────────
-// Supports two call styles used in the codebase:
-//   sendEmail(to, subject, html, text?)          — positional (routes.ts)
-//   sendEmail({ to, subject, html, text? })      — object style (routes-bmc84.ts)
+// Supports two call styles:
+//   sendEmail(to, subject, html, text?)          — positional
+//   sendEmail({ to, subject, html, text? })      — object style
 
 export async function sendEmail(
   toOrOptions: string | { to: string; subject: string; html: string; text?: string },

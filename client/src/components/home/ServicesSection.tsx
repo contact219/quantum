@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Building2, FileText, Truck, Shield, Award, Gavel } from "lucide-react";
+import { ArrowRight, Building2, FileText, Shield, Award, Gavel } from "lucide-react";
 
 const services = [
   {
@@ -34,18 +34,6 @@ const services = [
     href: "/quote",
     cta: "Get a quote",
     highlight: false,
-  },
-  {
-    icon: Truck,
-    category: "Freight & Transportation",
-    title: "BMC-84 Freight Broker Bond",
-    description:
-      "The $75,000 FMCSA-required surety bond for all licensed freight brokers and freight forwarders. Rates from $938/year. Electronic FMCSA filing within 24 hours. Switching from a BMC-85 trust? We make the transition fast and simple.",
-    bullets: ["$75,000 FMCSA requirement", "Rates from $938/year", "24-hr FMCSA e-filing"],
-    href: "/bonds/bmc-84-freight-broker",
-    cta: "Freight broker bond",
-    highlight: true,
-    badge: "New service",
   },
   {
     icon: Gavel,
@@ -88,7 +76,7 @@ export function ServicesSection() {
             Surety Bond Solutions for Every Need
           </h2>
           <p className="text-lg text-slate-600">
-            From construction bid bonds to freight broker bonds, we place surety across every major
+            From construction bid bonds to license and permit bonds, we place surety across every major
             bond category — with AI-powered underwriting that delivers faster approvals than
             traditional agencies. All bonds placed through appointed A-rated carrier partners.
           </p>

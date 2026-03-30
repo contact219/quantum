@@ -32,7 +32,6 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/construction", label: "Construction" },
-    { href: "/bonds/bmc-84-freight-broker", label: "Freight Bonds" },
     { href: "/ai-bond-finder", label: "AI Bond Finder" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },

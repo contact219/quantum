@@ -20,7 +20,6 @@ const BOND_TYPES = [
   { value: "bid", label: "Bid Bond" },
   { value: "performance", label: "Performance Bond" },
   { value: "payment", label: "Payment Bond" },
-  { value: "bmc84", label: "Freight Broker Bond (BMC-84)" },
   { value: "maintenance", label: "Maintenance/Warranty Bond" },
   { value: "supply", label: "Supply Bond" },
   { value: "license", label: "Contractor License Bond" },

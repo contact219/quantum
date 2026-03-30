@@ -9,6 +9,16 @@ import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // ── Permanent URL redirects (301) ─────────────────────────────────────────
+  const REDIRECTS: Record<string, string> = {
+    "/sb-693-notary-bond-requirements-2026": "/blog/texas-notary-bond-sb693-2026-requirements",
+    "/sb693-notary-bond":                    "/blog/texas-notary-bond-sb693-2026-requirements",
+    "/notary-bond-sb693":                    "/blog/texas-notary-bond-sb693-2026-requirements",
+  };
+  Object.entries(REDIRECTS).forEach(([from, to]) => {
+    app.get(from, (_req, res) => res.redirect(301, to));
+  });
+
   // Setup authentication
   await setupAuth(app);
 

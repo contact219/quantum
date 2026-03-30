@@ -1,4 +1,5 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -34,12 +35,16 @@ import BidBondTexas from "@/pages/bid-bond-texas";
 import PerformanceBondTexas from "@/pages/performance-bond-texas";
 import LicenseBondTexas from "@/pages/license-bond-texas";
 import NotaryBondTexas from "@/pages/notary-bond-texas";
-import SB693NotaryBondRequirements2026 from "@/pages/sb-693-notary-bond-requirements-2026";
-
 // Blog
 import BlogIndex from "@/pages/blog/index";
 import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
 import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
+
+function ClientRedirect({ to }: { to: string }) {
+  const [, navigate] = useLocation();
+  useEffect(() => { navigate(to, { replace: true }); }, []);
+  return null;
+}
 
 function Router() {
   return (
@@ -100,7 +105,17 @@ function Router() {
       <Route path="/bonds/performance-bond-texas" component={PerformanceBondTexas} />
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
-      <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />
+
+      {/* Permanent redirects for old/external URLs — these replace the old standalone landing pages */}
+      <Route path="/sb-693-notary-bond-requirements-2026">
+        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
+      </Route>
+      <Route path="/sb693-notary-bond">
+        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
+      </Route>
+      <Route path="/notary-bond-sb693">
+        <ClientRedirect to="/blog/texas-notary-bond-sb693-2026-requirements" />
+      </Route>
 
       {/* Blog — specific routes BEFORE the index so wouter doesn't swallow sub-paths */}
       <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />

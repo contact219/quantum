@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="t4 d4">
+  <title id="t4">Receive your bond</title>
+  <desc id="d4">Cartoon document delivery with checkmark and confetti.</desc>
+  <rect width="320" height="220" fill="#fff"/>
+  <rect x="24" y="40" width="272" height="154" rx="20" fill="#F5F9FF" stroke="#0B3A6F" stroke-width="2"/>
+  <rect x="72" y="56" width="116" height="132" rx="10" fill="#fff" stroke="#1F6FDB" stroke-width="2"/>
+  <rect x="88" y="78" width="84" height="10" rx="5" fill="#DCE9FB"/>
+  <rect x="88" y="96" width="72" height="8" rx="4" fill="#E7F0FF"/>
+  <rect x="88" y="110" width="80" height="8" rx="4" fill="#E7F0FF"/>
+  <rect x="88" y="124" width="64" height="8" rx="4" fill="#E7F0FF"/>
+  <circle cx="218" cy="138" r="36" fill="#0B3A6F"/>
+  <path d="M201 138l11 11 22-22" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="248" cy="70" r="8" fill="#1F6FDB"/>
+  <circle cx="268" cy="90" r="6" fill="#1F6FDB"/>
+  <circle cx="46" cy="70" r="6" fill="#1F6FDB"/>
+  <circle cx="54" cy="94" r="4" fill="#1F6FDB"/>
+</svg>

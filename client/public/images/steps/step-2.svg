@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="t2 d2">
+  <title id="t2">Get a fast quote</title>
+  <desc id="d2">Cartoon person receiving a quick quote with speed indicators.</desc>
+  <rect width="320" height="220" fill="#fff"/>
+  <rect x="26" y="40" width="268" height="154" rx="20" fill="#F5F9FF" stroke="#0B3A6F" stroke-width="2"/>
+  <rect x="60" y="64" width="112" height="72" rx="12" fill="#1F6FDB"/>
+  <path d="M76 82h78v8H76zm0 16h62v8H76zm0 16h42v8H76z" fill="#fff"/>
+  <circle cx="228" cy="94" r="34" fill="#0B3A6F"/>
+  <path d="M228 74v22l14 10" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M42 92h20m-16 14h26m178 62h36m-26 12h24" stroke="#1F6FDB" stroke-width="4" stroke-linecap="round"/>
+  <rect x="70" y="150" width="180" height="22" rx="11" fill="#E7F0FF"/>
+  <rect x="70" y="150" width="132" height="22" rx="11" fill="#1F6FDB"/>
+  <circle cx="296" cy="40" r="10" fill="#1F6FDB"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="t3 d3">
+  <title id="t3">Approve and pay securely</title>
+  <desc id="d3">Cartoon secure checkout with shield icon and payment card.</desc>
+  <rect width="320" height="220" fill="#fff"/>
+  <rect x="24" y="40" width="272" height="154" rx="20" fill="#F5F9FF" stroke="#0B3A6F" stroke-width="2"/>
+  <rect x="48" y="70" width="144" height="90" rx="12" fill="#fff" stroke="#1F6FDB" stroke-width="2"/>
+  <rect x="48" y="84" width="144" height="16" fill="#1F6FDB"/>
+  <rect x="62" y="112" width="56" height="10" rx="5" fill="#DCE9FB"/>
+  <rect x="62" y="128" width="92" height="10" rx="5" fill="#E7F0FF"/>
+  <path d="M232 62l34 14v30c0 20-14 38-34 46-20-8-34-26-34-46V76z" fill="#0B3A6F"/>
+  <path d="M219 102l9 9 17-18" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="84" cy="56" r="10" fill="#1F6FDB"/>
+  <path d="M218 156h58" stroke="#1F6FDB" stroke-width="6" stroke-linecap="round"/>
+  <path d="M232 142v28" stroke="#1F6FDB" stroke-width="6" stroke-linecap="round"/>
+</svg>

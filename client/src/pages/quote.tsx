@@ -304,11 +304,6 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
-                    <div className="flex justify-end pt-4 border-t">
-                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
-                        Next <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
                   </>
                 )}
 
@@ -389,14 +384,6 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
-                    <div className="flex justify-between pt-4 border-t">
-                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
-                      </Button>
-                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
-                        Next <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
                   </>
                 )}
 
@@ -457,14 +444,6 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
-                    <div className="flex justify-between pt-4 border-t">
-                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
-                      </Button>
-                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
-                        Next <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
                   </>
                 )}
 
@@ -502,21 +481,32 @@ export default function Quote() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex justify-between pt-4 border-t">
-                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
-                      </Button>
-                      <Button type="submit" size="lg" disabled={quoteMutation.isPending} data-testid="button-submit">
-                        {quoteMutation.isPending ? "Submitting..." : "Submit Quote"}
-                        <CheckCircle className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
                   </div>
                 )}
 
               </CardContent>
             </Card>
 
+            {/* Navigation row — sits below the Card, always visible */}
+            <div className="mt-6 flex items-center justify-between">
+              {step > 1 ? (
+                <Button type="button" variant="outline" size="lg" onClick={prevStep} data-testid="button-prev">
+                  <ArrowLeft className="w-4 h-4 mr-2" /> Previous
+                </Button>
+              ) : <span />}
+
+              {step < 4 && (
+                <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                  Next <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              )}
+              {step === 4 && (
+                <Button type="submit" size="lg" disabled={quoteMutation.isPending} data-testid="button-submit">
+                  {quoteMutation.isPending ? "Submitting…" : "Submit Quote"}
+                  <CheckCircle className="w-4 h-4 ml-2" />
+                </Button>
+              )}
+            </div>
           </form>
         </Form>
       </div>

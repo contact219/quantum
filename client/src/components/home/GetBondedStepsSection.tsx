@@ -18,22 +18,22 @@ export function GetBondedStepsSection({ stateLabel = "your state" }: GetBondedSt
     {
       title: "Choose Your Bond (State-Specific)",
       description: `Select your bond type and state. We match you with bonds compliant with ${stateLabel} regulations.`,
-      image: "/images/steps/step-1.svg",
+      image: "/images/steps/step-1.png",
     },
     {
       title: "Get a Fast Quote",
       description: "Receive a fast surety bond quote online — often in minutes.",
-      image: "/images/steps/step-2.svg",
+      image: "/images/steps/step-2.png",
     },
     {
       title: "Approve & Pay Securely",
       description: "Complete secure checkout online. No paperwork delays.",
-      image: "/images/steps/step-3.svg",
+      image: "/images/steps/step-3.png",
     },
     {
       title: "Receive Your Bond",
       description: "Your surety bond is issued and delivered — often same day.",
-      image: "/images/steps/step-4.svg",
+      image: "/images/steps/step-4.png",
     },
   ];
 
@@ -75,7 +75,7 @@ export function GetBondedStepsSection({ stateLabel = "your state" }: GetBondedSt
                     alt={step.title}
                     loading="lazy"
                     decoding="async"
-                    className="mx-auto h-36 w-full max-w-[240px] object-contain"
+                    className="mx-auto h-48 w-full max-w-[220px] object-contain"
                   />
                 </div>
                 <div className="p-6">

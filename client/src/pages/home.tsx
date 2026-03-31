@@ -1,5 +1,6 @@
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
@@ -8,24 +9,6 @@ const trustMetrics = [
   { value: "Texas", label: "Licensed producer" },
 ];
 
-const processSteps = [
-  {
-    title: "Submit Your Request",
-    description: "Tell us about your bond in minutes — bond type, project size, and basic business info. No lengthy paperwork, no phone tag.",
-  },
-  {
-    title: "AI Pre-Qualification",
-    description: "Our system instantly evaluates your submission and matches it to the right carrier program. Most applicants get a quote the same day.",
-  },
-  {
-    title: "Carrier Approval",
-    description: "We submit a clean, carrier-ready package to our A-rated underwriting partners. You stay informed at every step.",
-  },
-  {
-    title: "Bond Issued & Delivered",
-    description: "Once approved, your bond is executed and delivered — by email or directly to the obligee. Fast, simple, done.",
-  },
-];
 
 export default function Home() {
   useSEO(SEO_PAGES.home);
@@ -180,6 +163,8 @@ export default function Home() {
         </div>
       </section>
 
+      <GetBondedStepsSection />
+
       <ServicesSection />
 
       {/* Quick Tools */}
@@ -226,73 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20 text-slate-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-2">
-              <img src="/QS_Logo.png" alt="Quantum Surety" className="w-10 h-10 object-contain" />
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">How it works</p>
-            </div>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-process-headline">
-              Get Bonded in 4 Simple Steps
-            </h2>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <div
-                key={step.title}
-                className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
-              >
-                <div className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">0{index + 1}</div>
-                <h3 className="mt-4 text-xl font-semibold text-slate-950">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mx-auto mt-10 max-w-4xl text-sm leading-7 text-slate-500" data-testid="text-process-disclaimer">
-            Bond placement is subject to carrier underwriting and approval. Quantum Surety does not independently underwrite or issue bonds.
-          </p>
-
-          {/* Testimonials */}
-          <div className="mt-16 border-t border-slate-200 pt-14">
-            <p className="mb-8 text-center text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">
-              What clients say
-            </p>
-            <div className="grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  quote: "Quantum Surety got our bid bond issued same-day. We were able to submit our bid on time and won the contract. Fast and professional.",
-                  name: "Marcus T.",
-                  title: "General Contractor, Dallas TX",
-                },
-                {
-                  quote: "We needed a performance bond for a public school project fast. Quantum had us approved and bonded in two days. Will use again.",
-                  name: "David L.",
-                  title: "Subcontractor, Austin TX",
-                },
-              ].map((t) => (
-                <div
-                  key={t.name}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-                >
-                  <p className="mb-4 text-sm leading-relaxed text-slate-700">
-                    "{t.quote}"
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.title}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-center text-xs text-slate-400">
-              Testimonials represent typical client experiences. Results vary by bond type and applicant qualifications.
-            </p>
-          </div>
-        </div>
-      </section>
 
       <section className="bg-[#eef4f8] py-20 text-slate-900">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">

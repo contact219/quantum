@@ -498,7 +498,7 @@ export default function Quote() {
                   <div />
                 )}
                 {step < 4 ? (
-                  <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                  <Button type="button" size="lg" onClick={nextStep} data-testid="button-next" style={{backgroundColor:"#4338ca",color:"#ffffff",fontWeight:600}}>
                     Next <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 ) : (
@@ -508,6 +508,7 @@ export default function Quote() {
                     disabled={quoteMutation.isPending}
                     onClick={form.handleSubmit(onSubmit)}
                     data-testid="button-submit"
+                    style={{backgroundColor:"#4338ca",color:"#ffffff",fontWeight:600}}
                   >
                     {quoteMutation.isPending ? "Submitting…" : "Submit Quote"}
                     <CheckCircle className="w-4 h-4 ml-2" />

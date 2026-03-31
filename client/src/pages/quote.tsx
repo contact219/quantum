@@ -171,7 +171,7 @@ export default function Quote() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-12 pb-28">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <Badge className="mb-4" data-testid="badge-quote">
@@ -304,6 +304,11 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
+                    <div className="flex justify-end pt-4 border-t">
+                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                        Next <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
                   </>
                 )}
 
@@ -384,6 +389,14 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
+                    <div className="flex justify-between pt-4 border-t">
+                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
+                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
+                      </Button>
+                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                        Next <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
                   </>
                 )}
 
@@ -444,6 +457,14 @@ export default function Quote() {
                         </FormItem>
                       )}
                     />
+                    <div className="flex justify-between pt-4 border-t">
+                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
+                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
+                      </Button>
+                      <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                        Next <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
                   </>
                 )}
 
@@ -481,6 +502,15 @@ export default function Quote() {
                         </div>
                       </div>
                     </div>
+                    <div className="flex justify-between pt-4 border-t">
+                      <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
+                        <ArrowLeft className="w-4 h-4 mr-2" /> Previous
+                      </Button>
+                      <Button type="submit" size="lg" disabled={quoteMutation.isPending} data-testid="button-submit">
+                        {quoteMutation.isPending ? "Submitting..." : "Submit Quote"}
+                        <CheckCircle className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
                   </div>
                 )}
 
@@ -491,36 +521,6 @@ export default function Quote() {
         </Form>
       </div>
 
-      {/* Fixed bottom nav — lives outside the form so nothing can clip it */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between border-t border-slate-200 bg-white px-6 py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
-        <div className="mx-auto flex w-full max-w-3xl items-center justify-between">
-          {step > 1 ? (
-            <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Previous
-            </Button>
-          ) : (
-            <span />
-          )}
-          {step < 4 && (
-            <Button type="button" onClick={nextStep} data-testid="button-next">
-              Next
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          )}
-          {step === 4 && (
-            <Button
-              type="button"
-              onClick={form.handleSubmit(onSubmit)}
-              disabled={quoteMutation.isPending}
-              data-testid="button-submit"
-            >
-              {quoteMutation.isPending ? "Submitting..." : "Submit Quote"}
-              <CheckCircle className="w-4 h-4 ml-2" />
-            </Button>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

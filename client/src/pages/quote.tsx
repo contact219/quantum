@@ -172,35 +172,7 @@ export default function Quote() {
 
   return (
     <>
-    {/* Fixed nav bar — always visible at bottom regardless of scroll */}
-    <div className="fixed bottom-0 left-0 right-0 z-[9999] bg-white border-t border-gray-200 shadow-[0_-2px_12px_rgba(0,0,0,0.08)]">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        {step > 1 ? (
-          <Button type="button" variant="outline" size="lg" onClick={prevStep} data-testid="button-prev">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Previous
-          </Button>
-        ) : <span />}
-        {step < 4 && (
-          <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
-            Next <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        )}
-        {step === 4 && (
-          <Button
-            type="button"
-            size="lg"
-            disabled={quoteMutation.isPending}
-            onClick={form.handleSubmit(onSubmit)}
-            data-testid="button-submit"
-          >
-            {quoteMutation.isPending ? "Submitting…" : "Submit Quote"}
-            <CheckCircle className="w-4 h-4 ml-2" />
-          </Button>
-        )}
-      </div>
-    </div>
-
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-12 pb-32">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-teal-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <Badge className="mb-4" data-testid="badge-quote">
@@ -516,8 +488,33 @@ export default function Quote() {
               </CardContent>
             </Card>
 
-            {/* Spacer so card content isn't hidden behind sticky bar */}
-            <div className="h-24" />
+            <div className="sticky bottom-4 z-40 mt-6 rounded-xl border bg-white/95 p-3 shadow-lg backdrop-blur">
+              <div className="flex items-center justify-between gap-3">
+                {step > 1 ? (
+                  <Button type="button" variant="outline" size="lg" onClick={prevStep} data-testid="button-prev">
+                    <ArrowLeft className="w-4 h-4 mr-2" /> Previous
+                  </Button>
+                ) : (
+                  <div />
+                )}
+                {step < 4 ? (
+                  <Button type="button" size="lg" onClick={nextStep} data-testid="button-next">
+                    Next <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    size="lg"
+                    disabled={quoteMutation.isPending}
+                    onClick={form.handleSubmit(onSubmit)}
+                    data-testid="button-submit"
+                  >
+                    {quoteMutation.isPending ? "Submitting…" : "Submit Quote"}
+                    <CheckCircle className="w-4 h-4 ml-2" />
+                  </Button>
+                )}
+              </div>
+            </div>
           </form>
         </Form>
       </div>

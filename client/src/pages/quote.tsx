@@ -484,28 +484,32 @@ export default function Quote() {
                   </div>
                 )}
 
-                <div className="flex justify-between pt-6 border-t">
-                  {step > 1 && (
-                    <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
-                      <ArrowLeft className="w-4 h-4 mr-2" />
-                      Previous
-                    </Button>
-                  )}
-                  {step < 4 && (
-                    <Button type="button" onClick={nextStep} className="ml-auto" data-testid="button-next">
-                      Next
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  )}
-                  {step === 4 && (
-                    <Button type="submit" className="ml-auto" disabled={quoteMutation.isPending} data-testid="button-submit">
-                      {quoteMutation.isPending ? "Submitting..." : "Submit Quote"}
-                      <CheckCircle className="w-4 h-4 ml-2" />
-                    </Button>
-                  )}
-                </div>
               </CardContent>
             </Card>
+
+            {/* Sticky navigation — always visible regardless of form length */}
+            <div className="sticky bottom-0 z-50 mt-4 flex justify-between rounded-xl border border-slate-200 bg-white/95 px-6 py-4 shadow-lg backdrop-blur-sm">
+              {step > 1 ? (
+                <Button type="button" variant="outline" onClick={prevStep} data-testid="button-prev">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Previous
+                </Button>
+              ) : (
+                <span />
+              )}
+              {step < 4 && (
+                <Button type="button" onClick={nextStep} data-testid="button-next">
+                  Next
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              )}
+              {step === 4 && (
+                <Button type="submit" disabled={quoteMutation.isPending} data-testid="button-submit">
+                  {quoteMutation.isPending ? "Submitting..." : "Submit Quote"}
+                  <CheckCircle className="w-4 h-4 ml-2" />
+                </Button>
+              )}
+            </div>
           </form>
         </Form>
       </div>

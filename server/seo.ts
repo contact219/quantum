@@ -17,9 +17,13 @@ interface PageMeta {
   ogType?: string;
   structuredData?: object | object[];
   content?: string; // crawlable static HTML (Google sees this)
+  noIndex?: boolean;
 }
 
 const BASE_URL = "https://quantumsurety.bond";
+
+const NOINDEX_PREFIXES = ["/admin", "/portal", "/api"];
+const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "/chatbot"]);
 
 const PAGE_META: Record<string, PageMeta> = {
   "/": {
@@ -156,6 +160,80 @@ const PAGE_META: Record<string, PageMeta> = {
         <p>Quantum Surety is an AI-powered surety bond agency dedicated to making the bonding process faster, smarter, and more accessible for contractors across the United States. We combine deep surety expertise with modern AI technology to deliver quotes and approvals faster than traditional agencies.</p>
         <p>We specialize in construction bonds — bid bonds, performance bonds, and payment bonds — as well as commercial surety products including license &amp; permit bonds and miscellaneous surety.</p>
       </main>`,
+  },
+
+
+  "/construction": {
+    title: "Construction Surety Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
+    description:
+      "Explore construction surety bond options for contractors, including bid, performance, and payment bonds with fast AI-assisted approvals.",
+    canonical: `${BASE_URL}/construction`,
+    content: `
+      <main>
+        <h1>Construction Surety Bonds</h1>
+        <p>Learn how bid bonds, performance bonds, and payment bonds protect project owners and contractors across public and private construction projects.</p>
+      </main>`,
+  },
+
+  "/ai-bond-finder": {
+    title: "AI Bond Finder | Match the Right Surety Bond | Quantum Surety",
+    description:
+      "Use the Quantum Surety AI Bond Finder to identify the right bond type and requirements for your project, trade, and jurisdiction.",
+    canonical: `${BASE_URL}/ai-bond-finder`,
+    content: `
+      <main>
+        <h1>AI Bond Finder</h1>
+        <p>Answer a few questions and get matched to the right surety bond program, filing requirement, and next steps.</p>
+      </main>`,
+  },
+
+  "/faq": {
+    title: "Surety Bond FAQ | Common Questions Answered | Quantum Surety",
+    description:
+      "Get answers to common surety bond questions, including costs, approvals, credit requirements, and timelines for contractors.",
+    canonical: `${BASE_URL}/faq`,
+  },
+
+  "/resources/state-requirements": {
+    title: "State Surety Bond Requirements | Quantum Surety",
+    description:
+      "Review state-by-state surety bond requirements and filing guidance for contractors and licensed businesses.",
+    canonical: `${BASE_URL}/resources/state-requirements`,
+  },
+
+  "/glossary": {
+    title: "Surety Bond Glossary | Terms for Contractors | Quantum Surety",
+    description:
+      "Definitions of common surety bond terms, underwriting language, and construction bond concepts in plain English.",
+    canonical: `${BASE_URL}/glossary`,
+  },
+
+  "/renewals": {
+    title: "Surety Bond Renewals | Keep Coverage Active | Quantum Surety",
+    description:
+      "Renew your surety bond on time with renewal reminders, updated terms, and quick online processing.",
+    canonical: `${BASE_URL}/renewals`,
+  },
+
+  "/obligee-lookup": {
+    title: "Obligee Lookup Tool | Verify Bond Obligee Details | Quantum Surety",
+    description:
+      "Find and verify obligee naming details to reduce bond filing errors and avoid delays in project award or licensing.",
+    canonical: `${BASE_URL}/obligee-lookup`,
+  },
+
+  "/privacy": {
+    title: "Privacy Policy | Quantum Surety",
+    description:
+      "Read Quantum Surety's privacy policy, including how we collect, use, and protect personal information.",
+    canonical: `${BASE_URL}/privacy`,
+  },
+
+  "/terms": {
+    title: "Terms of Service | Quantum Surety",
+    description:
+      "Review Quantum Surety's terms of service for website usage, quote requests, and service limitations.",
+    canonical: `${BASE_URL}/terms`,
   },
 
   "/resources": {
@@ -596,6 +674,7 @@ function getMetaForPath(urlPath: string): PageMeta {
     description:
       "Fast, AI-powered surety bonds for contractors — bid bonds, performance bonds, payment bonds, and license bonds nationwide.",
     canonical: `${BASE_URL}${urlPath}`,
+    noIndex: true,
   };
 }
 
@@ -625,7 +704,7 @@ function buildMetaTags(meta: PageMeta): string {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${meta.title}" />
     <meta name="twitter:description" content="${meta.description}" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
     ${sd}
   `.trim();
 }
@@ -673,6 +752,13 @@ ${urls}
 export const ROBOTS_TXT = `User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
+Disallow: /admin-login
+Disallow: /admin-setup
+Disallow: /portal
+Disallow: /portal/
+Disallow: /application
+Disallow: /chatbot
 Disallow: /api/
 Sitemap: ${BASE_URL}/sitemap.xml
 `;
@@ -709,6 +795,10 @@ export function seoMiddleware(distDir: string) {
 
     let html = fs.readFileSync(indexPath, "utf-8");
     const meta = getMetaForPath(urlPath);
+
+    if (NOINDEX_PREFIXES.some((prefix) => urlPath.startsWith(prefix)) || NOINDEX_EXACT.has(urlPath)) {
+      meta.noIndex = true;
+    }
 
     // Strip ALL tags the server will re-inject to prevent duplicates.
     html = html

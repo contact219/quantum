@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification } from "./email";
+import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification, sendQuoteSubmissionConfirmationEmail } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
@@ -116,6 +116,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         contactEmail: validatedData.contactEmail,
         quoteId: quote.id,
       }).catch((err) => console.error("[Email] Bond request notification failed:", err));
+
+      if (validatedData.contactEmail) {
+        sendQuoteSubmissionConfirmationEmail({
+          to: validatedData.contactEmail,
+          contactName: validatedData.contactName,
+          bondType: validatedData.bondType,
+          quoteId: quote.id,
+        }).catch((err) => console.error("[Email] Quote confirmation email failed:", err));
+      }
       
       res.json({
         success: true,

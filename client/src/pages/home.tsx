@@ -9,6 +9,44 @@ const trustMetrics = [
   { value: "Texas", label: "Licensed producer" },
 ];
 
+function PermitPilotBanner() {
+  return (
+    <section className="bg-[#020816] px-6 pt-8 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="rounded-2xl border border-cyan-400/20 bg-gradient-to-r from-slate-800 to-slate-900 p-6 md:p-8 flex flex-wrap items-center gap-6">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">🏗️</span>
+              <span className="text-xs font-semibold uppercase tracking-wide text-cyan-300 bg-cyan-400/10 px-2 py-0.5 rounded-full border border-cyan-400/20">
+                Sister Product
+              </span>
+            </div>
+            <h2 className="text-lg font-bold text-white mb-1">
+              Need to know which permits your project requires?
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Permit Pilot is our free AI-powered permit tool for DFW contractors. Identify every required permit
+              across all 24 DFW jurisdictions — before you break ground.
+            </p>
+            <p className="mt-3 text-xs text-slate-400 italic">
+              Permit Pilot provides AI-generated permit guidance for informational purposes. Always verify requirements
+              directly with your local building department before submitting applications.
+            </p>
+          </div>
+          <a
+            href="https://permitpilot.online?utm_source=quantumsurety&utm_medium=banner&utm_campaign=cross-promo"
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-bold text-sm hover:opacity-90 transition"
+          >
+            Try Permit Pilot Free
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 export default function Home() {
   useSEO(SEO_PAGES.home);
@@ -162,6 +200,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PermitPilotBanner />
 
       <GetBondedStepsSection />
 

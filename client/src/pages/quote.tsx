@@ -36,6 +36,48 @@ const US_STATES = [
   "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
 ];
 
+function PermitPilotQuoteSidebar() {
+  return (
+    <div className="rounded-2xl border border-indigo-400/20 bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 p-6 space-y-4 mt-8">
+      <div className="flex items-center gap-2">
+        <span className="text-xl">🗺️</span>
+        <h3 className="font-bold text-slate-900">Next step after your bond</h3>
+      </div>
+      <p className="text-slate-700 text-sm leading-relaxed">
+        Once you have your contractor bond in hand, you&apos;re ready to pull permits. Permit Pilot identifies every
+        permit your DFW project needs — building, electrical, mechanical, plumbing — across all 24 jurisdictions in
+        seconds.
+      </p>
+      <ul className="space-y-1 text-sm text-slate-700">
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-500">✓</span> 24 DFW jurisdictions covered
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-500">✓</span> AI permit analysis in 30 seconds
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-500">✓</span> PDF compliance checklist download
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-emerald-500">✓</span> Free to start
+        </li>
+      </ul>
+      <a
+        href="https://permitpilot.online?utm_source=quantumsurety&utm_medium=quote-page&utm_campaign=cross-promo"
+        target="_blank"
+        rel="noreferrer"
+        className="block w-full text-center px-4 py-2.5 rounded-xl border border-cyan-400/30 text-cyan-700 text-sm font-semibold hover:bg-cyan-400/10 transition"
+      >
+        Analyze My Project on Permit Pilot →
+      </a>
+      <p className="text-xs text-slate-500 italic">
+        Permit Pilot provides AI-generated permit guidance for informational purposes. Always verify requirements
+        directly with your local building department before submitting applications.
+      </p>
+    </div>
+  );
+}
+
 export default function Quote() {
   useSEO(SEO_PAGES.quote);
   const [step, setStep] = useState(1);
@@ -165,6 +207,7 @@ export default function Quote() {
               </div>
             </CardContent>
           </Card>
+          <PermitPilotQuoteSidebar />
         </div>
       </div>
     );
@@ -518,6 +561,7 @@ export default function Quote() {
             </div>
           </form>
         </Form>
+        <PermitPilotQuoteSidebar />
       </div>
 
     </div>

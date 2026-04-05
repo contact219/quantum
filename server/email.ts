@@ -178,6 +178,43 @@ export async function sendBondRequestNotification(data: {
   );
 }
 
+export async function sendQuoteSubmissionConfirmationEmail(data: {
+  to: string;
+  contactName: string;
+  bondType?: string;
+  quoteId?: string;
+}): Promise<boolean> {
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;line-height:1.5;color:#0f172a;">
+      <h2 style="margin-bottom:8px;color:#312e81;">Thanks for requesting your bond quote</h2>
+      <p style="margin:0 0 12px;">Hi ${data.contactName},</p>
+      <p style="margin:0 0 12px;">
+        We received your ${data.bondType ? `<strong>${data.bondType}</strong> ` : ""}quote request${data.quoteId ? ` (Quote ID: <strong>${data.quoteId}</strong>)` : ""}.
+        Our team is reviewing your submission now.
+      </p>
+
+      <hr style="border:none;border-top:1px solid #e2e8f0;margin:18px 0;" />
+
+      <p style="margin:0 0 8px;font-weight:600;">One more thing — do you know which permits your project needs?</p>
+      <p style="margin:0 0 12px;">
+        Most DFW cities require your bond on file before accepting permit applications.
+        While you finalize your bond, use Permit Pilot (our free permit guidance tool) to identify every permit your project requires — across all 24 DFW jurisdictions.
+      </p>
+      <p style="margin:0 0 14px;">
+        <a href="https://permitpilot.online?utm_source=quantumsurety&utm_medium=email&utm_campaign=post-quote"
+           style="display:inline-block;background:#06b6d4;color:#082f49;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;">
+          Open Permit Pilot — Free AI permit analysis
+        </a>
+      </p>
+      <p style="font-size:12px;color:#64748b;margin-top:8px;">
+        Permit Pilot provides AI-generated permit guidance for informational purposes. Always verify requirements directly with your local building department before submitting applications.
+      </p>
+    </div>
+  `;
+
+  return sendEmail(data.to, "Your Quantum Surety quote request is in review", html);
+}
+
 // ─── Existing named exports (unchanged behaviour) ─────────────────────────────
 export async function sendApplicationStatusEmail(
   to: string,

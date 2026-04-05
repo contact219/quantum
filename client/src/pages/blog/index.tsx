@@ -15,6 +15,17 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-contractor-bond-and-permits",
+    title: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day",
+    description:
+      "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
+    date: "2026-04-05",
+    readTime: "6 min read",
+    category: "Texas Contractors",
+    tags: ["Contractor License Bond", "DFW Permits", "Permit Pilot"],
+    featured: false,
+  },
+  {
     slug: "texas-notary-bond-sb693-2026-requirements",
     title: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
     description:

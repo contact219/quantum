@@ -3,6 +3,58 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Award, Clock, DollarSign } from "lucide-react";
 
+function PermitPilotLicenseBondCallout() {
+  const featuredCities = [
+    "Dallas",
+    "Fort Worth",
+    "Frisco",
+    "McKinney",
+    "Allen",
+    "Plano",
+    "Arlington",
+    "Denton",
+    "Grapevine",
+    "Wylie",
+    "Flower Mound",
+    "Mansfield",
+  ];
+
+  return (
+    <div className="rounded-2xl border border-amber-400/20 bg-amber-400/5 p-6 mt-8">
+      <p className="text-xs font-semibold uppercase tracking-wide text-amber-300 mb-3">
+        After Your Bond — Know Your Permits
+      </p>
+      <h3 className="text-lg font-bold text-white mb-2">
+        What happens after you get your contractor license bond?
+      </h3>
+      <p className="text-slate-200 text-sm leading-relaxed mb-4">
+        Most DFW cities require your bond on file before accepting permit applications. Once bonded, use{" "}
+        <strong className="text-white">Permit Pilot</strong> — our sister platform — to identify every building,
+        electrical, mechanical, and plumbing permit your project needs across all 24 DFW jurisdictions.
+      </p>
+      <div className="grid grid-cols-2 gap-3 mb-4 text-xs text-slate-200">
+        {featuredCities.map((city) => (
+          <span key={city} className="flex items-center gap-1">
+            <span className="text-cyan-300">+</span> {city}
+          </span>
+        ))}
+      </div>
+      <a
+        href="https://permitpilot.online?utm_source=quantumsurety&utm_medium=product-page&utm_campaign=cross-promo"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 text-slate-950 font-bold text-sm hover:opacity-90 transition"
+      >
+        Try Permit Pilot Free
+      </a>
+      <p className="mt-4 text-xs text-slate-300 italic">
+        Permit Pilot provides AI-generated permit guidance for informational purposes. Always verify requirements
+        directly with your local building department before submitting applications.
+      </p>
+    </div>
+  );
+}
+
 export default function LicenseBondTexas() {
   useSEO({
     title: "Texas Contractor License Bonds | License & Permit Bonds TX | Quantum Surety",
@@ -212,6 +264,7 @@ export default function LicenseBondTexas() {
       {/* CTA */}
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
+          <PermitPilotLicenseBondCallout />
           <h2 className="text-3xl font-bold mb-4">
             Get Your Texas License Bond Today
           </h2>

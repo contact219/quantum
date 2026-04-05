@@ -33,6 +33,11 @@ export function Navbar() {
     { href: "/", label: "Home" },
     { href: "/construction", label: "Construction" },
     { href: "/blog", label: "Blog" },
+    {
+      href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",
+      label: "🏗️ Permit Tool",
+      external: true,
+    },
     { href: "/chatbot", label: "Quantum Quote" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },
@@ -55,16 +60,33 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <Button
-                  variant="ghost"
-                  className={location === link.href ? "bg-secondary" : ""}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid="link-permit-tool"
                 >
-                  {link.label}
-                </Button>
-              </Link>
-            ))}
+                  <Button variant="ghost" className="text-slate-700">
+                    <span>{link.label}</span>
+                    <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">
+                      Free
+                    </span>
+                  </Button>
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <Button
+                    variant="ghost"
+                    className={location === link.href ? "bg-secondary" : ""}
+                  >
+                    {link.label}
+                  </Button>
+                </Link>
+              )
+            )}
             <a href={`tel:${phoneNumber}`} data-testid="link-call">
               <Button className="ml-2">
                 <Phone className="w-4 h-4 mr-2" />
@@ -131,17 +153,39 @@ export function Navbar() {
 
         {mobileMenuOpen && (
           <div className="md:hidden py-4 space-y-2 border-t">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start ${location === link.href ? "bg-secondary" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid="mobile-link-permit-tool"
+                  className="block"
                 >
-                  {link.label}
-                </Button>
-              </Link>
-            ))}
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-slate-700"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                    <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">
+                      Free
+                    </span>
+                  </Button>
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <Button
+                    variant="ghost"
+                    className={`w-full justify-start ${location === link.href ? "bg-secondary" : ""}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Button>
+                </Link>
+              )
+            )}
             <a href={`tel:${phoneNumber}`} className="block" data-testid="mobile-link-call">
               <Button className="w-full">
                 <Phone className="w-4 h-4 mr-2" />

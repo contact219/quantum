@@ -42,6 +42,7 @@ import BlogIndex from "@/pages/blog/index";
 import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
 import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
 import BlogNotaryVsNSA from "@/pages/blog/texas-notary-vs-notary-signing-agent";
+import BlogTexasContractorBondAndPermits from "@/pages/blog/texas-contractor-bond-and-permits";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -135,6 +136,7 @@ function Router() {
       <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />
       <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
       <Route path="/blog/texas-notary-vs-notary-signing-agent" component={BlogNotaryVsNSA} />
+      <Route path="/blog/texas-contractor-bond-and-permits" component={BlogTexasContractorBondAndPermits} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

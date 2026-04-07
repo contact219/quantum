@@ -27,6 +27,7 @@ export function Footer() {
     {
       title: "Learn",
       links: [
+        { href: "/about", label: "About" },
         { href: "/faq", label: "FAQ" },
         { href: "/resources", label: "Resources" },
         { href: "/glossary", label: "Glossary" },
@@ -100,6 +101,25 @@ export function Footer() {
             <p className="text-sm text-gray-400 text-center" data-testid="text-copyright">
               © {new Date().getFullYear()} Quantum Surety. All rights reserved.
             </p>
+          </div>
+
+          <div className="border-t border-white/10 pt-4 mt-4">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+              <span className="text-emerald-500">🏛️</span>
+              <span>
+                Quantum Surety LLC is licensed by the Texas Department of Insurance &middot;{" "}
+                Agency License <strong className="text-slate-400">#3480229</strong> &middot;
+                General Lines Property &amp; Casualty &middot;{" "}
+                <a
+                  href="https://www.tdi.texas.gov/agent/agentlicensequery.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline hover:text-slate-300 transition"
+                >
+                  Verify at tdi.texas.gov
+                </a>
+              </span>
+            </div>
           </div>
 
           <div className="mx-auto mt-6 max-w-6xl text-center text-sm" data-testid="text-disclaimer">

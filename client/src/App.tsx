@@ -22,6 +22,7 @@ import AdminAnalytics from "@/pages/admin-analytics";
 import AdminUsers from "@/pages/admin-users";
 import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
+import About from "@/pages/about";
 import StateRequirements from "@/pages/state-requirements";
 import Glossary from "@/pages/glossary";
 import Renewals from "@/pages/renewals";
@@ -43,6 +44,7 @@ import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
 import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
 import BlogNotaryVsNSA from "@/pages/blog/texas-notary-vs-notary-signing-agent";
 import BlogTexasContractorBondAndPermits from "@/pages/blog/texas-contractor-bond-and-permits";
+import BlogTDILicense from "@/pages/blog/TDILicenseAnnouncement";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -106,6 +108,7 @@ function Router() {
         </ProtectedRoute>
       </Route>
       <Route path="/faq" component={FAQ} />
+      <Route path="/about" component={About} />
       <Route path="/resources" component={Resources} />
       <Route path="/resources/state-requirements" component={StateRequirements} />
       <Route path="/glossary" component={Glossary} />
@@ -137,6 +140,7 @@ function Router() {
       <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
       <Route path="/blog/texas-notary-vs-notary-signing-agent" component={BlogNotaryVsNSA} />
       <Route path="/blog/texas-contractor-bond-and-permits" component={BlogTexasContractorBondAndPermits} />
+      <Route path="/blog/quantum-surety-tdi-licensed-agency-3480229" component={BlogTDILicense} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

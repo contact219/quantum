@@ -1,6 +1,7 @@
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
+import { TDIBadge } from "@/components/TDIBadge";
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
@@ -78,6 +79,10 @@ export default function Home() {
             >
               Fast, AI-Powered Surety Bonds for Contractors
             </h1>
+
+            <div className="mt-6">
+              <TDIBadge size="md" />
+            </div>
 
             <p
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"

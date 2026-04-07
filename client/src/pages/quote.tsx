@@ -78,6 +78,52 @@ function PermitPilotQuoteSidebar() {
   );
 }
 
+function QuoteTrustPanel() {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-slate-900 p-5 space-y-4 mt-8">
+      <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">
+        Why contractors trust Quantum Surety
+      </p>
+      <div className="space-y-3">
+        {[
+          {
+            icon: "🏛️",
+            title: "TDI Licensed Agency",
+            desc: "License #3480229 · Texas Dept. of Insurance",
+            color: "text-emerald-300",
+          },
+          {
+            icon: "⚡",
+            title: "Same-Day Approval",
+            desc: "Most applicants approved in minutes",
+            color: "text-cyan-300",
+          },
+          {
+            icon: "🛡️",
+            title: "A-Rated Carrier",
+            desc: "Bonds backed by top-rated surety carriers",
+            color: "text-indigo-300",
+          },
+          {
+            icon: "🔒",
+            title: "Secure & Confidential",
+            desc: "Your information is never sold or shared",
+            color: "text-slate-300",
+          },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3">
+            <span className="text-xl shrink-0">{item.icon}</span>
+            <div>
+              <p className={`text-sm font-semibold ${item.color}`}>{item.title}</p>
+              <p className="text-xs text-slate-400">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Quote() {
   useSEO(SEO_PAGES.quote);
   const [step, setStep] = useState(1);
@@ -561,6 +607,7 @@ export default function Quote() {
             </div>
           </form>
         </Form>
+        <QuoteTrustPanel />
         <PermitPilotQuoteSidebar />
       </div>
 

@@ -31,6 +31,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
     { href: "/construction", label: "Construction" },
     { href: "/blog", label: "Blog" },
     {
@@ -87,6 +88,10 @@ export function Navbar() {
                 </Link>
               )
             )}
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-emerald-600 border border-emerald-400/30 bg-emerald-400/10 rounded-full px-3 py-1">
+              <span>🏛️</span>
+              <span>TDI Licensed #3480229</span>
+            </div>
             <a href={`tel:${phoneNumber}`} data-testid="link-call">
               <Button className="ml-2">
                 <Phone className="w-4 h-4 mr-2" />

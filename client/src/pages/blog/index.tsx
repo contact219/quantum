@@ -15,6 +15,17 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "quantum-surety-tdi-licensed-agency-3480229",
+    title: "Quantum Surety Receives TDI Agency License #3480229",
+    description:
+      "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229), operating under full TDI regulatory oversight as a General Lines P&C agency.",
+    date: "2026-04-07",
+    readTime: "4 min read",
+    category: "Company News",
+    tags: ["Company News", "TDI Licensed", "Texas"],
+    featured: false,
+  },
+  {
     slug: "texas-contractor-bond-and-permits",
     title: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day",
     description:

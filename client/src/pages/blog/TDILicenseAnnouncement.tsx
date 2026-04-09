@@ -127,7 +127,7 @@ export default function BlogTDILicense() {
             Instant quotes · No credit check · Licensed under TDI #3480229
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-quote">
+            <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get Instant Quote <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

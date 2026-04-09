@@ -473,6 +473,9 @@ const PAGE_META: Record<string, PageMeta> = {
         <h1>Texas Surety Bond Blog</h1>
         <p>Straight-talk guides on Texas bond requirements, law changes, and licensing — written by Quantum Surety, a TDI-licensed Texas surety bond agency.</p>
         <ul>
+          <li><a href="/blog/quantum-surety-tdi-licensed-agency-3480229">Quantum Surety Receives TDI Agency License #3480229</a></li>
+          <li><a href="/blog/texas-contractor-bond-and-permits">Texas Contractors: Get Your Bond and Pull Your Permits in One Day</a></li>
+          <li><a href="/blog/texas-notary-bond-sb693-renewal-2026">Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do</a></li>
           <li><a href="/blog/texas-notary-bond-sb693-2026-requirements">Texas Notary Bond 2026: What SB693 Changes for New and Renewing Notaries</a></li>
           <li><a href="/blog/texas-notary-bond-cost-2026">How Much Does a Texas Notary Bond Cost in 2026?</a></li>
           <li><a href="/blog/texas-notary-vs-notary-signing-agent">Texas Notary vs. Notary Signing Agent: What's the Difference?</a></li>
@@ -603,6 +606,160 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/blog/texas-contractor-bond-and-permits": {
+    title: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day | Quantum Surety",
+    description:
+      "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
+    canonical: `${BASE_URL}/blog/texas-contractor-bond-and-permits`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day",
+      description:
+        "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
+      datePublished: "2026-04-05",
+      dateModified: "2026-04-05",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-bond-and-permits` },
+    },
+    content: `
+      <main>
+        <h1>Texas Contractors: Get Your Bond and Pull Your Permits in One Day</h1>
+        <p>A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.</p>
+        <section>
+          <h2>Step 1: Get your Texas contractor license bond</h2>
+          <p>Most Texas cities and TDLR require a surety bond as a condition of contractor licensing. Quantum Surety issues contractor license bonds same-day — instant download, no credit check for standard amounts.</p>
+        </section>
+        <section>
+          <h2>Step 2: Identify required permits for your project</h2>
+          <p>Permit requirements vary by city, trade, and project type. DFW contractors should check with the city building department and use Texas's Permit Pilot system where available.</p>
+        </section>
+        <a href="/quote">Get Your Texas Contractor Bond</a>
+      </main>`,
+  },
+
+  "/blog/quantum-surety-tdi-licensed-agency-3480229": {
+    title: "Quantum Surety Receives TDI Agency License #3480229 | Quantum Surety",
+    description:
+      "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
+    canonical: `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Quantum Surety Receives Texas Department of Insurance Agency License #3480229",
+      description:
+        "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
+      datePublished: "2026-04-07",
+      dateModified: "2026-04-07",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229` },
+    },
+    content: `
+      <main>
+        <h1>Quantum Surety Receives Texas Department of Insurance Agency License #3480229</h1>
+        <p>Quantum Surety LLC is now fully licensed by the Texas Department of Insurance, operating under full TDI regulatory oversight as a General Lines Property & Casualty agency. License number: 3480229. Effective April 2026.</p>
+        <section>
+          <h2>What TDI licensure means for clients</h2>
+          <p>TDI licensure means Quantum Surety is held to Texas Insurance Code standards for client fund handling, fee disclosure, and record retention. Clients can verify our license status directly through the TDI public lookup at any time.</p>
+        </section>
+        <a href="/quote">Get a Bond from a TDI-Licensed Agency</a>
+      </main>`,
+  },
+
+  "/blog/texas-notary-bond-sb693-renewal-2026": {
+    title: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do | Quantum Surety",
+    description:
+      "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that now apply to renewals. Step-by-step checklist plus 5 FAQs.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do",
+      description:
+        "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step checklist plus 5 FAQs.",
+      datePublished: "2026-04-09",
+      dateModified: "2026-04-09",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026` },
+      about: { "@type": "Thing", name: "Texas Notary Bond SB693 Renewal 2026" },
+    },
+    content: `
+      <main>
+        <h1>Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do</h1>
+        <p>If your Texas notary commission expires in 2026, you are renewing under SB693 rules. Senate Bill 693 added a mandatory education course and journal requirement that now apply to all renewals — not just new applicants.</p>
+        <section>
+          <h2>What SB693 adds for renewing notaries</h2>
+          <ul>
+            <li><strong>Mandatory education course:</strong> All renewing notaries must complete the 2-hour SOS education course and pass the 20-question assessment (70% minimum, $20 per attempt) before submitting a renewal application.</li>
+            <li><strong>Notary journal legally required:</strong> A journal is now mandatory. Records must be retained for 10 years from the date of each notarial act.</li>
+            <li><strong>New criminal liability:</strong> Notarizing without the signer personally appearing is now a criminal offense.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>The $10,000 bond is still required — still $50</h2>
+          <p>The Texas notary surety bond requirement is unchanged under SB693. A new $10,000 bond is required for each 4-year commission term. Cost: $50 flat, no credit check, instant download from Quantum Surety.</p>
+        </section>
+        <section>
+          <h2>Step-by-step renewal checklist under SB693</h2>
+          <ol>
+            <li>Complete the SOS education course (new in 2026)</li>
+            <li>Confirm journal records are compliant</li>
+            <li>Purchase a new $10,000 notary surety bond ($50)</li>
+            <li>Submit renewal via Texas SOS Portal — upload bond form, pay $21 state fee</li>
+            <li>Take oath of office with county clerk</li>
+            <li>Order a new notary seal with updated expiration date</li>
+          </ol>
+        </section>
+        <a href="/quote?type=notary">Get My Renewal Bond — $50</a>
+      </main>`,
+  },
+
+  "/sb-693-notary-bond-requirements-2026": {
+    title: "Texas SB693 Notary Bond Requirements 2026 — Complete Guide | Quantum Surety",
+    description:
+      "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements: mandatory education, journal rules, criminal penalties, and how to get your $50 bond.",
+    canonical: `${BASE_URL}/sb-693-notary-bond-requirements-2026`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas SB693 Notary Bond Requirements 2026 — Complete Guide",
+      description:
+        "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements, including mandatory education, journal rules, and how to get your bond.",
+      datePublished: "2026-03-15",
+      dateModified: "2026-04-09",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/sb-693-notary-bond-requirements-2026` },
+    },
+    content: `
+      <main>
+        <h1>Texas SB693 Notary Bond Requirements 2026</h1>
+        <p>Senate Bill 693 became effective September 1, 2025, with key requirements taking effect January 1, 2026. This guide covers everything Texas notaries need to know about SB693 compliance and the notary bond requirement.</p>
+        <section>
+          <h2>SB693 key changes</h2>
+          <ul>
+            <li>Mandatory 2-hour education course from the Texas Secretary of State ($20 per attempt)</li>
+            <li>New criminal offense for notarizing without personal appearance</li>
+            <li>Notary journal now legally required — 10-year record retention</li>
+            <li>Expanded Remote Online Notarization (RON) framework</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Texas notary bond — unchanged at $50</h2>
+          <p>SB693 did not change the notary bond requirement. The bond is still $10,000 for 4 years and costs $50 flat from a TDI-licensed surety agency like Quantum Surety. No credit check required.</p>
+        </section>
+        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+        <a href="/bonds/notary-bond-texas">Texas Notary Bond Product Page</a>
+      </main>`,
+  },
+
   "/blog/texas-notary-vs-notary-signing-agent": {
     title: "Texas Notary vs. Notary Signing Agent: What's the Difference? | Quantum Surety",
     description:
@@ -701,9 +858,11 @@ function buildMetaTags(meta: PageMeta): string {
     <meta property="og:type" content="${meta.ogType ?? "website"}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Quantum Surety" />
+    <meta property="og:image" content="${BASE_URL}/QS_OG_2.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${meta.title}" />
     <meta name="twitter:description" content="${meta.description}" />
+    <meta name="twitter:image" content="${BASE_URL}/QS_OG_2.png" />
     <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
     ${sd}
   `.trim();

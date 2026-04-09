@@ -378,7 +378,7 @@ export default function BlogSB693Renewal() {
             $10,000 bond · 4-year term · No credit check · SB693 compliant · Instant PDF · Add E&O at checkout
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-quote">
+            <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My Renewal Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

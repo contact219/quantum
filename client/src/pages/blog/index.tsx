@@ -37,6 +37,17 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: false,
   },
   {
+    slug: "texas-notary-bond-sb693-renewal-2026",
+    title: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do",
+    description:
+      "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step checklist plus 5 FAQs.",
+    date: "2026-04-09",
+    readTime: "7 min read",
+    category: "Texas Notary",
+    tags: ["SB693", "Texas Notary Bond", "Renewal", "2026 Requirements"],
+    featured: false,
+  },
+  {
     slug: "texas-notary-bond-sb693-2026-requirements",
     title: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
     description:

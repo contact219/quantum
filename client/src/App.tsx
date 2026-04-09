@@ -45,6 +45,7 @@ import BlogNotaryBondCost from "@/pages/blog/texas-notary-bond-cost-2026";
 import BlogNotaryVsNSA from "@/pages/blog/texas-notary-vs-notary-signing-agent";
 import BlogTexasContractorBondAndPermits from "@/pages/blog/texas-contractor-bond-and-permits";
 import BlogTDILicense from "@/pages/blog/TDILicenseAnnouncement";
+import BlogSB693Renewal from "@/pages/blog/texas-notary-bond-sb693-renewal-2026";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -141,6 +142,7 @@ function Router() {
       <Route path="/blog/texas-notary-vs-notary-signing-agent" component={BlogNotaryVsNSA} />
       <Route path="/blog/texas-contractor-bond-and-permits" component={BlogTexasContractorBondAndPermits} />
       <Route path="/blog/quantum-surety-tdi-licensed-agency-3480229" component={BlogTDILicense} />
+      <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

@@ -34,24 +34,133 @@ const PAGE_META: Record<string, PageMeta> = {
     ogType: "website",
     structuredData: {
       "@context": "https://schema.org",
-      "@type": "InsuranceAgency",
-      name: "Quantum Surety",
-      url: BASE_URL,
-      description:
-        "AI-powered surety bond agency specializing in construction bonds for contractors nationwide.",
-      address: {
-        "@type": "PostalAddress",
-        addressRegion: "TX",
-        addressCountry: "US",
-      },
-      areaServed: "US",
-      serviceType: [
-        "Surety Bonds",
-        "Construction Bonds",
-        "Performance Bonds",
-        "Bid Bonds",
-        "Payment Bonds",
-        "License Bonds",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "InsuranceAgency", "FinancialService"],
+          "@id": `${BASE_URL}/#business`,
+          name: "Quantum Surety",
+          legalName: "Quantum Surety LLC",
+          description:
+            "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, freight broker bonds, and commercial surety bonds. TDI-licensed. Instant online issuance. SB693 compliant.",
+          url: BASE_URL,
+          telephone: "+19723799216",
+          email: "info@quantumsurety.bond",
+          priceRange: "$",
+          currenciesAccepted: "USD",
+          paymentAccepted: "Credit Card, Debit Card",
+          openingHours: "Mo-Fr 08:00-18:00",
+          image: `${BASE_URL}/QS_Logo.png`,
+          logo: {
+            "@type": "ImageObject",
+            url: `${BASE_URL}/QS_Logo.png`,
+            width: 300,
+            height: 300,
+          },
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "1416 Bessie Drive",
+            addressLocality: "Wylie",
+            addressRegion: "TX",
+            postalCode: "75098",
+            addressCountry: "US",
+          },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 33.036518754008604,
+            longitude: -96.58914999489231,
+          },
+          areaServed: [
+            { "@type": "State", name: "Texas" },
+            { "@type": "City", name: "Dallas" },
+            { "@type": "City", name: "Fort Worth" },
+            { "@type": "City", name: "Wylie" },
+            { "@type": "City", name: "Plano" },
+            { "@type": "City", name: "McKinney" },
+            { "@type": "City", name: "Frisco" },
+            { "@type": "City", name: "Garland" },
+            { "@type": "City", name: "Arlington" },
+            { "@type": "City", name: "Houston" },
+            { "@type": "City", name: "San Antonio" },
+            { "@type": "City", name: "Austin" },
+          ],
+          serviceArea: { "@type": "State", name: "Texas" },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Texas Surety Bond Products",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Texas Notary Bond",
+                  description:
+                    "$10,000 Texas notary public surety bond. SB693 compliant. $50 flat, instant PDF download, no credit check.",
+                  url: `${BASE_URL}/bonds/notary-bond-texas`,
+                },
+                price: "50.00",
+                priceCurrency: "USD",
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Texas Contractor License Bond",
+                  description:
+                    "Surety bonds for Texas contractors and tradespeople. Fast approval, same-day issuance.",
+                  url: `${BASE_URL}/bonds/license-bond-texas`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "BMC-84 Freight Broker Bond",
+                  description:
+                    "FMCSA-required $75,000 BMC-84 freight broker surety bond with guaranteed FMCSA filing.",
+                  url: `${BASE_URL}/bonds/bmc-84-freight-broker-bond`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Contract Surety Bonds",
+                  description:
+                    "Bid bonds, performance bonds, and payment bonds for Texas construction contractors.",
+                  url: `${BASE_URL}/bonds/contract`,
+                },
+              },
+            ],
+          },
+          sameAs: [
+            "https://www.linkedin.com/company/quantum-surety-llc",
+          ],
+          knowsAbout: [
+            "Surety Bonds",
+            "Texas Notary Bond",
+            "SB693 Notary Requirements",
+            "BMC-84 Freight Broker Bond",
+            "Contractor License Bond",
+            "Texas Department of Insurance",
+            "FMCSA Bond Filing",
+          ],
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${BASE_URL}/#website`,
+          url: BASE_URL,
+          name: "Quantum Surety",
+          description: "AI-Powered Texas Surety Bond Agency",
+          publisher: { "@id": `${BASE_URL}/#business` },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${BASE_URL}/quote?q={search_term_string}`,
+            },
+            "query-input": "required name=search_term_string",
+          },
+        },
       ],
     },
     content: `

@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import Home from "@/pages/home";
 import Construction from "@/pages/construction";
@@ -173,6 +174,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <LocalBusinessSchema />
         <Layout>
           <Router />
         </Layout>

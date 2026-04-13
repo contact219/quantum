@@ -71,7 +71,7 @@ export default function Home() {
         <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-16 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-cyan-100/80 backdrop-blur-md">
-              <img src="/QS_Logo.png" alt="Quantum Surety" className="w-4 h-4 object-contain" />
+              <img src="/QS_Logo.png" alt="Quantum Surety" className="h-4 w-auto object-contain max-w-[80px] brightness-0 invert" />
               Quantum Surety
             </div>
 
@@ -308,7 +308,7 @@ export default function Home() {
       <section className="bg-white py-16 border-b border-slate-100">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-2">
-            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-8 h-8 object-contain" />
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="h-8 w-auto object-contain max-w-[160px]" />
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Free Tools</p>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -352,7 +352,7 @@ export default function Home() {
       <section className="bg-[#eef4f8] py-20 text-slate-900">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-2">
-            <img src="/QS_Logo.png" alt="Quantum Surety" className="w-10 h-10 object-contain" />
+            <img src="/QS_Logo.png" alt="Quantum Surety" className="h-10 w-auto object-contain max-w-[200px]" />
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-700">Why choose us</p>
           </div>
           <h2 className="mt-4 text-4xl font-semibold tracking-tight" data-testid="text-about-headline">

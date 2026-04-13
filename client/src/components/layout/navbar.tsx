@@ -27,7 +27,7 @@ export function Navbar() {
     staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });
   
-  const phoneNumber = useMemo(() => settings?.phone || "1-800-QUANTUM", [settings]);
+  const phoneNumber = useMemo(() => settings?.phone || "(972) 379-9216", [settings]);
 
   const navLinks = [
     { href: "/", label: "Home" },

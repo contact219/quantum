@@ -14,8 +14,8 @@ export function Footer() {
   });
 
   const contactLinks = useMemo(() => {
-    const phone = settings?.phone || "1-800-QUANTUM";
-    const email = settings?.email || "support@quantumsurety.com";
+    const phone = settings?.phone || "(972) 379-9216";
+    const email = settings?.email || "administrator@quantumsurety.bond";
     
     return [
       { href: `tel:${phone}`, label: phone },

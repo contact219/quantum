@@ -124,7 +124,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold">Phone</p>
-                    <a href="tel:+18002782642" className="text-indigo-600 hover:underline text-sm">1-800-QUANTUM</a>
+                    <a href="tel:+19723799216" className="text-indigo-600 hover:underline text-sm">(972) 379-9216</a>
                     <p className="text-xs text-muted-foreground mt-0.5">Mon–Fri, 8am–6pm CT</p>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold">Email</p>
-                    <a href="mailto:info@quantumsurety.bond" className="text-teal-600 hover:underline text-sm">info@quantumsurety.bond</a>
+                    <a href="mailto:administrator@quantumsurety.bond" className="text-teal-600 hover:underline text-sm">administrator@quantumsurety.bond</a>
                     <p className="text-xs text-muted-foreground mt-0.5">We reply within 1 business day</p>
                   </div>
                 </div>

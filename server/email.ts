@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 // ─── Zoho Mail transporter (primary) ────────────────────────────────────────
 function createZohoTransporter() {
   const user = process.env.ZOHO_EMAIL;
-  const pass = process.env.ZOHO_APP_PASSWORD;
+  const pass = process.env.ZOHO_APP_PASSWORD || process.env.ZOHO_PASSWORD;
 
   if (!user || !pass) {
     return null;

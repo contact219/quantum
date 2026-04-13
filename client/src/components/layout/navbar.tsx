@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X, LogIn, LogOut, User } from "lucide-react";
+import { Phone, Menu, X, LogIn, LogOut, User, ChevronDown, Bot, FileText } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -31,18 +31,24 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/construction", label: "Construction" },
     { href: "/blog", label: "Blog" },
-    {
-      href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",
-      label: "🏗️ Permit Tool",
-      external: true,
-    },
-    { href: "/chatbot", label: "Quantum Quote" },
+    { href: "/resources", label: "Resources" },
+    { href: "/contact", label: "Contact" },
     { href: "/quote", label: "Get Quote" },
     { href: "/portal", label: "Portal" },
-    { href: "/resources", label: "Resources" },
+  ];
+
+  const toolsLinks = [
+    { href: "/chatbot", label: "Quantum Quote Assistant", description: "AI bond finder & instant quotes", icon: Bot },
+    { href: "/quote", label: "Quote Wizard", description: "Step-by-step quote form", icon: FileText },
+    {
+      href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",
+      label: "Permit Pilot",
+      description: "Free AI permit guidance tool",
+      icon: null,
+      external: true,
+    },
   ];
 
   return (
@@ -61,33 +67,45 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-testid="link-permit-tool"
-                >
-                  <Button variant="ghost" className="text-slate-700">
-                    <span>{link.label}</span>
-                    <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">
-                      Free
-                    </span>
-                  </Button>
-                </a>
-              ) : (
-                <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <Button
-                    variant="ghost"
-                    className={location === link.href ? "bg-secondary" : ""}
-                  >
-                    {link.label}
-                  </Button>
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Button variant="ghost" className={location === link.href ? "bg-secondary" : ""}>
+                  {link.label}
+                </Button>
+              </Link>
+            ))}
+
+            {/* Tools dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="gap-1" data-testid="button-tools-menu">
+                  Tools <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                <DropdownMenuLabel className="text-xs text-muted-foreground font-normal">AI & Quote Tools</DropdownMenuLabel>
+                {toolsLinks.map((tool) =>
+                  tool.external ? (
+                    <DropdownMenuItem key={tool.href} asChild>
+                      <a href={tool.href} target="_blank" rel="noreferrer" className="flex flex-col items-start gap-0.5 cursor-pointer">
+                        <span className="font-medium">{tool.label}
+                          <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">Free</span>
+                        </span>
+                        <span className="text-xs text-muted-foreground">{tool.description}</span>
+                      </a>
+                    </DropdownMenuItem>
+                  ) : (
+                    <DropdownMenuItem key={tool.href} asChild>
+                      <Link href={tool.href} className="flex flex-col items-start gap-0.5 cursor-pointer">
+                        <span className="font-medium">{tool.label}</span>
+                        <span className="text-xs text-muted-foreground">{tool.description}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  )
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <div className="hidden md:flex items-center gap-1.5 text-xs text-emerald-600 border border-emerald-400/30 bg-emerald-400/10 rounded-full px-3 py-1">
               <span>🏛️</span>
               <span>TDI Licensed #3480229</span>
@@ -158,39 +176,37 @@ export function Navbar() {
 
         {mobileMenuOpen && (
           <div className="md:hidden py-4 space-y-2 border-t">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-testid="mobile-link-permit-tool"
-                  className="block"
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start ${location === link.href ? "bg-secondary" : ""}`}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-slate-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                    <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">
-                      Free
-                    </span>
-                  </Button>
-                </a>
-              ) : (
-                <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <Button
-                    variant="ghost"
-                    className={`w-full justify-start ${location === link.href ? "bg-secondary" : ""}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Button>
-                </Link>
-              )
-            )}
+                  {link.label}
+                </Button>
+              </Link>
+            ))}
+
+            <div className="border-t pt-2">
+              <p className="px-4 py-1 text-xs text-muted-foreground font-semibold uppercase tracking-wide">Tools</p>
+              {toolsLinks.map((tool) =>
+                tool.external ? (
+                  <a key={tool.href} href={tool.href} target="_blank" rel="noreferrer" className="block" data-testid="mobile-link-permit-tool">
+                    <Button variant="ghost" className="w-full justify-start text-slate-700" onClick={() => setMobileMenuOpen(false)}>
+                      {tool.label}
+                      <span className="ml-2 rounded-full bg-cyan-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-cyan-700">Free</span>
+                    </Button>
+                  </a>
+                ) : (
+                  <Link key={tool.href} href={tool.href} data-testid={`mobile-link-${tool.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <Button variant="ghost" className="w-full justify-start" onClick={() => setMobileMenuOpen(false)}>
+                      {tool.label}
+                    </Button>
+                  </Link>
+                )
+              )}
+            </div>
             <a href={`tel:${phoneNumber}`} className="block" data-testid="mobile-link-call">
               <Button className="w-full">
                 <Phone className="w-4 h-4 mr-2" />

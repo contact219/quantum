@@ -29,6 +29,7 @@ import Renewals from "@/pages/renewals";
 import ObligeeLookup from "@/pages/obligee-lookup";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
+import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 // Texas SEO landing pages
@@ -117,6 +118,7 @@ function Router() {
       <Route path="/obligee-lookup" component={ObligeeLookup} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
+      <Route path="/contact" component={Contact} />
 
       {/* Texas SEO landing pages */}
       <Route path="/bonds/texas-contractor" component={TexasContractorBonds} />

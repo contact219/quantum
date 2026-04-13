@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { quoteFormSchema, insertCarrierSchema } from "@shared/schema";
 import { generateAIResponse } from "./openai";
 import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
-import { sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification, sendQuoteSubmissionConfirmationEmail } from "./email";
+import { sendEmail, sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification, sendQuoteSubmissionConfirmationEmail } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
@@ -1877,6 +1877,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
 
+
+  app.post("/api/admin/test-email", isAdmin, async (req: any, res) => {
+    try {
+      const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
+      const html = `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
+          <h2 style="color:#4f46e5;">✅ Test Email from Quantum Surety</h2>
+          <p>This is a test email sent from the Quantum Surety admin panel.</p>
+          <p>If you received this, your email configuration is working correctly.</p>
+          <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0;" />
+          <p style="font-size:12px;color:#6b7280;">Sent: ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT</p>
+        </div>`;
+      const sent = await sendEmail(adminEmail, "Test Email — Quantum Surety Admin", html);
+      if (sent) {
+        res.json({ success: true, message: `Test email sent to ${adminEmail}` });
+      } else {
+        res.status(500).json({ success: false, message: "Email sending failed. Check server logs for SMTP / SendGrid errors." });
+      }
+    } catch (error: any) {
+      console.error("Test email error:", error);
+      res.status(500).json({ success: false, message: error.message || "Server error" });
+    }
+  });
+
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const { name, email, phone, company, bondType, message } = req.body;
+      if (!name || !email || !message) {
+        return res.status(400).json({ error: "Name, email, and message are required." });
+      }
+      const html = `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
+          <h2 style="color:#4f46e5;">New Contact Form Submission</h2>
+          <table style="border-collapse:collapse;width:100%;">
+            <tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Name</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;"><strong>${name}</strong></td></tr>
+            <tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Email</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${email}</td></tr>
+            ${phone ? `<tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Phone</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${phone}</td></tr>` : ""}
+            ${company ? `<tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Company</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${company}</td></tr>` : ""}
+            ${bondType ? `<tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Bond Interest</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${bondType}</td></tr>` : ""}
+            <tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Message</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${message.replace(/\n/g, "<br>")}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #e5e7eb;color:#6b7280;">Submitted</td>
+                <td style="padding:8px;border:1px solid #e5e7eb;">${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT</td></tr>
+          </table>
+        </div>`;
+      await sendEmail(process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond", `Contact Form: ${name}`, html);
+      res.json({ success: true });
+    } catch (error: any) {
+      console.error("Contact form error:", error);
+      res.status(500).json({ error: "Failed to send message. Please try again." });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;

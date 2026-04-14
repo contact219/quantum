@@ -13,6 +13,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const REDIRECTS: Record<string, string> = {
     "/sb693-notary-bond":  "/sb-693-notary-bond-requirements-2026",
     "/notary-bond-sb693":  "/sb-693-notary-bond-requirements-2026",
+    "/notary-bonds":       "/bonds/notary-bond-texas",
+    "/notary-bond":        "/bonds/notary-bond-texas",
   };
   Object.entries(REDIRECTS).forEach(([from, to]) => {
     app.get(from, (_req, res) => res.redirect(301, to));

@@ -165,7 +165,7 @@ const PAGE_META: Record<string, PageMeta> = {
     },
     content: `
       <main>
-        <h1>AI-Powered Surety Bonds for Contractors</h1>
+        <h1>Fast, AI-Powered Surety Bonds for Contractors</h1>
         <p>Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide. Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.</p>
         <section>
           <h2>Bond Types We Offer</h2>

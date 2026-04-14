@@ -124,6 +124,12 @@ function Router() {
       <Route path="/bonds/performance-bond-texas" component={PerformanceBondTexas} />
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />
+      <Route path="/notary-bonds">
+        <ClientRedirect to="/bonds/notary-bond-texas" />
+      </Route>
+      <Route path="/notary-bond">
+        <ClientRedirect to="/bonds/notary-bond-texas" />
+      </Route>
 
       {/* SB-693 standalone guide page (has PDF download) */}
       <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />

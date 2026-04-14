@@ -1,7 +1,9 @@
+import { Link } from "wouter";
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
 import { TDIBadge } from "@/components/TDIBadge";
+import { CheckCircle, ArrowRight, Clock, Shield } from "lucide-react";
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
@@ -207,6 +209,96 @@ export default function Home() {
       </section>
 
       <PermitPilotBanner />
+
+      {/* ── Notary Bond Callout ─────────────────────────────────────────── */}
+      <section className="bg-white border-b border-slate-100 py-16 px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="rounded-2xl bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-800 overflow-hidden">
+            <div className="flex flex-col lg:flex-row items-stretch">
+
+              {/* Left — content */}
+              <div className="flex-1 p-8 lg:p-12">
+                <div className="flex items-center gap-2 mb-5 flex-wrap">
+                  <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Texas Notary Bond
+                  </span>
+                  <span className="bg-teal-400/20 text-teal-200 text-xs font-semibold px-3 py-1 rounded-full border border-teal-400/30">
+                    SB693 Compliant · 2026
+                  </span>
+                  <span className="bg-white/10 text-indigo-200 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> Instant Download
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                  Texas Notary Bond — $50
+                </h2>
+                <p className="text-indigo-100 text-lg leading-relaxed mb-7 max-w-xl">
+                  Get your required $10,000 notary surety bond in minutes. No credit check,
+                  no waiting — instant PDF delivered by email, ready to file with the
+                  Texas Secretary of State.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "$10,000 bond · 4-year term · $50 flat — no annual fees",
+                    "SB693 compliant — valid for 2026 new applications and renewals",
+                    "No credit check required — available to any eligible Texas applicant",
+                    "TDI-licensed agency — Quantum Surety License #3480229",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-indigo-100 text-sm">
+                      <CheckCircle className="w-4 h-4 text-teal-300 mt-0.5 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/bonds/notary-bond-texas">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-indigo-900 font-semibold px-7 py-3 text-sm hover:bg-indigo-50 transition-colors">
+                      Get My Notary Bond <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                  <Link href="/blog/texas-notary-bond-sb693-2026-requirements">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-white font-semibold px-7 py-3 text-sm hover:bg-white/20 transition-colors">
+                      SB693 Guide
+                    </button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — price card */}
+              <div className="lg:w-72 bg-white/10 border-t border-white/10 lg:border-t-0 lg:border-l p-8 lg:p-10 flex flex-col justify-center gap-6">
+                <div className="text-center">
+                  <p className="text-indigo-300 text-sm font-medium mb-1">One-time price</p>
+                  <p className="text-6xl font-bold text-white tracking-tight">$50</p>
+                  <p className="text-indigo-200 text-sm mt-1">for the full 4-year term</p>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: "Bond amount", value: "$10,000" },
+                    { label: "Term", value: "4 years" },
+                    { label: "Credit check", value: "None" },
+                    { label: "Delivery", value: "Instant PDF" },
+                  ].map((row) => (
+                    <div key={row.label} className="flex justify-between text-sm border-b border-white/10 pb-2">
+                      <span className="text-indigo-300">{row.label}</span>
+                      <span className="text-white font-semibold">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-3">
+                  <Shield className="w-4 h-4 text-teal-300 shrink-0" />
+                  <p className="text-indigo-100 text-xs leading-snug">
+                    Issued by a TDI-licensed Texas surety agency
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
 
       <GetBondedStepsSection />
 

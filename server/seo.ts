@@ -32,7 +32,8 @@ const PAGE_META: Record<string, PageMeta> = {
       "Get fast, AI-powered surety bonds for contractors in Texas and nationwide. Bid bonds, performance bonds, payment bonds & license bonds — quotes in minutes.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
-    structuredData: {
+    structuredData: [
+    {
       "@context": "https://schema.org",
       "@graph": [
         {
@@ -163,13 +164,74 @@ const PAGE_META: Record<string, PageMeta> = {
         },
       ],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How much does a Texas notary bond cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A Texas notary bond costs $50 for the full 4-year term. There are no annual renewal fees and no credit check is required. The bond amount is $10,000 as required by the Texas Secretary of State.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is SB693 and how does it affect Texas notaries?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Texas Senate Bill 693 (SB693) took effect January 1, 2026. It requires all new and renewing Texas notary applicants to complete a mandatory 2-hour online education course from the Texas Secretary of State ($20 per attempt, 70% passing score). It also made notary journals legally required with 10-year retention, and created criminal penalties for notarizing without the signer personally present. The $10,000 notary bond requirement is unchanged — still $50 for 4 years.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How quickly can I get a surety bond?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Many bond types — including Texas notary bonds and contractor license bonds — are issued instantly after online purchase. Your bond documents are emailed as a PDF immediately. Larger contract bonds (performance bonds, payment bonds) typically require underwriting and are issued same-day or within 24 hours for qualified contractors.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What surety bonds do Texas contractors need?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Texas contractors typically need one or more of the following: (1) Contractor license bond — required by TDLR and many Texas cities for licensing; (2) Bid bond — required when bidding public construction projects; (3) Performance bond — required on Texas public contracts over $25,000; (4) Payment bond — required alongside performance bonds to protect subcontractors and suppliers. The specific requirements depend on your trade, contract size, and the project owner.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do I need a surety bond to get a contractor license in Texas?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, most contractor trades in Texas require a surety bond as a condition of state or city licensure. TDLR-licensed trades (electricians, HVAC, plumbers) require a bond as part of the licensing process. Many Texas cities — including Dallas, Houston, Austin, and San Antonio — also require a local contractor bond. Bond amounts and requirements vary by trade and jurisdiction.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the difference between a notary bond and E&O insurance?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A Texas notary bond protects the public — if a notary makes an error or commits misconduct, the surety pays the damaged party up to $10,000 and then seeks reimbursement from the notary. Errors & Omissions (E&O) insurance protects the notary personally against lawsuits for unintentional mistakes. The bond is required by Texas law; E&O insurance is optional but strongly recommended for mobile notaries and notary signing agents.",
+          },
+        },
+      ],
+    },
+    ],
     content: `
       <main>
         <h1>Fast, AI-Powered Surety Bonds for Contractors</h1>
         <p>Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide. Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.</p>
         <section>
+          <h2>Texas Notary Bond — $50, Instant Download</h2>
+          <p>Get your required $10,000 Texas notary public surety bond instantly for $50. No credit check. SB693 compliant for 2026. Issued by Quantum Surety, a TDI-licensed Texas surety agency (License #3480229). Instant PDF delivered by email, ready to file with the Texas Secretary of State.</p>
+          <a href="/bonds/notary-bond-texas">Get My Texas Notary Bond — $50</a>
+        </section>
+        <section>
           <h2>Bond Types We Offer</h2>
           <ul>
+            <li><strong>Texas Notary Bond</strong> — $10,000 bond, 4-year term, $50 flat. SB693 compliant. Instant PDF.</li>
             <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
             <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
             <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
@@ -178,8 +240,22 @@ const PAGE_META: Record<string, PageMeta> = {
           </ul>
         </section>
         <section>
+          <h2>Frequently Asked Questions</h2>
+          <dl>
+            <dt>How much does a Texas notary bond cost?</dt>
+            <dd>A Texas notary bond costs $50 for the full 4-year term — no annual fees, no credit check required.</dd>
+            <dt>What is SB693 and how does it affect Texas notaries?</dt>
+            <dd>Texas SB693 (effective January 1, 2026) added a mandatory 2-hour education course and 10-year journal retention for all notary applicants and renewals. The $10,000 bond requirement is unchanged at $50.</dd>
+            <dt>How quickly can I get a surety bond?</dt>
+            <dd>Notary bonds and license bonds are issued instantly. Performance and payment bonds are typically same-day for qualified contractors.</dd>
+            <dt>What surety bonds do Texas contractors need?</dt>
+            <dd>Most Texas contractors need a license bond for TDLR or city licensing, plus bid, performance, and payment bonds for public construction projects.</dd>
+          </dl>
+        </section>
+        <section>
           <h2>Why Quantum Surety?</h2>
           <ul>
+            <li>TDI-licensed Texas surety agency (License #3480229)</li>
             <li>AI-powered underwriting for faster approvals</li>
             <li>Quotes delivered in minutes, not 24–48 hours</li>
             <li>Serving Texas contractors and nationwide</li>

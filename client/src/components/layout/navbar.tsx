@@ -55,7 +55,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" data-testid="link-home">
+          <Link href="/" data-testid="link-home" onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}>
             <div className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 py-1 -ml-3 cursor-pointer">
               <div className="flex items-center">
                 <img src="/QS_Logo.png" alt="Quantum Surety" className="h-10 w-auto object-contain max-w-[200px]" />
@@ -65,7 +65,12 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+              <Link
+                key={link.href}
+                href={link.href}
+                data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+              >
                 <Button variant="ghost" className={location === link.href ? "bg-secondary" : ""}>
                   {link.label}
                 </Button>
@@ -174,11 +179,15 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 space-y-2 border-t">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
+              <Link
+                key={link.href}
+                href={link.href}
+                data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: "instant" }); }}
+              >
                 <Button
                   variant="ghost"
                   className={`w-full justify-start ${location === link.href ? "bg-secondary" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Button>

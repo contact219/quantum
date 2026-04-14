@@ -22,7 +22,7 @@ const services = [
     bullets: ["TDLR contractor bonds", "Electrical & plumbing bonds", "City permit bonds"],
     href: "/bonds/license-bond-texas",
     cta: "License bonds",
-    highlight: false,
+    highlight: true,
   },
   {
     icon: Shield,

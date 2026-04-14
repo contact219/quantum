@@ -39,6 +39,20 @@ import PerformanceBondTexas from "@/pages/performance-bond-texas";
 import LicenseBondTexas from "@/pages/license-bond-texas";
 import NotaryBondTexas from "@/pages/notary-bond-texas";
 import SB693NotaryBondRequirements2026 from "@/pages/sb-693-notary-bond-requirements-2026";
+// License bond product pages
+import TDLRBondTexas from "@/pages/tdlr-bond-texas";
+import ElectricalContractorBondTexas from "@/pages/electrical-contractor-bond-texas";
+import HVACBondTexas from "@/pages/hvac-bond-texas";
+import PlumbingContractorBondTexas from "@/pages/plumbing-contractor-bond-texas";
+import AutoDealerBondTexas from "@/pages/auto-dealer-bond-texas";
+// City contractor bond pages
+import ContractorBondDallas from "@/pages/contractor-bond-dallas";
+import ContractorBondHouston from "@/pages/contractor-bond-houston";
+import ContractorBondAustin from "@/pages/contractor-bond-austin";
+import ContractorBondSanAntonio from "@/pages/contractor-bond-san-antonio";
+import ContractorBondFortWorth from "@/pages/contractor-bond-fort-worth";
+// Notary E&O insurance
+import NotaryEOInsurance from "@/pages/notary-eo-insurance";
 // Blog
 import BlogIndex from "@/pages/blog/index";
 import BlogSB693 from "@/pages/blog/texas-notary-bond-sb693-2026-requirements";
@@ -47,6 +61,9 @@ import BlogNotaryVsNSA from "@/pages/blog/texas-notary-vs-notary-signing-agent";
 import BlogTexasContractorBondAndPermits from "@/pages/blog/texas-contractor-bond-and-permits";
 import BlogTDILicense from "@/pages/blog/TDILicenseAnnouncement";
 import BlogSB693Renewal from "@/pages/blog/texas-notary-bond-sb693-renewal-2026";
+import BlogTDLRBond2026 from "@/pages/blog/texas-tdlr-contractor-bond-2026";
+import BlogContractorBondCost from "@/pages/blog/texas-contractor-license-bond-cost";
+import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contractor-bond-requirements";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -133,6 +150,23 @@ function Router() {
         <ClientRedirect to="/bonds/notary-bond-texas" />
       </Route>
 
+      {/* License bond product pages */}
+      <Route path="/bonds/tdlr-bond-texas" component={TDLRBondTexas} />
+      <Route path="/bonds/electrical-contractor-bond-texas" component={ElectricalContractorBondTexas} />
+      <Route path="/bonds/hvac-bond-texas" component={HVACBondTexas} />
+      <Route path="/bonds/plumbing-contractor-bond-texas" component={PlumbingContractorBondTexas} />
+      <Route path="/bonds/auto-dealer-bond-texas" component={AutoDealerBondTexas} />
+
+      {/* City contractor bond pages */}
+      <Route path="/bonds/contractor-bond-dallas" component={ContractorBondDallas} />
+      <Route path="/bonds/contractor-bond-houston" component={ContractorBondHouston} />
+      <Route path="/bonds/contractor-bond-austin" component={ContractorBondAustin} />
+      <Route path="/bonds/contractor-bond-san-antonio" component={ContractorBondSanAntonio} />
+      <Route path="/bonds/contractor-bond-fort-worth" component={ContractorBondFortWorth} />
+
+      {/* Notary E&O insurance */}
+      <Route path="/bonds/notary-eo-insurance" component={NotaryEOInsurance} />
+
       {/* SB-693 standalone guide page (has PDF download) */}
       <Route path="/sb-693-notary-bond-requirements-2026" component={SB693NotaryBondRequirements2026} />
 
@@ -151,6 +185,9 @@ function Router() {
       <Route path="/blog/texas-contractor-bond-and-permits" component={BlogTexasContractorBondAndPermits} />
       <Route path="/blog/quantum-surety-tdi-licensed-agency-3480229" component={BlogTDILicense} />
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
+      <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
+      <Route path="/blog/texas-contractor-license-bond-cost" component={BlogContractorBondCost} />
+      <Route path="/blog/texas-electrical-contractor-bond-requirements" component={BlogElectricalBondRequirements} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

@@ -80,6 +80,39 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["Notary Signing Agent", "Texas Notary", "E&O Insurance"],
     featured: false,
   },
+  {
+    slug: "texas-tdlr-contractor-bond-2026",
+    title: "Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know",
+    description:
+      "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming.",
+    date: "2026-04-09",
+    readTime: "8 min read",
+    category: "Texas Contractors",
+    tags: ["TDLR", "Contractor License Bond", "Texas License Bond"],
+    featured: false,
+  },
+  {
+    slug: "texas-contractor-license-bond-cost",
+    title: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide)",
+    description:
+      "Find out exactly what a Texas contractor license bond costs in 2026. Rates by trade, credit score, and bond amount — TDLR, city bonds, electrical, HVAC, and plumbing.",
+    date: "2026-04-09",
+    readTime: "7 min read",
+    category: "Texas Contractors",
+    tags: ["Contractor License Bond", "Bond Cost", "TDLR"],
+    featured: false,
+  },
+  {
+    slug: "texas-electrical-contractor-bond-requirements",
+    title: "Texas Electrical Contractor Bond Requirements 2026 | TDLR & City License",
+    description:
+      "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to file.",
+    date: "2026-04-09",
+    readTime: "8 min read",
+    category: "Texas Contractors",
+    tags: ["Electrical Contractor Bond", "TDLR", "Texas License Bond"],
+    featured: false,
+  },
 ];
 
 function formatDate(dateStr: string) {

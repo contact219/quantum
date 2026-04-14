@@ -124,12 +124,43 @@ function QuoteTrustPanel() {
   );
 }
 
+function getPrefilledValues() {
+  const params = new URLSearchParams(window.location.search);
+  const typeParam = params.get("type")?.toLowerCase() ?? "";
+  const stateParam = params.get("state")?.toUpperCase() ?? "";
+
+  const typeMap: Record<string, string> = {
+    notary: "notary",
+    license: "license",
+    tdlr: "license",
+    electrical: "license",
+    hvac: "license",
+    plumbing: "license",
+    roofing: "license",
+    irrigator: "license",
+    auto_dealer: "auto_dealer",
+    dealer: "auto_dealer",
+    bid: "bid",
+    performance: "performance",
+    payment: "payment",
+    maintenance: "maintenance",
+    supply: "supply",
+    probate: "probate",
+  };
+
+  return {
+    bondType: typeMap[typeParam] ?? "",
+    projectState: US_STATES.includes(stateParam) ? stateParam : "",
+  };
+}
+
 export default function Quote() {
   useSEO(SEO_PAGES.quote);
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [quoteResult, setQuoteResult] = useState<any>(null);
   const { toast } = useToast();
+  const prefilled = getPrefilledValues();
 
   const quoteMutation = useMutation({
     mutationFn: async (data: QuoteFormData) => {
@@ -158,10 +189,10 @@ export default function Quote() {
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
-      bondType: "",
+      bondType: prefilled.bondType,
       contractValue: "",
       projectName: "",
-      projectState: "",
+      projectState: prefilled.projectState,
       businessName: "",
       contactName: "",
       contactEmail: "",

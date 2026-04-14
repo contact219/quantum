@@ -664,6 +664,9 @@ const PAGE_META: Record<string, PageMeta> = {
           <li><a href="/blog/texas-notary-bond-sb693-2026-requirements">Texas Notary Bond 2026: What SB693 Changes for New and Renewing Notaries</a></li>
           <li><a href="/blog/texas-notary-bond-cost-2026">How Much Does a Texas Notary Bond Cost in 2026?</a></li>
           <li><a href="/blog/texas-notary-vs-notary-signing-agent">Texas Notary vs. Notary Signing Agent: What's the Difference?</a></li>
+          <li><a href="/blog/texas-tdlr-contractor-bond-2026">Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know</a></li>
+          <li><a href="/blog/texas-contractor-license-bond-cost">How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</a></li>
+          <li><a href="/blog/texas-electrical-contractor-bond-requirements">Texas Electrical Contractor Bond Requirements 2026</a></li>
         </ul>
       </main>`,
   },
@@ -1000,6 +1003,363 @@ const PAGE_META: Record<string, PageMeta> = {
           <p>Both roles require the same $10,000 Texas notary surety bond — $50 for the full 4-year term, no credit check. E&amp;O insurance is recommended for notaries and typically contractually required for NSAs working with title companies (often $100,000 minimum coverage).</p>
         </section>
         <a href="/bonds/notary-bond-texas">Get your Texas Notary Bond — $50, instant PDF</a>
+      </main>`,
+  },
+
+  "/bonds/tdlr-bond-texas": {
+    title: "TDLR Contractor Bond Texas | Electrician, HVAC & License Bonds | Quantum Surety",
+    description:
+      "Get your Texas TDLR contractor bond same-day. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/tdlr-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas TDLR Contractor Bond</h1>
+        <p>Required by the Texas Department of Licensing and Regulation (TDLR) for electricians, HVAC technicians, irrigators, boiler inspectors, elevator mechanics, and other licensed trades. Get your bond same-day — delivered by email, ready to file with TDLR.</p>
+        <section>
+          <h2>TDLR Trades That Require a Bond</h2>
+          <ul>
+            <li>Electrician — TDLR Electrical Contractor License ($10,000)</li>
+            <li>HVAC / AC Technician — TDLR Air Conditioning &amp; Refrigeration ($10,000)</li>
+            <li>Plumber — Texas State Board of Plumbing Examiners ($10,000)</li>
+            <li>Boiler Inspector — TDLR Boiler Program ($10,000)</li>
+            <li>Elevator Mechanic — TDLR Elevator Safety ($10,000)</li>
+            <li>Irrigator — TDLR Irrigator License ($10,000)</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My TDLR Bond</a>
+      </main>`,
+  },
+
+  "/bonds/electrical-contractor-bond-texas": {
+    title: "Electrical Contractor Bond Texas | City & TDLR License Bond | Quantum Surety",
+    description:
+      "Get your Texas electrical contractor bond same-day. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/electrical-contractor-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas Electrical Contractor Bond</h1>
+        <p>Required for licensed electricians operating in Texas at the state (TDLR) and city levels. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Where Required</h2>
+          <ul>
+            <li>Dallas — City of Dallas Development Services ($10,000)</li>
+            <li>Houston — Houston Permitting Center ($10,000)</li>
+            <li>Austin — City of Austin Development Services ($10,000)</li>
+            <li>San Antonio — City of San Antonio Development Services ($10,000)</li>
+            <li>Fort Worth — City of Fort Worth Development Services ($10,000)</li>
+            <li>TDLR (Statewide) — Texas Dept. of Licensing &amp; Regulation ($10,000)</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Electrical Bond</a>
+      </main>`,
+  },
+
+  "/bonds/hvac-bond-texas": {
+    title: "HVAC Contractor Bond Texas | AC License Bond | TACLA | Quantum Surety",
+    description:
+      "Get your Texas HVAC contractor bond same-day. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/hvac-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas HVAC Contractor Bond</h1>
+        <p>Required by TDLR for TACLA air conditioning and refrigeration contractor licenses, and by most Texas cities for HVAC permit-pulling. Same-day issuance, instant PDF.</p>
+        <section>
+          <h2>TACLA License Types Requiring a Bond</h2>
+          <ul>
+            <li>TACLA Air Conditioning Contractor — TDLR ($10,000)</li>
+            <li>TACLA Technician License — TDLR ($10,000)</li>
+            <li>City of Dallas HVAC License ($10,000)</li>
+            <li>City of Houston HVAC License ($10,000)</li>
+            <li>City of Austin HVAC License ($10,000)</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My HVAC Bond</a>
+      </main>`,
+  },
+
+  "/bonds/plumbing-contractor-bond-texas": {
+    title: "Plumbing Contractor Bond Texas | TSBPE License Bond | Quantum Surety",
+    description:
+      "Get your Texas plumbing contractor bond same-day. Required by TSBPE for Master Plumber licenses and Texas city permits. $10,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/plumbing-contractor-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas Plumbing Contractor Bond</h1>
+        <p>Required by the Texas State Board of Plumbing Examiners (TSBPE) for Master Plumber licenses and by Texas cities for local plumbing permits. Same-day issuance, instant PDF.</p>
+        <section>
+          <h2>License Types Requiring a Bond</h2>
+          <ul>
+            <li>Master Plumber — TSBPE ($10,000)</li>
+            <li>Journeyman Plumber — TSBPE ($10,000)</li>
+            <li>Plumbing Inspector — TSBPE ($10,000)</li>
+            <li>Drain Cleaner — TSBPE ($10,000)</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Plumbing Bond</a>
+      </main>`,
+  },
+
+  "/bonds/auto-dealer-bond-texas": {
+    title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
+    description:
+      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $25,000 bond, rates from $250/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/auto-dealer-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas Auto Dealer Bond</h1>
+        <p>Required by the Texas Department of Motor Vehicles (TxDMV) for all motor vehicle dealer licenses — independent, franchise, wholesale, and used car dealers. Same-day issuance, instant PDF.</p>
+        <section>
+          <h2>Dealer Types Requiring a Bond</h2>
+          <ul>
+            <li>Independent Motor Vehicle Dealer — TxDMV ($25,000)</li>
+            <li>Franchised Motor Vehicle Dealer — TxDMV ($25,000)</li>
+            <li>Wholesale Motor Vehicle Dealer — TxDMV ($25,000)</li>
+            <li>Motorcycle Dealer — TxDMV ($25,000)</li>
+            <li>Used Car Dealer — TxDMV ($25,000)</li>
+          </ul>
+        </section>
+        <a href="/quote?type=auto_dealer&amp;state=TX">Get My Dealer Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-dallas": {
+    title: "Contractor Bond Dallas TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Dallas contractor bond same-day. Required by the City of Dallas for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-dallas`,
+    content: `
+      <main>
+        <h1>Contractor Bond — Dallas, Texas</h1>
+        <p>Required by the City of Dallas Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Dallas Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Roofing Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Dallas Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-houston": {
+    title: "Contractor Bond Houston TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Houston contractor bond same-day. Required by the City of Houston for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-houston`,
+    content: `
+      <main>
+        <h1>Contractor Bond — Houston, Texas</h1>
+        <p>Required by the Houston Permitting Center for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Houston Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Fire Suppression Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Houston Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-austin": {
+    title: "Contractor Bond Austin TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Austin contractor bond same-day. Required by the City of Austin for general, electrical, HVAC, plumbing, and irrigation contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-austin`,
+    content: `
+      <main>
+        <h1>Contractor Bond — Austin, Texas</h1>
+        <p>Required by the City of Austin Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Austin Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Irrigation Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Austin Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-san-antonio": {
+    title: "Contractor Bond San Antonio TX | City License Bond | Quantum Surety",
+    description:
+      "Get your San Antonio contractor bond same-day. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-san-antonio`,
+    content: `
+      <main>
+        <h1>Contractor Bond — San Antonio, Texas</h1>
+        <p>Required by San Antonio Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>San Antonio Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Roofing Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My San Antonio Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-fort-worth": {
+    title: "Contractor Bond Fort Worth TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Fort Worth contractor bond same-day. Required by the City of Fort Worth for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-fort-worth`,
+    content: `
+      <main>
+        <h1>Contractor Bond — Fort Worth, Texas</h1>
+        <p>Required by Fort Worth Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Fort Worth Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Mechanical Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Fort Worth Bond</a>
+      </main>`,
+  },
+
+  "/bonds/notary-eo-insurance": {
+    title: "Notary E&O Insurance Texas | Errors & Omissions vs. Bond | Quantum Surety",
+    description:
+      "Understand the difference between a Texas notary bond and E&O insurance. Learn what E&O insurance covers, whether it's required, and how to protect yourself as a Texas notary public.",
+    canonical: `${BASE_URL}/bonds/notary-eo-insurance`,
+    content: `
+      <main>
+        <h1>Notary E&amp;O Insurance in Texas — What It Is and Why It Matters</h1>
+        <p>Your Texas notary bond protects the public. Errors &amp; Omissions (E&amp;O) insurance protects you. Understand the difference and make sure you have the right coverage.</p>
+        <section>
+          <h2>Notary Bond vs. E&O Insurance</h2>
+          <ul>
+            <li>Notary bond: required by law, protects the public, $10,000 for $50/4 years</li>
+            <li>E&amp;O insurance: optional but recommended, protects you personally from claims</li>
+            <li>Both recommended for notary signing agents and mobile notaries</li>
+          </ul>
+        </section>
+        <a href="/bonds/notary-bond-texas">Get My Texas Notary Bond — $50</a>
+      </main>`,
+  },
+
+  "/blog/texas-tdlr-contractor-bond-2026": {
+    title: "Texas TDLR Contractor Bond 2026 — What Every Licensed Trade Needs to Know | Quantum Surety",
+    description:
+      "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming. Updated for 2026.",
+    canonical: `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know",
+      description: "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming.",
+      datePublished: "2026-04-09",
+      dateModified: "2026-04-09",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026` },
+    },
+    content: `
+      <main>
+        <h1>Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know</h1>
+        <p>TDLR requires a $10,000 surety bond for most contractor license types. It costs $100–$300/year. You get it from a licensed surety agency, file the certificate with TDLR, and you're done.</p>
+        <section>
+          <h2>TDLR Trades Requiring a Bond in 2026</h2>
+          <ul>
+            <li>Electrician / Electrical Contractor — $10,000</li>
+            <li>HVAC / AC Technician (TACLA) — $10,000</li>
+            <li>Irrigator — $10,000</li>
+            <li>Boiler Inspector — $10,000</li>
+            <li>Elevator Mechanic — $10,000</li>
+          </ul>
+        </section>
+        <a href="/bonds/tdlr-bond-texas">Get My TDLR Bond</a>
+      </main>`,
+  },
+
+  "/blog/texas-contractor-license-bond-cost": {
+    title: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide) | Quantum Surety",
+    description:
+      "Find out exactly what a Texas contractor license bond costs in 2026. Rates by trade, credit score, and bond amount. TDLR, city bonds, and electrician/HVAC/plumbing explained.",
+    canonical: `${BASE_URL}/blog/texas-contractor-license-bond-cost`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide)",
+      description: "Texas contractor license bond costs broken down by trade, bond amount, and credit score for 2026.",
+      datePublished: "2026-04-09",
+      dateModified: "2026-04-09",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-license-bond-cost` },
+    },
+    content: `
+      <main>
+        <h1>How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</h1>
+        <p>Most Texas contractor license bonds cost $100–$300/year for a $10,000 bond. Auto dealer bonds ($25,000) run $250–$500/year. You pay a small annual premium — not the full bond amount.</p>
+        <section>
+          <h2>Texas Contractor Bond Costs by Trade (2026)</h2>
+          <ul>
+            <li>Electrician (TDLR) — $10,000 bond, $100–$300/year</li>
+            <li>HVAC / AC (TDLR) — $10,000 bond, $100–$300/year</li>
+            <li>Plumber (TSBPE) — $10,000 bond, $100–$300/year</li>
+            <li>General Contractor (City) — $25,000 bond, $250–$500/year</li>
+            <li>Auto Dealer (TxDMV) — $25,000 bond, $250–$600/year</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Bond Quote</a>
+      </main>`,
+  },
+
+  "/blog/texas-electrical-contractor-bond-requirements": {
+    title: "Texas Electrical Contractor Bond Requirements 2026 | TDLR & City License | Quantum Surety",
+    description:
+      "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to file. Updated guide.",
+    canonical: `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements`,
+    ogType: "article",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Texas Electrical Contractor Bond Requirements 2026",
+      description: "Everything Texas electricians need to know about surety bond requirements in 2026 — TDLR and city-level bonds.",
+      datePublished: "2026-04-09",
+      dateModified: "2026-04-09",
+      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements` },
+    },
+    content: `
+      <main>
+        <h1>Texas Electrical Contractor Bond Requirements 2026</h1>
+        <p>Texas electricians face bond requirements at two levels: the state (TDLR) and individual cities. This guide breaks down what you need, where to file, and how much it costs.</p>
+        <section>
+          <h2>TDLR vs. City Bond Requirements</h2>
+          <ul>
+            <li>TDLR: $10,000 bond required for state electrical contractor license</li>
+            <li>Dallas: $10,000 city bond for local electrical contractor license</li>
+            <li>Houston: $10,000 city bond for local electrical contractor license</li>
+            <li>Austin: $10,000 city bond for local electrical contractor license</li>
+            <li>San Antonio: $10,000 city bond for local electrical contractor license</li>
+          </ul>
+        </section>
+        <a href="/bonds/electrical-contractor-bond-texas">Get My Electrical Bond</a>
       </main>`,
   },
 };

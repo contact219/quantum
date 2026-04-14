@@ -1935,6 +1935,7 @@ export default function Admin() {
                         onClick={handleSaveSettings}
                         disabled={settingsSaving}
                         data-testid="button-save-settings"
+                        style={{ backgroundColor: "#4338ca", color: "#ffffff" }}
                       >
                         {settingsSaving ? "Saving..." : "Save Settings"}
                       </Button>

@@ -95,11 +95,13 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href="/quote"
+                href="https://www.mybondapp.com/329034247"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.18)] transition hover:-translate-y-0.5 hover:bg-cyan-200"
                 data-testid="link-hero-primary-cta"
               >
-                Request Bond Placement
+                Search For A Bond
               </a>
               <a
                 href="/resources"

@@ -31,9 +31,10 @@ const services = [
     description:
       "License & permit bonds, court bonds, fidelity bonds, and miscellaneous surety for businesses and professionals. We place commercial surety through appointed A-rated carrier relationships.",
     bullets: ["Court & judicial bonds", "Fidelity & crime bonds", "Miscellaneous surety"],
-    href: "/quote",
-    cta: "Get a quote",
+    href: "https://www.mybondapp.com/329034247",
+    cta: "Get Bonded Now",
     highlight: false,
+    external: true,
   },
   {
     icon: Gavel,
@@ -42,9 +43,10 @@ const services = [
     description:
       "Appeal bonds, executor bonds, guardian bonds, conservatorship bonds, and other judicial surety bonds required by Texas courts. Fast approvals, competitive rates, all Texas counties served.",
     bullets: ["Appeal & supersedeas bonds", "Probate & estate bonds", "Guardian & conservatorship"],
-    href: "/quote",
-    cta: "Get a quote",
+    href: "https://www.mybondapp.com/329034247",
+    cta: "Get Bonded Now",
     highlight: false,
+    external: true,
   },
   {
     icon: FileText,
@@ -53,9 +55,10 @@ const services = [
     description:
       "Auto dealer bonds (Texas DMV), notary bonds, lost instrument bonds, utility bonds, and other specialty surety bonds for businesses and individuals across Texas and nationwide.",
     bullets: ["Auto dealer bonds (TxDMV)", "Notary & utility bonds", "Lost instrument bonds"],
-    href: "/quote",
-    cta: "Get a quote",
+    href: "https://www.mybondapp.com/329034247",
+    cta: "Get Bonded Now",
     highlight: false,
+    external: true,
   },
 ];
 
@@ -84,8 +87,8 @@ export function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Link key={service.title} href={service.href}>
+          {services.map((service) => {
+            const cardInner = (
               <div
                 className={`group relative flex flex-col h-full rounded-2xl border p-6 cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 ${
                   service.highlight
@@ -135,17 +138,34 @@ export function ServicesSection() {
                 </ul>
 
                 {/* CTA */}
-                <div className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                  service.highlight
-                    ? "text-indigo-600 group-hover:text-indigo-700"
-                    : "text-cyan-700 group-hover:text-cyan-800"
-                }`}>
-                  {service.cta}
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                </div>
+                {service.external ? (
+                  <div className="w-full rounded-xl py-3 px-4 text-center text-sm font-bold text-white transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: "#1e3a5f" }}>
+                    {service.cta}
+                  </div>
+                ) : (
+                  <div className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                    service.highlight
+                      ? "text-indigo-600 group-hover:text-indigo-700"
+                      : "text-cyan-700 group-hover:text-cyan-800"
+                  }`}>
+                    {service.cta}
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  </div>
+                )}
               </div>
-            </Link>
-          ))}
+            );
+
+            return service.external ? (
+              <a key={service.title} href={service.href} target="_blank" rel="noreferrer">
+                {cardInner}
+              </a>
+            ) : (
+              <Link key={service.title} href={service.href}>
+                {cardInner}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Bottom callout */}

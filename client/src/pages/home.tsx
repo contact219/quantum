@@ -107,10 +107,13 @@ export default function Home() {
                 href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/10"
+                className="notary-bond-cta inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold text-slate-900 transition hover:-translate-y-0.5"
+                style={{ background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%)" }}
                 data-testid="link-hero-secondary-cta"
               >
+                <span className="text-base">&#9733;</span>
                 Get Your SB693 Notary Bond Today
+                <span className="text-base">&#9733;</span>
               </a>
             </div>
 

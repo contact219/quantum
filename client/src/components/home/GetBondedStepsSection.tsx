@@ -92,7 +92,9 @@ export function GetBondedStepsSection({ stateLabel = "your state" }: GetBondedSt
 
         <div className="mt-10">
           <a
-            href="/quote"
+            href="https://www.mybondapp.com/329034247"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
             style={{ backgroundColor: brandColors.primary }}
           >

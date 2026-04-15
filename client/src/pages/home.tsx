@@ -104,11 +104,13 @@ export default function Home() {
                 Search For A Bond
               </a>
               <a
-                href="/resources"
+                href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/10"
                 data-testid="link-hero-secondary-cta"
               >
-                Review Resources
+                Get Your SB693 Notary Bond Today
               </a>
             </div>
 

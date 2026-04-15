@@ -199,11 +199,15 @@ export default function LicenseBondTexas() {
                 <div className="text-sm text-gray-600 mb-3">{bond.who}</div>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-gray-400">Bond amount: {bond.amount}</span>
-                  <Link href="/quote">
+                  <a
+                    href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <Button size="sm" variant="outline" className="text-xs">
                       Get Quote <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}

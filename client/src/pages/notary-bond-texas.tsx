@@ -83,11 +83,11 @@ export default function NotaryBondTexas() {
             ✓ No credit check &nbsp;&nbsp; ✓ No hidden fees &nbsp;&nbsp; ✓ 2026 SB693 compliant &nbsp;&nbsp; ✓ E&O insurance available
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote?type=notary">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Notary Bond — $50 <ArrowRight className="w-4 h-4 ml-2" />
+                Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
@@ -165,11 +165,11 @@ export default function NotaryBondTexas() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/quote?type=notary">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-10">
-                Start My Bond Application <ArrowRight className="w-4 h-4 ml-2" />
+                Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -323,11 +323,11 @@ export default function NotaryBondTexas() {
             $50. Instant download. No credit check. File with the Texas Secretary of State today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote?type=notary">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
-                Get My Bond Now — $50 <ArrowRight className="w-4 h-4 ml-2" />
+                Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> Call (972) 379-9216

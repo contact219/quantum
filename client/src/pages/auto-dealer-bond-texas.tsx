@@ -71,11 +71,11 @@ export default function AutoDealerBondTexas() {
             Required by the Texas Department of Motor Vehicles (TxDMV) for all motor vehicle dealer licenses — independent, franchise, wholesale, and used car dealers. Get bonded same-day with instant PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/quote?type=auto_dealer&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Dealer Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
@@ -186,11 +186,11 @@ export default function AutoDealerBondTexas() {
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Auto Dealer Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote?type=auto_dealer&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Dealer Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216

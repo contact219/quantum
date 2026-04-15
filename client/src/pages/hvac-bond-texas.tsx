@@ -71,11 +71,11 @@ export default function HVACBondTexas() {
             Required by TDLR for TACLA air conditioning and refrigeration contractor licenses, and by most Texas cities for HVAC permit-pulling privileges. Get bonded same-day — instant PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/quote?type=license&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My HVAC Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
@@ -186,11 +186,11 @@ export default function HVACBondTexas() {
           <h2 className="text-2xl font-bold mb-2">Get Your Texas HVAC Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · TACLA & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote?type=license&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My HVAC Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216

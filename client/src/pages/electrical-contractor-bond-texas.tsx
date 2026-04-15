@@ -67,11 +67,11 @@ export default function ElectricalContractorBondTexas() {
             Required for licensed electricians operating in Texas — both at the city level (Dallas, Houston, Austin) and through TDLR. Get bonded same-day with instant PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/quote?type=license&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Electrical Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216

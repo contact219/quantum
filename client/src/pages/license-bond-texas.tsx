@@ -149,11 +149,11 @@ export default function LicenseBondTexas() {
             Rates start at $75/year.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -271,11 +271,11 @@ export default function LicenseBondTexas() {
           <p className="text-indigo-200 mb-8 text-lg">
             Same-day issuance. Rates from $75/year. All Texas trades covered.
           </p>
-          <Link href="/quote">
+          <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
-              Get My License Bond Now <ArrowRight className="w-4 h-4 ml-2" />
+              Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </div>

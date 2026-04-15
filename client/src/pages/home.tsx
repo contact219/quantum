@@ -254,11 +254,11 @@ export default function Home() {
                 </ul>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/bonds/notary-bond-texas">
+                  <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
                     <button className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-indigo-900 font-semibold px-7 py-3 text-sm hover:bg-indigo-50 transition-colors">
                       Get My Notary Bond <ArrowRight className="w-4 h-4" />
                     </button>
-                  </Link>
+                  </a>
                   <Link href="/blog/texas-notary-bond-sb693-2026-requirements">
                     <button className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-white font-semibold px-7 py-3 text-sm hover:bg-white/20 transition-colors">
                       SB693 Guide

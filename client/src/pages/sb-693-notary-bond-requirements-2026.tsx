@@ -179,9 +179,9 @@ export default function SB693NotaryBondRequirements2026() {
               <p className="text-xl font-semibold text-slate-900 mt-1">Start your Texas notary bond request online</p>
             </div>
             <div className="flex gap-3">
-              <Link href="/quote?type=notary">
+              <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
                 <Button>Get My Notary Bond</Button>
-              </Link>
+              </a>
               <Link href="/bonds/notary-bond-texas">
                 <Button variant="outline" className="gap-2">
                   <FileText className="w-4 h-4" /> View Texas notary bond page

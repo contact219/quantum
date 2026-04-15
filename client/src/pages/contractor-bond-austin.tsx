@@ -67,11 +67,11 @@ export default function ContractorBondAustin() {
             Required by the City of Austin Development Services for contractor licenses across all trades. Austin's construction boom means more contractors need bonds faster. Get yours same-day with instant PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/quote?type=license&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Austin Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
@@ -162,11 +162,11 @@ export default function ContractorBondAustin() {
           <h2 className="text-2xl font-bold mb-2">Get Your Austin Contractor Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All Austin trades · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote?type=license&state=TX">
+            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Bond <ArrowRight className="w-4 h-4 ml-2" />
+                Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </Link>
+            </a>
             <a href="tel:9723799216">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
                 <Phone className="w-4 h-4 mr-2" /> (972) 379-9216

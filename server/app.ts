@@ -35,6 +35,18 @@ app.use(express.json({
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
+  const forwardedProto = req.header("x-forwarded-proto");
+  const isSecure = req.secure || forwardedProto === "https";
+  const host = req.header("x-forwarded-host") ?? req.header("host");
+
+  if (process.env.NODE_ENV === "production" && !isSecure && host) {
+    return res.redirect(301, `https://${host}${req.originalUrl}`);
+  }
+
+  next();
+});
+
+app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;

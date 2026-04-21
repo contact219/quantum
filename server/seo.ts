@@ -339,11 +339,64 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Quantum Surety is an AI-first surety bond agency helping contractors get bonds faster. Learn about our technology, team, and mission to modernize the surety industry.",
     canonical: `${BASE_URL}/about`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        name: "About Quantum Surety",
+        url: `${BASE_URL}/about`,
+        description: "Quantum Surety is a TDI-licensed AI-powered surety bond agency dedicated to making bonding faster, smarter, and more accessible for contractors.",
+        about: {
+          "@type": "Organization",
+          "@id": `${BASE_URL}/#business`,
+          name: "Quantum Surety",
+          legalName: "Quantum Surety LLC",
+          foundingDate: "2024",
+          description: "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, bid bonds, performance bonds, and commercial surety bonds.",
+          telephone: "+19723799216",
+          email: "info@quantumsurety.bond",
+          url: BASE_URL,
+          logo: `${BASE_URL}/QS_Logo.png`,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "1416 Bessie Drive",
+            addressLocality: "Wylie",
+            addressRegion: "TX",
+            postalCode: "75098",
+            addressCountry: "US",
+          },
+          areaServed: { "@type": "State", name: "Texas" },
+          sameAs: ["https://www.linkedin.com/company/quantum-surety-llc"],
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            name: "Texas Department of Insurance Agency License",
+            credentialCategory: "License",
+            recognizedBy: { "@type": "GovernmentOrganization", name: "Texas Department of Insurance" },
+            identifier: "TDI #3480229",
+          },
+        },
+      },
+    ],
     content: `
       <main>
         <h1>About Quantum Surety</h1>
         <p>Quantum Surety is an AI-powered surety bond agency dedicated to making the bonding process faster, smarter, and more accessible for contractors across the United States. We combine deep surety expertise with modern AI technology to deliver quotes and approvals faster than traditional agencies.</p>
-        <p>We specialize in construction bonds — bid bonds, performance bonds, and payment bonds — as well as commercial surety products including license &amp; permit bonds and miscellaneous surety.</p>
+        <p>We are licensed by the Texas Department of Insurance (TDI Agency License #3480229) and specialize in construction bonds — bid bonds, performance bonds, and payment bonds — as well as commercial surety products including license &amp; permit bonds, notary bonds, and miscellaneous surety.</p>
+        <section>
+          <h2>Why Quantum Surety?</h2>
+          <ul>
+            <li>TDI-licensed Texas surety bond agency (License #3480229)</li>
+            <li>AI-assisted underwriting for faster approvals</li>
+            <li>Instant online bond issuance for notary and license bonds</li>
+            <li>Same-day service for qualified contractors</li>
+            <li>Serving all of Texas — Dallas, Houston, Austin, San Antonio, Fort Worth, and statewide</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Contact Us</h2>
+          <p>Phone: (972) 379-9216 | Email: info@quantumsurety.bond</p>
+          <p>1416 Bessie Drive, Wylie, TX 75098</p>
+        </section>
       </main>`,
   },
 
@@ -351,12 +404,97 @@ const PAGE_META: Record<string, PageMeta> = {
   "/construction": {
     title: "Construction Surety Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
     description:
-      "Explore construction surety bond options for contractors, including bid, performance, and payment bonds with fast AI-assisted approvals.",
+      "Explore construction surety bond options for Texas contractors, including bid, performance, and payment bonds with fast AI-assisted approvals. Same-day service available.",
     canonical: `${BASE_URL}/construction`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Construction Surety Bonds",
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+        description: "Bid bonds, performance bonds, and payment bonds for Texas construction contractors on public and private projects.",
+        areaServed: { "@type": "State", name: "Texas" },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Construction Bond Products",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bid Bond", url: `${BASE_URL}/bonds/bid-bond-texas` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Performance Bond", url: `${BASE_URL}/bonds/performance-bond-texas` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Payment Bond", url: `${BASE_URL}/bonds/performance-bond-texas` } },
+          ],
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Construction Bonds", item: `${BASE_URL}/construction` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Are bid bonds required on Texas public construction projects?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Bid bonds are typically required on Texas public construction projects and guarantee that you will enter the contract at your bid price if selected. Most public agencies require bid bonds as a condition of bidding.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "When are performance and payment bonds required in Texas?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Under Texas Government Code § 2253, performance and payment bonds are required on public construction contracts over $25,000. Federal projects over $150,000 require them under the Miller Act.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How much does a construction bond cost in Texas?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Texas construction bond premiums typically range from 0.5% to 3% of the bond amount annually, depending on the contractor's credit, financial strength, and experience. A $500,000 performance bond might cost $2,500 to $15,000 per year.",
+            },
+          },
+        ],
+      },
+    ],
     content: `
       <main>
-        <h1>Construction Surety Bonds</h1>
-        <p>Learn how bid bonds, performance bonds, and payment bonds protect project owners and contractors across public and private construction projects.</p>
+        <h1>Construction Surety Bonds in Texas</h1>
+        <p>Quantum Surety provides bid bonds, performance bonds, and payment bonds for Texas construction contractors on public and private projects. AI-assisted underwriting delivers same-day approvals for qualified contractors.</p>
+        <section>
+          <h2>Types of Construction Bonds</h2>
+          <ul>
+            <li><strong>Bid Bonds</strong> — Required on most Texas public construction bids. Guarantees you will honor your bid price and sign the contract if selected. Typically issued at no cost when issued alongside a performance/payment bond.</li>
+            <li><strong>Performance Bonds</strong> — Required on Texas public contracts over $25,000 (Government Code § 2253) and federal contracts over $150,000 (Miller Act). Guarantees project completion per contract terms.</li>
+            <li><strong>Payment Bonds</strong> — Required alongside performance bonds on public projects. Protects subcontractors and material suppliers from non-payment.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Texas Construction Bond Requirements</h2>
+          <p>Texas Government Code § 2253 requires both performance and payment bonds on public construction contracts valued over $25,000. Many cities and counties have additional requirements. Private owners may also require bonds on large projects.</p>
+        </section>
+        <section>
+          <h2>Construction Bond Costs in Texas</h2>
+          <p>Premiums typically range from 0.5%–3% of the bond amount per year. Strong contractors with established financials and good credit qualify for the lowest rates. First-time applicants or contractors with credit issues may pay higher premiums. Get an instant quote to see your rate.</p>
+        </section>
+        <section>
+          <h2>How to Get a Construction Bond</h2>
+          <ol>
+            <li>Request a quote — answer a few questions about your project and company</li>
+            <li>Submit your financial statements and project details</li>
+            <li>Receive AI-assisted underwriting review (24–48 hours for most bonds)</li>
+            <li>Sign and receive your bond documents via email</li>
+          </ol>
+        </section>
+        <a href="/bonds/bid-bond-texas">Learn About Texas Bid Bonds</a>
+        <a href="/bonds/performance-bond-texas">Learn About Texas Performance Bonds</a>
+        <a href="/quote">Get a Construction Bond Quote</a>
       </main>`,
   },
 
@@ -377,6 +515,102 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get answers to common surety bond questions, including costs, approvals, credit requirements, and timelines for contractors.",
     canonical: `${BASE_URL}/faq`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is a surety bond?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A surety bond is a three-party agreement where the surety (insurance company) guarantees the principal's (contractor's) performance to the obligee (project owner). It is not traditional insurance — if you default, you are required to reimburse the surety for any claims paid.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much do surety bonds cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Premiums typically range from 0.5% to 3% of the bond amount, depending on bond type, your credit, financials, and experience. Strong contractors with good credit pay lower rates. Texas notary bonds cost a flat $50. License bonds often have minimum premiums of $100–$500.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the difference between bid, performance, and payment bonds?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Bid bonds guarantee you will honor your bid and enter into a contract if selected. Performance bonds ensure you will complete the project according to contract terms. Payment bonds guarantee payment to subcontractors and suppliers. Most Texas public projects over $25,000 require all three under Government Code § 2253.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do I need good credit to get bonded?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Credit is one factor but not the only one. For construction bonds, financial strength and experience matter more. We work with contractors at various credit levels. Some smaller commercial bonds are available with credit scores as low as 600–650. Texas notary bonds require no credit check.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How long does it take to get a surety bond?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Simple bonds like notary bonds can be issued instantly online. License bonds often approve within hours. Construction bonds under $500K typically process in 24–48 hours. Larger or complex bonds may take 3–7 business days as underwriters review financials.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What documents are required for a construction bond application?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Standard documents include financial statements (audited for larger bonds), work-in-progress schedule, resume of experience, bank references, project details, and sometimes tax returns. Requirements vary by bond size and contractor experience.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is bond capacity?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Bond capacity is the maximum dollar amount of bonding a surety will provide. It is based on your financials, experience, credit, and current work-in-progress. A rough formula is (Net Worth × 10) minus Current Backlog, though underwriters consider many additional factors.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is a surety bond the same as insurance?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Insurance protects you from risk. A surety bond protects the obligee from your failure to perform. You are ultimately responsible for reimbursing the surety for any claims paid. The bond is essentially a guarantee backed by your financials.",
+          },
+        },
+      ],
+    },
+    content: `
+      <main>
+        <h1>Surety Bond FAQ — Common Questions Answered</h1>
+        <p>Get answers to the most common questions about surety bonds, construction bonds, and Texas bonding requirements.</p>
+        <section>
+          <h2>General Surety Bond Questions</h2>
+          <dl>
+            <dt>What is a surety bond?</dt>
+            <dd>A surety bond is a three-party agreement where the surety guarantees the principal's performance to the obligee. It protects the public — not the bond holder.</dd>
+            <dt>How much do surety bonds cost?</dt>
+            <dd>Premiums range from 0.5%–3% of the bond amount. Texas notary bonds cost $50 flat. License bonds start around $100–$500.</dd>
+            <dt>Do I need good credit?</dt>
+            <dd>Credit is a factor, but experience and financials also matter. Notary bonds require no credit check.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Construction Bond Questions</h2>
+          <dl>
+            <dt>What is the difference between bid, performance, and payment bonds?</dt>
+            <dd>Bid bonds guarantee your bid price. Performance bonds guarantee project completion. Payment bonds protect subcontractors and suppliers.</dd>
+            <dt>How long does approval take?</dt>
+            <dd>Construction bonds under $500K typically take 24–48 hours. Larger bonds may take 3–7 business days.</dd>
+          </dl>
+        </section>
+        <a href="/quote">Get a Bond Quote</a>
+      </main>`,
   },
 
   "/resources/state-requirements": {
@@ -468,14 +702,106 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get a Texas bid bond fast. Same-day bid bonds for contractors bidding public and private construction projects across Texas. AI-powered approvals.",
     canonical: `${BASE_URL}/bonds/bid-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas Bid Bond",
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+        description: "Same-day Texas bid bonds for contractors bidding public and private construction projects. AI-powered approvals.",
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Most bid bonds are issued at no charge when packaged with performance and payment bonds.",
+          availability: "https://schema.org/InStock",
+        },
+        url: `${BASE_URL}/bonds/bid-bond-texas`,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Construction Bonds", item: `${BASE_URL}/construction` },
+          { "@type": "ListItem", position: 3, name: "Texas Bid Bonds", item: `${BASE_URL}/bonds/bid-bond-texas` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is a Texas bid bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A Texas bid bond is a surety bond that guarantees a contractor will enter into a construction contract at their bid price if selected as the winning bidder. It protects project owners from contractors who win a bid but refuse to sign the contract.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How much does a Texas bid bond cost?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Most Texas bid bonds are issued at no cost to the contractor when packaged with a performance and payment bond. Standalone bid bonds typically cost $100–$250 depending on the bid amount and contractor qualifications.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How fast can I get a bid bond in Texas?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Qualified Texas contractors can receive a bid bond the same day. Quantum Surety uses AI-assisted underwriting to review applications quickly. Most approvals are completed within hours for contractors with established financials.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Are bid bonds required on Texas public projects?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Bid bonds are typically required on Texas state and local government construction projects. They are also increasingly required by private project owners on larger commercial construction projects.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What happens if I win a bid but cannot perform the work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "If you win a bid but fail to sign the contract or provide required bonds, the project owner can make a claim on your bid bond. The surety will pay the difference between your bid price and the next lowest bid, up to the bond penalty amount.",
+            },
+          },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Bid Bonds — Same-Day Issuance</h1>
         <p>Quantum Surety issues bid bonds same-day for qualified Texas contractors. A bid bond guarantees that you will enter a contract at your bid price if you are the selected bidder. Required on most Texas public construction projects.</p>
         <section>
-          <h2>Texas Bid Bond Cost</h2>
-          <p>Most bid bonds are issued at no charge when issued alongside a performance and payment bond. Standalone bid bonds typically cost $100–$250 depending on the bid amount. Get an exact quote in minutes.</p>
+          <h2>What is a Bid Bond?</h2>
+          <p>A bid bond is a type of surety bond submitted with a construction bid. It guarantees the project owner that the bidding contractor will: (1) honor the bid price if selected, and (2) provide the required performance and payment bonds upon contract award. If the contractor fails to do either, the surety pays the difference up to the bond penalty.</p>
         </section>
+        <section>
+          <h2>Texas Bid Bond Requirements</h2>
+          <p>Bid bonds are required on most Texas public construction projects. Texas Government Code § 2253 governs public contract bonds. Many cities, counties, and school districts require bid bonds as part of their solicitation process. Private owners may also require them on larger commercial projects.</p>
+        </section>
+        <section>
+          <h2>Texas Bid Bond Cost</h2>
+          <p>Most bid bonds are issued at no charge when issued alongside a performance and payment bond program. Standalone bid bonds typically cost $100–$250 depending on the bid amount and contractor qualifications. Get an exact quote in minutes.</p>
+        </section>
+        <section>
+          <h2>How to Get a Texas Bid Bond</h2>
+          <ol>
+            <li>Submit your project details and bid amount</li>
+            <li>Provide basic company and financial information</li>
+            <li>Receive AI-assisted approval — most same-day for qualified contractors</li>
+            <li>Receive your bid bond via email in PDF format</li>
+          </ol>
+        </section>
+        <a href="/bonds/performance-bond-texas">Texas Performance Bonds</a>
+        <a href="/construction">Construction Bond Overview</a>
         <a href="/quote">Get a Bid Bond Quote</a>
       </main>`,
   },
@@ -485,14 +811,32 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Texas performance bonds for general contractors and subcontractors. Fast approvals for public and private construction projects statewide. AI-powered underwriting.",
     canonical: `${BASE_URL}/bonds/performance-bond-texas`,
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: "Performance Bonds Texas",
-      provider: { "@type": "InsuranceAgency", name: "Quantum Surety" },
-      description: "Performance bonds for Texas construction contractors on public and private projects.",
-      areaServed: { "@type": "State", name: "Texas" },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Performance Bonds Texas",
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+        description: "Performance bonds for Texas construction contractors on public and private projects.",
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: {
+          "@type": "Offer",
+          description: "Premium rates from 0.5%–3% of bond amount. Get an instant quote.",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        },
+        url: `${BASE_URL}/bonds/performance-bond-texas`,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Construction Bonds", item: `${BASE_URL}/construction` },
+          { "@type": "ListItem", position: 3, name: "Texas Performance Bonds", item: `${BASE_URL}/bonds/performance-bond-texas` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Performance Bonds for Contractors</h1>
@@ -510,6 +854,31 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Texas contractor license bonds issued same-day. TDLR bonds, electrical bonds, plumbing bonds, HVAC bonds, and all license & permit bonds for TX contractors.",
     canonical: `${BASE_URL}/bonds/license-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas Contractor License Bonds",
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+        description: "Same-day Texas contractor license and permit bonds — TDLR, electrical, plumbing, HVAC, and general contractor bonds.",
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: {
+          "@type": "Offer",
+          description: "License bonds from $100. Instant online issuance.",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        },
+        url: `${BASE_URL}/bonds/license-bond-texas`,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Texas License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Contractor License Bonds</h1>
@@ -607,6 +976,14 @@ const PAGE_META: Record<string, PageMeta> = {
           },
         ],
       },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Texas Notary Bond", item: `${BASE_URL}/bonds/notary-bond-texas` },
+        ],
+      },
     ],
     content: `
       <main>
@@ -677,33 +1054,51 @@ const PAGE_META: Record<string, PageMeta> = {
       "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your bond.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
-      description:
-        "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention.",
-      datePublished: "2026-03-15",
-      dateModified: "2026-03-15",
-      author: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
+        description:
+          "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention.",
+        datePublished: "2026-03-15",
+        dateModified: "2026-03-15",
+        inLanguage: "en-US",
+        articleSection: "Notary Bonds",
+        keywords: "Texas notary bond, SB693, 2026 notary requirements, Texas notary law, notary bond cost",
+        image: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/QS_OG_2.png`,
+          width: 1200,
+          height: 630,
+        },
+        author: {
+          "@type": "Organization",
+          name: "Quantum Surety",
+          url: BASE_URL,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Quantum Surety",
+          url: BASE_URL,
+          logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 },
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
+        },
+        about: { "@type": "Thing", name: "Texas Notary Bond SB693 2026" },
       },
-      publisher: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Notary Bond SB693 2026 Requirements", item: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements` },
+        ],
       },
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
-      },
-      about: {
-        "@type": "Thing",
-        name: "Texas Notary Bond SB693 2026",
-      },
-    },
+    ],
     content: `
       <main>
         <h1>Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries</h1>
@@ -747,29 +1142,37 @@ const PAGE_META: Record<string, PageMeta> = {
       "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Complete cost breakdown including SOS fees, education, seal, journal, and E&O insurance.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "How Much Does a Texas Notary Bond Cost in 2026?",
-      description:
-        "A Texas notary bond costs $50 for the full 4-year term. Complete cost breakdown for 2026 including SOS fees, education requirement, and E&O insurance.",
-      datePublished: "2026-03-20",
-      dateModified: "2026-03-20",
-      author: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "How Much Does a Texas Notary Bond Cost in 2026?",
+        description: "A Texas notary bond costs $50 for the full 4-year term. Complete cost breakdown for 2026 including SOS fees, education requirement, and E&O insurance.",
+        datePublished: "2026-03-20",
+        dateModified: "2026-03-20",
+        inLanguage: "en-US",
+        articleSection: "Notary Bonds",
+        keywords: "Texas notary bond cost, notary bond price 2026, how much does a Texas notary bond cost, notary bond $50",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: {
+          "@type": "Organization",
+          name: "Quantum Surety",
+          url: BASE_URL,
+          logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-cost-2026` },
       },
-      publisher: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Notary Bond Cost 2026", item: `${BASE_URL}/blog/texas-notary-bond-cost-2026` },
+        ],
       },
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
-      },
-    },
+    ],
     content: `
       <main>
         <h1>How Much Does a Texas Notary Bond Cost in 2026?</h1>
@@ -800,18 +1203,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
     canonical: `${BASE_URL}/blog/texas-contractor-bond-and-permits`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day",
-      description:
-        "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
-      datePublished: "2026-04-05",
-      dateModified: "2026-04-05",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-bond-and-permits` },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day",
+        description: "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
+        datePublished: "2026-04-05",
+        dateModified: "2026-04-05",
+        inLanguage: "en-US",
+        articleSection: "Contractor Bonds",
+        keywords: "Texas contractor bond, contractor license bond, DFW contractor permits, same day contractor bond Texas",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-bond-and-permits` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Contractor Bond and Permits", item: `${BASE_URL}/blog/texas-contractor-bond-and-permits` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Contractors: Get Your Bond and Pull Your Permits in One Day</h1>
@@ -834,18 +1251,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
     canonical: `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Quantum Surety Receives Texas Department of Insurance Agency License #3480229",
-      description:
-        "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
-      datePublished: "2026-04-07",
-      dateModified: "2026-04-07",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229` },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Quantum Surety Receives Texas Department of Insurance Agency License #3480229",
+        description: "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
+        datePublished: "2026-04-07",
+        dateModified: "2026-04-07",
+        inLanguage: "en-US",
+        articleSection: "Company News",
+        keywords: "Quantum Surety TDI license, Texas surety bond agency license, TDI licensed surety agency",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Quantum Surety TDI License #3480229", item: `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Quantum Surety Receives Texas Department of Insurance Agency License #3480229</h1>
@@ -864,19 +1295,33 @@ const PAGE_META: Record<string, PageMeta> = {
       "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that now apply to renewals. Step-by-step checklist plus 5 FAQs.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do",
-      description:
-        "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step checklist plus 5 FAQs.",
-      datePublished: "2026-04-09",
-      dateModified: "2026-04-09",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026` },
-      about: { "@type": "Thing", name: "Texas Notary Bond SB693 Renewal 2026" },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do",
+        description: "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step checklist plus 5 FAQs.",
+        datePublished: "2026-04-09",
+        dateModified: "2026-04-09",
+        inLanguage: "en-US",
+        articleSection: "Notary Bonds",
+        keywords: "Texas notary bond renewal, SB693 renewal, notary commission renewal 2026, Texas notary renewal checklist",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026` },
+        about: { "@type": "Thing", name: "Texas Notary Bond SB693 Renewal 2026" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Notary Bond SB693 Renewal 2026", item: `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do</h1>
@@ -954,29 +1399,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "A Texas notary public and a notary signing agent (NSA) are not the same thing. Learn what each role requires, what bonds and insurance you need, and which path makes sense for your business.",
     canonical: `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
-      description:
-        "A Texas notary public and a notary signing agent (NSA) are two distinct roles with different training, income potential, and insurance requirements. Here's how they compare.",
-      datePublished: "2026-03-25",
-      dateModified: "2026-03-25",
-      author: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
+        description: "A Texas notary public and a notary signing agent (NSA) are two distinct roles with different training, income potential, and insurance requirements. Here's how they compare.",
+        datePublished: "2026-03-25",
+        dateModified: "2026-03-25",
+        inLanguage: "en-US",
+        articleSection: "Notary Bonds",
+        keywords: "Texas notary vs notary signing agent, NSA Texas, notary signing agent requirements, Texas notary public",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent` },
       },
-      publisher: {
-        "@type": "Organization",
-        name: "Quantum Surety",
-        url: "https://quantumsurety.bond",
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Notary vs Notary Signing Agent", item: `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent` },
+        ],
       },
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent`,
-      },
-    },
+    ],
     content: `
       <main>
         <h1>Texas Notary vs. Notary Signing Agent: What's the Difference?</h1>
@@ -1264,17 +1712,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming. Updated for 2026.",
     canonical: `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know",
-      description: "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming.",
-      datePublished: "2026-04-09",
-      dateModified: "2026-04-09",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026` },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know",
+        description: "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming.",
+        datePublished: "2026-04-09",
+        dateModified: "2026-04-09",
+        inLanguage: "en-US",
+        articleSection: "Contractor Bonds",
+        keywords: "Texas TDLR contractor bond, TDLR bond 2026, electrician bond Texas, HVAC bond Texas, TDLR license bond",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas TDLR Contractor Bond 2026", item: `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know</h1>
@@ -1299,17 +1762,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "Find out exactly what a Texas contractor license bond costs in 2026. Rates by trade, credit score, and bond amount. TDLR, city bonds, and electrician/HVAC/plumbing explained.",
     canonical: `${BASE_URL}/blog/texas-contractor-license-bond-cost`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide)",
-      description: "Texas contractor license bond costs broken down by trade, bond amount, and credit score for 2026.",
-      datePublished: "2026-04-09",
-      dateModified: "2026-04-09",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-license-bond-cost` },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide)",
+        description: "Texas contractor license bond costs broken down by trade, bond amount, and credit score for 2026.",
+        datePublished: "2026-04-09",
+        dateModified: "2026-04-09",
+        inLanguage: "en-US",
+        articleSection: "Contractor Bonds",
+        keywords: "Texas contractor license bond cost, how much is a contractor bond Texas, TDLR bond cost, electrician bond cost Texas 2026",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-license-bond-cost` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Contractor License Bond Cost 2026", item: `${BASE_URL}/blog/texas-contractor-license-bond-cost` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</h1>
@@ -1334,17 +1812,32 @@ const PAGE_META: Record<string, PageMeta> = {
       "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to file. Updated guide.",
     canonical: `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements`,
     ogType: "article",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Texas Electrical Contractor Bond Requirements 2026",
-      description: "Everything Texas electricians need to know about surety bond requirements in 2026 — TDLR and city-level bonds.",
-      datePublished: "2026-04-09",
-      dateModified: "2026-04-09",
-      author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
-      mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements` },
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Texas Electrical Contractor Bond Requirements 2026",
+        description: "Everything Texas electricians need to know about surety bond requirements in 2026 — TDLR and city-level bonds.",
+        datePublished: "2026-04-09",
+        dateModified: "2026-04-09",
+        inLanguage: "en-US",
+        articleSection: "Contractor Bonds",
+        keywords: "Texas electrical contractor bond, electrician bond requirements Texas, TDLR electrician bond, electrical contractor license bond Dallas Houston Austin",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Electrical Contractor Bond Requirements 2026", item: `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements` },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Texas Electrical Contractor Bond Requirements 2026</h1>
@@ -1404,11 +1897,18 @@ function buildMetaTags(meta: PageMeta): string {
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Quantum Surety" />
     <meta property="og:image" content="${BASE_URL}/QS_OG_2.png" />
+    <meta property="og:image:alt" content="Quantum Surety — AI-Powered Texas Surety Bonds" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${meta.title}" />
     <meta name="twitter:description" content="${meta.description}" />
     <meta name="twitter:image" content="${BASE_URL}/QS_OG_2.png" />
+    <meta name="twitter:site" content="@quantumsurety" />
+    <meta name="twitter:creator" content="@quantumsurety" />
     <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
+    <link rel="alternate" hreflang="en-US" href="${meta.canonical}" />
+    <link rel="alternate" hreflang="x-default" href="${meta.canonical}" />
     ${sd}
   `.trim();
 }

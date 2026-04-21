@@ -836,6 +836,16 @@ const PAGE_META: Record<string, PageMeta> = {
           { "@type": "ListItem", position: 3, name: "Texas Performance Bonds", item: `${BASE_URL}/bonds/performance-bond-texas` },
         ],
       },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "When is a performance bond required in Texas?", acceptedAnswer: { "@type": "Answer", text: "Texas law requires performance bonds on public contracts over $25,000 under Government Code §2253 (the Texas Little Miller Act). Federal projects over $150,000 require them under the Miller Act." } },
+          { "@type": "Question", name: "How much does a Texas performance bond cost?", acceptedAnswer: { "@type": "Answer", text: "Most Texas contractors pay 0.5%–3% of the bond amount annually. A $1,000,000 performance bond typically costs $5,000–$30,000 per year depending on financial strength, years in business, and project type." } },
+          { "@type": "Question", name: "What is the difference between a performance bond and a payment bond?", acceptedAnswer: { "@type": "Answer", text: "A performance bond guarantees the contractor will complete the project. A payment bond guarantees subcontractors and suppliers will be paid. Most Texas public projects require both at 100% of contract value." } },
+          { "@type": "Question", name: "What happens if a contractor defaults on a performance bond?", acceptedAnswer: { "@type": "Answer", text: "If a contractor defaults, the surety must step in. The surety can complete the project with a new contractor, provide financing to the original contractor, or pay the project owner up to the bond amount." } },
+        ],
+      },
     ],
     content: `
       <main>
@@ -876,6 +886,16 @@ const PAGE_META: Record<string, PageMeta> = {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
           { "@type": "ListItem", position: 2, name: "Texas License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "What is a Texas contractor license bond?", acceptedAnswer: { "@type": "Answer", text: "A Texas contractor license bond (also called a license and permit bond) is a surety bond required by a state agency or city as a condition of obtaining a contractor's license. It protects the public from contractor fraud, non-completion, or regulatory violations." } },
+          { "@type": "Question", name: "How much does a Texas contractor license bond cost?", acceptedAnswer: { "@type": "Answer", text: "Most Texas contractor license bonds cost $100–$300 per year for a $10,000 bond. Premium is based primarily on your credit score. Most contractors are approved same-day." } },
+          { "@type": "Question", name: "Which Texas trades require a surety bond?", acceptedAnswer: { "@type": "Answer", text: "TDLR-regulated trades (electricians, HVAC, irrigators), home inspectors (TREC), locksmiths (DPS), pest control operators (TDA), auto dealers, and contractors working in major Texas cities all require surety bonds." } },
+          { "@type": "Question", name: "Can I get a contractor license bond with bad credit?", acceptedAnswer: { "@type": "Answer", text: "Yes, in most cases. Standard $10,000 license bonds are available to contractors with less-than-perfect credit, though your premium may be higher. Most applicants are approved same-day regardless of credit score." } },
         ],
       },
     ],
@@ -1853,6 +1873,421 @@ const PAGE_META: Record<string, PageMeta> = {
           </ul>
         </section>
         <a href="/bonds/electrical-contractor-bond-texas">Get My Electrical Bond</a>
+      </main>`,
+  },
+
+  // ── New city pages ────────────────────────────────────────────────────────
+
+  "/bonds/contractor-bond-plano": {
+    title: "Contractor Bond Plano TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Plano contractor bond same-day. Required by the City of Plano for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-plano`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Plano Contractor License Bond",
+        description: "Surety bond required by the City of Plano Development Services for licensed contractors.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "City", name: "Plano", containedInPlace: { "@type": "State", name: "Texas" } },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Contractor Bond — Plano", item: `${BASE_URL}/bonds/contractor-bond-plano` },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Contractor Bond — Plano, Texas</h1>
+        <p>Required by the City of Plano Development Services for all licensed contractors. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Plano Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Mechanical Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Plano Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-arlington": {
+    title: "Contractor Bond Arlington TX | City License Bond | Quantum Surety",
+    description:
+      "Get your Arlington contractor bond same-day. Required by the City of Arlington for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-arlington`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Arlington Contractor License Bond",
+        description: "Surety bond required by the City of Arlington for licensed contractors.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "City", name: "Arlington", containedInPlace: { "@type": "State", name: "Texas" } },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Contractor Bond — Arlington", item: `${BASE_URL}/bonds/contractor-bond-arlington` },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Contractor Bond — Arlington, Texas</h1>
+        <p>Required by the City of Arlington for all licensed contractors working in Tarrant County. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>Arlington Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Mechanical Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My Arlington Bond</a>
+      </main>`,
+  },
+
+  "/bonds/contractor-bond-mckinney": {
+    title: "Contractor Bond McKinney TX | City License Bond | Quantum Surety",
+    description:
+      "Get your McKinney contractor bond same-day. Required by the City of McKinney for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-mckinney`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "McKinney Contractor License Bond",
+        description: "Surety bond required by the City of McKinney for licensed contractors.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "City", name: "McKinney", containedInPlace: { "@type": "State", name: "Texas" } },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Contractor Bond — McKinney", item: `${BASE_URL}/bonds/contractor-bond-mckinney` },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Contractor Bond — McKinney, Texas</h1>
+        <p>Required by the City of McKinney for all licensed contractors in Collin County. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>McKinney Contractor Bonds by Trade</h2>
+          <ul>
+            <li>General Contractor Bond — $25,000</li>
+            <li>Electrical Contractor Bond — $10,000</li>
+            <li>HVAC / AC Contractor Bond — $10,000</li>
+            <li>Plumbing Contractor Bond — $10,000</li>
+            <li>Mechanical Contractor Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="/quote?type=license&amp;state=TX">Get My McKinney Bond</a>
+      </main>`,
+  },
+
+  // ── New trade/specialty pages ─────────────────────────────────────────────
+
+  "/bonds/home-inspector-bond-texas": {
+    title: "Texas Home Inspector Bond | TREC Inspector Surety Bond | Quantum Surety",
+    description:
+      "Get your Texas home inspector bond same-day. Required by TREC for all licensed professional, real estate, and apprentice inspectors. $10,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/home-inspector-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas Home Inspector Bond (TREC)",
+        description: "Surety bond required by the Texas Real Estate Commission (TREC) for all licensed home inspectors.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Home Inspector Bond", item: `${BASE_URL}/bonds/home-inspector-bond-texas` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Do Texas home inspectors need a surety bond?", acceptedAnswer: { "@type": "Answer", text: "Yes. TREC requires all licensed home inspectors to carry a $10,000 surety bond as a condition of obtaining and maintaining their inspector license." } },
+          { "@type": "Question", name: "How much does a Texas home inspector bond cost?", acceptedAnswer: { "@type": "Answer", text: "A $10,000 Texas home inspector bond typically costs $100–$200 per year. Your premium is based primarily on your credit score." } },
+          { "@type": "Question", name: "Is the home inspector bond the same as E&O insurance?", acceptedAnswer: { "@type": "Answer", text: "No. The TREC surety bond is a licensing requirement that protects your clients. E&O insurance protects you personally if a client sues you for mistakes in your inspection report." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Texas Home Inspector Bond — TREC Required</h1>
+        <p>Required by the Texas Real Estate Commission (TREC) for all licensed professional, real estate, and apprentice home inspectors. $10,000 bond with same-day issuance.</p>
+        <section>
+          <h2>TREC Inspector License Types Requiring a Bond</h2>
+          <ul>
+            <li>Professional Inspector Bond — $10,000</li>
+            <li>Real Estate Inspector Bond — $10,000</li>
+            <li>Apprentice Inspector Bond — $10,000</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Frequently Asked Questions</h2>
+          <dl>
+            <dt>Do Texas home inspectors need a surety bond?</dt>
+            <dd>Yes. TREC requires all licensed home inspectors to carry a $10,000 surety bond.</dd>
+            <dt>How much does a Texas home inspector bond cost?</dt>
+            <dd>A $10,000 Texas home inspector bond typically costs $100–$200 per year.</dd>
+          </dl>
+        </section>
+        <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&amp;State=TX">Get My Inspector Bond</a>
+      </main>`,
+  },
+
+  "/bonds/locksmith-bond-texas": {
+    title: "Texas Locksmith Bond | DPS Locksmith Surety Bond | Quantum Surety",
+    description:
+      "Get your Texas locksmith bond same-day. Required by Texas DPS for all licensed locksmith companies and employees. $10,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/locksmith-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas Locksmith Bond (DPS)",
+        description: "Surety bond required by the Texas Department of Public Safety for all licensed locksmith companies and employees.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Locksmith Bond", item: `${BASE_URL}/bonds/locksmith-bond-texas` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Do Texas locksmiths need a surety bond?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Texas Department of Public Safety (DPS) requires all licensed locksmith companies and individual locksmiths to carry a $10,000 surety bond under the Texas Private Security Act." } },
+          { "@type": "Question", name: "How much does a Texas locksmith bond cost?", acceptedAnswer: { "@type": "Answer", text: "A $10,000 Texas locksmith bond typically costs $100–$200 per year based on your credit score." } },
+          { "@type": "Question", name: "Who regulates locksmiths in Texas?", acceptedAnswer: { "@type": "Answer", text: "The Texas Department of Public Safety (DPS) Private Security Bureau regulates the locksmith industry under Texas Occupations Code Chapter 1702." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Texas Locksmith Bond — Texas DPS Required</h1>
+        <p>Required by the Texas Department of Public Safety (DPS) for all licensed locksmith companies and employees under the Texas Private Security Act. $10,000 bond with same-day issuance.</p>
+        <section>
+          <h2>DPS Locksmith License Types Requiring a Bond</h2>
+          <ul>
+            <li>Locksmith Company Bond — $10,000</li>
+            <li>Locksmith Employee License Bond — $10,000</li>
+            <li>Owner/Operator Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&amp;State=TX">Get My Locksmith Bond</a>
+      </main>`,
+  },
+
+  "/bonds/pest-control-bond-texas": {
+    title: "Texas Pest Control Bond | TDA Structural Pest Control Surety Bond | Quantum Surety",
+    description:
+      "Get your Texas pest control bond same-day. Required by the Texas Department of Agriculture (TDA/SPCS) for all licensed pest control businesses and applicators. From $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/pest-control-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas Pest Control Bond (TDA/SPCS)",
+        description: "Surety bond required by the Texas Department of Agriculture Structural Pest Control Service for all licensed pest control businesses.",
+        provider: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "State", name: "Texas" },
+        offers: { "@type": "Offer", priceCurrency: "USD", price: "100", priceSpecification: { "@type": "UnitPriceSpecification", unitText: "year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Pest Control Bond", item: `${BASE_URL}/bonds/pest-control-bond-texas` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Do Texas pest control companies need a surety bond?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Texas Department of Agriculture (TDA) Structural Pest Control Service (SPCS) requires all licensed pest control businesses and certified applicators to carry a surety bond." } },
+          { "@type": "Question", name: "How much does a Texas pest control bond cost?", acceptedAnswer: { "@type": "Answer", text: "A $10,000 Texas pest control bond typically costs $100–$200 per year based on your credit score." } },
+          { "@type": "Question", name: "Who regulates pest control operators in Texas?", acceptedAnswer: { "@type": "Answer", text: "The Texas Department of Agriculture (TDA) Structural Pest Control Service (SPCS) regulates the pest control industry under Texas Agriculture Code Chapter 1951." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Texas Pest Control Bond — TDA/SPCS Required</h1>
+        <p>Required by the Texas Department of Agriculture Structural Pest Control Service for all licensed pest control businesses and certified applicators. Get bonded same-day with instant PDF delivery.</p>
+        <section>
+          <h2>SPCS License Types Requiring a Bond</h2>
+          <ul>
+            <li>Pest Control Business Bond — $10,000</li>
+            <li>Structural Pest Control Applicator Bond — $10,000</li>
+            <li>Termite Inspector Bond — $10,000</li>
+          </ul>
+        </section>
+        <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&amp;State=TX">Get My Pest Control Bond</a>
+      </main>`,
+  },
+
+  // ── Comparison / educational pages ───────────────────────────────────────
+
+  "/bonds/bid-bond-vs-performance-bond": {
+    title: "Bid Bond vs Performance Bond | Texas Construction Bond Guide | Quantum Surety",
+    description:
+      "Bid bond vs performance bond — what's the difference? Texas contractors: learn when each bond is required, what they cost, and how to get both for public and private projects.",
+    canonical: `${BASE_URL}/bonds/bid-bond-vs-performance-bond`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Bid Bond vs Performance Bond: What's the Difference?",
+        description: "Texas contractor guide to bid bonds and performance bonds — when each is required, how they work, and how to get both.",
+        datePublished: "2026-04-18",
+        dateModified: "2026-04-18",
+        inLanguage: "en-US",
+        articleSection: "Construction Bonds",
+        keywords: "bid bond vs performance bond, Texas bid bond, Texas performance bond, construction bond requirements Texas, Little Miller Act",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/bonds/bid-bond-vs-performance-bond` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Construction Bonds", item: `${BASE_URL}/construction` },
+          { "@type": "ListItem", position: 3, name: "Bid Bond vs Performance Bond", item: `${BASE_URL}/bonds/bid-bond-vs-performance-bond` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "What is a bid bond?", acceptedAnswer: { "@type": "Answer", text: "A bid bond is a surety bond submitted with a construction bid that guarantees the contractor will honor the bid price and enter into a contract if awarded." } },
+          { "@type": "Question", name: "What is a performance bond?", acceptedAnswer: { "@type": "Answer", text: "A performance bond guarantees a contractor will complete a construction project according to the contract terms. If the contractor defaults, the surety steps in to finish the project or compensate the owner." } },
+          { "@type": "Question", name: "Are both bonds required on Texas public projects?", acceptedAnswer: { "@type": "Answer", text: "Yes. Under the Texas Little Miller Act (Government Code §2253), public projects over $25,000 require both a performance bond and payment bond at 100% of contract value." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Bid Bond vs Performance Bond: What's the Difference?</h1>
+        <p>Texas contractors need both. The bid bond is submitted at bidding; the performance bond is required at contract signing. Here's how they work and when each is required.</p>
+        <section>
+          <h2>Bid Bond</h2>
+          <p>Submitted with your bid proposal. Typically 5–10% of bid amount. Guarantees you will sign the contract if you win. Often no charge to the contractor.</p>
+        </section>
+        <section>
+          <h2>Performance Bond</h2>
+          <p>Required at contract signing. Typically 100% of contract value. Guarantees you will complete the project. Premium: 1–3% of contract value.</p>
+        </section>
+        <section>
+          <h2>Texas Little Miller Act Requirements</h2>
+          <p>Public projects over $25,000 require a performance bond and payment bond at 100% of contract value under Government Code §2253.</p>
+        </section>
+        <a href="/construction">Get Construction Bonds</a>
+      </main>`,
+  },
+
+  "/bonds/surety-bond-vs-insurance": {
+    title: "Surety Bond vs Insurance | What's the Difference? | Quantum Surety",
+    description:
+      "Surety bond vs insurance — what's the difference and do you need both? Texas contractors and license holders: understand how bonds and insurance work together to protect your business.",
+    canonical: `${BASE_URL}/bonds/surety-bond-vs-insurance`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Surety Bond vs Insurance: What's the Difference?",
+        description: "Texas contractor guide explaining the difference between surety bonds and insurance — who each protects, what happens after a claim, and when you need both.",
+        datePublished: "2026-04-18",
+        dateModified: "2026-04-18",
+        inLanguage: "en-US",
+        articleSection: "Surety Bond Basics",
+        keywords: "surety bond vs insurance, difference between surety bond and insurance, what is a surety bond, Texas contractor bond vs liability insurance",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/bonds/surety-bond-vs-insurance` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "License Bonds", item: `${BASE_URL}/bonds/license-bond-texas` },
+          { "@type": "ListItem", position: 3, name: "Surety Bond vs Insurance", item: `${BASE_URL}/bonds/surety-bond-vs-insurance` },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "What is a surety bond?", acceptedAnswer: { "@type": "Answer", text: "A surety bond is a three-party agreement guaranteeing you will fulfill a specific obligation. If you fail, the surety compensates the obligee, then seeks reimbursement from you." } },
+          { "@type": "Question", name: "Do I need both a surety bond and insurance?", acceptedAnswer: { "@type": "Answer", text: "Very often yes. Most Texas contractors need both a surety bond (for licensing or contracts) and general liability insurance (for business operations). They serve different purposes." } },
+          { "@type": "Question", name: "What happens if there is a claim on my surety bond?", acceptedAnswer: { "@type": "Answer", text: "The surety pays the obligee, but unlike insurance, you are then obligated to reimburse the surety for the full amount paid." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Surety Bond vs Insurance: What's the Difference?</h1>
+        <p>A surety bond protects third parties (your clients and the public). Insurance protects your business. Most Texas contractors need both — the bond satisfies licensing requirements while insurance covers business operations.</p>
+        <section>
+          <h2>Key Difference: Who Bears the Loss</h2>
+          <p>With insurance, the insurer absorbs the loss. With a surety bond, the surety pays first but expects full reimbursement from you. A bond guarantees your performance — it is not a safety net for your mistakes.</p>
+        </section>
+        <section>
+          <h2>When Texas License Holders Need Both</h2>
+          <ul>
+            <li>HVAC / Plumbing Contractor: TDLR bond + general liability</li>
+            <li>Home Inspector: TREC bond + E&amp;O insurance</li>
+            <li>Locksmith: DPS bond + general liability</li>
+            <li>General Contractor: bid/performance bonds + general liability</li>
+          </ul>
+        </section>
+        <a href="/bonds/license-bond-texas">View All Surety Bonds</a>
       </main>`,
   },
 };

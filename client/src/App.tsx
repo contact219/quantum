@@ -51,6 +51,16 @@ import ContractorBondHouston from "@/pages/contractor-bond-houston";
 import ContractorBondAustin from "@/pages/contractor-bond-austin";
 import ContractorBondSanAntonio from "@/pages/contractor-bond-san-antonio";
 import ContractorBondFortWorth from "@/pages/contractor-bond-fort-worth";
+import ContractorBondPlano from "@/pages/contractor-bond-plano";
+import ContractorBondArlington from "@/pages/contractor-bond-arlington";
+import ContractorBondMcKinney from "@/pages/contractor-bond-mckinney";
+// Trade-specific bond pages
+import HomeInspectorBondTexas from "@/pages/home-inspector-bond-texas";
+import LocksmithBondTexas from "@/pages/locksmith-bond-texas";
+import PestControlBondTexas from "@/pages/pest-control-bond-texas";
+// Comparison / educational pages
+import BidBondVsPerformanceBond from "@/pages/bid-bond-vs-performance-bond";
+import SuretyBondVsInsurance from "@/pages/surety-bond-vs-insurance";
 // Notary E&O insurance
 import NotaryEOInsurance from "@/pages/notary-eo-insurance";
 // Blog
@@ -163,6 +173,18 @@ function Router() {
       <Route path="/bonds/contractor-bond-austin" component={ContractorBondAustin} />
       <Route path="/bonds/contractor-bond-san-antonio" component={ContractorBondSanAntonio} />
       <Route path="/bonds/contractor-bond-fort-worth" component={ContractorBondFortWorth} />
+      <Route path="/bonds/contractor-bond-plano" component={ContractorBondPlano} />
+      <Route path="/bonds/contractor-bond-arlington" component={ContractorBondArlington} />
+      <Route path="/bonds/contractor-bond-mckinney" component={ContractorBondMcKinney} />
+
+      {/* Trade-specific bond pages */}
+      <Route path="/bonds/home-inspector-bond-texas" component={HomeInspectorBondTexas} />
+      <Route path="/bonds/locksmith-bond-texas" component={LocksmithBondTexas} />
+      <Route path="/bonds/pest-control-bond-texas" component={PestControlBondTexas} />
+
+      {/* Comparison / educational pages */}
+      <Route path="/bonds/bid-bond-vs-performance-bond" component={BidBondVsPerformanceBond} />
+      <Route path="/bonds/surety-bond-vs-insurance" component={SuretyBondVsInsurance} />
 
       {/* Notary E&O insurance */}
       <Route path="/bonds/notary-eo-insurance" component={NotaryEOInsurance} />

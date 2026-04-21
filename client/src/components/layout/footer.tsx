@@ -5,6 +5,7 @@ import { useMemo } from "react";
 interface CompanySettings {
   phone?: string;
   email?: string;
+  address?: string;
 }
 
 export function Footer() {
@@ -16,10 +17,12 @@ export function Footer() {
   const contactLinks = useMemo(() => {
     const phone = settings?.phone || "(972) 379-9216";
     const email = settings?.email || "administrator@quantumsurety.bond";
+    const address = settings?.address || "1416 Bessie Drive, Wylie, TX 75098";
     
     return [
       { href: `tel:${phone}`, label: phone },
       { href: `mailto:${email}`, label: email },
+      { href: "https://maps.google.com/?q=1416+Bessie+Drive+Wylie+TX+75098", label: address },
     ];
   }, [settings]);
 

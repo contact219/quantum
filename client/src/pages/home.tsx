@@ -79,7 +79,7 @@ export default function Home() {
               className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
               data-testid="text-hero-headline"
             >
-              Fast, AI-Powered Surety Bonds for Contractors
+              Quantum Surety Bonds: Your Texas Bond Partner
             </h1>
 
             <div className="mt-6">

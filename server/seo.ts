@@ -27,9 +27,9 @@ const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "
 
 const PAGE_META: Record<string, PageMeta> = {
   "/": {
-    title: "Quantum Surety | AI-Powered Surety Bonds for Texas Contractors",
+    title: "Quantum Surety Bonds | Fast Quotes & Professional Services in Texas",
     description:
-      "Get fast, AI-powered surety bonds for contractors in Texas and nationwide. Bid bonds, performance bonds, payment bonds & license bonds — quotes in minutes.",
+      "Quantum Surety Bonds offers fast, reliable surety bond services in Texas. Get bid bonds, performance bonds, and license bonds online. Expert support and competitive rates.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
     structuredData: [
@@ -221,7 +221,7 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `
       <main>
-        <h1>Fast, AI-Powered Surety Bonds for Contractors</h1>
+        <h1>Quantum Surety Bonds: Your Texas Bond Partner</h1>
         <p>Quantum Surety provides fast, intelligent surety bond solutions for construction contractors across Texas and nationwide. Get bid bonds, performance bonds, payment bonds, and license &amp; permit bonds — with AI-assisted underwriting that delivers quotes in minutes, not days.</p>
         <section>
           <h2>Texas Notary Bond — $50, Instant Download</h2>

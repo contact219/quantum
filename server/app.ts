@@ -34,6 +34,19 @@ app.use(express.json({
 }));
 app.use(express.urlencoded({ extended: false }));
 
+app.enable("trust proxy");
+app.use((req, res, next) => {
+  const isProduction = process.env.NODE_ENV === "production";
+  const proto = (req.headers["x-forwarded-proto"] as string | undefined)?.toLowerCase();
+  const host = req.headers.host;
+
+  if (!isProduction || proto === "https" || !host) {
+    return next();
+  }
+
+  return res.redirect(301, `https://${host}${req.originalUrl}`);
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

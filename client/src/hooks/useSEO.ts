@@ -91,9 +91,9 @@ export function useSEO({ title, description, canonical, noIndex = false, ogType 
 
 export const SEO_PAGES = {
   home: {
-    title: "Quantum Surety | AI-Powered Surety Bonds for Texas Contractors",
+    title: "Quantum Surety Bonds | Fast Quotes & Professional Services in Texas",
     description:
-      "Get fast, AI-powered surety bonds for contractors in Texas and nationwide. Bid bonds, performance bonds, payment bonds & license bonds — quotes in minutes.",
+      "Quantum Surety Bonds offers fast, reliable surety bond services in Texas. Get bid bonds, performance bonds, and license bonds online. Expert support and competitive rates.",
     canonical: "/",
   },
   quote: {

@@ -516,7 +516,16 @@ export default function BlogTexasContractorBondRequirementsByCity() {
               { city: "El Paso", href: "/bonds/contractor-bond-el-paso" },
               { city: "Corpus Christi", href: "/bonds/contractor-bond-corpus-christi" },
               { city: "Lubbock", href: "/bonds/contractor-bond-lubbock" },
-              { city: "All Texas Cities", href: "/quote" },
+              { city: "Frisco", href: "/bonds/contractor-bond-frisco" },
+              { city: "Plano", href: "/bonds/contractor-bond-plano" },
+              { city: "McKinney", href: "/bonds/contractor-bond-mckinney" },
+              { city: "Arlington", href: "/bonds/contractor-bond-arlington" },
+              { city: "Amarillo", href: "/bonds/contractor-bond-amarillo" },
+              { city: "Waco", href: "/bonds/contractor-bond-waco" },
+              { city: "Denton", href: "/bonds/contractor-bond-denton" },
+              { city: "Garland", href: "/bonds/contractor-bond-garland" },
+              { city: "Irving", href: "/bonds/contractor-bond-irving" },
+              { city: "Grand Prairie", href: "/bonds/contractor-bond-grand-prairie" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 hover:border-indigo-300 hover:bg-indigo-50 transition-all cursor-pointer text-center">

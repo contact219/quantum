@@ -206,6 +206,12 @@ export default function ContractorBondDallas() {
               { href: "/bonds/contractor-bond-houston", title: "Houston Contractor Bond", tag: "Houston, TX" },
               { href: "/bonds/contractor-bond-austin", title: "Austin Contractor Bond", tag: "Austin, TX" },
               { href: "/bonds/contractor-bond-fort-worth", title: "Fort Worth Contractor Bond", tag: "Fort Worth, TX" },
+              { href: "/bonds/contractor-bond-plano", title: "Plano Contractor Bond", tag: "Plano, TX" },
+              { href: "/bonds/contractor-bond-frisco", title: "Frisco Contractor Bond", tag: "Frisco, TX" },
+              { href: "/bonds/contractor-bond-garland", title: "Garland Contractor Bond", tag: "Garland, TX" },
+              { href: "/bonds/contractor-bond-irving", title: "Irving Contractor Bond", tag: "Irving, TX" },
+              { href: "/bonds/contractor-bond-grand-prairie", title: "Grand Prairie Contractor Bond", tag: "Grand Prairie, TX" },
+              { href: "/bonds/contractor-bond-denton", title: "Denton Contractor Bond", tag: "Denton, TX" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

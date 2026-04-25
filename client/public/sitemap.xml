@@ -264,6 +264,36 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-amarillo</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-waco</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-denton</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-garland</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-irving</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-grand-prairie</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Blog index -->
   <url>
@@ -347,6 +377,21 @@
     <loc>https://quantumsurety.bond/blog/texas-contractor-bond-requirements-by-city</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-hvac-contractor-bond-requirements</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-plumbing-contractor-bond-requirements</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-roofing-contractor-bond-requirements</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

@@ -83,6 +83,7 @@ export default function LicenseBondTexas() {
       amount: "$10,000–$50,000",
       cost: "From $100/yr",
       who: "Electricians, HVAC techs, plumbers, and other TDLR-licensed contractors",
+      href: "/bonds/tdlr-bond-texas",
     },
     {
       name: "Electrical Contractor Bond",
@@ -90,6 +91,7 @@ export default function LicenseBondTexas() {
       amount: "$5,000–$25,000",
       cost: "From $75/yr",
       who: "Electrical contractors obtaining city licenses in Houston, Dallas, Austin, San Antonio",
+      href: "/bonds/electrical-contractor-bond-texas",
     },
     {
       name: "Plumbing Contractor Bond",
@@ -97,6 +99,7 @@ export default function LicenseBondTexas() {
       amount: "$10,000",
       cost: "From $100/yr",
       who: "Licensed plumbing contractors and master plumbers",
+      href: "/bonds/plumbing-contractor-bond-texas",
     },
     {
       name: "HVAC Contractor Bond",
@@ -104,6 +107,7 @@ export default function LicenseBondTexas() {
       amount: "$10,000",
       cost: "From $100/yr",
       who: "HVAC contractors licensed through TDLR statewide",
+      href: "/bonds/hvac-bond-texas",
     },
     {
       name: "General Contractor Bond",
@@ -111,6 +115,7 @@ export default function LicenseBondTexas() {
       amount: "$5,000–$50,000",
       cost: "From $75/yr",
       who: "General contractors obtaining city licenses in major Texas metros",
+      href: "/bonds/general-contractor-bond-texas",
     },
     {
       name: "Roofing Contractor Bond",
@@ -118,6 +123,7 @@ export default function LicenseBondTexas() {
       amount: "$5,000–$20,000",
       cost: "From $75/yr",
       who: "Roofing contractors bidding or working in TX cities that require licensing",
+      href: "/bonds/roofing-contractor-bond-texas",
     },
     {
       name: "Landscaping Bond",
@@ -125,6 +131,7 @@ export default function LicenseBondTexas() {
       amount: "$2,500–$10,000",
       cost: "From $50/yr",
       who: "Landscape contractors and irrigation specialists working in Texas",
+      href: "/quote",
     },
     {
       name: "Auto Dealer Bond",
@@ -132,16 +139,17 @@ export default function LicenseBondTexas() {
       amount: "$25,000–$50,000",
       cost: "From $200/yr",
       who: "New and used car dealers obtaining a Texas DMV dealer license",
+      href: "/bonds/gdn-bond-texas",
     },
   ];
 
   const cities = [
-    { city: "Houston", note: "Requires bonds for electrical, plumbing, HVAC, and general contractors" },
-    { city: "Dallas", note: "Contractor licensing and bonding required for many trades" },
-    { city: "Austin", note: "Building permits require proof of license bonds for most trades" },
-    { city: "San Antonio", note: "City licensing office requires bonds for electrical and plumbing contractors" },
-    { city: "Fort Worth", note: "Contractor licenses and bonds required for multiple trades" },
-    { city: "El Paso", note: "City requires bonds for specialty contractors and general contractors" },
+    { city: "Houston", note: "Requires bonds for electrical, plumbing, HVAC, and general contractors", slug: "contractor-bond-houston" },
+    { city: "Dallas", note: "Contractor licensing and bonding required for many trades", slug: "contractor-bond-dallas" },
+    { city: "Austin", note: "Building permits require proof of license bonds for most trades", slug: "contractor-bond-austin" },
+    { city: "San Antonio", note: "City licensing office requires bonds for electrical and plumbing contractors", slug: "contractor-bond-san-antonio" },
+    { city: "Fort Worth", note: "Contractor licenses and bonds required for multiple trades", slug: "contractor-bond-fort-worth" },
+    { city: "El Paso", note: "City requires bonds for specialty contractors and general contractors", slug: "contractor-bond-el-paso" },
   ];
 
   return (
@@ -212,15 +220,20 @@ export default function LicenseBondTexas() {
                 <div className="text-sm text-gray-600 mb-3">{bond.who}</div>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-gray-400">Bond amount: {bond.amount}</span>
-                  <a
-                    href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Button size="sm" variant="outline" className="text-xs">
-                      Get Quote <ArrowRight className="w-3 h-3 ml-1" />
-                    </Button>
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <Link href={bond.href}>
+                      <span className="text-xs text-indigo-600 font-medium cursor-pointer hover:underline">Details →</span>
+                    </Link>
+                    <a
+                      href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button size="sm" variant="outline" className="text-xs">
+                        Get Quote <ArrowRight className="w-3 h-3 ml-1" />
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -239,13 +252,16 @@ export default function LicenseBondTexas() {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {cities.map((c) => (
-              <div key={c.city} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-200">
-                <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-gray-900">{c.city}: </span>
-                  <span className="text-gray-600 text-sm">{c.note}</span>
+              <Link key={c.city} href={`/bonds/${c.slug}`}>
+                <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-200 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
+                  <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-900">{c.city}: </span>
+                    <span className="text-gray-600 text-sm">{c.note}</span>
+                    <p className="text-indigo-600 text-xs font-medium mt-1">View {c.city} requirements →</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <p className="text-sm text-gray-500 mt-6">

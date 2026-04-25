@@ -206,6 +206,9 @@ export default function ContractorBondPlano() {
               { href: "/bonds/contractor-bond-dallas", title: "Dallas Contractor Bond", tag: "Dallas, TX" },
               { href: "/bonds/contractor-bond-frisco", title: "Frisco Contractor Bond", tag: "Frisco, TX" },
               { href: "/bonds/contractor-bond-mckinney", title: "McKinney Contractor Bond", tag: "McKinney, TX" },
+              { href: "/bonds/contractor-bond-denton", title: "Denton Contractor Bond", tag: "Denton, TX" },
+              { href: "/bonds/contractor-bond-garland", title: "Garland Contractor Bond", tag: "Garland, TX" },
+              { href: "/bonds/contractor-bond-irving", title: "Irving Contractor Bond", tag: "Irving, TX" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

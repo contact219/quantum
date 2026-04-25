@@ -201,8 +201,10 @@ export default function PlumbingContractorBondTexas() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/bonds/tdlr-bond-texas", title: "TDLR Contractor Bond", tag: "TDLR License" },
+              { href: "/bonds/hvac-bond-texas", title: "HVAC Contractor Bond", tag: "AC & Refrigeration" },
               { href: "/bonds/electrical-contractor-bond-texas", title: "Electrical Contractor Bond", tag: "City License" },
               { href: "/bonds/license-bond-texas", title: "All Texas License Bonds", tag: "Hub Page" },
+              { href: "/blog/texas-plumbing-contractor-bond-requirements", title: "Plumbing Bond Requirements Guide 2026", tag: "Blog" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

@@ -508,11 +508,11 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold text-slate-900">Bond Types We Offer</h3>
               <ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-7 text-slate-700">
-                <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
-                <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
-                <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
-                <li><strong>License &amp; Permit Bonds</strong> — Required by cities and states for contractor licenses.</li>
-                <li><strong>Miscellaneous Surety Bonds</strong> — Court bonds, fidelity bonds, and more.</li>
+                <li><Link href="/bonds/bid-bond-texas"><strong className="text-indigo-700 hover:underline cursor-pointer">Bid Bonds</strong></Link> — Guarantee your bid is serious and backed by a surety.</li>
+                <li><Link href="/bonds/performance-bond-texas"><strong className="text-indigo-700 hover:underline cursor-pointer">Performance Bonds</strong></Link> — Assure project owners that you will complete the contract.</li>
+                <li><Link href="/bonds/payment-bond-texas"><strong className="text-indigo-700 hover:underline cursor-pointer">Payment Bonds</strong></Link> — Protect subcontractors and suppliers from non-payment.</li>
+                <li><Link href="/bonds/license-bond-texas"><strong className="text-indigo-700 hover:underline cursor-pointer">License &amp; Permit Bonds</strong></Link> — Required by cities and states for contractor licenses.</li>
+                <li><Link href="/bonds/texas-contractor"><strong className="text-indigo-700 hover:underline cursor-pointer">All Contractor Bonds</strong></Link> — Full overview of every bond type for TX contractors.</li>
               </ul>
             </div>
             <div>

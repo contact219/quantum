@@ -179,6 +179,39 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["Electrical Contractor Bond", "TDLR", "Texas License Bond"],
     featured: false,
   },
+  {
+    slug: "texas-hvac-contractor-bond-requirements",
+    title: "Texas HVAC Contractor Bond Requirements 2026 | TDLR & City License",
+    description:
+      "Everything Texas HVAC contractors need to know about surety bond requirements in 2026. TDLR bond amounts, city bonds, how to apply, and what it costs.",
+    date: "2026-04-25",
+    readTime: "7 min read",
+    category: "Texas Contractors",
+    tags: ["HVAC Bond", "TDLR", "Contractor License Bond", "Texas HVAC"],
+    featured: false,
+  },
+  {
+    slug: "texas-plumbing-contractor-bond-requirements",
+    title: "Texas Plumbing Contractor Bond Requirements 2026 | TDLR & City License",
+    description:
+      "Complete guide to Texas plumbing contractor bond requirements in 2026. TDLR bond, city bonds, how much it costs, and how to get bonded fast.",
+    date: "2026-04-25",
+    readTime: "7 min read",
+    category: "Texas Contractors",
+    tags: ["Plumbing Bond", "TDLR", "Contractor License Bond", "Texas Plumbing"],
+    featured: false,
+  },
+  {
+    slug: "texas-roofing-contractor-bond-requirements",
+    title: "Texas Roofing Contractor Bond Requirements 2026 | City & TDLR License",
+    description:
+      "Texas roofing contractor bond requirements by city in 2026. Bond amounts, who requires them, what they cost, and how to get bonded same-day.",
+    date: "2026-04-25",
+    readTime: "6 min read",
+    category: "Texas Contractors",
+    tags: ["Roofing Bond", "Contractor License Bond", "Texas Roofing", "Storm Damage"],
+    featured: false,
+  },
 ];
 
 function formatDate(dateStr: string) {

@@ -59,6 +59,12 @@ import ContractorBondElPaso from "@/pages/contractor-bond-el-paso";
 import ContractorBondCorpusChristi from "@/pages/contractor-bond-corpus-christi";
 import ContractorBondLubbock from "@/pages/contractor-bond-lubbock";
 import ContractorBondFrisco from "@/pages/contractor-bond-frisco";
+import ContractorBondAmarillo from "@/pages/contractor-bond-amarillo";
+import ContractorBondWaco from "@/pages/contractor-bond-waco";
+import ContractorBondDenton from "@/pages/contractor-bond-denton";
+import ContractorBondGarland from "@/pages/contractor-bond-garland";
+import ContractorBondIrving from "@/pages/contractor-bond-irving";
+import ContractorBondGrandPrairie from "@/pages/contractor-bond-grand-prairie";
 // Trade-specific bond pages
 import HomeInspectorBondTexas from "@/pages/home-inspector-bond-texas";
 import LocksmithBondTexas from "@/pages/locksmith-bond-texas";
@@ -89,6 +95,9 @@ import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-
 import BlogPerformanceBondGuide2026 from "@/pages/blog/texas-performance-bond-guide-2026";
 import BlogBidBondRequirements2026 from "@/pages/blog/texas-bid-bond-requirements-2026";
 import BlogContractorBondByCity from "@/pages/blog/texas-contractor-bond-requirements-by-city";
+import BlogHVACBondRequirements from "@/pages/blog/texas-hvac-contractor-bond-requirements";
+import BlogPlumbingBondRequirements from "@/pages/blog/texas-plumbing-contractor-bond-requirements";
+import BlogRoofingBondRequirements from "@/pages/blog/texas-roofing-contractor-bond-requirements";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -196,6 +205,12 @@ function Router() {
       <Route path="/bonds/contractor-bond-corpus-christi" component={ContractorBondCorpusChristi} />
       <Route path="/bonds/contractor-bond-lubbock" component={ContractorBondLubbock} />
       <Route path="/bonds/contractor-bond-frisco" component={ContractorBondFrisco} />
+      <Route path="/bonds/contractor-bond-amarillo" component={ContractorBondAmarillo} />
+      <Route path="/bonds/contractor-bond-waco" component={ContractorBondWaco} />
+      <Route path="/bonds/contractor-bond-denton" component={ContractorBondDenton} />
+      <Route path="/bonds/contractor-bond-garland" component={ContractorBondGarland} />
+      <Route path="/bonds/contractor-bond-irving" component={ContractorBondIrving} />
+      <Route path="/bonds/contractor-bond-grand-prairie" component={ContractorBondGrandPrairie} />
 
       {/* Trade-specific bond pages */}
       <Route path="/bonds/home-inspector-bond-texas" component={HomeInspectorBondTexas} />
@@ -240,6 +255,9 @@ function Router() {
       <Route path="/blog/texas-performance-bond-guide-2026" component={BlogPerformanceBondGuide2026} />
       <Route path="/blog/texas-bid-bond-requirements-2026" component={BlogBidBondRequirements2026} />
       <Route path="/blog/texas-contractor-bond-requirements-by-city" component={BlogContractorBondByCity} />
+      <Route path="/blog/texas-hvac-contractor-bond-requirements" component={BlogHVACBondRequirements} />
+      <Route path="/blog/texas-plumbing-contractor-bond-requirements" component={BlogPlumbingBondRequirements} />
+      <Route path="/blog/texas-roofing-contractor-bond-requirements" component={BlogRoofingBondRequirements} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

@@ -28,25 +28,25 @@ export default function TexasContractorBonds() {
       name: "Bid Bonds",
       description:
         "Required on most Texas public construction projects. Guarantees you will enter the contract at your bid price if selected. We issue bid bonds same-day for qualified Texas contractors.",
-      href: "/quote",
+      href: "/bonds/bid-bond-texas",
     },
     {
       name: "Performance Bonds",
       description:
         "Required on Texas public projects over $25,000 and most private commercial projects. Guarantees you will complete the project per the contract terms.",
-      href: "/quote",
+      href: "/bonds/performance-bond-texas",
     },
     {
       name: "Payment Bonds",
       description:
         "Protects your subcontractors and suppliers from non-payment. Required alongside performance bonds on most Texas public work under the Government Code.",
-      href: "/quote",
+      href: "/bonds/payment-bond-texas",
     },
     {
       name: "License & Permit Bonds",
       description:
         "Required by Texas cities and counties to obtain contractor licenses. Common bonds include TDLR bonds, electrical contractor bonds, plumbing bonds, and HVAC bonds.",
-      href: "/quote",
+      href: "/bonds/license-bond-texas",
     },
   ];
 
@@ -111,7 +111,7 @@ export default function TexasContractorBonds() {
                 <p className="text-gray-600 mb-4">{bond.description}</p>
                 <Link href={bond.href}>
                   <Button variant="outline" size="sm">
-                    Get a {bond.name} Quote <ArrowRight className="w-3 h-3 ml-1" />
+                    Learn More <ArrowRight className="w-3 h-3 ml-1" />
                   </Button>
                 </Link>
               </div>

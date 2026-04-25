@@ -331,7 +331,9 @@ export default function RoofingContractorBondTexas() {
             {[
               { href: "/bonds/electrical-contractor-bond-texas", title: "Electrical Contractor Bond", tag: "City License" },
               { href: "/bonds/hvac-bond-texas", title: "HVAC Contractor Bond", tag: "TDLR AC" },
+              { href: "/bonds/general-contractor-bond-texas", title: "General Contractor Bond", tag: "GC License" },
               { href: "/bonds/license-bond-texas", title: "All Texas License Bonds", tag: "Hub Page" },
+              { href: "/blog/texas-roofing-contractor-bond-requirements", title: "Roofing Bond Requirements Guide 2026", tag: "Blog" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

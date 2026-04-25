@@ -206,7 +206,9 @@ export default function HVACBondTexas() {
             {[
               { href: "/bonds/tdlr-bond-texas", title: "TDLR Contractor Bond", tag: "TDLR License" },
               { href: "/bonds/electrical-contractor-bond-texas", title: "Electrical Contractor Bond", tag: "City License" },
+              { href: "/bonds/plumbing-contractor-bond-texas", title: "Plumbing Contractor Bond", tag: "Plumbing License" },
               { href: "/bonds/license-bond-texas", title: "All Texas License Bonds", tag: "Hub Page" },
+              { href: "/blog/texas-hvac-contractor-bond-requirements", title: "HVAC Bond Requirements Guide 2026", tag: "Blog" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

@@ -206,6 +206,28 @@ export default function PerformanceBondTexas() {
         </div>
       </section>
 
+      {/* Related bonds */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Texas Construction Bonds</h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { name: "Payment Bond", desc: "Always issued alongside performance bonds on Texas public projects.", slug: "payment-bond-texas" },
+              { name: "Bid Bond", desc: "Required at the bidding stage, before your performance bond.", slug: "bid-bond-texas" },
+              { name: "All Contractor Bonds", desc: "See every bond type available for Texas contractors.", slug: "texas-contractor" },
+            ].map((b) => (
+              <Link key={b.name} href={`/bonds/${b.slug}`}>
+                <div className="border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
+                  <p className="font-semibold text-gray-900 mb-1">{b.name}</p>
+                  <p className="text-gray-500 text-xs mb-2">{b.desc}</p>
+                  <p className="text-indigo-600 text-xs font-medium">View details →</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">

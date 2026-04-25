@@ -307,6 +307,95 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── GDN / Auto Dealer Bond Callout ─────────────────────────────── */}
+      <section className="bg-white border-b border-slate-100 py-16 px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="rounded-2xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 overflow-hidden border border-indigo-500/20">
+            <div className="flex flex-col lg:flex-row items-stretch">
+
+              {/* Left — content */}
+              <div className="flex-1 p-8 lg:p-12">
+                <div className="flex items-center gap-2 mb-5 flex-wrap">
+                  <span className="bg-indigo-500/20 text-indigo-200 text-xs font-semibold px-3 py-1 rounded-full border border-indigo-400/30">
+                    Texas GDN Bond
+                  </span>
+                  <span className="bg-amber-400/15 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full border border-amber-400/25">
+                    §503.033 Required
+                  </span>
+                  <span className="bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> Same-Day Issuance
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                  Texas Auto Dealer GDN Bond — From $100/yr
+                </h2>
+                <p className="text-slate-300 text-lg leading-relaxed mb-7 max-w-xl">
+                  Every Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Occupations Code §503.033. Quantum Surety gets you bonded same-day with instant PDF delivery — accepted by TxDMV.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "$50,000 GDN bond — covers all 6 dealer license types (new, used, wholesale, motorcycle, BHPH, lease/finance)",
+                    "Operating without a valid bond is a Class A misdemeanor under Texas law",
+                    "Same-day certificate — apply online, receive your PDF bond within minutes",
+                    "Renewal reminders included — never risk a lapsed license",
+                    "TDI-licensed agency — Quantum Surety License #3480229",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-slate-200 text-sm">
+                      <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX" target="_blank" rel="noreferrer">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full bg-indigo-500 text-white font-semibold px-7 py-3 text-sm hover:bg-indigo-400 transition-colors">
+                      Get My GDN Bond <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </a>
+                  <Link href="/bonds/gdn-bond-texas">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 text-white font-semibold px-7 py-3 text-sm hover:bg-white/20 transition-colors">
+                      Learn About GDN Bonds
+                    </button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — price card */}
+              <div className="lg:w-72 bg-white/5 border-t border-white/10 lg:border-t-0 lg:border-l border-indigo-500/20 p-8 lg:p-10 flex flex-col justify-center gap-6">
+                <div className="text-center">
+                  <p className="text-slate-400 text-sm font-medium mb-1">Starting at</p>
+                  <p className="text-6xl font-bold text-white tracking-tight">$100</p>
+                  <p className="text-slate-300 text-sm mt-1">per year</p>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: "Bond amount", value: "$50,000" },
+                    { label: "License types", value: "All 6 GDN" },
+                    { label: "Authority", value: "§503.033" },
+                    { label: "Delivery", value: "Instant PDF" },
+                  ].map((row) => (
+                    <div key={row.label} className="flex justify-between text-sm border-b border-white/10 pb-2">
+                      <span className="text-slate-400">{row.label}</span>
+                      <span className="text-white font-semibold">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2 bg-amber-400/10 border border-amber-400/20 rounded-xl px-4 py-3">
+                  <Shield className="w-4 h-4 text-amber-300 shrink-0" />
+                  <p className="text-amber-100 text-xs leading-snug">
+                    Required by TxDMV before your dealer license can be issued or renewed
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       <GetBondedStepsSection />
 
       <ServicesSection />

@@ -45,6 +45,7 @@ import ElectricalContractorBondTexas from "@/pages/electrical-contractor-bond-te
 import HVACBondTexas from "@/pages/hvac-bond-texas";
 import PlumbingContractorBondTexas from "@/pages/plumbing-contractor-bond-texas";
 import AutoDealerBondTexas from "@/pages/auto-dealer-bond-texas";
+import GDNBondTexas from "@/pages/gdn-bond-texas";
 // City contractor bond pages
 import ContractorBondDallas from "@/pages/contractor-bond-dallas";
 import ContractorBondHouston from "@/pages/contractor-bond-houston";
@@ -166,6 +167,7 @@ function Router() {
       <Route path="/bonds/hvac-bond-texas" component={HVACBondTexas} />
       <Route path="/bonds/plumbing-contractor-bond-texas" component={PlumbingContractorBondTexas} />
       <Route path="/bonds/auto-dealer-bond-texas" component={AutoDealerBondTexas} />
+      <Route path="/bonds/gdn-bond-texas" component={GDNBondTexas} />
 
       {/* City contractor bond pages */}
       <Route path="/bonds/contractor-bond-dallas" component={ContractorBondDallas} />

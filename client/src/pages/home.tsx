@@ -45,6 +45,22 @@ const LOCAL_BUSINESS_SCHEMA = {
   }
 };
 
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Quantum Surety Bonds",
+  "url": "https://quantumsurety.bond",
+  "description": "TDI-licensed Texas surety bond agency. Fast quotes for contractor license bonds, performance bonds, bid bonds, payment bonds, and notary bonds.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://quantumsurety.bond/ai-bond-finder?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
   { value: "All 50", label: "States served" },
@@ -94,6 +110,7 @@ function PermitPilotBanner() {
 export default function Home() {
   useSEO(SEO_PAGES.home);
   useSchema(LOCAL_BUSINESS_SCHEMA, "ld-json-LocalBusiness");
+  useSchema(WEBSITE_SCHEMA, "ld-json-WebSite");
   return (
     <div className="bg-[#020816] text-white">
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(0,245,255,0.16),_transparent_30%),linear-gradient(135deg,_#020816_0%,_#07111f_38%,_#0f1724_68%,_#161b28_100%)]">

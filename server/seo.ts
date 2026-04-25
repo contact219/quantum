@@ -2344,6 +2344,7 @@ function buildMetaTags(meta: PageMeta): string {
     <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
     <link rel="alternate" hreflang="en-US" href="${meta.canonical}" />
     <link rel="alternate" hreflang="x-default" href="${meta.canonical}" />
+    <link rel="alternate" type="application/rss+xml" title="Quantum Surety Bonds Blog" href="${BASE_URL}/feed.xml" />
     ${sd}
   `.trim();
 }

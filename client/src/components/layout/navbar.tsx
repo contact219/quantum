@@ -36,7 +36,6 @@ export function Navbar() {
     { href: "/resources", label: "Resources" },
     { href: "/contact", label: "Contact" },
     { href: "/quote", label: "Get Quote" },
-    { href: "/portal", label: "Portal" },
   ];
 
   const toolsLinks = [
@@ -137,13 +136,6 @@ export function Navbar() {
                       <DropdownMenuLabel>
                         {user?.firstName} {user?.lastName}
                       </DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem asChild>
-                        <Link href="/portal" data-testid="link-portal-menu">
-                          <User className="w-4 h-4 mr-2" />
-                          Portal
-                        </Link>
-                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem asChild>
                         <a href="/api/logout" data-testid="link-logout">

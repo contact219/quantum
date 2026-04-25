@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, XCircle, Phone } from "lucide-react";
 
@@ -47,6 +47,7 @@ export default function BidBondVsPerformanceBond() {
       "Bid bond vs performance bond — what's the difference? Texas contractors: learn when each bond is required, what they cost, and how to get both for public and private projects.",
     canonical: "/bonds/bid-bond-vs-performance-bond",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
 
   return (
     <div className="min-h-screen bg-white">

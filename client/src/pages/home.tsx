@@ -1,9 +1,49 @@
 import { Link } from "wouter";
-import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
+import { SEO_PAGES, useSEO, useSchema } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
 import { TDIBadge } from "@/components/TDIBadge";
 import { CheckCircle, ArrowRight, Clock, Shield } from "lucide-react";
+
+const LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "InsuranceAgency"],
+  "name": "Quantum Surety Bonds",
+  "legalName": "Quantum Surety LLC",
+  "url": "https://quantumsurety.bond",
+  "logo": "https://quantumsurety.bond/QS_Logo.png",
+  "image": "https://quantumsurety.bond/QS_OG_2.png",
+  "description": "TDI-licensed Texas surety bond agency offering performance bonds, bid bonds, contractor license bonds, payment bonds, and notary bonds with AI-powered fast quotes. Serving Texas and all 50 states.",
+  "telephone": "+19723799216",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "State", "name": "Texas" },
+    { "@type": "Country", "name": "United States" }
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Texas Department of Insurance License",
+    "credentialCategory": "Insurance Agency License",
+    "recognizedBy": { "@type": "Organization", "name": "Texas Department of Insurance" },
+    "identifier": "3480229"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Surety Bond Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Texas Notary Bond", "url": "https://quantumsurety.bond/bonds/notary-bond-texas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Performance Bond Texas", "url": "https://quantumsurety.bond/bonds/performance-bond-texas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bid Bond Texas", "url": "https://quantumsurety.bond/bonds/bid-bond-texas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Payment Bond Texas", "url": "https://quantumsurety.bond/bonds/payment-bond-texas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contractor License Bond Texas", "url": "https://quantumsurety.bond/bonds/license-bond-texas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TDLR Contractor Bond", "url": "https://quantumsurety.bond/bonds/tdlr-bond-texas" } }
+    ]
+  }
+};
 
 const trustMetrics = [
   { value: "A-rated", label: "Carrier partners" },
@@ -53,6 +93,7 @@ function PermitPilotBanner() {
 
 export default function Home() {
   useSEO(SEO_PAGES.home);
+  useSchema(LOCAL_BUSINESS_SCHEMA, "ld-json-LocalBusiness");
   return (
     <div className="bg-[#020816] text-white">
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(0,245,255,0.16),_transparent_30%),linear-gradient(135deg,_#020816_0%,_#07111f_38%,_#0f1724_68%,_#161b28_100%)]">

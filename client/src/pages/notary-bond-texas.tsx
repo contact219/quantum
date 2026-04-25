@@ -1,18 +1,44 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import {
   CheckCircle, ArrowRight, Clock, FileText, Shield,
   AlertTriangle, BookOpen, Star, Phone
 } from "lucide-react";
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Notary Bond",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/notary-bond-texas",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "description": "Texas notary surety bond — $10,000 coverage, $50 flat fee, instant download. SB693 compliant. No credit check. Required for all Texas notary public commissions.",
+  "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "priceValidUntil": "2027-12-31", "availability": "https://schema.org/InStock" }
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is a Texas notary bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond is a $10,000 surety bond required by the Texas Secretary of State for all notary public commissions. It protects the public from financial loss caused by notary misconduct or errors." } },
+    { "@type": "Question", "name": "How much does a Texas notary bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year term from Quantum Surety. There are no annual renewal fees — it's a one-time $50 payment covering your entire commission period." } },
+    { "@type": "Question", "name": "What changed in 2026 for Texas notaries (SB693)?", "acceptedAnswer": { "@type": "Answer", "text": "Starting January 1, 2026, Senate Bill 693 requires all new and renewing Texas notary applicants to complete a mandatory education course (up to 2 hours) provided by the Texas Secretary of State. A $20 fee applies per attempt. The $10,000 bond requirement is unchanged." } },
+    { "@type": "Question", "name": "Is there a credit check for a Texas notary bond?", "acceptedAnswer": { "@type": "Answer", "text": "No. Texas notary bonds are issued without a credit check. Anyone who meets the state's eligibility requirements can purchase a bond instantly." } },
+    { "@type": "Question", "name": "Can I get a notary bond if I'm a remote online notary (RON)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries — including Remote Online Notaries — are required to hold the same $10,000 notary surety bond." } }
+  ]
+};
+
 export default function NotaryBondTexas() {
   useSEO({
-    title: "Texas Notary Bond | $50 Instant Online | Quantum Surety",
+    title: "Texas Notary Bond | $50 Instant Online | SB693 Compliant | Quantum Surety",
     description:
-      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. Includes 2026 SB693 education guidance. Add E&O insurance in minutes. Quantum Surety.",
+      "Texas notary bond — $50, instant download, SB693 compliant. $10,000 coverage, no credit check. Get bonded in minutes. TDI-licensed agency (license #3480229).",
     canonical: "/bonds/notary-bond-texas",
   });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   const steps = [
     { step: "1", title: "Enter your info", body: "Your name, county, and commission details. Takes under 2 minutes." },

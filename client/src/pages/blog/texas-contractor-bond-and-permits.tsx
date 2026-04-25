@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight } from "lucide-react";
 
 export default function BlogTexasContractorBondAndPermits() {
@@ -9,6 +9,7 @@ export default function BlogTexasContractorBondAndPermits() {
       "How DFW contractors can secure a contractor license bond and identify required permits in one day using Quantum Surety and Permit Pilot.",
     canonical: "/blog/texas-contractor-bond-and-permits",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Article", "publisher": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" } }, "ld-json-Article");
 
   return (
     <article className="min-h-screen bg-white">

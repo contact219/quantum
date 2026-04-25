@@ -55,10 +55,18 @@ import ContractorBondFortWorth from "@/pages/contractor-bond-fort-worth";
 import ContractorBondPlano from "@/pages/contractor-bond-plano";
 import ContractorBondArlington from "@/pages/contractor-bond-arlington";
 import ContractorBondMcKinney from "@/pages/contractor-bond-mckinney";
+import ContractorBondElPaso from "@/pages/contractor-bond-el-paso";
+import ContractorBondCorpusChristi from "@/pages/contractor-bond-corpus-christi";
+import ContractorBondLubbock from "@/pages/contractor-bond-lubbock";
+import ContractorBondFrisco from "@/pages/contractor-bond-frisco";
 // Trade-specific bond pages
 import HomeInspectorBondTexas from "@/pages/home-inspector-bond-texas";
 import LocksmithBondTexas from "@/pages/locksmith-bond-texas";
 import PestControlBondTexas from "@/pages/pest-control-bond-texas";
+import PaymentBondTexas from "@/pages/payment-bond-texas";
+import GeneralContractorBondTexas from "@/pages/general-contractor-bond-texas";
+import RoofingContractorBondTexas from "@/pages/roofing-contractor-bond-texas";
+import FreightBrokerBondTexas from "@/pages/freight-broker-bond-texas";
 // Comparison / educational pages
 import BidBondVsPerformanceBond from "@/pages/bid-bond-vs-performance-bond";
 import SuretyBondVsInsurance from "@/pages/surety-bond-vs-insurance";
@@ -78,6 +86,9 @@ import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contra
 import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
 import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
 import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
+import BlogPerformanceBondGuide2026 from "@/pages/blog/texas-performance-bond-guide-2026";
+import BlogBidBondRequirements2026 from "@/pages/blog/texas-bid-bond-requirements-2026";
+import BlogContractorBondByCity from "@/pages/blog/texas-contractor-bond-requirements-by-city";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -181,11 +192,19 @@ function Router() {
       <Route path="/bonds/contractor-bond-plano" component={ContractorBondPlano} />
       <Route path="/bonds/contractor-bond-arlington" component={ContractorBondArlington} />
       <Route path="/bonds/contractor-bond-mckinney" component={ContractorBondMcKinney} />
+      <Route path="/bonds/contractor-bond-el-paso" component={ContractorBondElPaso} />
+      <Route path="/bonds/contractor-bond-corpus-christi" component={ContractorBondCorpusChristi} />
+      <Route path="/bonds/contractor-bond-lubbock" component={ContractorBondLubbock} />
+      <Route path="/bonds/contractor-bond-frisco" component={ContractorBondFrisco} />
 
       {/* Trade-specific bond pages */}
       <Route path="/bonds/home-inspector-bond-texas" component={HomeInspectorBondTexas} />
       <Route path="/bonds/locksmith-bond-texas" component={LocksmithBondTexas} />
       <Route path="/bonds/pest-control-bond-texas" component={PestControlBondTexas} />
+      <Route path="/bonds/payment-bond-texas" component={PaymentBondTexas} />
+      <Route path="/bonds/general-contractor-bond-texas" component={GeneralContractorBondTexas} />
+      <Route path="/bonds/roofing-contractor-bond-texas" component={RoofingContractorBondTexas} />
+      <Route path="/bonds/freight-broker-bond-texas" component={FreightBrokerBondTexas} />
 
       {/* Comparison / educational pages */}
       <Route path="/bonds/bid-bond-vs-performance-bond" component={BidBondVsPerformanceBond} />
@@ -218,6 +237,9 @@ function Router() {
       <Route path="/blog/texas-gdn-bond-requirements-2026" component={BlogGDNBondRequirements2026} />
       <Route path="/blog/texas-gdn-bond-cost-2026" component={BlogGDNBondCost2026} />
       <Route path="/blog/texas-dealer-license-renewal-gdn-bond" component={BlogDealerLicenseRenewal} />
+      <Route path="/blog/texas-performance-bond-guide-2026" component={BlogPerformanceBondGuide2026} />
+      <Route path="/blog/texas-bid-bond-requirements-2026" component={BlogBidBondRequirements2026} />
+      <Route path="/blog/texas-contractor-bond-requirements-by-city" component={BlogContractorBondByCity} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

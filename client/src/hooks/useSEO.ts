@@ -13,7 +13,7 @@
  *   });
  */
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface SEOProps {
   title: string;
@@ -84,6 +84,30 @@ export function useSEO({ title, description, canonical, noIndex = false, ogType 
       setMeta('meta[name="googlebot"]', "content", "index, follow");
     }
   }, [title, description, canonical, noIndex, ogType]);
+}
+
+// ─── JSON-LD Schema hook ──────────────────────────────────────────────────────
+// Injects a <script type="application/ld+json"> into <head> for the lifetime
+// of the component. Pass any valid schema.org object.
+// Multiple calls on the same page each need a unique `id` prop.
+export function useSchema(schema: Record<string, unknown>, id?: string) {
+  const scriptId = id ?? `ld-json-${String(schema["@type"] ?? "schema")}`;
+  const ref = useRef<HTMLScriptElement | null>(null);
+
+  useEffect(() => {
+    let el = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.type = "application/ld+json";
+      el.id = scriptId;
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    ref.current = el;
+    return () => {
+      ref.current?.remove();
+    };
+  }, [scriptId]);
 }
 
 // ─── Pre-built page SEO configs ───────────────────────────────────────────────

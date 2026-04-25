@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight } from "lucide-react";
 
@@ -46,6 +46,7 @@ export default function AutoDealerBondTexas() {
       "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $25,000 bond, rates from $250/yr. Instant PDF delivery.",
     canonical: "/bonds/auto-dealer-bond-texas",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
 
   return (
     <div className="min-h-screen bg-white">

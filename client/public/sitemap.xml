@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
   <url>
     <loc>https://quantumsurety.bond/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/construction</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/ai-bond-finder</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://quantumsurety.bond/quote</loc>
@@ -21,9 +13,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantumsurety.bond/faq</loc>
+    <loc>https://quantumsurety.bond/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quantumsurety.bond/resources</loc>
@@ -51,6 +53,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://quantumsurety.bond/ai-bond-finder</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/construction</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://quantumsurety.bond/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -60,45 +72,241 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url>
-    <loc>https://quantumsurety.bond/bonds/texas-contractor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/bonds/bid-bond-texas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/bonds/performance-bond-texas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/bonds/license-bond-texas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantumsurety.bond/bonds/notary-bond-texas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- SB-693 standalone guide -->
   <url>
     <loc>https://quantumsurety.bond/sb-693-notary-bond-requirements-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Contract bond pages -->
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contract</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/commercial</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/texas-contractor</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/bid-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/performance-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/payment-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/license-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/notary-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/general-contractor-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Trade-specific bond pages -->
+  <url>
+    <loc>https://quantumsurety.bond/bonds/tdlr-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/electrical-contractor-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/hvac-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/plumbing-contractor-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/roofing-contractor-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/auto-dealer-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/gdn-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/home-inspector-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/locksmith-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/pest-control-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/freight-broker-bond-texas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Notary E&O -->
+  <url>
+    <loc>https://quantumsurety.bond/bonds/notary-eo-insurance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Educational / comparison pages -->
+  <url>
+    <loc>https://quantumsurety.bond/bonds/bid-bond-vs-performance-bond</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/surety-bond-vs-insurance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- City contractor bond pages -->
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-dallas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-houston</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-austin</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-san-antonio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-fort-worth</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-plano</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-arlington</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-mckinney</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-el-paso</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-corpus-christi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-lubbock</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/bonds/contractor-bond-frisco</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog index -->
   <url>
     <loc>https://quantumsurety.bond/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-gdn-bond-requirements-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-gdn-bond-cost-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-dealer-license-renewal-gdn-bond</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/quantum-surety-tdi-licensed-agency-3480229</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-contractor-bond-and-permits</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-notary-bond-sb693-renewal-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quantumsurety.bond/blog/texas-notary-bond-sb693-2026-requirements</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://quantumsurety.bond/blog/texas-notary-bond-cost-2026</loc>
@@ -110,4 +318,35 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-tdlr-contractor-bond-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-contractor-license-bond-cost</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-electrical-contractor-bond-requirements</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-performance-bond-guide-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-bid-bond-requirements-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantumsurety.bond/blog/texas-contractor-bond-requirements-by-city</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

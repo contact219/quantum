@@ -1,15 +1,27 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, Clock, Award } from "lucide-react";
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Contractor Surety Bonds",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/texas-contractor",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "description": "Full suite of Texas contractor surety bonds: bid bonds, performance bonds, payment bonds, and contractor license bonds for general contractors and subcontractors across Texas."
+};
+
 export default function TexasContractorBonds() {
   useSEO({
-    title: "Surety Bonds for Texas Contractors | Quantum Surety",
+    title: "Surety Bonds for Texas Contractors | Bid, Performance & License Bonds | Quantum Surety",
     description:
-      "Texas contractor surety bonds issued fast. Bid bonds, performance bonds, payment bonds, and license bonds for TX general contractors and subcontractors. AI-assisted approvals.",
+      "Texas contractor surety bonds issued fast. Bid bonds, performance bonds, payment bonds, and license bonds for TX contractors. AI-assisted approvals. TDI-licensed agency.",
     canonical: "/bonds/texas-contractor",
   });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
 
   const bondTypes = [
     {

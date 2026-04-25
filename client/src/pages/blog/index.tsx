@@ -15,6 +15,39 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-performance-bond-guide-2026",
+    title: "Texas Performance Bond Requirements & Cost Guide (2026)",
+    description:
+      "Complete guide to Texas performance bonds in 2026: who needs them, how much they cost (0.5%–3%), legal requirements under Texas Gov. Code § 2253 and the Miller Act, and how to get approved fast.",
+    date: "2026-04-25",
+    readTime: "9 min read",
+    category: "Construction Bonds",
+    tags: ["Performance Bond", "Texas Construction", "Miller Act", "Gov. Code § 2253"],
+    featured: false,
+  },
+  {
+    slug: "texas-bid-bond-requirements-2026",
+    title: "Texas Bid Bond Requirements 2026: What Contractors Need to Know",
+    description:
+      "Texas bid bond requirements for 2026: who needs one, when it's required, how much it costs, and how to get same-day approval. Complete guide for Texas contractors bidding public and private projects.",
+    date: "2026-04-25",
+    readTime: "7 min read",
+    category: "Construction Bonds",
+    tags: ["Bid Bond", "Texas Construction", "Public Projects", "Gov. Code § 2253"],
+    featured: false,
+  },
+  {
+    slug: "texas-contractor-bond-requirements-by-city",
+    title: "Texas Contractor Bond Requirements by City (2026)",
+    description:
+      "Contractor bond requirements for every major Texas city in 2026. Dallas, Houston, Austin, San Antonio, Fort Worth, El Paso, and more — bond amounts, licensing agencies, and how to get bonded fast.",
+    date: "2026-04-25",
+    readTime: "10 min read",
+    category: "Texas Contractors",
+    tags: ["Contractor Bond", "Texas Cities", "License Bond", "TDLR"],
+    featured: true,
+  },
+  {
     slug: "texas-gdn-bond-requirements-2026",
     title: "Texas GDN Bond Requirements 2026: What Every Motor Vehicle Dealer Needs to Know",
     description:
@@ -89,7 +122,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "7 min read",
     category: "Texas Notary",
     tags: ["SB693", "Texas Notary Bond", "2026 Requirements", "Secretary of State"],
-    featured: true,
+    featured: false,
   },
   {
     slug: "texas-notary-bond-cost-2026",

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Calendar, User, CheckCircle } from "lucide-react";
 
@@ -10,6 +10,7 @@ export default function TexasElectricalContractorBondRequirements() {
       "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to file. Updated guide.",
     canonical: "/blog/texas-electrical-contractor-bond-requirements",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Article", "publisher": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" } }, "ld-json-Article");
 
   return (
     <div className="min-h-screen bg-white">

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Clock, Phone, ChevronRight, AlertTriangle, RefreshCw } from "lucide-react";
 
@@ -13,6 +13,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
     canonical: "/blog/texas-dealer-license-renewal-gdn-bond",
     ogType: "article",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Article", "publisher": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" } }, "ld-json-Article");
 
   return (
     <div className="min-h-screen bg-white">

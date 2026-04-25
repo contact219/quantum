@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Award, Clock, DollarSign } from "lucide-react";
 
@@ -55,13 +55,26 @@ function PermitPilotLicenseBondCallout() {
   );
 }
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Contractor License Bond",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/license-bond-texas",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "description": "Texas contractor license bonds for TDLR and city licenses. Instant issue for standard amounts. Required for electrical, HVAC, plumbing, and general contractor licenses across Texas.",
+  "offers": { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "50", "unitText": "per year" } }
+};
+
 export default function LicenseBondTexas() {
   useSEO({
-    title: "Texas Contractor License Bonds | License & Permit Bonds TX | Quantum Surety",
+    title: "Texas Contractor License Bonds | TDLR & City License Bonds | Quantum Surety",
     description:
-      "Texas contractor license bonds issued fast. TDLR bonds, electrical bonds, plumbing bonds, HVAC bonds, and all license & permit bonds for TX contractors. Same-day issuance.",
+      "Texas contractor license bonds for TDLR and city licenses. Instant issue for standard amounts. Rates from $50/year. Electrical, HVAC, plumbing, general contractor. TDI-licensed.",
     canonical: "/bonds/license-bond-texas",
   });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
 
   const bondTypes = [
     {

@@ -1,15 +1,41 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, AlertCircle, Building2 } from "lucide-react";
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Performance Bond",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/performance-bond-texas",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "description": "Texas performance bonds for contractors on public and private construction projects. Required by Texas Government Code § 2253 for public contracts over $25,000 and the Miller Act for federal projects over $150,000.",
+  "offers": { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "0.5", "maxPrice": "3", "unitText": "percent of bond amount annually" } }
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How long does it take to get a performance bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Simple projects under $500,000 can often be approved same-day or next business day. Larger or more complex projects ($1M+) typically take 2–5 business days and require financial statements." } },
+    { "@type": "Question", "name": "What do I need to qualify for a Texas performance bond?", "acceptedAnswer": { "@type": "Answer", "text": "Carriers evaluate credit, capacity (your ability to handle the project's size), and character (your track record). For bonds under $350,000, personal credit score and years in business are the main factors. For larger bonds, financial statements are typically required." } },
+    { "@type": "Question", "name": "Can I get a performance bond with bad credit in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but options are more limited. Specialty markets exist for contractors with credit challenges — these bonds typically come at higher rates (2%–5%) and may require collateral." } },
+    { "@type": "Question", "name": "What's the difference between a performance bond and a payment bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A performance bond guarantees you'll complete the project. A payment bond guarantees you'll pay your subcontractors and suppliers. Texas law requires both on public contracts over $25,000." } },
+    { "@type": "Question", "name": "How is a Texas performance bond amount determined?", "acceptedAnswer": { "@type": "Answer", "text": "The bond amount equals 100% of the contract value on most Texas public projects. Private projects may require 50%–100% of the contract value depending on the owner's requirements." } }
+  ]
+};
+
 export default function PerformanceBondTexas() {
   useSEO({
-    title: "Performance Bonds Texas | TX Construction Performance Bonds | Quantum Surety",
+    title: "Performance Bonds Texas | Requirements, Cost & Fast Approval | Quantum Surety",
     description:
-      "Texas performance bonds for general contractors and subcontractors. Fast approvals for public and private construction projects statewide. AI-powered underwriting.",
+      "Texas performance bonds for contractors. Rates from 0.5%–3%. Fast approvals. Required under Texas Gov. Code § 2253 for public projects over $25,000. Free quote from TDI-licensed agency.",
     canonical: "/bonds/performance-bond-texas",
   });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   const projects = [
     { type: "Texas public works", req: "Required on all public contracts over $25,000 under Texas Government Code § 2253" },

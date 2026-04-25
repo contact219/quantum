@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, XCircle, Phone } from "lucide-react";
 
@@ -47,6 +47,7 @@ export default function SuretyBondVsInsurance() {
       "Surety bond vs insurance — what's the difference and do you need both? Texas contractors and license holders: understand how bonds and insurance work together to protect your business.",
     canonical: "/bonds/surety-bond-vs-insurance",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
 
   return (
     <div className="min-h-screen bg-white">

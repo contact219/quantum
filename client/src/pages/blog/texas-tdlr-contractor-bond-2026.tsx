@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Calendar, User } from "lucide-react";
 
@@ -10,6 +10,7 @@ export default function TexasTDLRContractorBond2026() {
       "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming. Updated for 2026.",
     canonical: "/blog/texas-tdlr-contractor-bond-2026",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Article", "publisher": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" } }, "ld-json-Article");
 
   return (
     <div className="min-h-screen bg-white">

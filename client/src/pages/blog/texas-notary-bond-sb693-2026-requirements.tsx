@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, AlertTriangle, CheckCircle, Clock,
@@ -14,6 +14,7 @@ export default function BlogSB693() {
     canonical: "/blog/texas-notary-bond-sb693-2026-requirements",
     ogType: "article",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Article", "publisher": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" } }, "ld-json-Article");
 
   const tocItems = [
     { id: "what-is-sb693", label: "What is SB693?" },

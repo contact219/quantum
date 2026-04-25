@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, AlertCircle } from "lucide-react";
 
@@ -37,6 +37,7 @@ export default function NotaryEOInsurance() {
       "Understand the difference between a Texas notary bond and E&O insurance. Learn what E&O insurance covers, whether it's required, and how to protect yourself as a Texas notary public.",
     canonical: "/bonds/notary-eo-insurance",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
 
   return (
     <div className="min-h-screen bg-white">

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight } from "lucide-react";
 
@@ -43,6 +43,7 @@ export default function PestControlBondTexas() {
       "Get your Texas pest control bond same-day. Required by the Texas Department of Agriculture (TDA/SPCS) for all licensed pest control businesses and applicators. From $100/yr. Instant PDF.",
     canonical: "/bonds/pest-control-bond-texas",
   });
+  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
 
   return (
     <div className="min-h-screen bg-white">

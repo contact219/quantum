@@ -1,15 +1,41 @@
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, FileText, DollarSign } from "lucide-react";
+
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Bid Bond",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/bid-bond-texas",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
+  "areaServed": { "@type": "State", "name": "Texas" },
+  "description": "Same-day Texas bid bonds for general contractors and subcontractors bidding on public and private construction projects. Required on public projects over $25,000 under Texas Government Code § 2253.",
+  "offers": { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "0", "maxPrice": "250", "unitText": "per bond" } }
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is a bid bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A bid bond is a guarantee that a contractor will enter into a contract at the bid price if awarded the project. If the contractor fails to do so, the surety pays the difference between the bid and the next lowest bid, up to the bond penalty." } },
+    { "@type": "Question", "name": "How much does a Texas bid bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most bid bonds are issued at no charge — the cost is built into the performance and payment bond premium if you win the project. For standalone bid bonds, typical cost is $100–$250 depending on the bid amount." } },
+    { "@type": "Question", "name": "How quickly can I get a bid bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety issues bid bonds same-day for most qualified contractors. Submit before noon and receive your bond documents the same business day in most cases." } },
+    { "@type": "Question", "name": "What projects require bid bonds in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas public projects over $25,000 generally require bid bonds under state law. Federal projects over $150,000 require them under the Miller Act. Many private owners and general contractors also require bid bonds from subcontractors." } },
+    { "@type": "Question", "name": "What information do I need to get a bid bond?", "acceptedAnswer": { "@type": "Answer", "text": "You'll need your company name, years in business, the project name and owner, the bid amount, and the bid due date. For larger bids (over $500k), we may request financial statements." } }
+  ]
+};
 
 export default function BidBondTexas() {
   useSEO({
     title: "Bid Bonds Texas | Same-Day Bid Bond for TX Contractors | Quantum Surety",
     description:
-      "Get a Texas bid bond fast. Same-day bid bonds for general contractors and subcontractors bidding public and private construction projects across Texas. AI-powered approvals.",
+      "Texas bid bonds for public and private construction projects. Same-day issuance, all bond amounts. Required on public projects over $25,000. TDI-licensed agency. Free quote.",
     canonical: "/bonds/bid-bond-texas",
   });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   const steps = [
     { step: "1", title: "Submit your info", body: "Tell us about your company, the project, and the bid amount. Takes under 5 minutes." },

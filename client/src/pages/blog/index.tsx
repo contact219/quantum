@@ -15,6 +15,39 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-gdn-bond-requirements-2026",
+    title: "Texas GDN Bond Requirements 2026: What Every Motor Vehicle Dealer Needs to Know",
+    description:
+      "Complete guide to Texas GDN bond requirements. What a GDN bond is, why it's required under §503.033, all 6 dealer license types, bond amount, and what happens if you operate without one.",
+    date: "2026-04-25",
+    readTime: "7 min read",
+    category: "Texas Auto Dealers",
+    tags: ["GDN Bond", "Texas Dealer License", "§503.033", "TxDMV"],
+    featured: false,
+  },
+  {
+    slug: "texas-gdn-bond-cost-2026",
+    title: "How Much Does a Texas GDN Bond Cost in 2026?",
+    description:
+      "A Texas GDN dealer bond costs $100–$300 per year for most dealers. Full cost breakdown by credit tier, why it's cheaper than most expect, and how to get the lowest rate.",
+    date: "2026-04-25",
+    readTime: "5 min read",
+    category: "Texas Auto Dealers",
+    tags: ["GDN Bond", "Bond Cost", "Texas Dealer License"],
+    featured: false,
+  },
+  {
+    slug: "texas-dealer-license-renewal-gdn-bond",
+    title: "Texas Dealer License Renewal: GDN Bond Checklist & TxDMV Steps",
+    description:
+      "Step-by-step GDN bond renewal checklist for Texas dealers — TxDMV eLICENSING instructions, key deadlines, common mistakes, and what happens if your bond lapses.",
+    date: "2026-04-25",
+    readTime: "6 min read",
+    category: "Texas Auto Dealers",
+    tags: ["GDN Bond", "Dealer License Renewal", "TxDMV", "Texas Auto Dealers"],
+    featured: false,
+  },
+  {
     slug: "quantum-surety-tdi-licensed-agency-3480229",
     title: "Quantum Surety Receives TDI Agency License #3480229",
     description:

@@ -75,6 +75,9 @@ import BlogSB693Renewal from "@/pages/blog/texas-notary-bond-sb693-renewal-2026"
 import BlogTDLRBond2026 from "@/pages/blog/texas-tdlr-contractor-bond-2026";
 import BlogContractorBondCost from "@/pages/blog/texas-contractor-license-bond-cost";
 import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contractor-bond-requirements";
+import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
+import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
+import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -212,6 +215,9 @@ function Router() {
       <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
       <Route path="/blog/texas-contractor-license-bond-cost" component={BlogContractorBondCost} />
       <Route path="/blog/texas-electrical-contractor-bond-requirements" component={BlogElectricalBondRequirements} />
+      <Route path="/blog/texas-gdn-bond-requirements-2026" component={BlogGDNBondRequirements2026} />
+      <Route path="/blog/texas-gdn-bond-cost-2026" component={BlogGDNBondCost2026} />
+      <Route path="/blog/texas-dealer-license-renewal-gdn-bond" component={BlogDealerLicenseRenewal} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

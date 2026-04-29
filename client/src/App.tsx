@@ -46,6 +46,11 @@ import HVACBondTexas from "@/pages/hvac-bond-texas";
 import PlumbingContractorBondTexas from "@/pages/plumbing-contractor-bond-texas";
 import AutoDealerBondTexas from "@/pages/auto-dealer-bond-texas";
 import GDNBondTexas from "@/pages/gdn-bond-texas";
+import GDNBondDallas from "@/pages/gdn-bond-dallas";
+import GDNBondHouston from "@/pages/gdn-bond-houston";
+import GDNBondAustin from "@/pages/gdn-bond-austin";
+import GDNBondSanAntonio from "@/pages/gdn-bond-san-antonio";
+import NotaryBondRenewalTexas from "@/pages/notary-bond-renewal-texas";
 // City contractor bond pages
 import ContractorBondDallas from "@/pages/contractor-bond-dallas";
 import ContractorBondHouston from "@/pages/contractor-bond-houston";
@@ -191,6 +196,11 @@ function Router() {
       <Route path="/bonds/plumbing-contractor-bond-texas" component={PlumbingContractorBondTexas} />
       <Route path="/bonds/auto-dealer-bond-texas" component={AutoDealerBondTexas} />
       <Route path="/bonds/gdn-bond-texas" component={GDNBondTexas} />
+      <Route path="/bonds/gdn-bond-dallas" component={GDNBondDallas} />
+      <Route path="/bonds/gdn-bond-houston" component={GDNBondHouston} />
+      <Route path="/bonds/gdn-bond-austin" component={GDNBondAustin} />
+      <Route path="/bonds/gdn-bond-san-antonio" component={GDNBondSanAntonio} />
+      <Route path="/bonds/notary-bond-renewal-texas" component={NotaryBondRenewalTexas} />
 
       {/* City contractor bond pages */}
       <Route path="/bonds/contractor-bond-dallas" component={ContractorBondDallas} />

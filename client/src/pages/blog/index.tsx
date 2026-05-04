@@ -327,7 +327,7 @@ export default function BlogIndex() {
           <p className="text-indigo-200 mb-6">
             Instant quotes. No credit check. TDI-licensed Texas agency.
           </p>
-          <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
+          <a href="/get-bond?type=notary">
             <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-lg hover:bg-indigo-50 transition-colors">
               Get My Notary Bond <ArrowRight className="w-4 h-4 inline ml-1" />
             </button>

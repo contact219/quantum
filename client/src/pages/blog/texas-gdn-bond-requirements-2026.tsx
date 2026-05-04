@@ -3,7 +3,7 @@ import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Clock, Phone, ChevronRight, AlertTriangle, Shield } from "lucide-react";
 
-const GDN_LINK = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
+const GDN_LINK = "/get-bond?type=dealer";
 
 export default function BlogGDNBondRequirements2026() {
   useSEO({
@@ -224,7 +224,7 @@ export default function BlogGDNBondRequirements2026() {
           <h2 className="text-2xl font-bold mb-2">Get Your Texas GDN Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All 6 dealer types · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={GDN_LINK} target="_blank" rel="noreferrer">
+            <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

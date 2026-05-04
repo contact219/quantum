@@ -379,7 +379,7 @@ export default function BlogSB693Renewal() {
             $10,000 bond · 4-year term · No credit check · SB693 compliant · Instant PDF · Add E&O at checkout
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=notary">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

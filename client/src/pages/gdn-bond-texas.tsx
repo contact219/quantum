@@ -3,7 +3,7 @@ import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, AlertTriangle, RefreshCw } from "lucide-react";
 
-const GDN_LINK = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
+const GDN_LINK = "/get-bond?type=dealer";
 
 const dealerTypes = [
   { type: "New Motor Vehicle Dealer", description: "Franchised dealers selling new cars, trucks, and SUVs", amount: "$50,000", cost: "From $100/yr" },
@@ -78,7 +78,7 @@ export default function GDNBondTexas() {
             Required by TxDMV for every motor vehicle dealer license in Texas. The $50,000 GDN surety bond is mandated under Texas Occupations Code §503.033 and covers all six dealer license types — new, used, wholesale, motorcycle, BHPH, and lease/finance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={GDN_LINK} target="_blank" rel="noreferrer">
+            <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -229,7 +229,7 @@ export default function GDNBondTexas() {
           <h2 className="text-2xl font-bold mb-2">Get Your Texas GDN Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All 6 GDN dealer types · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={GDN_LINK} target="_blank" rel="noreferrer">
+            <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

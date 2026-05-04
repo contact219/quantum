@@ -109,7 +109,7 @@ export default function NotaryBondTexas() {
             ✓ No credit check &nbsp;&nbsp; ✓ No hidden fees &nbsp;&nbsp; ✓ 2026 SB693 compliant &nbsp;&nbsp; ✓ E&O insurance available
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=notary">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -191,7 +191,7 @@ export default function NotaryBondTexas() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=notary">
               <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-10">
                 Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -349,7 +349,7 @@ export default function NotaryBondTexas() {
             $50. Instant download. No credit check. File with the Texas Secretary of State today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=notary">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
                 Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

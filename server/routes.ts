@@ -78,6 +78,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Lead capture from /get-bond page (no auth required)
+  app.post("/api/leads", async (req, res) => {
+    try {
+      const { name, email, phone, bond_type } = req.body || {};
+      if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
+      const bondLabel = bond_type === "notary" ? "Texas Notary Bond" : "Texas GDN Dealer Bond";
+      await sendEmail({
+        to: "info@quantumsurety.bond",
+        from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
+        subject: `New Lead: ${bondLabel} — ${name}`,
+        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p>`,
+      } as any);
+      res.json({ ok: true });
+    } catch (err: any) {
+      console.error("Lead capture error:", err.message);
+      res.json({ ok: true }); // don't block redirect even if email fails
+    }
+  });
+
   // Quote submission endpoint - PROTECTED (requires authentication)
   app.post("/api/quotes", async (req: any, res) => {
     try {

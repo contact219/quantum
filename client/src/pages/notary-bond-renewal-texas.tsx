@@ -3,7 +3,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, RefreshCw, AlertTriangle } from "lucide-react";
 
-const NOTARY_LINK = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
+const NOTARY_LINK = "/get-bond?type=notary";
 
 const faqs = [
   { q: "When do I need to renew my Texas notary bond?", a: "You need a new notary bond each time you renew your 4-year Texas notary commission. Your bond expires when your commission expires. You cannot file a commission renewal with the Secretary of State without a current bond." },
@@ -39,7 +39,7 @@ export default function NotaryBondRenewalTexas() {
             Renewing your Texas notary commission? You need a new $10,000 notary bond — same $50 price, instant delivery. SB693 compliant for 2026 renewals. Certificate emailed immediately, ready to file with the Secretary of State.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={NOTARY_LINK} target="_blank" rel="noreferrer">
+            <a href={NOTARY_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Renew My Notary Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
             <a href="tel:9723799216">
@@ -165,7 +165,7 @@ export default function NotaryBondRenewalTexas() {
           <h2 className="text-2xl font-bold mb-2">Renew Your Texas Notary Bond — $50</h2>
           <p className="text-indigo-200 mb-6">$10,000 · 4-year term · No credit check · Instant PDF · SB693 compliant · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={NOTARY_LINK} target="_blank" rel="noreferrer">
+            <a href={NOTARY_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Renew My Notary Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
             <a href="tel:9723799216">

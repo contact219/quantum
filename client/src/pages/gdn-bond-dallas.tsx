@@ -3,7 +3,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, AlertTriangle } from "lucide-react";
 
-const GDN_LINK = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
+const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
   { q: "Do Dallas auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas — including dealers in Dallas and the DFW metroplex — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033 before TxDMV will issue or renew a dealer license." },
@@ -37,7 +37,7 @@ export default function GDNBondDallas() {
             Dallas and DFW-area motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Get bonded same-day — instant PDF certificate, accepted by TxDMV eLICENSING.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={GDN_LINK} target="_blank" rel="noreferrer">
+            <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
             <a href="tel:9723799216">
@@ -106,7 +106,7 @@ export default function GDNBondDallas() {
           <h2 className="text-2xl font-bold mb-2">Get Your Dallas GDN Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={GDN_LINK} target="_blank" rel="noreferrer">
+            <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
             <a href="tel:9723799216">

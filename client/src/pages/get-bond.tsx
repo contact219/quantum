@@ -149,8 +149,8 @@ export default function GetBond() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           Prefer to talk?{" "}
-          <a href="tel:+18889978889" className="text-indigo-600 font-medium hover:underline">
-            (888) 997-8889
+          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline">
+            972-379-9216
           </a>
         </div>
       </div>

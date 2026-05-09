@@ -43,12 +43,30 @@ const faqs = [
 
 export default function GDNBondTexas() {
   useSEO({
-    title: "Texas GDN Bond | General Distinguishing Number Dealer Bond | Quantum Surety",
+    title: "Texas GDN Bond | $50,000 Dealer Bond from $100/yr | Same-Day | Quantum Surety",
     description:
       "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
     canonical: "/bonds/gdn-bond-texas",
   });
-  useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
+  useSchema({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Texas GDN Bond — General Distinguishing Number Dealer Bond",
+    "serviceType": "Surety Bond",
+    "url": "https://quantumsurety.bond/bonds/gdn-bond-texas",
+    "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond", "telephone": "+19723799216" },
+    "areaServed": { "@type": "State", "name": "Texas" },
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100", "description": "Starting at $100/year for qualified dealers", "availability": "https://schema.org/InStock" },
+  }, "ld-json-Service");
+  useSchema({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  }, "ld-json-FAQ");
 
   return (
     <div className="min-h-screen bg-white">

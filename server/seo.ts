@@ -1570,7 +1570,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/bonds/auto-dealer-bond-texas": {
     title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
     description:
-      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $25,000 bond, rates from $250/yr. Instant PDF delivery.",
+      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/auto-dealer-bond-texas`,
     content: `
       <main>
@@ -1579,14 +1579,116 @@ const PAGE_META: Record<string, PageMeta> = {
         <section>
           <h2>Dealer Types Requiring a Bond</h2>
           <ul>
-            <li>Independent Motor Vehicle Dealer — TxDMV ($25,000)</li>
-            <li>Franchised Motor Vehicle Dealer — TxDMV ($25,000)</li>
-            <li>Wholesale Motor Vehicle Dealer — TxDMV ($25,000)</li>
-            <li>Motorcycle Dealer — TxDMV ($25,000)</li>
-            <li>Used Car Dealer — TxDMV ($25,000)</li>
+            <li>Independent Motor Vehicle Dealer — TxDMV GDN Bond ($50,000)</li>
+            <li>Franchised Motor Vehicle Dealer — TxDMV GDN Bond ($50,000)</li>
+            <li>Wholesale Motor Vehicle Dealer — TxDMV GDN Bond ($50,000)</li>
+            <li>Motorcycle Dealer — TxDMV GDN Bond ($50,000)</li>
+            <li>Buy Here Pay Here Dealer — TxDMV GDN Bond ($50,000)</li>
           </ul>
         </section>
-        <a href="/quote?type=auto_dealer&amp;state=TX">Get My Dealer Bond</a>
+        <a href="/get-bond?type=dealer">Get My Dealer Bond</a>
+      </main>`,
+  },
+
+  "/bonds/gdn-bond-texas": {
+    title: "Texas GDN Bond | $50,000 Dealer Bond from $100/yr | Same-Day Certificate | Quantum Surety",
+    description:
+      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF certificate emailed to you.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-texas`,
+    ogType: "website",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Texas GDN Bond — General Distinguishing Number Dealer Bond",
+        serviceType: "Surety Bond",
+        url: `${BASE_URL}/bonds/gdn-bond-texas`,
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Quantum Surety Bonds",
+          url: BASE_URL,
+          telephone: "+19723799216",
+          address: { "@type": "PostalAddress", addressRegion: "TX", addressCountry: "US" },
+        },
+        areaServed: { "@type": "State", name: "Texas" },
+        description:
+          "Texas GDN (General Distinguishing Number) bond — $50,000 surety bond required by TxDMV under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. Same-day certificate.",
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: "100",
+          description: "Starting at $100/year for qualified dealers",
+          availability: "https://schema.org/InStock",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is a Texas GDN bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by the Texas Department of Motor Vehicles (TxDMV) under Texas Occupations Code §503.033 before a motor vehicle dealer license can be issued. It protects consumers and the state if a dealer commits fraud, fails to transfer titles, or violates Texas dealer law.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How much does a Texas GDN bond cost?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Most Texas dealers pay $100–$300 per year for a $50,000 GDN bond. Your exact rate depends on your credit profile. Dealers with good credit typically pay 0.5–1% of the bond amount annually.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How quickly can I get my GDN bond certificate?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Same-day. Once your application is approved, your bond certificate is emailed as an instant PDF. You can submit it to TxDMV with your GDN license application the same day.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What dealer license types require a Texas GDN bond?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "All six TxDMV dealer license types require a $50,000 GDN bond: New Motor Vehicle Dealer, Used Motor Vehicle Dealer, Wholesale Dealer, Motorcycle Dealer, Buy Here Pay Here (BHPH) Dealer, and Lease/Finance Company.",
+            },
+          },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Texas GDN Bond — General Distinguishing Number Dealer Bond</h1>
+        <p>A Texas GDN bond is a $50,000 surety bond required by the Texas Department of Motor Vehicles (TxDMV) under Texas Occupations Code §503.033. All motor vehicle dealers must hold a valid GDN bond before a dealer license (General Distinguishing Number) can be issued or renewed.</p>
+        <section>
+          <h2>Dealer Types That Require a GDN Bond</h2>
+          <ul>
+            <li>New Motor Vehicle Dealer — $50,000 GDN bond</li>
+            <li>Used Motor Vehicle Dealer — $50,000 GDN bond</li>
+            <li>Wholesale Motor Vehicle Dealer — $50,000 GDN bond</li>
+            <li>Motorcycle Dealer — $50,000 GDN bond</li>
+            <li>Buy Here Pay Here (BHPH) Dealer — $50,000 GDN bond</li>
+            <li>Lease / Finance Company — $50,000 GDN bond</li>
+          </ul>
+        </section>
+        <section>
+          <h2>How Much Does a Texas GDN Bond Cost?</h2>
+          <p>Most dealers pay $100–$300/year. Rates start at 0.5% of the $50,000 bond amount for dealers with good credit. Bad credit dealers may pay up to $600/year. All quotes are instant — no waiting.</p>
+        </section>
+        <section>
+          <h2>Frequently Asked Questions</h2>
+          <dl>
+            <dt>What happens if I operate without a GDN bond?</dt>
+            <dd>Operating without a valid GDN bond is a Class A misdemeanor under Texas Occupations Code §503.033 — fines up to $4,000 and up to one year in jail, plus license revocation by TxDMV.</dd>
+            <dt>Can I get my certificate the same day?</dt>
+            <dd>Yes. Quantum Surety issues instant PDF bond certificates by email. Apply online, get approved, download your certificate — all in under 10 minutes.</dd>
+          </dl>
+        </section>
+        <a href="/get-bond?type=dealer">Get My GDN Bond Certificate</a>
       </main>`,
   },
 
@@ -2290,6 +2392,45 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/bonds/license-bond-texas">View All Surety Bonds</a>
       </main>`,
   },
+
+  "/get-bond": {
+    title: "Get Your Texas Surety Bond | Same-Day Certificate | Quantum Surety",
+    description:
+      "Apply for your Texas surety bond online in minutes. GDN dealer bonds, notary bonds, and contractor license bonds — same-day PDF certificate. TDI-licensed agency (license #3480229).",
+    canonical: `${BASE_URL}/get-bond`,
+    ogType: "website",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Texas Surety Bond Application",
+      serviceType: "Surety Bond",
+      url: `${BASE_URL}/get-bond`,
+      provider: {
+        "@type": "LocalBusiness",
+        name: "Quantum Surety Bonds",
+        url: BASE_URL,
+        telephone: "+19723799216",
+      },
+      areaServed: { "@type": "State", name: "Texas" },
+      description:
+        "Apply for a Texas surety bond online. GDN dealer bonds ($50,000), notary bonds ($10,000), and contractor license bonds. Same-day PDF certificate delivery.",
+    },
+    content: `
+      <main>
+        <h1>Get Your Texas Surety Bond</h1>
+        <p>Apply online in minutes and receive your bond certificate by email the same day. TDI-licensed Texas surety agency — license #3480229.</p>
+        <section>
+          <h2>Bond Types Available</h2>
+          <ul>
+            <li>Texas GDN Dealer Bond — $50,000 bond from $100/yr, same-day certificate</li>
+            <li>Texas Notary Bond — $10,000 bond, $50 flat fee, instant download</li>
+            <li>Texas Contractor License Bond — $10,000–$25,000 bond from $100/yr</li>
+          </ul>
+        </section>
+        <a href="/get-bond?type=dealer">Get My Dealer Bond</a>
+        <a href="/get-bond?type=notary">Get My Notary Bond</a>
+      </main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────
@@ -2356,7 +2497,8 @@ export function generateSitemap(): string {
 
   function getPriority(p: string): string {
     if (p === "/") return "1.0";
-    if (p === "/bonds/notary-bond-texas") return "0.9";
+    if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
+    if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";
     if (p.startsWith("/blog/")) return "0.8";
     if (p.startsWith("/bonds/")) return "0.75";

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Shield, CheckCircle, Phone } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 const DEALER_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
 const NOTARY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
@@ -25,6 +26,16 @@ export default function GetBond() {
   const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
   const type = params.get("type") === "notary" ? "notary" : "dealer";
   const meta = BOND_META[type];
+
+  useSEO({
+    title: type === "notary"
+      ? "Get Your Texas Notary Bond | $50 Instant | Quantum Surety"
+      : "Get Your Texas GDN Dealer Bond | Same-Day Certificate | Quantum Surety",
+    description: type === "notary"
+      ? "Apply for your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency."
+      : "Apply for your Texas GDN dealer bond online. $50,000 bond from $100/yr. Same-day PDF certificate emailed to you. TxDMV-accepted.",
+    canonical: `/get-bond`,
+  });
 
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);

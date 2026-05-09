@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight } from "lucide-react";
 
 const dealerTypes = [
-  { type: "Independent Motor Vehicle Dealer", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
-  { type: "Franchised Motor Vehicle Dealer", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
-  { type: "Wholesale Motor Vehicle Dealer", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
-  { type: "Motorcycle Dealer", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
-  { type: "Used Car Dealer", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
-  { type: "Salvage Dealer / Rebuilder", amount: "$25,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Independent Motor Vehicle Dealer", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Franchised Motor Vehicle Dealer", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Wholesale Motor Vehicle Dealer", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Motorcycle Dealer", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Used Car Dealer", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
+  { type: "Salvage Dealer / Rebuilder", amount: "$50,000", authority: "Texas DMV – Motor Vehicle Division" },
 ];
 
 const faqs = [
@@ -19,11 +19,11 @@ const faqs = [
   },
   {
     q: "How much does a Texas auto dealer bond cost?",
-    a: "For a $25,000 auto dealer bond, most applicants pay $250–$500 per year. Your premium is based primarily on your credit score. Dealers with good credit typically pay about 1–2% of the bond amount annually.",
+    a: "For a $50,000 GDN bond, most dealers pay $100–$300 per year. Your premium is based primarily on your credit score. Dealers with good credit typically pay about 0.5–1% of the bond amount annually.",
   },
   {
     q: "What is the required bond amount for a Texas auto dealer?",
-    a: "The Texas DMV requires a $25,000 surety bond for most motor vehicle dealer licenses, including independent dealers, franchise dealers, wholesale dealers, and used car dealers. The bond amount is set by TxDMV and applies uniformly to most dealer types.",
+    a: "The Texas DMV requires a $50,000 surety bond for most motor vehicle dealer licenses, including independent dealers, franchise dealers, wholesale dealers, and used car dealers. The bond amount is set by TxDMV and applies uniformly to most dealer types.",
   },
   {
     q: "Does a Texas auto dealer bond cover my inventory?",
@@ -43,7 +43,7 @@ export default function AutoDealerBondTexas() {
   useSEO({
     title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
     description:
-      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $25,000 bond, rates from $250/yr. Instant PDF delivery.",
+      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
     canonical: "/bonds/auto-dealer-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -90,8 +90,8 @@ export default function AutoDealerBondTexas() {
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
-            { label: "Bond amount", value: "$25,000", sub: "TxDMV standard requirement" },
-            { label: "Annual cost", value: "From $250/yr", sub: "Based on credit profile" },
+            { label: "Bond amount", value: "$50,000", sub: "TxDMV standard requirement" },
+            { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
             { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
@@ -108,7 +108,7 @@ export default function AutoDealerBondTexas() {
         {/* Dealer types */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Texas Dealer License Types That Require a Bond</h2>
-          <p className="text-gray-600 text-sm mb-6">The Texas DMV requires a $25,000 surety bond for all active motor vehicle dealer licenses before a license can be issued or renewed.</p>
+          <p className="text-gray-600 text-sm mb-6">The Texas DMV requires a $50,000 surety bond for all active motor vehicle dealer licenses before a license can be issued or renewed.</p>
           <div className="grid sm:grid-cols-2 gap-4">
             {dealerTypes.map((d) => (
               <div key={d.type} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4 border border-gray-200">
@@ -149,7 +149,7 @@ export default function AutoDealerBondTexas() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "1", title: "Tell us your dealer type", body: "Select Texas auto dealer bond and your license type (independent, franchise, wholesale, used car). Takes 2 minutes." },
-              { step: "2", title: "Fast approval", body: "Most dealers are approved same-day. No financial statements required for standard $25,000 bonds." },
+              { step: "2", title: "Fast approval", body: "Most dealers are approved same-day. No financial statements required for standard $50,000 bonds." },
               { step: "3", title: "File with TxDMV", body: "Bond certificate emailed instantly as a PDF. Submit to TxDMV with your eLICENSING application." },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -185,7 +185,7 @@ export default function AutoDealerBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Auto Dealer Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=dealer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

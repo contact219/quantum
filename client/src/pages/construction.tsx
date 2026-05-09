@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Building2, Users, CheckCircle, FileText, Shield, Clock, ArrowRight, Sparkles } from "lucide-react";
+import { Building2, Users, CheckCircle, FileText, Shield, Clock, ArrowRight, Sparkles, Phone } from "lucide-react";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
 import constructionHero from "@assets/generated_images/contractor_with_digital_blueprints.png";
@@ -19,13 +19,6 @@ export default function Construction() {
   });
   const [role, setRole] = useState("");
   const [projectSize, setProjectSize] = useState("");
-  const [showRecommendation, setShowRecommendation] = useState(false);
-
-  const handleFindBond = () => {
-    if (role && projectSize) {
-      setShowRecommendation(true);
-    }
-  };
 
   const getRecommendation = () => {
     if (!role || !projectSize) return null;
@@ -77,7 +70,7 @@ export default function Construction() {
     return recommendations[key];
   };
 
-  const recommendation = getRecommendation();
+  const recommendation = role && projectSize ? getRecommendation() : null;
 
   return (
     <div className="min-h-screen">
@@ -230,7 +223,7 @@ export default function Construction() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="role">I am a:</Label>
                   <Select value={role} onValueChange={setRole}>
@@ -258,58 +251,73 @@ export default function Construction() {
                     </SelectContent>
                   </Select>
                 </div>
-
-                <Button 
-                  onClick={handleFindBond} 
-                  className="w-full" 
-                  size="lg"
-                  disabled={!role || !projectSize}
-                  data-testid="button-find-bond"
-                >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Find My Bonds
-                </Button>
               </div>
 
-              {showRecommendation && recommendation && (
-                <div className="mt-6 p-6 bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg border-2 border-primary/20">
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2" data-testid="text-recommendation-title">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                    Recommended Bonds
+              {!recommendation && (
+                <p className="text-sm text-muted-foreground text-center py-2">
+                  Select both options above to see your bond recommendation instantly.
+                </p>
+              )}
+
+              {recommendation && (
+                <div className="p-6 bg-gradient-to-br from-indigo-50 to-teal-50 rounded-xl border-2 border-indigo-200" data-testid="recommendation-panel">
+                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-indigo-900" data-testid="text-recommendation-title">
+                    <CheckCircle className="w-5 h-5 text-indigo-600 shrink-0" />
+                    Here's what you need
                   </h3>
-                  <div className="space-y-4">
+
+                  <div className="space-y-5">
                     <div>
-                      <p className="font-semibold text-sm text-muted-foreground mb-2">You'll need:</p>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Required bonds</p>
                       <div className="flex flex-wrap gap-2">
                         {recommendation.bonds.map((bond, i) => (
-                          <Badge key={i} variant="secondary" className="text-sm" data-testid={`badge-recommended-${i}`}>
-                            <Shield className="w-3 h-3 mr-1" />
+                          <span key={i} className="inline-flex items-center gap-1 bg-white border border-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full" data-testid={`badge-recommended-${i}`}>
+                            <Shield className="w-3 h-3" />
                             {bond}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-sm text-muted-foreground mb-1">Estimated Premium Range:</p>
-                      <p className="text-lg font-bold text-primary" data-testid="text-premium">{recommendation.premium}</p>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="bg-white rounded-lg p-4 border border-indigo-100">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Estimated premium</p>
+                        <p className="text-xl font-bold text-indigo-700" data-testid="text-premium">{recommendation.premium}</p>
+                        <p className="text-xs text-gray-500 mt-1">of contract value</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 border border-indigo-100">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Turnaround</p>
+                        <p className="text-xl font-bold text-indigo-700">Same-day</p>
+                        <p className="text-xs text-gray-500 mt-1">on most applications</p>
+                      </div>
                     </div>
+
                     <div>
-                      <p className="font-semibold text-sm text-muted-foreground mb-2">Required Documents:</p>
-                      <ul className="space-y-1">
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Documents you'll need</p>
+                      <ul className="grid sm:grid-cols-2 gap-1">
                         {recommendation.docs.map((doc, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm" data-testid={`text-doc-${i}`}>
-                            <FileText className="w-4 h-4 text-accent" />
+                          <li key={i} className="flex items-center gap-2 text-sm text-gray-700" data-testid={`text-doc-${i}`}>
+                            <FileText className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                             {doc}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <Link href="/quote">
-                      <Button className="w-full" size="lg" data-testid="button-start-quote">
-                        Start Quote
-                        <ArrowRight className="w-5 h-5 ml-2" />
-                      </Button>
-                    </Link>
+
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                      <Link href={`/quote?type=${role}`} className="flex-1">
+                        <Button className="w-full" size="lg" data-testid="button-start-quote">
+                          Get My Bond Quote
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                      <a href="tel:9723799216" className="flex-1">
+                        <Button variant="outline" size="lg" className="w-full border-indigo-300 text-indigo-700 hover:bg-indigo-50">
+                          <Phone className="w-4 h-4 mr-2" />
+                          (972) 379-9216
+                        </Button>
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}

@@ -2393,6 +2393,41 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/bonds/gdn-bond-dallas": {
+    title: "GDN Bond Dallas TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-dallas`,
+    content: `<main><h1>GDN Bond — Dallas, Texas</h1><p>Every licensed motor vehicle dealer in Dallas and the DFW metroplex must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Dallas GDN Bond</a></main>`,
+  },
+
+  "/bonds/gdn-bond-houston": {
+    title: "GDN Bond Houston TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-houston`,
+    content: `<main><h1>GDN Bond — Houston, Texas</h1><p>Every licensed motor vehicle dealer in Houston must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Houston GDN Bond</a></main>`,
+  },
+
+  "/bonds/gdn-bond-austin": {
+    title: "GDN Bond Austin TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-austin`,
+    content: `<main><h1>GDN Bond — Austin, Texas</h1><p>Every licensed motor vehicle dealer in Austin must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Austin GDN Bond</a></main>`,
+  },
+
+  "/bonds/gdn-bond-san-antonio": {
+    title: "GDN Bond San Antonio TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all San Antonio-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-san-antonio`,
+    content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
+  },
+
+  "/bonds/notary-bond-renewal-texas": {
+    title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
+    description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",
+    canonical: `${BASE_URL}/bonds/notary-bond-renewal-texas`,
+    content: `<main><h1>Texas Notary Bond Renewal</h1><p>Renew your Texas notary bond online in under 5 minutes. $10,000 coverage for your 4-year commission term. $50 flat fee, instant PDF, SB693 compliant.</p><a href="/get-bond?type=notary">Renew My Notary Bond</a></main>`,
+  },
+
   "/get-bond": {
     title: "Get Your Texas Surety Bond | Same-Day Certificate | Quantum Surety",
     description:
@@ -2500,6 +2535,7 @@ export function generateSitemap(): string {
     if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
     if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";
+    if (p.startsWith("/bonds/gdn-bond-")) return "0.85";
     if (p.startsWith("/blog/")) return "0.8";
     if (p.startsWith("/bonds/")) return "0.75";
     return "0.6";

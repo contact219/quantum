@@ -2421,6 +2421,41 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
   },
 
+  "/bonds/mbe-contractor-bond-texas": {
+    title: "Surety Bonds for MBE Contractors Texas | HUB & DBE Certified | Quantum Surety",
+    description:
+      "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee Program available. Same-day certificates.",
+    canonical: `${BASE_URL}/bonds/mbe-contractor-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Surety Bonds for MBE and HUB-Certified Texas Contractors",
+      serviceType: "Surety Bond",
+      url: `${BASE_URL}/bonds/mbe-contractor-bond-texas`,
+      provider: { "@type": "LocalBusiness", name: "Quantum Surety Bonds", url: BASE_URL, telephone: "+19723799216" },
+      areaServed: { "@type": "State", name: "Texas" },
+      description: "Bid bonds, performance bonds, and payment bonds for MBE, HUB-certified, and DBE-certified Texas contractors. SBA Surety Bond Guarantee Program available.",
+    },
+    content: `
+      <main>
+        <h1>Surety Bonds for Minority Contractors in Texas</h1>
+        <p>Quantum Surety specializes in bonding HUB-certified, DBE-certified, and MBE contractors in Texas. We issue bid bonds, performance bonds, and payment bonds same-day — and work with the SBA Surety Bond Guarantee Program for contractors who don't qualify through traditional channels.</p>
+        <section>
+          <h2>Certifications We Serve</h2>
+          <ul>
+            <li>HUB — Historically Underutilized Business (Texas Comptroller)</li>
+            <li>DBE — Disadvantaged Business Enterprise (TxDOT / Federal)</li>
+            <li>MBE — Minority Business Enterprise (NCTRCA / City programs)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>SBA Surety Bond Guarantee Program</h2>
+          <p>The SBA guarantees 70–90% of your bond if you can't qualify traditionally. Covers bid, performance, and payment bonds up to $10 million.</p>
+        </section>
+        <a href="/quote">Get My MBE Contractor Bond Quote</a>
+      </main>`,
+  },
+
   "/bonds/notary-bond-renewal-texas": {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",

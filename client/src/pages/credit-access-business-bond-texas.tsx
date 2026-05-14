@@ -1,4 +1,4 @@
-import { useSEO, useSchema } from "@/lib/seo";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, AlertTriangle, DollarSign, Clock, Shield, FileText } from "lucide-react";
 import { Link } from "wouter";
@@ -68,7 +68,8 @@ export default function CreditAccessBusinessBondTexas() {
     description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval, same-day certificate.",
     canonical: "https://quantumsurety.bond/bonds/credit-access-business-bond-texas",
   });
-  useSchema([SERVICE_SCHEMA, FAQ_SCHEMA]);
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   return (
     <div className="min-h-screen bg-white">

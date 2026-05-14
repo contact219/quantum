@@ -1,4 +1,4 @@
-import { useSEO, useSchema } from "@/lib/seo";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, AlertTriangle, DollarSign, Clock, Shield, FileText } from "lucide-react";
 import { Link } from "wouter";
@@ -76,7 +76,8 @@ export default function PropertyTaxConsultantBondTexas() {
     description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year license term.",
     canonical: "https://quantumsurety.bond/bonds/property-tax-consultant-bond-texas",
   });
-  useSchema([SERVICE_SCHEMA, FAQ_SCHEMA]);
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   return (
     <div className="min-h-screen bg-white">

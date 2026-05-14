@@ -1,4 +1,4 @@
-import { useSEO, useSchema } from "@/lib/seo";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, AlertTriangle, DollarSign, Clock, Shield } from "lucide-react";
 import { Link } from "wouter";
@@ -76,7 +76,8 @@ export default function MortgageBrokerBondTexas() {
     description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Instant approval, same-day certificate.",
     canonical: "https://quantumsurety.bond/bonds/mortgage-broker-bond-texas",
   });
-  useSchema([SERVICE_SCHEMA, FAQ_SCHEMA]);
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   return (
     <div className="min-h-screen bg-white">

@@ -1,4 +1,4 @@
-import { useSEO, useSchema } from "@/lib/seo";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, AlertTriangle, DollarSign, Clock, Shield, FileText } from "lucide-react";
 import { Link } from "wouter";
@@ -68,7 +68,8 @@ export default function CollectionAgencyBondTexas() {
     description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Instant online approval, same-day certificate. File with OCCC through NMLS.",
     canonical: "https://quantumsurety.bond/bonds/collection-agency-bond-texas",
   });
-  useSchema([SERVICE_SCHEMA, FAQ_SCHEMA]);
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
 
   return (
     <div className="min-h-screen bg-white">

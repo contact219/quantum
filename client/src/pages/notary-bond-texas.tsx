@@ -318,6 +318,36 @@ export default function NotaryBondTexas() {
         </div>
       </section>
 
+
+      {/* Texas Cities */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+            Texas Notary Bond by City
+          </h2>
+          <p className="text-center text-gray-600 mb-10">
+            Find notary bond information specific to your Texas city.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { city: "Dallas", slug: "notary-bond-dallas", note: "Dallas / DFW area" },
+              { city: "Houston", slug: "notary-bond-houston", note: "Harris County & Houston metro" },
+              { city: "San Antonio", slug: "notary-bond-san-antonio", note: "Bexar County & metro" },
+              { city: "Austin", slug: "notary-bond-austin", note: "Travis / Williamson County" },
+              { city: "Fort Worth", slug: "notary-bond-fort-worth", note: "Tarrant County & DFW" },
+            ].map((c) => (
+              <Link key={c.city} href={`/bonds/${c.slug}`}>
+                <div className="border border-gray-200 bg-white rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
+                  <p className="font-semibold text-gray-900 mb-1">{c.city} Notary Bond</p>
+                  <p className="text-xs text-gray-500">{c.note}</p>
+                  <p className="text-indigo-600 text-xs mt-2 font-medium">City-specific info ?</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Neighboring States */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">

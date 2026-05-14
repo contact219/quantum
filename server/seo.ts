@@ -1044,6 +1044,11 @@ const PAGE_META: Record<string, PageMeta> = {
             <li><a href="/bonds/notary-bond-san-antonio">San Antonio Notary Bond</a> — Bexar County &amp; metro notaries</li>
             <li><a href="/bonds/notary-bond-austin">Austin Notary Bond</a> — Travis / Williamson County notaries</li>
             <li><a href="/bonds/notary-bond-fort-worth">Fort Worth Notary Bond</a> — Tarrant County &amp; DFW notaries</li>
+            <li><a href="/bonds/notary-bond-el-paso">El Paso Notary Bond</a> — El Paso County &amp; West Texas notaries</li>
+            <li><a href="/bonds/notary-bond-arlington">Arlington Notary Bond</a> — Mid-Cities &amp; Tarrant County notaries</li>
+            <li><a href="/bonds/notary-bond-plano">Plano Notary Bond</a> — Collin County &amp; North DFW notaries</li>
+            <li><a href="/bonds/notary-bond-corpus-christi">Corpus Christi Notary Bond</a> — Nueces County &amp; Coastal Bend notaries</li>
+            <li><a href="/bonds/notary-bond-lubbock">Lubbock Notary Bond</a> — Lubbock County &amp; South Plains notaries</li>
           </ul>
           <h2>Notary Bonds in Neighboring States</h2>
           <ul>
@@ -2704,6 +2709,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Credit Access Business (CAB) Bond | OCCC Required | Quantum Surety",
     description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval, same-day certificate.",
     canonical: `${BASE_URL}/bonds/credit-access-business-bond-texas`,
+    noIndex: false,
+  },
+  "/bonds/notary-bond-el-paso": {
+    title: "El Paso Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    description: "Get your Texas notary bond in El Paso for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving El Paso County notaries.",
+    canonical: `${BASE_URL}/bonds/notary-bond-el-paso`,
+    noIndex: false,
+  },
+  "/bonds/notary-bond-arlington": {
+    title: "Arlington Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Arlington for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Tarrant County notaries.",
+    canonical: `${BASE_URL}/bonds/notary-bond-arlington`,
+    noIndex: false,
+  },
+  "/bonds/notary-bond-plano": {
+    title: "Plano Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Plano for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Collin County notaries.",
+    canonical: `${BASE_URL}/bonds/notary-bond-plano`,
+    noIndex: false,
+  },
+  "/bonds/notary-bond-corpus-christi": {
+    title: "Corpus Christi Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Corpus Christi for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Nueces County notaries.",
+    canonical: `${BASE_URL}/bonds/notary-bond-corpus-christi`,
+    noIndex: false,
+  },
+  "/bonds/notary-bond-lubbock": {
+    title: "Lubbock Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Lubbock for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Lubbock County notaries.",
+    canonical: `${BASE_URL}/bonds/notary-bond-lubbock`,
     noIndex: false,
   },
   "/bonds/notary-bond-renewal-texas": {

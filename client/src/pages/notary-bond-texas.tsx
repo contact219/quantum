@@ -328,13 +328,18 @@ export default function NotaryBondTexas() {
           <p className="text-center text-gray-600 mb-10">
             Find notary bond information specific to your Texas city.
           </p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { city: "Dallas", slug: "notary-bond-dallas", note: "Dallas / DFW area" },
               { city: "Houston", slug: "notary-bond-houston", note: "Harris County & Houston metro" },
               { city: "San Antonio", slug: "notary-bond-san-antonio", note: "Bexar County & metro" },
               { city: "Austin", slug: "notary-bond-austin", note: "Travis / Williamson County" },
               { city: "Fort Worth", slug: "notary-bond-fort-worth", note: "Tarrant County & DFW" },
+              { city: "El Paso", slug: "notary-bond-el-paso", note: "El Paso County & West Texas" },
+              { city: "Arlington", slug: "notary-bond-arlington", note: "Mid-Cities / Tarrant County" },
+              { city: "Plano", slug: "notary-bond-plano", note: "Collin County & North DFW" },
+              { city: "Corpus Christi", slug: "notary-bond-corpus-christi", note: "Nueces County & Coastal Bend" },
+              { city: "Lubbock", slug: "notary-bond-lubbock", note: "Lubbock County & South Plains" },
             ].map((c) => (
               <Link key={c.city} href={`/bonds/${c.slug}`}>
                 <div className="border border-gray-200 bg-white rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

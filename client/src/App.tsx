@@ -62,6 +62,11 @@ import NotaryBondHouston from "@/pages/notary-bond-houston";
 import NotaryBondSanAntonio from "@/pages/notary-bond-san-antonio";
 import NotaryBondAustin from "@/pages/notary-bond-austin";
 import NotaryBondFortWorth from "@/pages/notary-bond-fort-worth";
+import NotaryBondElPaso from "@/pages/notary-bond-el-paso";
+import NotaryBondArlington from "@/pages/notary-bond-arlington";
+import NotaryBondPlano from "@/pages/notary-bond-plano";
+import NotaryBondCorpusChristi from "@/pages/notary-bond-corpus-christi";
+import NotaryBondLubbock from "@/pages/notary-bond-lubbock";
 import GDNBondFortWorth from "@/pages/gdn-bond-fort-worth";
 import GDNBondPlano from "@/pages/gdn-bond-plano";
 import GDNBondArlington from "@/pages/gdn-bond-arlington";
@@ -229,6 +234,11 @@ function Router() {
       <Route path="/bonds/notary-bond-san-antonio" component={NotaryBondSanAntonio} />
       <Route path="/bonds/notary-bond-austin" component={NotaryBondAustin} />
       <Route path="/bonds/notary-bond-fort-worth" component={NotaryBondFortWorth} />
+      <Route path="/bonds/notary-bond-el-paso" component={NotaryBondElPaso} />
+      <Route path="/bonds/notary-bond-arlington" component={NotaryBondArlington} />
+      <Route path="/bonds/notary-bond-plano" component={NotaryBondPlano} />
+      <Route path="/bonds/notary-bond-corpus-christi" component={NotaryBondCorpusChristi} />
+      <Route path="/bonds/notary-bond-lubbock" component={NotaryBondLubbock} />
       {/* Additional GDN bond city pages */}
       <Route path="/bonds/gdn-bond-fort-worth" component={GDNBondFortWorth} />
       <Route path="/bonds/gdn-bond-plano" component={GDNBondPlano} />

@@ -260,6 +260,31 @@ export default function GDNBondTexas() {
           </div>
         </div>
 
+
+        <div className="mt-10">
+          <h3 className="text-lg font-bold text-gray-900 mb-4">GDN Bond by Texas City</h3>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { href: "/bonds/gdn-bond-dallas", city: "Dallas", note: "DFW area dealers" },
+              { href: "/bonds/gdn-bond-houston", city: "Houston", note: "Harris County dealers" },
+              { href: "/bonds/gdn-bond-san-antonio", city: "San Antonio", note: "Bexar County dealers" },
+              { href: "/bonds/gdn-bond-austin", city: "Austin", note: "Travis County dealers" },
+              { href: "/bonds/gdn-bond-fort-worth", city: "Fort Worth", note: "Tarrant County dealers" },
+              { href: "/bonds/gdn-bond-plano", city: "Plano", note: "Collin County dealers" },
+              { href: "/bonds/gdn-bond-arlington", city: "Arlington", note: "Mid-Cities dealers" },
+              { href: "/bonds/gdn-bond-el-paso", city: "El Paso", note: "El Paso County dealers" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href}>
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
+                  <p className="font-semibold text-gray-900 text-sm">GDN Bond — {item.city}</p>
+                  <p className="text-xs text-gray-500 mt-1">{item.note}</p>
+                  <p className="text-indigo-600 text-xs mt-2 font-medium flex items-center gap-1">View <ArrowRight className="w-3 h-3" /></p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-10">
           <h3 className="text-lg font-bold text-gray-900 mb-4">Related bonds</h3>
           <div className="grid sm:grid-cols-3 gap-4">

@@ -1696,6 +1696,19 @@ const PAGE_META: Record<string, PageMeta> = {
             <dd>Yes. Quantum Surety issues instant PDF bond certificates by email. Apply online, get approved, download your certificate — all in under 10 minutes.</dd>
           </dl>
         </section>
+        <section>
+          <h2>Texas GDN Bond by City</h2>
+          <ul>
+            <li><a href="/bonds/gdn-bond-dallas">GDN Bond — Dallas</a> — DFW area dealers</li>
+            <li><a href="/bonds/gdn-bond-houston">GDN Bond — Houston</a> — Harris County dealers</li>
+            <li><a href="/bonds/gdn-bond-san-antonio">GDN Bond — San Antonio</a> — Bexar County dealers</li>
+            <li><a href="/bonds/gdn-bond-austin">GDN Bond — Austin</a> — Travis County dealers</li>
+            <li><a href="/bonds/gdn-bond-fort-worth">GDN Bond — Fort Worth</a> — Tarrant County dealers</li>
+            <li><a href="/bonds/gdn-bond-plano">GDN Bond — Plano</a> — Collin County dealers</li>
+            <li><a href="/bonds/gdn-bond-arlington">GDN Bond — Arlington</a> — Arlington / Mid-Cities dealers</li>
+            <li><a href="/bonds/gdn-bond-el-paso">GDN Bond — El Paso</a> — El Paso County dealers</li>
+          </ul>
+        </section>
         <a href="/get-bond?type=dealer">Get My GDN Bond Certificate</a>
       </main>`,
   },

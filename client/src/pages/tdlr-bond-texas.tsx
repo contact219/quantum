@@ -180,8 +180,11 @@ export default function TDLRBondTexas() {
 
         <div className="mt-10">
           <h3 className="text-lg font-bold text-gray-900 mb-4">Related bonds</h3>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
+              { href: "/bonds/auctioneer-bond-texas", title: "Auctioneer Bond", tag: "TDLR §1802" },
+              { href: "/bonds/property-tax-consultant-bond-texas", title: "Property Tax Consultant Bond", tag: "TDLR Ch. 1152" },
+              { href: "/bonds/home-inspector-bond-texas", title: "Home Inspector Bond", tag: "TREC" },
               { href: "/bonds/electrical-contractor-bond-texas", title: "Electrical Contractor Bond", tag: "City License" },
               { href: "/bonds/hvac-bond-texas", title: "HVAC Contractor Bond", tag: "TDLR AC" },
               { href: "/bonds/license-bond-texas", title: "All Texas License Bonds", tag: "Hub Page" },

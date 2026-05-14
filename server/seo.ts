@@ -912,6 +912,11 @@ const PAGE_META: Record<string, PageMeta> = {
             <li>HVAC Contractor Bond — TDLR Air Conditioning & Refrigeration license requirement</li>
             <li>General Contractor Bond — City licensing requirements across major Texas metros</li>
             <li>Auto Dealer Bond — Texas DMV dealer license requirement ($25,000–$50,000)</li>
+            <li><a href="/bonds/mortgage-broker-bond-texas">Mortgage Company Bond</a> — TDSML requirement ($50,000–$250,000)</li>
+            <li><a href="/bonds/auctioneer-bond-texas">Auctioneer Bond</a> — TDLR Chapter 1802 requirement ($10,000)</li>
+            <li><a href="/bonds/property-tax-consultant-bond-texas">Property Tax Consultant Bond</a> — TDLR Chapter 1152 ($5,000)</li>
+            <li><a href="/bonds/collection-agency-bond-texas">Collection Agency Bond</a> — OCCC Finance Code Ch. 392 ($10,000)</li>
+            <li><a href="/bonds/credit-access-business-bond-texas">Credit Access Business Bond</a> — OCCC Finance Code Ch. 393 ($25,000/location)</li>
           </ul>
         </section>
         <a href="/quote">Get My License Bond</a>

@@ -141,6 +141,46 @@ export default function LicenseBondTexas() {
       who: "New and used car dealers obtaining a Texas DMV dealer license",
       href: "/bonds/gdn-bond-texas",
     },
+    {
+      name: "Mortgage Company Bond",
+      authority: "Texas Dept. of Savings & Mortgage Lending",
+      amount: "$50,000–$250,000",
+      cost: "From $500/yr",
+      who: "Residential mortgage companies licensed by TDSML under Finance Code Ch. 156",
+      href: "/bonds/mortgage-broker-bond-texas",
+    },
+    {
+      name: "Auctioneer Bond",
+      authority: "TDLR — Auctioneers",
+      amount: "$10,000",
+      cost: "From $100/yr",
+      who: "Licensed Texas auctioneers under TDLR Occupations Code Ch. 1802",
+      href: "/bonds/auctioneer-bond-texas",
+    },
+    {
+      name: "Property Tax Consultant Bond",
+      authority: "TDLR — Property Tax Consultants",
+      amount: "$5,000",
+      cost: "$50/yr",
+      who: "Registered and Senior Property Tax Consultants licensed under TDLR Ch. 1152",
+      href: "/bonds/property-tax-consultant-bond-texas",
+    },
+    {
+      name: "Collection Agency Bond",
+      authority: "Texas Office of Consumer Credit Commissioner",
+      amount: "$10,000",
+      cost: "From $100/yr",
+      who: "Third-party debt collection agencies licensed by OCCC under Finance Code Ch. 392",
+      href: "/bonds/collection-agency-bond-texas",
+    },
+    {
+      name: "Credit Access Business Bond",
+      authority: "Texas Office of Consumer Credit Commissioner",
+      amount: "$25,000 per location",
+      cost: "From $250/yr",
+      who: "Payday lenders and auto title loan companies licensed under Finance Code Ch. 393",
+      href: "/bonds/credit-access-business-bond-texas",
+    },
   ];
 
   const cities = [

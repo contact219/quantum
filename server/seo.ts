@@ -1032,6 +1032,14 @@ const PAGE_META: Record<string, PageMeta> = {
           <p>The notary bond protects the public — not the notary. Errors and Omissions (E&O) insurance protects the notary against personal liability for unintentional mistakes. Most mobile notaries and signing agents carry both. E&O insurance is available to add at checkout alongside your bond.</p>
         </section>
         <section>
+          <h2>Texas Notary Bond by City</h2>
+          <ul>
+            <li><a href="/bonds/notary-bond-dallas">Dallas Notary Bond</a> — Dallas / DFW area notaries</li>
+            <li><a href="/bonds/notary-bond-houston">Houston Notary Bond</a> — Harris County &amp; Houston metro notaries</li>
+            <li><a href="/bonds/notary-bond-san-antonio">San Antonio Notary Bond</a> — Bexar County &amp; metro notaries</li>
+            <li><a href="/bonds/notary-bond-austin">Austin Notary Bond</a> — Travis / Williamson County notaries</li>
+            <li><a href="/bonds/notary-bond-fort-worth">Fort Worth Notary Bond</a> — Tarrant County &amp; DFW notaries</li>
+          </ul>
           <h2>Notary Bonds in Neighboring States</h2>
           <ul>
             <li><a href="/bonds/notary-bond-oklahoma">Oklahoma Notary Bond</a> — $1,000 bond, 4-year term</li>
@@ -1040,7 +1048,7 @@ const PAGE_META: Record<string, PageMeta> = {
             <li><a href="/bonds/notary-bond-new-mexico">New Mexico Notary Bond</a> — $10,000 bond, 4-year term</li>
           </ul>
         </section>
-        <a href="/quote?type=notary">Get My Texas Notary Bond — $50</a>
+        <a href="/get-bond?type=notary">Get My Texas Notary Bond — $50</a>
       </main>`,
   },
 

@@ -27,9 +27,9 @@ const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "
 
 const PAGE_META: Record<string, PageMeta> = {
   "/": {
-    title: "Quantum Surety Bonds | Fast Quotes & Professional Services in Texas",
+    title: "Texas Surety Bonds | Notary, Contractor & Dealer Bonds | Quantum Surety",
     description:
-      "Quantum Surety Bonds offers fast, reliable surety bond services in Texas. Get bid bonds, performance bonds, and license bonds online. Expert support and competitive rates.",
+      "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $100/yr. Contractor bonds same-day. TDI license #3480229. All 254 Texas counties.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
     structuredData: [
@@ -295,41 +295,90 @@ const PAGE_META: Record<string, PageMeta> = {
     },
     content: `
       <main>
-        <h1>Contract Surety Bonds for Construction Contractors</h1>
-        <p>Contract surety bonds protect project owners and ensure contractors meet their obligations. Quantum Surety provides all three types of contract bonds required on public and private construction projects.</p>
+        <h1>Contract Surety Bonds — Bid, Performance &amp; Payment Bonds</h1>
+        <p>Contract surety bonds protect project owners and ensure Texas contractors meet their obligations on public and private construction projects. Quantum Surety issues all three required bond types — bid bonds, performance bonds, and payment bonds — with same-day approval for qualified contractors.</p>
         <section>
           <h2>Bid Bonds</h2>
-          <p>A bid bond guarantees that a contractor will enter into a contract at the bid price if selected. Required on most public construction projects. We issue bid bonds same-day for qualified contractors.</p>
+          <p>A bid bond guarantees that a contractor will enter into a contract at the bid price if selected. Required on most public construction projects in Texas and across the U.S. Bid bonds are typically 5%–10% of the bid amount. Same-day issuance for qualified contractors.</p>
+          <ul>
+            <li>Required on public projects in Texas and federally</li>
+            <li>Typically 5%–10% of bid amount</li>
+            <li>Same-day issuance — no waiting for project deadlines</li>
+          </ul>
+          <a href="/bonds/bid-bond-texas">Learn about Texas Bid Bonds</a>
         </section>
         <section>
           <h2>Performance Bonds</h2>
-          <p>A performance bond guarantees that a contractor will complete the project according to the contract terms. Required on federal projects over $150,000 under the Miller Act, and on most state and municipal projects.</p>
+          <p>A performance bond guarantees that a contractor will complete the project according to the contract terms. Required under the federal Miller Act on contracts over $150,000. Texas Government Code §2253.021 requires performance bonds on state projects over $25,000. Premium is typically 0.5%–3% of the contract amount.</p>
+          <ul>
+            <li>Required on Texas state contracts over $25,000 (Tex. Gov't Code §2253)</li>
+            <li>Required on federal contracts over $150,000 (Miller Act)</li>
+            <li>Premium: typically 0.5%–3% of contract value</li>
+          </ul>
+          <a href="/bonds/performance-bond-texas">Learn about Texas Performance Bonds</a>
         </section>
         <section>
           <h2>Payment Bonds</h2>
-          <p>A payment bond guarantees that a contractor will pay subcontractors, laborers, and material suppliers. Typically issued alongside a performance bond on public projects.</p>
+          <p>A payment bond guarantees that a contractor will pay subcontractors, laborers, and material suppliers. Typically required alongside a performance bond on Texas public projects over $25,000. Protects subcontractors and suppliers who cannot file mechanic's liens on public property.</p>
+          <a href="/bonds/payment-bond-texas">Learn about Texas Payment Bonds</a>
+        </section>
+        <section>
+          <h2>Bid Bond vs Performance Bond</h2>
+          <p>Bid bonds are submitted with the bid; performance bonds are required after contract award. Most public projects require both. <a href="/bonds/bid-bond-vs-performance-bond">Compare bid bonds vs performance bonds.</a></p>
+        </section>
+        <section>
+          <h2>Texas Contract Bond Requirements</h2>
+          <ul>
+            <li>Texas Government Code §2253.021 — performance and payment bonds on public contracts over $25,000</li>
+            <li>Federal Miller Act (40 U.S.C. §3131) — performance and payment bonds on federal contracts over $150,000</li>
+            <li>Texas Education Code and Local Government Code for school districts and municipal contracts</li>
+          </ul>
         </section>
         <a href="/quote">Get a Contract Bond Quote</a>
       </main>`,
   },
 
   "/bonds/commercial": {
-    title: "Commercial Surety Bonds | License & Permit Bonds | Quantum Surety",
+    title: "Commercial Surety Bonds | License & Permit Bonds Texas | Quantum Surety",
     description:
-      "Commercial surety bonds including contractor license bonds, permit bonds, and court bonds. Fast online quotes for Texas and nationwide.",
+      "Texas commercial surety bonds — license bonds, permit bonds, court bonds, notary bonds, and dealer bonds. TDI-licensed agency. Instant online issuance. Same-day certificate.",
     canonical: `${BASE_URL}/bonds/commercial`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Commercial Surety Bonds",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": { "@type": "State", "name": "Texas" },
+      "description": "License bonds, permit bonds, auto dealer bonds, notary bonds, and court bonds for Texas businesses and individuals.",
+    },
     content: `
       <main>
-        <h1>Commercial Surety Bonds</h1>
-        <p>Commercial surety bonds protect consumers, government agencies, and business partners from financial loss. Quantum Surety specializes in license &amp; permit bonds, court bonds, and other commercial surety products for businesses and individuals.</p>
+        <h1>Texas Commercial Surety Bonds</h1>
+        <p>Commercial surety bonds protect consumers, government agencies, and business partners from financial losses caused by business misconduct or license violations. Quantum Surety is a TDI-licensed Texas surety agency (license #3480229) that issues commercial bonds instantly online — same-day certificate delivery.</p>
         <section>
           <h2>License &amp; Permit Bonds</h2>
-          <p>Most states and municipalities require contractors to hold a surety bond as a condition of licensure. Common types include contractor license bonds, electrician bonds, plumbing bonds, HVAC bonds, and auto dealer bonds.</p>
+          <p>Most Texas state agencies and municipalities require a surety bond as a condition of obtaining a business or contractor license. Quantum Surety issues all common Texas license bonds instantly online.</p>
+          <ul>
+            <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000 bond, $50 flat fee, SB693 compliant</li>
+            <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000 bond, from $100/yr, TxDMV required</li>
+            <li><a href="/bonds/tdlr-bond-texas">TDLR Contractor Bond</a> — electricians, HVAC, plumbers, and other TDLR trades</li>
+            <li><a href="/bonds/home-inspector-bond-texas">Home Inspector Bond</a> — TREC-required bond for Texas home inspectors</li>
+            <li><a href="/bonds/locksmith-bond-texas">Locksmith Bond</a> — DPS-required bond for Texas locksmiths</li>
+            <li><a href="/bonds/mortgage-broker-bond-texas">Mortgage Company Bond</a> — TDSML-required, $50K–$250K</li>
+            <li><a href="/bonds/collection-agency-bond-texas">Collection Agency Bond</a> — OCCC-required, $10,000</li>
+            <li><a href="/bonds/auctioneer-bond-texas">Auctioneer Bond</a> — TDLR-required, $10,000</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Freight Broker &amp; Transportation Bonds</h2>
+          <p>FMCSA requires a $75,000 BMC-84 freight broker bond for all licensed freight brokers. Quantum Surety files directly with FMCSA. <a href="/bonds/freight-broker-bond-texas">Learn about freight broker bonds.</a></p>
         </section>
         <section>
           <h2>Court Bonds</h2>
-          <p>Court bonds are required by courts to protect parties in legal proceedings. Types include appeal bonds, executor bonds, guardian bonds, and injunction bonds.</p>
+          <p>Court bonds are required by Texas courts to protect parties in legal proceedings. Common types include appeal bonds, executor bonds, guardian bonds, and injunction bonds. Contact us for a custom quote.</p>
         </section>
+        <a href="/bonds/license-bond-texas">View All Texas License Bonds</a>
         <a href="/quote">Get a Commercial Bond Quote</a>
       </main>`,
   },
@@ -2691,56 +2740,834 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Mortgage Company Bond | TDSML Required | $500/yr | Quantum Surety",
     description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Instant approval, same-day certificate.",
     canonical: `${BASE_URL}/bonds/mortgage-broker-bond-texas`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Mortgage Company Surety Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "500", "description": "From $500/year for a $50,000 bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond is required for a Texas mortgage company license?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Finance Code Chapter 156 requires mortgage company licensees to file a surety bond with TDSML. The required amount is $50,000 for companies funding up to $3 million annually, scaling to $250,000 for over $25 million per year." }},
+          { "@type": "Question", "name": "How much does a Texas mortgage company bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Premium rates are typically 1%–3% of the bond amount per year. A $50,000 bond costs $500–$1,500/year. A $100,000 bond costs $1,000–$3,000/year. Most applicants with good credit qualify at 1%." }},
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "License Bonds", "item": "https://quantumsurety.bond/bonds/license-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Texas Mortgage Company Bond", "item": "https://quantumsurety.bond/bonds/mortgage-broker-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Texas Mortgage Company Bond</h1>
+      <p>TDSML requires all Texas mortgage company license applicants under Finance Code Chapter 156 to file a surety bond. Bond amounts range from $50,000 to $250,000 based on annual origination volume. Starting from $500/year. Same-day certificate. File directly with TDSML through NMLS.</p>
+      <section>
+        <h2>Bond Amount Tiers</h2>
+        <ul>
+          <li>Up to $3M annual origination: $50,000 bond — from $500/yr</li>
+          <li>$3M–$10M: $75,000 bond — from $750/yr</li>
+          <li>$10M–$25M: $100,000 bond — from $1,000/yr</li>
+          <li>Over $25M: $250,000 bond — from $2,500/yr</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=mortgage">Get My Texas Mortgage Company Bond</a>
+    </main>`,
   },
   "/bonds/property-tax-consultant-bond-texas": {
     title: "Texas Property Tax Consultant Bond | $50/yr | TDLR Required | Quantum Surety",
     description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year license term.",
     canonical: `${BASE_URL}/bonds/property-tax-consultant-bond-texas`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Property Tax Consultant Surety Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50/year for a $5,000 TDLR bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do Texas property tax consultants need?", "acceptedAnswer": { "@type": "Answer", "text": "TDLR requires every licensed property tax consultant to maintain a $5,000 surety bond under Texas Occupations Code Chapter 1152. The bond protects property owners from consultant misconduct." }},
+          { "@type": "Question", "name": "How much is a Texas property tax consultant bond?", "acceptedAnswer": { "@type": "Answer", "text": "The annual premium is $50 for a $5,000 bond. Most applicants qualify at this rate regardless of credit score because the bond amount is small. The bond covers a 2-year license term." }},
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "TDLR License Bonds", "item": "https://quantumsurety.bond/bonds/tdlr-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Property Tax Consultant Bond", "item": "https://quantumsurety.bond/bonds/property-tax-consultant-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Texas Property Tax Consultant Bond</h1>
+      <p>TDLR requires every licensed Registered Property Tax Consultant (RPTC) and Senior Property Tax Consultant (SPTC) to maintain a $5,000 surety bond under Texas Occupations Code Chapter 1152. $50/year. Instant approval. Same-day certificate emailed to you.</p>
+      <section>
+        <h2>Requirements</h2>
+        <ul>
+          <li>Bond amount: $5,000 required by TDLR</li>
+          <li>Applies to: RPTC and SPTC license holders</li>
+          <li>License term: 2 years — bond must remain continuous</li>
+          <li>Cost: $50/year — no credit check required</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=property-tax-consultant">Get My Property Tax Consultant Bond — $50</a>
+    </main>`,
   },
   "/bonds/collection-agency-bond-texas": {
     title: "Texas Collection Agency Bond | $100/yr | OCCC Required | Quantum Surety",
     description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Instant online approval, same-day certificate. File with OCCC through NMLS.",
     canonical: `${BASE_URL}/bonds/collection-agency-bond-texas`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Collection Agency Surety Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100", "description": "From $100/year for a $10,000 OCCC bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond is required for a Texas collection agency?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Finance Code Chapter 392 requires every licensed third-party debt collection agency to maintain a $10,000 surety bond with OCCC. The bond protects consumers from unlawful collection practices." }},
+          { "@type": "Question", "name": "How much does a Texas collection agency bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "The annual premium is $100–$300 for a $10,000 bond. Most applicants with good credit qualify at $100/year (1% rate). The bond is filed through NMLS as part of the OCCC licensing application." }},
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "License Bonds", "item": "https://quantumsurety.bond/bonds/license-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Texas Collection Agency Bond", "item": "https://quantumsurety.bond/bonds/collection-agency-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Texas Collection Agency Bond</h1>
+      <p>OCCC requires all third-party debt collection agencies operating in Texas to hold a $10,000 surety bond under Finance Code Chapter 392. From $100/year. Same-day certificate. Filed through NMLS.</p>
+      <section>
+        <h2>Requirements</h2>
+        <ul>
+          <li>Bond amount: $10,000 required by OCCC</li>
+          <li>Applies to: Third-party debt collection agencies</li>
+          <li>Annual renewal required — lapse suspends license</li>
+          <li>Cost: From $100/yr (1% for qualified applicants)</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=collection-agency">Get My Collection Agency Bond — $100/yr</a>
+    </main>`,
   },
   "/bonds/credit-access-business-bond-texas": {
     title: "Texas Credit Access Business (CAB) Bond | OCCC Required | Quantum Surety",
     description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval, same-day certificate.",
     canonical: `${BASE_URL}/bonds/credit-access-business-bond-texas`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Credit Access Business (CAB) Surety Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "250", "description": "From $250/year per location for a $25,000 CAB bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond is required for a Texas credit access business?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Finance Code Chapter 393 requires credit access businesses (payday lenders, auto title lenders) to post a $25,000 surety bond per licensed location with OCCC. Each physical location requires its own bond." }},
+          { "@type": "Question", "name": "How much does a Texas CAB bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Premium rates are 1%–3% of the $25,000 bond amount per location per year. A single-location operator would pay $250–$750/year. Multi-location operators bond each location separately." }},
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "License Bonds", "item": "https://quantumsurety.bond/bonds/license-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Texas CAB Bond", "item": "https://quantumsurety.bond/bonds/credit-access-business-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Texas Credit Access Business (CAB) Bond</h1>
+      <p>OCCC requires payday lenders and auto title loan companies to file a $25,000 surety bond per licensed location under Finance Code Chapter 393. From $250/year per location. Same-day certificate. Register with OCCC today.</p>
+      <section>
+        <h2>Requirements</h2>
+        <ul>
+          <li>Bond amount: $25,000 per licensed location</li>
+          <li>Applies to: Payday lenders, auto title loan companies (CABs)</li>
+          <li>Annual renewal — each location bonds separately</li>
+          <li>Cost: From $250/yr per location (1% for qualified applicants)</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=credit-access-business">Get My Texas CAB Bond</a>
+    </main>`,
   },
   "/bonds/notary-bond-el-paso": {
     title: "El Paso Notary Bond | $50 Texas Notary Bond | Quantum Surety",
     description: "Get your Texas notary bond in El Paso for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving El Paso County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-el-paso`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — El Paso",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "El Paso" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50 for a 4-year $10,000 Texas notary bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I get a notary bond in El Paso, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, pay $50, and receive your signed bond certificate by email immediately. El Paso notaries file the bond with the El Paso County District Clerk after receiving their commission from the Texas Secretary of State." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in El Paso?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas notary bond costs $50 from Quantum Surety — the same price regardless of county. The bond is $10,000 face value, valid for 4 years, SB693 compliant." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "El Paso Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-el-paso" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>El Paso Notary Bond — Texas</h1>
+      <p>Texas requires a $10,000 surety bond for every notary public commission. El Paso notaries get their bond for $50 — SB693 compliant, instant approval, same-day PDF certificate. File with the El Paso County District Clerk after receiving your commission from the Texas Secretary of State.</p>
+      <section>
+        <h2>Bond Details for El Paso Notaries</h2>
+        <ul>
+          <li>Bond amount: $10,000 (required by Texas SoS)</li>
+          <li>Cost: $50 for the full 4-year commission term</li>
+          <li>SB693 compliant — 4-year term matches new commission length</li>
+          <li>File with: El Paso County District Clerk</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=notary">Get My El Paso Notary Bond — $50</a>
+    </main>`,
   },
   "/bonds/notary-bond-arlington": {
     title: "Arlington Notary Bond | $50 Texas Notary Bond | Quantum Surety",
     description: "Get your Texas notary bond in Arlington for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Tarrant County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-arlington`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Arlington",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Arlington" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50 for a 4-year $10,000 Texas notary bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I get a notary bond in Arlington, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, pay $50, and receive your signed bond certificate by email immediately. Arlington notaries file the bond with the Tarrant County District Clerk after receiving their commission from the Texas Secretary of State." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Arlington?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas notary bond costs $50 from Quantum Surety — the same price regardless of county. The bond is $10,000 face value, valid for 4 years, SB693 compliant." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Arlington Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-arlington" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Arlington Notary Bond — Texas</h1>
+      <p>Texas requires a $10,000 surety bond for every notary public commission. Arlington notaries get their bond for $50 — SB693 compliant, instant approval, same-day PDF certificate. File with the Tarrant County District Clerk after receiving your commission from the Texas Secretary of State.</p>
+      <section>
+        <h2>Bond Details for Arlington Notaries</h2>
+        <ul>
+          <li>Bond amount: $10,000 (required by Texas SoS)</li>
+          <li>Cost: $50 for the full 4-year commission term</li>
+          <li>SB693 compliant — 4-year term matches new commission length</li>
+          <li>File with: Tarrant County District Clerk</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=notary">Get My Arlington Notary Bond — $50</a>
+    </main>`,
   },
   "/bonds/notary-bond-plano": {
     title: "Plano Notary Bond | $50 Texas Notary Bond | Quantum Surety",
     description: "Get your Texas notary bond in Plano for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Collin County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-plano`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Plano",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Plano" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50 for a 4-year $10,000 Texas notary bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I get a notary bond in Plano, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, pay $50, and receive your signed bond certificate by email immediately. Plano notaries file the bond with the Collin County District Clerk after receiving their commission from the Texas Secretary of State." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Plano?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas notary bond costs $50 from Quantum Surety — the same price regardless of county. The bond is $10,000 face value, valid for 4 years, SB693 compliant." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Plano Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-plano" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Plano Notary Bond — Texas</h1>
+      <p>Texas requires a $10,000 surety bond for every notary public commission. Plano notaries get their bond for $50 — SB693 compliant, instant approval, same-day PDF certificate. File with the Collin County District Clerk after receiving your commission from the Texas Secretary of State.</p>
+      <section>
+        <h2>Bond Details for Plano Notaries</h2>
+        <ul>
+          <li>Bond amount: $10,000 (required by Texas SoS)</li>
+          <li>Cost: $50 for the full 4-year commission term</li>
+          <li>SB693 compliant — 4-year term matches new commission length</li>
+          <li>File with: Collin County District Clerk</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=notary">Get My Plano Notary Bond — $50</a>
+    </main>`,
   },
   "/bonds/notary-bond-corpus-christi": {
     title: "Corpus Christi Notary Bond | $50 Texas Notary Bond | Quantum Surety",
     description: "Get your Texas notary bond in Corpus Christi for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Nueces County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-corpus-christi`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Corpus Christi",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Corpus Christi" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50 for a 4-year $10,000 Texas notary bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I get a notary bond in Corpus Christi, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, pay $50, and receive your signed bond certificate by email immediately. Corpus Christi notaries file the bond with the Nueces County District Clerk after receiving their commission from the Texas Secretary of State." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Corpus Christi?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas notary bond costs $50 from Quantum Surety — the same price regardless of county. The bond is $10,000 face value, valid for 4 years, SB693 compliant." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Corpus Christi Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-corpus-christi" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Corpus Christi Notary Bond — Texas</h1>
+      <p>Texas requires a $10,000 surety bond for every notary public commission. Corpus Christi notaries get their bond for $50 — SB693 compliant, instant approval, same-day PDF certificate. File with the Nueces County District Clerk after receiving your commission from the Texas Secretary of State.</p>
+      <section>
+        <h2>Bond Details for Corpus Christi Notaries</h2>
+        <ul>
+          <li>Bond amount: $10,000 (required by Texas SoS)</li>
+          <li>Cost: $50 for the full 4-year commission term</li>
+          <li>SB693 compliant — 4-year term matches new commission length</li>
+          <li>File with: Nueces County District Clerk</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=notary">Get My Corpus Christi Notary Bond — $50</a>
+    </main>`,
   },
   "/bonds/notary-bond-lubbock": {
     title: "Lubbock Notary Bond | $50 Texas Notary Bond | Quantum Surety",
     description: "Get your Texas notary bond in Lubbock for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Lubbock County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-lubbock`,
-    noIndex: false,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Lubbock",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Lubbock" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "description": "$50 for a 4-year $10,000 Texas notary bond" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How do I get a notary bond in Lubbock, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, pay $50, and receive your signed bond certificate by email immediately. Lubbock notaries file the bond with the Lubbock County District Clerk after receiving their commission from the Texas Secretary of State." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Lubbock?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas notary bond costs $50 from Quantum Surety — the same price regardless of county. The bond is $10,000 face value, valid for 4 years, SB693 compliant." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Lubbock Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-lubbock" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Lubbock Notary Bond — Texas</h1>
+      <p>Texas requires a $10,000 surety bond for every notary public commission. Lubbock notaries get their bond for $50 — SB693 compliant, instant approval, same-day PDF certificate. File with the Lubbock County District Clerk after receiving your commission from the Texas Secretary of State.</p>
+      <section>
+        <h2>Bond Details for Lubbock Notaries</h2>
+        <ul>
+          <li>Bond amount: $10,000 (required by Texas SoS)</li>
+          <li>Cost: $50 for the full 4-year commission term</li>
+          <li>SB693 compliant — 4-year term matches new commission length</li>
+          <li>File with: Lubbock County District Clerk</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=notary">Get My Lubbock Notary Bond — $50</a>
+    </main>`,
   },
+
+  "/bonds/freight-broker-bond-texas": {
+    title: "Texas Freight Broker Bond | $75,000 BMC-84 | Instant FMCSA Filing | Quantum Surety",
+    description: "Get your FMCSA-required $75,000 BMC-84 freight broker surety bond for Texas-based brokers. Instant approval, same-day FMCSA filing. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/freight-broker-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Freight Broker Surety Bond (BMC-84)",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "FMCSA-required $75,000 BMC-84 freight broker bond. Rates from $750–$2,250/year." },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do freight brokers need?", "acceptedAnswer": { "@type": "Answer", "text": "FMCSA requires all licensed freight brokers to carry a $75,000 surety bond or trust fund (BMC-84 or BMC-85). This bond protects shippers and carriers from broker fraud. It must be on file with FMCSA before a broker authority is issued." }},
+          { "@type": "Question", "name": "How much does a freight broker bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Premium rates for the $75,000 BMC-84 bond range from 1%–3% per year. Most applicants pay $750–$2,250/year depending on credit score and business history. Quantum Surety files directly with FMCSA after issuance." }},
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Freight Broker Bond", "item": "https://quantumsurety.bond/bonds/freight-broker-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>Texas Freight Broker Bond — BMC-84</h1>
+      <p>FMCSA requires every licensed freight broker to maintain a $75,000 surety bond (BMC-84 form) or equivalent trust fund. Texas-based freight brokers need this bond before FMCSA will issue or renew their broker authority. Quantum Surety files the BMC-84 directly with FMCSA after issuance — same-day filing available.</p>
+      <section>
+        <h2>BMC-84 Bond Requirements</h2>
+        <ul>
+          <li>Required by: FMCSA under 49 U.S.C. §13906</li>
+          <li>Bond amount: $75,000</li>
+          <li>Premium: From $750/year (1% for qualified applicants)</li>
+          <li>FMCSA filing: Direct electronic filing included</li>
+        </ul>
+      </section>
+      <a href="/get-bond?type=freight-broker">Get My Freight Broker Bond</a>
+    </main>`,
+  },
+
+  "/bonds/general-contractor-bond-texas": {
+    title: "Texas General Contractor Bond | License Bond | Quantum Surety",
+    description: "Get your Texas general contractor license bond same-day. City licensing requirements across major Texas metros. Bonds from $75/yr. Instant PDF certificate.",
+    canonical: `${BASE_URL}/bonds/general-contractor-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas General Contractor Surety Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": { "@type": "State", "name": "Texas" },
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Texas general contractor license bonds from $75/year" },
+    },
+    content: `<main>
+      <h1>Texas General Contractor License Bond</h1>
+      <p>Many Texas cities require general contractors to post a surety bond as a condition of their local license. Bond amounts and requirements vary by city. Same-day issuance, instant PDF delivery.</p>
+      <section>
+        <h2>Common Texas City Contractor Bond Requirements</h2>
+        <ul>
+          <li><a href="/bonds/contractor-bond-dallas">Dallas Contractor Bond</a> — City of Dallas licensing requirement</li>
+          <li><a href="/bonds/contractor-bond-houston">Houston Contractor Bond</a> — City of Houston contractor registration</li>
+          <li><a href="/bonds/contractor-bond-austin">Austin Contractor Bond</a> — City of Austin license requirement</li>
+          <li><a href="/bonds/contractor-bond-san-antonio">San Antonio Contractor Bond</a> — City of San Antonio requirement</li>
+        </ul>
+      </section>
+      <a href="/quote">Get My General Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/roofing-contractor-bond-texas": {
+    title: "Texas Roofing Contractor Bond | License Bond | Quantum Surety",
+    description: "Get your Texas roofing contractor license bond same-day. City and county licensing requirements statewide. Bonds from $75/yr. Instant PDF certificate.",
+    canonical: `${BASE_URL}/bonds/roofing-contractor-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Roofing Contractor Surety Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": { "@type": "State", "name": "Texas" },
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Texas roofing contractor bonds from $75/year" },
+    },
+    content: `<main>
+      <h1>Texas Roofing Contractor Bond</h1>
+      <p>Several Texas cities require roofing contractors to hold a surety bond as part of their licensing or permit process. Bond requirements vary by jurisdiction. Quantum Surety issues roofing contractor bonds same-day with instant PDF delivery.</p>
+      <section>
+        <h2>Why Texas Roofers Need a Bond</h2>
+        <p>A contractor license bond protects property owners from fraud, poor workmanship, and contract breaches. It's required by many Texas cities and is sometimes required by insurance companies for preferred contractor programs.</p>
+      </section>
+      <a href="/quote">Get My Roofing Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/payment-bond-texas": {
+    title: "Texas Payment Bond | Construction Payment Bond | Quantum Surety",
+    description: "Texas payment bonds for construction contractors. Required on public projects over $25,000 (Tex. Gov't Code §2253). Same-day approval for qualified contractors.",
+    canonical: `${BASE_URL}/bonds/payment-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Payment Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": { "@type": "State", "name": "Texas" },
+      "description": "Payment bonds for Texas construction contractors on public projects. Protects subcontractors and material suppliers.",
+    },
+    content: `<main>
+      <h1>Texas Payment Bond</h1>
+      <p>A Texas payment bond guarantees that a prime contractor will pay subcontractors, laborers, and material suppliers on a construction project. Texas Government Code §2253.021 requires payment bonds on all public contracts over $25,000. Typically issued alongside a performance bond.</p>
+      <section>
+        <h2>When is a Texas Payment Bond Required?</h2>
+        <ul>
+          <li>Texas public contracts over $25,000 (Tex. Gov't Code §2253)</li>
+          <li>Federal contracts over $150,000 (Miller Act)</li>
+          <li>Private projects requiring lien protection</li>
+        </ul>
+      </section>
+      <a href="/quote">Get a Texas Payment Bond Quote</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-amarillo": {
+    title: "Amarillo Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Amarillo contractor license bond same-day. City of Amarillo licensing requirement. Potter County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-amarillo`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Amarillo Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Amarillo" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Amarillo" },
+    },
+    content: `<main>
+      <h1>Amarillo Contractor Bond — Potter County</h1>
+      <p>Amarillo contractors in Texas Panhandle need a surety bond to meet city licensing requirements. Quantum Surety issues Amarillo contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Amarillo Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-corpus-christi": {
+    title: "Corpus Christi Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Corpus Christi contractor license bond same-day. City of Corpus Christi licensing requirement. Nueces County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-corpus-christi`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Corpus Christi Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Corpus Christi" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Corpus Christi" },
+    },
+    content: `<main>
+      <h1>Corpus Christi Contractor Bond — Nueces County</h1>
+      <p>Corpus Christi contractors in Coastal Bend need a surety bond to meet city licensing requirements. Quantum Surety issues Corpus Christi contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Corpus Christi Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-denton": {
+    title: "Denton Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Denton contractor license bond same-day. City of Denton licensing requirement. Denton County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-denton`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Denton Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Denton" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Denton" },
+    },
+    content: `<main>
+      <h1>Denton Contractor Bond — Denton County</h1>
+      <p>Denton contractors in North DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Denton contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Denton Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-el-paso": {
+    title: "El Paso Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your El Paso contractor license bond same-day. City of El Paso licensing requirement. El Paso County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-el-paso`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "El Paso Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "El Paso" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in El Paso" },
+    },
+    content: `<main>
+      <h1>El Paso Contractor Bond — El Paso County</h1>
+      <p>El Paso contractors in West Texas need a surety bond to meet city licensing requirements. Quantum Surety issues El Paso contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My El Paso Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-frisco": {
+    title: "Frisco Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Frisco contractor license bond same-day. City of Frisco licensing requirement. Collin County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-frisco`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Frisco Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Frisco" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Frisco" },
+    },
+    content: `<main>
+      <h1>Frisco Contractor Bond — Collin County</h1>
+      <p>Frisco contractors in North DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Frisco contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Frisco Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-garland": {
+    title: "Garland Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Garland contractor license bond same-day. City of Garland licensing requirement. Dallas County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-garland`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Garland Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Garland" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Garland" },
+    },
+    content: `<main>
+      <h1>Garland Contractor Bond — Dallas County</h1>
+      <p>Garland contractors in East DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Garland contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Garland Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-grand-prairie": {
+    title: "Grand Prairie Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Grand Prairie contractor license bond same-day. City of Grand Prairie licensing requirement. Dallas/Tarrant County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-grand-prairie`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Grand Prairie Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Grand Prairie" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Grand Prairie" },
+    },
+    content: `<main>
+      <h1>Grand Prairie Contractor Bond — Dallas/Tarrant County</h1>
+      <p>Grand Prairie contractors in Mid-Cities need a surety bond to meet city licensing requirements. Quantum Surety issues Grand Prairie contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Grand Prairie Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-irving": {
+    title: "Irving Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Irving contractor license bond same-day. City of Irving licensing requirement. Dallas County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-irving`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Irving Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Irving" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Irving" },
+    },
+    content: `<main>
+      <h1>Irving Contractor Bond — Dallas County</h1>
+      <p>Irving contractors in DFW Metroplex need a surety bond to meet city licensing requirements. Quantum Surety issues Irving contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Irving Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-lubbock": {
+    title: "Lubbock Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Lubbock contractor license bond same-day. City of Lubbock licensing requirement. Lubbock County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-lubbock`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Lubbock Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Lubbock" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Lubbock" },
+    },
+    content: `<main>
+      <h1>Lubbock Contractor Bond — Lubbock County</h1>
+      <p>Lubbock contractors in South Plains need a surety bond to meet city licensing requirements. Quantum Surety issues Lubbock contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Lubbock Contractor Bond</a>
+    </main>`,
+  },
+
+  "/bonds/contractor-bond-waco": {
+    title: "Waco Contractor Bond | Texas License Bond | Quantum Surety",
+    description: "Get your Waco contractor license bond same-day. City of Waco licensing requirement. McLennan County area contractors. Bonds from $75/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/contractor-bond-waco`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Waco Texas Contractor Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Waco" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Waco" },
+    },
+    content: `<main>
+      <h1>Waco Contractor Bond — McLennan County</h1>
+      <p>Waco contractors in Central Texas need a surety bond to meet city licensing requirements. Quantum Surety issues Waco contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
+      <section>
+        <h2>Related Contractor Bonds</h2>
+        <ul>
+          <li><a href="/bonds/general-contractor-bond-texas">General Contractor Bond</a></li>
+          <li><a href="/bonds/electrical-contractor-bond-texas">Electrical Contractor Bond</a></li>
+          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+        </ul>
+      </section>
+      <a href="/quote">Get My Waco Contractor Bond</a>
+    </main>`,
+  },
+
   "/bonds/notary-bond-renewal-texas": {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",
@@ -2855,8 +3682,15 @@ export function generateSitemap(): string {
     if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
     if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";
-    if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
     if (p.startsWith("/bonds/notary-bond-") || p.startsWith("/bonds/gdn-bond-")) return "0.85";
+    if (
+      p.startsWith("/bonds/mortgage-") ||
+      p.startsWith("/bonds/collection-agency-") ||
+      p.startsWith("/bonds/credit-access-") ||
+      p.startsWith("/bonds/property-tax-") ||
+      p.startsWith("/bonds/auctioneer-") ||
+      p.startsWith("/bonds/freight-broker-")
+    ) return "0.80";
     if (p.startsWith("/blog/")) return "0.8";
     if (p.startsWith("/bonds/")) return "0.75";
     return "0.6";

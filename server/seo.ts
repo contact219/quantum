@@ -2644,6 +2644,39 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
 
+
+  "/bonds/auctioneer-bond-texas": {
+    title: "Texas Auctioneer Bond | $10,000 TDLR Bond | Instant Online | Quantum Surety",
+    description: "Get your Texas auctioneer license bond instantly — $10,000 coverage required by TDLR under §1802.254. From $100/yr. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/auctioneer-bond-texas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Auctioneer Bond",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": { "@type": "State", "name": "Texas" },
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100" }
+    },
+    content: `<main>
+      <h1>Texas Auctioneer Bond — TDLR License Requirement</h1>
+      <p>All Texas-licensed auctioneers must maintain a $10,000 surety bond with TDLR under Texas Occupations Code §1802.254. Get bonded same-day with instant PDF delivery.</p>
+      <h2>Requirements</h2>
+      <ul>
+        <li>Bond amount: $10,000 required by TDLR</li>
+        <li>Applies to: Licensed auctioneers and apprentice auctioneers</li>
+        <li>Term: 2-year license, renewed biennially</li>
+        <li>Cost: From $100/yr based on credit</li>
+      </ul>
+      <h2>Related TDLR bonds</h2>
+      <ul>
+        <li><a href="/bonds/tdlr-bond-texas">TDLR License Bonds — All Types</a></li>
+        <li><a href="/bonds/home-inspector-bond-texas">Home Inspector Bond (TREC)</a></li>
+      </ul>
+      <a href="/quote?type=license&amp;bond=auctioneer">Get My Texas Auctioneer Bond</a>
+    </main>`,
+  },
+
   "/bonds/notary-bond-renewal-texas": {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",

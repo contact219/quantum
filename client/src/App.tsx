@@ -52,6 +52,7 @@ import GDNBondAustin from "@/pages/gdn-bond-austin";
 import GDNBondSanAntonio from "@/pages/gdn-bond-san-antonio";
 import NotaryBondRenewalTexas from "@/pages/notary-bond-renewal-texas";
 import MBEContractorBondTexas from "@/pages/mbe-contractor-bond-texas";
+import AuctioneerBondTexas from "@/pages/auctioneer-bond-texas";
 import NotaryBondDallas from "@/pages/notary-bond-dallas";
 import NotaryBondHouston from "@/pages/notary-bond-houston";
 import NotaryBondSanAntonio from "@/pages/notary-bond-san-antonio";
@@ -213,6 +214,7 @@ function Router() {
       <Route path="/bonds/gdn-bond-austin" component={GDNBondAustin} />
       <Route path="/bonds/gdn-bond-san-antonio" component={GDNBondSanAntonio} />
       <Route path="/bonds/mbe-contractor-bond-texas" component={MBEContractorBondTexas} />
+      <Route path="/bonds/auctioneer-bond-texas" component={AuctioneerBondTexas} />
       {/* Notary bond city pages */}
       <Route path="/bonds/notary-bond-dallas" component={NotaryBondDallas} />
       <Route path="/bonds/notary-bond-houston" component={NotaryBondHouston} />

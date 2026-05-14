@@ -53,6 +53,10 @@ import GDNBondSanAntonio from "@/pages/gdn-bond-san-antonio";
 import NotaryBondRenewalTexas from "@/pages/notary-bond-renewal-texas";
 import MBEContractorBondTexas from "@/pages/mbe-contractor-bond-texas";
 import AuctioneerBondTexas from "@/pages/auctioneer-bond-texas";
+import MortgageBrokerBondTexas from "@/pages/mortgage-broker-bond-texas";
+import PropertyTaxConsultantBondTexas from "@/pages/property-tax-consultant-bond-texas";
+import CollectionAgencyBondTexas from "@/pages/collection-agency-bond-texas";
+import CreditAccessBusinessBondTexas from "@/pages/credit-access-business-bond-texas";
 import NotaryBondDallas from "@/pages/notary-bond-dallas";
 import NotaryBondHouston from "@/pages/notary-bond-houston";
 import NotaryBondSanAntonio from "@/pages/notary-bond-san-antonio";
@@ -215,6 +219,10 @@ function Router() {
       <Route path="/bonds/gdn-bond-san-antonio" component={GDNBondSanAntonio} />
       <Route path="/bonds/mbe-contractor-bond-texas" component={MBEContractorBondTexas} />
       <Route path="/bonds/auctioneer-bond-texas" component={AuctioneerBondTexas} />
+      <Route path="/bonds/mortgage-broker-bond-texas" component={MortgageBrokerBondTexas} />
+      <Route path="/bonds/property-tax-consultant-bond-texas" component={PropertyTaxConsultantBondTexas} />
+      <Route path="/bonds/collection-agency-bond-texas" component={CollectionAgencyBondTexas} />
+      <Route path="/bonds/credit-access-business-bond-texas" component={CreditAccessBusinessBondTexas} />
       {/* Notary bond city pages */}
       <Route path="/bonds/notary-bond-dallas" component={NotaryBondDallas} />
       <Route path="/bonds/notary-bond-houston" component={NotaryBondHouston} />

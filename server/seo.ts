@@ -2677,6 +2677,34 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
 
+  "/bonds/mortgage-broker-bond-texas": {
+    title: "Texas Mortgage Company Bond | TDSML Required | $500/yr | Quantum Surety",
+    description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Instant approval, same-day certificate.",
+    keywords: "Texas mortgage company bond, TDSML surety bond, mortgage broker bond Texas, Finance Code 156 bond, mortgage lender bond Texas",
+    noIndex: false,
+    schema: {},
+  },
+  "/bonds/property-tax-consultant-bond-texas": {
+    title: "Texas Property Tax Consultant Bond | $50/yr | TDLR Required | Quantum Surety",
+    description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year license term.",
+    keywords: "Texas property tax consultant bond, TDLR property tax bond, RPTC bond Texas, SPTC bond Texas, property tax consultant license bond",
+    noIndex: false,
+    schema: {},
+  },
+  "/bonds/collection-agency-bond-texas": {
+    title: "Texas Collection Agency Bond | $100/yr | OCCC Required | Quantum Surety",
+    description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Instant online approval, same-day certificate. File with OCCC through NMLS.",
+    keywords: "Texas collection agency bond, OCCC surety bond, debt collector bond Texas, Finance Code 392 bond, third party debt collector bond Texas",
+    noIndex: false,
+    schema: {},
+  },
+  "/bonds/credit-access-business-bond-texas": {
+    title: "Texas Credit Access Business (CAB) Bond | OCCC Required | Quantum Surety",
+    description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval, same-day certificate.",
+    keywords: "Texas credit access business bond, CAB bond Texas, payday loan bond Texas, title loan bond Texas, OCCC CAB surety bond",
+    noIndex: false,
+    schema: {},
+  },
   "/bonds/notary-bond-renewal-texas": {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",

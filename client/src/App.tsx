@@ -52,6 +52,15 @@ import GDNBondAustin from "@/pages/gdn-bond-austin";
 import GDNBondSanAntonio from "@/pages/gdn-bond-san-antonio";
 import NotaryBondRenewalTexas from "@/pages/notary-bond-renewal-texas";
 import MBEContractorBondTexas from "@/pages/mbe-contractor-bond-texas";
+import NotaryBondDallas from "@/pages/notary-bond-dallas";
+import NotaryBondHouston from "@/pages/notary-bond-houston";
+import NotaryBondSanAntonio from "@/pages/notary-bond-san-antonio";
+import NotaryBondAustin from "@/pages/notary-bond-austin";
+import NotaryBondFortWorth from "@/pages/notary-bond-fort-worth";
+import GDNBondFortWorth from "@/pages/gdn-bond-fort-worth";
+import GDNBondPlano from "@/pages/gdn-bond-plano";
+import GDNBondArlington from "@/pages/gdn-bond-arlington";
+import GDNBondElPaso from "@/pages/gdn-bond-el-paso";
 // City contractor bond pages
 import ContractorBondDallas from "@/pages/contractor-bond-dallas";
 import ContractorBondHouston from "@/pages/contractor-bond-houston";
@@ -204,6 +213,17 @@ function Router() {
       <Route path="/bonds/gdn-bond-austin" component={GDNBondAustin} />
       <Route path="/bonds/gdn-bond-san-antonio" component={GDNBondSanAntonio} />
       <Route path="/bonds/mbe-contractor-bond-texas" component={MBEContractorBondTexas} />
+      {/* Notary bond city pages */}
+      <Route path="/bonds/notary-bond-dallas" component={NotaryBondDallas} />
+      <Route path="/bonds/notary-bond-houston" component={NotaryBondHouston} />
+      <Route path="/bonds/notary-bond-san-antonio" component={NotaryBondSanAntonio} />
+      <Route path="/bonds/notary-bond-austin" component={NotaryBondAustin} />
+      <Route path="/bonds/notary-bond-fort-worth" component={NotaryBondFortWorth} />
+      {/* Additional GDN bond city pages */}
+      <Route path="/bonds/gdn-bond-fort-worth" component={GDNBondFortWorth} />
+      <Route path="/bonds/gdn-bond-plano" component={GDNBondPlano} />
+      <Route path="/bonds/gdn-bond-arlington" component={GDNBondArlington} />
+      <Route path="/bonds/gdn-bond-el-paso" component={GDNBondElPaso} />
       <Route path="/bonds/notary-bond-renewal-texas" component={NotaryBondRenewalTexas} />
 
       {/* City contractor bond pages */}

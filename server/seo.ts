@@ -2456,6 +2456,173 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+
+  "/bonds/notary-bond-dallas": {
+    title: "Notary Bond Dallas TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Dallas instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-dallas`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Notary Bond — Dallas",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Dallas" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
+    },
+    content: `<main>
+      <h1>Texas Notary Bond — Dallas</h1>
+      <p>Dallas-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
+      <h2>Requirements for Dallas Notaries</h2>
+      <p>All Texas notary commissions require a $10,000 surety bond under Texas Government Code §406.010. Issued through RLI Insurance, SOS-accepted.</p>
+      <h2>2026 SB693 Update</h2>
+      <p>Senate Bill 693 adds a mandatory education course for new and renewing Texas notaries. The $10,000 bond requirement is unchanged and our bond is SB693 compliant.</p>
+      <a href="/get-bond?type=notary">Get My Dallas Notary Bond — $50</a>
+    </main>`,
+  },
+
+  "/bonds/notary-bond-houston": {
+    title: "Notary Bond Houston TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Houston instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-houston`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Notary Bond — Houston",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Houston" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
+    },
+    content: `<main>
+      <h1>Texas Notary Bond — Houston</h1>
+      <p>Houston-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
+      <h2>Requirements for Houston Notaries</h2>
+      <p>All Texas notary commissions — whether in Harris, Fort Bend, Montgomery, or Brazoria County — require a $10,000 surety bond under Texas Government Code §406.010.</p>
+      <h2>2026 SB693 Update</h2>
+      <p>Senate Bill 693 adds a mandatory education course for new and renewing Texas notaries. The $10,000 bond requirement is unchanged.</p>
+      <a href="/get-bond?type=notary">Get My Houston Notary Bond — $50</a>
+    </main>`,
+  },
+
+  "/bonds/notary-bond-san-antonio": {
+    title: "Notary Bond San Antonio TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in San Antonio instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-san-antonio`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Notary Bond — San Antonio",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "San Antonio" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
+    },
+    content: `<main>
+      <h1>Texas Notary Bond — San Antonio</h1>
+      <p>San Antonio-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
+      <h2>Requirements for San Antonio Notaries</h2>
+      <p>All Texas notary commissions — whether in Bexar, Comal, Guadalupe, or Medina County — require a $10,000 surety bond under Texas Government Code §406.010.</p>
+      <a href="/get-bond?type=notary">Get My San Antonio Notary Bond — $50</a>
+    </main>`,
+  },
+
+  "/bonds/notary-bond-austin": {
+    title: "Notary Bond Austin TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Austin instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-austin`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Notary Bond — Austin",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Austin" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
+    },
+    content: `<main>
+      <h1>Texas Notary Bond — Austin</h1>
+      <p>Austin-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
+      <h2>Requirements for Austin Notaries</h2>
+      <p>All Texas notary commissions — whether in Travis, Williamson, Hays, or Bastrop County — require a $10,000 surety bond under Texas Government Code §406.010.</p>
+      <a href="/get-bond?type=notary">Get My Austin Notary Bond — $50</a>
+    </main>`,
+  },
+
+  "/bonds/notary-bond-fort-worth": {
+    title: "Notary Bond Fort Worth TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Fort Worth instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-fort-worth`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Texas Notary Bond — Fort Worth",
+      "serviceType": "Surety Bond",
+      "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "areaServed": [{ "@type": "City", "name": "Fort Worth" }, { "@type": "State", "name": "Texas" }],
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
+    },
+    content: `<main>
+      <h1>Texas Notary Bond — Fort Worth</h1>
+      <p>Fort Worth / Tarrant County notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF.</p>
+      <h2>Requirements for Fort Worth Notaries</h2>
+      <p>All Texas notary commissions — whether in Tarrant, Johnson, Hood, or Parker County — require a $10,000 surety bond under Texas Government Code §406.010.</p>
+      <a href="/get-bond?type=notary">Get My Fort Worth Notary Bond — $50</a>
+    </main>`,
+  },
+
+  "/bonds/gdn-bond-fort-worth": {
+    title: "GDN Bond Fort Worth TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Fort Worth same-day. Required under §503.033 for all Tarrant County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-fort-worth`,
+    content: `<main>
+      <h1>GDN Bond — Fort Worth, Texas Motor Vehicle Dealers</h1>
+      <p>Fort Worth and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
+      <h2>Fort Worth Dealer License Types Requiring a GDN Bond</h2>
+      <p>All TxDMV dealer categories — new, used, wholesale, motorcycle, BHPH, and lease/finance — require a $50,000 GDN bond under Texas Occupations Code §503.033.</p>
+      <a href="/get-bond?type=dealer">Get My Fort Worth GDN Bond</a>
+    </main>`,
+  },
+
+  "/bonds/gdn-bond-plano": {
+    title: "GDN Bond Plano TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-plano`,
+    content: `<main>
+      <h1>GDN Bond — Plano, Texas Motor Vehicle Dealers</h1>
+      <p>Plano and Collin County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
+      <h2>GDN Bond Requirements for Plano Dealers</h2>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <a href="/get-bond?type=dealer">Get My Plano GDN Bond</a>
+    </main>`,
+  },
+
+  "/bonds/gdn-bond-arlington": {
+    title: "GDN Bond Arlington TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-arlington`,
+    content: `<main>
+      <h1>GDN Bond — Arlington, Texas Motor Vehicle Dealers</h1>
+      <p>Arlington and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
+      <h2>GDN Bond Requirements for Arlington Dealers</h2>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <a href="/get-bond?type=dealer">Get My Arlington GDN Bond</a>
+    </main>`,
+  },
+
+  "/bonds/gdn-bond-el-paso": {
+    title: "GDN Bond El Paso TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in El Paso same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-el-paso`,
+    content: `<main>
+      <h1>GDN Bond — El Paso, Texas Motor Vehicle Dealers</h1>
+      <p>El Paso motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate, accepted by TxDMV eLICENSING.</p>
+      <h2>GDN Bond Requirements for El Paso Dealers</h2>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <a href="/get-bond?type=dealer">Get My El Paso GDN Bond</a>
+    </main>`,
+  },
+
   "/bonds/notary-bond-renewal-texas": {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",
@@ -2570,7 +2737,8 @@ export function generateSitemap(): string {
     if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
     if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";
-    if (p.startsWith("/bonds/gdn-bond-")) return "0.85";
+    if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
+    if (p.startsWith("/bonds/notary-bond-") || p.startsWith("/bonds/gdn-bond-")) return "0.85";
     if (p.startsWith("/blog/")) return "0.8";
     if (p.startsWith("/bonds/")) return "0.75";
     return "0.6";

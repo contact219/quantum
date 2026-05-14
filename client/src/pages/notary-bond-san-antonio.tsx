@@ -1,0 +1,204 @@
+import { Link } from "wouter";
+import { useSEO, useSchema } from "@/hooks/useSEO";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, FileText } from "lucide-react";
+
+const NOTARY_LINK = "/get-bond?type=notary";
+
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Texas Notary Bond — San Antonio",
+  "serviceType": "Surety Bond",
+  "url": "https://quantumsurety.bond/bonds/notary-bond-san-antonio",
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+  "areaServed": [{ "@type": "City", "name": "San Antonio" }, { "@type": "State", "name": "Texas" }],
+  "description": "Texas notary surety bond for San Antonio-area notaries. $10,000 coverage, $50 flat, instant PDF. SB693 compliant. No credit check.",
+  "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "priceValidUntil": "2027-12-31", "availability": "https://schema.org/InStock" }
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Do San Antonio notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Bexar County and the San Antonio metro area — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Texas Secretary of State will issue or renew a notary commission." } },
+    { "@type": "Question", "name": "How much does a notary bond cost in San Antonio?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees. That works out to just $12.50 per year." } },
+    { "@type": "Question", "name": "How fast can I get a notary bond in San Antonio?", "acceptedAnswer": { "@type": "Answer", "text": "Instantly. Apply online at quantumsurety.bond, pay $50, and your bond certificate PDF is emailed within minutes — ready to file with the Texas Secretary of State the same day." } },
+    { "@type": "Question", "name": "What changed for San Antonio notaries under SB693?", "acceptedAnswer": { "@type": "Answer", "text": "Senate Bill 693 (effective January 1, 2026) added a mandatory education course requirement for new and renewing Texas notaries. The $10,000 bond requirement is unchanged and Quantum Surety's bond is fully SB693 compliant." } }
+  ]
+};
+
+const faqs = [
+  { q: "Do San Antonio notaries need a surety bond?", a: "Yes. Every Texas notary public — including those commissioned in Bexar County and the San Antonio metro area — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Texas Secretary of State will issue or renew a notary commission." },
+  { q: "How much does a notary bond cost in San Antonio?", a: "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees. That works out to just $12.50 per year." },
+  { q: "How fast can I get a notary bond in San Antonio?", a: "Instantly. Apply online at quantumsurety.bond, pay $50, and your bond certificate PDF is emailed within minutes — ready to file with the Texas Secretary of State the same day." },
+  { q: "Do I need to visit an office in San Antonio to get a notary bond?", a: "No. The entire process is 100% online. No office visit, no fax, no waiting for mail. Your bond PDF is emailed within minutes of payment." },
+  { q: "What changed for San Antonio notaries under SB693?", a: "Senate Bill 693 (effective January 1, 2026) added a mandatory education course and a $20 fee per attempt for new and renewing Texas notaries. The $10,000 bond requirement is unchanged — Quantum Surety's $50 bond meets SB693 requirements." },
+];
+
+export default function NotaryBondSanAntonio() {
+  useSEO({
+    title: "Notary Bond San Antonio TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in San Antonio instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    canonical: "/bonds/notary-bond-san-antonio",
+  });
+  useSchema(SERVICE_SCHEMA, "ld-json-Service");
+  useSchema(FAQ_SCHEMA, "ld-json-FAQ");
+
+  return (
+    <div className="min-h-screen bg-white">
+      <section className="bg-gradient-to-br from-indigo-900 via-indigo-800 to-teal-700 text-white py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-2 text-indigo-300 text-sm mb-4 flex-wrap">
+            <Link href="/bonds/notary-bond-texas"><span className="hover:text-white cursor-pointer">Texas Notary Bond</span></Link>
+            <ChevronRight className="w-4 h-4" /><span>San Antonio</span>
+          </div>
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1"><MapPin className="w-3 h-3" /> San Antonio, TX</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Instant certificate</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><FileText className="w-3 h-3" /> SB693 compliant</span>
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas Notary Bond — San Antonio</h1>
+          <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
+            San Antonio-area notaries: get your required $10,000 Texas notary surety bond in minutes. $50 flat for the full 4-year term — no credit check, no office visit, instant PDF certificate ready to file with the Texas Secretary of State.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href={NOTARY_LINK}>
+              <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Notary Bond — $50 <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            </a>
+            <a href="tel:9723799216">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
+          {[
+            { label: "Bond amount", value: "$10,000", sub: "Required by Texas SOS" },
+            { label: "Total cost", value: "$50 flat", sub: "Full 4-year term, no renewals" },
+            { label: "Delivery", value: "Instant PDF", sub: "Email within minutes" }
+          ].map((item) => (
+            <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
+              <p className="text-2xl font-bold text-gray-900">{item.value}</p>
+              <p className="text-xs text-gray-500 mt-1">{item.label}</p>
+              <p className="text-xs text-teal-700 mt-1">{item.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12 space-y-14">
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Texas Notary Bond Requirements for San Antonio Notaries</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            All Texas notary commissions — whether your county of appointment is Bexar, Comal, Guadalupe, Medina, or any other Texas county — require the same $10,000 surety bond under <strong>Texas Government Code §406.010</strong>. The bond must be filed with the Texas Secretary of State before your commission is issued. Quantum Surety issues bonds through RLI Insurance, an A-rated carrier accepted by the Texas Secretary of State.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { title: "Bond amount", detail: "$10,000 required coverage" },
+              { title: "Term", detail: "4 years — matches your commission period" },
+              { title: "Cost", detail: "$50 flat — no annual renewal fee" },
+              { title: "Carrier", detail: "RLI Insurance — A-rated, SOS-accepted" },
+              { title: "Credit check", detail: "None required" },
+              { title: "Processing", detail: "Instant — PDF in minutes" },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <CheckCircle className="w-5 h-5 text-teal-500 mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm">{item.title}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">2026 SB693 Update — What San Antonio Notaries Need to Know</h2>
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>Senate Bill 693</strong>, effective January 1, 2026, added two requirements for Texas notaries:
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
+                <p className="text-gray-700 text-sm"><strong>Mandatory education:</strong> New and renewing notaries must complete a Texas Secretary of State-approved course (up to 2 hours online) and pay a $20 fee per attempt.</p>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
+                <p className="text-gray-700 text-sm"><strong>Bond requirement unchanged:</strong> The $10,000 surety bond is still required. Quantum Surety's $50 bond fully meets the 2026 SB693 requirements.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">How to Get Your San Antonio Notary Bond in 3 Steps</h2>
+          <p className="text-gray-600 text-sm mb-6">The entire process is online — no fax, no office visit, no waiting for mail.</p>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { step: "1", title: "Apply online", body: "Enter your name, county of appointment, and commission details. Takes under 2 minutes at quantumsurety.bond." },
+              { step: "2", title: "Pay $50", body: "Secure checkout. No credit check. No hidden fees. One payment covers your full 4-year commission period." },
+              { step: "3", title: "Download instantly", body: "Your $10,000 notary bond PDF arrives by email within minutes — ready to upload to the Texas Secretary of State notary application." },
+            ].map((s) => (
+              <div key={s.step} className="bg-indigo-50 border border-indigo-100 rounded-xl p-5">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3">{s.step}</div>
+                <p className="font-semibold text-gray-900 mb-2">{s.title}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions — San Antonio Notary Bond</h2>
+          <div className="space-y-4">
+            {faqs.map((item) => (
+              <div key={item.q} className="border border-gray-200 rounded-xl overflow-hidden">
+                <div className="bg-gray-50 px-5 py-4 border-b border-gray-200">
+                  <p className="font-semibold text-gray-900 text-sm flex items-start gap-2"><Shield className="w-4 h-4 text-indigo-500 mt-0.5 shrink-0" />{item.q}</p>
+                </div>
+                <div className="px-5 py-4"><p className="text-gray-700 text-sm leading-relaxed">{item.a}</p></div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 pb-16">
+        <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
+          <h2 className="text-2xl font-bold mb-2">Get Your San Antonio Notary Bond Today</h2>
+          <p className="text-indigo-200 mb-6">$50 flat · $10,000 coverage · Instant PDF · SB693 compliant · TDI Licensed #3480229</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={NOTARY_LINK}>
+              <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            </a>
+            <a href="tel:9723799216">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button>
+            </a>
+          </div>
+        </div>
+        <div className="mt-10">
+          <h3 className="text-lg font-bold text-gray-900 mb-4">Related pages</h3>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { href: "/bonds/notary-bond-houston", title: "Notary Bond — Houston", tag: "Houston" },
+              { href: "/bonds/notary-bond-texas", title: "Texas Notary Bond Overview", tag: "Statewide" },
+              { href: "/bonds/notary-bond-renewal-texas", title: "Notary Bond Renewal", tag: "Renewal" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href}>
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
+                  <span className="text-xs font-semibold text-indigo-600 mb-1 block">{item.tag}</span>
+                  <p className="text-gray-900 font-semibold text-sm">{item.title}</p>
+                  <p className="text-indigo-600 text-xs mt-2 flex items-center gap-1">View page <ArrowRight className="w-3 h-3" /></p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

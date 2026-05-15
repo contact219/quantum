@@ -45,7 +45,10 @@ import {
   suretyApplications,
   applicationDocuments,
   creditPulls,
-  renewalReminders
+  renewalReminders,
+  leads,
+  type Lead,
+  type InsertLead,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -122,6 +125,12 @@ export interface IStorage {
   // Carrier Capacity methods
   getCarrierCapacity(carrierId: string, year: number): Promise<CarrierCapacity | undefined>;
   createOrUpdateCapacity(capacity: InsertCarrierCapacity): Promise<CarrierCapacity>;
+
+  // Lead methods
+  createLead(lead: InsertLead): Promise<Lead>;
+  getAllLeads(): Promise<Lead[]>;
+  updateLead(id: string, data: Partial<InsertLead>): Promise<Lead | undefined>;
+  getLeadById(id: string): Promise<Lead | undefined>;
 
   // Carrier Metrics methods
   getCarrierMetrics(carrierId: string): Promise<CarrierMetrics | undefined>;
@@ -1533,6 +1542,31 @@ export class DbStorage implements IStorage {
     const premium = value * 0.02; // 2% premium rate
     return premium.toFixed(2);
   }
+  async createLead(lead: InsertLead): Promise<Lead> {
+    const [created] = await db.insert(leads).values({
+      ...lead,
+      updatedAt: new Date(),
+    }).returning();
+    return created;
+  }
+
+  async getAllLeads(): Promise<Lead[]> {
+    return await db.select().from(leads).orderBy(leads.leadTime);
+  }
+
+  async getLeadById(id: string): Promise<Lead | undefined> {
+    const [lead] = await db.select().from(leads).where(eq(leads.id, id));
+    return lead;
+  }
+
+  async updateLead(id: string, data: Partial<InsertLead>): Promise<Lead | undefined> {
+    const [updated] = await db.update(leads)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(leads.id, id))
+      .returning();
+    return updated;
+  }
+
 }
 
 export const storage = new DbStorage();

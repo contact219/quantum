@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X, LogIn, LogOut, User, ChevronDown, Bot, FileText } from "lucide-react";
+import { Phone, Menu, X, LogIn, LogOut, User, ChevronDown, Bot, FileText, LayoutDashboard, Users, ClipboardList } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -137,6 +137,23 @@ export function Navbar() {
                         {user?.firstName} {user?.lastName}
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
+                      {(user as any)?.role === "admin" && (
+                        <>
+                          <DropdownMenuItem asChild>
+                            <a href="/admin/leads" data-testid="link-admin-leads">
+                              <ClipboardList className="w-4 h-4 mr-2" />
+                              Leads
+                            </a>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <a href="/admin" data-testid="link-admin">
+                              <LayoutDashboard className="w-4 h-4 mr-2" />
+                              Admin Dashboard
+                            </a>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                        </>
+                      )}
                       <DropdownMenuItem asChild>
                         <a href="/api/logout" data-testid="link-logout">
                           <LogOut className="w-4 h-4 mr-2" />

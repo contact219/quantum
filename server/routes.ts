@@ -119,6 +119,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
+      // Persist lead to database
+      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: "get-bond form", status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
       // Instant push notification â€” awaited so autoscale doesn't drop it
       await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",
@@ -493,6 +495,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/leads-log", (req, res) => {
     res.json({ count: capturedLeads.length, leads: capturedLeads });
+  });
+
+  // Admin leads management — full CRUD on persistent leads
+  app.get("/api/admin/leads", isAdmin, async (req, res) => {
+    try {
+      const allLeads = await storage.getAllLeads();
+      res.json(allLeads);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
+  app.patch("/api/admin/leads/:id", isAdmin, async (req, res) => {
+    try {
+      const { status, notes, saleAmount } = req.body || {};
+      const updated = await storage.updateLead(req.params.id, {
+        ...(status !== undefined && { status }),
+        ...(notes !== undefined && { notes }),
+        ...(saleAmount !== undefined && { saleAmount }),
+      });
+      if (!updated) return res.status(404).json({ error: "Lead not found" });
+      res.json(updated);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
   });
 
   app.post("/api/events", (req, res) => {

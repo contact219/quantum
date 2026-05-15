@@ -343,9 +343,30 @@ export const renewalReminders = pgTable("renewal_reminders", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+
+export const leads = pgTable("leads", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  bondType: text("bond_type"),
+  source: text("source").default("get-bond form"),
+  status: text("status").notNull().default("new"),
+  notes: text("notes"),
+  saleAmount: decimal("sale_amount"),
+  leadTime: timestamp("lead_time").defaultNow(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const insertLeadSchema = createInsertSchema(leads).omit({ id: true, createdAt: true, updatedAt: true });
+
 export const insertRenewalReminderSchema = createInsertSchema(renewalReminders).omit({ id: true, createdAt: true });
 export type InsertRenewalReminder = z.infer<typeof insertRenewalReminderSchema>;
 export type RenewalReminder = typeof renewalReminders.$inferSelect;
+
+export type InsertLead = z.infer<typeof insertLeadSchema>;
+export type Lead = typeof leads.$inferSelect;
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type UpsertUser = z.infer<typeof upsertUserSchema>;

@@ -21,6 +21,7 @@ import AdminLogin from "@/pages/admin-login";
 import AdminSetup from "@/pages/admin-setup";
 import AdminAnalytics from "@/pages/admin-analytics";
 import AdminUsers from "@/pages/admin-users";
+import AdminLeads from "@/pages/admin-leads";
 import FAQ from "@/pages/faq";
 import Resources from "@/pages/resources";
 import About from "@/pages/about";
@@ -190,6 +191,11 @@ function Router() {
       <Route path="/admin/users">
         <ProtectedRoute requireAdmin>
           <AdminUsers />
+        </ProtectedRoute>
+      </Route>
+      <Route path="/admin/leads">
+        <ProtectedRoute requireAdmin>
+          <AdminLeads />
         </ProtectedRoute>
       </Route>
       <Route path="/faq" component={FAQ} />

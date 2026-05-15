@@ -471,7 +471,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Health check
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString(), build: "leads-log-v3" });
+    res.json({ status: "ok", timestamp: new Date().toISOString(), build: "deploy-v5" });
   });
 
   app.get("/api/leads-log", (req, res) => {

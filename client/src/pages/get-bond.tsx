@@ -24,7 +24,7 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
 export default function GetBond() {
   const [location] = useLocation();
   const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-  const type = params.get("type") === "notary" ? "notary" : "dealer";
+  const type = params.get("type")?.startsWith("notary") ? "notary" : "dealer";
   const meta = BOND_META[type];
 
   useSEO({

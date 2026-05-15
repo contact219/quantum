@@ -99,8 +99,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         subject: leadSubject,
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
-      // Instant push notification — no credentials required
-      fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
+      // Instant push notification — awaited so autoscale doesn't drop it
+      await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",
         body: `${name} | ${email} | ${phone} | ${bondLabel} | ${new Date().toLocaleString("en-US",{timeZone:"America/Chicago"})} CDT`,
         headers: {

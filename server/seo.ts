@@ -320,7 +320,8 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Contract surety bonds for construction contractors — bid bonds, performance bonds, and payment bonds. Fast approvals for public and private projects.",
     canonical: `${BASE_URL}/bonds/contract`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       name: "Contract Surety Bonds",
@@ -329,6 +330,25 @@ const PAGE_META: Record<string, PageMeta> = {
         "Bid bonds, performance bonds, and payment bonds for general contractors and subcontractors.",
       areaServed: "US",
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What are the three types of contract surety bonds?", "acceptedAnswer": { "@type": "Answer", "text": "The three types of contract surety bonds are bid bonds, performance bonds, and payment bonds. Bid bonds guarantee a contractor will enter into the contract at the bid price if selected. Performance bonds guarantee project completion per contract terms. Payment bonds guarantee payment to subcontractors and suppliers. Texas public projects over $25,000 require performance and payment bonds under Texas Government Code §2253.021." }},
+          { "@type": "Question", "name": "When is a performance bond required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Government Code §2253.021 requires performance and payment bonds on all public construction contracts over $25,000. Federal contracts over $150,000 require both bonds under the Miller Act (40 U.S.C. §3131). Most Texas municipalities also require performance bonds on public works regardless of amount." }},
+          { "@type": "Question", "name": "How much do Texas contract bonds cost?", "acceptedAnswer": { "@type": "Answer", "text": "Bid bonds are typically issued at no charge for contractors with established surety relationships. Performance and payment bonds cost 0.5%–3% of the contract amount. A $500,000 project bond costs roughly $5,000–$7,500 depending on contractor financials and credit. Quantum Surety offers same-day issuance for qualified contractors." }},
+          { "@type": "Question", "name": "What is the difference between a bid bond and a performance bond?", "acceptedAnswer": { "@type": "Answer", "text": "A bid bond is submitted with the bid — it guarantees the contractor will accept the contract at the bid price if selected. A performance bond is issued after contract award and guarantees project completion per contract terms. Texas public projects require both. Bid bonds cover the bidding phase; performance and payment bonds cover execution." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Contract Surety Bonds", "item": "https://quantumsurety.bond/bonds/contract" },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Contract Surety Bonds — Bid, Performance &amp; Payment Bonds</h1>
@@ -379,7 +399,8 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Texas commercial surety bonds — license bonds, permit bonds, court bonds, notary bonds, and dealer bonds. TDI-licensed agency. Instant online issuance. Same-day certificate.",
     canonical: `${BASE_URL}/bonds/commercial`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Commercial Surety Bonds",
@@ -388,6 +409,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": { "@type": "State", "name": "Texas" },
       "description": "License bonds, permit bonds, auto dealer bonds, notary bonds, and court bonds for Texas businesses and individuals.",
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a commercial surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "A commercial surety bond is a bond required by a government agency or obligee as a condition of obtaining a business license or permit. Unlike construction bonds, commercial bonds protect the public or government from business misconduct, fraud, or failure to comply with regulations. Common types include notary bonds, dealer bonds, contractor license bonds, mortgage company bonds, and court bonds." }},
+          { "@type": "Question", "name": "What commercial surety bonds are required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas requires many types of commercial surety bonds depending on your industry: notary bonds ($10,000, Secretary of State), GDN auto dealer bonds ($50,000, TxDMV), TDLR contractor license bonds (various amounts), mortgage company bonds ($50K–$250K, TDSML), collection agency bonds ($10,000, OCCC), and freight broker bonds ($75,000, FMCSA). Quantum Surety issues all Texas commercial bond types instantly online." }},
+          { "@type": "Question", "name": "How much does a commercial surety bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas commercial surety bond premiums vary widely by bond type. Notary bonds are a flat $50 regardless of credit. GDN dealer bonds start at $100/year. TDLR contractor license bonds start at $75/year. Specialty bonds like mortgage company bonds and freight broker bonds are credit-based and range from 1%–3% of the bond amount annually. Same-day issuance on most types." }},
+          { "@type": "Question", "name": "What is the difference between a commercial bond and a construction bond?", "acceptedAnswer": { "@type": "Answer", "text": "Commercial surety bonds are license and permit bonds required as a condition of doing business — they protect consumers and government agencies from business misconduct. Construction surety bonds (bid, performance, payment) are project-specific bonds that guarantee contract performance. Most Texas contractors need both: a license bond to get their license, and construction bonds for specific public projects." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Commercial Surety Bonds", "item": "https://quantumsurety.bond/bonds/commercial" },
+        ],
+      },
+    ],
             content: `<main>
       <h1>Texas Bid Bond — Construction Contract Bid Bonds</h1>
       <p>A Texas bid bond is a surety bond submitted with a contractor's bid on a public or private construction project. It guarantees that the contractor will enter into the contract at the bid price if selected. If the contractor wins the bid but refuses to enter the contract, the bid bond compensates the project owner for the difference in cost between the winning bid and the next lowest bid. Most Texas public construction projects require a bid bond with the submission.</p>
@@ -1601,7 +1641,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas TDLR contractor bond same-day. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/tdlr-bond-texas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas TDLR License Bonds",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "TDLR-required surety bonds for Texas licensed trades and professionals" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Which TDLR licenses require a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas Department of Licensing and Regulation (TDLR) license categories require a surety bond, including: electrical contractors (EC license), HVAC/air conditioning contractors (ACR license), auctioneers (Texas Occupations Code §1802.254), and property tax consultants (Texas Occupations Code Ch. 1152). Bond amounts vary by license type. Quantum Surety issues all TDLR-required bonds same-day." }},
+          { "@type": "Question", "name": "How much does a TDLR license bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "TDLR license bond premiums depend on the bond amount and your credit profile. Auctioneer bonds ($10,000) start at $100/year. Property tax consultant bonds ($5,000) start at $50/year. Electrical and HVAC contractor bonds start at $75/year. Most TDLR license bonds are issued flat-rate or with minimal credit review. Same-day PDF delivery." }},
+          { "@type": "Question", "name": "What does a TDLR surety bond cover?", "acceptedAnswer": { "@type": "Answer", "text": "A TDLR surety bond protects consumers and the state from financial harm caused by a licensed professional's misconduct, fraud, or violation of TDLR rules. If a bond claim is filed and upheld, the surety pays the claimant up to the bond amount. The licensee is then responsible for reimbursing the surety. The bond is not insurance for the licensee — it protects the public." }},
+          { "@type": "Question", "name": "Do I need a TDLR bond to get my license?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. TDLR requires a valid surety bond on file before it will issue or renew licenses in categories that mandate bonding, including electrical contractors, HVAC contractors, auctioneers, and property tax consultants. Operating under a TDLR license without a required surety bond is a violation that can result in license suspension or revocation." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas TDLR License Bonds", "item": "https://quantumsurety.bond/bonds/tdlr-bond-texas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Texas TDLR Contractor Bond</h1>
         <p>Required by the Texas Department of Licensing and Regulation (TDLR) for electricians, HVAC technicians, irrigators, boiler inspectors, elevator mechanics, and other licensed trades. Get your bond same-day — delivered by email, ready to file with TDLR.</p>
@@ -1625,7 +1694,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas electrical contractor bond same-day. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/electrical-contractor-bond-texas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Electrical Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "TDLR electrical contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do electrical contractors need in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas electrical contractors licensed by the Texas Department of Licensing and Regulation (TDLR) under Texas Occupations Code Chapter 1305 must maintain a surety bond as a condition of their Electrical Contractor (EC) license. The bond protects consumers from financial harm caused by contractor misconduct or license violations. Quantum Surety issues TDLR-accepted EC bonds same-day from $75/year." }},
+          { "@type": "Question", "name": "Is an electrical contractor bond required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. TDLR requires all licensed electrical contractors (EC license holders) in Texas to maintain a surety bond as a condition of licensure under Texas Occupations Code Chapter 1305. Operating as an electrical contractor without a valid TDLR license and required surety bond is a violation of state law and can result in fines, stop-work orders, and license suspension." }},
+          { "@type": "Question", "name": "How much does a Texas electrical contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas electrical contractor license bonds start at $75 per year. The exact premium depends on the bond amount required and your credit profile. Most qualified electrical contractors pay $75–$200 per year. Quantum Surety issues TDLR-accepted electrical contractor bonds with instant online approval and same-day PDF delivery." }},
+          { "@type": "Question", "name": "Does an electrical contractor need a bond for each city in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas electrical contractors hold a statewide TDLR license — one bond covers the entire state. However, individual cities may have additional local permit or license requirements on top of the state TDLR license. Always check with the specific city's building or development services department for any local bonding requirements." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Electrical Contractor Bond", "item": "https://quantumsurety.bond/bonds/electrical-contractor-bond-texas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Texas Electrical Contractor Bond</h1>
         <p>Required for licensed electricians operating in Texas at the state (TDLR) and city levels. Get bonded same-day with instant PDF delivery.</p>
@@ -1649,7 +1747,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas HVAC contractor bond same-day. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/hvac-bond-texas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas HVAC Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "TDLR ACR license bonds for Texas HVAC contractors from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do HVAC contractors need in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas HVAC (air conditioning and refrigeration) contractors licensed by TDLR under Texas Occupations Code Chapter 1302 must maintain a surety bond as a condition of their Air Conditioning and Refrigeration Contractor (ACR) license. The bond protects consumers from financial harm caused by contractor misconduct. Quantum Surety issues TDLR-accepted HVAC bonds same-day from $75/year." }},
+          { "@type": "Question", "name": "Is a bond required for an HVAC license in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. TDLR requires all Air Conditioning and Refrigeration Contractor (ACR) license holders in Texas to maintain a valid surety bond under Texas Occupations Code Chapter 1302. Operating without a valid bond and license is a violation that can result in TDLR fines and stop-work orders. The bond must remain active throughout the license term." }},
+          { "@type": "Question", "name": "How much does a Texas HVAC contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas HVAC contractor license bonds start at $75 per year. The premium depends on the bond amount and your credit profile. Most qualified HVAC contractors pay $75–$200 per year. Quantum Surety offers instant online approval with same-day PDF delivery accepted by TDLR." }},
+          { "@type": "Question", "name": "What is the difference between an HVAC bond and HVAC insurance?", "acceptedAnswer": { "@type": "Answer", "text": "An HVAC contractor bond (surety bond) protects the public — if your work violates licensing rules or causes financial harm, the bond pays consumers or the state. HVAC insurance (general liability, workers' comp) protects your business from property damage, injury claims, and other losses. Texas requires both for licensed HVAC contractors. The bond is a licensing requirement; insurance is a business protection." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas HVAC Contractor Bond", "item": "https://quantumsurety.bond/bonds/hvac-bond-texas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Texas HVAC Contractor Bond</h1>
         <p>Required by TDLR for TACLA air conditioning and refrigeration contractor licenses, and by most Texas cities for HVAC permit-pulling. Same-day issuance, instant PDF.</p>
@@ -1672,7 +1799,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas plumbing contractor bond same-day. Required by TSBPE for Master Plumber licenses and Texas city permits. $10,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/plumbing-contractor-bond-texas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Plumbing Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "TSBPE plumbing contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do plumbers need in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas plumbing contractors licensed by the Texas State Board of Plumbing Examiners (TSBPE) must maintain a surety bond as a condition of their Master Plumber or Responsible Master Plumber license under Texas Occupations Code Chapter 1301. The bond protects consumers from financial harm caused by plumbing contractor misconduct or license violations. Quantum Surety issues TSBPE-accepted plumbing bonds from $75/year." }},
+          { "@type": "Question", "name": "Is a plumbing contractor bond required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Texas State Board of Plumbing Examiners (TSBPE) requires all licensed plumbing contractors in Texas to maintain a valid surety bond under Texas Occupations Code Chapter 1301. A lapsed bond can result in automatic license suspension. The bond must remain active throughout the license term." }},
+          { "@type": "Question", "name": "How much does a Texas plumbing contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas plumbing contractor bonds start at $75 per year. Most qualified plumbing contractors pay $75–$200 per year depending on the bond amount and credit profile. Quantum Surety offers instant online approval with same-day PDF delivery accepted by TSBPE." }},
+          { "@type": "Question", "name": "Who regulates plumbing contractors in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Plumbing contractors in Texas are licensed and regulated by the Texas State Board of Plumbing Examiners (TSBPE) under Texas Occupations Code Chapter 1301. TSBPE is separate from TDLR — plumbers have their own dedicated licensing board. The TSBPE requires a surety bond as a condition of all master plumber and responsible master plumber licenses." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Plumbing Contractor Bond", "item": "https://quantumsurety.bond/bonds/plumbing-contractor-bond-texas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Texas Plumbing Contractor Bond</h1>
         <p>Required by the Texas State Board of Plumbing Examiners (TSBPE) for Master Plumber licenses and by Texas cities for local plumbing permits. Same-day issuance, instant PDF.</p>
@@ -1694,7 +1850,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/auto-dealer-bond-texas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Auto Dealer GDN Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bonds from $100/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What bond do auto dealers need in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas auto dealers must maintain a $50,000 General Distinguishing Number (GDN) surety bond with the Texas Department of Motor Vehicles (TxDMV) as a condition of their dealer license under Texas Transportation Code §503.033. The GDN bond protects consumers and the state from dealer fraud, title violations, odometer rollback, and failure to remit sales tax. All dealer license categories require the same $50,000 bond amount." }},
+          { "@type": "Question", "name": "How much does a Texas auto dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas GDN dealer bond ($50,000) costs $100–$300 per year depending on credit score and dealership history. Well-qualified dealers with strong credit pay around $100/year (0.2% of the bond amount). Quantum Surety issues GDN dealer bonds same-day with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "Do all types of Texas auto dealers need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All TxDMV dealer license categories require a $50,000 GDN surety bond, including: independent (used) dealers, franchised (new car) dealers, wholesale dealers, salvage dealers, motorcycle dealers, and trailer dealers. The bond amount is the same ($50,000) regardless of dealership size or vehicle type." }},
+          { "@type": "Question", "name": "What happens if my Texas dealer bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your dealer license. Without an active license, you cannot legally buy, sell, or title vehicles in Texas as a dealer. Continued operation without a valid license and bond is a Class A misdemeanor. Renewing your GDN bond before expiration is critical — Quantum Surety sends renewal reminders 60 days in advance." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Auto Dealer GDN Bond", "item": "https://quantumsurety.bond/bonds/auto-dealer-bond-texas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Texas Auto Dealer Bond</h1>
         <p>Required by the Texas Department of Motor Vehicles (TxDMV) for all motor vehicle dealer licenses — independent, franchise, wholesale, and used car dealers. Same-day issuance, instant PDF.</p>
@@ -1832,7 +2017,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Dallas contractor bond same-day. Required by the City of Dallas for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-dallas`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Dallas Texas Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Dallas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Dallas contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Dallas, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Dallas, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Dallas Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Dallas contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Dallas contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Dallas contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Dallas County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Dallas licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Dallas?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Dallas may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Dallas Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Dallas, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Dallas contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Dallas Development Services and Dallas County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Dallas Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-dallas" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Contractor Bond — Dallas, Texas</h1>
         <p>Required by the City of Dallas Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
@@ -1855,7 +2069,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Houston contractor bond same-day. Required by the City of Houston for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-houston`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Houston Texas Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Houston" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Houston contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Houston, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Houston, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Houston Administration and Regulatory Affairs to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Houston contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Houston contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Houston contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Harris County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Houston licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Houston?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Houston may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Houston Administration and Regulatory Affairs to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Houston, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Houston contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Houston Administration and Regulatory Affairs and Harris County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Houston Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-houston" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Contractor Bond — Houston, Texas</h1>
         <p>Required by the Houston Permitting Center for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
@@ -1878,7 +2121,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Austin contractor bond same-day. Required by the City of Austin for general, electrical, HVAC, plumbing, and irrigation contractor licenses. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-austin`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Austin Texas Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Austin" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Austin contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Austin, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Austin, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Austin Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Austin contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Austin contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Austin contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Travis County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Austin licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Austin?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Austin may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Austin Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Austin, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Austin contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Austin Development Services and Travis County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Austin Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-austin" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Contractor Bond — Austin, Texas</h1>
         <p>Required by the City of Austin Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
@@ -1901,7 +2173,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your San Antonio contractor bond same-day. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-san-antonio`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "San Antonio Texas Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "San Antonio" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "San Antonio contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in San Antonio, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including San Antonio, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of San Antonio Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues San Antonio contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a San Antonio contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A San Antonio contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Bexar County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by San Antonio licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in San Antonio?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in San Antonio may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of San Antonio Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in San Antonio, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a San Antonio contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of San Antonio Development Services and Bexar County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "San Antonio Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-san-antonio" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Contractor Bond — San Antonio, Texas</h1>
         <p>Required by San Antonio Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
@@ -1924,7 +2225,36 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Fort Worth contractor bond same-day. Required by the City of Fort Worth for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-fort-worth`,
-    content: `
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Fort Worth Texas Contractor Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Fort Worth" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Fort Worth contractor license bonds from $75/year" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Fort Worth, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Fort Worth, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Fort Worth Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Fort Worth contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Fort Worth contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Fort Worth contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Tarrant County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Fort Worth licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Fort Worth?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Fort Worth may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Fort Worth Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Fort Worth, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Fort Worth contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Fort Worth Development Services and Tarrant County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Fort Worth Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-fort-worth" },
+        ],
+      },
+    ],
+        content: `
       <main>
         <h1>Contractor Bond — Fort Worth, Texas</h1>
         <p>Required by Fort Worth Development Services for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.</p>
@@ -2139,7 +2469,26 @@ const PAGE_META: Record<string, PageMeta> = {
           { "@type": "ListItem", position: 3, name: "Contractor Bond — Plano", item: `${BASE_URL}/bonds/contractor-bond-plano` },
         ],
       },
-    ],
+    ,
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Plano, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Plano, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Plano Building Inspections to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Plano contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Plano contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Plano contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Collin County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Plano licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Plano?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Plano may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Plano Building Inspections to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Plano, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Plano contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Plano Building Inspections and Collin County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Plano Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-plano" },
+        ],
+      },
+      ],
     content: `
       <main>
         <h1>Contractor Bond — Plano, Texas</h1>
@@ -2182,7 +2531,26 @@ const PAGE_META: Record<string, PageMeta> = {
           { "@type": "ListItem", position: 3, name: "Contractor Bond — Arlington", item: `${BASE_URL}/bonds/contractor-bond-arlington` },
         ],
       },
-    ],
+    ,
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Arlington, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Arlington, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Arlington Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Arlington contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Arlington contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Arlington contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Tarrant County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Arlington licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Arlington?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Arlington may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Arlington Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Arlington, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Arlington contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Arlington Development Services and Tarrant County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Arlington Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-arlington" },
+        ],
+      },
+      ],
     content: `
       <main>
         <h1>Contractor Bond — Arlington, Texas</h1>
@@ -2225,7 +2593,26 @@ const PAGE_META: Record<string, PageMeta> = {
           { "@type": "ListItem", position: 3, name: "Contractor Bond — McKinney", item: `${BASE_URL}/bonds/contractor-bond-mckinney` },
         ],
       },
-    ],
+    ,
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in McKinney, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including McKinney, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of McKinney Building Inspections to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues McKinney contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a McKinney contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A McKinney contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Collin County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by McKinney licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in McKinney?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in McKinney may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of McKinney Building Inspections to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in McKinney, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a McKinney contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of McKinney Building Inspections and Collin County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "McKinney Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-mckinney" },
+        ],
+      },
+      ],
     content: `
       <main>
         <h1>Contractor Bond — McKinney, Texas</h1>
@@ -2532,28 +2919,144 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "GDN Bond Dallas TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/gdn-bond-dallas`,
-    content: `<main><h1>GDN Bond — Dallas, Texas</h1><p>Every licensed motor vehicle dealer in Dallas and the DFW metroplex must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Dallas GDN Bond</a></main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Dallas Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Dallas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Dallas" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Dallas need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Dallas and Dallas County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Dallas GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Dallas auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Dallas County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Dallas GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Dallas dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Dallas County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Dallas Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-dallas" },
+        ],
+      },
+    ],
+        content: `<main><h1>GDN Bond — Dallas, Texas</h1><p>Every licensed motor vehicle dealer in Dallas and the DFW metroplex must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Dallas GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-houston": {
     title: "GDN Bond Houston TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-houston`,
-    content: `<main><h1>GDN Bond — Houston, Texas</h1><p>Every licensed motor vehicle dealer in Houston must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Houston GDN Bond</a></main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Houston Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Houston" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Houston" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Houston need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Houston and Harris County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Houston GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Houston auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Harris County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Houston GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Houston dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Harris County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Houston Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-houston" },
+        ],
+      },
+    ],
+        content: `<main><h1>GDN Bond — Houston, Texas</h1><p>Every licensed motor vehicle dealer in Houston must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Houston GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-austin": {
     title: "GDN Bond Austin TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-austin`,
-    content: `<main><h1>GDN Bond — Austin, Texas</h1><p>Every licensed motor vehicle dealer in Austin must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Austin GDN Bond</a></main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Austin Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Austin" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Austin" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Austin need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Austin and Travis County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Austin GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Austin auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Travis County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Austin GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Austin dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Travis County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Austin Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-austin" },
+        ],
+      },
+    ],
+        content: `<main><h1>GDN Bond — Austin, Texas</h1><p>Every licensed motor vehicle dealer in Austin must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Austin GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-san-antonio": {
     title: "GDN Bond San Antonio TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all San Antonio-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-san-antonio`,
-    content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "San Antonio Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "San Antonio" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in San Antonio" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in San Antonio need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including San Antonio and Bexar County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a San Antonio GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "San Antonio auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Bexar County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my San Antonio GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your San Antonio dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Bexar County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "San Antonio Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-san-antonio" },
+        ],
+      },
+    ],
+        content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
   },
 
   "/bonds/mbe-contractor-bond-texas": {
@@ -2561,7 +3064,8 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee Program available. Same-day certificates.",
     canonical: `${BASE_URL}/bonds/mbe-contractor-bond-texas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       name: "Surety Bonds for MBE and HUB-Certified Texas Contractors",
@@ -2571,6 +3075,24 @@ const PAGE_META: Record<string, PageMeta> = {
       areaServed: { "@type": "State", name: "Texas" },
       description: "Bid bonds, performance bonds, and payment bonds for MBE, HUB-certified, and DBE-certified Texas contractors. SBA Surety Bond Guarantee Program available.",
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do MBE/WBE contractors need a bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Minority Business Enterprise (MBE) and Women Business Enterprise (WBE) contractors in Texas often need surety bonds to bid on public contracts, just like other contractors. Texas public projects over $25,000 require performance and payment bonds under Texas Government Code §2253.021. Quantum Surety works with MBE and WBE contractors to provide competitive bonding regardless of business size or age." }},
+          { "@type": "Question", "name": "How can a small MBE contractor get bonded in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Small and minority-owned contractors can get bonded through Quantum Surety's online bonding process. Bond premiums are based on contractor financials, credit, and project history. New or emerging contractors may need to start with smaller bonds and build their bonding capacity over time. The U.S. Small Business Administration (SBA) also offers a Surety Bond Guarantee program for small and emerging contractors who have difficulty obtaining bonds commercially." }},
+          { "@type": "Question", "name": "What bond amounts are available for Texas MBE contractors?", "acceptedAnswer": { "@type": "Answer", "text": "Texas MBE contractors can obtain bonds ranging from small license bonds ($10,000–$25,000) to large construction bonds on multimillion-dollar projects. Bond capacity is based on contractor financials, working capital, and bonding history. Quantum Surety provides bonds for all project sizes and works with minority contractors at every stage of business development." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas MBE Contractor Bond", "item": "https://quantumsurety.bond/bonds/mbe-contractor-bond-texas" },
+        ],
+      },
+    ],
     content: `
       <main>
         <h1>Surety Bonds for Minority Contractors in Texas</h1>
@@ -2596,7 +3118,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Notary Bond Dallas TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
     description: "Get your Texas notary bond in Dallas instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-dallas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Notary Bond — Dallas",
@@ -2605,6 +3128,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Dallas" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a notary bond cost in Dallas, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond in Dallas costs $50 flat for a 4-year, $10,000 SB693-compliant bond — the same price statewide. Texas notary bonds are not credit-based; every applicant pays the same $50 flat fee regardless of credit history. Quantum Surety issues SB693-compliant notary bonds with instant online approval and same-day PDF delivery accepted by the Texas Secretary of State." }},
+          { "@type": "Question", "name": "Do Dallas notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries public, including those in Dallas and Dallas County, must maintain a $10,000 surety bond as a condition of their notary commission under the Texas Government Code. Under SB693 (effective September 1, 2023), the bond must cover the full 4-year notary commission term. The bond is filed with the Texas Secretary of State as part of the notary application." }},
+          { "@type": "Question", "name": "How long is the notary commission in Dallas, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary commissions — including for Dallas and Dallas County notaries — are issued for 4-year terms under Senate Bill 693, effective September 1, 2023. Both the notary commission and the surety bond run for the same 4-year period. When the commission expires, the notary must purchase a new bond and submit a new application to the Texas Secretary of State." }},
+          { "@type": "Question", "name": "How do I get a notary bond in Dallas?", "acceptedAnswer": { "@type": "Answer", "text": "To get a Dallas notary bond: (1) Purchase your $10,000, 4-year bond at Quantum Surety for $50 — instant online, PDF by email. (2) Complete your notary application with the Texas Secretary of State online or by mail. (3) Submit the bond certificate with your application. (4) Receive your notary commission in 2–4 weeks. The entire bonding process takes about 5 minutes." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Dallas Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-dallas" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Notary Bond — Dallas</h1>
       <p>Dallas-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
@@ -2620,7 +3162,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Notary Bond Houston TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
     description: "Get your Texas notary bond in Houston instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-houston`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Notary Bond — Houston",
@@ -2629,6 +3172,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Houston" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a notary bond cost in Houston, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond in Houston costs $50 flat for a 4-year, $10,000 SB693-compliant bond — the same price statewide. Texas notary bonds are not credit-based; every applicant pays the same $50 flat fee regardless of credit history. Quantum Surety issues SB693-compliant notary bonds with instant online approval and same-day PDF delivery accepted by the Texas Secretary of State." }},
+          { "@type": "Question", "name": "Do Houston notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries public, including those in Houston and Harris County, must maintain a $10,000 surety bond as a condition of their notary commission under the Texas Government Code. Under SB693 (effective September 1, 2023), the bond must cover the full 4-year notary commission term. The bond is filed with the Texas Secretary of State as part of the notary application." }},
+          { "@type": "Question", "name": "How long is the notary commission in Houston, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary commissions — including for Houston and Harris County notaries — are issued for 4-year terms under Senate Bill 693, effective September 1, 2023. Both the notary commission and the surety bond run for the same 4-year period. When the commission expires, the notary must purchase a new bond and submit a new application to the Texas Secretary of State." }},
+          { "@type": "Question", "name": "How do I get a notary bond in Houston?", "acceptedAnswer": { "@type": "Answer", "text": "To get a Houston notary bond: (1) Purchase your $10,000, 4-year bond at Quantum Surety for $50 — instant online, PDF by email. (2) Complete your notary application with the Texas Secretary of State online or by mail. (3) Submit the bond certificate with your application. (4) Receive your notary commission in 2–4 weeks. The entire bonding process takes about 5 minutes." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Houston Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-houston" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Notary Bond — Houston</h1>
       <p>Houston-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
@@ -2644,7 +3206,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Notary Bond San Antonio TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
     description: "Get your Texas notary bond in San Antonio instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-san-antonio`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Notary Bond — San Antonio",
@@ -2653,6 +3216,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "San Antonio" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a notary bond cost in San Antonio, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond in San Antonio costs $50 flat for a 4-year, $10,000 SB693-compliant bond — the same price statewide. Texas notary bonds are not credit-based; every applicant pays the same $50 flat fee regardless of credit history. Quantum Surety issues SB693-compliant notary bonds with instant online approval and same-day PDF delivery accepted by the Texas Secretary of State." }},
+          { "@type": "Question", "name": "Do San Antonio notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries public, including those in San Antonio and Bexar County, must maintain a $10,000 surety bond as a condition of their notary commission under the Texas Government Code. Under SB693 (effective September 1, 2023), the bond must cover the full 4-year notary commission term. The bond is filed with the Texas Secretary of State as part of the notary application." }},
+          { "@type": "Question", "name": "How long is the notary commission in San Antonio, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary commissions — including for San Antonio and Bexar County notaries — are issued for 4-year terms under Senate Bill 693, effective September 1, 2023. Both the notary commission and the surety bond run for the same 4-year period. When the commission expires, the notary must purchase a new bond and submit a new application to the Texas Secretary of State." }},
+          { "@type": "Question", "name": "How do I get a notary bond in San Antonio?", "acceptedAnswer": { "@type": "Answer", "text": "To get a San Antonio notary bond: (1) Purchase your $10,000, 4-year bond at Quantum Surety for $50 — instant online, PDF by email. (2) Complete your notary application with the Texas Secretary of State online or by mail. (3) Submit the bond certificate with your application. (4) Receive your notary commission in 2–4 weeks. The entire bonding process takes about 5 minutes." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "San Antonio Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-san-antonio" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Notary Bond — San Antonio</h1>
       <p>San Antonio-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
@@ -2666,7 +3248,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Notary Bond Austin TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
     description: "Get your Texas notary bond in Austin instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-austin`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Notary Bond — Austin",
@@ -2675,6 +3258,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Austin" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a notary bond cost in Austin, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond in Austin costs $50 flat for a 4-year, $10,000 SB693-compliant bond — the same price statewide. Texas notary bonds are not credit-based; every applicant pays the same $50 flat fee regardless of credit history. Quantum Surety issues SB693-compliant notary bonds with instant online approval and same-day PDF delivery accepted by the Texas Secretary of State." }},
+          { "@type": "Question", "name": "Do Austin notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries public, including those in Austin and Travis County, must maintain a $10,000 surety bond as a condition of their notary commission under the Texas Government Code. Under SB693 (effective September 1, 2023), the bond must cover the full 4-year notary commission term. The bond is filed with the Texas Secretary of State as part of the notary application." }},
+          { "@type": "Question", "name": "How long is the notary commission in Austin, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary commissions — including for Austin and Travis County notaries — are issued for 4-year terms under Senate Bill 693, effective September 1, 2023. Both the notary commission and the surety bond run for the same 4-year period. When the commission expires, the notary must purchase a new bond and submit a new application to the Texas Secretary of State." }},
+          { "@type": "Question", "name": "How do I get a notary bond in Austin?", "acceptedAnswer": { "@type": "Answer", "text": "To get a Austin notary bond: (1) Purchase your $10,000, 4-year bond at Quantum Surety for $50 — instant online, PDF by email. (2) Complete your notary application with the Texas Secretary of State online or by mail. (3) Submit the bond certificate with your application. (4) Receive your notary commission in 2–4 weeks. The entire bonding process takes about 5 minutes." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Austin Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-austin" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Notary Bond — Austin</h1>
       <p>Austin-area notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF certificate.</p>
@@ -2688,7 +3290,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Notary Bond Fort Worth TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
     description: "Get your Texas notary bond in Fort Worth instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-fort-worth`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Notary Bond — Fort Worth",
@@ -2697,6 +3300,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Fort Worth" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a notary bond cost in Fort Worth, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond in Fort Worth costs $50 flat for a 4-year, $10,000 SB693-compliant bond — the same price statewide. Texas notary bonds are not credit-based; every applicant pays the same $50 flat fee regardless of credit history. Quantum Surety issues SB693-compliant notary bonds with instant online approval and same-day PDF delivery accepted by the Texas Secretary of State." }},
+          { "@type": "Question", "name": "Do Fort Worth notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas notaries public, including those in Fort Worth and Tarrant County, must maintain a $10,000 surety bond as a condition of their notary commission under the Texas Government Code. Under SB693 (effective September 1, 2023), the bond must cover the full 4-year notary commission term. The bond is filed with the Texas Secretary of State as part of the notary application." }},
+          { "@type": "Question", "name": "How long is the notary commission in Fort Worth, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary commissions — including for Fort Worth and Tarrant County notaries — are issued for 4-year terms under Senate Bill 693, effective September 1, 2023. Both the notary commission and the surety bond run for the same 4-year period. When the commission expires, the notary must purchase a new bond and submit a new application to the Texas Secretary of State." }},
+          { "@type": "Question", "name": "How do I get a notary bond in Fort Worth?", "acceptedAnswer": { "@type": "Answer", "text": "To get a Fort Worth notary bond: (1) Purchase your $10,000, 4-year bond at Quantum Surety for $50 — instant online, PDF by email. (2) Complete your notary application with the Texas Secretary of State online or by mail. (3) Submit the bond certificate with your application. (4) Receive your notary commission in 2–4 weeks. The entire bonding process takes about 5 minutes." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Fort Worth Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-fort-worth" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Notary Bond — Fort Worth</h1>
       <p>Fort Worth / Tarrant County notaries: get your required $10,000 Texas notary surety bond instantly. $50 flat for the full 4-year term, no credit check, instant PDF.</p>
@@ -2710,7 +3332,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "GDN Bond Fort Worth TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Fort Worth same-day. Required under §503.033 for all Tarrant County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-fort-worth`,
-    content: `<main>
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Fort Worth Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Fort Worth" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Fort Worth" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Fort Worth need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Fort Worth and Tarrant County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Fort Worth GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Fort Worth auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Tarrant County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Fort Worth GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Fort Worth dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Tarrant County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Fort Worth Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-fort-worth" },
+        ],
+      },
+    ],
+        content: `<main>
       <h1>GDN Bond — Fort Worth, Texas Motor Vehicle Dealers</h1>
       <p>Fort Worth and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
       <h2>Fort Worth Dealer License Types Requiring a GDN Bond</h2>
@@ -2723,7 +3374,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "GDN Bond Plano TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-plano`,
-    content: `<main>
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Plano Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Plano" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Plano" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Plano need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Plano and Collin County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Plano GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Plano auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Collin County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Plano GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Plano dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Collin County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Plano Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-plano" },
+        ],
+      },
+    ],
+        content: `<main>
       <h1>GDN Bond — Plano, Texas Motor Vehicle Dealers</h1>
       <p>Plano and Collin County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
       <h2>GDN Bond Requirements for Plano Dealers</h2>
@@ -2736,7 +3416,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "GDN Bond Arlington TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/gdn-bond-arlington`,
-    content: `<main>
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Arlington Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Arlington" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Arlington" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Arlington need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Arlington and Tarrant County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a Arlington GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Arlington auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Tarrant County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my Arlington GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Arlington dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Tarrant County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Arlington Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-arlington" },
+        ],
+      },
+    ],
+        content: `<main>
       <h1>GDN Bond — Arlington, Texas Motor Vehicle Dealers</h1>
       <p>Arlington and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
       <h2>GDN Bond Requirements for Arlington Dealers</h2>
@@ -2749,7 +3458,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "GDN Bond El Paso TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in El Paso same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/gdn-bond-el-paso`,
-    content: `<main>
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "El Paso Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "El Paso" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in El Paso" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in El Paso need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including El Paso and El Paso County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
+          { "@type": "Question", "name": "How much does a El Paso GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "El Paso auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified El Paso County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
+          { "@type": "Question", "name": "What happens if my El Paso GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your El Paso dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so El Paso County dealers never have a coverage gap." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "El Paso Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-el-paso" },
+        ],
+      },
+    ],
+        content: `<main>
       <h1>GDN Bond — El Paso, Texas Motor Vehicle Dealers</h1>
       <p>El Paso motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate, accepted by TxDMV eLICENSING.</p>
       <h2>GDN Bond Requirements for El Paso Dealers</h2>
@@ -2763,7 +3501,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Auctioneer Bond | $10,000 TDLR Bond | Instant Online | Quantum Surety",
     description: "Get your Texas auctioneer license bond instantly — $10,000 coverage required by TDLR under §1802.254. From $100/yr. Instant PDF certificate. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/auctioneer-bond-texas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Auctioneer Bond",
@@ -2772,6 +3511,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": { "@type": "State", "name": "Texas" },
       "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100" }
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a Texas auctioneer bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas auctioneer bond is a $10,000 surety bond required by the Texas Department of Licensing and Regulation (TDLR) for all licensed auctioneers under Texas Occupations Code §1802.254. The bond protects consumers and clients from financial harm caused by auctioneer misconduct, fraud, or failure to remit sale proceeds. It must be maintained throughout the 2-year license term." }},
+          { "@type": "Question", "name": "How much does a Texas auctioneer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas auctioneers pay $100–$250 per year for a $10,000 auctioneer bond. The exact premium depends on your credit profile. Well-qualified applicants typically pay around $100/year. Quantum Surety issues TDLR-accepted auctioneer bonds with instant online approval and same-day PDF delivery." }},
+          { "@type": "Question", "name": "Is an auctioneer bond required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. TDLR requires all licensed auctioneers and apprentice auctioneers in Texas to maintain a $10,000 surety bond under Texas Occupations Code §1802.254 as a condition of licensure. Operating as an auctioneer without a valid TDLR license and surety bond is a violation of state law and can result in fines and license revocation." }},
+          { "@type": "Question", "name": "Do apprentice auctioneers in Texas need a bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Both licensed auctioneers and apprentice auctioneers in Texas are required to hold a $10,000 surety bond under TDLR rules. The bond amount and requirement apply equally regardless of whether you hold a full auctioneer license or an apprentice auctioneer license. Texas auctioneer licenses are issued for 2-year terms and must be renewed biennially with TDLR." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Auctioneer Bond", "item": "https://quantumsurety.bond/bonds/auctioneer-bond-texas" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Auctioneer Bond — TDLR License Requirement</h1>
       <p>All Texas-licensed auctioneers must maintain a $10,000 surety bond with TDLR under Texas Occupations Code §1802.254. Get bonded same-day with instant PDF delivery.</p>
@@ -3424,7 +4182,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas General Contractor Bond | License Bond | Quantum Surety",
     description: "Get your Texas general contractor license bond same-day. City licensing requirements across major Texas metros. Bonds from $75/yr. Instant PDF certificate.",
     canonical: `${BASE_URL}/bonds/general-contractor-bond-texas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas General Contractor Surety Bond",
@@ -3433,6 +4192,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": { "@type": "State", "name": "Texas" },
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Texas general contractor license bonds from $75/year" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do general contractors need a bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities require general contractors to post a surety bond as a condition of their local contractor license or building permit. Texas does not have a statewide general contractor license — bonding requirements are set by individual cities and counties. Common Texas cities that require contractor bonds include Dallas, Houston, Austin, San Antonio, and Fort Worth. Bond amounts typically range from $10,000 to $25,000." }},
+          { "@type": "Question", "name": "How much does a Texas general contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas general contractor license bonds typically cost $75–$250 per year depending on the bond amount and your credit profile. Most qualified contractors pay under $150/year for a standard city license bond. Quantum Surety issues same-day contractor bonds with instant PDF delivery accepted by Texas city licensing departments." }},
+          { "@type": "Question", "name": "What is the difference between a contractor bond and contractor insurance?", "acceptedAnswer": { "@type": "Answer", "text": "A contractor surety bond protects your clients and the government from financial harm caused by contractor misconduct, failure to complete work, or license violations. General liability insurance protects your business from property damage, injury claims, and other losses on the job. Most Texas cities require contractors to carry both a license bond AND general liability insurance as conditions of licensure." }},
+          { "@type": "Question", "name": "Which Texas cities require a general contractor bond?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities require general contractor bonds including Dallas, Houston, Austin, San Antonio, Fort Worth, El Paso, Corpus Christi, Lubbock, and Amarillo. Requirements vary by city — some require bonds only for specific license types or above a certain project value threshold. Contact your city's Development Services department to verify the exact bond requirement for your trade." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas General Contractor Bond", "item": "https://quantumsurety.bond/bonds/general-contractor-bond-texas" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas General Contractor License Bond</h1>
       <p>Many Texas cities require general contractors to post a surety bond as a condition of their local license. Bond amounts and requirements vary by city. Same-day issuance, instant PDF delivery.</p>
@@ -3453,7 +4231,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Roofing Contractor Bond | License Bond | Quantum Surety",
     description: "Get your Texas roofing contractor license bond same-day. City and county licensing requirements statewide. Bonds from $75/yr. Instant PDF certificate.",
     canonical: `${BASE_URL}/bonds/roofing-contractor-bond-texas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Roofing Contractor Surety Bond",
@@ -3462,6 +4241,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": { "@type": "State", "name": "Texas" },
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Texas roofing contractor bonds from $75/year" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do roofing contractors need a bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Several Texas cities require roofing contractors to post a surety bond as part of their local licensing or permit process. Texas has no statewide roofing contractor license — bond requirements are set by individual cities and counties. Bond amounts typically range from $5,000 to $25,000 depending on the jurisdiction. Quantum Surety issues Texas roofing contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Texas roofing contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas roofing contractor bonds typically cost $75–$250 per year depending on the bond amount and your credit profile. Most qualified roofing contractors pay under $150/year for a standard city license bond. Same-day issuance with instant PDF delivery — accepted by Texas city and county licensing departments." }},
+          { "@type": "Question", "name": "Why do roofing contractors need a surety bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A roofing contractor surety bond protects property owners from financial harm caused by contractor misconduct, poor workmanship, failure to complete work, or abandonment of a project. It provides recourse if a contractor takes a deposit and disappears or fails to complete the roofing job as agreed. The bond is also required by many preferred contractor programs run by insurance companies." }},
+          { "@type": "Question", "name": "Are roofing contractors regulated in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas does not have a statewide roofing contractor license — roofing contractors are regulated at the local level by cities and counties. Many Texas cities require roofing contractors to register, obtain a license, and post a surety bond. Some counties also require registration. After a storm, roofing contractors must comply with local solicitation ordinances in cities like Farmers Branch, Allen, and others." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Roofing Contractor Bond", "item": "https://quantumsurety.bond/bonds/roofing-contractor-bond-texas" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Roofing Contractor Bond</h1>
       <p>Several Texas cities require roofing contractors to hold a surety bond as part of their licensing or permit process. Bond requirements vary by jurisdiction. Quantum Surety issues roofing contractor bonds same-day with instant PDF delivery.</p>
@@ -3477,7 +4275,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Payment Bond | Construction Payment Bond | Quantum Surety",
     description: "Texas payment bonds for construction contractors. Required on public projects over $25,000 (Tex. Gov't Code §2253). Same-day approval for qualified contractors.",
     canonical: `${BASE_URL}/bonds/payment-bond-texas`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Texas Payment Bond",
@@ -3486,6 +4285,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": { "@type": "State", "name": "Texas" },
       "description": "Payment bonds for Texas construction contractors on public projects. Protects subcontractors and material suppliers.",
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a Texas payment bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas payment bond is a surety bond that guarantees a prime contractor will pay subcontractors, laborers, and material suppliers on a construction project. Texas Government Code §2253.021 requires payment bonds on all public construction contracts over $25,000. The bond protects subcontractors who cannot file mechanic's liens on public property. Payment bonds are typically issued alongside performance bonds at 100% of the contract amount." }},
+          { "@type": "Question", "name": "When is a payment bond required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Government Code §2253.021 requires payment bonds on Texas public contracts over $25,000. Federal contracts over $150,000 require payment bonds under the Miller Act (40 U.S.C. §3131). Many private project owners and lenders also require payment bonds to protect against mechanic's liens and payment disputes. School districts and municipalities have additional statutory requirements." }},
+          { "@type": "Question", "name": "How much does a Texas payment bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas payment bond premiums typically range from 0.5%–3% of the contract amount, the same as performance bond rates. A $500,000 payment bond costs roughly $5,000–$7,500 depending on contractor financials and credit. Payment and performance bonds are almost always issued together at the same combined rate. Quantum Surety provides same-day approval for qualified contractors." }},
+          { "@type": "Question", "name": "What is the difference between a payment bond and a performance bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas performance bond protects the project owner — it guarantees the contractor will complete the project per contract terms. A Texas payment bond protects subcontractors and suppliers — it guarantees they will be paid even if the prime contractor defaults. Texas Government Code §2253.021 requires both on public projects over $25,000. They are typically issued together as a package at 100% of the contract amount each." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Payment Bond", "item": "https://quantumsurety.bond/bonds/payment-bond-texas" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Texas Payment Bond</h1>
       <p>A Texas payment bond guarantees that a prime contractor will pay subcontractors, laborers, and material suppliers on a construction project. Texas Government Code §2253.021 requires payment bonds on all public contracts over $25,000. Typically issued alongside a performance bond.</p>
@@ -3505,7 +4323,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Amarillo Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Amarillo contractor license bond same-day. City of Amarillo licensing requirement. Potter County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-amarillo`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Amarillo Texas Contractor Bond",
@@ -3514,6 +4333,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Amarillo" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Amarillo" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Amarillo, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Amarillo, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Amarillo Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Amarillo contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Amarillo contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Amarillo contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Potter County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Amarillo licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Amarillo?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Amarillo may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Amarillo Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Amarillo, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Amarillo contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Amarillo Development Services and Potter County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Amarillo Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-amarillo" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Amarillo Contractor Bond — Potter County</h1>
       <p>Amarillo contractors in Texas Panhandle need a surety bond to meet city licensing requirements. Quantum Surety issues Amarillo contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3533,7 +4371,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Corpus Christi Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Corpus Christi contractor license bond same-day. City of Corpus Christi licensing requirement. Nueces County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-corpus-christi`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Corpus Christi Texas Contractor Bond",
@@ -3542,6 +4381,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Corpus Christi" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Corpus Christi" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Corpus Christi, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Corpus Christi, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Corpus Christi Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Corpus Christi contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Corpus Christi contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Corpus Christi contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Nueces County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Corpus Christi licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Corpus Christi?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Corpus Christi may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Corpus Christi Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Corpus Christi, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Corpus Christi contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Corpus Christi Development Services and Nueces County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Corpus Christi Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-corpus-christi" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Corpus Christi Contractor Bond — Nueces County</h1>
       <p>Corpus Christi contractors in Coastal Bend need a surety bond to meet city licensing requirements. Quantum Surety issues Corpus Christi contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3561,7 +4419,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Denton Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Denton contractor license bond same-day. City of Denton licensing requirement. Denton County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-denton`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Denton Texas Contractor Bond",
@@ -3570,6 +4429,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Denton" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Denton" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Denton, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Denton, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Denton Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Denton contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Denton contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Denton contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Denton County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Denton licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Denton?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Denton may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Denton Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Denton, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Denton contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Denton Development Services and Denton County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Denton Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-denton" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Denton Contractor Bond — Denton County</h1>
       <p>Denton contractors in North DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Denton contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3589,7 +4467,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "El Paso Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your El Paso contractor license bond same-day. City of El Paso licensing requirement. El Paso County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-el-paso`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "El Paso Texas Contractor Bond",
@@ -3598,6 +4477,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "El Paso" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in El Paso" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in El Paso, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including El Paso, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of El Paso Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues El Paso contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a El Paso contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A El Paso contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most El Paso County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by El Paso licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in El Paso?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in El Paso may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of El Paso Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in El Paso, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a El Paso contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of El Paso Development Services and El Paso County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "El Paso Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-el-paso" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>El Paso Contractor Bond — El Paso County</h1>
       <p>El Paso contractors in West Texas need a surety bond to meet city licensing requirements. Quantum Surety issues El Paso contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3617,7 +4515,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Frisco Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Frisco contractor license bond same-day. City of Frisco licensing requirement. Collin County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-frisco`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Frisco Texas Contractor Bond",
@@ -3626,6 +4525,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Frisco" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Frisco" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Frisco, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Frisco, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Frisco Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Frisco contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Frisco contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Frisco contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Collin County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Frisco licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Frisco?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Frisco may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Frisco Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Frisco, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Frisco contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Frisco Development Services and Collin County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Frisco Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-frisco" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Frisco Contractor Bond — Collin County</h1>
       <p>Frisco contractors in North DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Frisco contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3645,7 +4563,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Garland Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Garland contractor license bond same-day. City of Garland licensing requirement. Dallas County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-garland`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Garland Texas Contractor Bond",
@@ -3654,6 +4573,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Garland" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Garland" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Garland, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Garland, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Garland Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Garland contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Garland contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Garland contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Dallas County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Garland licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Garland?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Garland may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Garland Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Garland, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Garland contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Garland Development Services and Dallas County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Garland Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-garland" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Garland Contractor Bond — Dallas County</h1>
       <p>Garland contractors in East DFW need a surety bond to meet city licensing requirements. Quantum Surety issues Garland contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3673,7 +4611,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Grand Prairie Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Grand Prairie contractor license bond same-day. City of Grand Prairie licensing requirement. Dallas/Tarrant County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-grand-prairie`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Grand Prairie Texas Contractor Bond",
@@ -3682,6 +4621,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Grand Prairie" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Grand Prairie" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Grand Prairie, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Grand Prairie, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Grand Prairie Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Grand Prairie contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Grand Prairie contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Grand Prairie contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Dallas County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Grand Prairie licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Grand Prairie?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Grand Prairie may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Grand Prairie Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Grand Prairie, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Grand Prairie contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Grand Prairie Development Services and Dallas County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Grand Prairie Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-grand-prairie" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Grand Prairie Contractor Bond — Dallas/Tarrant County</h1>
       <p>Grand Prairie contractors in Mid-Cities need a surety bond to meet city licensing requirements. Quantum Surety issues Grand Prairie contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3701,7 +4659,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Irving Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Irving contractor license bond same-day. City of Irving licensing requirement. Dallas County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-irving`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Irving Texas Contractor Bond",
@@ -3710,6 +4669,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Irving" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Irving" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Irving, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Irving, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Irving Inspections to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Irving contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Irving contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Irving contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Dallas County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Irving licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Irving?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Irving may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Irving Inspections to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Irving, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Irving contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Irving Inspections and Dallas County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Irving Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-irving" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Irving Contractor Bond — Dallas County</h1>
       <p>Irving contractors in DFW Metroplex need a surety bond to meet city licensing requirements. Quantum Surety issues Irving contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3729,7 +4707,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Lubbock Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Lubbock contractor license bond same-day. City of Lubbock licensing requirement. Lubbock County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-lubbock`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Lubbock Texas Contractor Bond",
@@ -3738,6 +4717,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Lubbock" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Lubbock" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Lubbock, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Lubbock, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Lubbock Building Safety to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Lubbock contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Lubbock contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Lubbock contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most Lubbock County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Lubbock licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Lubbock?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Lubbock may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Lubbock Building Safety to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Lubbock, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Lubbock contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Lubbock Building Safety and Lubbock County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Lubbock Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-lubbock" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Lubbock Contractor Bond — Lubbock County</h1>
       <p>Lubbock contractors in South Plains need a surety bond to meet city licensing requirements. Quantum Surety issues Lubbock contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3757,7 +4755,8 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Waco Contractor Bond | Texas License Bond | Quantum Surety",
     description: "Get your Waco contractor license bond same-day. City of Waco licensing requirement. McLennan County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-waco`,
-    structuredData: {
+    structuredData: [
+      {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "Waco Texas Contractor Bond",
@@ -3766,6 +4765,25 @@ const PAGE_META: Record<string, PageMeta> = {
       "areaServed": [{ "@type": "City", "name": "Waco" }, { "@type": "State", "name": "Texas" }],
       "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "Contractor bonds from $75/year in Waco" },
     },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is a contractor bond required in Waco, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Many Texas cities, including Waco, require contractors to post a surety bond as a condition of their local contractor license or permit. Requirements vary by trade and project type. Contact City of Waco Development Services to confirm the exact bond amount and requirement for your specific contractor license. Quantum Surety issues Waco contractor bonds same-day with instant PDF delivery." }},
+          { "@type": "Question", "name": "How much does a Waco contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Waco contractor license bond typically costs $75–$250 per year depending on the bond amount required and your credit profile. Most McLennan County contractors pay under $150/year for a standard city license bond. Quantum Surety offers instant online approval with same-day PDF delivery accepted by Waco licensing departments." }},
+          { "@type": "Question", "name": "Who needs a contractor bond in Waco?", "acceptedAnswer": { "@type": "Answer", "text": "General contractors, electrical contractors, HVAC contractors, plumbing contractors, roofing contractors, and other licensed trades working in Waco may need a surety bond as a condition of their city license. Requirements vary by trade. Contact City of Waco Development Services to verify the bond requirement for your specific trade and license type." }},
+          { "@type": "Question", "name": "How do I get a contractor bond in Waco, Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Getting a Waco contractor bond through Quantum Surety takes about 5 minutes online. Complete a brief application, receive instant approval, and get your PDF bond certificate by email the same day. The certificate is accepted by City of Waco Development Services and McLennan County licensing departments. Bond from $75/year — no waiting, no in-person visits required." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Waco Texas Contractor Bond", "item": "https://quantumsurety.bond/bonds/contractor-bond-waco" },
+        ],
+      },
+    ],
     content: `<main>
       <h1>Waco Contractor Bond — McLennan County</h1>
       <p>Waco contractors in Central Texas need a surety bond to meet city licensing requirements. Quantum Surety issues Waco contractor bonds same-day with instant PDF delivery. Bonds from $75/year.</p>
@@ -3785,7 +4803,36 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
     description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",
     canonical: `${BASE_URL}/bonds/notary-bond-renewal-texas`,
-    content: `<main><h1>Texas Notary Bond Renewal</h1><p>Renew your Texas notary bond online in under 5 minutes. $10,000 coverage for your 4-year commission term. $50 flat fee, instant PDF, SB693 compliant.</p><a href="/get-bond?type=notary">Renew My Notary Bond</a></main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond Renewal",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "SB693-compliant 4-year Texas notary bond renewal for $50" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "When should I renew my Texas notary bond?", "acceptedAnswer": { "@type": "Answer", "text": "You should renew your Texas notary bond when you apply for a new notary commission with the Texas Secretary of State. Under SB693 (effective September 1, 2023), Texas notary commissions run for 4 years — your bond must cover the full 4-year term. When your commission expires, you must purchase a new 4-year bond to apply for a new commission. Do not wait until your bond expires — start the renewal process 30–60 days before your commission expires." }},
+          { "@type": "Question", "name": "How much does Texas notary bond renewal cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond renewal costs $50 for a new 4-year, $10,000 SB693-compliant bond. The price is a flat $50 regardless of credit — there is no credit check for Texas notary bonds. Quantum Surety issues renewal bonds instantly online with same-day PDF delivery, making the renewal process simple and fast." }},
+          { "@type": "Question", "name": "What changed with Texas notary bond renewal after SB693?", "acceptedAnswer": { "@type": "Answer", "text": "Senate Bill 693, effective September 1, 2023, extended the Texas notary commission term from 2 years to 4 years. The surety bond must now match the full 4-year commission term. Notaries who renewed before SB693 had a 2-year bond. All bonds issued after September 1, 2023 must be 4-year bonds. Quantum Surety's $50 renewal bond is SB693-compliant and covers the full 4-year term." }},
+          { "@type": "Question", "name": "Can I renew my Texas notary bond before it expires?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary bonds are tied to your notary commission — they expire when your commission expires. You purchase a new bond when you apply for a new commission. If you are renewing your commission, you purchase a new 4-year bond as part of the Texas Secretary of State application process. The bond takes effect when your new commission begins and runs for the full 4-year term." }}
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond Renewal", "item": "https://quantumsurety.bond/bonds/notary-bond-renewal-texas" },
+        ],
+      },
+    ],
+        content: `<main><h1>Texas Notary Bond Renewal</h1><p>Renew your Texas notary bond online in under 5 minutes. $10,000 coverage for your 4-year commission term. $50 flat fee, instant PDF, SB693 compliant.</p><a href="/get-bond?type=notary">Renew My Notary Bond</a></main>`,
   },
 
   "/get-bond": {

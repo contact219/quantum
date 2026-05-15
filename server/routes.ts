@@ -468,7 +468,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Health check
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString() });
+    res.json({ status: "ok", timestamp: new Date().toISOString(), build: "ntfy-v2" });
+  });
+
+  app.get("/api/debug-ntfy", async (req, res) => {
+    try {
+      const r = await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
+        method: "POST",
+        body: "Debug test from production server",
+        headers: { "Title": "Debug Test", "Priority": "3" },
+      });
+      const body = await r.text();
+      res.json({ ok: true, status: r.status, response: body });
+    } catch (e: any) {
+      res.json({ ok: false, error: e.message });
+    }
   });
 
   // Company settings endpoints

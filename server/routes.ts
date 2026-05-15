@@ -84,12 +84,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { name, email, phone, bond_type } = req.body || {};
       if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
       const bondLabel = bond_type === "notary" ? "Texas Notary Bond" : "Texas GDN Dealer Bond";
-      await sendEmail({
+      // Send admin notification (non-blocking)
+      sendEmail({
         to: "info@quantumsurety.bond",
         from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
         subject: `New Lead: ${bondLabel} — ${name}`,
         html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p>`,
-      } as any);
+      } as any).catch((e: any) => console.error("Lead email error:", e.message));
+      // Mirror lead to local CRM for real-time tracking
+      fetch("http://192.168.4.122:4001/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, bond_type, source: "get-bond" }),
+      }).catch((e: any) => console.error("CRM lead mirror error:", e.message));
       res.json({ ok: true });
     } catch (err: any) {
       console.error("Lead capture error:", err.message);

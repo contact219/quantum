@@ -9,6 +9,8 @@ import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // In-memory lead log — survives restarts via capture
+  const capturedLeads: { name: string; email: string; phone: string; bond: string; time: string }[] = [];
   // ── Permanent URL redirects (301) ─────────────────────────────────────────
   const REDIRECTS: Record<string, string> = {
     "/sb693-notary-bond":  "/sb-693-notary-bond-requirements-2026",
@@ -99,6 +101,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         subject: leadSubject,
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
+      capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
       // Instant push notification — awaited so autoscale doesn't drop it
       await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",
@@ -468,7 +471,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Health check
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString(), build: "ntfy-v2" });
+    res.json({ status: "ok", timestamp: new Date().toISOString(), build: "leads-log-v3" });
+  });
+
+  app.get("/api/leads-log", (req, res) => {
+    res.json({ count: capturedLeads.length, leads: capturedLeads });
   });
 
   app.get("/api/debug-ntfy", async (req, res) => {

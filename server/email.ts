@@ -140,6 +140,10 @@ export async function notifyAdministrator(
   htmlContent: string
 ): Promise<boolean> {
   const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
+  // CC owner's Gmail on all admin notifications (quote form submissions, status updates, etc.)
+  sendEmail("contact219@gmail.com", subject, htmlContent).catch((e: any) =>
+    console.error("[Email] Admin CC to Gmail failed:", e.message)
+  );
   return sendEmail(adminEmail, subject, htmlContent);
 }
 

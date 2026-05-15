@@ -11,6 +11,8 @@ import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring"
 export async function registerRoutes(app: Express): Promise<Server> {
   // In-memory lead log — survives restarts via capture
   const capturedLeads: { name: string; email: string; phone: string; bond: string; time: string }[] = [];
+  // In-memory site event log for real-time CRM tracking
+  const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; time: string }[] = [];
   // ── Permanent URL redirects (301) ─────────────────────────────────────────
   const REDIRECTS: Record<string, string> = {
     "/sb693-notary-bond":  "/sb-693-notary-bond-requirements-2026",
@@ -476,6 +478,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/leads-log", (req, res) => {
     res.json({ count: capturedLeads.length, leads: capturedLeads });
+  });
+
+  app.post("/api/events", (req, res) => {
+    try {
+      const { session_id, event_type, page, element, value, utm_source, utm_campaign, referrer } = req.body || {};
+      if (!event_type) return res.json({ ok: false });
+      const ip = (req.headers["x-forwarded-for"] as string || req.socket.remoteAddress || "").split(",")[0].trim();
+      const ev = { session_id: session_id || "", event_type, page: page || "", element: element || "", value: value || "", utm_source: utm_source || "", utm_campaign: utm_campaign || "", referrer: referrer || "", ip, time: new Date().toISOString() };
+      siteEvents.push(ev);
+      if (siteEvents.length > 5000) siteEvents.splice(0, siteEvents.length - 5000);
+      res.json({ ok: true });
+    } catch (_) { res.json({ ok: true }); }
+  });
+
+  app.get("/api/events-log", (req, res) => {
+    const since = req.query.since as string;
+    const limit = Math.min(parseInt(req.query.limit as string || "500"), 1000);
+    const events = since
+      ? siteEvents.filter(e => e.time > since).slice(-limit)
+      : siteEvents.slice(-limit);
+    res.json({ count: siteEvents.length, events });
   });
 
   app.get("/api/debug-ntfy", async (req, res) => {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Shield, CheckCircle, Phone } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import { track } from "@/hooks/useTracker";
 
 const DEALER_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
 const NOTARY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
@@ -53,6 +54,7 @@ export default function GetBond() {
       return;
     }
     setSubmitting(true);
+    track({ type: "lead_submit", element: "cta_button", value: type });
     try {
       await fetch("/api/leads", {
         method: "POST",
@@ -160,7 +162,7 @@ export default function GetBond() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           Prefer to talk?{" "}
-          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline">
+          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline" onClick={() => track({ type: "click", element: "phone_link", value: "972-379-9216" })}>
             972-379-9216
           </a>
         </div>

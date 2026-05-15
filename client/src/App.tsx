@@ -57,6 +57,9 @@ import MortgageBrokerBondTexas from "@/pages/mortgage-broker-bond-texas";
 import PropertyTaxConsultantBondTexas from "@/pages/property-tax-consultant-bond-texas";
 import CollectionAgencyBondTexas from "@/pages/collection-agency-bond-texas";
 import CreditAccessBusinessBondTexas from "@/pages/credit-access-business-bond-texas";
+import ManufacturedHomeDealerBondTexas from "@/pages/manufactured-home-dealer-bond-texas";
+import MoneyServicesBondTexas from "@/pages/money-services-bond-texas";
+import ProcessServerBondTexas from "@/pages/process-server-bond-texas";
 import NotaryBondDallas from "@/pages/notary-bond-dallas";
 import NotaryBondHouston from "@/pages/notary-bond-houston";
 import NotaryBondSanAntonio from "@/pages/notary-bond-san-antonio";
@@ -228,6 +231,9 @@ function Router() {
       <Route path="/bonds/property-tax-consultant-bond-texas" component={PropertyTaxConsultantBondTexas} />
       <Route path="/bonds/collection-agency-bond-texas" component={CollectionAgencyBondTexas} />
       <Route path="/bonds/credit-access-business-bond-texas" component={CreditAccessBusinessBondTexas} />
+      <Route path="/bonds/manufactured-home-dealer-bond-texas" component={ManufacturedHomeDealerBondTexas} />
+      <Route path="/bonds/money-services-bond-texas" component={MoneyServicesBondTexas} />
+      <Route path="/bonds/process-server-bond-texas" component={ProcessServerBondTexas} />
       {/* Notary bond city pages */}
       <Route path="/bonds/notary-bond-dallas" component={NotaryBondDallas} />
       <Route path="/bonds/notary-bond-houston" component={NotaryBondHouston} />

@@ -92,14 +92,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const leadHtml = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p><p><strong>Time:</strong> ${new Date().toLocaleString("en-US",{timeZone:"America/Chicago"})} CDT</p>`;
       const leadSubject = `New Lead: ${bondLabel} — ${name}`;
       sendEmail({
-        to: "info@quantumsurety.bond",
-        from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
+        to: "administrator@quantumsurety.bond",
+        from: '"Quantum Surety Leads" <administrator@quantumsurety.bond>',
         subject: leadSubject,
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead email error:", e.message));
       sendEmail({
         to: "contact219@gmail.com",
-        from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
+        from: '"Quantum Surety Leads" <administrator@quantumsurety.bond>',
         subject: leadSubject,
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));

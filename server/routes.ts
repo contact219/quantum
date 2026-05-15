@@ -92,7 +92,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p>`,
       } as any).catch((e: any) => console.error("Lead email error:", e.message));
       // Mirror lead to local CRM for real-time tracking
-      fetch("http://192.168.4.122:4001/api/leads", {
+      fetch("http://[2606:4c80:130b:227f:1a66:daff:fe18:876]:4001/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, phone, bond_type, source: "get-bond" }),

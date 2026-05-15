@@ -1,40 +1,108 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
-import { Shield, CheckCircle, Phone } from "lucide-react";
+import { useState } from "react";
+import { Shield, CheckCircle } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { track } from "@/hooks/useTracker";
 
 const DEALER_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
 const NOTARY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
 
-const BOND_META: Record<string, { label: string; amount: string; from: string; blurb: string }> = {
-  dealer: {
-    label: "Texas GDN Dealer Bond",
-    amount: "$50,000",
-    from: "from $100/yr",
-    blurb: "Required by TxDMV for all Texas motor vehicle dealer licenses (GDN). Same-day certificate, TxDMV-accepted.",
-  },
+const BOND_META: Record<string, { label: string; amount: string; from: string; blurb: string; redirectUrl?: string }> = {
   notary: {
     label: "Texas Notary Bond",
     amount: "$10,000",
     from: "from $30/yr",
     blurb: "Required by the Texas Secretary of State for all commissioned notaries. Instant PDF certificate, 4-year term available.",
+    redirectUrl: NOTARY_URL,
+  },
+  dealer: {
+    label: "Texas GDN Dealer Bond",
+    amount: "$50,000",
+    from: "from $100/yr",
+    blurb: "Required by TxDMV for all Texas motor vehicle dealer licenses (GDN). Same-day certificate, TxDMV-accepted.",
+    redirectUrl: DEALER_URL,
+  },
+  gdn: {
+    label: "Texas GDN Dealer Bond",
+    amount: "$50,000",
+    from: "from $100/yr",
+    blurb: "Required by TxDMV for all Texas motor vehicle dealer licenses (GDN). Same-day certificate, TxDMV-accepted.",
+    redirectUrl: DEALER_URL,
+  },
+  contractor: {
+    label: "Texas Contractor License Bond",
+    amount: "$10,000+",
+    from: "from $75/yr",
+    blurb: "Required for Texas contractor and trade licenses (TDLR, City, County). Fast approval and same-day certificate available.",
+    redirectUrl: DEALER_URL,
+  },
+  construction: {
+    label: "Texas Construction Bond",
+    amount: "Project-Based",
+    from: "Custom Rate",
+    blurb: "Bid, performance, and payment bonds for Texas construction projects. TDI-licensed, fast turnaround.",
+    redirectUrl: DEALER_URL,
+  },
+  bid: {
+    label: "Texas Bid Bond",
+    amount: "Project-Based",
+    from: "Custom Rate",
+    blurb: "Bid bonds for Texas public and private construction projects. TDI-licensed surety agency.",
+    redirectUrl: DEALER_URL,
+  },
+  performance: {
+    label: "Texas Performance & Payment Bond",
+    amount: "Project-Based",
+    from: "Custom Rate",
+    blurb: "Performance and payment bonds for Texas construction contracts. TDI-licensed, competitive rates.",
+    redirectUrl: DEALER_URL,
+  },
+  mortgage: {
+    label: "Texas Mortgage Broker Bond",
+    amount: "$50,000",
+    from: "from $150/yr",
+    blurb: "Required for Texas mortgage brokers and loan officers (TDHCA/SML). Same-day certificate available.",
+    redirectUrl: DEALER_URL,
+  },
+  "credit-access-business": {
+    label: "Texas Credit Access Business Bond",
+    amount: "$10,000",
+    from: "from $75/yr",
+    blurb: "Required by Texas municipalities for credit access businesses (CABs). Fast approval, TDI-licensed.",
+    redirectUrl: DEALER_URL,
+  },
+  "collection-agency": {
+    label: "Texas Collection Agency Bond",
+    amount: "$10,000",
+    from: "from $75/yr",
+    blurb: "Required for Texas collection agency licenses. TDI-licensed surety agency, fast turnaround.",
+    redirectUrl: DEALER_URL,
+  },
+  "property-tax-consultant": {
+    label: "Texas Property Tax Consultant Bond",
+    amount: "$5,000",
+    from: "from $50/yr",
+    blurb: "Required for registered property tax consultants in Texas. Instant approval available.",
+    redirectUrl: DEALER_URL,
   },
 };
 
 export default function GetBond() {
-  const [location] = useLocation();
   const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-  const type = params.get("type")?.startsWith("notary") ? "notary" : "dealer";
+  const rawType = (params.get("type") || "").toLowerCase().split("?")[0];
+  const type = rawType in BOND_META ? rawType : (rawType.startsWith("notary") ? "notary" : "dealer");
   const meta = BOND_META[type];
 
   useSEO({
     title: type === "notary"
       ? "Get Your Texas Notary Bond | $50 Instant | Quantum Surety"
-      : "Get Your Texas GDN Dealer Bond | Same-Day Certificate | Quantum Surety",
+      : type === "dealer" || type === "gdn"
+      ? "Get Your Texas GDN Dealer Bond | Same-Day Certificate | Quantum Surety"
+      : `Get Your ${meta.label} | Same-Day Certificate | Quantum Surety`,
     description: type === "notary"
       ? "Apply for your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency."
-      : "Apply for your Texas GDN dealer bond online. $50,000 bond from $100/yr. Same-day PDF certificate emailed to you. TxDMV-accepted.",
+      : type === "dealer" || type === "gdn"
+      ? "Apply for your Texas GDN dealer bond online. $50,000 bond from $100/yr. Same-day PDF certificate emailed to you. TxDMV-accepted."
+      : `Apply for your ${meta.label} online. ${meta.blurb}`,
     canonical: `/get-bond`,
   });
 
@@ -64,7 +132,7 @@ export default function GetBond() {
     } catch (_) {
       // don't block redirect on network error
     }
-    window.location.href = type === "notary" ? NOTARY_URL : DEALER_URL;
+    window.location.href = meta.redirectUrl || DEALER_URL;
   }
 
   return (

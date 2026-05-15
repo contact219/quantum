@@ -9,11 +9,11 @@ import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // In-memory lead log — survives restarts via capture
+  // In-memory lead log â€” survives restarts via capture
   const capturedLeads: { name: string; email: string; phone: string; bond: string; time: string }[] = [];
   // In-memory site event log for real-time CRM tracking
   const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; time: string }[] = [];
-  // ── Permanent URL redirects (301) ─────────────────────────────────────────
+  // â”€â”€ Permanent URL redirects (301) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const REDIRECTS: Record<string, string> = {
     "/sb693-notary-bond":  "/sb-693-notary-bond-requirements-2026",
     "/notary-bond-sb693":  "/sb-693-notary-bond-requirements-2026",
@@ -87,10 +87,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { name, email, phone, bond_type } = req.body || {};
       if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
-      const bondLabel = bond_type === "notary" ? "Texas Notary Bond" : "Texas GDN Dealer Bond";
+      const BOND_LABELS: Record<string, string> = {
+        notary: "Texas Notary Bond",
+        dealer: "Texas GDN Dealer Bond",
+        gdn: "Texas GDN Dealer Bond",
+        contractor: "Texas Contractor License Bond",
+        construction: "Texas Construction Bond",
+        bid: "Texas Bid Bond",
+        performance: "Texas Performance & Payment Bond",
+        payment: "Texas Payment Bond",
+        mortgage: "Texas Mortgage Broker Bond",
+        "credit-access-business": "Texas Credit Access Business Bond",
+        "collection-agency": "Texas Collection Agency Bond",
+        "property-tax-consultant": "Texas Property Tax Consultant Bond",
+      };
+      const rawBondType = (bond_type || "").toLowerCase().split("?")[0];
+      const bondLabel = BOND_LABELS[rawBondType] || (bond_type ? `${bond_type} Bond` : "Texas Surety Bond");
       // Send admin notification to both inbox and owner's Gmail
       const leadHtml = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p><p><strong>Time:</strong> ${new Date().toLocaleString("en-US",{timeZone:"America/Chicago"})} CDT</p>`;
-      const leadSubject = `New Lead: ${bondLabel} — ${name}`;
+      const leadSubject = `New Lead: ${bondLabel} â€” ${name}`;
       sendEmail({
         to: "administrator@quantumsurety.bond",
         from: '"Quantum Surety Leads" <administrator@quantumsurety.bond>',
@@ -104,7 +119,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
-      // Instant push notification — awaited so autoscale doesn't drop it
+      // Instant push notification â€” awaited so autoscale doesn't drop it
       await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",
         body: `${name} | ${email} | ${phone} | ${bondLabel} | ${new Date().toLocaleString("en-US",{timeZone:"America/Chicago"})} CDT`,
@@ -1965,13 +1980,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const adminEmail = process.env.ADMIN_EMAIL || "administrator@quantumsurety.bond";
       const html = `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
-          <h2 style="color:#4f46e5;">✅ Test Email from Quantum Surety</h2>
+          <h2 style="color:#4f46e5;">âœ… Test Email from Quantum Surety</h2>
           <p>This is a test email sent from the Quantum Surety admin panel.</p>
           <p>If you received this, your email configuration is working correctly.</p>
           <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0;" />
           <p style="font-size:12px;color:#6b7280;">Sent: ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })} CT</p>
         </div>`;
-      const sent = await sendEmail(adminEmail, "Test Email — Quantum Surety Admin", html);
+      const sent = await sendEmail(adminEmail, "Test Email â€” Quantum Surety Admin", html);
       if (sent) {
         res.json({ success: true, message: `Test email sent to ${adminEmail}` });
       } else {

@@ -24,6 +24,15 @@ let _sgCredentials: { apiKey: string; email: string } | null = null;
 async function getSendGridCredentials() {
   if (_sgCredentials) return _sgCredentials;
 
+  // Direct env var — works when Replit connector system is unavailable
+  if (process.env.SENDGRID_API_KEY) {
+    _sgCredentials = {
+      apiKey: process.env.SENDGRID_API_KEY,
+      email: process.env.SENDGRID_FROM_EMAIL || "info@quantumsurety.bond",
+    };
+    return _sgCredentials;
+  }
+
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY
     ? "repl " + process.env.REPL_IDENTITY

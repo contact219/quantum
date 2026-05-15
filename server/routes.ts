@@ -84,19 +84,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { name, email, phone, bond_type } = req.body || {};
       if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
       const bondLabel = bond_type === "notary" ? "Texas Notary Bond" : "Texas GDN Dealer Bond";
-      // Send admin notification (non-blocking)
+      // Send admin notification to both inbox and owner's Gmail
+      const leadHtml = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p><p><strong>Time:</strong> ${new Date().toLocaleString("en-US",{timeZone:"America/Chicago"})} CDT</p>`;
+      const leadSubject = `New Lead: ${bondLabel} — ${name}`;
       sendEmail({
         to: "info@quantumsurety.bond",
         from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
-        subject: `New Lead: ${bondLabel} — ${name}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Bond:</strong> ${bondLabel}</p>`,
+        subject: leadSubject,
+        html: leadHtml,
       } as any).catch((e: any) => console.error("Lead email error:", e.message));
-      // Mirror lead to local CRM for real-time tracking
-      fetch("http://[2606:4c80:130b:227f:1a66:daff:fe18:876]:4001/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, bond_type, source: "get-bond" }),
-      }).catch((e: any) => console.error("CRM lead mirror error:", e.message));
+      sendEmail({
+        to: "contact219@gmail.com",
+        from: '"Quantum Surety Leads" <info@quantumsurety.bond>',
+        subject: leadSubject,
+        html: leadHtml,
+      } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
       res.json({ ok: true });
     } catch (err: any) {
       console.error("Lead capture error:", err.message);

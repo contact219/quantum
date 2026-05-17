@@ -142,9 +142,10 @@ import GDNBondGarland from "@/pages/gdn-bond-garland";
 import GDNBondGrandPrairie from "@/pages/gdn-bond-grand-prairie";
 import GDNBondDenton from "@/pages/gdn-bond-denton";
 import GDNBondAmarillo from "@/pages/gdn-bond-amarillo";
-// Construction hub + bonded title
+// Construction hub + bonded title + L&P hub
 import ConstructionBondTexas from "@/pages/construction-bond-texas";
 import BondedTitleTexas from "@/pages/bonded-title-texas";
+import LicensePermitBondTexas from "@/pages/license-permit-bond-texas";
 // Additional notary city pages
 import NotaryBondLaredo from "@/pages/notary-bond-laredo";
 import NotaryBondMcAllen from "@/pages/notary-bond-mcallen";
@@ -337,6 +338,7 @@ function Router() {
       {/* Construction hub + bonded title */}
       <Route path="/bonds/construction-bond-texas" component={ConstructionBondTexas} />
       <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
+      <Route path="/bonds/license-permit-bond-texas" component={LicensePermitBondTexas} />
 
       {/* Additional notary city pages */}
       <Route path="/bonds/notary-bond-laredo" component={NotaryBondLaredo} />

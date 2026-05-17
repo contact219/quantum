@@ -4939,6 +4939,39 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `<main><h1>Texas Bonded Title Bond</h1><p>Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond amount equals 1.5x the vehicle's appraised value. File with TxDMV using Form VTR-130-SOF. TDI-licensed agency #3480229.</p><a href="/quote">Get a Bonded Title Quote</a></main>`,
   },
+  "/bonds/license-permit-bond-texas": {
+    title: "Texas License & Permit Bonds | TDLR, Contractor, Adjuster, Mortgage | Quantum Surety",
+    description: "Texas license and permit bonds for contractors, insurance adjusters, mortgage brokers, mixed beverage dealers, and more. TDLR, TDI, TDHCA, TABC requirements covered. From $50/yr. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/license-permit-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas License & Permit Bonds",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "50", "unitText": "per year" } },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a Texas license and permit bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas license and permit (L&P) bond is a surety bond required by a Texas state agency, county, or municipality as a condition of issuing a business license or permit. It guarantees the licensed business will comply with applicable laws and regulations." } },
+          { "@type": "Question", "name": "How much does a Texas L&P bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas L&P bonds cost $50–$300 per year. Standard amounts ($10,000–$50,000) can often be issued instantly. Quantum Surety offers same-day issuance for most standard L&P bond amounts." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas License & Permit Bonds", "item": "https://quantumsurety.bond/bonds/license-permit-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main><h1>Texas License & Permit Bonds</h1><p>Surety bonds required by TDLR, TDI, TDHCA, TABC, the Texas Comptroller, and local licensing authorities. Covers contractor, adjuster, mortgage, mixed beverage, sales tax, and permit bonds. From $50/yr. TDI-licensed agency #3480229.</p><a href="/quote?type=license">Get My L&P Bond Quote</a></main>`,
+  },
   "/bonds/gdn-bond-corpus-christi": {
     title: "GDN Bond Corpus Christi TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
     description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",

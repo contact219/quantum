@@ -1226,6 +1226,11 @@ const PAGE_META: Record<string, PageMeta> = {
           <li><a href="/blog/texas-tdlr-contractor-bond-2026">Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know</a></li>
           <li><a href="/blog/texas-contractor-license-bond-cost">How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</a></li>
           <li><a href="/blog/texas-electrical-contractor-bond-requirements">Texas Electrical Contractor Bond Requirements 2026</a></li>
+          <li><a href="/blog/how-to-become-texas-notary-2026">How to Become a Texas Notary Public in 2026 (Complete Guide)</a></li>
+          <li><a href="/blog/what-is-a-surety-bond-texas">What Is a Surety Bond? Texas Plain-Language Guide</a></li>
+          <li><a href="/blog/how-to-get-texas-gdn-license">How to Get a Texas GDN Dealer License in 2026</a></li>
+          <li><a href="/blog/bid-bond-vs-performance-bond-vs-payment-bond">Bid Bond vs Performance Bond vs Payment Bond: Texas Guide</a></li>
+          <li><a href="/blog/texas-notary-bond-vs-eo-insurance">Texas Notary Bond vs E&amp;O Insurance: What's the Difference?</a></li>
         </ul>
       </main>`,
   },
@@ -5707,6 +5712,136 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
     content: `<main><h1>Odessa Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Odessa notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Odessa Notary Bond — $50</a></main>`,
+  },
+
+  "/blog/how-to-become-texas-notary-2026": {
+    title: "How to Become a Texas Notary Public in 2026 (Complete Guide) | Quantum Surety",
+    description: "Step-by-step guide to becoming a Texas notary public in 2026. Eligibility, SB693 education requirement, $10,000 bond, oath of office, and how long it takes.",
+    canonical: `${BASE_URL}/blog/how-to-become-texas-notary-2026`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Become a Texas Notary Public in 2026 (Complete Guide)",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/how-to-become-texas-notary-2026` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "How to Become a Texas Notary 2026", "item": `${BASE_URL}/blog/how-to-become-texas-notary-2026` },
+        ],
+      },
+    ],
+    content: `<main><h1>How to Become a Texas Notary Public in 2026</h1><p>Complete guide to becoming a Texas notary: eligibility, SB693 education, $10,000 surety bond, application, and oath of office.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
+  },
+
+  "/blog/what-is-a-surety-bond-texas": {
+    title: "What Is a Surety Bond? Texas Plain-Language Guide (2026) | Quantum Surety",
+    description: "A surety bond is a 3-party guarantee — not insurance. Learn what a surety bond is, how it works, who needs one in Texas, and what it costs. Plain-language guide with examples.",
+    canonical: `${BASE_URL}/blog/what-is-a-surety-bond-texas`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "What Is a Surety Bond? Texas Plain-Language Guide",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/what-is-a-surety-bond-texas` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "What Is a Surety Bond?", "item": `${BASE_URL}/blog/what-is-a-surety-bond-texas` },
+        ],
+      },
+    ],
+    content: `<main><h1>What Is a Surety Bond? Texas Plain-Language Guide</h1><p>A surety bond is a three-party contract between the principal, obligee, and surety — not insurance. Learn how surety bonds work and when Texas law requires one.</p><a href="/quote">Find My Bond</a></main>`,
+  },
+
+  "/blog/how-to-get-texas-gdn-license": {
+    title: "How to Get a Texas GDN Dealer License in 2026 (Step-by-Step) | Quantum Surety",
+    description: "Complete step-by-step guide to getting a Texas GDN motor vehicle dealer license in 2026. Required documents, bond, TxDMV eLICENSING process, costs, and timeline.",
+    canonical: `${BASE_URL}/blog/how-to-get-texas-gdn-license`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Get a Texas GDN Dealer License in 2026 (Step-by-Step)",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/how-to-get-texas-gdn-license` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "How to Get a Texas GDN License", "item": `${BASE_URL}/blog/how-to-get-texas-gdn-license` },
+        ],
+      },
+    ],
+    content: `<main><h1>How to Get a Texas GDN Dealer License in 2026</h1><p>Step-by-step guide to obtaining a Texas GDN motor vehicle dealer license: dealer type, location, $50,000 surety bond, education, and TxDMV eLICENSING application.</p><a href="/get-bond?type=dealer">Get My GDN Bond</a></main>`,
+  },
+
+  "/blog/bid-bond-vs-performance-bond-vs-payment-bond": {
+    title: "Bid Bond vs Performance Bond vs Payment Bond: Texas Guide (2026) | Quantum Surety",
+    description: "What's the difference between a bid bond, performance bond, and payment bond? When each is required in Texas, what they cost, and why public contracts need all three.",
+    canonical: `${BASE_URL}/blog/bid-bond-vs-performance-bond-vs-payment-bond`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Bid Bond vs Performance Bond vs Payment Bond: Texas Contractor Guide",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/bid-bond-vs-performance-bond-vs-payment-bond` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "Bid vs Performance vs Payment Bond", "item": `${BASE_URL}/blog/bid-bond-vs-performance-bond-vs-payment-bond` },
+        ],
+      },
+    ],
+    content: `<main><h1>Bid Bond vs Performance Bond vs Payment Bond: Texas Guide</h1><p>Texas public projects over $25,000 require all three construction bond types. Learn what each bond does, when it's required, and what it costs.</p><a href="/quote?type=bid">Get a Construction Bond Quote</a></main>`,
+  },
+
+  "/blog/texas-notary-bond-vs-eo-insurance": {
+    title: "Texas Notary Bond vs E&O Insurance: What's the Difference? (2026) | Quantum Surety",
+    description: "Texas notary bond vs E&O insurance — what each covers, which is required by law, who is protected, and when notaries need both. Complete comparison for Texas notaries in 2026.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-vs-eo-insurance`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Texas Notary Bond vs E&O Insurance: What's the Difference?",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-vs-eo-insurance` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "Notary Bond vs E&O Insurance", "item": `${BASE_URL}/blog/texas-notary-bond-vs-eo-insurance` },
+        ],
+      },
+    ],
+    content: `<main><h1>Texas Notary Bond vs E&O Insurance</h1><p>Your $10,000 notary bond is required by Texas law and protects the public. E&O insurance is optional and protects you personally. Here's the difference and when you need both.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
   },
 };
 

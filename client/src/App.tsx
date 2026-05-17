@@ -129,6 +129,11 @@ import BlogContractorBondByCity from "@/pages/blog/texas-contractor-bond-require
 import BlogHVACBondRequirements from "@/pages/blog/texas-hvac-contractor-bond-requirements";
 import BlogPlumbingBondRequirements from "@/pages/blog/texas-plumbing-contractor-bond-requirements";
 import BlogRoofingBondRequirements from "@/pages/blog/texas-roofing-contractor-bond-requirements";
+import BlogHowToBecomeTexasNotary from "@/pages/blog/how-to-become-texas-notary-2026";
+import BlogWhatIsASuretyBond from "@/pages/blog/what-is-a-surety-bond-texas";
+import BlogHowToGetTexasGDNLicense from "@/pages/blog/how-to-get-texas-gdn-license";
+import BlogBidVsPerformanceVsPayment from "@/pages/blog/bid-bond-vs-performance-bond-vs-payment-bond";
+import BlogNotaryBondVsEO from "@/pages/blog/texas-notary-bond-vs-eo-insurance";
 // Additional GDN city pages
 import GDNBondCorpusChristi from "@/pages/gdn-bond-corpus-christi";
 import GDNBondLaredo from "@/pages/gdn-bond-laredo";
@@ -385,6 +390,11 @@ function Router() {
       <Route path="/blog/texas-hvac-contractor-bond-requirements" component={BlogHVACBondRequirements} />
       <Route path="/blog/texas-plumbing-contractor-bond-requirements" component={BlogPlumbingBondRequirements} />
       <Route path="/blog/texas-roofing-contractor-bond-requirements" component={BlogRoofingBondRequirements} />
+      <Route path="/blog/how-to-become-texas-notary-2026" component={BlogHowToBecomeTexasNotary} />
+      <Route path="/blog/what-is-a-surety-bond-texas" component={BlogWhatIsASuretyBond} />
+      <Route path="/blog/how-to-get-texas-gdn-license" component={BlogHowToGetTexasGDNLicense} />
+      <Route path="/blog/bid-bond-vs-performance-bond-vs-payment-bond" component={BlogBidVsPerformanceVsPayment} />
+      <Route path="/blog/texas-notary-bond-vs-eo-insurance" component={BlogNotaryBondVsEO} />
       <Route path="/blog" component={BlogIndex} />
 
       <Route component={NotFound} />

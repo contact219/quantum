@@ -5856,6 +5856,32 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas Notary Bond vs E&O Insurance</h1><p>Your $10,000 notary bond is required by Texas law and protects the public. E&O insurance is optional and protects you personally. Here's the difference and when you need both.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
   },
 
+  "/blog/google-business-profile-texas-surety-bond": {
+    title: "Google Business Profile for Surety Bonds: Complete Texas Guide (2026) | Quantum Surety",
+    description: "How to set up and optimize your Google Business Profile to rank for Texas surety bond searches. Category selection, photos, posts, reviews, Q&A — complete checklist for 2026.",
+    canonical: `${BASE_URL}/blog/google-business-profile-texas-surety-bond`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Google Business Profile for Surety Bonds: Complete Texas Optimization Guide",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/google-business-profile-texas-surety-bond` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "GBP Optimization Guide", "item": `${BASE_URL}/blog/google-business-profile-texas-surety-bond` },
+        ],
+      },
+    ],
+    content: `<main><h1>Google Business Profile for Surety Bonds: Complete Texas Guide</h1><p>Step-by-step guide to optimizing a Google Business Profile for a Texas surety bond agency — category selection, photos, posts, reviews, Q&A, and GBP insights. Rank for notary bond, GDN bond, and contractor bond searches in the local 3-pack.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
+  },
+
   "/es": {
     title: "Fianzas de Garantía en Texas | Notario, Contratista y Distribuidor | Quantum Surety",
     description: "Fianzas de notario, distribuidor GDN y contratista en Texas. Desde $50. PDF instantáneo. Sin verificación de crédito. Agencia autorizada por TDI #3480229.",

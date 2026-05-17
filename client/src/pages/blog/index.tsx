@@ -15,6 +15,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "google-business-profile-texas-surety-bond",
+    title: "Google Business Profile for Surety Bonds: Complete Texas Guide (2026)",
+    description: "How to set up and optimize your Google Business Profile to rank for Texas surety bond searches. Category selection, photos, posts, reviews, Q&A — complete checklist for bond agencies.",
+    date: "2026-05-17",
+    readTime: "12 min read",
+    category: "Local SEO",
+    tags: ["Google Business Profile", "Local SEO", "Texas Surety Bond", "GBP Optimization"],
+    featured: false,
+  },
+  {
     slug: "how-to-become-texas-notary-2026",
     title: "How to Become a Texas Notary Public in 2026 (Complete Guide)",
     description: "Step-by-step guide to becoming a Texas notary public in 2026. Eligibility, SB693 education requirement, $10,000 bond, oath of office, and how long it takes. Updated for the latest Texas Secretary of State rules.",

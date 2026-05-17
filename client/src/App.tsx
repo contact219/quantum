@@ -134,6 +134,7 @@ import BlogWhatIsASuretyBond from "@/pages/blog/what-is-a-surety-bond-texas";
 import BlogHowToGetTexasGDNLicense from "@/pages/blog/how-to-get-texas-gdn-license";
 import BlogBidVsPerformanceVsPayment from "@/pages/blog/bid-bond-vs-performance-bond-vs-payment-bond";
 import BlogNotaryBondVsEO from "@/pages/blog/texas-notary-bond-vs-eo-insurance";
+import BlogGBPGuide from "@/pages/blog/google-business-profile-texas-surety-bond";
 // Spanish pages
 import EsHome from "@/pages/es/index";
 import FianzaNotarioTexas from "@/pages/es/fianza-notario-texas";
@@ -398,6 +399,7 @@ function Router() {
       <Route path="/blog/how-to-get-texas-gdn-license" component={BlogHowToGetTexasGDNLicense} />
       <Route path="/blog/bid-bond-vs-performance-bond-vs-payment-bond" component={BlogBidVsPerformanceVsPayment} />
       <Route path="/blog/texas-notary-bond-vs-eo-insurance" component={BlogNotaryBondVsEO} />
+      <Route path="/blog/google-business-profile-texas-surety-bond" component={BlogGBPGuide} />
       <Route path="/blog" component={BlogIndex} />
 
       {/* Spanish pages */}

@@ -129,6 +129,19 @@ import BlogContractorBondByCity from "@/pages/blog/texas-contractor-bond-require
 import BlogHVACBondRequirements from "@/pages/blog/texas-hvac-contractor-bond-requirements";
 import BlogPlumbingBondRequirements from "@/pages/blog/texas-plumbing-contractor-bond-requirements";
 import BlogRoofingBondRequirements from "@/pages/blog/texas-roofing-contractor-bond-requirements";
+// Additional GDN city pages
+import GDNBondCorpusChristi from "@/pages/gdn-bond-corpus-christi";
+import GDNBondLaredo from "@/pages/gdn-bond-laredo";
+import GDNBondLubbock from "@/pages/gdn-bond-lubbock";
+import GDNBondMcAllen from "@/pages/gdn-bond-mcallen";
+import GDNBondBrownsville from "@/pages/gdn-bond-brownsville";
+import GDNBondFrisco from "@/pages/gdn-bond-frisco";
+import GDNBondMcKinney from "@/pages/gdn-bond-mckinney";
+import GDNBondIrving from "@/pages/gdn-bond-irving";
+import GDNBondGarland from "@/pages/gdn-bond-garland";
+import GDNBondGrandPrairie from "@/pages/gdn-bond-grand-prairie";
+import GDNBondDenton from "@/pages/gdn-bond-denton";
+import GDNBondAmarillo from "@/pages/gdn-bond-amarillo";
 // Construction hub + bonded title
 import ConstructionBondTexas from "@/pages/construction-bond-texas";
 import BondedTitleTexas from "@/pages/bonded-title-texas";
@@ -306,6 +319,20 @@ function Router() {
       {/* Comparison / educational pages */}
       <Route path="/bonds/bid-bond-vs-performance-bond" component={BidBondVsPerformanceBond} />
       <Route path="/bonds/surety-bond-vs-insurance" component={SuretyBondVsInsurance} />
+
+      {/* Additional GDN city pages */}
+      <Route path="/bonds/gdn-bond-corpus-christi" component={GDNBondCorpusChristi} />
+      <Route path="/bonds/gdn-bond-laredo" component={GDNBondLaredo} />
+      <Route path="/bonds/gdn-bond-lubbock" component={GDNBondLubbock} />
+      <Route path="/bonds/gdn-bond-mcallen" component={GDNBondMcAllen} />
+      <Route path="/bonds/gdn-bond-brownsville" component={GDNBondBrownsville} />
+      <Route path="/bonds/gdn-bond-frisco" component={GDNBondFrisco} />
+      <Route path="/bonds/gdn-bond-mckinney" component={GDNBondMcKinney} />
+      <Route path="/bonds/gdn-bond-irving" component={GDNBondIrving} />
+      <Route path="/bonds/gdn-bond-garland" component={GDNBondGarland} />
+      <Route path="/bonds/gdn-bond-grand-prairie" component={GDNBondGrandPrairie} />
+      <Route path="/bonds/gdn-bond-denton" component={GDNBondDenton} />
+      <Route path="/bonds/gdn-bond-amarillo" component={GDNBondAmarillo} />
 
       {/* Construction hub + bonded title */}
       <Route path="/bonds/construction-bond-texas" component={ConstructionBondTexas} />

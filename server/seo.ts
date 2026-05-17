@@ -4873,6 +4873,808 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/get-bond?type=notary">Get My Notary Bond</a>
       </main>`,
   },
+  "/bonds/construction-bond-texas": {
+    title: "Texas Construction Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
+    description: "Get Texas construction bonds fast — bid bonds, performance bonds, and payment bonds. Required under Texas Little Miller Act § 2253 for public contracts over $25,000. TDI-licensed, A-rated carriers, same-day approvals.",
+    canonical: `${BASE_URL}/bonds/construction-bond-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Construction Bonds",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "description": "Bid bonds, performance bonds, and payment bonds for Texas construction projects. Required under Texas Government Code § 2253 for public contracts over $25,000.",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What construction bonds are required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas Government Code § 2253 (Texas Little Miller Act) requires both a performance bond and a payment bond on public contracts over $25,000. A bid bond is required at the bidding stage for most public projects." } },
+          { "@type": "Question", "name": "How much does a Texas construction bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Texas construction bond rates typically range from 0.5% to 3% of the contract value. A $500,000 bond usually costs $2,500–$15,000 annually." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Construction Bonds", "item": "https://quantumsurety.bond/bonds/construction-bond-texas" },
+        ],
+      },
+    ],
+    content: `<main><h1>Texas Construction Bonds</h1><p>Bid bonds, performance bonds, and payment bonds for Texas public and private construction projects. Required under Texas Little Miller Act § 2253 for contracts over $25,000. TDI-licensed agency #3480229.</p><a href="/quote">Get a Construction Bond Quote</a></main>`,
+  },
+  "/bonds/bonded-title-texas": {
+    title: "Texas Bonded Title Bond | Surety Bond for Vehicle Without Title | Quantum Surety",
+    description: "Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond equals 1.5x vehicle value. Fast approval. TDI-licensed agency #3480229. File with TxDMV Form VTR-130-SOF.",
+    canonical: `${BASE_URL}/bonds/bonded-title-texas`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Bonded Title Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "description": "Texas bonded title surety bond for vehicles without a clear title. Required by TxDMV when original title is lost or unavailable. Bond equals 1.5x the vehicle's appraised value.",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a Texas bonded title?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas bonded title is a vehicle title issued by TxDMV when the original title is unavailable. The owner purchases a surety bond equal to 1.5x the vehicle's appraised value. After 3 years with no claims, TxDMV issues a clear title." } },
+          { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety's premium is typically $50–$200 for most personal vehicles, depending on the bond amount (1.5x appraised value)." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Bonded Title Bond", "item": "https://quantumsurety.bond/bonds/bonded-title-texas" },
+        ],
+      },
+    ],
+    content: `<main><h1>Texas Bonded Title Bond</h1><p>Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond amount equals 1.5x the vehicle's appraised value. File with TxDMV using Form VTR-130-SOF. TDI-licensed agency #3480229.</p><a href="/quote">Get a Bonded Title Quote</a></main>`,
+  },
+  "/bonds/gdn-bond-corpus-christi": {
+    title: "GDN Bond Corpus Christi TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-corpus-christi`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Corpus Christi Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Corpus Christi" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Corpus Christi" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Corpus Christi need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Corpus Christi and Nueces County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Corpus Christi GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Corpus Christi auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Corpus Christi Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-corpus-christi" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Corpus Christi, Texas</h1><p>Every licensed motor vehicle dealer in Corpus Christi must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Corpus Christi GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-laredo": {
+    title: "GDN Bond Laredo TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Laredo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-laredo`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Laredo Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Laredo" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Laredo" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Laredo need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Laredo and Webb County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Laredo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Laredo auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Laredo Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-laredo" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Laredo, Texas</h1><p>Every licensed motor vehicle dealer in Laredo must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Laredo GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-lubbock": {
+    title: "GDN Bond Lubbock TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-lubbock`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Lubbock Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Lubbock" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Lubbock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Lubbock need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Lubbock and Lubbock County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Lubbock GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Lubbock auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Lubbock Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-lubbock" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Lubbock, Texas</h1><p>Every licensed motor vehicle dealer in Lubbock must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Lubbock GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-mcallen": {
+    title: "GDN Bond McAllen TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in McAllen same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-mcallen`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "McAllen Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "McAllen" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in McAllen" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in McAllen need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including McAllen and Hidalgo County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a McAllen GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "McAllen auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "McAllen Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-mcallen" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — McAllen, Texas</h1><p>Every licensed motor vehicle dealer in McAllen must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My McAllen GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-brownsville": {
+    title: "GDN Bond Brownsville TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Brownsville same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-brownsville`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Brownsville Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Brownsville" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Brownsville" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Brownsville need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Brownsville and Cameron County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Brownsville GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Brownsville auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Brownsville Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-brownsville" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Brownsville, Texas</h1><p>Every licensed motor vehicle dealer in Brownsville must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Brownsville GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-frisco": {
+    title: "GDN Bond Frisco TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Frisco same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-frisco`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Frisco Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Frisco" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Frisco" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Frisco need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Frisco and Collin County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Frisco GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Frisco auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Frisco Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-frisco" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Frisco, Texas</h1><p>Every licensed motor vehicle dealer in Frisco must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Frisco GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-mckinney": {
+    title: "GDN Bond McKinney TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in McKinney same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-mckinney`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "McKinney Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "McKinney" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in McKinney" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in McKinney need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including McKinney and Collin County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a McKinney GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "McKinney auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "McKinney Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-mckinney" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — McKinney, Texas</h1><p>Every licensed motor vehicle dealer in McKinney must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My McKinney GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-irving": {
+    title: "GDN Bond Irving TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Irving same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-irving`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Irving Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Irving" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Irving" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Irving need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Irving and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Irving GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Irving auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Irving Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-irving" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Irving, Texas</h1><p>Every licensed motor vehicle dealer in Irving must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Irving GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-garland": {
+    title: "GDN Bond Garland TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Garland same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-garland`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Garland Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Garland" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Garland" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Garland need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Garland and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Garland GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Garland auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Garland Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-garland" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Garland, Texas</h1><p>Every licensed motor vehicle dealer in Garland must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Garland GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-grand-prairie": {
+    title: "GDN Bond Grand Prairie TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Grand Prairie same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-grand-prairie`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Grand Prairie Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Grand Prairie" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Grand Prairie" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Grand Prairie need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Grand Prairie and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Grand Prairie GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Grand Prairie auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Grand Prairie Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-grand-prairie" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Grand Prairie, Texas</h1><p>Every licensed motor vehicle dealer in Grand Prairie must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Grand Prairie GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-denton": {
+    title: "GDN Bond Denton TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Denton same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-denton`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Denton Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Denton" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Denton" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Denton need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Denton and Denton County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Denton GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Denton auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Denton Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-denton" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Denton, Texas</h1><p>Every licensed motor vehicle dealer in Denton must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Denton GDN Bond</a></main>`,
+  },
+  "/bonds/gdn-bond-amarillo": {
+    title: "GDN Bond Amarillo TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Amarillo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    canonical: `${BASE_URL}/bonds/gdn-bond-amarillo`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Amarillo Texas GDN Dealer Bond",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": { "@type": "City", "name": "Amarillo" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Amarillo" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do auto dealers in Amarillo need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Amarillo and Potter County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
+          { "@type": "Question", "name": "How much does a Amarillo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Amarillo auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Amarillo Texas GDN Dealer Bond", "item": "https://quantumsurety.bond/bonds/gdn-bond-amarillo" },
+        ],
+      },
+    ],
+    content: `<main><h1>GDN Bond — Amarillo, Texas</h1><p>Every licensed motor vehicle dealer in Amarillo must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Amarillo GDN Bond</a></main>`,
+  },
+  "/bonds/notary-bond-laredo": {
+    title: "Notary Bond Laredo TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Laredo instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-laredo`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Laredo",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Laredo" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Laredo notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Webb County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Laredo?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Laredo Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-laredo" },
+        ],
+      },
+    ],
+    content: `<main><h1>Laredo Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Laredo notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Laredo Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-mcallen": {
+    title: "Notary Bond McAllen TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in McAllen instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-mcallen`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — McAllen",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "McAllen" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do McAllen notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Hidalgo County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in McAllen?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "McAllen Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-mcallen" },
+        ],
+      },
+    ],
+    content: `<main><h1>McAllen Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. McAllen notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My McAllen Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-brownsville": {
+    title: "Notary Bond Brownsville TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Brownsville instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-brownsville`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Brownsville",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Brownsville" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Brownsville notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Cameron County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Brownsville?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Brownsville Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-brownsville" },
+        ],
+      },
+    ],
+    content: `<main><h1>Brownsville Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Brownsville notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Brownsville Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-beaumont": {
+    title: "Notary Bond Beaumont TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Beaumont instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-beaumont`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Beaumont",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Beaumont" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Beaumont notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Jefferson County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Beaumont?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Beaumont Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-beaumont" },
+        ],
+      },
+    ],
+    content: `<main><h1>Beaumont Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Beaumont notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Beaumont Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-round-rock": {
+    title: "Notary Bond Round Rock TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Round Rock instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-round-rock`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Round Rock",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Round Rock" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Round Rock notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Williamson County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Round Rock?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Round Rock Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-round-rock" },
+        ],
+      },
+    ],
+    content: `<main><h1>Round Rock Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Round Rock notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Round Rock Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-lewisville": {
+    title: "Notary Bond Lewisville TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Lewisville instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-lewisville`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Lewisville",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Lewisville" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Lewisville notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Denton County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Lewisville?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Lewisville Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-lewisville" },
+        ],
+      },
+    ],
+    content: `<main><h1>Lewisville Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Lewisville notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Lewisville Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-garland": {
+    title: "Notary Bond Garland TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Garland instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-garland`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Garland",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Garland" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Garland notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Dallas County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Garland?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Garland Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-garland" },
+        ],
+      },
+    ],
+    content: `<main><h1>Garland Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Garland notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Garland Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-irving": {
+    title: "Notary Bond Irving TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Irving instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-irving`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Irving",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Irving" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Irving notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Dallas County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Irving?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Irving Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-irving" },
+        ],
+      },
+    ],
+    content: `<main><h1>Irving Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Irving notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Irving Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-midland": {
+    title: "Notary Bond Midland TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Midland instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-midland`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Midland",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Midland" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Midland notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Midland County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Midland?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Midland Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-midland" },
+        ],
+      },
+    ],
+    content: `<main><h1>Midland Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Midland notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Midland Notary Bond — $50</a></main>`,
+  },
+  "/bonds/notary-bond-odessa": {
+    title: "Notary Bond Odessa TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    description: "Get your Texas notary bond in Odessa instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/bonds/notary-bond-odessa`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Texas Notary Bond — Odessa",
+        "serviceType": "Surety Bond",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+        "areaServed": [{ "@type": "City", "name": "Odessa" }, { "@type": "State", "name": "Texas" }],
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do Odessa notaries need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Texas notary public — including those commissioned in Ector County — must obtain a $10,000 surety bond under Texas Government Code §406.010 before the Secretary of State will issue a notary commission." } },
+          { "@type": "Question", "name": "How much does a notary bond cost in Odessa?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond costs $50 for the full 4-year commission term from Quantum Surety — no annual renewals, no credit check, no hidden fees." } },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+          { "@type": "ListItem", "position": 3, "name": "Odessa Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-odessa" },
+        ],
+      },
+    ],
+    content: `<main><h1>Odessa Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Odessa notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Odessa Notary Bond — $50</a></main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────

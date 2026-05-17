@@ -129,6 +129,20 @@ import BlogContractorBondByCity from "@/pages/blog/texas-contractor-bond-require
 import BlogHVACBondRequirements from "@/pages/blog/texas-hvac-contractor-bond-requirements";
 import BlogPlumbingBondRequirements from "@/pages/blog/texas-plumbing-contractor-bond-requirements";
 import BlogRoofingBondRequirements from "@/pages/blog/texas-roofing-contractor-bond-requirements";
+// Construction hub + bonded title
+import ConstructionBondTexas from "@/pages/construction-bond-texas";
+import BondedTitleTexas from "@/pages/bonded-title-texas";
+// Additional notary city pages
+import NotaryBondLaredo from "@/pages/notary-bond-laredo";
+import NotaryBondMcAllen from "@/pages/notary-bond-mcallen";
+import NotaryBondBrownsville from "@/pages/notary-bond-brownsville";
+import NotaryBondBeaumont from "@/pages/notary-bond-beaumont";
+import NotaryBondRoundRock from "@/pages/notary-bond-round-rock";
+import NotaryBondLewisville from "@/pages/notary-bond-lewisville";
+import NotaryBondGarland from "@/pages/notary-bond-garland";
+import NotaryBondIrving from "@/pages/notary-bond-irving";
+import NotaryBondMidland from "@/pages/notary-bond-midland";
+import NotaryBondOdessa from "@/pages/notary-bond-odessa";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -292,6 +306,22 @@ function Router() {
       {/* Comparison / educational pages */}
       <Route path="/bonds/bid-bond-vs-performance-bond" component={BidBondVsPerformanceBond} />
       <Route path="/bonds/surety-bond-vs-insurance" component={SuretyBondVsInsurance} />
+
+      {/* Construction hub + bonded title */}
+      <Route path="/bonds/construction-bond-texas" component={ConstructionBondTexas} />
+      <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
+
+      {/* Additional notary city pages */}
+      <Route path="/bonds/notary-bond-laredo" component={NotaryBondLaredo} />
+      <Route path="/bonds/notary-bond-mcallen" component={NotaryBondMcAllen} />
+      <Route path="/bonds/notary-bond-brownsville" component={NotaryBondBrownsville} />
+      <Route path="/bonds/notary-bond-beaumont" component={NotaryBondBeaumont} />
+      <Route path="/bonds/notary-bond-round-rock" component={NotaryBondRoundRock} />
+      <Route path="/bonds/notary-bond-lewisville" component={NotaryBondLewisville} />
+      <Route path="/bonds/notary-bond-garland" component={NotaryBondGarland} />
+      <Route path="/bonds/notary-bond-irving" component={NotaryBondIrving} />
+      <Route path="/bonds/notary-bond-midland" component={NotaryBondMidland} />
+      <Route path="/bonds/notary-bond-odessa" component={NotaryBondOdessa} />
 
       {/* Notary E&O insurance */}
       <Route path="/bonds/notary-eo-insurance" component={NotaryEOInsurance} />

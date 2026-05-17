@@ -3,7 +3,7 @@ import { SEO_PAGES, useSEO, useSchema } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
 import { TDIBadge } from "@/components/TDIBadge";
-import { CheckCircle, ArrowRight, Clock, Shield } from "lucide-react";
+import { CheckCircle, ArrowRight, Clock, Shield, MapPin, Zap, Star, Award } from "lucide-react";
 
 const LOCAL_BUSINESS_SCHEMA = {
   "@context": "https://schema.org",
@@ -62,11 +62,86 @@ const WEBSITE_SCHEMA = {
 };
 
 const trustMetrics = [
-  { value: "A-rated", label: "Carrier partners" },
-  { value: "All 50", label: "States served" },
-  { value: "24-hr", label: "Typical filing time" },
-  { value: "Texas", label: "Licensed producer" },
+  { value: "$50 flat", label: "Notary bond — instant PDF" },
+  { value: "From $100", label: "GDN dealer bond / yr" },
+  { value: "Same-day", label: "Most bonds issued" },
 ];
+
+const TRUST_ITEMS = [
+  {
+    icon: Award,
+    headline: "TDI Licensed Agency",
+    sub: "License #3480229",
+    href: "https://www.tdi.texas.gov/agent/agentlookup.html",
+    external: true,
+    accent: "text-emerald-400",
+  },
+  {
+    icon: Shield,
+    headline: "A-Rated Carrier",
+    sub: "RLI Insurance",
+    href: null,
+    external: false,
+    accent: "text-cyan-400",
+  },
+  {
+    icon: MapPin,
+    headline: "254 Texas Counties",
+    sub: "All counties covered",
+    href: null,
+    external: false,
+    accent: "text-indigo-400",
+  },
+  {
+    icon: Zap,
+    headline: "Instant PDF Delivery",
+    sub: "Bonds issued in minutes",
+    href: null,
+    external: false,
+    accent: "text-amber-400",
+  },
+  {
+    icon: Star,
+    headline: "No Credit Check",
+    sub: "Notary & standard bonds",
+    href: null,
+    external: false,
+    accent: "text-rose-400",
+  },
+];
+
+function TrustBar() {
+  return (
+    <div className="bg-slate-900/80 border-y border-white/[0.06] backdrop-blur-sm">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="flex flex-wrap items-stretch justify-between divide-x divide-white/[0.06]">
+          {TRUST_ITEMS.map((item) => {
+            const Icon = item.icon;
+            const content = (
+              <div className="flex items-center gap-3 px-5 py-5 flex-1 min-w-[160px] group">
+                <div className={`shrink-0 w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:border-white/20 transition-colors`}>
+                  <Icon className={`w-4 h-4 ${item.accent}`} />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-semibold leading-tight">{item.headline}</p>
+                  <p className="text-slate-400 text-xs mt-0.5">{item.sub}</p>
+                </div>
+              </div>
+            );
+            if (item.href) {
+              return (
+                <a key={item.headline} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined} className="flex-1 hover:bg-white/[0.03] transition-colors cursor-pointer">
+                  {content}
+                </a>
+              );
+            }
+            return <div key={item.headline} className="flex-1">{content}</div>;
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function PermitPilotBanner() {
   return (
@@ -272,6 +347,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <TrustBar />
 
       <PermitPilotBanner />
 

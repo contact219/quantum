@@ -21,12 +21,14 @@ interface SEOProps {
   canonical?: string;
   noIndex?: boolean;
   ogType?: "website" | "article";
+  alternates?: Array<{ hreflang: string; href: string }>;
+  locale?: string;
 }
 
 const BASE_URL = "https://quantumsurety.bond";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/QS_OG_2.png`;
 
-export function useSEO({ title, description, canonical, noIndex = false, ogType = "website" }: SEOProps) {
+export function useSEO({ title, description, canonical, noIndex = false, ogType = "website", alternates, locale }: SEOProps) {
   useEffect(() => {
     // Title
     document.title = title;
@@ -83,7 +85,23 @@ export function useSEO({ title, description, canonical, noIndex = false, ogType 
       setMeta('meta[name="robots"]', "content", "index, follow");
       setMeta('meta[name="googlebot"]', "content", "index, follow");
     }
-  }, [title, description, canonical, noIndex, ogType]);
+
+    if (locale) {
+      setMeta('meta[property="og:locale"]', "content", locale);
+    }
+
+    // Update hreflang alternate links
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    if (alternates && alternates.length > 0) {
+      alternates.forEach(({ hreflang, href }) => {
+        const link = document.createElement("link");
+        link.rel = "alternate";
+        link.setAttribute("hreflang", hreflang);
+        link.href = href;
+        document.head.appendChild(link);
+      });
+    }
+  }, [title, description, canonical, noIndex, ogType, locale]);
 }
 
 // ─── JSON-LD Schema hook ──────────────────────────────────────────────────────

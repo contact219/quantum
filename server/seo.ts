@@ -18,6 +18,8 @@ interface PageMeta {
   structuredData?: object | object[];
   content?: string; // crawlable static HTML (Google sees this)
   noIndex?: boolean;
+  alternates?: Array<{ hreflang: string; href: string }>;
+  locale?: string; // og:locale override (default "en_US")
 }
 
 const BASE_URL = "https://quantumsurety.bond";
@@ -32,6 +34,11 @@ const PAGE_META: Record<string, PageMeta> = {
       "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $100/yr. Contractor bonds same-day. TDI license #3480229. All 254 Texas counties.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
+    alternates: [
+      { hreflang: "en-US", href: `${BASE_URL}/` },
+      { hreflang: "es", href: `${BASE_URL}/es` },
+      { hreflang: "x-default", href: `${BASE_URL}/` },
+    ],
     structuredData: [
     {
       "@context": "https://schema.org",
@@ -1100,6 +1107,11 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. TDI-licensed Texas agency. Add E&O insurance. Download and file today.",
     canonical: `${BASE_URL}/bonds/notary-bond-texas`,
+    alternates: [
+      { hreflang: "en-US", href: `${BASE_URL}/bonds/notary-bond-texas` },
+      { hreflang: "es", href: `${BASE_URL}/es/fianza-notario-texas` },
+      { hreflang: "x-default", href: `${BASE_URL}/bonds/notary-bond-texas` },
+    ],
     structuredData: [
       {
         "@context": "https://schema.org",
@@ -5843,6 +5855,68 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `<main><h1>Texas Notary Bond vs E&O Insurance</h1><p>Your $10,000 notary bond is required by Texas law and protects the public. E&O insurance is optional and protects you personally. Here's the difference and when you need both.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
   },
+
+  "/es": {
+    title: "Fianzas de Garantía en Texas | Notario, Contratista y Distribuidor | Quantum Surety",
+    description: "Fianzas de notario, distribuidor GDN y contratista en Texas. Desde $50. PDF instantáneo. Sin verificación de crédito. Agencia autorizada por TDI #3480229.",
+    canonical: `${BASE_URL}/es`,
+    ogType: "website",
+    locale: "es_MX",
+    alternates: [
+      { hreflang: "es", href: `${BASE_URL}/es` },
+      { hreflang: "en-US", href: `${BASE_URL}/` },
+      { hreflang: "x-default", href: `${BASE_URL}/` },
+    ],
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Fianzas de Garantía en Texas — Quantum Surety",
+        "description": "Fianzas de notario, distribuidor GDN y contratista en Texas. Desde $50. PDF instantáneo. Sin verificación de crédito.",
+        "url": `${BASE_URL}/es`,
+        "inLanguage": "es-MX",
+        "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL },
+      },
+    ],
+    content: `<main lang="es"><h1>Fianzas de Garantía en Texas</h1><p>Fianzas de notario, distribuidor GDN y contratista en Texas. Desde $50. PDF instantáneo. Sin verificación de crédito. Agencia TDI #3480229.</p><ul><li><a href="/es/fianza-notario-texas">Fianza de Notario Público — $50</a></li><li><a href="/get-bond?type=dealer">Fianza GDN Distribuidor de Vehículos</a></li><li><a href="/quote?type=license">Fianza de Licencia de Contratista</a></li></ul></main>`,
+  },
+
+  "/es/fianza-notario-texas": {
+    title: "Fianza de Notario Público en Texas | $50 Instantánea | Quantum Surety",
+    description: "Fianza de notario en Texas — $50 por 4 años, sin verificación de crédito, PDF instantáneo. Requerida por §406.010 del Código de Gobierno. Agencia TDI #3480229.",
+    canonical: `${BASE_URL}/es/fianza-notario-texas`,
+    ogType: "article",
+    locale: "es_MX",
+    alternates: [
+      { hreflang: "es", href: `${BASE_URL}/es/fianza-notario-texas` },
+      { hreflang: "en-US", href: `${BASE_URL}/bonds/notary-bond-texas` },
+      { hreflang: "x-default", href: `${BASE_URL}/bonds/notary-bond-texas` },
+    ],
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Fianza de Notario Público en Texas",
+        "serviceType": "Surety Bond",
+        "url": `${BASE_URL}/es/fianza-notario-texas`,
+        "inLanguage": "es-MX",
+        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": BASE_URL },
+        "areaServed": { "@type": "State", "name": "Texas" },
+        "description": "Fianza de garantía de $10,000 requerida para todos los notarios públicos de Texas. $50 precio fijo, 4 años, sin verificación de crédito, PDF instantáneo.",
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "50", "priceValidUntil": "2027-12-31", "availability": "https://schema.org/InStock" },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "En Español", "item": `${BASE_URL}/es` },
+          { "@type": "ListItem", "position": 3, "name": "Fianza de Notario Texas", "item": `${BASE_URL}/es/fianza-notario-texas` },
+        ],
+      },
+    ],
+    content: `<main lang="es"><h1>Fianza de Notario Público en Texas</h1><p>La fianza de notario en Texas cuesta $50 precio fijo por 4 años. Requerida por §406.010 del Código de Gobierno de Texas. Sin verificación de crédito. PDF instantáneo.</p><a href="/get-bond?type=notary">Obtener Mi Fianza de Notario — $50</a></main>`,
+  },
 };
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────
@@ -5882,7 +5956,7 @@ function buildMetaTags(meta: PageMeta): string {
     <meta property="og:description" content="${meta.description}" />
     <meta property="og:url" content="${meta.canonical}" />
     <meta property="og:type" content="${meta.ogType ?? "website"}" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="${meta.locale ?? "en_US"}" />
     <meta property="og:site_name" content="Quantum Surety" />
     <meta property="og:image" content="${BASE_URL}/QS_OG_2.png" />
     <meta property="og:image:alt" content="Quantum Surety — AI-Powered Texas Surety Bonds" />
@@ -5895,8 +5969,11 @@ function buildMetaTags(meta: PageMeta): string {
     <meta name="twitter:site" content="@quantumsurety" />
     <meta name="twitter:creator" content="@quantumsurety" />
     <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
-    <link rel="alternate" hreflang="en-US" href="${meta.canonical}" />
-    <link rel="alternate" hreflang="x-default" href="${meta.canonical}" />
+    ${
+      meta.alternates && meta.alternates.length > 0
+        ? meta.alternates.map(a => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}" />`).join("\n    ")
+        : `<link rel="alternate" hreflang="en-US" href="${meta.canonical}" />\n    <link rel="alternate" hreflang="x-default" href="${meta.canonical}" />`
+    }
     <link rel="alternate" type="application/rss+xml" title="Quantum Surety Bonds Blog" href="${BASE_URL}/feed.xml" />
     ${sd}
   `.trim();
@@ -5909,6 +5986,8 @@ export function generateSitemap(): string {
 
   function getPriority(p: string): string {
     if (p === "/") return "1.0";
+    if (p === "/es") return "0.9";
+    if (p === "/es/fianza-notario-texas") return "0.85";
     if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
     if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";

@@ -132,6 +132,7 @@ export default function GetBond() {
     } catch (_) {
       // don't block redirect on network error
     }
+    track({ type: "mybondapp_redirect", element: "lead_form", value: type });
     window.location.href = meta.redirectUrl || DEALER_URL;
   }
 
@@ -230,7 +231,7 @@ export default function GetBond() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           Prefer to talk?{" "}
-          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline" onClick={() => track({ type: "click", element: "phone_link", value: "972-379-9216" })}>
+          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline" onClick={() => track({ type: "phone_click", element: "phone_link", value: "972-379-9216" })}>
             972-379-9216
           </a>
         </div>

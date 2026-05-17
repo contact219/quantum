@@ -14,6 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { SEO_PAGES, useSEO } from "@/hooks/useSEO";
+import { track } from "@/hooks/useTracker";
 
 // ── Bond catalog ──────────────────────────────────────────────────────────────
 
@@ -258,6 +259,7 @@ export default function Quote() {
       return response.json() as Promise<{ quote: any; suggestedPremiumRange: string; riskNotes: string; nextSteps: string[] }>;
     },
     onSuccess: (result) => {
+      track({ type: "quote_submit", element: "quote_form", value: form.getValues("bondType") });
       setQuoteResult({
         quoteId: result.quote.quoteNumber || result.quote.id,
         suggestedPremiumRange: result.suggestedPremiumRange,

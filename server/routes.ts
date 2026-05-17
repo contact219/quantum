@@ -522,6 +522,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.post("/api/admin/leads", isAdmin, async (req, res) => {
+    try {
+      const { name, email, phone, bondType, source, notes, status } = req.body || {};
+      if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
+      const lead = await storage.createLead({
+        name, email, phone,
+        bondType: bondType || null,
+        source: source || "manual entry",
+        status: status || "new",
+        notes: notes || null,
+      });
+      res.json(lead);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
+  app.delete("/api/admin/leads/:id", isAdmin, async (req, res) => {
+    try {
+      await storage.deleteLead(req.params.id);
+      res.json({ ok: true });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
   app.post("/api/events", (req, res) => {
     try {
       const { session_id, event_type, page, element, value, utm_source, utm_campaign, referrer } = req.body || {};

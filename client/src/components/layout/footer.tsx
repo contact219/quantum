@@ -55,6 +55,7 @@ export function Footer() {
       links: [
         { href: "/privacy", label: "Privacy Policy" },
         { href: "/terms", label: "Terms of Service" },
+        { href: "/admin-login", label: "Staff Login" },
       ],
     },
     {

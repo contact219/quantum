@@ -131,6 +131,7 @@ export interface IStorage {
   getAllLeads(): Promise<Lead[]>;
   updateLead(id: string, data: Partial<InsertLead>): Promise<Lead | undefined>;
   getLeadById(id: string): Promise<Lead | undefined>;
+  deleteLead(id: string): Promise<void>;
 
   // Carrier Metrics methods
   getCarrierMetrics(carrierId: string): Promise<CarrierMetrics | undefined>;
@@ -1565,6 +1566,10 @@ export class DbStorage implements IStorage {
       .where(eq(leads.id, id))
       .returning();
     return updated;
+  }
+
+  async deleteLead(id: string): Promise<void> {
+    await db.delete(leads).where(eq(leads.id, id));
   }
 
 }

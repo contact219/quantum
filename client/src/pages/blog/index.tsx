@@ -15,6 +15,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "how-to-get-lost-car-title-texas",
+    title: "How to Get a Lost Car Title in Texas in 5 Easy Steps (2026)",
+    description: "Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded same day.",
+    date: "2026-05-18",
+    readTime: "8 min read",
+    category: "Texas Vehicle Titles",
+    tags: ["Texas Car Title", "Lost Title", "Bonded Title", "TxDMV", "Vehicle Title Bond"],
+    featured: false,
+  },
+  {
     slug: "google-business-profile-texas-surety-bond",
     title: "Google Business Profile for Surety Bonds: Complete Texas Guide (2026)",
     description: "How to set up and optimize your Google Business Profile to rank for Texas surety bond searches. Category selection, photos, posts, reviews, Q&A — complete checklist for bond agencies.",

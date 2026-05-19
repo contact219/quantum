@@ -33,6 +33,7 @@ export function Footer() {
         { href: "/glossary", label: "Glossary" },
         { href: "/obligee-lookup", label: "Obligee Lookup" },
         { href: "/renewals", label: "Bond Renewal Reminders" },
+        { href: "https://partners.quantumsurety.bond", label: "Partner Program" },
       ],
     },
     {

@@ -26,47 +26,76 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 
 ### 2. verify.quantumsurety.bond — Bond Verify Portal + API
 - **VPS IP:** 130.51.23.147
-- **SSH:** `root` / `W573zI2qnY1HmBs`
+- **SSH:** `root` / stored in local memory
 - **Web server:** Caddy (auto-HTTPS via Let's Encrypt)
-- **App:** Node.js/Express, PM2 process name `bond-verify`, port 3001
-- **App dir:** `/var/www/bondverify/`
 - **Caddyfile:** `/etc/caddy/Caddyfile`
-- **MariaDB:** host `127.0.0.1`, db `bondverify`, user `bondverify`, pass `BondVerify2026!`
-- **Matomo** was previously installed on this VPS and has been removed/replaced
+- **MariaDB:** host `127.0.0.1`, db `bondverify`, user `bondverify` — pass in memory
+
+**PM2 processes on VPS:**
+| Process | Port | App dir |
+|---------|------|---------|
+| `bond-verify` | 3001 | `/var/www/bondverify/` |
+| `partner-portal` | 3002 | `/var/www/partners/` |
 
 **Useful commands on VPS:**
 ```bash
-pm2 status                          # Check app status
-pm2 restart bond-verify             # Restart app
-pm2 logs bond-verify                # View logs
+pm2 status                          # Check all app status
+pm2 restart bond-verify             # Restart Bond Verify
+pm2 restart partner-portal          # Restart Partner Portal
 systemctl reload caddy              # Reload Caddy config
 mysql -u bondverify -pBondVerify2026! bondverify   # DB shell
 ```
 
-**Key files:**
+**Bond Verify key files:**
 | File | Purpose |
 |------|---------|
-| `/var/www/bondverify/server.js` | Express app — search, alerts, API key auth, /api/v1/ |
+| `/var/www/bondverify/server.js` | Express app — notary search, contractor search, alerts, API key auth, /api/v1/ |
 | `/var/www/bondverify/.env` | DB creds, SES keys, port |
-| `/var/www/bondverify/public/index.html` | Public bond search portal |
+| `/var/www/bondverify/public/index.html` | Public portal — Notary Bond Lookup + Contractor License Lookup tabs |
 | `/var/www/bondverify/public/api-docs.html` | API docs + key registration |
 | `/var/www/bondverify/public/style.css` | Shared styles |
 | `/var/www/bondverify/scripts/import-notaries.py` | Downloads TX SOS CSV → upserts MariaDB |
+| `/var/www/bondverify/scripts/import-contractors.py` | Downloads TX TDLR CSV → upserts MariaDB (816K+ records) |
 | `/var/www/bondverify/scripts/send-alerts.js` | Daily SES renewal alert emails |
 
-**API endpoints:**
-- `GET /api/search?q=&city=` — public bond search (no key)
+**Partner Portal key files:**
+| File | Purpose |
+|------|---------|
+| `/var/www/partners/server.js` | Express app — registration, magic-link login, referral tracking, admin API |
+| `/var/www/partners/.env` | DB creds, SES keys, admin password |
+| `/var/www/partners/public/index.html` | Partner registration + login page |
+| `/var/www/partners/public/dashboard.html` | Partner dashboard — referrals, stats, referral link |
+
+**Bond Verify DB tables:** `notaries`, `contractors`, `alert_subscriptions`, `api_keys`, `partners`, `referrals`
+
+**Bond Verify API endpoints (verify.quantumsurety.bond):**
+- `GET /api/search?q=&city=` — public notary bond search (no key)
+- `GET /api/contractor-search?q=&county=&type=` — public TDLR contractor search (no key)
 - `POST /api/alerts/subscribe` — notary renewal alert signup (no key)
 - `POST /api/keys/register` — self-serve API key registration (no key)
-- `GET /api/v1/status` — public stats
+- `GET /api/v1/status` — public stats (notaries + contractors counts)
 - `GET /api/v1/lookup/:notary_id` — requires `X-API-Key` header
 - `GET /api/v1/search?first_name=&last_name=&city=&zip=` — requires `X-API-Key` header
+- `GET /api/v1/contractor/lookup/:license_number` — requires `X-API-Key` header
+- `GET /api/v1/contractor/search?name=&county=&type=` — requires `X-API-Key` header
 - Free tier: 1,000 req/day. Enterprise: api@quantumsurety.bond
+
+**Partner Portal API endpoints (partners.quantumsurety.bond):**
+- `POST /api/register` — partner self-registration (sends welcome email with referral code)
+- `POST /api/login` — request magic login link (email-based, 24h token)
+- `GET /api/me` — partner dashboard data (requires `X-Partner-Token` header)
+- `POST /api/referrals` — submit a referral manually (requires `X-Partner-Token`)
+- `GET /api/admin/partners` — list all partners (requires `X-Admin-Pass` header)
+- `PATCH /api/admin/partners/:id` — update partner status/commission (admin)
+- `GET /api/admin/referrals` — list all referrals (admin)
+- `PATCH /api/admin/referrals/:id` — mark sold + record commission (admin)
+- Admin password: stored in local memory. Default: `QSAdmin2026!`
 
 **VPS cron jobs (root):**
 ```
 0 13 * * *   node /var/www/bondverify/scripts/send-alerts.js >> /var/log/bondverify-alerts.log 2>&1
 0 7 1 * *    python3 /var/www/bondverify/scripts/import-notaries.py >> /var/log/bondverify-import.log 2>&1
+0 8 1 * *    python3 /var/www/bondverify/scripts/import-contractors.py >> /var/log/bondverify-contractors-import.log 2>&1
 ```
 
 ### 3. quantum-surety-crm — Internal CRM Dashboard
@@ -95,6 +124,7 @@ mysql -u bondverify -pBondVerify2026! bondverify   # DB shell
 15 18 * * *  curl -s -X POST http://localhost:4001/api/drip/auto-pipeline >> /home/tsparks/crm-autopipeline.log 2>&1
 45 1 * * *   curl -s -X POST http://localhost:4001/api/drip/auto-pipeline >> /home/tsparks/crm-autopipeline.log 2>&1
 0 7 1 * *    python3 /tmp/refresh_notaries.py >> /tmp/refresh_notaries.log 2>&1
+0 9 2 * *    python3 /tmp/tdlr_monitor.py >> /tmp/tdlr_monitor.log 2>&1
 0 8 * * *    python3 /tmp/daily_report.py >> /tmp/daily_report.log 2>&1
 0 8 * * 6    python3 /tmp/weekly_report.py >> /tmp/weekly_report.log 2>&1
 ```
@@ -103,6 +133,7 @@ mysql -u bondverify -pBondVerify2026! bondverify   # DB shell
 | Script | Purpose |
 |--------|---------|
 | `/tmp/refresh_notaries.py` | Downloads TX SOS notary CSV → upserts PostgreSQL `notaries` table |
+| `/tmp/tdlr_monitor.py` | Downloads TDLR data from Socrata, finds recently-issued contractor licenses, inserts as leads. Source: `TDLR Monitor`, bond_type: `Texas Contractor License Bond` |
 | `/tmp/daily_report.py` | Daily leads report via SES → contact219@gmail.com |
 | `/tmp/weekly_report.py` | Weekly revenue/leads summary via SES |
 

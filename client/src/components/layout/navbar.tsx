@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X, LogIn, LogOut, User, ChevronDown, Bot, FileText, LayoutDashboard, Users, ClipboardList } from "lucide-react";
+import { Phone, Menu, X, LogIn, LogOut, User, ChevronDown, Bot, FileText, LayoutDashboard, Users, ClipboardList, ShieldCheck } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -41,6 +41,13 @@ export function Navbar() {
   const toolsLinks = [
     { href: "/chatbot", label: "Quantum Quote Assistant", description: "AI bond finder & instant quotes", icon: Bot },
     { href: "/quote", label: "Quote Wizard", description: "Step-by-step quote form", icon: FileText },
+    {
+      href: "https://verify.quantumsurety.bond",
+      label: "Bond Verify",
+      description: "Free Texas notary bond lookup",
+      icon: ShieldCheck,
+      external: true,
+    },
     {
       href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",
       label: "Permit Pilot",

@@ -49,6 +49,13 @@ export function Navbar() {
       external: true,
     },
     {
+      href: "https://partners.quantumsurety.bond",
+      label: "Partner Program",
+      description: "Refer clients, earn commissions",
+      icon: Users,
+      external: true,
+    },
+    {
       href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",
       label: "Permit Pilot",
       description: "Free AI permit guidance tool",

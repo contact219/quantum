@@ -167,6 +167,50 @@ import NotaryBondGarland from "@/pages/notary-bond-garland";
 import NotaryBondIrving from "@/pages/notary-bond-irving";
 import NotaryBondMidland from "@/pages/notary-bond-midland";
 import NotaryBondOdessa from "@/pages/notary-bond-odessa";
+// Generated city pages
+import NotaryBondKilleen from "@/pages/notary-bond-killeen";
+import ContractorBondKilleen from "@/pages/contractor-bond-killeen";
+import GDNBondKilleen from "@/pages/gdn-bond-killeen";
+import NotaryBondPasadena from "@/pages/notary-bond-pasadena";
+import ContractorBondPasadena from "@/pages/contractor-bond-pasadena";
+import GDNBondPasadena from "@/pages/gdn-bond-pasadena";
+import NotaryBondMesquite from "@/pages/notary-bond-mesquite";
+import ContractorBondMesquite from "@/pages/contractor-bond-mesquite";
+import GDNBondMesquite from "@/pages/gdn-bond-mesquite";
+import NotaryBondCarrollton from "@/pages/notary-bond-carrollton";
+import ContractorBondCarrollton from "@/pages/contractor-bond-carrollton";
+import GDNBondCarrollton from "@/pages/gdn-bond-carrollton";
+import NotaryBondPearland from "@/pages/notary-bond-pearland";
+import ContractorBondPearland from "@/pages/contractor-bond-pearland";
+import GDNBondPearland from "@/pages/gdn-bond-pearland";
+import NotaryBondAbilene from "@/pages/notary-bond-abilene";
+import ContractorBondAbilene from "@/pages/contractor-bond-abilene";
+import GDNBondAbilene from "@/pages/gdn-bond-abilene";
+import NotaryBondRichardson from "@/pages/notary-bond-richardson";
+import ContractorBondRichardson from "@/pages/contractor-bond-richardson";
+import GDNBondRichardson from "@/pages/gdn-bond-richardson";
+import NotaryBondLeagueCity from "@/pages/notary-bond-league-city";
+import ContractorBondLeagueCity from "@/pages/contractor-bond-league-city";
+import GDNBondLeagueCity from "@/pages/gdn-bond-league-city";
+import NotaryBondTyler from "@/pages/notary-bond-tyler";
+import ContractorBondTyler from "@/pages/contractor-bond-tyler";
+import GDNBondTyler from "@/pages/gdn-bond-tyler";
+import NotaryBondWichitaFalls from "@/pages/notary-bond-wichita-falls";
+import ContractorBondWichitaFalls from "@/pages/contractor-bond-wichita-falls";
+import GDNBondWichitaFalls from "@/pages/gdn-bond-wichita-falls";
+import NotaryBondSanAngelo from "@/pages/notary-bond-san-angelo";
+import ContractorBondSanAngelo from "@/pages/contractor-bond-san-angelo";
+import GDNBondSanAngelo from "@/pages/gdn-bond-san-angelo";
+import ContractorBondBeaumont from "@/pages/contractor-bond-beaumont";
+import GDNBondBeaumont from "@/pages/gdn-bond-beaumont";
+import ContractorBondRoundRock from "@/pages/contractor-bond-round-rock";
+import GDNBondRoundRock from "@/pages/gdn-bond-round-rock";
+import ContractorBondLewisville from "@/pages/contractor-bond-lewisville";
+import GDNBondLewisville from "@/pages/gdn-bond-lewisville";
+import ContractorBondMidland from "@/pages/contractor-bond-midland";
+import GDNBondMidland from "@/pages/gdn-bond-midland";
+import ContractorBondOdessa from "@/pages/contractor-bond-odessa";
+import GDNBondOdessa from "@/pages/gdn-bond-odessa";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -408,6 +452,49 @@ function Router() {
       <Route path="/es/fianza-notario-texas" component={FianzaNotarioTexas} />
       <Route path="/es" component={EsHome} />
 
+      <Route path="/bonds/notary-bond-killeen" component={NotaryBondKilleen} />
+      <Route path="/bonds/contractor-bond-killeen" component={ContractorBondKilleen} />
+      <Route path="/bonds/gdn-bond-killeen" component={GDNBondKilleen} />
+      <Route path="/bonds/notary-bond-pasadena" component={NotaryBondPasadena} />
+      <Route path="/bonds/contractor-bond-pasadena" component={ContractorBondPasadena} />
+      <Route path="/bonds/gdn-bond-pasadena" component={GDNBondPasadena} />
+      <Route path="/bonds/notary-bond-mesquite" component={NotaryBondMesquite} />
+      <Route path="/bonds/contractor-bond-mesquite" component={ContractorBondMesquite} />
+      <Route path="/bonds/gdn-bond-mesquite" component={GDNBondMesquite} />
+      <Route path="/bonds/notary-bond-carrollton" component={NotaryBondCarrollton} />
+      <Route path="/bonds/contractor-bond-carrollton" component={ContractorBondCarrollton} />
+      <Route path="/bonds/gdn-bond-carrollton" component={GDNBondCarrollton} />
+      <Route path="/bonds/notary-bond-pearland" component={NotaryBondPearland} />
+      <Route path="/bonds/contractor-bond-pearland" component={ContractorBondPearland} />
+      <Route path="/bonds/gdn-bond-pearland" component={GDNBondPearland} />
+      <Route path="/bonds/notary-bond-abilene" component={NotaryBondAbilene} />
+      <Route path="/bonds/contractor-bond-abilene" component={ContractorBondAbilene} />
+      <Route path="/bonds/gdn-bond-abilene" component={GDNBondAbilene} />
+      <Route path="/bonds/notary-bond-richardson" component={NotaryBondRichardson} />
+      <Route path="/bonds/contractor-bond-richardson" component={ContractorBondRichardson} />
+      <Route path="/bonds/gdn-bond-richardson" component={GDNBondRichardson} />
+      <Route path="/bonds/notary-bond-league-city" component={NotaryBondLeagueCity} />
+      <Route path="/bonds/contractor-bond-league-city" component={ContractorBondLeagueCity} />
+      <Route path="/bonds/gdn-bond-league-city" component={GDNBondLeagueCity} />
+      <Route path="/bonds/notary-bond-tyler" component={NotaryBondTyler} />
+      <Route path="/bonds/contractor-bond-tyler" component={ContractorBondTyler} />
+      <Route path="/bonds/gdn-bond-tyler" component={GDNBondTyler} />
+      <Route path="/bonds/notary-bond-wichita-falls" component={NotaryBondWichitaFalls} />
+      <Route path="/bonds/contractor-bond-wichita-falls" component={ContractorBondWichitaFalls} />
+      <Route path="/bonds/gdn-bond-wichita-falls" component={GDNBondWichitaFalls} />
+      <Route path="/bonds/notary-bond-san-angelo" component={NotaryBondSanAngelo} />
+      <Route path="/bonds/contractor-bond-san-angelo" component={ContractorBondSanAngelo} />
+      <Route path="/bonds/gdn-bond-san-angelo" component={GDNBondSanAngelo} />
+      <Route path="/bonds/contractor-bond-beaumont" component={ContractorBondBeaumont} />
+      <Route path="/bonds/gdn-bond-beaumont" component={GDNBondBeaumont} />
+      <Route path="/bonds/contractor-bond-round-rock" component={ContractorBondRoundRock} />
+      <Route path="/bonds/gdn-bond-round-rock" component={GDNBondRoundRock} />
+      <Route path="/bonds/contractor-bond-lewisville" component={ContractorBondLewisville} />
+      <Route path="/bonds/gdn-bond-lewisville" component={GDNBondLewisville} />
+      <Route path="/bonds/contractor-bond-midland" component={ContractorBondMidland} />
+      <Route path="/bonds/gdn-bond-midland" component={GDNBondMidland} />
+      <Route path="/bonds/contractor-bond-odessa" component={ContractorBondOdessa} />
+      <Route path="/bonds/gdn-bond-odessa" component={GDNBondOdessa} />
       <Route component={NotFound} />
     </Switch>
     </>

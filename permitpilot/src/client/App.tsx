@@ -1,0 +1,143 @@
+import { Route, Switch } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Auth from './pages/Auth';
+import NewProject from './pages/NewProject';
+import ProjectDetail from './pages/ProjectDetail';
+import Admin from './pages/Admin/Admin';
+import VerifyEmail from './pages/VerifyEmail';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import AdminJurisdictions from './pages/Admin/Jurisdictions';
+import AdminUsers from './pages/Admin/Users';
+import AdminScraperLogs from './pages/Admin/ScraperLogs';
+import AdminScraperRun from './pages/Admin/ScraperRun';
+import About from './pages/About';
+import Features from './pages/Features';
+import ApiDocs from './pages/ApiDocs';
+import FortWorthPermits2026 from './pages/blog/FortWorthPermits2026';
+import DFWPermitTimeline2026 from './pages/blog/DFWPermitTimeline2026';
+import TexasPoolPermits2026 from './pages/blog/TexasPoolPermits2026';
+import ContractorBondDFW2026 from './pages/blog/ContractorBondDFW2026';
+import RoomAdditionCollinCounty2026 from './pages/blog/RoomAdditionCollinCounty2026';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import InstallPrompt from './components/InstallPrompt';
+import SharedProject from './pages/SharedProject';
+
+interface AppProps {}
+
+export function App({}: AppProps) {
+  const { data: user } = useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (!res.ok) return null;
+        return res.json();
+      } catch {
+        return null;
+      }
+    },
+  });
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_10%_20%,rgba(16,185,129,.25),transparent_30%),radial-gradient(circle_at_90%_0%,rgba(99,102,241,.2),transparent_35%),linear-gradient(180deg,#020617,#0f172a)]" />
+
+      <nav className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 text-sm font-bold text-white">PP</span>
+            <a href="/" className="text-lg font-semibold text-white">Permit Pilot</a>
+          </div>
+
+          <div className="flex items-center gap-3 text-sm">
+            {user ? (
+              <>
+                <a href="/dashboard" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Dashboard</a>
+                <a href="/about" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">About</a>
+                <a href="/features" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Features</a>
+                <a href="/blog" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Blog</a>
+                <a href="/contact" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Contact</a>
+                {user.role === 'admin' && (
+                  <a href="/admin" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Admin</a>
+                )}
+                <button
+                  onClick={async () => {
+                    await fetch('/api/auth/logout', { method: 'POST' });
+                    window.location.href = '/';
+                  }}
+                  className="rounded-md bg-rose-500/10 px-3 py-1.5 text-rose-300 transition hover:bg-rose-500/20"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <a href="/about" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">About</a>
+                <a href="/features" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Features</a>
+                <a href="/blog" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Blog</a>
+                <a href="/contact" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Contact</a>
+                <a href="/#pricing" className="rounded-md px-3 py-1.5 text-slate-200 transition hover:bg-white/10">Pricing</a>
+                <a href="/auth" className="rounded-md bg-cyan-500 px-3 py-1.5 font-medium text-slate-950 transition hover:bg-cyan-400">Sign In</a>
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      <InstallPrompt />
+      <main className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/auth" component={Auth} />
+          <Route path="/projects/new" component={NewProject} />
+          <Route path="/projects/:id" component={ProjectDetail} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/admin/jurisdictions" component={AdminJurisdictions} />
+          <Route path="/admin/users" component={AdminUsers} />
+          <Route path="/admin/scraper/logs" component={AdminScraperLogs} />
+          <Route path="/admin/scraper/run" component={AdminScraperRun} />
+          <Route path="/about" component={About} />
+          <Route path="/features" component={Features} />
+          <Route path="/api-docs" component={ApiDocs} />
+          <Route path="/blog/fort-worth-building-permit-requirements-2026" component={FortWorthPermits2026} />
+          <Route path="/blog/how-long-does-a-building-permit-take-dfw-2026" component={DFWPermitTimeline2026} />
+          <Route path="/blog/pool-permit-requirements-texas-dfw-2026" component={TexasPoolPermits2026} />
+          <Route path="/blog/dfw-contractor-license-bond-requirements-2026" component={ContractorBondDFW2026} />
+          <Route path="/blog/room-addition-permit-requirements-frisco-mckinney-allen-plano-2026" component={RoomAdditionCollinCounty2026} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={Privacy} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/share/:token" component={SharedProject} />
+          <Route path="/verify-email" component={VerifyEmail} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/reset-password" component={ResetPassword} />
+        </Switch>
+      </main>
+      <footer className="border-t border-white/10 mt-16 py-8 px-4">
+        <div className="mx-auto max-w-7xl flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-cyan-400 to-indigo-500 text-xs font-bold text-white">PP</span>
+            <span>© {new Date().getFullYear()} Permit Pilot — A Quantum Surety product</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="/contact" className="hover:text-slate-300 transition">Contact</a>
+            <a href="/blog" className="hover:text-slate-300 transition">Blog</a>
+            <a href="/features" className="hover:text-slate-300 transition">Features</a>
+            <a href="/about" className="hover:text-slate-300 transition">About</a>
+            <a href="/privacy" className="hover:text-slate-300 transition">Privacy Policy</a>
+            <a href="/terms" className="hover:text-slate-300 transition">Terms of Service</a>
+            <a href="https://quantumsurety.bond" target="_blank" rel="noreferrer" className="hover:text-slate-300 transition">Quantum Surety</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

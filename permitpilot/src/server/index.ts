@@ -1,0 +1,105 @@
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import pg from 'pg';
+import * as routes from './routes/index.js';
+
+const { Pool } = pg;
+const PgSession = connectPgSimple(session);
+const app = express();
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const isProduction = false; // secure cookies disabled - running on HTTP
+
+app.set('trust proxy', 1);
+
+app.use('/api/billing/webhook', express.raw({ type: 'application/json' }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const secret = process.env.SESSION_SECRET || 'dev-secret-change-me';
+app.use(
+  session({
+    store: new PgSession({ pool, tableName: 'session', createTableIfMissing: true }),
+    secret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: 'lax',
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+  })
+);
+
+app.use((req: any, _res: any, next: any) => {
+  req.user = (req.session as any)?.user || null;
+  console.log(`${req.method} ${req.path} | sessionID: ${req.sessionID} | user: ${JSON.stringify(req.user)}`);
+  next();
+});
+
+app.use('/api/auth', routes.authRouter);
+app.use('/api/projects', routes.projectsRouter);
+app.use('/api/export', routes.exportRouter);
+app.use('/api/jurisdictions', routes.jurisdictionsRouter);
+app.use('/api/billing', routes.billingRouter);
+
+// Permit runners marketplace
+import permitRunnersRouter from './routes/permit-runners.js';
+import apiV1Router from './routes/api-v1.js';
+app.use('/api/permit-runners', permitRunnersRouter);
+app.use('/api/v1', apiV1Router);
+
+// Sitemap
+import sitemapRouter from './routes/sitemap.js';
+app.use('/', sitemapRouter);
+
+// Public share route
+app.get('/api/share/:token', async (req: any, res: any) => {
+  try {
+    const { db } = await import('./db.js');
+    const { projects, jurisdictions, projectPermits, permitTypes } = await import('../../db/schema.js');
+    const { eq } = await import('drizzle-orm');
+    const [project] = await db.select().from(projects).where(eq(projects.shareToken, req.params.token));
+    if (!project) return res.status(404).json({ error: 'Not found' });
+    const [jurisdiction] = await db.select().from(jurisdictions).where(eq(jurisdictions.id, project.jurisdictionId!));
+    const permits = await db.select({ pp: projectPermits, pt: permitTypes })
+      .from(projectPermits).leftJoin(permitTypes, eq(projectPermits.permitTypeId, permitTypes.id))
+      .where(eq(projectPermits.projectId, project.id));
+    // Return safe subset — no userId etc
+    res.json({ project: { id: project.id, name: project.name, address: project.address, aiSummary: project.aiSummary, status: project.status }, jurisdiction, permits });
+  } catch (e) { res.status(500).json({ error: 'Failed to load shared project' }); }
+});
+app.use('/api/admin/jurisdictions', routes.adminJurisdictionsRouter);
+app.use('/api/admin/users', routes.adminUsersRouter);
+app.use('/api/admin/scraper', routes.adminScraperRouter);
+app.use('/api/admin/scraper/logs', routes.adminScraperLogsRouter);
+
+app.get('/api/health', (_: any, res: any) =>
+  res.json({ status: 'healthy', timestamp: new Date().toISOString() })
+);
+
+// Serve built client (must be after all API routes)
+app.use(express.static(join(__dirname, '../../dist')));
+app.get('*', (_: any, res: any) => {
+  res.sendFile(join(__dirname, '../../dist/index.html'));
+});
+
+app.use((err: any, _req: any, res: any, _next: any) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal server error' });
+});
+
+
+// Handle unhandled promise rejections to prevent crashes
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+export default app;

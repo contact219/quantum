@@ -37,13 +37,28 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 | `bond-verify` | 3001 | `/var/www/bondverify/` |
 | `partner-portal` | 3002 | `/var/www/partners/` |
 
+**Docker processes on VPS (Permit Pilot):**
+| Container | Port | Purpose |
+|-----------|------|---------|
+| `permitpilot-app-1` | 7842 | Node.js app |
+| `permitpilot-scraper-1` | — | Scraper worker |
+| `permitpilot-postgres-1` | — | PostgreSQL (db: permitpilot, user: permitpilot) |
+| `permitpilot-redis-1` | — | Redis |
+- **App dir:** `/var/www/permitpilot/`
+- **Compose file:** `/var/www/permitpilot/docker-compose.yml`
+- **Restart:** `docker compose -f /var/www/permitpilot/docker-compose.yml restart`
+- **Logs:** `docker logs permitpilot-app-1 --tail 50`
+
 **Useful commands on VPS:**
 ```bash
 pm2 status                          # Check all app status
 pm2 restart bond-verify             # Restart Bond Verify
 pm2 restart partner-portal          # Restart Partner Portal
+docker compose -f /var/www/permitpilot/docker-compose.yml ps   # Permit Pilot status
+docker compose -f /var/www/permitpilot/docker-compose.yml restart  # Restart Permit Pilot
 systemctl reload caddy              # Reload Caddy config
-mysql -u bondverify -pBondVerify2026! bondverify   # DB shell
+mysql -u bondverify -pBondVerify2026! bondverify   # DB shell (Bond Verify / Partners)
+docker exec permitpilot-postgres-1 psql -U permitpilot permitpilot  # Permit Pilot DB shell
 ```
 
 **Bond Verify key files:**

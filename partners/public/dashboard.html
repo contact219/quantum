@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Dashboard | Quantum Surety</title>
+  <link rel="icon" href="https://quantumsurety.bond/QS_Logo.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+    .nav { background: #0f172a; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-weight: 700; font-size: 16px; }
+    .nav-brand img { border-radius: 4px; }
+    .nav-brand span.sub { color: #f59e0b; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-name { color: #94a3b8; font-size: 14px; }
+    .btn-sm { background: #f59e0b; color: #000; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+
+    .auth-wall { max-width: 400px; margin: 80px auto; padding: 24px; text-align: center; }
+    .auth-wall h2 { font-size: 22px; margin-bottom: 8px; }
+    .auth-wall p { color: #64748b; margin-bottom: 20px; font-size: 14px; }
+    .auth-wall a { background: #f59e0b; color: #000; font-weight: 700; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; }
+
+    .main { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+    .greeting { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; }
+    .stat-card .val { font-size: 28px; font-weight: 800; color: #0f172a; }
+    .stat-card .lbl { font-size: 12px; color: #64748b; margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+
+    .ref-box { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 24px; }
+    .ref-box h3 { font-size: 14px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 12px; }
+    .ref-link { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .ref-link input { flex: 1; padding: 10px 14px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; color: #0f172a; outline: none; min-width: 200px; }
+    .btn-copy { background: #0f172a; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .btn-copy:hover { background: #1e293b; }
+    .copied { color: #16a34a; font-size: 13px; margin-top: 6px; display: none; }
+
+    .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+    .table-wrap { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; margin-bottom: 24px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: #f8fafc; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid #e2e8f0; }
+    td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; }
+    tr:last-child td { border-bottom: none; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-sold { background: #dcfce7; color: #166534; }
+    .badge-no_sale { background: #f1f5f9; color: #64748b; }
+    .empty { padding: 32px; text-align: center; color: #94a3b8; font-size: 14px; }
+
+    .submit-section { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 24px; }
+    .submit-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 4px; }
+    .form-group input, .form-group select { width: 100%; padding: 9px 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; background: #fff; }
+    .form-group input:focus, .form-group select:focus { border-color: #f59e0b; }
+    .btn-submit { background: #f59e0b; color: #000; font-weight: 700; border: none; padding: 11px 24px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+    .msg { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; display: none; }
+    .msg-success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .msg-error { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+
+    .footer { background: #0f172a; color: #64748b; text-align: center; padding: 20px; font-size: 13px; margin-top: 48px; }
+    .footer a { color: #475569; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-brand">
+      <img src="https://quantumsurety.bond/QS_Logo.png" alt="Quantum Surety" width="32" height="32">
+      <span>Quantum Surety <span class="sub">Partners</span></span>
+    </a>
+    <div class="nav-right">
+      <span class="nav-name" id="nav-name"></span>
+      <a href="/" class="btn-sm">Log Out</a>
+    </div>
+  </nav>
+
+  <div id="auth-wall" class="auth-wall" style="display:none">
+    <h2>Session Expired</h2>
+    <p>Your login link has expired. Request a new one to access your dashboard.</p>
+    <a href="/">Get Login Link</a>
+  </div>
+
+  <div id="dashboard" style="display:none">
+    <div class="main">
+      <div class="greeting" id="greeting"></div>
+
+      <div class="stats" id="stats-grid"></div>
+
+      <div class="ref-box">
+        <h3>Your Referral Link</h3>
+        <p style="font-size:13px;color:#64748b;margin-bottom:10px">Pick a bond type to generate a direct link, or use your general link.</p>
+        <div style="margin-bottom:10px">
+          <select id="ref-type-select" onchange="updateRefLink()" style="padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;background:#fff;color:#0f172a;outline:none;cursor:pointer;">
+            <option value="">— General (all bond types) —</option>
+            <option value="notary">Texas Notary Bond</option>
+            <option value="dealer">Texas GDN Dealer Bond</option>
+            <option value="contractor">Texas Contractor License Bond</option>
+            <option value="construction">Texas Construction Bond</option>
+            <option value="performance">Texas Performance &amp; Payment Bond</option>
+            <option value="bid">Texas Bid Bond</option>
+            <option value="mortgage">Texas Mortgage Broker Bond</option>
+          </select>
+        </div>
+        <div class="ref-link">
+          <input type="text" id="ref-link-input" readonly>
+          <button class="btn-copy" onclick="copyLink()">Copy</button>
+        </div>
+        <div class="copied" id="copied-msg">✓ Copied to clipboard!</div>
+      </div>
+
+      <div class="submit-section">
+        <h3>Submit a Referral</h3>
+        <form onsubmit="submitReferral(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Customer Name *</label><input type="text" id="ref-customer-name" required></div>
+            <div class="form-group"><label>Customer Email</label><input type="email" id="ref-customer-email"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Customer Phone</label><input type="tel" id="ref-customer-phone"></div>
+            <div class="form-group"><label>Bond Type</label>
+              <select id="ref-bond-type">
+                <option value="">Select bond type</option>
+                <option>Texas Notary Bond</option>
+                <option>Texas GDN Dealer Bond</option>
+                <option>Texas Contractor License Bond</option>
+                <option>Texas Construction Bond</option>
+                <option>Texas Performance Bond</option>
+                <option>Texas Bid Bond</option>
+                <option>Texas Mortgage Broker Bond</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">Submit Referral</button>
+        </form>
+        <div class="msg msg-success" id="ref-success">✓ Referral submitted! Our team will reach out to the client shortly.</div>
+        <div class="msg msg-error" id="ref-error"></div>
+      </div>
+
+      <div class="section-title">Your Referrals</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Date</th><th>Customer</th><th>Bond Type</th>
+            <th>Status</th><th>Commission</th>
+          </tr></thead>
+          <tbody id="referrals-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>Quantum Surety Partner Program &bull; <a href="https://quantumsurety.bond">quantumsurety.bond</a></div>
+    <div style="margin-top:4px">Questions? <a href="mailto:partners@quantumsurety.bond">partners@quantumsurety.bond</a></div>
+  </footer>
+
+  <script>
+    const token = new URLSearchParams(location.search).get('token') || sessionStorage.getItem('partner_token');
+    let partnerData = null;
+
+    async function init() {
+      if (!token) { show('auth-wall'); return; }
+      sessionStorage.setItem('partner_token', token);
+      try {
+        const r = await fetch('/api/me', { headers: { 'X-Partner-Token': token } });
+        if (!r.ok) { show('auth-wall'); return; }
+        partnerData = await r.json();
+        renderDashboard(partnerData);
+        show('dashboard');
+      } catch(e) { show('auth-wall'); }
+    }
+
+    function renderDashboard(p) {
+      document.getElementById('nav-name').textContent = p.name;
+      document.getElementById('greeting').textContent = `Welcome back, ${p.name.split(' ')[0]}!`;
+
+      const earned = parseFloat(p.total_earned || 0).toFixed(2);
+      const pending = p.referrals.filter(r => r.status === 'pending').length;
+      const sold = p.referrals.filter(r => r.status === 'sold').length;
+
+      document.getElementById('stats-grid').innerHTML = [
+        { val: p.total_referrals, lbl: 'Total Referrals' },
+        { val: sold, lbl: 'Sold' },
+        { val: pending, lbl: 'Pending' },
+        { val: '$' + earned, lbl: 'Total Earned' },
+        { val: p.commission_rate + '%', lbl: 'Commission Rate' },
+      ].map(s => `<div class="stat-card"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`).join('');
+
+      document.getElementById('ref-link-input').value = p.referral_link;
+      // Reset type selector and let updateRefLink sync the input
+      const sel = document.getElementById('ref-type-select');
+      if (sel) sel.value = '';
+
+      const tbody = document.getElementById('referrals-body');
+      if (!p.referrals.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty">No referrals yet. Share your referral link to get started!</td></tr>';
+      } else {
+        tbody.innerHTML = p.referrals.map(r => {
+          const date = new Date(r.created_at).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+          const comm = r.commission_amount > 0 ? '$' + parseFloat(r.commission_amount).toFixed(2) : '—';
+          const badge = `<span class="badge badge-${r.status}">${r.status.charAt(0).toUpperCase()+r.status.slice(1)}</span>`;
+          return `<tr><td>${date}</td><td>${r.customer_name}</td><td>${r.bond_type||'—'}</td><td>${badge}</td><td>${comm}</td></tr>`;
+        }).join('');
+      }
+    }
+
+    function copyLink() {
+      const input = document.getElementById('ref-link-input');
+      navigator.clipboard.writeText(input.value).then(() => {
+        const msg = document.getElementById('copied-msg');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 2000);
+      });
+    }
+
+    async function submitReferral(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Submitting...';
+      const data = {
+        customer_name: document.getElementById('ref-customer-name').value,
+        customer_email: document.getElementById('ref-customer-email').value,
+        customer_phone: document.getElementById('ref-customer-phone').value,
+        bond_type: document.getElementById('ref-bond-type').value,
+      };
+      try {
+        const r = await fetch('/api/referrals', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json', 'X-Partner-Token': token },
+          body: JSON.stringify(data)
+        }).then(r=>r.json());
+        if (r.success) {
+          show('ref-success'); hide('ref-error');
+          e.target.reset();
+          setTimeout(() => location.reload(), 2000);
+        } else {
+          document.getElementById('ref-error').textContent = r.error || 'Submission failed.';
+          show('ref-error'); hide('ref-success');
+        }
+      } catch(err) {
+        document.getElementById('ref-error').textContent = 'Network error.';
+        show('ref-error');
+      }
+      btn.disabled = false; btn.textContent = 'Submit Referral';
+    }
+
+    function show(id) { document.getElementById(id).style.display = ''; }
+    function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Admin | Quantum Surety</title>
+  <link rel="icon" href="https://quantumsurety.bond/QS_Logo.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f1f5f9; color: #1e293b; font-size: 14px; }
+    .nav { background: #0f172a; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-title { color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+    .nav-title span { color: #f59e0b; }
+    .nav-right { color: #64748b; font-size: 13px; }
+
+    .login-wall { max-width: 380px; margin: 100px auto; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 32px; }
+    .login-wall h2 { font-size: 20px; margin-bottom: 6px; }
+    .login-wall p { color: #64748b; margin-bottom: 20px; font-size: 13px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group input { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; }
+    .form-group input:focus { border-color: #f59e0b; }
+    .btn-primary { width: 100%; padding: 11px; background: #f59e0b; color: #000; font-weight: 700; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; }
+    .btn-primary:hover { background: #d97706; }
+    .error-msg { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-top: 12px; display: none; }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 28px 20px; display: none; }
+    .tabs { display: flex; gap: 0; border-bottom: 2px solid #e2e8f0; margin-bottom: 24px; }
+    .tab-btn { padding: 10px 20px; background: none; border: none; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+    .tab-btn.active { color: #f59e0b; border-bottom-color: #f59e0b; }
+    .tab-panel { display: none; } .tab-panel.active { display: block; }
+
+    .table-wrap { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; overflow: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #f8fafc; padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid #e2e8f0; white-space: nowrap; }
+    td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+    .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+    .badge-active { background: #dcfce7; color: #166534; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-suspended { background: #fee2e2; color: #991b1b; }
+    .badge-sold { background: #dcfce7; color: #166534; }
+    .badge-no_sale { background: #f1f5f9; color: #64748b; }
+
+    .btn-sm { padding: 4px 10px; border-radius: 6px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .btn-activate { background: #dcfce7; color: #166534; }
+    .btn-suspend { background: #fee2e2; color: #991b1b; }
+    .btn-save { background: #f59e0b; color: #000; }
+    .rate-input { width: 60px; padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; text-align: center; }
+
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .summary-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; }
+    .summary-card .val { font-size: 24px; font-weight: 800; color: #0f172a; }
+    .summary-card .lbl { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; font-weight: 600; }
+
+    .empty { padding: 40px; text-align: center; color: #94a3b8; }
+    .refresh-btn { float: right; background: #e2e8f0; color: #475569; border: none; padding: 7px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; font-weight: 600; }
+    .refresh-btn:hover { background: #cbd5e1; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .section-header h3 { font-size: 16px; font-weight: 700; }
+    .toast { position: fixed; bottom: 24px; right: 24px; background: #0f172a; color: #fff; padding: 12px 20px; border-radius: 8px; font-size: 14px; display: none; z-index: 999; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-title">
+      <img src="https://quantumsurety.bond/QS_Logo.png" width="28" height="28" style="border-radius:4px">
+      Quantum Surety <span>Partner Admin</span>
+    </div>
+    <div class="nav-right" id="nav-status"></div>
+  </nav>
+
+  <div id="login-wall" class="login-wall">
+    <h2>Admin Login</h2>
+    <p>Enter the admin password to manage partner accounts and referrals.</p>
+    <div class="form-group"><input type="password" id="admin-pass" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="btn-primary" onclick="doLogin()">Log In</button>
+    <div class="error-msg" id="login-error">Incorrect password.</div>
+  </div>
+
+  <div class="main" id="main">
+    <div class="summary" id="summary"></div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('partners')">Partners</button>
+      <button class="tab-btn" onclick="showTab('referrals')">Referrals</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-partners">
+      <div class="section-header">
+        <h3>All Partners</h3>
+        <button class="refresh-btn" onclick="loadPartners()">↻ Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Name</th><th>Email</th><th>Company</th><th>Code</th>
+            <th>Rate</th><th>Status</th><th>Referrals</th><th>Earned</th>
+            <th>Joined</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="partners-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-referrals">
+      <div class="section-header">
+        <h3>All Referrals</h3>
+        <button class="refresh-btn" onclick="loadReferrals()">↻ Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Date</th><th>Partner</th><th>Customer</th><th>Bond Type</th>
+            <th>Status</th><th>Sale $</th><th>Commission</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="referrals-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let adminPass = '';
+
+    function doLogin() {
+      const pass = document.getElementById('admin-pass').value;
+      fetch('/api/admin/partners', { headers: { 'X-Admin-Pass': pass } })
+        .then(r => {
+          if (r.status === 401) { document.getElementById('login-error').style.display = 'block'; return null; }
+          return r.json();
+        })
+        .then(data => {
+          if (!data) return;
+          adminPass = pass;
+          document.getElementById('login-wall').style.display = 'none';
+          document.getElementById('main').style.display = 'block';
+          document.getElementById('nav-status').textContent = 'Authenticated';
+          renderPartners(data.partners);
+          loadReferrals();
+        });
+    }
+
+    function showTab(tab) {
+      ['partners','referrals'].forEach(t => {
+        document.getElementById('panel-'+t).classList.toggle('active', t===tab);
+        document.querySelectorAll('.tab-btn').forEach((b,i) => {
+          if((i===0&&tab==='partners')||(i===1&&tab==='referrals')) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+      });
+    }
+
+    function loadPartners() {
+      fetch('/api/admin/partners', { headers: { 'X-Admin-Pass': adminPass } })
+        .then(r => r.json()).then(d => renderPartners(d.partners));
+    }
+
+    function loadReferrals() {
+      fetch('/api/admin/referrals', { headers: { 'X-Admin-Pass': adminPass } })
+        .then(r => r.json()).then(d => renderReferrals(d.referrals));
+    }
+
+    function renderPartners(partners) {
+      const tbody = document.getElementById('partners-body');
+      if (!partners.length) { tbody.innerHTML = '<tr><td colspan="10" class="empty">No partners yet.</td></tr>'; return; }
+
+      const active = partners.filter(p => p.status === 'active').length;
+      const pending = partners.filter(p => p.status === 'pending').length;
+      const totalEarned = partners.reduce((s, p) => s + parseFloat(p.total_earned || 0), 0);
+      document.getElementById('summary').innerHTML = [
+        { val: partners.length, lbl: 'Total Partners' },
+        { val: active, lbl: 'Active' },
+        { val: pending, lbl: 'Pending' },
+        { val: '$' + totalEarned.toFixed(2), lbl: 'Total Commissions' },
+      ].map(s => `<div class="summary-card"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`).join('');
+
+      tbody.innerHTML = partners.map(p => {
+        const date = new Date(p.created_at).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+        const badge = `<span class="badge badge-${p.status}">${p.status}</span>`;
+        const actions = p.status === 'suspended'
+          ? `<button class="btn-sm btn-activate" onclick="setStatus(${p.id},'active')">Activate</button>`
+          : `<button class="btn-sm btn-suspend" onclick="setStatus(${p.id},'suspended')">Suspend</button>`;
+        return `<tr>
+          <td><strong>${p.name}</strong></td>
+          <td><a href="mailto:${p.email}">${p.email}</a></td>
+          <td>${p.company||'—'}</td>
+          <td><code>${p.referral_code}</code></td>
+          <td>
+            <input class="rate-input" type="number" value="${p.commission_rate}" id="rate-${p.id}" min="0" max="100" step="0.5">%
+            <button class="btn-sm btn-save" style="margin-left:4px" onclick="saveRate(${p.id})">Save</button>
+          </td>
+          <td>${badge}</td>
+          <td>${p.total_referrals}</td>
+          <td>$${parseFloat(p.total_earned||0).toFixed(2)}</td>
+          <td>${date}</td>
+          <td>${actions}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function renderReferrals(referrals) {
+      const tbody = document.getElementById('referrals-body');
+      if (!referrals.length) { tbody.innerHTML = '<tr><td colspan="8" class="empty">No referrals yet.</td></tr>'; return; }
+      tbody.innerHTML = referrals.map(r => {
+        const date = new Date(r.created_at).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+        const badge = `<span class="badge badge-${r.status}">${r.status}</span>`;
+        const saleInput = `<input type="number" placeholder="0.00" value="${r.sale_amount||''}" id="sale-${r.id}" style="width:80px;padding:4px 8px;border:1px solid #e2e8f0;border-radius:6px;font-size:12px">`;
+        const comm = r.commission_amount > 0 ? `$${parseFloat(r.commission_amount).toFixed(2)}` : '—';
+        const markSold = r.status !== 'sold'
+          ? `<button class="btn-sm btn-activate" onclick="markSold(${r.id})">Mark Sold</button>
+             <button class="btn-sm btn-suspend" style="margin-left:4px" onclick="markNoSale(${r.id})">No Sale</button>`
+          : '<span style="color:#16a34a;font-weight:600">✓ Sold</span>';
+        return `<tr>
+          <td>${date}</td>
+          <td><strong>${r.partner_name}</strong><br><span style="color:#94a3b8;font-size:11px">${r.referral_code}</span></td>
+          <td>${r.customer_name}<br><span style="color:#64748b;font-size:11px">${r.customer_phone||r.customer_email||''}</span></td>
+          <td>${r.bond_type||'—'}</td>
+          <td>${badge}</td>
+          <td>${saleInput}</td>
+          <td>${comm}</td>
+          <td>${markSold}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function setStatus(id, status) {
+      fetch(`/api/admin/partners/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Pass': adminPass },
+        body: JSON.stringify({ status })
+      }).then(() => { toast(`Partner ${status}`); loadPartners(); });
+    }
+
+    function saveRate(id) {
+      const rate = document.getElementById('rate-'+id).value;
+      fetch(`/api/admin/partners/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Pass': adminPass },
+        body: JSON.stringify({ commission_rate: parseFloat(rate) })
+      }).then(() => toast('Commission rate saved'));
+    }
+
+    function markSold(id) {
+      const sale = document.getElementById('sale-'+id).value;
+      if (!sale) { alert('Enter a sale amount first.'); return; }
+      fetch(`/api/admin/referrals/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Pass': adminPass },
+        body: JSON.stringify({ status: 'sold', sale_amount: parseFloat(sale) })
+      }).then(() => { toast('Marked as sold'); loadReferrals(); });
+    }
+
+    function markNoSale(id) {
+      fetch(`/api/admin/referrals/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Pass': adminPass },
+        body: JSON.stringify({ status: 'no_sale' })
+      }).then(() => { toast('Marked as no sale'); loadReferrals(); });
+    }
+
+    function toast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.style.display = 'block';
+      setTimeout(() => el.style.display = 'none', 2500);
+    }
+
+    // Auto-focus password field
+    document.getElementById('admin-pass').focus();
+  </script>
+</body>
+</html>

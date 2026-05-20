@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Program | Quantum Surety</title>
+  <meta name="description" content="Join the Quantum Surety referral partner program. Earn commissions for every Texas surety bond sold through your referral link.">
+  <link rel="icon" href="https://quantumsurety.bond/QS_Logo.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; }
+    a { color: #3b82f6; }
+    .nav { background: #0f172a; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-weight: 700; font-size: 16px; }
+    .nav-brand img { border-radius: 4px; }
+    .nav-brand span.sub { color: #f59e0b; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-left: 20px; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero { background: linear-gradient(135deg, #0f172a, #1e3a5f); color: #fff; padding: 60px 24px; text-align: center; }
+    .hero-badge { display: inline-block; background: #f59e0b22; border: 1px solid #f59e0b55; color: #f59e0b; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 16px; letter-spacing: .05em; text-transform: uppercase; }
+    .hero h1 { font-size: 40px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+    .hero p { font-size: 18px; color: #cbd5e1; max-width: 600px; margin: 0 auto 32px; }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: #f59e0b; color: #000; font-weight: 700; padding: 14px 32px; border-radius: 8px; border: none; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #d97706; }
+    .btn-outline { background: transparent; color: #fff; font-weight: 600; padding: 13px 28px; border-radius: 8px; border: 1.5px solid #fff4; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-block; }
+    .btn-outline:hover { background: #ffffff15; }
+
+    .perks { max-width: 900px; margin: 48px auto; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .perk { background: #fff; border-radius: 12px; padding: 28px; border: 1px solid #e2e8f0; text-align: center; }
+    .perk-icon { font-size: 36px; margin-bottom: 12px; }
+    .perk h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .perk p { font-size: 14px; color: #64748b; line-height: 1.6; }
+
+    .section { max-width: 560px; margin: 0 auto 40px; padding: 0 24px; }
+    .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: #0f172a; }
+    .card { background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; }
+    .form-group input:focus { border-color: #f59e0b; box-shadow: 0 0 0 3px #f59e0b22; }
+    .form-submit { width: 100%; padding: 12px; background: #f59e0b; color: #000; font-weight: 700; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin-top: 4px; }
+    .form-submit:hover { background: #d97706; }
+    .msg { margin-top: 16px; padding: 12px 16px; border-radius: 8px; font-size: 14px; display: none; }
+    .msg-success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .msg-error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+    .tab-row { display: flex; gap: 0; border-bottom: 2px solid #e2e8f0; margin-bottom: 24px; }
+    .tab-btn { padding: 10px 20px; background: none; border: none; font-size: 15px; font-weight: 600; color: #64748b; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+    .tab-btn.active { color: #f59e0b; border-bottom-color: #f59e0b; }
+    .tab-panel { display: none; } .tab-panel.active { display: block; }
+
+    .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 24px; font-size: 13px; margin-top: 48px; }
+    .footer a { color: #64748b; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-brand">
+      <img src="https://quantumsurety.bond/QS_Logo.png" alt="Quantum Surety" width="32" height="32">
+      <span>Quantum Surety <span class="sub">Partners</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="https://quantumsurety.bond">Main Site</a>
+      <a href="/dashboard.html">My Dashboard</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">Referral Partner Program</div>
+    <h1>Earn Commissions<br>Referring Texas Bonds</h1>
+    <p>Share your unique referral link. When your clients purchase a surety bond from Quantum Surety, you earn a commission — automatically tracked and reported.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="showTab('register')">Join the Program &rarr;</button>
+      <button class="btn-outline" onclick="showTab('login')">Partner Login</button>
+    </div>
+  </div>
+
+  <div class="perks">
+    <div class="perk">
+      <div class="perk-icon">💰</div>
+      <h3>10% Commission</h3>
+      <p>Earn 10% of every bond premium on referrals that convert. No cap, no expiry.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">🔗</div>
+      <h3>Unique Referral Link</h3>
+      <p>Get your own referral link instantly. Share it anywhere — email, website, social, or in person.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">📊</div>
+      <h3>Live Dashboard</h3>
+      <p>Track all your referrals, pending deals, and earnings in your partner dashboard in real time.</p>
+    </div>
+    <div class="perk">
+      <div class="perk-icon">⚡</div>
+      <h3>Fast Payouts</h3>
+      <p>Commissions are tracked monthly and paid within 15 business days of the period close.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="tab-row">
+      <button class="tab-btn active" id="tab-register" onclick="showTab('register')">Join the Program</button>
+      <button class="tab-btn" id="tab-login" onclick="showTab('login')">Partner Login</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-register">
+      <div class="card">
+        <form onsubmit="doRegister(event)">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="reg-name" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email Address *</label><input type="email" id="reg-email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label>Company / Business</label><input type="text" id="reg-company" placeholder="Optional"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="reg-phone" placeholder="Optional"></div>
+          <button type="submit" class="form-submit">Apply to Partner Program</button>
+        </form>
+        <div class="msg msg-success" id="reg-success">
+          ✓ You're in! Your account is <strong>active immediately</strong> — check your email for your referral code and dashboard link.
+        </div>
+        <div class="msg msg-error" id="reg-error"></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-login">
+      <div class="card">
+        <p style="font-size:14px;color:#64748b;margin-bottom:20px">Enter your email to receive a one-click login link for your partner dashboard.</p>
+        <form onsubmit="doLogin(event)">
+          <div class="form-group"><label>Partner Email *</label><input type="email" id="login-email" placeholder="your@email.com" required></div>
+          <button type="submit" class="form-submit">Send Login Link</button>
+        </form>
+        <div class="msg msg-success" id="login-success">
+          ✓ Login link sent! Check your email inbox (and spam folder if needed).
+        </div>
+        <div class="msg msg-error" id="login-error"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>Quantum Surety Partner Program &bull; <a href="https://quantumsurety.bond">quantumsurety.bond</a> &bull; TDI Licensed #3480229</div>
+    <div style="margin-top:6px">Questions? <a href="mailto:partners@quantumsurety.bond">partners@quantumsurety.bond</a></div>
+  </footer>
+
+  <script>
+    function showTab(tab) {
+      ['register','login'].forEach(t => {
+        document.getElementById('panel-'+t).classList.toggle('active', t===tab);
+        document.getElementById('tab-'+t).classList.toggle('active', t===tab);
+      });
+    }
+
+    async function doRegister(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.disabled = true; btn.textContent = 'Submitting...';
+      const data = {
+        name: document.getElementById('reg-name').value,
+        email: document.getElementById('reg-email').value,
+        company: document.getElementById('reg-company').value,
+        phone: document.getElementById('reg-phone').value,
+      };
+      try {
+        const r = await fetch('/api/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).then(r=>r.json());
+        if (r.success) {
+          show('reg-success'); hide('reg-error');
+          e.target.reset();
+        } else {
+          document.getElementById('reg-error').textContent = r.error || 'Registration failed.';
+          show('reg-error'); hide('reg-success');
+        }
+      } catch(err) {
+        document.getElementById('reg-error').textContent = 'Network error. Please try again.';
+        show('reg-error');
+      }
+      btn.disabled = false; btn.textContent = 'Apply to Partner Program';
+    }
+
+    async function doLogin(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.disabled = true; btn.textContent = 'Sending...';
+      const email = document.getElementById('login-email').value;
+      try {
+        await fetch('/api/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email}) });
+        show('login-success'); hide('login-error');
+        e.target.reset();
+      } catch(err) {
+        document.getElementById('login-error').textContent = 'Network error. Please try again.';
+        show('login-error');
+      }
+      btn.disabled = false; btn.textContent = 'Send Login Link';
+    }
+
+    function show(id){ const el=document.getElementById(id); el.style.display='block'; }
+    function hide(id){ const el=document.getElementById(id); el.style.display='none'; }
+  </script>
+</body>
+</html>

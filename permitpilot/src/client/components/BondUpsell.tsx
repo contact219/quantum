@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-
 interface Props {
   project: any;
   user: any;
@@ -7,16 +5,9 @@ interface Props {
   permits: any[];
 }
 
-const BOND_CODES = ["BLDG", "ELEC", "PLMB", "MECH", "POOL", "DEMO", "COMM"];
-
-function bondLikelyNeeded(permits: any[]): boolean {
-  if (!permits?.length) return false;
-  return permits.some((p: any) => BOND_CODES.includes(p.pt?.code));
-}
-
 function buildUrl(project: any, user: any, jurisdiction: any): string {
-  const base = "https://quantumsurety.bond/quote";
-  const p: Record<string, string> = { source: "permit-pilot", bond_type: "contractor_license", bond_amount: "25000" };
+  const base = "https://quantumsurety.bond/get-bond";
+  const p: Record<string, string> = { type: "contractor", source: "permit-pilot" };
   if (user?.companyName) p.company = user.companyName;
   if (user?.email) p.email = user.email;
   if (project?.address) p.address = project.address;
@@ -27,7 +18,7 @@ function buildUrl(project: any, user: any, jurisdiction: any): string {
 }
 
 export default function BondUpsell({ project, user, jurisdiction, permits }: Props) {
-  if (!bondLikelyNeeded(permits)) return null;
+  if (!permits?.length) return null;
 
   const url = buildUrl(project, user, jurisdiction);
 

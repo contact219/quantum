@@ -124,7 +124,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold">Phone</p>
-                    <a href="tel:+19723799216" className="text-indigo-600 hover:underline text-sm">(972) 379-9216</a>
+                    <a href="tel:+12146668718" className="text-indigo-600 hover:underline text-sm">(214) 666-8718</a>
                     <p className="text-xs text-muted-foreground mt-0.5">Mon–Fri, 8am–6pm CT</p>
                   </div>
                 </div>

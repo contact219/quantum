@@ -231,8 +231,8 @@ export default function GetBond() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           Prefer to talk?{" "}
-          <a href="tel:+19723799216" className="text-indigo-600 font-medium hover:underline" onClick={() => track({ type: "phone_click", element: "phone_link", value: "972-379-9216" })}>
-            972-379-9216
+          <a href="tel:+12146668718" className="text-indigo-600 font-medium hover:underline" onClick={() => track({ type: "phone_click", element: "phone_link", value: "(214) 666-8718" })}>
+            (214) 666-8718
           </a>
         </div>
       </div>

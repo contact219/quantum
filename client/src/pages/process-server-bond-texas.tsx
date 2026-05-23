@@ -66,8 +66,8 @@ export default function ProcessServerBondTexas() {
             <a href={QUOTE_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Process Server Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
-            <a href="tel:9723799216">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button>
+            <a href="tel:2146668718">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (214) 666-8718</Button>
             </a>
           </div>
         </div>
@@ -141,8 +141,8 @@ export default function ProcessServerBondTexas() {
             <a href={QUOTE_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </a>
-            <a href="tel:9723799216">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button>
+            <a href="tel:2146668718">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (214) 666-8718</Button>
             </a>
           </div>
         </div>

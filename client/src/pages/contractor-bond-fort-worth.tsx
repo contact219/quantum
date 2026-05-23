@@ -73,9 +73,9 @@ export default function ContractorBondFortWorth() {
                 Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
-            <a href="tel:9723799216">
+            <a href="tel:2146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
-                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
+                <Phone className="w-4 h-4 mr-2" /> (214) 666-8718
               </Button>
             </a>
           </div>
@@ -168,9 +168,9 @@ export default function ContractorBondFortWorth() {
                 Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
-            <a href="tel:9723799216">
+            <a href="tel:2146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
-                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
+                <Phone className="w-4 h-4 mr-2" /> (214) 666-8718
               </Button>
             </a>
           </div>

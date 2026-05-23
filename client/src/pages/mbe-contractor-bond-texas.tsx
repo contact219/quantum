@@ -50,7 +50,7 @@ const SERVICE_SCHEMA = {
     "@type": "LocalBusiness",
     name: "Quantum Surety Bonds",
     url: "https://quantumsurety.bond",
-    telephone: "+19723799216",
+    telephone: "+12146668718",
   },
   areaServed: { "@type": "State", name: "Texas" },
   description:
@@ -96,9 +96,9 @@ export default function MBEContractorBondTexas() {
                 Get My Bond Quote <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
-            <a href="tel:9723799216">
+            <a href="tel:2146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
-                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
+                <Phone className="w-4 h-4 mr-2" /> (214) 666-8718
               </Button>
             </a>
           </div>
@@ -230,9 +230,9 @@ export default function MBEContractorBondTexas() {
                 Get My Bond Quote <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
-            <a href="tel:9723799216">
+            <a href="tel:2146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8">
-                <Phone className="w-4 h-4 mr-2" /> (972) 379-9216
+                <Phone className="w-4 h-4 mr-2" /> (214) 666-8718
               </Button>
             </a>
           </div>

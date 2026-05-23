@@ -208,7 +208,7 @@ app.post('/api/referrals', requirePartner, async (req, res) => {
           <p style="color:#475569">${req.partner.name} referred you to Quantum Surety for a
           <strong>${bond_type || 'surety bond'}</strong>. Click below to get your free quote — no obligation:</p>
           <a href="${applyLink}" style="display:inline-block;margin:20px 0;background:#f59e0b;color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:16px">Get My Free Quote &rarr;</a>
-          <p style="color:#64748b;font-size:13px">Questions? Call us at (972) 379-9216 or reply to this email.</p>
+          <p style="color:#64748b;font-size:13px">Questions? Call us at (214) 666-8718 or reply to this email.</p>
           <p style="color:#94a3b8;font-size:12px">Quantum Surety LLC &bull; TDI Licensed #3480229 &bull; Wylie, TX</p>
         </div>`
       );

@@ -155,7 +155,7 @@ export function registerBmc84Routes(app: Express) {
             </a>
           </p>
           <p style="color:#6b7280;font-size:13px;">Once payment is received, we file electronically with the FMCSA within 24 hours.</p>
-          <p style="color:#6b7280;font-size:13px;">Questions? Call us at (972) 379-9216 or reply to this email.</p>
+          <p style="color:#6b7280;font-size:13px;">Questions? Call us at (214) 666-8718 or reply to this email.</p>
         `,
       });
 
@@ -254,7 +254,7 @@ export function registerBmc84Routes(app: Express) {
             <li>Annual premium: $${bond[0].annualPremium}</li>
             <li>Coverage: All 50 states</li>
           </ul>
-          <p>Questions? Call us at (972) 379-9216 or reply to this email.</p>
+          <p>Questions? Call us at (214) 666-8718 or reply to this email.</p>
           <p>— Quantum Surety Team</p>
         `,
       });
@@ -315,7 +315,7 @@ export function registerBmc84Routes(app: Express) {
             </ul>
             <p>You can now verify your bond status at the <a href="https://li-public.fmcsa.dot.gov">FMCSA Licensing & Insurance Portal</a>.</p>
             <p><strong>Renewal:</strong> We'll send you renewal reminders 60 and 30 days before your bond expires.</p>
-            <p>Questions? Call us at (972) 379-9216 or reply to this email.</p>
+            <p>Questions? Call us at (214) 666-8718 or reply to this email.</p>
             <p>— Quantum Surety Team</p>
           `,
         });

@@ -14,7 +14,7 @@ const LOCAL_BUSINESS_SCHEMA = {
   "logo": "https://quantumsurety.bond/QS_Logo.png",
   "image": "https://quantumsurety.bond/QS_OG_2.png",
   "description": "TDI-licensed Texas surety bond agency offering performance bonds, bid bonds, contractor license bonds, payment bonds, and notary bonds with AI-powered fast quotes. Serving Texas and all 50 states.",
-  "telephone": "+19723799216",
+  "telephone": "+12146668718",
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "TX",

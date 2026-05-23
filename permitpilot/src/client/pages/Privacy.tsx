@@ -28,7 +28,7 @@ export default function Privacy() {
         </section>
         <section className="space-y-2">
           <h2 className="text-xl font-semibold text-white">Contact</h2>
-          <p>For privacy-related questions or data deletion requests, contact us at <a href="mailto:administrator@quantumsurety.bond" className="text-cyan-300 underline">administrator@quantumsurety.bond</a> or call <a href="tel:+19723799216" className="text-cyan-300 underline">(972) 379-9216</a>.</p>
+          <p>For privacy-related questions or data deletion requests, contact us at <a href="mailto:administrator@quantumsurety.bond" className="text-cyan-300 underline">administrator@quantumsurety.bond</a> or call <a href="tel:+12146668718" className="text-cyan-300 underline">(214) 666-8718</a>.</p>
         </section>
       </div>
     </div>

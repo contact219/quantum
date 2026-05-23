@@ -348,7 +348,7 @@ export default function BlogNotaryVsNSA() {
 
         {/* Author / disclaimer */}
         <div className="mt-10 pt-6 border-t border-slate-100 text-xs text-slate-400 space-y-1">
-          <p>Published by Quantum Surety — TDI-Licensed Texas Surety Bond Agency | (972) 379-9216</p>
+          <p>Published by Quantum Surety — TDI-Licensed Texas Surety Bond Agency | (214) 666-8718</p>
           <p>
             This article is for informational purposes only and does not constitute legal advice.
             Verify current requirements at <a href="https://sos.state.tx.us" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-600">sos.state.tx.us</a> before applying.
@@ -369,9 +369,9 @@ export default function BlogNotaryVsNSA() {
                 Get bonded now <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </Link>
-            <a href="tel:9723799216">
+            <a href="tel:2146668718">
               <Button variant="outline" className="border-slate-300" data-testid="btn-call-bottom">
-                <Phone className="w-4 h-4 mr-1" /> (972) 379-9216
+                <Phone className="w-4 h-4 mr-1" /> (214) 666-8718
               </Button>
             </a>
           </div>

@@ -93,7 +93,7 @@ export default function PaymentBondTexas() {
     },
     {
       q: "How much does a Texas payment bond cost?",
-      a: "Payment bond rates match performance bond rates: typically 0.5%–3% of the bond amount annually. A $500,000 payment bond costs approximately $2,500–$15,000 depending on credit, financial strength, and project type. Call us at (972) 379-9216 for an exact quote.",
+      a: "Payment bond rates match performance bond rates: typically 0.5%–3% of the bond amount annually. A $500,000 payment bond costs approximately $2,500–$15,000 depending on credit, financial strength, and project type. Call us at (214) 666-8718 for an exact quote.",
     },
   ];
 
@@ -233,7 +233,7 @@ export default function PaymentBondTexas() {
           </div>
           <p className="text-sm text-gray-500 mt-4">
             Rates vary based on credit, years in business, and project type. Get an exact quote in minutes or call{" "}
-            <a href="tel:+19723799216" className="text-indigo-600 font-medium">(972) 379-9216</a>.
+            <a href="tel:+12146668718" className="text-indigo-600 font-medium">(214) 666-8718</a>.
           </p>
         </div>
       </section>
@@ -291,9 +291,9 @@ export default function PaymentBondTexas() {
                 Start My Bond Application <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href="tel:+19723799216">
+            <a href="tel:+12146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Call (972) 379-9216
+                Call (214) 666-8718
               </Button>
             </a>
           </div>

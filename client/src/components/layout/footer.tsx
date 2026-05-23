@@ -14,7 +14,7 @@ export function Footer() {
   });
 
   const contactLinks = useMemo(() => {
-    const phone = settings?.phone || "(972) 379-9216";
+    const phone = settings?.phone || "(214) 666-8718";
     const email = settings?.email || "administrator@quantumsurety.bond";
     
     return [
@@ -130,7 +130,7 @@ export function Footer() {
 
           <div className="mx-auto mt-6 max-w-6xl text-center text-sm" data-testid="text-disclaimer">
             <p className="mb-2 text-slate-300">
-              <strong>Quantum Surety LLC</strong> &middot; 1416 Bessie Drive, Wylie, TX 75098 &middot; (972) 379-9216
+              <strong>Quantum Surety LLC</strong> &middot; 1416 Bessie Drive, Wylie, TX 75098 &middot; (214) 666-8718
             </p>
             <p>
               Quantum Surety is a licensed insurance producer in Texas and other states where authorized. Bond placement services are provided through appointed carrier partners and are subject to carrier underwriting and approval. Quantum Surety does not issue surety bonds on its own paper.

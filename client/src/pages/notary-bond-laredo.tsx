@@ -64,7 +64,7 @@ export default function NotaryBondLaredo() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={NOTARY_LINK}><Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Notary Bond — $50 <ArrowRight className="w-4 h-4 ml-2" /></Button></a>
-            <a href="tel:9723799216"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button></a>
+            <a href="tel:2146668718"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (214) 666-8718</Button></a>
           </div>
         </div>
       </section>
@@ -161,7 +161,7 @@ export default function NotaryBondLaredo() {
           <p className="text-indigo-200 mb-6">$50 flat · $10,000 coverage · Instant PDF · SB693 compliant · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={NOTARY_LINK}><Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Notary Bond <ArrowRight className="w-4 h-4 ml-2" /></Button></a>
-            <a href="tel:9723799216"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (972) 379-9216</Button></a>
+            <a href="tel:2146668718"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (214) 666-8718</Button></a>
           </div>
         </div>
         <div className="mt-10">

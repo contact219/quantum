@@ -18,8 +18,8 @@ export default function Contact() {
           <div className="w-10 h-10 rounded-xl bg-cyan-400/20 flex items-center justify-center text-xl">📞</div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-400 mb-1">Phone</p>
-            <a href="tel:+19723799216" className="text-xl font-bold text-white hover:text-cyan-300 transition">
-              (972) 379-9216
+            <a href="tel:+12146668718" className="text-xl font-bold text-white hover:text-cyan-300 transition">
+              (214) 666-8718
             </a>
             <p className="text-sm text-slate-400 mt-1">Monday – Friday, 9am – 5pm CST</p>
           </div>

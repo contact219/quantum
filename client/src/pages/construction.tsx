@@ -311,10 +311,10 @@ export default function Construction() {
                           <ArrowRight className="w-4 h-4 ml-2" />
                         </Button>
                       </Link>
-                      <a href="tel:9723799216" className="flex-1">
+                      <a href="tel:2146668718" className="flex-1">
                         <Button variant="outline" size="lg" className="w-full border-indigo-300 text-indigo-700 hover:bg-indigo-50">
                           <Phone className="w-4 h-4 mr-2" />
-                          (972) 379-9216
+                          (214) 666-8718
                         </Button>
                       </a>
                     </div>

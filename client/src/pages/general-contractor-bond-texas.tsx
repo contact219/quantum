@@ -9,7 +9,7 @@ const SERVICE_SCHEMA = {
   "name": "Texas General Contractor Bond",
   "serviceType": "Surety Bond",
   "url": "https://quantumsurety.bond/bonds/general-contractor-bond-texas",
-  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond", "telephone": "+19723799216" },
+  "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond", "telephone": "+12146668718" },
   "areaServed": { "@type": "State", "name": "Texas" },
   "description": "Texas general contractor bond required for city and county GC licenses. Instant issue available for bonds under $25,000. Competitive rates from a TDI-licensed surety agency.",
   "offers": { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "50", "maxPrice": "300", "unitText": "USD annually" } }
@@ -23,7 +23,7 @@ const FAQ_SCHEMA = {
     { "@type": "Question", "name": "Do I need a GC bond to work in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas does not have a statewide general contractor license, but many cities and counties require GC registration or licensing with a surety bond. Austin, Dallas, Houston, San Antonio, and Fort Worth all have local requirements. TDLR requires bonds for specific licensed trades (electricians, plumbers, HVAC, etc.)." } },
     { "@type": "Question", "name": "How much does a Texas general contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "For typical GC license bond amounts of $5,000–$25,000, annual premiums range from $50–$300. Most contractors with standard credit qualify at the low end of this range. Bonds under $25,000 can often be issued without a credit check at a flat rate." } },
     { "@type": "Question", "name": "Can I get a Texas GC bond with bad credit?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. For GC license bonds under $25,000, credit is generally not a barrier — many carriers offer instant-issue bonds at a flat rate regardless of credit score. For larger bond amounts, credit is evaluated but options still exist for contractors with challenged credit." } },
-    { "@type": "Question", "name": "How fast can I get a general contractor bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (972) 379-9216 for urgent same-day requests." } }
+    { "@type": "Question", "name": "How fast can I get a general contractor bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (214) 666-8718 for urgent same-day requests." } }
   ]
 };
 
@@ -53,7 +53,7 @@ export default function GeneralContractorBondTexas() {
     },
     {
       title: "Bond amounts by jurisdiction",
-      body: "Typical Texas GC license bond amounts range from $5,000 to $25,000, set by the city or county. TDLR licensed trades may have state-mandated amounts. Contact your local licensing office or call us at (972) 379-9216 to confirm the exact amount required.",
+      body: "Typical Texas GC license bond amounts range from $5,000 to $25,000, set by the city or county. TDLR licensed trades may have state-mandated amounts. Contact your local licensing office or call us at (214) 666-8718 to confirm the exact amount required.",
     },
     {
       title: "Cost — as low as $50/year",
@@ -83,7 +83,7 @@ export default function GeneralContractorBondTexas() {
     },
     {
       q: "How much does a Texas general contractor bond cost?",
-      a: "For typical GC license bond amounts of $5,000–$25,000, annual premiums range from $50–$300. Most contractors with standard credit qualify at the low end of this range. Bonds under $25,000 can often be issued without a credit check at a flat rate — call (972) 379-9216 for your exact quote.",
+      a: "For typical GC license bond amounts of $5,000–$25,000, annual premiums range from $50–$300. Most contractors with standard credit qualify at the low end of this range. Bonds under $25,000 can often be issued without a credit check at a flat rate — call (214) 666-8718 for your exact quote.",
     },
     {
       q: "Can I get a Texas GC bond with bad credit?",
@@ -91,7 +91,7 @@ export default function GeneralContractorBondTexas() {
     },
     {
       q: "How fast can I get a general contractor bond in Texas?",
-      a: "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (972) 379-9216 for urgent same-day requests.",
+      a: "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (214) 666-8718 for urgent same-day requests.",
     },
   ];
 
@@ -117,9 +117,9 @@ export default function GeneralContractorBondTexas() {
                 Get a Free GC Bond Quote <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href="tel:+19723799216">
+            <a href="tel:+12146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Call (972) 379-9216
+                Call (214) 666-8718
               </Button>
             </a>
           </div>
@@ -148,7 +148,7 @@ export default function GeneralContractorBondTexas() {
           </div>
           <p className="text-sm text-gray-500 mt-6">
             Requirements change. Confirm your exact bond amount and form with your local licensing authority before applying. Our team can help —{" "}
-            <a href="tel:+19723799216" className="text-indigo-600 font-medium">(972) 379-9216</a>.
+            <a href="tel:+12146668718" className="text-indigo-600 font-medium">(214) 666-8718</a>.
           </p>
         </div>
       </section>
@@ -279,9 +279,9 @@ export default function GeneralContractorBondTexas() {
                 Start My Bond Application <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href="tel:+19723799216">
+            <a href="tel:+12146668718">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Call (972) 379-9216
+                Call (214) 666-8718
               </Button>
             </a>
           </div>

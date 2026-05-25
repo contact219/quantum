@@ -232,6 +232,78 @@ app.get('/api/calls', async (req, res) => {
   }
 });
 
+// Send bond application link email — called by Retell custom tool
+app.post('/api/send-link-email', async (req, res) => {
+  const { email, bond_type, caller_phone } = req.body;
+  if (!email) return res.status(400).json({ success: false, error: 'email is required' });
+
+  const BOND_LINKS = {
+    notary:                  'https://quantumsurety.bond/get-bond?type=notary',
+    dealer:                  'https://quantumsurety.bond/get-bond?type=dealer',
+    contractor:              'https://quantumsurety.bond/get-bond?type=contractor',
+    mortgage:                'https://quantumsurety.bond/get-bond?type=mortgage',
+    collection_agency:       'https://quantumsurety.bond/get-bond?type=collection-agency',
+    credit_access_business:  'https://quantumsurety.bond/get-bond?type=credit-access-business',
+    property_tax_consultant: 'https://quantumsurety.bond/get-bond?type=property-tax-consultant',
+  };
+  const BOND_LABELS = {
+    notary: 'Texas Notary Public Bond', dealer: 'Texas Auto Dealer (GDN) Bond',
+    contractor: 'Texas Contractor License Bond', mortgage: 'Texas Mortgage Broker Bond',
+    collection_agency: 'Texas Collection Agency Bond',
+    credit_access_business: 'Texas Credit Access Business Bond',
+    property_tax_consultant: 'Texas Property Tax Consultant Bond',
+  };
+
+  const key   = (bond_type || 'general').toLowerCase();
+  const link  = BOND_LINKS[key] || 'https://quantumsurety.bond';
+  const label = BOND_LABELS[key] || 'Texas Surety Bond';
+
+  const html = `
+<div style="font-family:sans-serif;max-width:600px;background:#0d1117;color:#e6edf3;padding:32px;border-radius:8px;border:1px solid #30363d;">
+  <div style="font-size:10px;letter-spacing:4px;color:#f59e0b;font-family:monospace;">QUANTUM SURETY</div>
+  <h2 style="margin:4px 0 0;font-size:26px;letter-spacing:2px;color:white;">YOUR BOND APPLICATION LINK</h2>
+  <hr style="border:none;border-top:2px solid #f59e0b;width:64px;margin:12px 0 24px 0;">
+  <p style="font-size:14px;color:#c9d1d9;line-height:1.6;margin:0 0 20px;">
+    Thank you for calling Quantum Surety! Below is your application link for the
+    <strong style="color:#f59e0b;">${label}</strong>.
+  </p>
+  <div style="text-align:center;margin:28px 0;">
+    <a href="${link}" style="display:inline-block;background:#f59e0b;color:#000;font-weight:700;font-size:15px;padding:14px 32px;border-radius:6px;text-decoration:none;letter-spacing:1px;font-family:monospace;">
+      APPLY NOW →
+    </a>
+  </div>
+  <div style="background:#161b22;border:1px solid #30363d;border-radius:6px;padding:14px 16px;font-size:12px;color:#8b949e;font-family:monospace;word-break:break-all;">
+    ${link}
+  </div>
+  <p style="font-size:12px;color:#8b949e;margin-top:24px;line-height:1.5;">
+    Questions? Call us at <strong style="color:#e6edf3;">+1 (214) 666-8718</strong> or visit
+    <a href="https://quantumsurety.bond" style="color:#f59e0b;">quantumsurety.bond</a>.
+    Same-day issuance available for most bonds.
+  </p>
+  <div style="margin-top:24px;padding-top:16px;border-top:1px solid #21262d;font-size:10px;color:#484f58;font-family:monospace;">
+    Quantum Surety · Texas-Licensed Surety Bond Agency
+  </div>
+</div>`;
+
+  const text = `QUANTUM SURETY — YOUR BOND APPLICATION LINK\n\nThank you for calling Quantum Surety!\n\nHere is your application link for the ${label}:\n${link}\n\nQuestions? Call us at +1 (214) 666-8718 or visit quantumsurety.bond.\nSame-day issuance available for most bonds.`;
+
+  try {
+    await sesClient.send(new SendEmailCommand({
+      Source: FROM_EMAIL,
+      Destination: { ToAddresses: [email] },
+      Message: {
+        Subject: { Data: `Your ${label} Application Link — Quantum Surety` },
+        Body: { Html: { Data: html }, Text: { Data: text } }
+      }
+    }));
+    console.log(`[Email] Application link sent to ${email} for ${key}`);
+    res.json({ success: true, message: `Application link sent to ${email}` });
+  } catch (err) {
+    console.error('[Email] Failed to send link email:', err.message);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Test outbound call
 app.post('/api/call/test', async (req, res) => {
   if (!RETELL_API_KEY) return res.status(500).json({ error: 'Retell API key not configured' });

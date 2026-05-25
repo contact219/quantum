@@ -10,6 +10,9 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 |--------|-------------|-------|
 | Main site | https://quantumsurety.bond | Replit Autoscale, auto-deploys from GitHub |
 | Bond Verify portal | https://verify.quantumsurety.bond | VPS 130.51.23.147, Node.js + Caddy |
+| Partner Portal | https://partners.quantumsurety.bond | VPS 130.51.23.147, PM2 `partner-portal` port 3002 |
+| Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on 192.168.4.122 |
+| Permit Pilot | https://permitpilot.online | VPS 130.51.23.147, Docker Compose port 7842 |
 | CRM dashboard | http://192.168.4.122:8095 | Local network only, Docker Compose |
 | GitHub repo | github.com/contact219/quantum | Main site source |
 
@@ -36,6 +39,7 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 |---------|------|---------|
 | `bond-verify` | 3001 | `/var/www/bondverify/` |
 | `partner-portal` | 3002 | `/var/www/partners/` |
+| `voice-agent` | 3003 | `/var/www/voice-agent/` |
 
 **Docker processes on VPS (Permit Pilot):**
 | Container | Port | Purpose |
@@ -54,10 +58,11 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 pm2 status                          # Check all app status
 pm2 restart bond-verify             # Restart Bond Verify
 pm2 restart partner-portal          # Restart Partner Portal
+pm2 restart voice-agent             # Restart Voice Agent
 docker compose -f /var/www/permitpilot/docker-compose.yml ps   # Permit Pilot status
 docker compose -f /var/www/permitpilot/docker-compose.yml restart  # Restart Permit Pilot
 systemctl reload caddy              # Reload Caddy config
-mysql -u bondverify -pBondVerify2026! bondverify   # DB shell (Bond Verify / Partners)
+mysql -u bondverify -pBondVerify2026! bondverify   # DB shell (Bond Verify / Partners / Voice Agent)
 docker exec permitpilot-postgres-1 psql -U permitpilot permitpilot  # Permit Pilot DB shell
 ```
 
@@ -113,7 +118,34 @@ docker exec permitpilot-postgres-1 psql -U permitpilot permitpilot  # Permit Pil
 0 8 1 * *    python3 /var/www/bondverify/scripts/import-contractors.py >> /var/log/bondverify-contractors-import.log 2>&1
 ```
 
-### 3. quantum-surety-crm — Internal CRM Dashboard
+### 3. Voice Agent — voice-agent.permitpilot.online
+
+- **Phone:** +1-214-666-8718 (inbound, Retell AI)
+- **Public URL:** https://voice-agent.permitpilot.online
+- **VPS process:** PM2 `voice-agent`, port 3003, dir `/var/www/voice-agent/`
+- **App file:** `/var/www/voice-agent/index.js` (v3.0) — webhook receiver, DB logging, SES email, CRM lead creation
+- **Retell LLM ID:** `llm_d524048e266596071e10ce98ec26`
+- **Transfer to live agent:** +1-214-506-7373 (cold transfer on request)
+
+**CRITICAL — Cloudflare tunnel routing:**
+Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tunnel on the LOCAL server (192.168.4.122)**, NOT the VPS directly.
+- Tunnel config: `/home/tsparks/.cloudflared/voice-agent.yml` (LOCAL server)
+- Systemd service: `cloudflared-voice.service` (LOCAL server, runs as user tsparks)
+- Tunnel forwards to: `http://130.51.23.147:3003` (VPS voice agent)
+- Restart tunnel: `plink -batch -pw "zadoL4cu!" tsparks@192.168.4.122 "sudo systemctl restart cloudflared-voice"`
+
+**Post-call pipeline (fires once per call on `call_analyzed` event):**
+1. `call_logs` table in MariaDB `bondverify` (ON DUPLICATE KEY UPDATE)
+2. `POST quantumsurety.bond/api/leads` — CRM lead with placeholder email
+3. SES email to `administrator@quantumsurety.bond` from `alerts@quantumsurety.bond`
+
+**Call Logs API:** `GET https://voice-agent.permitpilot.online/api/calls` — returns last 200 calls with CORS `*`
+
+**CRM Call Logs page:** `/usr/quantum-surety-crm/frontend/src/pages/CallLogs.jsx` — fetches from the API above, shown in CRM nav for admin/sales roles.
+
+---
+
+### 4. quantum-surety-crm — Internal CRM Dashboard
 - **Server:** 192.168.4.122 (local network only)
 - **SSH:** `tsparks` / `zadoL4cu!` (sudo password same)
 - **Access:** http://192.168.4.122:8095

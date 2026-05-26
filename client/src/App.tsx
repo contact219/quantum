@@ -128,6 +128,7 @@ import BondComplianceLeaderboard from "@/pages/bond-compliance-leaderboard";
 import Press from "@/pages/press";
 import ContractorDetail from "@/pages/contractor-detail";
 import ContractorQR from "@/pages/contractor-qr";
+import BondTicker from "@/pages/bond-ticker";
 import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
 import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
 import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
@@ -306,6 +307,7 @@ function Router() {
       <Route path="/texas-bond-watch/:county" component={CountyBondWatch} />
       <Route path="/bond-compliance-leaderboard" component={BondComplianceLeaderboard} />
       <Route path="/press" component={Press} />
+      <Route path="/bond-ticker" component={BondTicker} />
       <Route path="/contractor/:license/qr" component={ContractorQR} />
       <Route path="/contractor/:license" component={ContractorDetail} />
       {/* Texas SEO landing pages */}

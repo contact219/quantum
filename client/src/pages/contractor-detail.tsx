@@ -186,6 +186,11 @@ export default function ContractorDetail() {
                     style={{ display: "inline-block", background: "rgba(255,255,255,0.06)", color: "#e2e8f0", fontWeight: 700, fontSize: 12, padding: "8px 14px", borderRadius: 7, textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>
                     Shareable Verify Link
                   </a>
+                  <Link href={`/contractor/${license}/qr`}>
+                    <span style={{ display: "inline-block", background: "rgba(245,158,11,0.1)", color: "#f59e0b", fontWeight: 700, fontSize: 12, padding: "8px 14px", borderRadius: 7, cursor: "pointer", border: "1px solid rgba(245,158,11,0.3)" }}>
+                      Print QR Code →
+                    </span>
+                  </Link>
                 </div>
                 <div style={{ fontSize: 11, color: "#475569", fontFamily: "monospace", marginBottom: 6 }}>Add to your website (copy HTML):</div>
                 <div

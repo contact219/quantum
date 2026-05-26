@@ -1,0 +1,107 @@
+FOR IMMEDIATE RELEASE
+
+Contact: Quantum Surety LLC
+Phone: (214) 666-8718
+Email: contact@quantumsurety.bond
+Web: https://quantumsurety.bond
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEARLY 1 IN 3 TEXAS LICENSED CONTRACTORS OPERATING WITH EXPIRED BONDS,
+NEW REAL-TIME COMPLIANCE TRACKER REVEALS
+
+First-ever statewide dashboard exposing bond expiration gaps among 775,000+
+TDLR-licensed Texas contractors and 558,000+ commissioned notaries
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DALLAS, Texas — May 26, 2026 — Quantum Surety LLC, a Texas-licensed surety bond
+agency, today launched Texas Bond Watch (quantumsurety.bond/texas-bond-watch), the
+state's first real-time public tracker of contractor and notary bond expirations —
+and the data reveals a significant compliance gap that puts Texas consumers at risk.
+
+KEY FINDINGS FROM THE TEXAS BOND WATCH DATABASE:
+
+• 226,767 Texas licensed contractors (29.3%) are currently operating with expired
+  surety bonds — meaning they are out of compliance with TDLR licensing requirements
+• An additional 34,480 Texas contractors have bonds expiring in the next 30 days
+• 95,375 Texas notaries (17.1%) have expired bonds
+• Harris County alone has 6,282 contractors with bonds expiring in the next 30 days
+• Dallas County: 3,583 contractors expiring within 30 days
+• Tarrant County (Fort Worth): 2,329 contractors expiring within 30 days
+
+"Most Texas homeowners assume that a licensed contractor is automatically bonded
+and insured," said a spokesperson for Quantum Surety LLC. "What they don't realize
+is that a license doesn't expire when a bond does. Contractors can continue operating
+— and advertising as 'licensed' — even after their bond lapses. That leaves consumers
+with no financial recourse if something goes wrong on their project."
+
+ABOUT TEXAS BOND WATCH
+
+Texas Bond Watch (quantumsurety.bond/texas-bond-watch) is a free public tool that
+pulls live data daily from two Texas state databases:
+
+  — Texas Department of Licensing and Regulation (TDLR): 775,171 licensed
+    contractor records covering electricians, HVAC technicians, plumbers, roofers,
+    and 200+ other trade license types
+  — Texas Secretary of State (SOS): 558,898 commissioned notary records
+
+The platform provides:
+  • County-by-county drilldown for the 10 largest Texas counties
+  • Real contractor and notary names, license numbers, and exact expiration dates
+  • A free embeddable widget for title companies, real estate offices, and property
+    managers to verify contractor compliance on their own websites
+  • Email alert subscriptions for consumers who want to be notified when a specific
+    contractor's bond is about to expire
+  • A free bond status badge that contractors can display on their own websites
+
+WHY BOND STATUS MATTERS
+
+In Texas, most contractor licenses require an active surety bond as a condition
+of licensure. A surety bond is a financial guarantee that protects consumers if
+a contractor fails to complete a job, causes property damage, or violates licensing
+laws. Without an active bond, a consumer who hires an unlicensed or lapsed-bond
+contractor may have no legal recourse beyond civil court.
+
+"We built this because the data exists publicly — it's just not usable," the
+spokesperson continued. "TDLR and the Texas SOS both publish their license
+databases, but there's no tool that puts it all together and shows you which
+contractors are compliant right now, by ZIP code or county. We built that tool,
+and we're giving it away free."
+
+THE CONTRACTOR BADGE SYSTEM
+
+As part of the launch, Quantum Surety is also introducing the first free bond
+verification badge system for Texas contractors (quantumsurety.bond/badge). Similar
+to SSL certificate trust seals used on websites, licensed contractors and notaries
+can embed a live badge showing their current bond status — with data that updates
+daily from state records.
+
+"A contractor who is actively bonded should be proud to show it," the spokesperson
+said. "This badge gives them a way to do that — and it gives consumers an instant
+way to verify compliance before signing any contract."
+
+ABOUT QUANTUM SURETY LLC
+
+Quantum Surety LLC is a Texas-licensed surety bond agency offering same-day
+issuance of Texas Notary Bonds, GDN Dealer Bonds, contractor license bonds, and
+other commercial surety products. The company issues bonds underwritten by RLI
+Insurance (A-rated by A.M. Best) starting at $50.
+
+For more information, visit quantumsurety.bond or call (214) 666-8718.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MEDIA RESOURCES:
+• Texas Bond Watch: https://quantumsurety.bond/texas-bond-watch
+• Contractor Bond Lookup: https://verify.quantumsurety.bond
+• Bond Verification Badge: https://quantumsurety.bond/badge
+• Live Data API: https://verify.quantumsurety.bond/api/bond-watch/summary
+
+MEDIA CONTACT:
+Quantum Surety LLC
+(214) 666-8718
+contact@quantumsurety.bond
+https://quantumsurety.bond
+
+###

@@ -25,14 +25,23 @@ export function Footer() {
 
   const linkGroups = [
     {
+      title: "Free Tools",
+      links: [
+        { href: "/texas-bond-watch", label: "Texas Bond Watch" },
+        { href: "/badge", label: "Bond Verification Badge" },
+        { href: "https://verify.quantumsurety.bond", label: "Notary Bond Lookup" },
+        { href: "/obligee-lookup", label: "Obligee Lookup" },
+        { href: "/renewals", label: "Renewal Reminders" },
+        { href: "/chatbot", label: "AI Bond Finder" },
+      ],
+    },
+    {
       title: "Learn",
       links: [
         { href: "/about", label: "About" },
         { href: "/faq", label: "FAQ" },
         { href: "/resources", label: "Resources" },
         { href: "/glossary", label: "Glossary" },
-        { href: "/obligee-lookup", label: "Obligee Lookup" },
-        { href: "/renewals", label: "Bond Renewal Reminders" },
         { href: "https://partners.quantumsurety.bond", label: "Partner Program" },
       ],
     },

@@ -49,6 +49,20 @@ export function Navbar() {
       external: true,
     },
     {
+      href: "/texas-bond-watch",
+      label: "Texas Bond Watch",
+      description: "Live contractor & notary bond expirations",
+      icon: null,
+      external: false,
+    },
+    {
+      href: "/badge",
+      label: "Bond Badge",
+      description: "Free verified bond badge for your website",
+      icon: null,
+      external: false,
+    },
+    {
       href: "https://partners.quantumsurety.bond",
       label: "Partner Program",
       description: "Refer clients, earn commissions",

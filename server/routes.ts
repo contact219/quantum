@@ -13,6 +13,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const capturedLeads: { name: string; email: string; phone: string; bond: string; time: string }[] = [];
   // In-memory site event log for real-time CRM tracking
   const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; time: string }[] = [];
+  // IndexNow key verification file (must return plain text before SPA catch-all)
+  app.get('/quantumsurety-indexnow-2026.txt', (_req, res) => {
+    res.setHeader('Content-Type', 'text/plain');
+    res.send('quantumsurety-indexnow-2026');
+  });
+
   // â”€â”€ Permanent URL redirects (301) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const REDIRECTS: Record<string, string> = {
     "/sb693-notary-bond":  "/sb-693-notary-bond-requirements-2026",

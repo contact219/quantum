@@ -232,9 +232,35 @@ app.get('/api/calls', async (req, res) => {
   }
 });
 
+app.options('/api/calls/:id', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.sendStatus(204);
+});
+
+app.delete('/api/calls/:id', async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  if (!dbPool) return res.status(503).json({ error: 'Database unavailable' });
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) return res.status(400).json({ error: 'invalid id' });
+  try {
+    const [result] = await dbPool.execute('DELETE FROM call_logs WHERE id = ?', [id]);
+    if (result.affectedRows === 0) return res.status(404).json({ error: 'not found' });
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Send bond application link email — called by Retell custom tool
 app.post('/api/send-link-email', async (req, res) => {
-  const { email, bond_type, caller_phone } = req.body;
+  console.log('[Email Tool] body:', JSON.stringify(req.body));
+  // Retell may nest args under "args" key or send flat
+  const body = req.body?.args || req.body || {};
+  const email      = body.email      || req.body.email;
+  const bond_type  = body.bond_type  || req.body.bond_type;
+  const caller_phone = body.caller_phone || req.body.caller_phone;
   if (!email) return res.status(400).json({ success: false, error: 'email is required' });
 
   const BOND_LINKS = {

@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useCallback} from 'react';
-import {RefreshCw,Download,PhoneIncoming,CheckCircle,XCircle,Mic} from 'lucide-react';
+import {RefreshCw,Download,PhoneIncoming,CheckCircle,XCircle,Mic,Trash2,X} from 'lucide-react';
 
 const API = 'https://voice-agent.permitpilot.online/api/calls';
 
@@ -61,6 +61,8 @@ export default function CallLogs(){
   const [expanded,setExpanded]=useState(null);
   const [filterBond,setFilterBond]=useState('all');
   const [filterOutcome,setFilterOutcome]=useState('all');
+  const [deleteTarget,setDeleteTarget]=useState(null);
+  const [deleting,setDeleting]=useState(false);
 
   const load=useCallback(async()=>{
     setLoading(true);setError('');
@@ -74,6 +76,18 @@ export default function CallLogs(){
   },[]);
 
   useEffect(()=>{load();},[load]);
+
+  const confirmDelete=useCallback(async()=>{
+    if(!deleteTarget)return;
+    setDeleting(true);
+    try{
+      const res=await fetch(`${API}/${deleteTarget.id}`,{method:'DELETE'});
+      if(!res.ok)throw new Error(`HTTP ${res.status}`);
+      setDeleteTarget(null);
+      load();
+    }catch(e){setError('Delete failed: '+e.message);}
+    setDeleting(false);
+  },[deleteTarget,load]);
 
   const bondTypes=[...new Set(calls.map(c=>c.bond_type).filter(Boolean))];
   const filtered=calls.filter(c=>{
@@ -156,7 +170,7 @@ export default function CallLogs(){
             <table style={{width:'100%',borderCollapse:'collapse'}}>
               <thead>
                 <tr style={{background:'var(--muted)'}}>
-                  {['Date','Caller','Bond Type','Outcome','Sentiment','Duration','Summary','Recording'].map(h=>(
+                  {['Date','Caller','Bond Type','Outcome','Sentiment','Duration','Summary','Recording',''].map(h=>(
                     <th key={h} style={{padding:'8px 12px',textAlign:'left',fontSize:10,color:'var(--text-dim)',fontFamily:'monospace',letterSpacing:1,whiteSpace:'nowrap'}}>{h}</th>
                   ))}
                 </tr>
@@ -206,6 +220,12 @@ export default function CallLogs(){
                               </a>
                             :<span style={{color:'#374151',fontSize:11}}>—</span>}
                         </td>
+                        <td style={{padding:'10px 12px'}}>
+                          <button onClick={e=>{e.stopPropagation();setDeleteTarget(call);}}
+                            style={{display:'flex',alignItems:'center',gap:3,padding:'4px 8px',background:'#3a1a1a',border:'1px solid #7f1d1d',borderRadius:4,color:'#f87171',fontSize:10,cursor:'pointer'}}>
+                            <Trash2 size={10}/>
+                          </button>
+                        </td>
                       </tr>
                       {isExp&&(
                         <tr style={{background:'rgba(245,158,11,0.04)',borderTop:'1px solid rgba(245,158,11,0.15)'}}>
@@ -228,6 +248,27 @@ export default function CallLogs(){
           </div>
         )}
       </div>
+
+      {deleteTarget&&(
+        <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,0.75)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:200}}>
+          <div style={{background:'var(--surface)',border:'1px solid #7f1d1d',borderRadius:10,padding:24,width:360,maxWidth:'90vw'}}>
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}}>
+              <div style={{fontWeight:700,fontSize:14,color:'#f87171'}}>Delete Call Log?</div>
+              <button onClick={()=>setDeleteTarget(null)} style={{background:'none',border:'none',cursor:'pointer',color:'var(--text-dim)'}}><X size={15}/></button>
+            </div>
+            <div style={{fontSize:12,color:'var(--text-dim)',marginBottom:20,lineHeight:1.6}}>
+              This will permanently delete the call from <strong style={{color:'white'}}>{fmtPhone(deleteTarget.from_number)}</strong> on {fmtTime(deleteTarget.created_at)}. This cannot be undone.
+            </div>
+            <div style={{display:'flex',gap:8,justifyContent:'flex-end'}}>
+              <button onClick={()=>setDeleteTarget(null)} style={{padding:'7px 16px',background:'var(--muted)',border:'1px solid var(--border)',borderRadius:6,color:'var(--text-dim)',fontSize:12,cursor:'pointer'}}>Cancel</button>
+              <button onClick={confirmDelete} disabled={deleting}
+                style={{padding:'7px 16px',background:'#7f1d1d',border:'none',borderRadius:6,color:'#f87171',fontSize:12,fontWeight:600,cursor:'pointer',opacity:deleting?0.6:1}}>
+                {deleting?'Deleting…':'Delete Permanently'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

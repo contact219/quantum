@@ -8,10 +8,13 @@ interface Notary {
   notary_id: string;
   first_name: string;
   last_name: string;
-  county: string;
   city?: string;
-  commission_date?: string;
+  state?: string;
+  zip?: string;
+  effective_date?: string;
   expire_date: string;
+  surety_company?: string;
+  agency?: string;
   days_until_expiry: number;
   status: "active" | "expiring" | "expired" | "unknown";
 }
@@ -44,26 +47,25 @@ export default function NotaryDetail() {
 
   const si = notary ? statusInfo(notary.status) : statusInfo("unknown");
   const fullName = notary ? `${notary.first_name} ${notary.last_name}`.trim() : notaryId;
-  const county = notary?.county || "Texas";
-  const city = notary?.city || county;
+  const location = [notary?.city, notary?.state || "TX"].filter(Boolean).join(", ") || "Texas";
   const isExpired = notary?.status === "expired";
   const isExpiring = notary?.status === "expiring";
 
   const expDate = notary?.expire_date
     ? new Date(notary.expire_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
     : "";
-  const commDate = notary?.commission_date
-    ? new Date(notary.commission_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+  const commDate = notary?.effective_date
+    ? new Date(notary.effective_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
     : "";
 
   const verifyUrl = `https://verify.quantumsurety.bond/verify/notary/${notaryId}`;
   const pageUrl = `https://quantumsurety.bond/notary/${notaryId}`;
 
   const pageTitle = notary
-    ? `${fullName} — Texas Notary Commission Status | ${county} County | Quantum Surety`
+    ? `${fullName} — Texas Notary Commission Status | ${location} | Quantum Surety`
     : `Texas Notary Commission — ID ${notaryId} | Quantum Surety`;
   const pageDesc = notary
-    ? `${fullName} (TX Notary #${notaryId}) — ${county} County. Commission status: ${si.label}. Expires ${expDate}. Verified from Texas SOS public records.`
+    ? `${fullName} (TX Notary #${notaryId}) — ${location}. Commission status: ${si.label}. Expires ${expDate}. Verified from Texas SOS public records.`
     : `Look up Texas notary commission status for notary ID ${notaryId}.`;
 
   const tweetText = notary && notary.status === "active"
@@ -80,19 +82,20 @@ export default function NotaryDetail() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": fullName,
-    "description": `Texas Notary Public in ${county} County. Commission status: ${si.label}.`,
-    "address": {
+    "description": `Texas Notary Public in ${location}. Commission status: ${si.label}.`,
+    ...(notary.city ? { "address": {
       "@type": "PostalAddress",
-      "addressLocality": city,
+      "addressLocality": notary.city,
       "addressRegion": "TX",
+      "postalCode": notary.zip || undefined,
       "addressCountry": "US"
-    },
+    }} : {}),
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
       "credentialCategory": "commission",
       "name": "Texas Notary Public Commission",
       "identifier": notaryId,
-      ...(notary.commission_date ? { "validFrom": notary.commission_date.slice(0, 10) } : {}),
+      ...(notary.effective_date ? { "validFrom": notary.effective_date.slice(0, 10) } : {}),
       "validUntil": notary.expire_date?.slice(0, 10),
     },
     "url": pageUrl,
@@ -136,7 +139,7 @@ export default function NotaryDetail() {
               </div>
               <h1 style={{ fontSize: "clamp(22px,4vw,36px)", fontWeight: 900, color: "#fff", lineHeight: 1.1, margin: "0 0 10px" }}>{fullName}</h1>
               <p style={{ fontSize: 14, color: "#64748b", marginBottom: 24 }}>
-                Texas Notary Public · ID #{notaryId} · {county} County, TX
+                Texas Notary Public · ID #{notaryId} · {location}
               </p>
 
               {/* Detail grid */}
@@ -145,11 +148,13 @@ export default function NotaryDetail() {
                   {[
                     { label: "Notary ID", value: notaryId },
                     { label: "Full Name", value: fullName },
-                    { label: "County", value: county },
-                    ...(city && city !== county ? [{ label: "City", value: city }] : []),
+                    ...(notary.city ? [{ label: "City", value: notary.city }] : []),
+                    ...(notary.zip ? [{ label: "ZIP Code", value: notary.zip }] : []),
                     ...(commDate ? [{ label: "Commission Date", value: commDate }] : []),
                     { label: "Commission Expires", value: expDate, color: si.color },
                     ...(notary.days_until_expiry > 0 ? [{ label: "Days Until Expiry", value: `${notary.days_until_expiry} days`, color: si.color }] : []),
+                    ...(notary.surety_company ? [{ label: "Surety Company", value: notary.surety_company }] : []),
+                    ...(notary.agency ? [{ label: "Bond Agency", value: notary.agency }] : []),
                   ].map(f => (
                     <div key={f.label}>
                       <div style={{ fontSize: 10, color: "#475569", fontFamily: "monospace", letterSpacing: 1, marginBottom: 3 }}>{f.label.toUpperCase()}</div>

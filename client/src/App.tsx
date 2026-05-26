@@ -35,6 +35,7 @@ import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 // Texas SEO landing pages
+import TexasBondWatch from "@/pages/texas-bond-watch";
 import TexasContractorBonds from "@/pages/texas-contractor";
 import BidBondTexas from "@/pages/bid-bond-texas";
 import PerformanceBondTexas from "@/pages/performance-bond-texas";
@@ -291,6 +292,8 @@ function Router() {
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />
 
+      {/* Texas Bond Watch — live bond expiration tracker */}
+      <Route path="/texas-bond-watch" component={TexasBondWatch} />
       {/* Texas SEO landing pages */}
       <Route path="/bonds/texas-contractor" component={TexasContractorBonds} />
       <Route path="/bonds/bid-bond-texas" component={BidBondTexas} />

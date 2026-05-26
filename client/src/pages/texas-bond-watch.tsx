@@ -73,10 +73,41 @@ export default function TexasBondWatch() {
     <>
       <Helmet>
         <title>Texas Bond Watch — Contractor & Notary Bond Expiration Alerts | Quantum Surety</title>
-        <meta name="description" content={`Live tracking of Texas contractor and notary bond expirations. ${summary ? fmt(summary.contractors.expiring_30d) + " Texas contractors have bonds expiring in the next 30 days.' : 'Protect your business — verify bond status before hiring.'}`} />
+        <meta name="description" content={`Live tracking of Texas contractor and notary bond expirations. ${summary ? fmt(summary.contractors.expiring_30d) + " Texas contractors have bonds expiring in the next 30 days." : "Protect your business — verify bond status before hiring."}`} />
         <meta property="og:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
         <meta property="og:description" content="Real-time Texas contractor and notary bond status. Updated daily from state licensing databases." />
+        <meta property="og:url" content="https://quantumsurety.bond/texas-bond-watch" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
+        <meta name="twitter:description" content="Real-time tracking of 775K+ Texas contractor and notary bond expirations. Updated daily from TDLR and Texas SOS." />
         <link rel="canonical" href="https://quantumsurety.bond/texas-bond-watch" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Texas Bond Watch",
+          "url": "https://quantumsurety.bond/texas-bond-watch",
+          "description": "Free real-time tracker of Texas contractor and notary bond expirations, updated daily from TDLR and Texas Secretary of State databases.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "provider": {
+            "@type": "Organization",
+            "name": "Quantum Surety LLC",
+            "url": "https://quantumsurety.bond",
+            "telephone": "+12146668718",
+            "address": { "@type": "PostalAddress", "addressState": "TX", "addressCountry": "US" }
+          },
+          "about": {
+            "@type": "Dataset",
+            "name": "Texas Contractor & Notary Bond Expiration Data",
+            "description": "Bond expiration records for 775,000+ TDLR-licensed Texas contractors and 558,000+ Texas notaries, sourced from public state databases.",
+            "creator": { "@type": "Organization", "name": "Quantum Surety LLC" },
+            "spatialCoverage": "Texas, USA",
+            "temporalCoverage": "2024/..",
+            "license": "https://data.texas.gov/License"
+          }
+        })}</script>
       </Helmet>
 
       {/* Hero */}

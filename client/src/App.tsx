@@ -133,6 +133,7 @@ import NotaryDetail from "@/pages/notary-detail";
 import NotaryQR from "@/pages/notary-qr";
 import BondComplianceByTrade from "@/pages/bond-compliance-by-trade";
 import EmbedWidget from "@/pages/embed-widget";
+import NotarySigningCert from "@/pages/notary-signing-cert";
 import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
 import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
 import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
@@ -315,6 +316,7 @@ function Router() {
       <Route path="/contractor/:license/qr" component={ContractorQR} />
       <Route path="/contractor/:license" component={ContractorDetail} />
       <Route path="/notary/:id/qr" component={NotaryQR} />
+      <Route path="/notary/:id/cert" component={NotarySigningCert} />
       <Route path="/notary/:id" component={NotaryDetail} />
       <Route path="/bond-compliance-by-trade" component={BondComplianceByTrade} />
       <Route path="/embed-widget" component={EmbedWidget} />

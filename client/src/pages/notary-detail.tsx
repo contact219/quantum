@@ -215,6 +215,13 @@ export default function NotaryDetail() {
                       Print QR Code →
                     </span>
                   </Link>
+                  {!isExpired && (
+                    <Link href={`/notary/${notaryId}/cert`}>
+                      <span style={{ display: "inline-block", background: "#059669", color: "#fff", fontWeight: 700, fontSize: 12, padding: "8px 14px", borderRadius: 7, cursor: "pointer" }}>
+                        Generate Signing Certificate →
+                      </span>
+                    </Link>
+                  )}
                 </div>
                 <div style={{ fontSize: 11, color: "#475569", fontFamily: "monospace", marginBottom: 6 }}>Add to your website or email signature (copy HTML):</div>
                 <div

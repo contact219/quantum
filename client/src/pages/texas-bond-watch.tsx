@@ -123,6 +123,12 @@ export default function TexasBondWatch() {
             Live tracking of Texas contractor and notary bond expirations — updated daily from TDLR and Texas SOS databases.
             Know before you hire.
           </p>
+          {summary && (
+            <div style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.2)", borderRadius: 10, padding: "14px 24px", marginBottom: 24, display: "inline-block" }}>
+              <span style={{ color: "#f59e0b", fontWeight: 800, fontSize: 18 }}>{fmt(summary.contractors.expiring_30d)}</span>
+              <span style={{ color: "#94a3b8", fontSize: 14, marginLeft: 8 }}>Texas contractors have bonds expiring in the next 30 days</span>
+            </div>
+          )}
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/get-bond">
               <a style={{ display: "inline-block", background: "#f59e0b", color: "#000", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", letterSpacing: 1 }}>
@@ -131,6 +137,13 @@ export default function TexasBondWatch() {
             </Link>
             <a href="https://verify.quantumsurety.bond" style={{ display: "inline-block", background: "rgba(255,255,255,0.08)", color: "#fff", padding: "12px 28px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)" }}>
               Verify a Bond →
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${summary ? fmt(summary.contractors.expiring_30d) : "34,480"} Texas contractors have bonds expiring in the next 30 days — is yours one of them? Free real-time tracker: https://quantumsurety.bond/texas-bond-watch #Texas #contractors`)}`}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-block", background: "#1DA1F2", color: "#fff", padding: "12px 20px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none" }}
+            >
+              𝕏 Share This Data
             </a>
           </div>
         </div>

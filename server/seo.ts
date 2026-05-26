@@ -6069,6 +6069,7 @@ Disallow: /application
 Disallow: /chatbot
 Disallow: /api/
 Sitemap: ${BASE_URL}/sitemap.xml
+Sitemap: ${BASE_URL}/sitemap-index.xml
 `;
 
 // ─── Main middleware ───────────────────────────────────────────────────────────

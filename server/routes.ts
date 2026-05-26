@@ -2085,6 +2085,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Sitemap index — covers all quantumsurety.bond pages including 1.37M notary/contractor detail pages
+  const NOTARY_SITEMAP_COUNT = 12;
+  const CONTRACTOR_SITEMAP_COUNT = 17;
+
+  app.get('/sitemap-index.xml', (_req, res) => {
+    const notaryEntries = Array.from({ length: NOTARY_SITEMAP_COUNT }, (_, i) =>
+      `  <sitemap><loc>https://quantumsurety.bond/sitemaps/notaries-${i + 1}.xml</loc></sitemap>`
+    ).join('\n');
+    const contractorEntries = Array.from({ length: CONTRACTOR_SITEMAP_COUNT }, (_, i) =>
+      `  <sitemap><loc>https://quantumsurety.bond/sitemaps/contractors-${i + 1}.xml</loc></sitemap>`
+    ).join('\n');
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap><loc>https://quantumsurety.bond/sitemap.xml</loc></sitemap>\n${notaryEntries}\n${contractorEntries}\n</sitemapindex>`);
+  });
+
+  app.get('/sitemaps/notaries-:n.xml', async (req, res) => {
+    const n = Math.min(Math.max(parseInt(req.params.n) || 1, 1), NOTARY_SITEMAP_COUNT);
+    try {
+      const r = await fetch(`https://verify.quantumsurety.bond/notary-sitemaps-main/sitemap_notaries_main_${String(n).padStart(2, '0')}.xml`);
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      res.send(await r.text());
+    } catch { res.status(502).send('Sitemap temporarily unavailable'); }
+  });
+
+  app.get('/sitemaps/contractors-:n.xml', async (req, res) => {
+    const n = Math.min(Math.max(parseInt(req.params.n) || 1, 1), CONTRACTOR_SITEMAP_COUNT);
+    try {
+      const r = await fetch(`https://verify.quantumsurety.bond/contractor-sitemaps-main/sitemap_contractors_main_${String(n).padStart(2, '0')}.xml`);
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      res.send(await r.text());
+    } catch { res.status(502).send('Sitemap temporarily unavailable'); }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

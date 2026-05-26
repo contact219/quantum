@@ -244,6 +244,20 @@ export default function TexasBondWatch() {
         </div>
       </section>
 
+      {/* Monitor CTA */}
+      <section style={{ background: "#0d1117", padding: "40px 24px", borderTop: "1px solid #21262d" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ fontSize: 11, fontFamily: "monospace", letterSpacing: 3, color: "#f59e0b", marginBottom: 12 }}>FREE ALERT SERVICE</div>
+          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#fff", marginBottom: 10 }}>Get Notified When a Contractor's Bond Expires</h2>
+          <p style={{ color: "#8b949e", fontSize: 14, marginBottom: 20, lineHeight: 1.6 }}>
+            Enter a contractor's license number and your email. We'll alert you 30, 14, and 7 days before their bond expires — free, no account required.
+          </p>
+          <a href="https://verify.quantumsurety.bond" style={{ display: "inline-block", background: "rgba(245,158,11,0.1)", color: "#f59e0b", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", border: "1px solid rgba(245,158,11,0.3)" }}>
+            Set a Bond Expiry Alert →
+          </a>
+        </div>
+      </section>
+
       {/* Embed CTA */}
       <section style={{ background: "#161b22", padding: "48px 24px", borderTop: "1px solid #30363d" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>

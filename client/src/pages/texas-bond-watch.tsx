@@ -278,7 +278,14 @@ export default function TexasBondWatch() {
       {/* County index — crawlable links to all county subpages */}
       <section style={{ background: "#0a0f1e", padding: "48px 24px", borderTop: "1px solid #1e293b" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#fff", marginBottom: 8 }}>Browse by County</h2>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 8 }}>
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: "#fff", margin: 0 }}>Browse by County</h2>
+            <Link href="/bond-compliance-leaderboard">
+              <span style={{ display: "inline-block", background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)", borderRadius: 8, padding: "8px 16px", fontSize: 12, color: "#f59e0b", fontWeight: 700, cursor: "pointer", fontFamily: "monospace" }}>
+                All 254 Counties → Full Leaderboard
+              </span>
+            </Link>
+          </div>
           <p style={{ fontSize: 13, color: "#64748b", marginBottom: 20 }}>County-specific bond expiration data with embeddable widgets for local websites.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px,1fr))", gap: 10 }}>
             {[

@@ -121,6 +121,7 @@ import BlogTDLRBond2026 from "@/pages/blog/texas-tdlr-contractor-bond-2026";
 import BlogContractorBondCost from "@/pages/blog/texas-contractor-license-bond-cost";
 import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contractor-bond-requirements";
 import GetBond from "@/pages/get-bond";
+import Renew from "@/pages/renew";
 import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
 import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
 import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
@@ -239,6 +240,7 @@ function Router() {
       <Route path="/chatbot" component={ChatbotPage} />
       <Route path="/quote" component={Quote} />
       <Route path="/get-bond" component={GetBond} />
+      <Route path="/renew" component={Renew} />
       <Route path="/admin-login" component={AdminLogin} />
       <Route path="/admin-setup" component={AdminSetup} />
       <Route path="/portal/application">

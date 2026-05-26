@@ -112,6 +112,23 @@ export default function BondComplianceLeaderboard() {
           <p style={{ fontSize: 11, color: "#475569", fontFamily: "monospace" }}>
             Source: Texas Department of Licensing and Regulation (TDLR) · data.texas.gov · Updated daily
           </p>
+          {/* Share buttons */}
+          <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 20, flexWrap: "wrap" }}>
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`🚨 ${overallPct > 0 ? overallPct : "29.3"}% of Texas licensed contractors have EXPIRED surety bonds — data from TDLR. See every county ranked: https://quantumsurety.bond/bond-compliance-leaderboard #Texas #HomeImprovement #ConsumerProtection`)}`}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#1d9bf0", color: "#fff", fontWeight: 700, fontSize: 12, padding: "9px 16px", borderRadius: 8, textDecoration: "none" }}>
+              Share on X/Twitter
+            </a>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://quantumsurety.bond/bond-compliance-leaderboard")}`}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#0a66c2", color: "#fff", fontWeight: 700, fontSize: 12, padding: "9px 16px", borderRadius: 8, textDecoration: "none" }}>
+              Share on LinkedIn
+            </a>
+            <a href="https://quantumsurety.bond/press"
+              style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(245,158,11,0.12)", color: "#f59e0b", fontWeight: 700, fontSize: 12, padding: "9px 16px", borderRadius: 8, textDecoration: "none", border: "1px solid rgba(245,158,11,0.3)" }}>
+              Press Kit & Data Download
+            </a>
+          </div>
         </div>
       </section>
 

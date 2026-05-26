@@ -8,6 +8,7 @@ interface Notary {
   notary_id: string;
   first_name: string;
   last_name: string;
+  address?: string;
   city?: string;
   state?: string;
   zip?: string;
@@ -17,6 +18,14 @@ interface Notary {
   agency?: string;
   days_until_expiry: number;
   status: "active" | "expiring" | "expired" | "unknown";
+}
+
+function parseCityFromAddress(address?: string): string {
+  if (!address) return "";
+  const lines = address.split("\n");
+  const last = lines[lines.length - 1] || "";
+  const match = last.match(/^([^,]+),\s*TX/);
+  return match ? match[1].trim() : "";
 }
 
 function statusInfo(s: string) {
@@ -47,7 +56,8 @@ export default function NotaryDetail() {
 
   const si = notary ? statusInfo(notary.status) : statusInfo("unknown");
   const fullName = notary ? `${notary.first_name} ${notary.last_name}`.trim() : notaryId;
-  const location = [notary?.city, notary?.state || "TX"].filter(Boolean).join(", ") || "Texas";
+  const resolvedCity = notary?.city || parseCityFromAddress(notary?.address);
+  const location = [resolvedCity, notary?.state || "TX"].filter(Boolean).join(", ") || "Texas";
   const isExpired = notary?.status === "expired";
   const isExpiring = notary?.status === "expiring";
 
@@ -83,9 +93,9 @@ export default function NotaryDetail() {
     "@type": "Person",
     "name": fullName,
     "description": `Texas Notary Public in ${location}. Commission status: ${si.label}.`,
-    ...(notary.city ? { "address": {
+    ...(resolvedCity ? { "address": {
       "@type": "PostalAddress",
-      "addressLocality": notary.city,
+      "addressLocality": resolvedCity,
       "addressRegion": "TX",
       "postalCode": notary.zip || undefined,
       "addressCountry": "US"
@@ -148,7 +158,7 @@ export default function NotaryDetail() {
                   {[
                     { label: "Notary ID", value: notaryId },
                     { label: "Full Name", value: fullName },
-                    ...(notary.city ? [{ label: "City", value: notary.city }] : []),
+                    ...(resolvedCity ? [{ label: "City", value: resolvedCity }] : []),
                     ...(notary.zip ? [{ label: "ZIP Code", value: notary.zip }] : []),
                     ...(commDate ? [{ label: "Commission Date", value: commDate }] : []),
                     { label: "Commission Expires", value: expDate, color: si.color },

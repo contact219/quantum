@@ -275,6 +275,41 @@ export default function TexasBondWatch() {
         </div>
       </section>
 
+      {/* County index — crawlable links to all county subpages */}
+      <section style={{ background: "#0a0f1e", padding: "48px 24px", borderTop: "1px solid #1e293b" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#fff", marginBottom: 8 }}>Browse by County</h2>
+          <p style={{ fontSize: 13, color: "#64748b", marginBottom: 20 }}>County-specific bond expiration data with embeddable widgets for local websites.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px,1fr))", gap: 10 }}>
+            {[
+              { slug: "harris", name: "Harris County" },
+              { slug: "dallas", name: "Dallas County" },
+              { slug: "tarrant", name: "Tarrant County" },
+              { slug: "bexar", name: "Bexar County" },
+              { slug: "travis", name: "Travis County" },
+              { slug: "collin", name: "Collin County" },
+              { slug: "denton", name: "Denton County" },
+              { slug: "fort-bend", name: "Fort Bend County" },
+              { slug: "williamson", name: "Williamson County" },
+              { slug: "montgomery", name: "Montgomery County" },
+              { slug: "el-paso", name: "El Paso County" },
+              { slug: "hidalgo", name: "Hidalgo County" },
+              { slug: "cameron", name: "Cameron County" },
+              { slug: "lubbock", name: "Lubbock County" },
+              { slug: "nueces", name: "Nueces County" },
+            ].map(({ slug, name }) => (
+              <Link key={slug} href={`/texas-bond-watch/${slug}`}>
+                <span style={{ display: "block", background: "#161b22", border: "1px solid #21262d", borderRadius: 8, padding: "10px 14px", fontSize: 12, color: "#94a3b8", cursor: "pointer", textDecoration: "none", transition: "border-color 0.15s" }}
+                  onMouseOver={e => (e.currentTarget.style.borderColor = "#f59e0b")}
+                  onMouseOut={e => (e.currentTarget.style.borderColor = "#21262d")}>
+                  {name} →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SEO content */}
       <section style={{ background: "#0d1117", padding: "48px 24px", borderTop: "1px solid #21262d" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>

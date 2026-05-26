@@ -126,6 +126,55 @@ export default function BadgePage() {
         </div>
       </section>
 
+      {/* Website Widget for third-party sites */}
+      <section style={{ background: "#0a0f1e", padding: "56px 24px", borderTop: "1px solid #1e293b" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ display: "inline-block", background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.4)", borderRadius: 6, padding: "4px 12px", fontSize: 11, fontFamily: "monospace", letterSpacing: 3, color: "#f59e0b", marginBottom: 16 }}>
+            FOR WEBSITES & LISTING PLATFORMS
+          </div>
+          <h2 style={{ fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 12 }}>Embed a Live Bond Lookup on Your Site</h2>
+          <p style={{ fontSize: 14, color: "#94a3b8", lineHeight: 1.6, marginBottom: 28, maxWidth: 620 }}>
+            Real estate agents, HOA boards, permit offices, and property managers can embed a live Texas bond verification widget — one line of code, searches all 775,000+ licensed contractors and notaries in real time.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: 20, marginBottom: 32 }}>
+            {[
+              { icon: "🏘️", title: "HOA Websites", body: "Let homeowners verify contractor bonds before approving work on common areas." },
+              { icon: "🏡", title: "Realtor & Title Sites", body: "Add instant bond verification for contractors involved in transactions." },
+              { icon: "🏛️", title: "City & County Offices", body: "Give permit applicants a one-click bond status check." },
+              { icon: "🔨", title: "Contractor Platforms", body: "Thumbtack, Angi, and marketplace sites can show live bond status next to every listing." },
+            ].map(item => (
+              <div key={item.title} style={{ background: "#161b22", border: "1px solid #21262d", borderRadius: 10, padding: 20 }}>
+                <div style={{ fontSize: 24, marginBottom: 8 }}>{item.icon}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0", marginBottom: 6 }}>{item.title}</div>
+                <div style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>{item.body}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: "#0d1117", border: "1px solid #30363d", borderRadius: 10, padding: 24, marginBottom: 16 }}>
+            <div style={{ fontSize: 11, color: "#8b949e", fontFamily: "monospace", marginBottom: 10 }}>EMBED CODE — paste anywhere on your website:</div>
+            <div style={{ background: "#010409", border: "1px solid #21262d", borderRadius: 6, padding: "14px 16px", fontFamily: "monospace", fontSize: 12, color: "#4C9AC9", cursor: "pointer", wordBreak: "break-all" }}
+              onClick={() => navigator.clipboard?.writeText('<script src="https://verify.quantumsurety.bond/widget.js"></script>').catch(() => {})}
+              title="Click to copy">
+              {'<script src="https://verify.quantumsurety.bond/widget.js"></script>'}
+            </div>
+            <p style={{ fontSize: 11, color: "#475569", marginTop: 8 }}>Click to copy · No API key required · CORS-enabled · Works on any site</p>
+          </div>
+          <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 8, padding: 16, marginBottom: 8 }}>
+            <div style={{ fontSize: 11, color: "#8b949e", fontFamily: "monospace", marginBottom: 8 }}>OPTIONAL ATTRIBUTES:</div>
+            <div style={{ fontFamily: "monospace", fontSize: 11, color: "#4C9AC9", lineHeight: 1.8 }}>
+              {'data-type="notary"        — show only notary search'}<br />
+              {'data-type="contractor"    — show only contractor search'}<br />
+              {'data-type="both"          — show both (default)'}<br />
+              {'data-theme="light"        — use light color scheme'}
+            </div>
+          </div>
+          <p style={{ fontSize: 12, color: "#475569" }}>
+            Want to add a county-level stats widget instead? Use:{" "}
+            <code style={{ color: "#4C9AC9" }}>{'<script src="https://verify.quantumsurety.bond/county-stats.js?county=harris"></script>'}</code>
+          </p>
+        </div>
+      </section>
+
       {/* Why contractors use it */}
       <section style={{ background: "#0d1117", padding: "48px 24px", borderTop: "1px solid #21262d" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>

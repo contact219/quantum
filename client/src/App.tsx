@@ -123,6 +123,7 @@ import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contra
 import GetBond from "@/pages/get-bond";
 import Renew from "@/pages/renew";
 import BadgePage from "@/pages/badge";
+import CountyBondWatch from "@/pages/county-bond-watch";
 import BlogGDNBondRequirements2026 from "@/pages/blog/texas-gdn-bond-requirements-2026";
 import BlogGDNBondCost2026 from "@/pages/blog/texas-gdn-bond-cost-2026";
 import BlogDealerLicenseRenewal from "@/pages/blog/texas-dealer-license-renewal-gdn-bond";
@@ -298,6 +299,7 @@ function Router() {
 
       {/* Texas Bond Watch — live bond expiration tracker */}
       <Route path="/texas-bond-watch" component={TexasBondWatch} />
+      <Route path="/texas-bond-watch/:county" component={CountyBondWatch} />
       {/* Texas SEO landing pages */}
       <Route path="/bonds/texas-contractor" component={TexasContractorBonds} />
       <Route path="/bonds/bid-bond-texas" component={BidBondTexas} />

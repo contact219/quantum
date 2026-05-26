@@ -72,6 +72,15 @@ function buildEmail(notary) {
       </div>
     </div>
 
+    <div style="background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+      <div style="font-size:12px;font-weight:700;color:#92400e;letter-spacing:1px;margin-bottom:6px;">FREE: DISPLAY YOUR BOND STATUS ON YOUR WEBSITE</div>
+      <p style="font-size:12px;color:#475569;line-height:1.6;margin:0 0 10px;">
+        Once you renew, get a free live bond verification badge for your website, email signature, or listing on Thumbtack or Angi.
+        It shows your bond as Active — and updates automatically.
+      </p>
+      <a href="https://quantumsurety.bond/badge?type=notary&id=${notary.notary_id}" style="font-size:12px;color:#0ea5e9;font-weight:600;">Get your free badge →</a>
+    </div>
+
     <p style="font-size:13px;color:#0f172a;margin-top:20px;">
       Questions? Call <strong>(214) 666-8718</strong> or reply to this email.<br>
       — The Quantum Surety Team

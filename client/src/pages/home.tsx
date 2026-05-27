@@ -552,11 +552,11 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
             {[
-              { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: true },
+              { href: "/bond-ticker", label: "🔴 Bond Ticker", sub: "Live TX bond expirations scrolling now", icon: "", accent: true },
+              { href: "/hoa-portal", label: "HOA Vendor Portal", sub: "Monitor all your contractors free", icon: "🏠", accent: false },
+              { href: "/qs-score", label: "QS Score™", sub: "0–100 trust rating for every TX contractor", icon: "◉", accent: false },
+              { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: false },
               { href: "/quote", label: "Bond Calculator", sub: "Estimate your premium", icon: "◈", accent: false },
-              { href: "/resources/state-requirements", label: "State Requirements", sub: "Requirements by state", icon: "◉", accent: false },
-              { href: "/obligee-lookup", label: "Obligee Lookup", sub: "Find the correct obligee name", icon: "⊕", accent: false },
-              { href: "/renewals", label: "Renewal Reminders", sub: "Never miss a bond renewal", icon: "◷", accent: false },
               { href: "/sb-693-notary-bond-requirements-2026", label: "SB-693 2026 Guide", sub: "Texas notary bond compliance", icon: "◎", accent: false },
             ].map((tool) => (
               <a

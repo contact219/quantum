@@ -49,6 +49,13 @@ export function Navbar() {
       external: true,
     },
     {
+      href: "/bond-ticker",
+      label: "🔴 Bond Ticker",
+      description: "Live feed of Texas bonds expiring right now",
+      icon: null,
+      external: false,
+    },
+    {
       href: "/texas-bond-watch",
       label: "Texas Bond Watch",
       description: "Live contractor & notary bond expirations",

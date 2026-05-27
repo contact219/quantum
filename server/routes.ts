@@ -554,6 +554,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // CRM sync endpoint — pulls recent leads for the local CRM to consume
+  app.get("/api/sync/leads", async (req, res) => {
+    const SYNC_SECRET = process.env.CRM_SYNC_SECRET || "QsSync2026!";
+    if (req.query.secret !== SYNC_SECRET) return res.status(401).json({ error: "unauthorized" });
+    try {
+      const since = req.query.since as string;
+      const leads = await storage.getLeads();
+      const filtered = since
+        ? leads.filter((l: any) => new Date(l.createdAt) > new Date(since))
+        : leads.slice(0, 200);
+      res.json(filtered);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
   app.post("/api/events", (req, res) => {
     try {
       const { session_id, event_type, page, element, value, utm_source, utm_campaign, referrer } = req.body || {};

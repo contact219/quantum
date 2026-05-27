@@ -18,6 +18,10 @@ interface Notary {
   agency?: string;
   days_until_expiry: number;
   status: "active" | "expiring" | "expired" | "unknown";
+  qs_score?: number;
+  qs_grade?: string;
+  qs_label?: string;
+  qs_color?: string;
 }
 
 function parseCityFromAddress(address?: string): string {
@@ -148,9 +152,33 @@ export default function NotaryDetail() {
                 <span style={{ fontWeight: 800, color: si.color, fontSize: 14, fontFamily: "monospace", letterSpacing: 1 }}>{si.label}</span>
               </div>
               <h1 style={{ fontSize: "clamp(22px,4vw,36px)", fontWeight: 900, color: "#fff", lineHeight: 1.1, margin: "0 0 10px" }}>{fullName}</h1>
-              <p style={{ fontSize: 14, color: "#64748b", marginBottom: 24 }}>
+              <p style={{ fontSize: 14, color: "#64748b", marginBottom: 20 }}>
                 Texas Notary Public · ID #{notaryId} · {location}
               </p>
+
+              {/* QS Score */}
+              {notary.qs_score !== undefined && (
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "14px 20px", marginBottom: 24 }}>
+                  <div style={{ position: "relative", width: 64, height: 64 }}>
+                    <svg width="64" height="64" viewBox="0 0 64 64" style={{ transform: "rotate(-90deg)" }}>
+                      <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="6" />
+                      <circle cx="32" cy="32" r="26" fill="none" stroke={notary.qs_color} strokeWidth="6"
+                        strokeDasharray={`${(notary.qs_score / 100) * 2 * Math.PI * 26} ${2 * Math.PI * 26}`} strokeLinecap="round" />
+                    </svg>
+                    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontSize: 16, fontWeight: 900, color: notary.qs_color, lineHeight: 1 }}>{notary.qs_score}</span>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: notary.qs_color }}>{notary.qs_grade}</span>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "left" }}>
+                    <div style={{ fontSize: 11, color: "#64748b", fontFamily: "monospace", letterSpacing: 1, marginBottom: 2 }}>QS SCORE™</div>
+                    <div style={{ fontSize: 16, fontWeight: 800, color: notary.qs_color }}>{notary.qs_label}</div>
+                    <Link href="/qs-score">
+                      <span style={{ fontSize: 11, color: "#475569", cursor: "pointer", textDecoration: "underline" }}>How scoring works →</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
 
               {/* Detail grid */}
               <div style={{ background: "#161b22", border: "1px solid #21262d", borderRadius: 12, padding: 24, textAlign: "left", marginBottom: 20 }}>

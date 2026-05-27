@@ -151,6 +151,8 @@ import BlogNotaryBondVsEO from "@/pages/blog/texas-notary-bond-vs-eo-insurance";
 import BlogGBPGuide from "@/pages/blog/google-business-profile-texas-surety-bond";
 import BlogLostCarTitleTexas from "@/pages/blog/how-to-get-lost-car-title-texas";
 import BlogContractorBondComplianceReport2026 from "@/pages/blog/texas-contractor-bond-compliance-report-2026";
+import QSScore from "@/pages/qs-score";
+import HOAPortal from "@/pages/hoa-portal";
 // Spanish pages
 import EsHome from "@/pages/es/index";
 import FianzaNotarioTexas from "@/pages/es/fianza-notario-texas";
@@ -478,6 +480,8 @@ function Router() {
       <Route path="/blog/how-to-get-lost-car-title-texas" component={BlogLostCarTitleTexas} />
       <Route path="/blog/texas-contractor-bond-compliance-report-2026" component={BlogContractorBondComplianceReport2026} />
       <Route path="/blog" component={BlogIndex} />
+      <Route path="/qs-score" component={QSScore} />
+      <Route path="/hoa-portal" component={HOAPortal} />
 
       {/* Spanish pages */}
       <Route path="/es/fianza-notario-texas" component={FianzaNotarioTexas} />

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 
 const PUBLISHED = "2026-05-27T08:00:00-05:00";

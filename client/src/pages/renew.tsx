@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const LOOKUP_API = "https://verify.quantumsurety.bond/api/notary-renew";
 const APPLY_BASE = "https://quantumsurety.bond/get-bond?type=notary&src=renew-page";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 
 const BOND_WATCH_API = "https://verify.quantumsurety.bond/api/bond-watch";
@@ -131,9 +131,9 @@ export default function TexasBondWatch() {
           )}
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/get-bond">
-              <a style={{ display: "inline-block", background: "#f59e0b", color: "#000", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", letterSpacing: 1 }}>
+              <span style={{ display: "inline-block", background: "#f59e0b", color: "#000", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", letterSpacing: 1, cursor: "pointer" }}>
                 Get Bonded Instantly →
-              </a>
+              </span>
             </Link>
             <a href="https://verify.quantumsurety.bond" style={{ display: "inline-block", background: "rgba(255,255,255,0.08)", color: "#fff", padding: "12px 28px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)" }}>
               Verify a Bond →
@@ -204,7 +204,7 @@ export default function TexasBondWatch() {
           <div style={{ background: "#161b22", border: "1px solid #30363d", borderRadius: 10, overflow: "hidden" }}>
             <div style={{ padding: "12px 20px", borderBottom: "1px solid #30363d", fontSize: 12, color: "#8b949e", fontFamily: "monospace", display: "flex", justifyContent: "space-between" }}>
               <span>{loadingExpiring ? "Loading…" : `${expiring.length} contractors with bonds expiring in ${COUNTY_NAME_MAP[selectedCounty] || ""} County within 30 days`}</span>
-              <Link href="/get-bond?type=contractor"><a style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 700 }}>Renew Your Bond →</a></Link>
+              <Link href="/get-bond?type=contractor"><span style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 700, cursor: "pointer" }}>Renew Your Bond →</span></Link>
             </div>
             {!loadingExpiring && expiring.length > 0 && (
               <div style={{ overflowX: "auto" }}>
@@ -335,9 +335,9 @@ export default function TexasBondWatch() {
           </p>
           <div style={{ marginTop: 24 }}>
             <Link href="/get-bond">
-              <a style={{ display: "inline-block", background: "#f59e0b", color: "#000", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+              <span style={{ display: "inline-block", background: "#f59e0b", color: "#000", padding: "12px 28px", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none", cursor: "pointer" }}>
                 Get Bonded Today — Starting at $50 →
-              </a>
+              </span>
             </Link>
           </div>
         </div>

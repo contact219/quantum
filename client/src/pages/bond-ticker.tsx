@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 
 const BOND_WATCH_API = "https://verify.quantumsurety.bond/api/bond-watch";
@@ -20,7 +20,7 @@ const COUNTIES = ["Harris", "Dallas", "Tarrant", "Bexar", "Travis", "Collin", "D
 export default function BondTicker() {
   const [expiredToday, setExpiredToday] = useState<ExpiringItem[]>([]);
   const [expiringNow, setExpiringNow] = useState<ExpiringItem[]>([]);
-  const [summary, setSummary] = useState<{ expired: number; total_contractors: number } | null>(null);
+  const [summary, setSummary] = useState<{ contractors: { expired: number; total: number }; notaries: { expired: number; total: number } } | null>(null);
   const [tick, setTick] = useState(0);
   const [tickerItems, setTickerItems] = useState<string[]>([]);
   const [visible, setVisible] = useState<ExpiringItem[]>([]);
@@ -39,9 +39,9 @@ export default function BondTicker() {
   // Build ticker tape content
   useEffect(() => {
     if (!summary) return;
-    const pct = summary.total_contractors > 0 ? ((summary.expired / summary.total_contractors) * 100).toFixed(1) : "29.3";
+    const pct = summary.contractors.total > 0 ? ((summary.contractors.expired / summary.contractors.total) * 100).toFixed(1) : "29.3";
     const base = [
-      `⚠ ${summary.expired.toLocaleString()} Texas contractors currently operating with EXPIRED bonds`,
+      `⚠ ${summary.contractors.expired.toLocaleString()} Texas contractors currently operating with EXPIRED bonds`,
       `📊 ${pct}% of all TDLR-licensed contractors in Texas have lapsed bonds`,
       `🔍 Data updated daily from TDLR public records (data.texas.gov)`,
       `🏠 29.3% of TX contractors are out of compliance — verify before you hire`,
@@ -67,9 +67,9 @@ export default function BondTicker() {
   }, [expiredToday, expiringNow]);
 
   const title = "Texas Contractor Bond Expiry Ticker — Live Feed | Quantum Surety";
-  const description = `Live feed of Texas contractor bonds expiring today. ${summary?.expired.toLocaleString() ?? "226,767"} contractors currently operating with expired surety bonds. Data from TDLR public records.`;
+  const description = `Live feed of Texas contractor bonds expiring today. ${summary?.contractors?.expired.toLocaleString() ?? "226,767"} contractors currently operating with expired surety bonds. Data from TDLR public records.`;
 
-  const pct = summary ? ((summary.expired / summary.total_contractors) * 100).toFixed(1) : "29.3";
+  const pct = summary ? ((summary.contractors.expired / summary.contractors.total) * 100).toFixed(1) : "29.3";
 
   return (
     <>
@@ -128,10 +128,10 @@ export default function BondTicker() {
           {/* Stats row */}
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 8 }}>
             {[
-              { label: "Currently Expired", value: summary?.expired.toLocaleString() ?? "213,934", color: "#dc2626" },
+              { label: "Currently Expired", value: summary?.contractors?.expired.toLocaleString() ?? "213,934", color: "#dc2626" },
               { label: "% of All TX Contractors", value: `${pct}%`, color: "#f97316" },
               { label: "Expiring in 30 Days", value: "34,480", color: "#d97706" },
-              { label: "Total TX Contractors", value: summary?.total_contractors.toLocaleString() ?? "775,171", color: "#64748b" },
+              { label: "Total TX Contractors", value: summary?.contractors?.total.toLocaleString() ?? "775,171", color: "#64748b" },
             ].map(s => (
               <div key={s.label} style={{ background: "#161b22", border: "1px solid #21262d", borderRadius: 8, padding: "12px 18px", textAlign: "center", minWidth: 120 }}>
                 <div style={{ fontSize: 22, fontWeight: 900, color: s.color, fontFamily: "monospace" }}>{s.value}</div>

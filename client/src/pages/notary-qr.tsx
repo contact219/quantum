@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useRoute } from "wouter";
 
 const VERIFY_API = "https://verify.quantumsurety.bond/api";

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "wouter";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 interface Notary {
   notary_id: string;

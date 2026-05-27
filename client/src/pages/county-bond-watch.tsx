@@ -1,6 +1,6 @@
 import { useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 
 const VERIFY_BASE = "https://verify.quantumsurety.bond";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const EMBED_CONTRACTOR = `<!-- Texas Contractor License Verifier by Quantum Surety -->
 <div data-qs-widget data-qs-type="contractor"></div>

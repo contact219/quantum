@@ -15,6 +15,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-contractor-bond-compliance-report-2026",
+    title: "Nearly Half of Texas Apprentice Electricians Have Expired Surety Bonds, TDLR Data Shows",
+    description: "46.9% of Texas apprentice electricians — 93,509 out of 199,435 — currently have expired surety bonds per TDLR public records. Statewide, 29.3% of all 816,000+ TDLR licensees are non-compliant.",
+    date: "2026-05-27",
+    readTime: "5 min read",
+    category: "Data Report",
+    tags: ["TDLR", "Texas Contractor Bonds", "Bond Compliance", "Electrician Bond", "Consumer Protection"],
+    featured: true,
+  },
+  {
     slug: "how-to-get-lost-car-title-texas",
     title: "How to Get a Lost Car Title in Texas in 5 Easy Steps (2026)",
     description: "Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded same day.",

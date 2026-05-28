@@ -560,7 +560,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (req.query.secret !== SYNC_SECRET) return res.status(401).json({ error: "unauthorized" });
     try {
       const since = req.query.since as string;
-      const leads = await storage.getLeads();
+      const leads = await storage.getAllLeads();
       const filtered = since
         ? leads.filter((l: any) => new Date(l.createdAt) > new Date(since))
         : leads.slice(0, 200);

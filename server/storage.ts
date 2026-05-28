@@ -1552,7 +1552,7 @@ export class DbStorage implements IStorage {
   }
 
   async getAllLeads(): Promise<Lead[]> {
-    return await db.select().from(leads).orderBy(leads.leadTime);
+    return await this.db.select().from(leads).orderBy(leads.leadTime);
   }
 
   async getLeadById(id: string): Promise<Lead | undefined> {

@@ -1544,7 +1544,7 @@ export class DbStorage implements IStorage {
     return premium.toFixed(2);
   }
   async createLead(lead: InsertLead): Promise<Lead> {
-    const [created] = await db.insert(leads).values({
+    const [created] = await this.db.insert(leads).values({
       ...lead,
       updatedAt: new Date(),
     }).returning();
@@ -1556,12 +1556,12 @@ export class DbStorage implements IStorage {
   }
 
   async getLeadById(id: string): Promise<Lead | undefined> {
-    const [lead] = await db.select().from(leads).where(eq(leads.id, id));
+    const [lead] = await this.db.select().from(leads).where(eq(leads.id, id));
     return lead;
   }
 
   async updateLead(id: string, data: Partial<InsertLead>): Promise<Lead | undefined> {
-    const [updated] = await db.update(leads)
+    const [updated] = await this.db.update(leads)
       .set({ ...data, updatedAt: new Date() })
       .where(eq(leads.id, id))
       .returning();
@@ -1569,7 +1569,7 @@ export class DbStorage implements IStorage {
   }
 
   async deleteLead(id: string): Promise<void> {
-    await db.delete(leads).where(eq(leads.id, id));
+    await this.db.delete(leads).where(eq(leads.id, id));
   }
 
 }

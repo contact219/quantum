@@ -53,7 +53,7 @@ import {
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import { Pool, neonConfig } from "@neondatabase/serverless";
-import { eq, or } from "drizzle-orm";
+import { eq, or, sql } from "drizzle-orm";
 import ws from "ws";
 
 // Configure WebSocket for Node.js environment
@@ -1559,15 +1559,52 @@ export class DbStorage implements IStorage {
     return premium.toFixed(2);
   }
   async createLead(lead: InsertLead): Promise<Lead> {
-    const [created] = await this.db.insert(leads).values({
-      ...lead,
-      updatedAt: new Date(),
-    }).returning();
-    return created;
+    try {
+      const [created] = await this.db.insert(leads).values({
+        ...lead,
+        updatedAt: new Date(),
+      }).returning();
+      return created;
+    } catch (e: any) {
+      if (e.code === '42P01' || e.message?.includes('relation "leads" does not exist')) {
+        await this.ensureLeadsTable();
+        const [created] = await this.db.insert(leads).values({
+          ...lead,
+          updatedAt: new Date(),
+        }).returning();
+        return created;
+      }
+      throw e;
+    }
+  }
+
+  private async ensureLeadsTable(): Promise<void> {
+    await this.db.execute(sql`CREATE TABLE IF NOT EXISTS leads (
+      id varchar PRIMARY KEY DEFAULT gen_random_uuid(),
+      name text NOT NULL,
+      email text NOT NULL,
+      phone text NOT NULL,
+      bond_type text,
+      source text DEFAULT 'get-bond form',
+      status text NOT NULL DEFAULT 'new',
+      notes text,
+      sale_amount decimal,
+      lead_time timestamp DEFAULT now(),
+      created_at timestamp DEFAULT now(),
+      updated_at timestamp DEFAULT now()
+    )`);
   }
 
   async getAllLeads(): Promise<Lead[]> {
-    return await this.db.select().from(leads).orderBy(leads.leadTime);
+    try {
+      return await this.db.select().from(leads).orderBy(leads.leadTime);
+    } catch (e: any) {
+      if (e.code === '42P01' || e.message?.includes('relation "leads" does not exist')) {
+        await this.ensureLeadsTable();
+        return [];
+      }
+      throw e;
+    }
   }
 
   async getLeadById(id: string): Promise<Lead | undefined> {

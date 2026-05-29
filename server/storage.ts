@@ -959,10 +959,25 @@ export class DbStorage implements IStorage {
   private db;
 
   constructor() {
-    const pool = new Pool({ 
+    const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
     });
     this.db = drizzle(pool);
+    // Ensure leads table exists (idempotent on every startup)
+    pool.query(`CREATE TABLE IF NOT EXISTS leads (
+      id varchar PRIMARY KEY DEFAULT gen_random_uuid(),
+      name text NOT NULL,
+      email text NOT NULL,
+      phone text NOT NULL,
+      bond_type text,
+      source text DEFAULT 'get-bond form',
+      status text NOT NULL DEFAULT 'new',
+      notes text,
+      sale_amount decimal,
+      lead_time timestamp DEFAULT now(),
+      created_at timestamp DEFAULT now(),
+      updated_at timestamp DEFAULT now()
+    )`).catch((err: Error) => console.error('[storage] leads table init failed:', err.message));
   }
 
   // User methods

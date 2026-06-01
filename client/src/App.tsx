@@ -153,6 +153,8 @@ import BlogGBPGuide from "@/pages/blog/google-business-profile-texas-surety-bond
 import BlogLostCarTitleTexas from "@/pages/blog/how-to-get-lost-car-title-texas";
 import BlogContractorBondComplianceReport2026 from "@/pages/blog/texas-contractor-bond-compliance-report-2026";
 import QSScore from "@/pages/qs-score";
+import QSLeaderboard from "@/pages/qs-leaderboard";
+import PermitPilotLanding from "@/pages/permit-pilot-landing";
 import HOAPortal from "@/pages/hoa-portal";
 // Spanish pages
 import EsHome from "@/pages/es/index";
@@ -482,6 +484,8 @@ function Router() {
       <Route path="/blog/texas-contractor-bond-compliance-report-2026" component={BlogContractorBondComplianceReport2026} />
       <Route path="/blog" component={BlogIndex} />
       <Route path="/qs-score" component={QSScore} />
+      <Route path="/qs-leaderboard" component={QSLeaderboard} />
+      <Route path="/permit-pilot" component={PermitPilotLanding} />
       <Route path="/hoa-portal" component={HOAPortal} />
 
       {/* Spanish pages */}

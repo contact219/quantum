@@ -550,8 +550,8 @@ app.get('/api/qs-leaderboard', async (req, res) => {
       rows = r;
     } else {
       const param = city || county;
-      const whereClause = city ? 'AND business_city = ?' : county ? 'AND business_county = ?' : '';
-      const queryArgs = param ? [param, n] : [n];
+      const whereClause = city ? 'AND business_city LIKE ?' : county ? 'AND business_county = ?' : '';
+      const queryArgs = param ? [city ? '%' + param.toUpperCase() + '%' : param, n] : [n];
       const [r] = await pool.execute(
         'SELECT license_number as id, business_name as name, business_city as city, business_county as county, license_type, expire_date, DATEDIFF(expire_date, CURDATE()) as days_until_expiry FROM contractors WHERE expire_date > CURDATE() ' + whereClause + ' ORDER BY expire_date DESC LIMIT ?',
         queryArgs

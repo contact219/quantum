@@ -338,6 +338,9 @@ function Router() {
       <Route path="/notary-bond">
         <ClientRedirect to="/bonds/notary-bond-texas" />
       </Route>
+      <Route path="/bonds/notary-bond">
+        <ClientRedirect to="/bonds/notary-bond-texas" />
+      </Route>
 
       {/* License bond product pages */}
       <Route path="/bonds/tdlr-bond-texas" component={TDLRBondTexas} />

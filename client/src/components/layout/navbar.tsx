@@ -77,11 +77,11 @@ export function Navbar() {
       external: false,
     },
     {
-      href: "https://partners.quantumsurety.bond",
+      href: "/partner-program",
       label: "Partner Program",
       description: "Refer clients, earn commissions",
       icon: Users,
-      external: true,
+      external: false,
     },
     {
       href: "https://permitpilot.online?utm_source=quantumsurety&utm_medium=nav&utm_campaign=cross-promo",

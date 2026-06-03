@@ -122,6 +122,11 @@ import BlogTDLRBond2026 from "@/pages/blog/texas-tdlr-contractor-bond-2026";
 import BlogContractorBondCost from "@/pages/blog/texas-contractor-license-bond-cost";
 import BlogElectricalBondRequirements from "@/pages/blog/texas-electrical-contractor-bond-requirements";
 import GetBond from "@/pages/get-bond";
+import BondBadgeSetup from "@/pages/bond-badge-setup";
+import ApiAccess from "@/pages/api-access";
+import BondGuard from "@/pages/bond-guard";
+import PartnerProgram from "@/pages/partner-program";
+import CityBondPage from "@/pages/city-bond-page";
 import Renew from "@/pages/renew";
 import BadgePage from "@/pages/badge";
 import CountyBondWatch from "@/pages/county-bond-watch";
@@ -258,6 +263,11 @@ function Router() {
       <Route path="/chatbot" component={ChatbotPage} />
       <Route path="/quote" component={Quote} />
       <Route path="/get-bond" component={GetBond} />
+      <Route path="/badge-setup" component={BondBadgeSetup} />
+      <Route path="/api-access" component={ApiAccess} />
+      <Route path="/bond-guard" component={BondGuard} />
+      <Route path="/partner-program" component={PartnerProgram} />
+      <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
       <Route path="/renew" component={Renew} />
       <Route path="/badge" component={BadgePage} />
       <Route path="/admin-login" component={AdminLogin} />

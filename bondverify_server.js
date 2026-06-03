@@ -742,7 +742,7 @@ app.post('/bond-guard/checkout', async (req, res) => {
 app.post('/bond-guard/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
   let event;
   try {
-    event = stripeClient.webhooks.constructEvent(req.body, req.headers['stripe-signature'], 'whsec_h3xofnIHcjXkB7MA0imxojWDBDkN5HVE');
+    event = stripeClient.webhooks.constructEvent(req.body, req.headers['stripe-signature'], process.env.BG_WEBHOOK_SECRET);
   } catch (e) { return res.status(400).send('Webhook error: ' + e.message); }
   if (event.type === 'checkout.session.completed') {
     const s = event.data.object;
@@ -783,7 +783,7 @@ app.get('/bond-guard/status', async (req, res) => {
 // FILING SERVICE — append to /var/www/bondverify/server.js before app.listen
 // ══════════════════════════════════════════════════════════════════════════════
 
-const FILING_WEBHOOK_SECRET = 'whsec_b9ANoYxfiStVpy27SKoK1bnE6Fx4116Z';
+const FILING_WEBHOOK_SECRET = process.env.FILING_WEBHOOK_SECRET;
 const CRM_API = 'http://crm-api.permitpilot.online';
 
 // Public filing-service page

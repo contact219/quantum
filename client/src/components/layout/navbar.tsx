@@ -49,6 +49,13 @@ export function Navbar() {
       external: true,
     },
     {
+      href: "https://verify.quantumsurety.bond/filing-service",
+      label: "Bond Filing Service",
+      description: "We file your bond with the county clerk — $12.99",
+      icon: null,
+      external: true,
+    },
+    {
       href: "/bond-ticker",
       label: "🔴 Bond Ticker",
       description: "Live feed of Texas bonds expiring right now",

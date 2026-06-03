@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Notary Bond Filing Service — Quantum Surety</title>
+<meta name="description" content="We file your Texas notary bond with your county clerk for you — certified mail, tracking number, and confirmation. $12.99 flat fee."/>
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#060b17;color:#e2e8f0;min-height:100vh}
+a{color:#f59e0b;text-decoration:none}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid #1e293b;max-width:1100px;margin:0 auto}
+.logo{color:#f59e0b;font-size:11px;letter-spacing:4px;font-weight:700}
+.hero{text-align:center;padding:64px 24px 40px;max-width:760px;margin:0 auto}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
+.hero p{font-size:17px;color:#94a3b8;line-height:1.7;margin-bottom:32px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:760px;margin:0 auto 56px;padding:0 24px}
+.step{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center}
+.step-num{width:32px;height:32px;border-radius:50%;background:#f59e0b22;border:1px solid #f59e0b44;color:#f59e0b;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.step h3{font-size:14px;color:#fff;margin-bottom:6px}
+.step p{font-size:12px;color:#64748b;line-height:1.5}
+.form-wrap{max-width:620px;margin:0 auto;padding:0 24px 64px}
+.card{background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:32px}
+.card h2{font-size:20px;color:#fff;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #1e293b}
+.field{margin-bottom:18px}
+label{display:block;font-size:11px;color:#64748b;letter-spacing:1px;font-family:monospace;margin-bottom:6px}
+input,select,textarea{width:100%;padding:10px 14px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#e2e8f0;font-size:14px;outline:none;transition:border-color 0.15s}
+input:focus,select:focus,textarea:focus{border-color:#f59e0b}
+select option{background:#1e293b}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.upload-zone{border:2px dashed #334155;border-radius:8px;padding:28px;text-align:center;cursor:pointer;transition:border-color 0.15s;position:relative}
+.upload-zone:hover,.upload-zone.drag{border-color:#f59e0b}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone .icon{font-size:28px;margin-bottom:8px}
+.upload-zone p{font-size:13px;color:#64748b}
+.upload-zone .file-name{color:#f59e0b;font-size:13px;font-weight:600;margin-top:8px}
+.price-box{background:#1e293b;border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin:24px 0}
+.price-box .desc{font-size:14px;color:#94a3b8}
+.price-box .price{font-size:22px;font-weight:800;color:#f59e0b}
+.price-box .sub{font-size:11px;color:#64748b}
+.submit-btn{width:100%;padding:14px;background:#f59e0b;color:#000;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:opacity 0.15s}
+.submit-btn:hover{opacity:0.9}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+.error{color:#f87171;font-size:13px;margin-top:12px;display:none}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid #00000033;border-top-color:#000;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.trust{max-width:620px;margin:0 auto 48px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.trust-item{text-align:center;padding:12px;border-radius:8px;background:#0f172a;border:1px solid #1e293b}
+.trust-item .t-icon{font-size:20px;margin-bottom:6px}
+.trust-item p{font-size:11px;color:#64748b}
+</style>
+</head>
+<body>
+
+<div style="max-width:1100px;margin:0 auto">
+  <nav class="nav">
+    <a href="https://quantumsurety.bond" class="logo">QUANTUM SURETY</a>
+    <a href="https://quantumsurety.bond/get-bond" style="background:#f59e0b;color:#000;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700">Get a Bond</a>
+  </nav>
+</div>
+
+<section class="hero">
+  <div style="display:inline-block;background:#f59e0b22;border:1px solid #f59e0b44;color:#f59e0b;font-size:11px;letter-spacing:2px;padding:6px 16px;border-radius:20px;margin-bottom:20px;font-weight:700">FILING SERVICE</div>
+  <h1>We File Your Bond<br/>With the County Clerk</h1>
+  <p>Skip the trip to the courthouse. We handle certified mail filing with your Texas county clerk — with tracking and a confirmation email when it's recorded.</p>
+  <div style="font-size:24px;font-weight:800;color:#f59e0b">$12.99 flat fee</div>
+  <div style="font-size:13px;color:#64748b;margin-top:6px">Includes USPS Certified Mail + tracking + confirmation</div>
+</section>
+
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><h3>Upload Your Cert</h3><p>Upload the PDF bond certificate your surety company issued you.</p></div>
+  <div class="step"><div class="step-num">2</div><h3>We Mail It</h3><p>We send it to your county clerk via USPS Certified Mail within 2 business days.</p></div>
+  <div class="step"><div class="step-num">3</div><h3>Get Confirmed</h3><p>You get the tracking number, then a final email once your county records it.</p></div>
+</div>
+
+<div class="trust">
+  <div class="trust-item"><div class="t-icon">📮</div><p>USPS Certified Mail with tracking</p></div>
+  <div class="trust-item"><div class="t-icon">✉️</div><p>Email updates at every step</p></div>
+  <div class="trust-item"><div class="t-icon">🔒</div><p>Secure cert upload — SSL encrypted</p></div>
+  <div class="trust-item"><div class="t-icon">📋</div><p>All 254 TX counties supported</p></div>
+</div>
+
+<div class="form-wrap">
+  <div class="card">
+    <h2>Submit Your Filing</h2>
+    <form id="filingForm">
+
+      <div style="color:#f59e0b;font-size:11px;letter-spacing:1px;font-weight:700;margin-bottom:16px">YOUR INFORMATION</div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>FULL NAME *</label>
+          <input type="text" name="notary_name" placeholder="Jane Smith" required/>
+        </div>
+        <div class="field">
+          <label>EMAIL *</label>
+          <input type="email" name="notary_email" placeholder="jane@email.com" required/>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>PHONE</label>
+          <input type="tel" name="notary_phone" placeholder="(214) 555-0100"/>
+        </div>
+        <div class="field">
+          <label>COUNTY TO FILE IN *</label>
+          <select name="county" required>
+            <option value="">Select county…</option>
+            <option>Anderson</option><option>Andrews</option><option>Angelina</option><option>Aransas</option><option>Archer</option><option>Armstrong</option><option>Atascosa</option><option>Austin</option><option>Bailey</option><option>Bandera</option><option>Bastrop</option><option>Baylor</option><option>Bee</option><option>Bell</option><option>Bexar</option><option>Blanco</option><option>Borden</option><option>Bosque</option><option>Bowie</option><option>Brazoria</option><option>Brazos</option><option>Brewster</option><option>Briscoe</option><option>Brooks</option><option>Brown</option><option>Burleson</option><option>Burnet</option><option>Caldwell</option><option>Calhoun</option><option>Callahan</option><option>Cameron</option><option>Camp</option><option>Carson</option><option>Cass</option><option>Castro</option><option>Chambers</option><option>Cherokee</option><option>Childress</option><option>Clay</option><option>Cochran</option><option>Coke</option><option>Coleman</option><option>Collin</option><option>Collingsworth</option><option>Colorado</option><option>Comal</option><option>Comanche</option><option>Concho</option><option>Cooke</option><option>Corpus Christi</option><option>Coryell</option><option>Cottle</option><option>Crane</option><option>Crockett</option><option>Crosby</option><option>Culberson</option><option>Dallam</option><option>Dallas</option><option>Dawson</option><option>Deaf Smith</option><option>Delta</option><option>Denton</option><option>DeWitt</option><option>Dickens</option><option>Dimmit</option><option>Donley</option><option>Duval</option><option>Eastland</option><option>Ector</option><option>Edwards</option><option>El Paso</option><option>Ellis</option><option>Erath</option><option>Falls</option><option>Fannin</option><option>Fayette</option><option>Fisher</option><option>Floyd</option><option>Foard</option><option>Fort Bend</option><option>Franklin</option><option>Freestone</option><option>Frio</option><option>Gaines</option><option>Galveston</option><option>Garza</option><option>Gillespie</option><option>Glasscock</option><option>Goliad</option><option>Gonzales</option><option>Gray</option><option>Grayson</option><option>Gregg</option><option>Grimes</option><option>Guadalupe</option><option>Hale</option><option>Hall</option><option>Hamilton</option><option>Hansford</option><option>Hardeman</option><option>Hardin</option><option>Harris</option><option>Harrison</option><option>Hartley</option><option>Haskell</option><option>Hays</option><option>Hemphill</option><option>Henderson</option><option>Hidalgo</option><option>Hill</option><option>Hockley</option><option>Hood</option><option>Hopkins</option><option>Houston</option><option>Howard</option><option>Hudspeth</option><option>Hunt</option><option>Hutchinson</option><option>Irion</option><option>Jack</option><option>Jackson</option><option>Jasper</option><option>Jeff Davis</option><option>Jefferson</option><option>Jim Hogg</option><option>Jim Wells</option><option>Johnson</option><option>Jones</option><option>Karnes</option><option>Kaufman</option><option>Kendall</option><option>Kenedy</option><option>Kent</option><option>Kerr</option><option>Kimble</option><option>King</option><option>Kinney</option><option>Kleberg</option><option>Knox</option><option>La Salle</option><option>Lamar</option><option>Lamb</option><option>Lampasas</option><option>Lavaca</option><option>Lee</option><option>Leon</option><option>Liberty</option><option>Limestone</option><option>Lipscomb</option><option>Live Oak</option><option>Llano</option><option>Loving</option><option>Lubbock</option><option>Lynn</option><option>Madison</option><option>Marion</option><option>Martin</option><option>Mason</option><option>Matagorda</option><option>Maverick</option><option>McCulloch</option><option>McLennan</option><option>McMullen</option><option>Medina</option><option>Menard</option><option>Midland</option><option>Milam</option><option>Mills</option><option>Mitchell</option><option>Montague</option><option>Montgomery</option><option>Moore</option><option>Morris</option><option>Motley</option><option>Nacogdoches</option><option>Navarro</option><option>Newton</option><option>Nolan</option><option>Nueces</option><option>Ochiltree</option><option>Oldham</option><option>Orange</option><option>Palo Pinto</option><option>Panola</option><option>Parker</option><option>Parmer</option><option>Pecos</option><option>Polk</option><option>Potter</option><option>Presidio</option><option>Rains</option><option>Randall</option><option>Reagan</option><option>Real</option><option>Red River</option><option>Reeves</option><option>Refugio</option><option>Roberts</option><option>Robertson</option><option>Rockwall</option><option>Runnels</option><option>Rusk</option><option>Sabine</option><option>San Augustine</option><option>San Jacinto</option><option>San Patricio</option><option>San Saba</option><option>Schleicher</option><option>Scurry</option><option>Shackelford</option><option>Shelby</option><option>Sherman</option><option>Smith</option><option>Somervell</option><option>Starr</option><option>Stephens</option><option>Sterling</option><option>Stonewall</option><option>Sutton</option><option>Swisher</option><option>Tarrant</option><option>Taylor</option><option>Terrell</option><option>Terry</option><option>Throckmorton</option><option>Titus</option><option>Tom Green</option><option>Travis</option><option>Trinity</option><option>Tyler</option><option>Upshur</option><option>Upton</option><option>Uvalde</option><option>Val Verde</option><option>Van Zandt</option><option>Victoria</option><option>Walker</option><option>Waller</option><option>Ward</option><option>Washington</option><option>Webb</option><option>Wharton</option><option>Wheeler</option><option>Wichita</option><option>Wilbarger</option><option>Willacy</option><option>Williamson</option><option>Wilson</option><option>Winkler</option><option>Wise</option><option>Wood</option><option>Yoakum</option><option>Young</option><option>Zapata</option><option>Zavala</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="height:1px;background:#1e293b;margin:20px 0"></div>
+      <div style="color:#f59e0b;font-size:11px;letter-spacing:1px;font-weight:700;margin-bottom:16px">BOND DETAILS <span style="color:#334155;font-weight:400">(optional but helpful)</span></div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>BOND NUMBER</label>
+          <input type="text" name="bond_number" placeholder="e.g. NB-2026-123456"/>
+        </div>
+        <div class="field">
+          <label>SURETY COMPANY</label>
+          <input type="text" name="surety_company" placeholder="e.g. Markel Insurance"/>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>EFFECTIVE DATE</label>
+          <input type="date" name="effective_date"/>
+        </div>
+        <div class="field">
+          <label>EXPIRATION DATE</label>
+          <input type="date" name="expiry_date"/>
+        </div>
+      </div>
+
+      <div style="height:1px;background:#1e293b;margin:20px 0"></div>
+      <div style="color:#f59e0b;font-size:11px;letter-spacing:1px;font-weight:700;margin-bottom:16px">BOND CERTIFICATE *</div>
+
+      <div class="field">
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" name="cert_file" id="certFile" accept=".pdf,application/pdf" required/>
+          <div class="icon">📄</div>
+          <p>Drop your bond certificate PDF here<br/>or click to browse</p>
+          <div class="file-name" id="fileName"></div>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div>
+          <div class="desc">Filing Service — USPS Certified Mail</div>
+          <div class="sub">Tracking number + confirmation email included</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price">$12.99</div>
+          <div class="sub">one-time</div>
+        </div>
+      </div>
+
+      <div id="errorMsg" class="error"></div>
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Pay & Submit Filing →
+      </button>
+      <p style="text-align:center;font-size:11px;color:#475569;margin-top:12px">
+        Secured by Stripe · SSL encrypted · No subscription
+      </p>
+    </form>
+  </div>
+</div>
+
+<script>
+// File upload UI
+const fileInput = document.getElementById('certFile');
+const fileName  = document.getElementById('fileName');
+const uploadZone = document.getElementById('uploadZone');
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files[0]) {
+    fileName.textContent = '✓ ' + fileInput.files[0].name;
+    uploadZone.style.borderColor = '#22c55e';
+  }
+});
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault(); uploadZone.classList.remove('drag');
+  if (e.dataTransfer.files[0]) {
+    fileInput.files = e.dataTransfer.files;
+    fileName.textContent = '✓ ' + e.dataTransfer.files[0].name;
+    uploadZone.style.borderColor = '#22c55e';
+  }
+});
+
+// Form submit
+document.getElementById('filingForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const errDiv = document.getElementById('errorMsg');
+  errDiv.style.display = 'none';
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Processing…';
+
+  try {
+    const form = e.target;
+    const file = document.getElementById('certFile').files[0];
+    if (!file) throw new Error('Please upload your bond certificate PDF.');
+
+    // Read file as base64
+    const certBase64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
+    const body = {
+      notary_name:   form.notary_name.value.trim(),
+      notary_email:  form.notary_email.value.trim(),
+      notary_phone:  form.notary_phone.value.trim(),
+      county:        form.county.value,
+      bond_number:   form.bond_number.value.trim(),
+      bond_amount:   null,
+      effective_date: form.effective_date.value || null,
+      expiry_date:   form.expiry_date.value || null,
+      surety_company: form.surety_company.value.trim(),
+      cert_base64:   certBase64,
+      cert_filename: file.name,
+    };
+
+    const res  = await fetch('/filing-service/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Submission failed');
+    window.location.href = data.url;
+  } catch(err) {
+    errDiv.textContent = err.message;
+    errDiv.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = 'Pay & Submit Filing →';
+  }
+});
+</script>
+</body>
+</html>

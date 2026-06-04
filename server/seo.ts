@@ -279,8 +279,28 @@ const PAGE_META: Record<string, PageMeta> = {
       "Request a free surety bond quote online. Bid bonds, performance bonds, payment bonds and license bonds for contractors. Fast AI-assisted approvals.",
     canonical: `${BASE_URL}/quote`,
         content: `<main>
-      <h1>Texas Notary Bond — $10,000 SB693 Compliant Bond</h1>
-      <p>Texas notaries must maintain a $10,000 surety bond for the full 4-year term of their commission under the Texas Government Code and Texas Secretary of State rules. Senate Bill 693 (effective September 1, 2023) extended the notary commission term from 4 years to 4 years and requires the bond to match the full commission term. Quantum Surety issues SB693-compliant notary bonds for $50 flat — instant PDF by email, accepted by the Texas Secretary of State.</p>
+      <h1>Get a Surety Bond Quote</h1>
+      <p>Get an instant online quote for any Texas surety bond. Quantum Surety issues notary bonds, GDN dealer bonds, contractor license bonds, bid bonds, performance bonds, and payment bonds — most with same-day PDF delivery. No credit check required for notary and dealer bonds.</p>
+      <section>
+        <h2>Bond Types We Quote Instantly</h2>
+        <ul>
+          <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, $50 flat, instant PDF</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, from $100/yr, TxDMV accepted</li>
+          <li><a href="/bonds/contractor-license-bond-texas">Texas Contractor License Bond</a> — TDLR required, from $75/yr</li>
+          <li><a href="/bonds/bid-bond-texas">Texas Bid Bond</a> — construction contract bid bonds, same-day</li>
+          <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — contract performance guarantee</li>
+          <li><a href="/bonds/payment-bond-texas">Texas Payment Bond</a> — subcontractor and supplier protection</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How to Get a Quote</h2>
+        <ol>
+          <li>Select your bond type from the options above</li>
+          <li>Enter your project details or license information</li>
+          <li>Receive an instant quote — most bonds issue in minutes</li>
+          <li>Download your certificate by email, same day</li>
+        </ol>
+      </section>
       <section>
         <h2>Texas Notary Bond Requirements</h2>
         <ul>
@@ -436,42 +456,27 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
             content: `<main>
-      <h1>Texas Bid Bond — Construction Contract Bid Bonds</h1>
-      <p>A Texas bid bond is a surety bond submitted with a contractor's bid on a public or private construction project. It guarantees that the contractor will enter into the contract at the bid price if selected. If the contractor wins the bid but refuses to enter the contract, the bid bond compensates the project owner for the difference in cost between the winning bid and the next lowest bid. Most Texas public construction projects require a bid bond with the submission.</p>
+      <h1>Texas Commercial Surety Bonds</h1>
+      <p>Commercial surety bonds are license and permit bonds required by Texas state agencies as a condition of obtaining or maintaining a business license. Unlike construction bonds, commercial bonds protect consumers and government agencies from business misconduct, fraud, or regulatory violations. Quantum Surety issues all Texas commercial bond types instantly online with same-day PDF delivery.</p>
       <section>
-        <h2>When Is a Bid Bond Required in Texas?</h2>
+        <h2>Common Texas Commercial Surety Bonds</h2>
         <ul>
-          <li>Texas public projects — required on most state, county, and municipal construction projects</li>
-          <li>Federal projects — required on all federal contracts (no minimum threshold for bid bonds under FAR)</li>
-          <li>School district projects — Texas Education Code §44.031 requires bid bonds on district construction</li>
-          <li>Private projects — increasingly required by private owners and developers</li>
+          <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, Texas Secretary of State, $50 flat</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, TxDMV, from $100/yr</li>
+          <li><a href="/bonds/contractor-license-bond-texas">TDLR Contractor License Bond</a> — TDLR required, from $75/yr</li>
+          <li><a href="/bonds/mortgage-broker-bond-texas">Texas Mortgage Broker Bond</a> — $50,000–$250,000, TDSML</li>
+          <li><a href="/bonds/collection-agency-bond-texas">Texas Collection Agency Bond</a> — $10,000, OCCC</li>
         </ul>
       </section>
       <section>
-        <h2>Bid Bond Amount and Cost</h2>
-        <p>Texas bid bonds are typically 5%–10% of the bid amount, as specified in the bid documents. The cost to the contractor is minimal — bid bonds are usually issued at no charge for contractors who have an established surety relationship and sufficient bonding capacity. Contact Quantum Surety for same-day bid bond issuance.</p>
+        <h2>How Texas Commercial Bonds Work</h2>
+        <p>A commercial surety bond is a three-party agreement between you (the principal), Quantum Surety (the surety), and the Texas state agency requiring the bond (the obligee). If you violate your license terms or harm a consumer, the bond compensates the claimant up to the bond amount. You are responsible for reimbursing the surety for any paid claims.</p>
       </section>
       <section>
-        <h2>Bid Bond vs Performance Bond</h2>
-        <p>A bid bond is submitted with the bid. If you win, you then need a performance bond and payment bond to execute the contract. Bid bonds are pre-qualification tools; performance and payment bonds are execution guarantees. <a href="/bonds/bid-bond-vs-performance-bond">Compare bid bonds vs performance bonds.</a></p>
+        <h2>Commercial Bonds vs Construction Bonds</h2>
+        <p>Commercial surety bonds are license bonds required to do business. Construction surety bonds — bid, performance, and payment bonds — guarantee contract performance on specific projects. Most Texas contractors need both: a license bond to hold their TDLR license, and construction bonds for public project bids. <a href="/bonds/contract">See all construction bond types.</a></p>
       </section>
-      <section>
-        <h2>Texas Contract Bond Requirements (Statutory)</h2>
-        <ul>
-          <li>Texas Government Code §2253.021 — performance and payment bonds on public contracts over $25,000</li>
-          <li>Federal Miller Act (40 U.S.C. §3131) — performance and payment bonds on federal contracts over $150,000</li>
-          <li>Bid bonds not specifically mandated by statute but required by nearly all public project bid documents</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Related Construction Bonds</h2>
-        <ul>
-          <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — required after contract award</li>
-          <li><a href="/bonds/payment-bond-texas">Texas Payment Bond</a> — protects subs and suppliers</li>
-          <li><a href="/bonds/contract">Contract Bonds Overview</a> — bid, performance, and payment bonds explained</li>
-        </ul>
-      </section>
-      <a href="/quote">Get a Texas Bid Bond Quote</a>
+      <a href="/quote">Get a Commercial Bond Quote</a>
     </main>`,
   },
 
@@ -519,8 +524,30 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
         content: `<main>
-      <h1>Texas GDN Dealer Bond — $50,000 TxDMV Required</h1>
-      <p>Texas auto dealers must maintain a $50,000 General Distinguishing Number (GDN) dealer surety bond with the Texas Department of Motor Vehicles (TxDMV) as a condition of their dealer license. The bond protects consumers and the state from dealer fraud, title violations, and failure to remit sales tax. Quantum Surety issues GDN dealer bonds from $100/year with instant PDF delivery — accepted by TxDMV for new licenses and renewals.</p>
+      <h1>About Quantum Surety</h1>
+      <p>Quantum Surety is a TDI-licensed Texas surety bond agency using AI technology to make bonding faster, more accessible, and more transparent for Texas contractors, notaries, and businesses. We issue surety bonds instantly online — most customers download their certificate in under 5 minutes.</p>
+      <section>
+        <h2>Our Mission</h2>
+        <p>We believe getting a surety bond should be as simple as buying insurance online. Quantum Surety built AI-powered tools that replace the traditional phone-and-paper bond process with instant online approvals, digital certificates, and automated renewal reminders.</p>
+      </section>
+      <section>
+        <h2>Licensed and Regulated</h2>
+        <ul>
+          <li>Texas Department of Insurance (TDI) Licensed Agency — License #3480229</li>
+          <li>All 254 Texas counties served</li>
+          <li>RLI Insurance (A-rated, AM Best) — bond carrier for notary and license bonds</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Bond Products We Issue</h2>
+        <ul>
+          <li><a href="/bonds/notary-bond-texas">Texas Notary Bonds</a> — $50 flat, instant PDF</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bonds</a> — TxDMV required, from $100/yr</li>
+          <li><a href="/bonds/contractor-license-bond-texas">TDLR Contractor License Bonds</a> — from $75/yr</li>
+          <li><a href="/bonds/bid-bond-texas">Construction Bid Bonds</a> — same-day issuance</li>
+          <li><a href="/bonds/performance-bond-texas">Performance &amp; Payment Bonds</a> — for public contracts</li>
+        </ul>
+      </section>
       <section>
         <h2>Texas GDN Bond Requirements</h2>
         <ul>
@@ -1195,26 +1222,43 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
                                 content: `<main>
-      <h1>Texas Pest Control License Bond — TPCL Required</h1>
-      <p>Texas pest control businesses holding a Structural Pest Control License (TPCL) must maintain a surety bond as a condition of licensure under Texas Occupations Code Chapter 1951. The bond protects consumers and property owners from financial harm caused by pesticide misapplication or contractor misconduct. Quantum Surety issues TPCL-accepted pest control bonds same-day with instant PDF delivery.</p>
+      <h1>Texas Notary Bond — $10,000 SB693 Compliant Bond</h1>
+      <p>Texas notaries must maintain a $10,000 surety bond for the full 4-year term of their commission under the Texas Government Code and Texas Secretary of State rules. Senate Bill 693 (effective September 1, 2023) extended the notary commission term to 4 years and requires the bond to match the full commission term. Quantum Surety issues SB693-compliant notary bonds for $50 flat — instant PDF by email, accepted by the Texas Secretary of State.</p>
       <section>
-        <h2>Texas Pest Control Bond Requirements</h2>
+        <h2>Texas Notary Bond Requirements</h2>
         <ul>
-          <li>Regulatory body: Texas Department of Agriculture (TDA) — Structural Pest Control Service</li>
-          <li>Statute: Texas Occupations Code Chapter 1951</li>
-          <li>Annual cost: From $75/yr</li>
-          <li>Delivery: Instant PDF, TPCL-accepted</li>
+          <li>Bond amount: $10,000 — required by the Texas Government Code</li>
+          <li>Commission term: 4 years (SB693 — effective 2023)</li>
+          <li>Bond term: Must match the 4-year commission term</li>
+          <li>Price: $50 flat — no annual renewal, no credit check</li>
+          <li>Regulator: Texas Secretary of State</li>
+          <li>Delivery: Instant PDF by email</li>
         </ul>
       </section>
       <section>
-        <h2>Related Texas License Bonds</h2>
+        <h2>SB693 Notary Bond Changes (2023)</h2>
+        <p>Senate Bill 693, effective September 1, 2023, changed the Texas notary commission term from 2 years to 4 years. All notary bonds issued after SB693 must cover the full 4-year term. Quantum Surety issues SB693-compliant 4-year bonds for $50.</p>
+      </section>
+      <section>
+        <h2>Texas Notary Bond by City</h2>
         <ul>
-          <li><a href="/bonds/home-inspector-bond-texas">Home Inspector Bond</a> — TREC</li>
-          <li><a href="/bonds/locksmith-bond-texas">Locksmith Bond</a> — DPS</li>
-          <li><a href="/bonds/license-bond-texas">All Texas License Bonds</a></li>
+          <li><a href="/bonds/notary-bond-dallas">Dallas Notary Bond</a> — Dallas County &amp; DFW area</li>
+          <li><a href="/bonds/notary-bond-houston">Houston Notary Bond</a> — Harris County &amp; Houston metro</li>
+          <li><a href="/bonds/notary-bond-san-antonio">San Antonio Notary Bond</a> — Bexar County</li>
+          <li><a href="/bonds/notary-bond-austin">Austin Notary Bond</a> — Travis County</li>
+          <li><a href="/bonds/notary-bond-fort-worth">Fort Worth Notary Bond</a> — Tarrant County</li>
         </ul>
       </section>
-      <a href="/quote">Get My Pest Control Bond</a>
+      <section>
+        <h2>How to Get a Texas Notary Bond</h2>
+        <ol>
+          <li>Complete your notary application with the Texas Secretary of State</li>
+          <li>Purchase your $10,000 notary bond at Quantum Surety — $50 flat, instant PDF</li>
+          <li>Submit the bond certificate with your SoS application</li>
+          <li>Receive your notary commission in the mail (typically 2–4 weeks)</li>
+        </ol>
+      </section>
+      <a href="/get-bond?type=notary">Get My Texas Notary Bond — $50</a>
     </main>`,
   },
 

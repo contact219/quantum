@@ -49,6 +49,13 @@ export function Navbar() {
       external: true,
     },
     {
+      href: "/bond-guard-pro",
+      label: "Bond Guard Pro",
+      description: "Multi-bond dashboard for contractors — $19.99/mo",
+      icon: null,
+      external: false,
+    },
+        {
       href: "https://verify.quantumsurety.bond/filing-service",
       label: "Bond Filing Service",
       description: "We file your bond with the county clerk — $12.99",

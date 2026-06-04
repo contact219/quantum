@@ -125,6 +125,7 @@ import GetBond from "@/pages/get-bond";
 import BondBadgeSetup from "@/pages/bond-badge-setup";
 import ApiAccess from "@/pages/api-access";
 import BondGuard from "@/pages/bond-guard";
+import BondGuardPro from "@/pages/bond-guard-pro";
 import PartnerProgram from "@/pages/partner-program";
 import CityBondPage from "@/pages/city-bond-page";
 import Renew from "@/pages/renew";
@@ -266,6 +267,7 @@ function Router() {
       <Route path="/badge-setup" component={BondBadgeSetup} />
       <Route path="/api-access" component={ApiAccess} />
       <Route path="/bond-guard" component={BondGuard} />
+      <Route path="/bond-guard-pro" component={BondGuardPro} />
       <Route path="/partner-program" component={PartnerProgram} />
       <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
       <Route path="/renew" component={Renew} />

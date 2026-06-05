@@ -33,6 +33,8 @@ export function Footer() {
         { href: "/obligee-lookup", label: "Obligee Lookup" },
         { href: "/renewals", label: "Renewal Reminders" },
         { href: "/chatbot", label: "AI Bond Finder" },
+        { href: "/texas-title-rescue", label: "Title Rescue Wizard" },
+        { href: "/title-bond-calculator", label: "Title Bond Calculator" },
       ],
     },
     {
@@ -55,6 +57,7 @@ export function Footer() {
         { href: "/bonds/license-bond-texas", label: "License Bonds" },
         { href: "/bonds/tdlr-bond-texas", label: "TDLR Bonds" },
         { href: "/bonds/gdn-bond-texas", label: "GDN Auto Dealer Bonds" },
+        { href: "/bonds/bonded-title-texas", label: "Certificate of Title Bond" },
         { href: "/bonds/notary-bond-texas", label: "Notary Bonds" },
         { href: "/blog", label: "Bond Guides & Blog" },
         { href: "/quote", label: "Get a Quote" },

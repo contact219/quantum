@@ -33,6 +33,13 @@ const INSTANT_BONDS = [
     detail: "$50,000 coverage · Same-day · TxDMV accepted",
     redirectPath: "/get-bond?type=dealer",
   },
+  {
+    value: "title",
+    label: "Certificate of Title Bond",
+    price: "From $50",
+    detail: "Vehicle without title · 1.5x value · Same-day · No credit check",
+    redirectPath: "/title-bond-calculator",
+  },
 ];
 
 const QUOTE_BONDS = [
@@ -46,7 +53,7 @@ const QUOTE_BONDS = [
   { value: "auto_dealer",label: "Auto Dealer Bond",            detail: "General motor vehicle dealer bond" },
 ];
 
-const INSTANT_KEYS = new Set(["notary", "gdn", "dealer"]);
+const INSTANT_KEYS = new Set(["notary", "gdn", "dealer", "title", "bonded-title", "bonded_title"]);
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
@@ -130,6 +137,8 @@ function resolveQuoteBondType(typeParam: string): string {
     auto_dealer: "auto_dealer",
     bid: "bid", performance: "performance", payment: "payment",
     maintenance: "maintenance", supply: "supply", probate: "probate",
+    title: "title", "bonded-title": "title", bonded_title: "title",
+    "certificate-of-title": "title", vehicle: "title",
   };
   return map[typeParam] ?? "";
 }
@@ -242,7 +251,8 @@ export default function Quote() {
     const typeParam = getTypeParam();
     if (!typeParam) return;
     if (INSTANT_KEYS.has(typeParam)) {
-      navigate(`/get-bond?type=${typeParam}`);
+      const bond = INSTANT_BONDS.find(b => b.value === typeParam);
+      navigate(bond?.redirectPath ?? `/get-bond?type=${typeParam}`);
       return;
     }
     const resolved = resolveQuoteBondType(typeParam);

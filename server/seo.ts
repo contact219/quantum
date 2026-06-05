@@ -29,9 +29,9 @@ const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "
 
 const PAGE_META: Record<string, PageMeta> = {
   "/": {
-    title: "Texas Surety Bonds | Notary, Contractor & Dealer Bonds | Quantum Surety",
+    title: "Texas Surety Bonds | Notary, Contractor & Dealer | Quantum Surety",
     description:
-      "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $100/yr. Contractor bonds same-day. TDI license #3480229. All 254 Texas counties.",
+      "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $100/yr. Contractor bonds same-day. TDI license #3480229.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
     alternates: [
@@ -49,7 +49,7 @@ const PAGE_META: Record<string, PageMeta> = {
           name: "Quantum Surety",
           legalName: "Quantum Surety LLC",
           description:
-            "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, freight broker bonds, and commercial surety bonds. TDI-licensed. Instant online issuance. SB693 compliant.",
+            "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, freight broker bonds, and commercial surety bonds.",
           url: BASE_URL,
           telephone: "+12146668718",
           email: "info@quantumsurety.bond",
@@ -229,21 +229,35 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `
       <main>
         <h1>Quantum Surety Bonds: Your Texas Bond Partner</h1>
-        <p>Quantum Surety Bonds offers fast, reliable surety bond services in Texas and nationwide. Get bid bonds, performance bonds, payment bonds, and license bonds online with expert support and competitive rates.</p>
+        <p>Quantum Surety is a TDI-licensed Texas surety bond agency (License #3480229) issuing notary bonds, contractor license bonds, dealer bonds, and construction surety bonds with same-day approvals and instant PDF delivery across all 254 Texas counties.</p>
         <section>
           <h2>Texas Notary Bond — $50, Instant Download</h2>
-          <p>Get your required $10,000 Texas notary public surety bond instantly for $50. No credit check. SB693 compliant for 2026. Issued by Quantum Surety, a TDI-licensed Texas surety agency (License #3480229). Instant PDF delivered by email, ready to file with the Texas Secretary of State.</p>
+          <p>Get your required $10,000 Texas notary public surety bond for $50. No credit check. SB693 compliant for 2026. Instant PDF delivered by email, ready to file with the Texas Secretary of State.</p>
           <a href="/bonds/notary-bond-texas">Get My Texas Notary Bond — $50</a>
         </section>
         <section>
-          <h2>Bond Types We Offer</h2>
+          <h2>Surety Bonds by Type</h2>
           <ul>
-            <li><strong>Texas Notary Bond</strong> — $10,000 bond, 4-year term, $50 flat. SB693 compliant. Instant PDF.</li>
-            <li><strong>Bid Bonds</strong> — Guarantee your bid is serious and backed by a surety.</li>
-            <li><strong>Performance Bonds</strong> — Assure project owners that you will complete the contract.</li>
-            <li><strong>Payment Bonds</strong> — Protect subcontractors and suppliers from non-payment.</li>
-            <li><strong>License &amp; Permit Bonds</strong> — Required by cities and states for contractor licenses.</li>
-            <li><strong>Miscellaneous Surety Bonds</strong> — Court bonds, fidelity bonds, and more.</li>
+            <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000 bond, 4-year term, $50 flat. SB693 compliant. Instant PDF.</li>
+            <li><a href="/bonds/gdn-bond-texas">Texas GDN Auto Dealer Bond</a> — $50,000 bond required by TxDMV for all licensed auto dealers.</li>
+            <li><a href="/bonds/license-bond-texas">Texas Contractor License Bond</a> — Required by TDLR for HVAC, electrical, plumbing, and other licensed trades.</li>
+            <li><a href="/bonds/bid-bond-texas">Texas Bid Bond</a> — Guarantees you will honor your bid if selected. Required on most Texas public projects.</li>
+            <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — Guarantees project completion. Required on public contracts over $25,000 under Government Code §2253.</li>
+            <li><a href="/bonds/payment-bond-texas">Texas Payment Bond</a> — Protects subcontractors and suppliers from non-payment. Issued alongside performance bonds.</li>
+            <li><a href="/bonds/construction-bond-texas">Texas Construction Bonds</a> — Bid, performance, and payment bond packages for construction contractors.</li>
+            <li><a href="/bonds/freight-broker-bond-texas">BMC-84 Freight Broker Bond</a> — $75,000 FMCSA-required bond for licensed freight brokers, with guaranteed FMCSA filing.</li>
+            <li><a href="/bonds/mortgage-broker-bond-texas">Texas Mortgage Broker Bond</a> — Required by TDSML for all licensed Texas mortgage companies.</li>
+            <li><a href="/bonds/commercial">Texas Commercial Surety Bonds</a> — License and permit bonds for all regulated Texas businesses and industries.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Contractor Trade Bonds</h2>
+          <ul>
+            <li><a href="/bonds/hvac-bond-texas">Texas HVAC Contractor Bond</a> — TDLR-required for licensed HVAC technicians and air conditioning contractors.</li>
+            <li><a href="/bonds/electrical-contractor-bond-texas">Texas Electrical Contractor Bond</a> — Required for TDLR-licensed electrical contractors operating statewide.</li>
+            <li><a href="/bonds/plumbing-contractor-bond-texas">Texas Plumbing Contractor Bond</a> — Required for licensed plumbing contractors across Texas cities and counties.</li>
+            <li><a href="/bonds/general-contractor-bond-texas">Texas General Contractor Bond</a> — License and permit bonds for general contractors working in Texas municipalities.</li>
+            <li><a href="/bonds/roofing-contractor-bond-texas">Texas Roofing Contractor Bond</a> — Required by Dallas, Austin, Fort Worth, and other Texas cities for roofing licenses.</li>
           </ul>
         </section>
         <section>
@@ -252,24 +266,23 @@ const PAGE_META: Record<string, PageMeta> = {
             <dt>How much does a Texas notary bond cost?</dt>
             <dd>A Texas notary bond costs $50 for the full 4-year term — no annual fees, no credit check required.</dd>
             <dt>What is SB693 and how does it affect Texas notaries?</dt>
-            <dd>Texas SB693 (effective January 1, 2026) added a mandatory 2-hour education course and 10-year journal retention for all notary applicants and renewals. The $10,000 bond requirement is unchanged at $50.</dd>
+            <dd>Texas SB693 (effective January 1, 2026) added a mandatory 2-hour education course and 10-year journal retention. The $10,000 bond requirement is unchanged at $50.</dd>
             <dt>How quickly can I get a surety bond?</dt>
             <dd>Notary bonds and license bonds are issued instantly. Performance and payment bonds are typically same-day for qualified contractors.</dd>
             <dt>What surety bonds do Texas contractors need?</dt>
-            <dd>Most Texas contractors need a license bond for TDLR or city licensing, plus bid, performance, and payment bonds for public construction projects.</dd>
+            <dd>Most Texas contractors need a <a href="/bonds/license-bond-texas">contractor license bond</a> for TDLR licensing, plus <a href="/bonds/bid-bond-texas">bid bonds</a>, <a href="/bonds/performance-bond-texas">performance bonds</a>, and <a href="/bonds/payment-bond-texas">payment bonds</a> for public construction projects.</dd>
           </dl>
         </section>
         <section>
-          <h2>Why Quantum Surety?</h2>
+          <h2>Bond Resources</h2>
           <ul>
-            <li>TDI-licensed Texas surety agency (License #3480229)</li>
-            <li>AI-powered underwriting for faster approvals</li>
-            <li>Quotes delivered in minutes, not 24–48 hours</li>
-            <li>Serving Texas contractors and nationwide</li>
-            <li>Experienced surety professionals backed by top-rated carriers</li>
+            <li><a href="/glossary">Surety Bond Glossary</a> — Key terms explained in plain English for contractors and licensees.</li>
+            <li><a href="/renewals">Bond Renewal Guide</a> — Know when your bond needs renewal and how to avoid a license lapse.</li>
+            <li><a href="/obligee-lookup">Obligee Lookup</a> — Find the correct legal obligee name for your Texas bond filing.</li>
+            <li><a href="/resources/state-requirements">State Bond Requirements</a> — State-by-state bond thresholds and filing requirements.</li>
           </ul>
         </section>
-        <a href="/quote">Get a Free Bond Quote</a>
+        <a href="/get-bond">Apply for a Surety Bond</a>
       </main>`,
   },
 
@@ -343,7 +356,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contract": {
-    title: "Contract Surety Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
+    title: "Contract Surety Bonds | TX Contractors | Quantum Surety",
     description:
       "Contract surety bonds for construction contractors — bid bonds, performance bonds, and payment bonds. Fast approvals for public and private projects.",
     canonical: `${BASE_URL}/bonds/contract`,
@@ -422,9 +435,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/commercial": {
-    title: "Commercial Surety Bonds | License & Permit Bonds Texas | Quantum Surety",
+    title: "Commercial Surety Bonds | License & Permit | Quantum Surety",
     description:
-      "Texas commercial surety bonds — license bonds, permit bonds, court bonds, notary bonds, and dealer bonds. TDI-licensed agency. Instant online issuance. Same-day certificate.",
+      "Texas commercial surety bonds — license bonds, permit bonds, court bonds, notary bonds, and dealer bonds. TDI-licensed agency. Instant online issuance.",
     canonical: `${BASE_URL}/bonds/commercial`,
     structuredData: [
       {
@@ -483,7 +496,7 @@ const PAGE_META: Record<string, PageMeta> = {
   "/about": {
     title: "About Quantum Surety | AI-Powered Surety Bond Agency",
     description:
-      "Quantum Surety is an AI-first surety bond agency helping contractors get bonds faster. Learn about our technology, team, and mission to modernize the surety industry.",
+      "Quantum Surety is an AI-first surety bond agency helping contractors get bonds faster. Learn about our technology, team, and mission to modernize the.",
     canonical: `${BASE_URL}/about`,
     structuredData: [
       {
@@ -592,9 +605,9 @@ const PAGE_META: Record<string, PageMeta> = {
 
 
   "/construction": {
-    title: "Construction Surety Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
+    title: "Construction Surety Bonds | TX Contractors | Quantum Surety",
     description:
-      "Explore construction surety bond options for Texas contractors, including bid, performance, and payment bonds with fast AI-assisted approvals. Same-day service available.",
+      "Explore construction surety bond options for Texas contractors, including bid, performance, and payment bonds with fast AI-assisted approvals. Same-day.",
     canonical: `${BASE_URL}/construction`,
     structuredData: [
       {
@@ -689,7 +702,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/ai-bond-finder": {
-    title: "AI Bond Finder | Match the Right Surety Bond | Quantum Surety",
+    title: "AI Bond Finder | Match the Right Bond | Quantum Surety",
     description:
       "Use the Quantum Surety AI Bond Finder to identify the right bond type and requirements for your project, trade, and jurisdiction.",
     canonical: `${BASE_URL}/ai-bond-finder`,
@@ -808,13 +821,83 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Review state-by-state surety bond requirements and filing guidance for contractors and licensed businesses.",
     canonical: `${BASE_URL}/resources/state-requirements`,
+    content: `<main>
+      <h1>State Surety Bond Requirements by State</h1>
+      <p>Surety bond requirements vary significantly by state. Every U.S. state requires surety bonds for public construction projects, contractor licensing, and regulated business activities. This page covers bond thresholds, required amounts, and filing agencies across the most active construction states.</p>
+      <section>
+        <h2>Texas Surety Bond Requirements</h2>
+        <ul>
+          <li><strong>Public Construction:</strong> Performance and payment bonds required on projects over $50,000 — Texas Government Code §2253</li>
+          <li><strong>TDLR Contractor License:</strong> License bond required for HVAC, electrical, plumbing, and all TDLR-regulated trades</li>
+          <li><strong>GDN Dealer Bond:</strong> $50,000 bond required by TxDMV for all licensed auto dealers</li>
+          <li><strong>Notary Bond:</strong> $10,000 bond required by Texas Secretary of State for all notary commissions</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Other Major State Requirements</h2>
+        <ul>
+          <li><strong>California:</strong> CSLB license bond $25,000 (biennial renewal); public works performance/payment bonds over $25,000</li>
+          <li><strong>Florida:</strong> Performance and payment bonds required on public projects over $200,000 (F.S. §255.05)</li>
+          <li><strong>New York:</strong> Labor & Material bond mandatory on public contracts over $35,000</li>
+          <li><strong>Illinois:</strong> Public Construction Bond Act — threshold as low as $5,000</li>
+          <li><strong>Washington:</strong> General contractor license bond $12,000; public works bonds over $35,000 (RCW 39.08)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Federal Surety Bond Requirements</h2>
+        <p>The Miller Act (40 U.S.C. §3131) requires performance and payment bonds on all federal construction contracts over $150,000. Bid bonds are required on most federal solicitations. Federal supply contracts over $150,000 may also require payment bonds.</p>
+      </section>
+      <section>
+        <h2>Get a Bond for Your State</h2>
+        <ul>
+          <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, $50 flat</li>
+          <li><a href="/bonds/contractor-license-bond-texas">Texas Contractor License Bond</a> — TDLR required</li>
+          <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — public construction</li>
+          <li><a href="/bonds/bid-bond-texas">Texas Bid Bond</a> — construction bids</li>
+          <li><a href="/quote">Get a Bond Quote for Any State</a></li>
+        </ul>
+      </section>
+    </main>`,
   },
 
   "/glossary": {
-    title: "Surety Bond Glossary | Terms for Contractors | Quantum Surety",
+    title: "Surety Bond Glossary | Contractor Terms | Quantum Surety",
     description:
       "Definitions of common surety bond terms, underwriting language, and construction bond concepts in plain English.",
     canonical: `${BASE_URL}/glossary`,
+    content: `<main>
+      <h1>Surety Bond Glossary — Terms for Contractors and Licensees</h1>
+      <p>Definitions of common surety bond terms, underwriting language, and construction bond concepts in plain English. Understanding these terms helps contractors, notaries, and business owners navigate the bonding process faster.</p>
+      <section>
+        <h2>The Three Parties to a Surety Bond</h2>
+        <ul>
+          <li><strong>Principal:</strong> The contractor or licensee purchasing the bond and obligated to perform. You are the principal.</li>
+          <li><strong>Obligee:</strong> The government agency or project owner requiring the bond. Protects them against your non-performance or misconduct. Using the exact legal obligee name on your bond is critical.</li>
+          <li><strong>Surety:</strong> The insurance company (like RLI or Markel) that issues the bond and guarantees your obligations to the obligee.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Common Bond Types</h2>
+        <ul>
+          <li><strong>Bid Bond:</strong> Submitted with a construction bid — guarantees you'll enter the contract at the bid price if selected. Typically 5–10% of the bid amount.</li>
+          <li><strong>Performance Bond:</strong> Guarantees you'll complete the project per contract terms. Protects the owner if you default.</li>
+          <li><strong>Payment Bond:</strong> Guarantees you'll pay subcontractors and suppliers. Required alongside performance bonds on most public projects.</li>
+          <li><strong>License & Permit Bond:</strong> Required by state agencies as a condition of licensing. Common for contractors, dealers, notaries, and mortgage companies.</li>
+          <li><strong>Notary Bond:</strong> A $10,000 bond required by the Texas Secretary of State for all notary public commissions. Protects the public from notary errors or misconduct.</li>
+          <li><strong>Maintenance Bond:</strong> Guarantees correction of defective work after project completion. Typically covers 1–2 years post-acceptance.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Key Underwriting Terms</h2>
+        <ul>
+          <li><strong>Penal Sum:</strong> The maximum dollar amount the surety will pay. Equal to the contract amount on construction bonds; fixed by regulation on license bonds.</li>
+          <li><strong>Premium:</strong> The cost of the bond — typically a percentage of the penal sum. Not refundable if the bond is cancelled.</li>
+          <li><strong>Indemnity Agreement:</strong> You agree to reimburse the surety for any claims paid. The bond is not insurance for you — it protects the obligee.</li>
+          <li><strong>Single Limit:</strong> Maximum bonding capacity for one project. <strong>Aggregate Limit:</strong> Maximum bonding capacity across all active projects.</li>
+        </ul>
+      </section>
+      <a href="/quote">Get a Bond Quote</a>
+    </main>`,
   },
 
   "/renewals": {
@@ -822,13 +905,71 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Renew your surety bond on time with renewal reminders, updated terms, and quick online processing.",
     canonical: `${BASE_URL}/renewals`,
+    content: `<main>
+      <h1>Surety Bond Renewals — Keep Your Coverage Active</h1>
+      <p>Most surety bonds require annual renewal. Letting a bond lapse — even for one day — can trigger license suspension, contract default, or stop a project in its tracks. Quantum Surety offers free renewal reminders at 90, 60, and 30 days before your bond expires so you're never caught off guard.</p>
+      <section>
+        <h2>Which Bonds Require Annual Renewal?</h2>
+        <ul>
+          <li><strong>GDN Dealer Bonds:</strong> Renew annually with TxDMV. Your dealer license lapses if the bond expires without renewal.</li>
+          <li><strong>TDLR Contractor License Bonds:</strong> Most renew annually. TDLR will deactivate your license if the bond lapses.</li>
+          <li><strong>Mortgage Broker Bonds:</strong> Annual renewal required by TDSML.</li>
+          <li><strong>Collection Agency Bonds:</strong> Annual renewal required by OCCC.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Which Bonds Don't Require Renewal?</h2>
+        <ul>
+          <li><strong>Texas Notary Bonds:</strong> 4-year term under SB693 — no annual renewal needed. The bond covers the full commission term.</li>
+          <li><strong>Construction Bonds:</strong> Project-specific; expire when the project warranty period ends, not on a calendar renewal cycle.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>What Happens If Your Bond Lapses?</h2>
+        <p>For license bonds: your license goes inactive the day your bond expires. You cannot legally operate until a new bond is filed and accepted. Reinstatement may require a new application and fees. For construction bonds: a lapsed bond can trigger a contract default, allowing the owner to call the bond and find a replacement contractor at your expense.</p>
+      </section>
+      <section>
+        <h2>Get Renewal Reminders</h2>
+        <p>Sign up above for free automatic email reminders before your bond expires. Quantum Surety monitors your bond expiry dates and sends alerts at 90, 60, and 30 days — so renewal is never a surprise.</p>
+      </section>
+      <a href="/get-bond">Renew My Bond Now</a>
+    </main>`,
   },
 
   "/obligee-lookup": {
-    title: "Obligee Lookup Tool | Verify Bond Obligee Details | Quantum Surety",
+    title: "Obligee Lookup | Verify Bond Obligee | Quantum Surety",
     description:
       "Find and verify obligee naming details to reduce bond filing errors and avoid delays in project award or licensing.",
     canonical: `${BASE_URL}/obligee-lookup`,
+    content: `<main>
+      <h1>Obligee Lookup — Find the Correct Bond Obligee Name</h1>
+      <p>The obligee is the government agency or entity requiring your surety bond. Using the exact legal name of the obligee is critical — a wrong or abbreviated name can invalidate your bond or delay license approval. Use this directory to find verified obligee names for Texas state agencies, cities, counties, and federal entities.</p>
+      <section>
+        <h2>Key Texas State Bond Obligees</h2>
+        <ul>
+          <li><strong>Texas Department of Licensing and Regulation (TDLR)</strong> — Required for contractor license bonds (HVAC, electrical, plumbing, AC)</li>
+          <li><strong>Texas Department of Motor Vehicles (TxDMV)</strong> — Required for GDN auto dealer bonds</li>
+          <li><strong>Texas Secretary of State</strong> — Required for notary public bonds ($10,000)</li>
+          <li><strong>Texas Department of Transportation (TxDOT)</strong> — Required on state highway and infrastructure projects</li>
+          <li><strong>Texas Department of Savings and Mortgage Lending (TDSML)</strong> — Required for mortgage company bonds</li>
+          <li><strong>Texas Office of Consumer Credit Commissioner (OCCC)</strong> — Required for collection agency bonds</li>
+          <li><strong>Texas Real Estate Commission (TREC)</strong> — Required for certain mortgage and real estate licensees</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Federal Bond Obligees</h2>
+        <ul>
+          <li><strong>United States of America</strong> — Used on all federal construction contracts (Miller Act bonds)</li>
+          <li><strong>Federal Motor Carrier Safety Administration (FMCSA)</strong> — Required for freight broker bonds ($75,000)</li>
+          <li><strong>U.S. Customs and Border Protection (CBP)</strong> — Required for customs bonds and importer bonds</li>
+        </ul>
+      </section>
+      <section>
+        <h2>City and County Obligees</h2>
+        <p>For city and county projects, the obligee is typically the full legal name of the municipality: "City of Houston, Texas" or "Harris County, Texas." Check your bid documents or permit application for the exact required name — different departments within the same city may use different obligee language.</p>
+      </section>
+      <a href="/quote">Get a Bond with the Correct Obligee</a>
+    </main>`,
   },
 
   "/privacy": {
@@ -836,6 +977,30 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Read Quantum Surety's privacy policy, including how we collect, use, and protect personal information.",
     canonical: `${BASE_URL}/privacy`,
+    content: `<main>
+      <h1>Privacy Policy</h1>
+      <p>Last updated: January 2024. Quantum Surety LLC ("Quantum Surety," "we," "us") is committed to protecting your privacy. This policy explains how we collect, use, and protect personal information submitted through quantumsurety.bond.</p>
+      <section>
+        <h2>Information We Collect</h2>
+        <p>We collect information necessary to process bond applications and provide services, including: contact information (name, email, phone, address); business information (company name, EIN, business structure); financial information for underwriting purposes; and project details for construction bonds.</p>
+      </section>
+      <section>
+        <h2>How We Use Your Information</h2>
+        <p>Your information is used to process bond applications and underwriting reviews; communicate with you about your bonds and applications; send renewal reminders if you opt in; comply with legal and regulatory requirements; and improve our services.</p>
+      </section>
+      <section>
+        <h2>Information Sharing</h2>
+        <p>We share information with: surety carriers and underwriters to process your bond application; regulatory agencies as required by law; and service providers who assist in delivering our services. We do not sell personal information to third parties.</p>
+      </section>
+      <section>
+        <h2>Data Security</h2>
+        <p>We use industry-standard security measures to protect your information, including SSL encryption for all data transmissions and secure storage for financial data.</p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>For privacy questions, contact us at <a href="mailto:info@quantumsurety.bond">info@quantumsurety.bond</a> or call <a href="tel:+12146668718">(214) 666-8718</a>.</p>
+      </section>
+    </main>`,
   },
 
   "/terms": {
@@ -843,6 +1008,31 @@ const PAGE_META: Record<string, PageMeta> = {
     description:
       "Review Quantum Surety's terms of service for website usage, quote requests, and service limitations.",
     canonical: `${BASE_URL}/terms`,
+    content: `<main>
+      <h1>Terms of Service</h1>
+      <p>Last updated: January 2024. By accessing and using Quantum Surety's services at quantumsurety.bond, you agree to be bound by these Terms of Service. Quantum Surety LLC is a TDI-licensed Texas surety bond agency (License #3480229).</p>
+      <section>
+        <h2>Services</h2>
+        <p>Quantum Surety acts as a licensed surety bond agency connecting contractors, businesses, and individuals with surety carriers. We facilitate the bond application and issuance process. All bonds are issued by the carrier — Quantum Surety is the agent of record.</p>
+      </section>
+      <section>
+        <h2>Application and Underwriting</h2>
+        <p>All bond applications are subject to underwriting approval by surety carriers. Quotes are estimates and may change after full underwriting review. You must provide accurate and complete information. False or misleading information may result in bond denial, cancellation, or a claim against you.</p>
+      </section>
+      <section>
+        <h2>Premiums and Refunds</h2>
+        <p>Bond premiums are generally non-refundable once the bond is issued and the certificate delivered. Cancellation refunds are subject to the carrier's pro-rata or short-rate policy. Quantum Surety's service fees are non-refundable.</p>
+      </section>
+      <section>
+        <h2>Indemnity</h2>
+        <p>By purchasing a surety bond, you agree to reimburse the surety for any claims paid on your behalf. The surety bond protects the obligee — not you. You remain financially responsible for all losses caused by your failure to perform.</p>
+      </section>
+      <section>
+        <h2>Limitation of Liability</h2>
+        <p>Quantum Surety's liability is limited to the agency services provided. We are not responsible for carrier underwriting decisions, bond amounts, or coverage terms set by the carrier or required by law.</p>
+      </section>
+      <a href="/quote">Get a Bond Quote</a>
+    </main>`,
   },
 
   "/resources": {
@@ -888,7 +1078,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/bid-bond-texas": {
-    title: "Bid Bonds Texas | Same-Day Bid Bond for TX Contractors | Quantum Surety",
+    title: "Bid Bonds Texas | Same-Day for Contractors | Quantum Surety",
     description:
       "Get a Texas bid bond fast. Same-day bid bonds for contractors bidding public and private construction projects across Texas. AI-powered approvals.",
     canonical: `${BASE_URL}/bonds/bid-bond-texas`,
@@ -997,9 +1187,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/performance-bond-texas": {
-    title: "Performance Bonds Texas | TX Construction Performance Bonds | Quantum Surety",
+    title: "Performance Bonds Texas | TX Construction | Quantum Surety",
     description:
-      "Texas performance bonds for general contractors and subcontractors. Fast approvals for public and private construction projects statewide. AI-powered underwriting.",
+      "Texas performance bonds for general contractors and subcontractors. Fast approvals for public and private construction projects statewide. AI-powered.",
     canonical: `${BASE_URL}/bonds/performance-bond-texas`,
     structuredData: [
       {
@@ -1050,7 +1240,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/license-bond-texas": {
-    title: "Texas Contractor License Bonds | License & Permit Bonds TX | Quantum Surety",
+    title: "Texas Contractor License Bonds | TDLR | Quantum Surety",
     description:
       "Texas contractor license bonds issued same-day. TDLR bonds, electrical bonds, plumbing bonds, HVAC bonds, and all license & permit bonds for TX contractors.",
     canonical: `${BASE_URL}/bonds/license-bond-texas`,
@@ -1130,9 +1320,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-texas": {
-    title: "Texas Notary Bond | $50 Instant Online | SB693 Compliant | Quantum Surety",
+    title: "Texas Notary Bond | $50 | SB693 Compliant | Quantum Surety",
     description:
-      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. TDI-licensed Texas agency. Add E&O insurance. Download and file today.",
+      "Get your Texas notary bond instantly online — $50 for the required 4-year, $10,000 bond. 2026 SB693 compliant. TDI-licensed Texas agency. Add E&O.",
     canonical: `${BASE_URL}/bonds/notary-bond-texas`,
     alternates: [
       { hreflang: "en-US", href: `${BASE_URL}/bonds/notary-bond-texas` },
@@ -1263,9 +1453,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog": {
-    title: "Texas Surety Bond Blog | Guides & Requirements | Quantum Surety",
+    title: "Texas Surety Bond Blog | Guides | Quantum Surety",
     description:
-      "Texas surety bond guides, notary bond requirements, SB693 2026 law changes, and licensing tips for Texas small business owners. Written by a TDI-licensed Texas surety agency.",
+      "Texas surety bond guides, notary bond requirements, SB693 2026 law changes, and licensing tips for Texas small business owners. Written by a TDI-licensed.",
     canonical: `${BASE_URL}/blog`,
     ogType: "website",
     content: `
@@ -1292,9 +1482,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-sb693-2026-requirements": {
-    title: "Texas Notary Bond 2026: What SB693 Changes for New & Renewing Notaries | Quantum Surety",
+    title: "Texas Notary Bond SB693 2026 | Quantum Surety",
     description:
-      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your bond.",
+      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
     ogType: "article",
     structuredData: [
@@ -1380,9 +1570,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-cost-2026": {
-    title: "How Much Does a Texas Notary Bond Cost in 2026? | Quantum Surety",
+    title: "Texas Notary Bond Cost 2026 | Quantum Surety",
     description:
-      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Complete cost breakdown including SOS fees, education, seal, journal, and E&O insurance.",
+      "A Texas notary bond costs $50 for the full 4-year term — no credit check, no annual renewal. Complete cost breakdown including SOS fees, education, seal.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-cost-2026`,
     ogType: "article",
     structuredData: [
@@ -1441,7 +1631,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-contractor-bond-and-permits": {
-    title: "Texas Contractors: Get Your Bond and Pull Your Permits in One Day | Quantum Surety",
+    title: "Texas Contractors: Bond & Permits Same Day | Quantum Surety",
     description:
       "A practical same-day workflow for DFW contractors: secure your license bond, identify every required permit, and submit with fewer delays.",
     canonical: `${BASE_URL}/blog/texas-contractor-bond-and-permits`,
@@ -1489,7 +1679,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/quantum-surety-tdi-licensed-agency-3480229": {
-    title: "Quantum Surety Receives TDI Agency License #3480229 | Quantum Surety",
+    title: "Quantum Surety TDI Agency License #3480229 | Quantum Surety",
     description:
       "Quantum Surety LLC is now fully licensed by the Texas Department of Insurance (License #3480229) as a General Lines Property & Casualty agency.",
     canonical: `${BASE_URL}/blog/quantum-surety-tdi-licensed-agency-3480229`,
@@ -1533,9 +1723,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-sb693-renewal-2026": {
-    title: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do | Quantum Surety",
+    title: "Texas Notary Bond Renewal Under SB693 2026 | Quantum Surety",
     description:
-      "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that now apply to renewals. Step-by-step checklist plus 5 FAQs.",
+      "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that now apply to renewals. Step-by-step.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026`,
     ogType: "article",
     structuredData: [
@@ -1543,7 +1733,7 @@ const PAGE_META: Record<string, PageMeta> = {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: "Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do",
-        description: "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step checklist plus 5 FAQs.",
+        description: "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that apply to renewals. Step-by-step.",
         datePublished: "2026-04-09",
         dateModified: "2026-04-09",
         inLanguage: "en-US",
@@ -1597,9 +1787,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/sb-693-notary-bond-requirements-2026": {
-    title: "Texas SB693 Notary Bond Requirements 2026 — Complete Guide | Quantum Surety",
+    title: "Texas SB693 Notary Requirements 2026 | Quantum Surety",
     description:
-      "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements: mandatory education, journal rules, criminal penalties, and how to get your $50 bond.",
+      "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements: mandatory education, journal rules, criminal.",
     canonical: `${BASE_URL}/sb-693-notary-bond-requirements-2026`,
     ogType: "article",
     structuredData: {
@@ -1607,7 +1797,7 @@ const PAGE_META: Record<string, PageMeta> = {
       "@type": "Article",
       headline: "Texas SB693 Notary Bond Requirements 2026 — Complete Guide",
       description:
-        "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements, including mandatory education, journal rules, and how to get your bond.",
+        "Senate Bill 693 took effect January 1, 2026. Complete guide to Texas SB693 notary bond requirements, including mandatory education, journal rules, and how.",
       datePublished: "2026-03-15",
       dateModified: "2026-04-09",
       author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
@@ -1637,9 +1827,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-vs-notary-signing-agent": {
-    title: "Texas Notary vs. Notary Signing Agent: What's the Difference? | Quantum Surety",
+    title: "Texas Notary vs Signing Agent | Quantum Surety",
     description:
-      "A Texas notary public and a notary signing agent (NSA) are not the same thing. Learn what each role requires, what bonds and insurance you need, and which path makes sense for your business.",
+      "A Texas notary public and a notary signing agent (NSA) are not the same thing. Learn what each role requires, what bonds and insurance you need, and which.",
     canonical: `${BASE_URL}/blog/texas-notary-vs-notary-signing-agent`,
     ogType: "article",
     structuredData: [
@@ -1647,7 +1837,7 @@ const PAGE_META: Record<string, PageMeta> = {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: "Texas Notary vs. Notary Signing Agent: What's the Difference?",
-        description: "A Texas notary public and a notary signing agent (NSA) are two distinct roles with different training, income potential, and insurance requirements. Here's how they compare.",
+        description: "A Texas notary public and a notary signing agent (NSA) are two distinct roles with different training, income potential, and insurance requirements.",
         datePublished: "2026-03-25",
         dateModified: "2026-03-25",
         inLanguage: "en-US",
@@ -1698,9 +1888,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/tdlr-bond-texas": {
-    title: "TDLR Contractor Bond Texas | Electrician, HVAC & License Bonds | Quantum Surety",
+    title: "TDLR Contractor Bond Texas | Quantum Surety",
     description:
-      "Get your Texas TDLR contractor bond same-day. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr. Instant PDF delivery.",
+      "Get your Texas TDLR contractor bond same-day. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr.",
     canonical: `${BASE_URL}/bonds/tdlr-bond-texas`,
     structuredData: [
       {
@@ -1751,9 +1941,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/electrical-contractor-bond-texas": {
-    title: "Electrical Contractor Bond Texas | City & TDLR License Bond | Quantum Surety",
+    title: "Electrical Contractor Bond Texas | TDLR | Quantum Surety",
     description:
-      "Get your Texas electrical contractor bond same-day. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr. Instant PDF.",
+      "Get your Texas electrical contractor bond same-day. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/electrical-contractor-bond-texas`,
     structuredData: [
       {
@@ -1804,9 +1994,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/hvac-bond-texas": {
-    title: "HVAC Contractor Bond Texas | AC License Bond | TACLA | Quantum Surety",
+    title: "HVAC Contractor Bond Texas | TDLR TACLA | Quantum Surety",
     description:
-      "Get your Texas HVAC contractor bond same-day. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF delivery.",
+      "Get your Texas HVAC contractor bond same-day. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/hvac-bond-texas`,
     structuredData: [
       {
@@ -1856,7 +2046,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/plumbing-contractor-bond-texas": {
-    title: "Plumbing Contractor Bond Texas | TSBPE License Bond | Quantum Surety",
+    title: "Plumbing Contractor Bond Texas | TSBPE | Quantum Surety",
     description:
       "Get your Texas plumbing contractor bond same-day. Required by TSBPE for Master Plumber licenses and Texas city permits. $10,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/plumbing-contractor-bond-texas`,
@@ -1907,7 +2097,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/auto-dealer-bond-texas": {
-    title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
+    title: "Texas Auto Dealer Bond | Motor Vehicle | Quantum Surety",
     description:
       "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/auto-dealer-bond-texas`,
@@ -1959,9 +2149,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-texas": {
-    title: "Texas GDN Bond | $50,000 Dealer Bond from $100/yr | Same-Day Certificate | Quantum Surety",
+    title: "Texas GDN Bond | $50,000 from $100/yr | Quantum Surety",
     description:
-      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF certificate emailed to you.",
+      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-texas`,
     ogType: "website",
     structuredData: [
@@ -1980,7 +2170,7 @@ const PAGE_META: Record<string, PageMeta> = {
         },
         areaServed: { "@type": "State", name: "Texas" },
         description:
-          "Texas GDN (General Distinguishing Number) bond — $50,000 surety bond required by TxDMV under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. Same-day certificate.",
+          "Texas GDN (General Distinguishing Number) bond — $50,000 surety bond required by TxDMV under Texas Occupations Code §503.033 for all motor vehicle dealer.",
         offers: {
           "@type": "Offer",
           priceCurrency: "USD",
@@ -2074,9 +2264,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-dallas": {
-    title: "Contractor Bond Dallas TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Dallas TX | Quantum Surety",
     description:
-      "Get your Dallas contractor bond same-day. Required by the City of Dallas for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Dallas contractor bond same-day. Required by the City of Dallas for general, electrical, HVAC, plumbing, and roofing contractor licenses. From.",
     canonical: `${BASE_URL}/bonds/contractor-bond-dallas`,
     structuredData: [
       {
@@ -2126,9 +2316,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-houston": {
-    title: "Contractor Bond Houston TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Houston TX | Quantum Surety",
     description:
-      "Get your Houston contractor bond same-day. Required by the City of Houston for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Houston contractor bond same-day. Required by the City of Houston for general, electrical, HVAC, plumbing, and roofing contractor licenses. From.",
     canonical: `${BASE_URL}/bonds/contractor-bond-houston`,
     structuredData: [
       {
@@ -2178,9 +2368,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-austin": {
-    title: "Contractor Bond Austin TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Austin TX | Quantum Surety",
     description:
-      "Get your Austin contractor bond same-day. Required by the City of Austin for general, electrical, HVAC, plumbing, and irrigation contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Austin contractor bond same-day. Required by the City of Austin for general, electrical, HVAC, plumbing, and irrigation contractor licenses. From.",
     canonical: `${BASE_URL}/bonds/contractor-bond-austin`,
     structuredData: [
       {
@@ -2230,9 +2420,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-san-antonio": {
-    title: "Contractor Bond San Antonio TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond San Antonio TX | Quantum Surety",
     description:
-      "Get your San Antonio contractor bond same-day. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+      "Get your San Antonio contractor bond same-day. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor.",
     canonical: `${BASE_URL}/bonds/contractor-bond-san-antonio`,
     structuredData: [
       {
@@ -2282,9 +2472,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-fort-worth": {
-    title: "Contractor Bond Fort Worth TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Fort Worth TX | Quantum Surety",
     description:
-      "Get your Fort Worth contractor bond same-day. Required by the City of Fort Worth for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Fort Worth contractor bond same-day. Required by the City of Fort Worth for general, electrical, HVAC, plumbing, and mechanical contractor.",
     canonical: `${BASE_URL}/bonds/contractor-bond-fort-worth`,
     structuredData: [
       {
@@ -2334,9 +2524,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-eo-insurance": {
-    title: "Notary E&O Insurance Texas | Errors & Omissions vs. Bond | Quantum Surety",
+    title: "Notary E&O Insurance Texas | vs. Bond | Quantum Surety",
     description:
-      "Understand the difference between a Texas notary bond and E&O insurance. Learn what E&O insurance covers, whether it's required, and how to protect yourself as a Texas notary public.",
+      "Understand the difference between a Texas notary bond and E&O insurance. Learn what E&O insurance covers, whether it's required, and how to protect.",
     canonical: `${BASE_URL}/bonds/notary-eo-insurance`,
     content: `
       <main>
@@ -2355,9 +2545,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-tdlr-contractor-bond-2026": {
-    title: "Texas TDLR Contractor Bond 2026 — What Every Licensed Trade Needs to Know | Quantum Surety",
+    title: "Texas TDLR Contractor Bond 2026 | Quantum Surety",
     description:
-      "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming. Updated for 2026.",
+      "Complete guide to Texas TDLR contractor bonds in 2026. Which trades require a bond, how much it costs, how to file, and what changes are coming. Updated.",
     canonical: `${BASE_URL}/blog/texas-tdlr-contractor-bond-2026`,
     ogType: "article",
     structuredData: [
@@ -2405,9 +2595,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-contractor-license-bond-cost": {
-    title: "How Much Does a Texas Contractor License Bond Cost? (2026 Guide) | Quantum Surety",
+    title: "Texas Contractor Bond Cost 2026 | Quantum Surety",
     description:
-      "Find out exactly what a Texas contractor license bond costs in 2026. Rates by trade, credit score, and bond amount. TDLR, city bonds, and electrician/HVAC/plumbing explained.",
+      "Find out exactly what a Texas contractor license bond costs in 2026. Rates by trade, credit score, and bond amount. TDLR, city bonds, and.",
     canonical: `${BASE_URL}/blog/texas-contractor-license-bond-cost`,
     ogType: "article",
     structuredData: [
@@ -2455,9 +2645,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-electrical-contractor-bond-requirements": {
-    title: "Texas Electrical Contractor Bond Requirements 2026 | TDLR & City License | Quantum Surety",
+    title: "Texas Electrical Contractor Bond 2026 | Quantum Surety",
     description:
-      "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to file. Updated guide.",
+      "Everything Texas electricians need to know about surety bond requirements in 2026. TDLR bond, city bonds (Dallas, Houston, Austin), costs, and how to.",
     canonical: `${BASE_URL}/blog/texas-electrical-contractor-bond-requirements`,
     ogType: "article",
     structuredData: [
@@ -2507,9 +2697,9 @@ const PAGE_META: Record<string, PageMeta> = {
   // ── New city pages ────────────────────────────────────────────────────────
 
   "/bonds/contractor-bond-plano": {
-    title: "Contractor Bond Plano TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Plano TX | Quantum Surety",
     description:
-      "Get your Plano contractor bond same-day. Required by the City of Plano for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Plano contractor bond same-day. Required by the City of Plano for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From.",
     canonical: `${BASE_URL}/bonds/contractor-bond-plano`,
     structuredData: [
       {
@@ -2569,9 +2759,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-arlington": {
-    title: "Contractor Bond Arlington TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond Arlington TX | Quantum Surety",
     description:
-      "Get your Arlington contractor bond same-day. Required by the City of Arlington for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+      "Get your Arlington contractor bond same-day. Required by the City of Arlington for general, electrical, HVAC, plumbing, and mechanical contractor.",
     canonical: `${BASE_URL}/bonds/contractor-bond-arlington`,
     structuredData: [
       {
@@ -2631,9 +2821,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-mckinney": {
-    title: "Contractor Bond McKinney TX | City License Bond | Quantum Surety",
+    title: "Contractor Bond McKinney TX | Quantum Surety",
     description:
-      "Get your McKinney contractor bond same-day. Required by the City of McKinney for general, electrical, HVAC, plumbing, and mechanical contractor licenses. From $100/yr. Instant PDF.",
+      "Get your McKinney contractor bond same-day. Required by the City of McKinney for general, electrical, HVAC, plumbing, and mechanical contractor licenses.",
     canonical: `${BASE_URL}/bonds/contractor-bond-mckinney`,
     structuredData: [
       {
@@ -2695,9 +2885,9 @@ const PAGE_META: Record<string, PageMeta> = {
   // ── New trade/specialty pages ─────────────────────────────────────────────
 
   "/bonds/home-inspector-bond-texas": {
-    title: "Texas Home Inspector Bond | TREC Inspector Surety Bond | Quantum Surety",
+    title: "Texas Home Inspector Bond | TREC | Quantum Surety",
     description:
-      "Get your Texas home inspector bond same-day. Required by TREC for all licensed professional, real estate, and apprentice inspectors. $10,000 bond from $100/yr. Instant PDF.",
+      "Get your Texas home inspector bond same-day. Required by TREC for all licensed professional, real estate, and apprentice inspectors. $10,000 bond from.",
     canonical: `${BASE_URL}/bonds/home-inspector-bond-texas`,
     structuredData: [
       {
@@ -2754,9 +2944,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/locksmith-bond-texas": {
-    title: "Texas Locksmith Bond | DPS Locksmith Surety Bond | Quantum Surety",
+    title: "Texas Locksmith Bond | DPS Required | Quantum Surety",
     description:
-      "Get your Texas locksmith bond same-day. Required by Texas DPS for all licensed locksmith companies and employees. $10,000 bond from $100/yr. Instant PDF delivery.",
+      "Get your Texas locksmith bond same-day. Required by Texas DPS for all licensed locksmith companies and employees. $10,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/locksmith-bond-texas`,
     structuredData: [
       {
@@ -2804,9 +2994,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/pest-control-bond-texas": {
-    title: "Texas Pest Control Bond | TDA Structural Pest Control Surety Bond | Quantum Surety",
+    title: "Texas Pest Control Bond | TDA Required | Quantum Surety",
     description:
-      "Get your Texas pest control bond same-day. Required by the Texas Department of Agriculture (TDA/SPCS) for all licensed pest control businesses and applicators. From $100/yr. Instant PDF.",
+      "Get your Texas pest control bond same-day. Required by the Texas Department of Agriculture (TDA/SPCS) for all licensed pest control businesses and.",
     canonical: `${BASE_URL}/bonds/pest-control-bond-texas`,
     structuredData: [
       {
@@ -2856,9 +3046,9 @@ const PAGE_META: Record<string, PageMeta> = {
   // ── Comparison / educational pages ───────────────────────────────────────
 
   "/bonds/bid-bond-vs-performance-bond": {
-    title: "Bid Bond vs Performance Bond | Texas Construction Bond Guide | Quantum Surety",
+    title: "Bid Bond vs Performance Bond | Texas Guide | Quantum Surety",
     description:
-      "Bid bond vs performance bond — what's the difference? Texas contractors: learn when each bond is required, what they cost, and how to get both for public and private projects.",
+      "Bid bond vs performance bond — what's the difference? Texas contractors: learn when each bond is required, what they cost, and how to get both for public.",
     canonical: `${BASE_URL}/bonds/bid-bond-vs-performance-bond`,
     structuredData: [
       {
@@ -2916,9 +3106,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/surety-bond-vs-insurance": {
-    title: "Surety Bond vs Insurance | What's the Difference? | Quantum Surety",
+    title: "Surety Bond vs Insurance | Quantum Surety",
     description:
-      "Surety bond vs insurance — what's the difference and do you need both? Texas contractors and license holders: understand how bonds and insurance work together to protect your business.",
+      "Surety bond vs insurance — what's the difference and do you need both? Texas contractors and license holders: understand how bonds and insurance work.",
     canonical: `${BASE_URL}/bonds/surety-bond-vs-insurance`,
     structuredData: [
       {
@@ -2977,8 +3167,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-dallas": {
-    title: "GDN Bond Dallas TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Dallas TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-dallas`,
     structuredData: [
       {
@@ -3013,8 +3203,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-houston": {
-    title: "GDN Bond Houston TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    title: "GDN Bond Houston TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-houston`,
     structuredData: [
       {
@@ -3049,8 +3239,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-austin": {
-    title: "GDN Bond Austin TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    title: "GDN Bond Austin TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-austin`,
     structuredData: [
       {
@@ -3085,8 +3275,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-san-antonio": {
-    title: "GDN Bond San Antonio TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all San Antonio-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    title: "GDN Bond San Antonio TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all San Antonio-area motor vehicle dealer licenses. $50,000 bond from.",
     canonical: `${BASE_URL}/bonds/gdn-bond-san-antonio`,
     structuredData: [
       {
@@ -3121,9 +3311,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/mbe-contractor-bond-texas": {
-    title: "Surety Bonds for MBE Contractors Texas | HUB & DBE Certified | Quantum Surety",
+    title: "MBE Contractor Bonds Texas | HUB & DBE | Quantum Surety",
     description:
-      "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee Program available. Same-day certificates.",
+      "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee.",
     canonical: `${BASE_URL}/bonds/mbe-contractor-bond-texas`,
     structuredData: [
       {
@@ -3176,8 +3366,8 @@ const PAGE_META: Record<string, PageMeta> = {
 
 
   "/bonds/notary-bond-dallas": {
-    title: "Notary Bond Dallas TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Dallas instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Notary Bond Dallas TX | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Dallas instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/notary-bond-dallas`,
     structuredData: [
       {
@@ -3220,8 +3410,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-houston": {
-    title: "Notary Bond Houston TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Houston instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Notary Bond Houston TX | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Houston instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/notary-bond-houston`,
     structuredData: [
       {
@@ -3264,8 +3454,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-san-antonio": {
-    title: "Notary Bond San Antonio TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
-    description: "Get your Texas notary bond in San Antonio instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Notary Bond San Antonio TX | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in San Antonio instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/notary-bond-san-antonio`,
     structuredData: [
       {
@@ -3306,8 +3496,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-austin": {
-    title: "Notary Bond Austin TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Austin instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Notary Bond Austin TX | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Austin instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/notary-bond-austin`,
     structuredData: [
       {
@@ -3348,8 +3538,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-fort-worth": {
-    title: "Notary Bond Fort Worth TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Fort Worth instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Notary Bond Fort Worth TX | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Fort Worth instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/notary-bond-fort-worth`,
     structuredData: [
       {
@@ -3390,8 +3580,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-fort-worth": {
-    title: "GDN Bond Fort Worth TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Fort Worth same-day. Required under §503.033 for all Tarrant County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    title: "GDN Bond Fort Worth TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Fort Worth same-day. Required under §503.033 for all Tarrant County motor vehicle dealer licenses. $50,000 bond from.",
     canonical: `${BASE_URL}/bonds/gdn-bond-fort-worth`,
     structuredData: [
       {
@@ -3432,8 +3622,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-plano": {
-    title: "GDN Bond Plano TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    title: "GDN Bond Plano TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-plano`,
     structuredData: [
       {
@@ -3474,8 +3664,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-arlington": {
-    title: "GDN Bond Arlington TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Arlington TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-arlington`,
     structuredData: [
       {
@@ -3516,7 +3706,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-el-paso": {
-    title: "GDN Bond El Paso TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
+    title: "GDN Bond El Paso TX | $50,000 TxDMV | Quantum Surety",
     description: "Get your Texas GDN dealer bond in El Paso same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/gdn-bond-el-paso`,
     structuredData: [
@@ -3559,8 +3749,8 @@ const PAGE_META: Record<string, PageMeta> = {
 
 
   "/bonds/auctioneer-bond-texas": {
-    title: "Texas Auctioneer Bond | $10,000 TDLR Bond | Instant Online | Quantum Surety",
-    description: "Get your Texas auctioneer license bond instantly — $10,000 coverage required by TDLR under §1802.254. From $100/yr. Instant PDF certificate. TDI-licensed agency #3480229.",
+    title: "Texas Auctioneer Bond | $10,000 TDLR | Quantum Surety",
+    description: "Get your Texas auctioneer license bond instantly — $10,000 coverage required by TDLR under §1802.254. From $100/yr. Instant PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/bonds/auctioneer-bond-texas`,
     structuredData: [
       {
@@ -3611,7 +3801,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/mortgage-broker-bond-texas": {
-    title: "Texas Mortgage Company Bond | TDSML Required | $500/yr | Quantum Surety",
+    title: "Texas Mortgage Broker Bond | TDSML | Quantum Surety",
     description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Instant approval, same-day certificate.",
     canonical: `${BASE_URL}/bonds/mortgage-broker-bond-texas`,
     structuredData: [
@@ -3658,8 +3848,8 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/property-tax-consultant-bond-texas": {
-    title: "Texas Property Tax Consultant Bond | $50/yr | TDLR Required | Quantum Surety",
-    description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year license term.",
+    title: "Texas Property Tax Consultant Bond | TDLR | Quantum Surety",
+    description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year.",
     canonical: `${BASE_URL}/bonds/property-tax-consultant-bond-texas`,
     structuredData: [
       {
@@ -3705,7 +3895,7 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/collection-agency-bond-texas": {
-    title: "Texas Collection Agency Bond | $100/yr | OCCC Required | Quantum Surety",
+    title: "Texas Collection Agency Bond | OCCC | Quantum Surety",
     description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Instant online approval, same-day certificate. File with OCCC through NMLS.",
     canonical: `${BASE_URL}/bonds/collection-agency-bond-texas`,
     structuredData: [
@@ -3752,8 +3942,8 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/credit-access-business-bond-texas": {
-    title: "Texas Credit Access Business (CAB) Bond | OCCC Required | Quantum Surety",
-    description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval, same-day certificate.",
+    title: "Texas CAB Bond | OCCC Required | Quantum Surety",
+    description: "Get your OCCC-required Texas credit access business (CAB) surety bond for payday and title loan companies. $25,000 per-location bond, instant approval.",
     canonical: `${BASE_URL}/bonds/credit-access-business-bond-texas`,
     structuredData: [
       {
@@ -3799,8 +3989,8 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/notary-bond-el-paso": {
-    title: "El Paso Notary Bond | $50 Texas Notary Bond | Quantum Surety",
-    description: "Get your Texas notary bond in El Paso for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving El Paso County notaries.",
+    title: "El Paso Notary Bond | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in El Paso for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving El Paso County.",
     canonical: `${BASE_URL}/bonds/notary-bond-el-paso`,
     structuredData: [
       {
@@ -3846,8 +4036,8 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/notary-bond-arlington": {
-    title: "Arlington Notary Bond | $50 Texas Notary Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Arlington for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Tarrant County notaries.",
+    title: "Arlington Notary Bond | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Arlington for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Tarrant.",
     canonical: `${BASE_URL}/bonds/notary-bond-arlington`,
     structuredData: [
       {
@@ -3893,7 +4083,7 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/notary-bond-plano": {
-    title: "Plano Notary Bond | $50 Texas Notary Bond | Quantum Surety",
+    title: "Plano Notary Bond | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Plano for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Collin County notaries.",
     canonical: `${BASE_URL}/bonds/notary-bond-plano`,
     structuredData: [
@@ -3940,8 +4130,8 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
   "/bonds/notary-bond-corpus-christi": {
-    title: "Corpus Christi Notary Bond | $50 Texas Notary Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Corpus Christi for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Nueces County notaries.",
+    title: "Corpus Christi Notary Bond | $50 | Quantum Surety",
+    description: "Get your Texas notary bond in Corpus Christi for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Nueces.",
     canonical: `${BASE_URL}/bonds/notary-bond-corpus-christi`,
     structuredData: [
       {
@@ -3988,7 +4178,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/notary-bond-lubbock": {
     title: "Lubbock Notary Bond | $50 Texas Notary Bond | Quantum Surety",
-    description: "Get your Texas notary bond in Lubbock for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Lubbock County notaries.",
+    description: "Get your Texas notary bond in Lubbock for $50. SB693 compliant $10,000 4-year bond. Instant online purchase, same-day certificate. Serving Lubbock County.",
     canonical: `${BASE_URL}/bonds/notary-bond-lubbock`,
     structuredData: [
       {
@@ -4035,7 +4225,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/manufactured-home-dealer-bond-texas": {
-    title: "Texas Manufactured Home Dealer Bond | TDHCA License Bond | Quantum Surety",
+    title: "Texas Manufactured Home Dealer Bond | TDHCA | Quantum Surety",
     description: "Texas manufactured home dealer surety bond required by TDHCA under Occupations Code Ch. 1201. $10,000–$100,000 based on volume. From $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/manufactured-home-dealer-bond-texas`,
     structuredData: [
@@ -4089,8 +4279,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/money-services-bond-texas": {
-    title: "Texas Money Services Bond | $300K MSB Bond | Finance Code Ch. 151 | Quantum Surety",
-    description: "Texas money services business (MSB) surety bond required by the Texas Department of Banking under Finance Code Ch. 151. $300,000 minimum bond. Custom quotes available.",
+    title: "Texas Money Services Bond | $300K MSB | Quantum Surety",
+    description: "Texas money services business (MSB) surety bond required by the Texas Department of Banking under Finance Code Ch. 151. $300,000 minimum bond. Custom.",
     canonical: `${BASE_URL}/bonds/money-services-bond-texas`,
     structuredData: [
       {
@@ -4145,8 +4335,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/process-server-bond-texas": {
-    title: "Texas Process Server Bond | $1,000 OCA Bond | Instant Online | Quantum Surety",
-    description: "Texas process server surety bond required by the Judicial Branch Certification Commission. $1,000 bond, from $50/yr. Instant PDF. OCA-certified process server requirement.",
+    title: "Texas Process Server Bond | $1,000 OCA | Quantum Surety",
+    description: "Texas process server surety bond required by the Judicial Branch Certification Commission. $1,000 bond, from $50/yr. Instant PDF. OCA-certified process.",
     canonical: `${BASE_URL}/bonds/process-server-bond-texas`,
     structuredData: [
       {
@@ -4193,8 +4383,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/freight-broker-bond-texas": {
-    title: "Texas Freight Broker Bond | $75,000 BMC-84 | Instant FMCSA Filing | Quantum Surety",
-    description: "Get your FMCSA-required $75,000 BMC-84 freight broker surety bond for Texas-based brokers. Instant approval, same-day FMCSA filing. TDI-licensed agency #3480229.",
+    title: "Texas Freight Broker Bond | $75,000 BMC-84 | Quantum Surety",
+    description: "Get your FMCSA-required $75,000 BMC-84 freight broker surety bond for Texas-based brokers. Instant approval, same-day FMCSA filing. TDI-licensed agency.",
     canonical: `${BASE_URL}/bonds/freight-broker-bond-texas`,
     structuredData: [
       {
@@ -4240,7 +4430,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/general-contractor-bond-texas": {
-    title: "Texas General Contractor Bond | License Bond | Quantum Surety",
+    title: "Texas General Contractor Bond | Quantum Surety",
     description: "Get your Texas general contractor license bond same-day. City licensing requirements across major Texas metros. Bonds from $75/yr. Instant PDF certificate.",
     canonical: `${BASE_URL}/bonds/general-contractor-bond-texas`,
     structuredData: [
@@ -4289,7 +4479,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/roofing-contractor-bond-texas": {
-    title: "Texas Roofing Contractor Bond | License Bond | Quantum Surety",
+    title: "Texas Roofing Contractor Bond | Quantum Surety",
     description: "Get your Texas roofing contractor license bond same-day. City and county licensing requirements statewide. Bonds from $75/yr. Instant PDF certificate.",
     canonical: `${BASE_URL}/bonds/roofing-contractor-bond-texas`,
     structuredData: [
@@ -4333,7 +4523,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/payment-bond-texas": {
-    title: "Texas Payment Bond | Construction Payment Bond | Quantum Surety",
+    title: "Texas Payment Bond | Construction | Quantum Surety",
     description: "Texas payment bonds for construction contractors. Required on public projects over $25,000 (Tex. Gov't Code §2253). Same-day approval for qualified contractors.",
     canonical: `${BASE_URL}/bonds/payment-bond-texas`,
     structuredData: [
@@ -4381,7 +4571,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-amarillo": {
-    title: "Amarillo Contractor Bond | Texas License Bond | Quantum Surety",
+    title: "Amarillo Contractor Bond | Quantum Surety",
     description: "Get your Amarillo contractor license bond same-day. City of Amarillo licensing requirement. Potter County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-amarillo`,
     structuredData: [
@@ -4429,8 +4619,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-corpus-christi": {
-    title: "Corpus Christi Contractor Bond | Texas License Bond | Quantum Surety",
-    description: "Get your Corpus Christi contractor license bond same-day. City of Corpus Christi licensing requirement. Nueces County area contractors. Bonds from $75/yr. Instant PDF.",
+    title: "Corpus Christi Contractor Bond | Quantum Surety",
+    description: "Get your Corpus Christi contractor license bond same-day. City of Corpus Christi licensing requirement. Nueces County area contractors. Bonds from $75/yr.",
     canonical: `${BASE_URL}/bonds/contractor-bond-corpus-christi`,
     structuredData: [
       {
@@ -4525,7 +4715,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-el-paso": {
-    title: "El Paso Contractor Bond | Texas License Bond | Quantum Surety",
+    title: "El Paso Contractor Bond | Quantum Surety",
     description: "Get your El Paso contractor license bond same-day. City of El Paso licensing requirement. El Paso County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-el-paso`,
     structuredData: [
@@ -4621,7 +4811,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-garland": {
-    title: "Garland Contractor Bond | Texas License Bond | Quantum Surety",
+    title: "Garland Contractor Bond | Quantum Surety",
     description: "Get your Garland contractor license bond same-day. City of Garland licensing requirement. Dallas County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-garland`,
     structuredData: [
@@ -4669,8 +4859,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-grand-prairie": {
-    title: "Grand Prairie Contractor Bond | Texas License Bond | Quantum Surety",
-    description: "Get your Grand Prairie contractor license bond same-day. City of Grand Prairie licensing requirement. Dallas/Tarrant County area contractors. Bonds from $75/yr. Instant PDF.",
+    title: "Grand Prairie Contractor Bond | Quantum Surety",
+    description: "Get your Grand Prairie contractor license bond same-day. City of Grand Prairie licensing requirement. Dallas/Tarrant County area contractors. Bonds from.",
     canonical: `${BASE_URL}/bonds/contractor-bond-grand-prairie`,
     structuredData: [
       {
@@ -4765,7 +4955,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/contractor-bond-lubbock": {
-    title: "Lubbock Contractor Bond | Texas License Bond | Quantum Surety",
+    title: "Lubbock Contractor Bond | Quantum Surety",
     description: "Get your Lubbock contractor license bond same-day. City of Lubbock licensing requirement. Lubbock County area contractors. Bonds from $75/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/contractor-bond-lubbock`,
     structuredData: [
@@ -4861,8 +5051,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/notary-bond-renewal-texas": {
-    title: "Texas Notary Bond Renewal | Renew Online in Minutes | Quantum Surety",
-    description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission expires.",
+    title: "Texas Notary Bond Renewal Online | Quantum Surety",
+    description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission.",
     canonical: `${BASE_URL}/bonds/notary-bond-renewal-texas`,
     structuredData: [
       {
@@ -4897,9 +5087,9 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/get-bond": {
-    title: "Get Your Texas Surety Bond | Same-Day Certificate | Quantum Surety",
+    title: "Get Your Texas Surety Bond | Same-Day | Quantum Surety",
     description:
-      "Apply for your Texas surety bond online in minutes. GDN dealer bonds, notary bonds, and contractor license bonds — same-day PDF certificate. TDI-licensed agency (license #3480229).",
+      "Apply for your Texas surety bond online in minutes. GDN dealer bonds, notary bonds, and contractor license bonds — same-day PDF certificate. TDI-licensed.",
     canonical: `${BASE_URL}/get-bond`,
     ogType: "website",
     structuredData: {
@@ -4935,8 +5125,8 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
   "/bonds/construction-bond-texas": {
-    title: "Texas Construction Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
-    description: "Get Texas construction bonds fast — bid bonds, performance bonds, and payment bonds. Required under Texas Little Miller Act § 2253 for public contracts over $25,000. TDI-licensed, A-rated carriers, same-day approvals.",
+    title: "Texas Construction Bonds | TX Contractors | Quantum Surety",
+    description: "Get Texas construction bonds fast — bid bonds, performance bonds, and payment bonds. Required under Texas Little Miller Act § 2253 for public contracts.",
     canonical: `${BASE_URL}/bonds/construction-bond-texas`,
     structuredData: [
       {
@@ -4967,9 +5157,366 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `<main><h1>Texas Construction Bonds</h1><p>Bid bonds, performance bonds, and payment bonds for Texas public and private construction projects. Required under Texas Little Miller Act § 2253 for contracts over $25,000. TDI-licensed agency #3480229.</p><a href="/quote">Get a Construction Bond Quote</a></main>`,
   },
+
+  "/title-bond-calculator": {
+    title: "Texas Title Bond Calculator | Instant Bond Amount & Price",
+    description: "Enter your VIN to instantly calculate your Texas bonded title bond amount and price. 1.5x vehicle value. Same-day certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/title-bond-calculator`,
+    content: `<main>
+      <h1>Texas Title Bond Calculator</h1>
+      <p>Instantly calculate the bond amount and price for a Texas Certificate of Title (bonded title) bond. Enter your VIN, confirm your vehicle value, and get your bond same-day. Required by TxDMV when you have a vehicle without a clear title.</p>
+      <section>
+        <h2>How the Calculator Works</h2>
+        <ol>
+          <li>Enter your 17-character VIN to decode your vehicle automatically</li>
+          <li>Enter the vehicle appraised value -- the bond amount will be 1.5x this value</li>
+          <li>See your instant price estimate and request your bond</li>
+        </ol>
+      </section>
+      <section>
+        <h2>Texas Bonded Title Bond Pricing</h2>
+        <ul>
+          <li>Vehicle value $5,000 -- Bond $7,500 -- Premium ~$50</li>
+          <li>Vehicle value $10,000 -- Bond $15,000 -- Premium ~$75</li>
+          <li>Vehicle value $15,000 -- Bond $22,500 -- Premium ~$100</li>
+          <li>Vehicle value $25,000 -- Bond $37,500 -- Premium ~$150</li>
+          <li>Vehicle value $50,000 -- Bond $75,000 -- Premium ~$250</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Who Needs a Texas Bonded Title Bond?</h2>
+        <ul>
+          <li>Copart and IAA auction buyers who received a bill of sale but no title</li>
+          <li>Private vehicle buyers where the seller lost or never had the title</li>
+          <li>Estate administrators handling inherited vehicles with missing titles</li>
+          <li>Anyone who purchased a vehicle from a dealer that went out of business</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Learn More About Texas Bonded Title Bonds</a>
+    </main>`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Texas Title Bond Calculator",
+      "applicationCategory": "FinanceApplication",
+      "provider": { "@type": "InsuranceAgency", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+      "description": "Free calculator to determine your Texas bonded title bond amount and premium. Enter VIN and vehicle value for an instant quote.",
+      "url": `${BASE_URL}/title-bond-calculator`,
+    },
+  },
+
+  "/texas-title-rescue": {
+    title: "Texas Title Rescue | Bonded Title Eligibility Wizard",
+    description: "Find out if you qualify for a Texas bonded title bond in 2 minutes. Free eligibility check, document checklist, and instant quote. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/texas-title-rescue`,
+    content: `<main>
+      <h1>Texas Title Rescue Engine</h1>
+      <p>Answer 4 quick questions to find out if you qualify for a Texas certificate of title bond (bonded title bond), get a personalized document checklist, and receive an instant bond quote. TDI-licensed agency serving all 254 Texas counties.</p>
+      <section><h2>Common Situations That Qualify</h2><ul>
+        <li>Bought vehicle from private seller who never provided the title</li>
+        <li>Won vehicle at Copart, IAA, or estate auction without clean title</li>
+        <li>Inherited vehicle with no title documentation</li>
+        <li>Bought from dealer that went out of business before titling</li>
+        <li>Had title application rejected at county tax office</li>
+      </ul></section>
+      <a href="/bonds/bonded-title-texas">Learn About Texas Certificate of Title Bonds</a>
+      <a href="/title-bond-calculator">Texas Title Bond Calculator</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-harris-county": {
+    title: "Harris County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Harris County. File at 1001 Preston St, Houston, TX 77002. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-harris-county`,
+    content: `<main>
+      <h1>Harris County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Harris County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Harris County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Ann Harris Bennett</p>
+        <p>Address: 1001 Preston St, Houston, TX 77002</p>
+        <p>Phone: (713) 274-8000</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Harris County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Houston from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Houston-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Harris County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Harris County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-dallas-county": {
+    title: "Dallas County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Dallas County. File at 500 Elm St, Dallas, TX 75202. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-dallas-county`,
+    content: `<main>
+      <h1>Dallas County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Dallas County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Dallas County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: John R. Ames</p>
+        <p>Address: 500 Elm St, Dallas, TX 75202</p>
+        <p>Phone: (214) 653-7811</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Dallas County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Dallas from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Dallas-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Dallas County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Dallas County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-bexar-county": {
+    title: "Bexar County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Bexar County. File at 233 N Pecos La Trinidad, San Antonio, TX 78207. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-bexar-county`,
+    content: `<main>
+      <h1>Bexar County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Bexar County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Bexar County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Albert Uresti</p>
+        <p>Address: 233 N Pecos La Trinidad, San Antonio, TX 78207</p>
+        <p>Phone: (210) 335-2251</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Bexar County?</h2>
+        <ul>
+          <li>Purchased a vehicle in San Antonio from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a San Antonio-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Bexar County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Bexar County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-tarrant-county": {
+    title: "Tarrant County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Tarrant County. File at 100 E Weatherford St, Fort Worth, TX 76196. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-tarrant-county`,
+    content: `<main>
+      <h1>Tarrant County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Tarrant County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Tarrant County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Rick Barnes</p>
+        <p>Address: 100 E Weatherford St, Fort Worth, TX 76196</p>
+        <p>Phone: (817) 884-1100</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Tarrant County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Fort Worth from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Fort Worth-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Tarrant County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Tarrant County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-travis-county": {
+    title: "Travis County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Travis County. File at 5501 Airport Blvd, Austin, TX 78751. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-travis-county`,
+    content: `<main>
+      <h1>Travis County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Travis County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Travis County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Bruce Elfant</p>
+        <p>Address: 5501 Airport Blvd, Austin, TX 78751</p>
+        <p>Phone: (512) 854-9473</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Travis County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Austin from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Austin-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Travis County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Travis County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-el-paso-county": {
+    title: "El Paso County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in El Paso County. File at 301 Manny Martinez Dr, El Paso, TX 79905. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-el-paso-county`,
+    content: `<main>
+      <h1>El Paso County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in El Paso County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at El Paso County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Ruben P. Gonzalez</p>
+        <p>Address: 301 Manny Martinez Dr, El Paso, TX 79905</p>
+        <p>Phone: (915) 546-2140</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in El Paso County?</h2>
+        <ul>
+          <li>Purchased a vehicle in El Paso from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a El Paso-area auction without a clean title</li>
+          <li>Inherited a vehicle from a El Paso County estate with no title</li>
+          <li>Had a vehicle title application rejected at the El Paso County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-collin-county": {
+    title: "Collin County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Collin County. File at 2300 Bloomdale Rd, McKinney, TX 75071. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-collin-county`,
+    content: `<main>
+      <h1>Collin County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Collin County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Collin County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Kenneth Maun</p>
+        <p>Address: 2300 Bloomdale Rd, McKinney, TX 75071</p>
+        <p>Phone: (972) 547-5020</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Collin County?</h2>
+        <ul>
+          <li>Purchased a vehicle in McKinney from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a McKinney-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Collin County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Collin County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-denton-county": {
+    title: "Denton County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Denton County. File at 1505 E McKinney St, Denton, TX 76209. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-denton-county`,
+    content: `<main>
+      <h1>Denton County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Denton County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Denton County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Michelle French</p>
+        <p>Address: 1505 E McKinney St, Denton, TX 76209</p>
+        <p>Phone: (940) 349-3500</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Denton County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Denton from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Denton-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Denton County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Denton County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-fort-bend-county": {
+    title: "Fort Bend County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Fort Bend County. File at 1317 Eugene Heimann Cir, Richmond, TX 77469. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-fort-bend-county`,
+    content: `<main>
+      <h1>Fort Bend County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Fort Bend County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Fort Bend County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Carmen Turner</p>
+        <p>Address: 1317 Eugene Heimann Cir, Richmond, TX 77469</p>
+        <p>Phone: (281) 341-3710</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Fort Bend County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Richmond from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Richmond-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Fort Bend County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Fort Bend County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
+  "/bonds/bonded-title-nueces-county": {
+    title: "Nueces County Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond in Nueces County. File at 901 Leopard St, Corpus Christi, TX 78401. Same-day bond issuance. TDI-licensed #3480229.",
+    canonical: `${BASE_URL}/bonds/bonded-title-nueces-county`,
+    content: `<main>
+      <h1>Nueces County Certificate of Title Bond</h1>
+      <p>Get a Texas certificate of title bond in Nueces County, TX. Required by TxDMV when you have a vehicle without a clear title. Bond equals 1.5 times the appraised vehicle value. Same-day issuance. TDI-licensed agency #3480229.</p>
+      <section>
+        <h2>File at Nueces County Tax Assessor-Collector</h2>
+        <p>Tax Assessor-Collector: Kevin Kieschnick</p>
+        <p>Address: 901 Leopard St, Corpus Christi, TX 78401</p>
+        <p>Phone: (361) 888-0307</p>
+        <p>Hours: Monday-Friday 8:00 AM to 4:30 PM</p>
+      </section>
+      <section>
+        <h2>Who Needs a Certificate of Title Bond in Nueces County?</h2>
+        <ul>
+          <li>Purchased a vehicle in Corpus Christi from a private seller who lost or never had the title</li>
+          <li>Won a vehicle at a Corpus Christi-area auction without a clean title</li>
+          <li>Inherited a vehicle from a Nueces County estate with no title</li>
+          <li>Had a vehicle title application rejected at the Nueces County tax office</li>
+          <li>Bought from a dealer that went out of business before completing title transfer</li>
+        </ul>
+      </section>
+      <a href="/bonds/bonded-title-texas">Texas Bonded Title Bond Guide</a>
+      <a href="/texas-title-rescue">Texas Title Rescue Eligibility Wizard</a>
+    </main>`,
+  },
+
   "/bonds/bonded-title-texas": {
-    title: "Texas Bonded Title Bond | Surety Bond for Vehicle Without Title | Quantum Surety",
-    description: "Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond equals 1.5x vehicle value. Fast approval. TDI-licensed agency #3480229. File with TxDMV Form VTR-130-SOF.",
+    title: "Texas Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond when your vehicle title is lost or unavailable. Bond = 1.5x vehicle value. Same-day issuance. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/bonded-title-texas`,
     structuredData: [
       {
@@ -5001,8 +5548,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas Bonded Title Bond</h1><p>Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond amount equals 1.5x the vehicle's appraised value. File with TxDMV using Form VTR-130-SOF. TDI-licensed agency #3480229.</p><a href="/quote">Get a Bonded Title Quote</a></main>`,
   },
   "/bonds/license-permit-bond-texas": {
-    title: "Texas License & Permit Bonds | TDLR, Contractor, Adjuster, Mortgage | Quantum Surety",
-    description: "Texas license and permit bonds for contractors, insurance adjusters, mortgage brokers, mixed beverage dealers, and more. TDLR, TDI, TDHCA, TABC requirements covered. From $50/yr. TDI-licensed #3480229.",
+    title: "Texas License & Permit Bonds | TDLR & More | Quantum Surety",
+    description: "Texas license and permit bonds for contractors, insurance adjusters, mortgage brokers, mixed beverage dealers, and more. TDLR, TDI, TDHCA, TABC.",
     canonical: `${BASE_URL}/bonds/license-permit-bond-texas`,
     structuredData: [
       {
@@ -5034,8 +5581,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas License & Permit Bonds</h1><p>Surety bonds required by TDLR, TDI, TDHCA, TABC, the Texas Comptroller, and local licensing authorities. Covers contractor, adjuster, mortgage, mixed beverage, sales tax, and permit bonds. From $50/yr. TDI-licensed agency #3480229.</p><a href="/quote?type=license">Get My L&P Bond Quote</a></main>`,
   },
   "/bonds/gdn-bond-corpus-christi": {
-    title: "GDN Bond Corpus Christi TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Corpus Christi TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-corpus-christi`,
     structuredData: [
       {
@@ -5067,8 +5614,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Corpus Christi, Texas</h1><p>Every licensed motor vehicle dealer in Corpus Christi must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Corpus Christi GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-laredo": {
-    title: "GDN Bond Laredo TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Laredo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Laredo TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Laredo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-laredo`,
     structuredData: [
       {
@@ -5100,8 +5647,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Laredo, Texas</h1><p>Every licensed motor vehicle dealer in Laredo must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Laredo GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-lubbock": {
-    title: "GDN Bond Lubbock TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Lubbock TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-lubbock`,
     structuredData: [
       {
@@ -5133,8 +5680,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Lubbock, Texas</h1><p>Every licensed motor vehicle dealer in Lubbock must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Lubbock GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-mcallen": {
-    title: "GDN Bond McAllen TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in McAllen same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond McAllen TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in McAllen same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-mcallen`,
     structuredData: [
       {
@@ -5166,8 +5713,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — McAllen, Texas</h1><p>Every licensed motor vehicle dealer in McAllen must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My McAllen GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-brownsville": {
-    title: "GDN Bond Brownsville TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Brownsville same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Brownsville TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Brownsville same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-brownsville`,
     structuredData: [
       {
@@ -5199,8 +5746,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Brownsville, Texas</h1><p>Every licensed motor vehicle dealer in Brownsville must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Brownsville GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-frisco": {
-    title: "GDN Bond Frisco TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Frisco same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Frisco TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Frisco same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-frisco`,
     structuredData: [
       {
@@ -5232,8 +5779,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Frisco, Texas</h1><p>Every licensed motor vehicle dealer in Frisco must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Frisco GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-mckinney": {
-    title: "GDN Bond McKinney TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in McKinney same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond McKinney TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in McKinney same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-mckinney`,
     structuredData: [
       {
@@ -5265,8 +5812,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — McKinney, Texas</h1><p>Every licensed motor vehicle dealer in McKinney must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My McKinney GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-irving": {
-    title: "GDN Bond Irving TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Irving same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Irving TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Irving same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-irving`,
     structuredData: [
       {
@@ -5298,8 +5845,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Irving, Texas</h1><p>Every licensed motor vehicle dealer in Irving must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Irving GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-garland": {
-    title: "GDN Bond Garland TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Garland same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Garland TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Garland same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-garland`,
     structuredData: [
       {
@@ -5331,8 +5878,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Garland, Texas</h1><p>Every licensed motor vehicle dealer in Garland must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Garland GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-grand-prairie": {
-    title: "GDN Bond Grand Prairie TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Grand Prairie same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Grand Prairie TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Grand Prairie same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr.",
     canonical: `${BASE_URL}/bonds/gdn-bond-grand-prairie`,
     structuredData: [
       {
@@ -5364,8 +5911,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Grand Prairie, Texas</h1><p>Every licensed motor vehicle dealer in Grand Prairie must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Grand Prairie GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-denton": {
-    title: "GDN Bond Denton TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Denton same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Denton TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Denton same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-denton`,
     structuredData: [
       {
@@ -5397,8 +5944,8 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Denton, Texas</h1><p>Every licensed motor vehicle dealer in Denton must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Denton GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-amarillo": {
-    title: "GDN Bond Amarillo TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Amarillo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    title: "GDN Bond Amarillo TX | $50,000 TxDMV | Quantum Surety",
+    description: "Get your Texas GDN dealer bond in Amarillo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-amarillo`,
     structuredData: [
       {
@@ -5430,7 +5977,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>GDN Bond — Amarillo, Texas</h1><p>Every licensed motor vehicle dealer in Amarillo must hold a $50,000 GDN surety bond under Texas Occupations Code §503.033. Same-day certificate delivery.</p><a href="/get-bond?type=dealer">Get My Amarillo GDN Bond</a></main>`,
   },
   "/bonds/notary-bond-laredo": {
-    title: "Notary Bond Laredo TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Laredo TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Laredo instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-laredo`,
     structuredData: [
@@ -5464,7 +6011,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Laredo Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Laredo notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Laredo Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-mcallen": {
-    title: "Notary Bond McAllen TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond McAllen TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in McAllen instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-mcallen`,
     structuredData: [
@@ -5498,7 +6045,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>McAllen Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. McAllen notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My McAllen Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-brownsville": {
-    title: "Notary Bond Brownsville TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Brownsville TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Brownsville instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-brownsville`,
     structuredData: [
@@ -5532,7 +6079,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Brownsville Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Brownsville notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Brownsville Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-beaumont": {
-    title: "Notary Bond Beaumont TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Beaumont TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Beaumont instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-beaumont`,
     structuredData: [
@@ -5566,7 +6113,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Beaumont Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Beaumont notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Beaumont Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-round-rock": {
-    title: "Notary Bond Round Rock TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Round Rock TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Round Rock instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-round-rock`,
     structuredData: [
@@ -5600,7 +6147,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Round Rock Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Round Rock notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Round Rock Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-lewisville": {
-    title: "Notary Bond Lewisville TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Lewisville TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Lewisville instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-lewisville`,
     structuredData: [
@@ -5634,7 +6181,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Lewisville Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Lewisville notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Lewisville Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-garland": {
-    title: "Notary Bond Garland TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Garland TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Garland instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-garland`,
     structuredData: [
@@ -5668,7 +6215,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Garland Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Garland notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Garland Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-irving": {
-    title: "Notary Bond Irving TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Irving TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Irving instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-irving`,
     structuredData: [
@@ -5702,7 +6249,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Irving Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Irving notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Irving Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-midland": {
-    title: "Notary Bond Midland TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Midland TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Midland instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-midland`,
     structuredData: [
@@ -5736,7 +6283,7 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Midland Notary Bond — Texas</h1><p>Texas requires a $10,000 surety bond for every notary public. Midland notaries get their bond for $50 — SB693 compliant, instant PDF, 4-year term.</p><a href="/get-bond?type=notary">Get My Midland Notary Bond — $50</a></main>`,
   },
   "/bonds/notary-bond-odessa": {
-    title: "Notary Bond Odessa TX | $50 Instant | Texas Notary Surety Bond | Quantum Surety",
+    title: "Notary Bond Odessa TX | $50 | Quantum Surety",
     description: "Get your Texas notary bond in Odessa instantly — $50 flat, $10,000 coverage, SB693 compliant. No credit check. Instant PDF. TDI-licensed agency #3480229.",
     canonical: `${BASE_URL}/bonds/notary-bond-odessa`,
     structuredData: [
@@ -5771,7 +6318,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/how-to-become-texas-notary-2026": {
-    title: "How to Become a Texas Notary Public in 2026 (Complete Guide) | Quantum Surety",
+    title: "How to Become a Texas Notary 2026 | Quantum Surety",
     description: "Step-by-step guide to becoming a Texas notary public in 2026. Eligibility, SB693 education requirement, $10,000 bond, oath of office, and how long it takes.",
     canonical: `${BASE_URL}/blog/how-to-become-texas-notary-2026`,
     ogType: "article",
@@ -5797,8 +6344,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/what-is-a-surety-bond-texas": {
-    title: "What Is a Surety Bond? Texas Plain-Language Guide (2026) | Quantum Surety",
-    description: "A surety bond is a 3-party guarantee — not insurance. Learn what a surety bond is, how it works, who needs one in Texas, and what it costs. Plain-language guide with examples.",
+    title: "What Is a Surety Bond? Texas Guide 2026 | Quantum Surety",
+    description: "A surety bond is a 3-party guarantee — not insurance. Learn what a surety bond is, how it works, who needs one in Texas, and what it costs. Plain-language.",
     canonical: `${BASE_URL}/blog/what-is-a-surety-bond-texas`,
     ogType: "article",
     structuredData: [
@@ -5823,8 +6370,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/how-to-get-texas-gdn-license": {
-    title: "How to Get a Texas GDN Dealer License in 2026 (Step-by-Step) | Quantum Surety",
-    description: "Complete step-by-step guide to getting a Texas GDN motor vehicle dealer license in 2026. Required documents, bond, TxDMV eLICENSING process, costs, and timeline.",
+    title: "Texas GDN Dealer License 2026 Guide | Quantum Surety",
+    description: "Complete step-by-step guide to getting a Texas GDN motor vehicle dealer license in 2026. Required documents, bond, TxDMV eLICENSING process, costs, and.",
     canonical: `${BASE_URL}/blog/how-to-get-texas-gdn-license`,
     ogType: "article",
     structuredData: [
@@ -5849,8 +6396,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/bid-bond-vs-performance-bond-vs-payment-bond": {
-    title: "Bid Bond vs Performance Bond vs Payment Bond: Texas Guide (2026) | Quantum Surety",
-    description: "What's the difference between a bid bond, performance bond, and payment bond? When each is required in Texas, what they cost, and why public contracts need all three.",
+    title: "Bid vs Performance vs Payment Bond | Quantum Surety",
+    description: "What's the difference between a bid bond, performance bond, and payment bond? When each is required in Texas, what they cost, and why public contracts.",
     canonical: `${BASE_URL}/blog/bid-bond-vs-performance-bond-vs-payment-bond`,
     ogType: "article",
     structuredData: [
@@ -5875,8 +6422,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-vs-eo-insurance": {
-    title: "Texas Notary Bond vs E&O Insurance: What's the Difference? (2026) | Quantum Surety",
-    description: "Texas notary bond vs E&O insurance — what each covers, which is required by law, who is protected, and when notaries need both. Complete comparison for Texas notaries in 2026.",
+    title: "Texas Notary Bond vs E&O Insurance 2026 | Quantum Surety",
+    description: "Texas notary bond vs E&O insurance — what each covers, which is required by law, who is protected, and when notaries need both. Complete comparison for.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-vs-eo-insurance`,
     ogType: "article",
     structuredData: [
@@ -5901,8 +6448,8 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/google-business-profile-texas-surety-bond": {
-    title: "Google Business Profile for Surety Bonds: Complete Texas Guide (2026) | Quantum Surety",
-    description: "How to set up and optimize your Google Business Profile to rank for Texas surety bond searches. Category selection, photos, posts, reviews, Q&A — complete checklist for 2026.",
+    title: "Google Business Profile for Surety Bonds | Quantum Surety",
+    description: "How to set up and optimize your Google Business Profile to rank for Texas surety bond searches. Category selection, photos, posts, reviews, Q&A — complete.",
     canonical: `${BASE_URL}/blog/google-business-profile-texas-surety-bond`,
     ogType: "article",
     structuredData: [
@@ -5927,7 +6474,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/es": {
-    title: "Fianzas de Garantía en Texas | Notario, Contratista y Distribuidor | Quantum Surety",
+    title: "Fianzas de Garantía en Texas | Quantum Surety",
     description: "Fianzas de notario, distribuidor GDN y contratista en Texas. Desde $50. PDF instantáneo. Sin verificación de crédito. Agencia autorizada por TDI #3480229.",
     canonical: `${BASE_URL}/es`,
     ogType: "website",
@@ -5952,7 +6499,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/es/fianza-notario-texas": {
-    title: "Fianza de Notario Público en Texas | $50 Instantánea | Quantum Surety",
+    title: "Fianza Notario Público Texas | $50 | Quantum Surety",
     description: "Fianza de notario en Texas — $50 por 4 años, sin verificación de crédito, PDF instantáneo. Requerida por §406.010 del Código de Gobierno. Agencia TDI #3480229.",
     canonical: `${BASE_URL}/es/fianza-notario-texas`,
     ogType: "article",
@@ -5991,8 +6538,154 @@ const PAGE_META: Record<string, PageMeta> = {
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────
 
+
+
+// ─── Dynamic city+bond page meta generator ───────────────────────────────────
+
+const CITY_DATA: Record<string, { name: string; county: string; region: string }> = {
+  "houston":              { name: "Houston",              county: "Harris",       region: "Greater Houston" },
+  "san-antonio":          { name: "San Antonio",          county: "Bexar",        region: "South-Central Texas" },
+  "dallas":               { name: "Dallas",               county: "Dallas",       region: "DFW Metroplex" },
+  "austin":               { name: "Austin",               county: "Travis",       region: "Central Texas" },
+  "fort-worth":           { name: "Fort Worth",           county: "Tarrant",      region: "DFW Metroplex" },
+  "el-paso":              { name: "El Paso",              county: "El Paso",      region: "West Texas" },
+  "arlington":            { name: "Arlington",            county: "Tarrant",      region: "DFW Metroplex" },
+  "corpus-christi":       { name: "Corpus Christi",       county: "Nueces",       region: "South Texas Coast" },
+  "plano":                { name: "Plano",                county: "Collin",       region: "North DFW" },
+  "laredo":               { name: "Laredo",               county: "Webb",         region: "South Texas" },
+  "lubbock":              { name: "Lubbock",              county: "Lubbock",      region: "West Texas" },
+  "garland":              { name: "Garland",              county: "Dallas",       region: "DFW Metroplex" },
+  "irving":               { name: "Irving",               county: "Dallas",       region: "DFW Metroplex" },
+  "amarillo":             { name: "Amarillo",             county: "Potter",       region: "Texas Panhandle" },
+  "grand-prairie":        { name: "Grand Prairie",        county: "Dallas",       region: "DFW Metroplex" },
+  "brownsville":          { name: "Brownsville",          county: "Cameron",      region: "Rio Grande Valley" },
+  "killeen":              { name: "Killeen",              county: "Bell",         region: "Central Texas" },
+  "frisco":               { name: "Frisco",               county: "Collin",       region: "North DFW" },
+  "mckinney":             { name: "McKinney",             county: "Collin",       region: "North DFW" },
+  "mesquite":             { name: "Mesquite",             county: "Dallas",       region: "East DFW" },
+  "mcallen":              { name: "McAllen",              county: "Hidalgo",      region: "Rio Grande Valley" },
+  "pasadena":             { name: "Pasadena",             county: "Harris",       region: "Greater Houston" },
+  "midland":              { name: "Midland",              county: "Midland",      region: "Permian Basin" },
+  "denton":               { name: "Denton",               county: "Denton",       region: "North DFW" },
+  "carrollton":           { name: "Carrollton",           county: "Dallas",       region: "North DFW" },
+  "waco":                 { name: "Waco",                 county: "McLennan",     region: "Central Texas" },
+  "beaumont":             { name: "Beaumont",             county: "Jefferson",    region: "Southeast Texas" },
+  "odessa":               { name: "Odessa",               county: "Ector",        region: "Permian Basin" },
+  "abilene":              { name: "Abilene",              county: "Taylor",       region: "West Texas" },
+  "round-rock":           { name: "Round Rock",           county: "Williamson",   region: "Greater Austin" },
+  "richardson":           { name: "Richardson",           county: "Dallas",       region: "North Dallas" },
+  "pearland":             { name: "Pearland",             county: "Brazoria",     region: "Greater Houston" },
+  "college-station":      { name: "College Station",      county: "Brazos",       region: "Brazos Valley" },
+  "tyler":                { name: "Tyler",                county: "Smith",        region: "East Texas" },
+  "league-city":          { name: "League City",          county: "Galveston",    region: "Greater Houston" },
+  "wichita-falls":        { name: "Wichita Falls",        county: "Wichita",      region: "North Texas" },
+  "edinburg":             { name: "Edinburg",             county: "Hidalgo",      region: "Rio Grande Valley" },
+  "san-angelo":           { name: "San Angelo",           county: "Tom Green",    region: "West Texas" },
+  "allen":                { name: "Allen",                county: "Collin",       region: "North DFW" },
+  "sugar-land":           { name: "Sugar Land",           county: "Fort Bend",    region: "Greater Houston" },
+  "lewisville":           { name: "Lewisville",           county: "Denton",       region: "North DFW" },
+  "conroe":               { name: "Conroe",               county: "Montgomery",   region: "Greater Houston" },
+  "cedar-park":           { name: "Cedar Park",           county: "Williamson",   region: "Greater Austin" },
+  "longview":             { name: "Longview",             county: "Gregg",        region: "East Texas" },
+  "mission":              { name: "Mission",              county: "Hidalgo",      region: "Rio Grande Valley" },
+  "bryan":                { name: "Bryan",                county: "Brazos",       region: "Brazos Valley" },
+  "pharr":                { name: "Pharr",                county: "Hidalgo",      region: "Rio Grande Valley" },
+  "new-braunfels":        { name: "New Braunfels",        county: "Comal",        region: "Central Texas" },
+  "baytown":              { name: "Baytown",              county: "Harris",       region: "Greater Houston" },
+  "temple":               { name: "Temple",               county: "Bell",         region: "Central Texas" },
+  "flower-mound":         { name: "Flower Mound",         county: "Denton",       region: "North DFW" },
+  "harlingen":            { name: "Harlingen",            county: "Cameron",      region: "Rio Grande Valley" },
+  "southlake":            { name: "Southlake",            county: "Tarrant",      region: "DFW Metroplex" },
+  "leander":              { name: "Leander",              county: "Williamson",   region: "Greater Austin" },
+  "pflugerville":         { name: "Pflugerville",         county: "Travis",       region: "Greater Austin" },
+  "georgetown":           { name: "Georgetown",           county: "Williamson",   region: "Greater Austin" },
+  "north-richland-hills": { name: "North Richland Hills", county: "Tarrant",      region: "DFW Metroplex" },
+};
+
+interface DynBondMeta {
+  name: string; shortName: string; amount: string; cost: string;
+  costNote: string; legal: string; issuer: string; applyUrl: string; description: string;
+}
+
+const DYN_BOND_META: Record<string, DynBondMeta> = {
+  "notary-bond":     { name: "Texas Notary Bond",              shortName: "Notary Bond",          amount: "$10,000",         cost: "$50 flat",       costNote: "4-year term, no annual renewal", legal: "Texas Government Code §406.010",      issuer: "Texas Secretary of State",                            applyUrl: "/get-bond?type=notary",     description: "Every Texas notary public must hold a $10,000 surety bond before the Texas Secretary of State will issue or renew a notary commission." },
+  "contractor-bond": { name: "Texas Contractor License Bond",  shortName: "Contractor Bond",      amount: "$10,000-$25,000", cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code (TDLR)",        issuer: "Texas Department of Licensing and Regulation (TDLR)", applyUrl: "/get-bond?type=contractor", description: "Texas contractors licensed by TDLR must maintain a surety bond as a condition of their license. Protects consumers from contractor misconduct." },
+  "gdn-bond":        { name: "Texas GDN Auto Dealer Bond",     shortName: "GDN Dealer Bond",      amount: "$50,000",         cost: "from $100/year", costNote: "annual renewal",                 legal: "Texas Occupations Code §503.033",      issuer: "Texas Department of Motor Vehicles (TxDMV)",          applyUrl: "/get-bond?type=gdn",        description: "Every Texas motor vehicle dealer holding a GDN license must post a $50,000 surety bond with TxDMV under Texas Occupations Code §503.033." },
+  "mortgage-bond":   { name: "Texas Mortgage Broker Bond",     shortName: "Mortgage Broker Bond", amount: "$50,000",         cost: "from $375/year", costNote: "annual renewal",                 legal: "Texas Finance Code §156.204",          issuer: "Texas Dept. of Savings and Mortgage Lending (SML)",   applyUrl: "/get-bond?type=mortgage",   description: "Texas mortgage brokers and mortgage bankers must post a $50,000 surety bond with the Texas SML under Texas Finance Code §156.204 as a condition of licensure." },
+  "hvac-bond":       { name: "Texas HVAC Contractor Bond",     shortName: "HVAC Bond",            amount: "$10,000",         cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code Chapter 1302", issuer: "Texas Department of Licensing and Regulation (TDLR)", applyUrl: "/get-bond?type=contractor", description: "Texas HVAC contractors licensed by TDLR under Texas Occupations Code Chapter 1302 must maintain a surety bond as a condition of their ACR license." },
+  "plumber-bond":    { name: "Texas Plumbing Contractor Bond", shortName: "Plumber Bond",         amount: "$10,000",         cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code Chapter 1301", issuer: "Texas State Board of Plumbing Examiners (TSBPE)",     applyUrl: "/get-bond?type=contractor", description: "Texas plumbing contractors licensed by TSBPE must maintain a surety bond under Occupations Code Ch. 1301 as a condition of their Master Plumber license." },
+};
+
+function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
+  const m = urlPath.match(/^\/bonds\/(notary-bond|contractor-bond|gdn-bond|mortgage-bond|hvac-bond|plumber-bond)-(.+)$/);
+  if (!m) return null;
+  const [, bondTypeSlug, citySlug] = m;
+  const city = CITY_DATA[citySlug];
+  const bond = DYN_BOND_META[bondTypeSlug];
+  if (!city || !bond) return null;
+
+  const title = `${bond.shortName} ${city.name} TX | ${bond.amount} | Quantum Surety`;
+  const description = `Get a ${bond.name} in ${city.name}, ${city.county} County, TX. ${bond.amount} bond -- ${bond.cost} (${bond.costNote}). Required by ${bond.issuer}. Instant online issuance.`;
+  const canonical = `${BASE_URL}${urlPath}`;
+
+  const content = `
+    <main>
+      <h1>${bond.shortName} ${city.name} TX | ${bond.amount}</h1>
+      <p>${bond.description} Serving ${city.name}, ${city.county} County and the ${city.region} area. ${bond.cost} (${bond.costNote}).</p>
+      <section>
+        <h2>${bond.shortName} Requirements in ${city.name}</h2>
+        <ul>
+          <li><strong>Bond Amount:</strong> ${bond.amount}</li>
+          <li><strong>Cost:</strong> ${bond.cost} (${bond.costNote})</li>
+          <li><strong>Required By:</strong> ${bond.issuer}</li>
+          <li><strong>Legal Authority:</strong> ${bond.legal}</li>
+          <li><strong>County:</strong> ${city.county} County, Texas</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How to Get Your ${bond.shortName} in ${city.name}</h2>
+        <ol>
+          <li>Apply online at Quantum Surety -- takes under 5 minutes</li>
+          <li>Receive your bond certificate by email, same day</li>
+          <li>File your certificate with ${bond.issuer}</li>
+        </ol>
+        <a href="${bond.applyUrl}">Get My ${bond.shortName} -- ${bond.cost}</a>
+      </section>
+      <section>
+        <h2>Frequently Asked Questions</h2>
+        <dl>
+          <dt>Is a ${bond.shortName} required in ${city.name}?</dt>
+          <dd>${bond.description}</dd>
+          <dt>How much does a ${bond.shortName} cost in ${city.name}?</dt>
+          <dd>${bond.cost} through Quantum Surety (${bond.costNote}). No hidden fees.</dd>
+          <dt>How fast can I get my bond?</dt>
+          <dd>Same day. Apply online, pay, and receive your certificate by email within minutes -- ready to file with ${bond.issuer}.</dd>
+        </dl>
+      </section>
+      <a href="/get-bond">Apply for a Surety Bond</a>
+    </main>`;
+
+  return {
+    title,
+    description,
+    canonical,
+    content,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: `${bond.name} -- ${city.name}, TX`,
+      provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+      areaServed: { "@type": "City", name: city.name, containedInPlace: { "@type": "State", name: "Texas" } },
+      description,
+      url: canonical,
+    },
+  };
+}
+
 function getMetaForPath(urlPath: string): PageMeta {
   if (PAGE_META[urlPath]) return PAGE_META[urlPath];
+  const dynamicMeta = getDynamicCityBondMeta(urlPath);
+  if (dynamicMeta) return dynamicMeta;
   for (const key of Object.keys(PAGE_META)) {
     if (key !== "/" && urlPath.startsWith(key)) return PAGE_META[key];
   }

@@ -533,6 +533,96 @@ export default function Home() {
 
       <GetBondedStepsSection />
 
+
+      {/* ── Certificate of Title Bond Callout ────────────────────────────── */}
+      <section className="bg-white border-b border-slate-100 py-16 px-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="rounded-2xl overflow-hidden" style={{background: "linear-gradient(135deg, #0f172a 0%, #431407 40%, #1c0a04 100%)", border: "1px solid rgba(251,146,60,0.2)"}}>
+            <div className="flex flex-col lg:flex-row items-stretch">
+
+              {/* Left content */}
+              <div className="flex-1 p-8 lg:p-12">
+                <div className="flex items-center gap-2 mb-5 flex-wrap">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background: "rgba(251,146,60,0.15)", color: "#fdba74", border: "1px solid rgba(251,146,60,0.25)"}}>
+                    Certificate of Title Bond
+                  </span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background: "rgba(255,255,255,0.08)", color: "#e2e8f0"}}>
+                    Same-Day Issuance
+                  </span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1" style={{background: "rgba(255,255,255,0.06)", color: "#94a3b8"}}>
+                    All 254 TX Counties
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                  Vehicle With No Title?<br />
+                  <span style={{color: "#fb923c"}}>We Fix That.</span>
+                </h2>
+                <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-xl">
+                  Got a car, truck, or trailer with a missing or rejected title? A Texas Certificate of Title Bond
+                  lets you legally own and register it through TxDMV — same-day issuance from a TDI-licensed agency.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Works for auction buys, private sales, inherited vehicles, and rejected titles",
+                    "Bond = 1.5x vehicle appraised value — premiums start at $50",
+                    "Free eligibility wizard — find out if you qualify in 2 minutes",
+                    "County-specific guidance for all 10 major Texas metros",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-slate-200 text-sm">
+                      <CheckCircle className="w-4 h-4 mt-0.5 shrink-0" style={{color: "#fb923c"}} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/texas-title-rescue">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full font-semibold px-7 py-3 text-sm transition-all hover:-translate-y-0.5" style={{background: "#fb923c", color: "#0f172a"}}>
+                      Check My Eligibility <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                  <Link href="/bonds/bonded-title-texas">
+                    <button className="inline-flex items-center justify-center gap-2 rounded-full font-semibold px-7 py-3 text-sm transition-colors" style={{background: "rgba(255,255,255,0.08)", color: "#e2e8f0", border: "1px solid rgba(255,255,255,0.15)"}}>
+                      Full Bond Guide
+                    </button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right — stat card */}
+              <div className="lg:w-72 p-8 lg:p-10 flex flex-col justify-center gap-5" style={{background: "rgba(255,255,255,0.05)", borderLeft: "1px solid rgba(255,255,255,0.07)"}}>
+                <div className="text-center">
+                  <p className="text-sm font-medium mb-1" style={{color: "#fb923c"}}>Premium starts at</p>
+                  <p className="text-6xl font-bold text-white tracking-tight">$50</p>
+                  <p className="text-slate-400 text-sm mt-1">for most personal vehicles</p>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: "Bond amount", value: "1.5x value" },
+                    { label: "Bond term", value: "3 years" },
+                    { label: "Credit check", value: "None" },
+                    { label: "Delivery", value: "Same-day" },
+                  ].map((row) => (
+                    <div key={row.label} className="flex justify-between text-sm pb-2" style={{borderBottom: "1px solid rgba(255,255,255,0.07)"}}>
+                      <span className="text-slate-400">{row.label}</span>
+                      <span className="text-white font-semibold">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link href="/title-bond-calculator">
+                  <button className="w-full rounded-xl py-3 text-sm font-semibold transition-colors" style={{background: "rgba(251,146,60,0.12)", color: "#fdba74", border: "1px solid rgba(251,146,60,0.2)"}}>
+                    Calculate My Bond Amount
+                  </button>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       <ServicesSection />
 
       {/* Quick Tools */}

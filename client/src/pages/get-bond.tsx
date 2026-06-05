@@ -133,7 +133,8 @@ export default function GetBond() {
       // don't block redirect on network error
     }
     track({ type: "mybondapp_redirect", element: "lead_form", value: type });
-    window.location.href = meta.redirectUrl || DEALER_URL;
+    const dest = meta.redirectUrl || DEALER_URL;
+    window.location.href = `/badge-setup?type=${encodeURIComponent(type)}&next=${encodeURIComponent(dest)}`;
   }
 
   return (

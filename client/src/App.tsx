@@ -182,6 +182,9 @@ import GDNBondAmarillo from "@/pages/gdn-bond-amarillo";
 import ConstructionBondTexas from "@/pages/construction-bond-texas";
 import BondedTitleTexas from "@/pages/bonded-title-texas";
 import LicensePermitBondTexas from "@/pages/license-permit-bond-texas";
+import TitleBondCalculator from "@/pages/title-bond-calculator";
+import CountyTitleBondPage from "@/pages/county-title-bond-page";
+import TitleRescue from "@/pages/texas-title-rescue";
 // Additional notary city pages
 import NotaryBondLaredo from "@/pages/notary-bond-laredo";
 import NotaryBondMcAllen from "@/pages/notary-bond-mcallen";
@@ -269,7 +272,19 @@ function Router() {
       <Route path="/bond-guard" component={BondGuard} />
       <Route path="/bond-guard-pro" component={BondGuardPro} />
       <Route path="/partner-program" component={PartnerProgram} />
-      <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
+      <Route path="/bonds/bonded-title-harris-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-dallas-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-bexar-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-tarrant-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-travis-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-el-paso-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-collin-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-denton-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-fort-bend-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-nueces-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
+      <Route path="/texas-title-rescue" component={TitleRescue} />
+            <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
       <Route path="/renew" component={Renew} />
       <Route path="/badge" component={BadgePage} />
       <Route path="/admin-login" component={AdminLogin} />
@@ -442,6 +457,7 @@ function Router() {
       {/* Construction hub + bonded title */}
       <Route path="/bonds/construction-bond-texas" component={ConstructionBondTexas} />
       <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
+      <Route path="/title-bond-calculator" component={TitleBondCalculator} />
       <Route path="/bonds/license-permit-bond-texas" component={LicensePermitBondTexas} />
 
       {/* Additional notary city pages */}

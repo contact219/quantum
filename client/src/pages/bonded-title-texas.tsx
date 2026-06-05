@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useState } from "react";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, AlertCircle, FileText, Car, Clock, Phone } from "lucide-react";
@@ -50,12 +51,40 @@ const whoNeeds = [
 
 export default function BondedTitleTexas() {
   useSEO({
-    title: "Texas Bonded Title Bond | Surety Bond for Vehicle Without Title | Quantum Surety",
-    description: "Get a Texas bonded title surety bond when your vehicle title is lost or unavailable. Bond equals 1.5x vehicle value. Fast approval, TDI-licensed agency #3480229. File with TxDMV Form VTR-130-SOF.",
+    title: "Texas Certificate of Title Bond | Bonded Title | Quantum Surety",
+    description: "Get a Texas certificate of title bond (bonded title) when your vehicle title is lost or unavailable. Bond = 1.5x vehicle value. Same-day issuance. TDI-licensed agency #3480229.",
     canonical: "/bonds/bonded-title-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
   useSchema(FAQ_SCHEMA, "ld-json-FAQ");
+
+  const [bondForm, setBondForm] = useState({ name: "", email: "", phone: "", vehicle: "", value: "", scenario: "" });
+  const [bondSubmitted, setBondSubmitted] = useState(false);
+  const [bondSubmitting, setBondSubmitting] = useState(false);
+
+  async function handleBondSubmit(e) {
+    e.preventDefault();
+    setBondSubmitting(true);
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: bondForm.name,
+          email: bondForm.email,
+          phone: bondForm.phone,
+          bond_type: "bonded-title",
+          source: "bonded-title-page-form",
+          notes: "Vehicle: " + bondForm.vehicle + ", Value: $" + bondForm.value + ", Scenario: " + bondForm.scenario,
+        }),
+      });
+      setBondSubmitted(true);
+    } catch (_) {
+      setBondSubmitted(true);
+    } finally {
+      setBondSubmitting(false);
+    }
+  }
 
   return (
     <div className="min-h-screen">
@@ -64,7 +93,7 @@ export default function BondedTitleTexas() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm mb-6">
             <Car className="w-4 h-4" />
-            Texas Vehicle Title Bond
+            Texas Certificate of Title Bond
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
             Texas Bonded Title Bond
@@ -98,7 +127,7 @@ export default function BondedTitleTexas() {
             { label: "Bond amount", value: "1.5× value" },
             { label: "Typical cost", value: "$50–$200" },
             { label: "Bond term", value: "3 years" },
-            { label: "Filed with", value: "TxDMV" },
+            { label: "Texas Cert. of Title Bond", value: "TxDMV accepted" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-4 border border-teal-100">
               <p className="text-xl font-bold text-gray-900">{item.value}</p>
@@ -246,6 +275,93 @@ export default function BondedTitleTexas() {
         </div>
       </section>
 
+
+      {/* Wizard CTA */}
+      <section className="py-10 px-4 bg-indigo-50 border-y border-indigo-100">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-6">
+          <div>
+            <p className="font-semibold text-gray-900 mb-1">Not sure if your situation qualifies?</p>
+            <p className="text-gray-600 text-sm">Answer 4 questions to get your eligibility result and a personalized document checklist for your county.</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link href="/texas-title-rescue">
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white whitespace-nowrap">
+                Use the Title Rescue Wizard <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <a
+              href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm px-5 py-2.5 rounded-md whitespace-nowrap transition-colors"
+            >
+              Apply Directly <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Inline lead form */}
+      <section id="apply" className="py-14 px-4 bg-white">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your Certificate of Title Bond in 24 Hours</h2>
+          <p className="text-gray-500 text-sm mb-6">Tell us about your vehicle and we will confirm your bond amount and have your certificate ready same-day.</p>
+          {bondSubmitted ? (
+            <div className="bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
+              <CheckCircle className="w-10 h-10 text-teal-500 mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900 text-lg mb-2">Request Received!</h3>
+              <p className="text-gray-600 text-sm mb-1">We will email your bond details within 1 hour.</p>
+              <p className="text-gray-500 text-sm">Need it faster? Call <a href="tel:2146668718" className="text-indigo-600 underline">(214) 666-8718</a></p>
+            </div>
+          ) : (
+            <form onSubmit={handleBondSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                  <input required className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="Your full name" value={bondForm.name} onChange={e => setBondForm({...bondForm, name: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                  <input required type="email" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="your@email.com" value={bondForm.email} onChange={e => setBondForm({...bondForm, email: e.target.value})} />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                  <input required type="tel" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="(555) 000-0000" value={bondForm.phone} onChange={e => setBondForm({...bondForm, phone: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Vehicle</label>
+                  <input className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="e.g. 2015 Ford F-150" value={bondForm.vehicle} onChange={e => setBondForm({...bondForm, vehicle: e.target.value})} />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Estimated Value ($)</label>
+                  <input type="number" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="12000" value={bondForm.value} onChange={e => setBondForm({...bondForm, value: e.target.value})} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">How did you get this vehicle?</label>
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-white" value={bondForm.scenario} onChange={e => setBondForm({...bondForm, scenario: e.target.value})}>
+                    <option value="">Select situation</option>
+                    <option value="private-sale">Bought from private seller</option>
+                    <option value="auction">Won at auction</option>
+                    <option value="inherited">Inherited</option>
+                    <option value="dealer-closed">Dealer went out of business</option>
+                    <option value="rejected">Title rejected at tax office</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" disabled={bondSubmitting} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold text-sm">
+                {bondSubmitting ? "Submitting..." : "Request My Certificate of Title Bond"}
+              </button>
+              <p className="text-center text-xs text-gray-400">No credit check for most vehicles. TDI License #3480229.</p>
+            </form>
+          )}
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-3xl mx-auto">
@@ -263,6 +379,40 @@ export default function BondedTitleTexas() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* County pages grid */}
+      <section className="py-14 px-4 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Find Your County</h2>
+          <p className="text-gray-500 text-sm text-center mb-8">Get county-specific tax office info, filing details, and a lead form for your area.</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+              { name: "Harris County", city: "Houston", slug: "harris" },
+              { name: "Dallas County", city: "Dallas", slug: "dallas" },
+              { name: "Bexar County", city: "San Antonio", slug: "bexar" },
+              { name: "Tarrant County", city: "Fort Worth", slug: "tarrant" },
+              { name: "Travis County", city: "Austin", slug: "travis" },
+              { name: "El Paso County", city: "El Paso", slug: "el-paso" },
+              { name: "Collin County", city: "Plano/Frisco", slug: "collin" },
+              { name: "Denton County", city: "Denton", slug: "denton" },
+              { name: "Fort Bend County", city: "Sugar Land", slug: "fort-bend" },
+              { name: "Nueces County", city: "Corpus Christi", slug: "nueces" },
+            ].map((county) => (
+              <Link key={county.slug} href={`/bonds/bonded-title-${county.slug}-county`}>
+                <div className="bg-white border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer text-center">
+                  <p className="font-semibold text-gray-900 text-sm mb-0.5">{county.name}</p>
+                  <p className="text-xs text-gray-400">{county.city}</p>
+                  <p className="text-indigo-500 text-xs font-medium mt-2">View details →</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-gray-500 text-xs">Don't see your county? <a href="tel:2146668718" className="text-indigo-600 underline">Call (214) 666-8718</a> — we serve all 254 Texas counties.</p>
           </div>
         </div>
       </section>

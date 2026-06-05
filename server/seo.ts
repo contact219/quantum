@@ -5514,6 +5514,25 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
 
+  "/texas-title-rescue": {
+    title: "Texas Title Rescue | Bonded Title Eligibility Wizard",
+    description: "Find out if you qualify for a Texas bonded title bond in 2 minutes. Free eligibility check, document checklist, and instant quote. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/texas-title-rescue`,
+    content: `<main>
+      <h1>Texas Title Rescue Engine</h1>
+      <p>Answer 4 quick questions to find out if you qualify for a Texas certificate of title bond (bonded title bond), get a personalized document checklist, and receive an instant bond quote. TDI-licensed agency serving all 254 Texas counties.</p>
+      <section><h2>Common Situations That Qualify</h2><ul>
+        <li>Bought vehicle from private seller who never provided the title</li>
+        <li>Won vehicle at Copart, IAA, or estate auction without clean title</li>
+        <li>Inherited vehicle with no title documentation</li>
+        <li>Bought from dealer that went out of business before titling</li>
+        <li>Had title application rejected at county tax office</li>
+      </ul></section>
+      <a href="/bonds/bonded-title-texas">Learn About Texas Certificate of Title Bonds</a>
+      <a href="/title-bond-calculator">Texas Title Bond Calculator</a>
+    </main>`,
+  },
+
   "/bonds/bonded-title-texas": {
     title: "Texas Certificate of Title Bond | Bonded Title | Quantum Surety",
     description: "Get a Texas certificate of title bond when your vehicle title is lost or unavailable. Bond = 1.5x vehicle value. Same-day issuance. TDI-licensed agency #3480229.",
@@ -6445,6 +6464,54 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
     content: `<main><h1>Texas Notary Bond vs E&O Insurance</h1><p>Your $10,000 notary bond is required by Texas law and protects the public. E&O insurance is optional and protects you personally. Here's the difference and when you need both.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
+  },
+
+  "/blog/texas-bonded-title-complete-guide-2026": {
+    title: "Texas Bonded Title: Complete 2026 Guide (Requirements, Process & Cost) | Quantum Surety",
+    description: "Everything about getting a bonded title in Texas — when required, step-by-step process, cost, TxDMV forms, and how to get bonded same day.",
+    canonical: `${BASE_URL}/blog/texas-bonded-title-complete-guide-2026`,
+    ogType: "article",
+    schema: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Bonded Title Complete 2026 Guide", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Bonded Title Guide", "item": `${BASE_URL}/blog/texas-bonded-title-complete-guide-2026` } ] },
+    ],
+    content: `<main><h1>Texas Bonded Title Complete Guide 2026</h1><p>A bonded title is how Texas residents establish vehicle ownership when a clear title is unavailable. Bond equals 1.5x vehicle value, valid 3 years.</p><a href="/texas-title-rescue">Check Eligibility</a><a href="/title-bond-calculator">Calculate Bond</a></main>`,
+  },
+
+  "/blog/texas-certificate-of-title-bond-cost": {
+    title: "How Much Does a Texas Certificate of Title Bond Cost? (2026 Pricing) | Quantum Surety",
+    description: "The 1.5x rule explained, pricing table for common vehicle values, and why most Texas title bonds start at just $50. Plus the free Title Bond Calculator.",
+    canonical: `${BASE_URL}/blog/texas-certificate-of-title-bond-cost`,
+    ogType: "article",
+    schema: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Certificate of Title Bond Cost 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Title Bond Cost", "item": `${BASE_URL}/blog/texas-certificate-of-title-bond-cost` } ] },
+    ],
+    content: `<main><h1>Texas Certificate of Title Bond Cost 2026</h1><p>Texas title bonds start at $50 from Quantum Surety. Bond amount equals 1.5x the vehicle value assigned by TxDMV.</p><a href="/title-bond-calculator">Calculate My Bond Cost</a></main>`,
+  },
+
+  "/blog/bought-car-no-title-texas-bonded-title": {
+    title: "Bought a Car With No Title in Texas? Your Legal Path to Ownership (2026) | Quantum Surety",
+    description: "A bonded title is the legal route when a Texas seller could not provide a title. Covers 3 options, red flags to check, the complete bonded title process, and restrictions.",
+    canonical: `${BASE_URL}/blog/bought-car-no-title-texas-bonded-title`,
+    ogType: "article",
+    schema: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Bought Car No Title Texas 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Bought Car No Title Texas", "item": `${BASE_URL}/blog/bought-car-no-title-texas-bonded-title` } ] },
+    ],
+    content: `<main><h1>Bought a Car With No Title in Texas</h1><p>If you bought a vehicle without receiving a title, a bonded title is your legal path to establishing ownership in Texas.</p><a href="/texas-title-rescue">Check My Eligibility Free</a></main>`,
+  },
+
+  "/blog/quantum-surety-texas-title-bond-tools-2026": {
+    title: "Texas Title Bond in Minutes: Quantum Surety Free Tools and Same-Day Bond | Quantum Surety",
+    description: "A walkthrough of every free Quantum Surety tool for Texas vehicle title problems: Title Rescue Wizard, Title Bond Calculator, 10 county guides, and the direct apply link.",
+    canonical: `${BASE_URL}/blog/quantum-surety-texas-title-bond-tools-2026`,
+    ogType: "article",
+    schema: [
+      { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Title Bond Tools Quantum Surety 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
+      { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Title Bond Tools", "item": `${BASE_URL}/blog/quantum-surety-texas-title-bond-tools-2026` } ] },
+    ],
+    content: `<main><h1>Texas Title Bond Tools Quantum Surety</h1><p>Quantum Surety built three free tools for Texas vehicle title problems: Title Rescue Wizard, Title Bond Calculator, and 10 county guides. Same-day bond, no credit check.</p><a href="/texas-title-rescue">Start Wizard</a><a href="/title-bond-calculator">Open Calculator</a></main>`,
   },
 
   "/blog/google-business-profile-texas-surety-bond": {

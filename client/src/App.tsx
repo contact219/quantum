@@ -158,6 +158,10 @@ import BlogNotaryBondVsEO from "@/pages/blog/texas-notary-bond-vs-eo-insurance";
 import BlogGBPGuide from "@/pages/blog/google-business-profile-texas-surety-bond";
 import BlogLostCarTitleTexas from "@/pages/blog/how-to-get-lost-car-title-texas";
 import BlogContractorBondComplianceReport2026 from "@/pages/blog/texas-contractor-bond-compliance-report-2026";
+import BlogBondedTitleGuide2026 from "@/pages/blog/texas-bonded-title-complete-guide-2026";
+import BlogTitleBondCost from "@/pages/blog/texas-certificate-of-title-bond-cost";
+import BlogNoTitleTexas from "@/pages/blog/bought-car-no-title-texas-bonded-title";
+import BlogQSTitleBondTools from "@/pages/blog/quantum-surety-texas-title-bond-tools-2026";
 import QSScore from "@/pages/qs-score";
 import QSLeaderboard from "@/pages/qs-leaderboard";
 import PermitPilotLanding from "@/pages/permit-pilot-landing";
@@ -513,6 +517,10 @@ function Router() {
       <Route path="/blog/google-business-profile-texas-surety-bond" component={BlogGBPGuide} />
       <Route path="/blog/how-to-get-lost-car-title-texas" component={BlogLostCarTitleTexas} />
       <Route path="/blog/texas-contractor-bond-compliance-report-2026" component={BlogContractorBondComplianceReport2026} />
+      <Route path="/blog/texas-bonded-title-complete-guide-2026" component={BlogBondedTitleGuide2026} />
+      <Route path="/blog/texas-certificate-of-title-bond-cost" component={BlogTitleBondCost} />
+      <Route path="/blog/bought-car-no-title-texas-bonded-title" component={BlogNoTitleTexas} />
+      <Route path="/blog/quantum-surety-texas-title-bond-tools-2026" component={BlogQSTitleBondTools} />
       <Route path="/blog" component={BlogIndex} />
       <Route path="/qs-score" component={QSScore} />
       <Route path="/qs-leaderboard" component={QSLeaderboard} />

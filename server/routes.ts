@@ -2122,10 +2122,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const NOTARY_SITEMAP_COUNT = 12;
   const CONTRACTOR_SITEMAP_COUNT = 17;
 
-  // Sub-sitemaps temporarily removed pending dynamic page optimization (SEO rec).
   app.get('/sitemap-index.xml', (_req, res) => {
+    const notaryEntries = Array.from({ length: NOTARY_SITEMAP_COUNT }, (_, i) =>
+      `  <sitemap><loc>https://quantumsurety.bond/sitemaps/notaries-${i + 1}.xml</loc></sitemap>`
+    ).join('\n');
+    const contractorEntries = Array.from({ length: CONTRACTOR_SITEMAP_COUNT }, (_, i) =>
+      `  <sitemap><loc>https://quantumsurety.bond/sitemaps/contractors-${i + 1}.xml</loc></sitemap>`
+    ).join('\n');
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap><loc>https://quantumsurety.bond/sitemap.xml</loc></sitemap>\n</sitemapindex>`);
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap><loc>https://quantumsurety.bond/sitemap.xml</loc></sitemap>\n${notaryEntries}\n${contractorEntries}\n</sitemapindex>`);
   });
 
   app.get('/sitemaps/notaries-:n.xml', async (req, res) => {

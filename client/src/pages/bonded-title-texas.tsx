@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Shield, AlertCircle, FileText, Car, Clock, Phone } from "lucide-react";
+import { CheckCircle, ArrowRight, Shield, AlertCircle, FileText, Car, Clock, Phone, Calculator, Scan } from "lucide-react";
 
 const SERVICE_SCHEMA = {
   "@context": "https://schema.org",
@@ -276,6 +276,59 @@ export default function BondedTitleTexas() {
       </section>
 
 
+
+      {/* Free Title Tools */}
+      <section className="py-14 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Free Texas Title Bond Tools</h2>
+          <p className="text-gray-500 text-sm text-center mb-8">Use these free tools to analyze your document, check eligibility, and calculate your bond &#8212; before you pay anything.</p>
+          <div className="grid sm:grid-cols-3 gap-5">
+
+            {/* Card 1: AI Analyzer */}
+            <div className="bg-gradient-to-br from-violet-50 to-white border border-violet-200 rounded-2xl p-6 flex flex-col">
+              <div className="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center mb-4">
+                <Scan className="w-5 h-5 text-violet-600" />
+              </div>
+              <p className="font-bold text-gray-900 mb-1">AI Document Analyzer</p>
+              <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">Upload a bill of sale, old title, or auction receipt. AI extracts vehicle details, calculates bond amount, flags missing documents, and identifies red flags &#8212; in seconds. Free, no login.</p>
+              <Link href="/title-document-analyzer">
+                <button className="w-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                  <Scan className="w-4 h-4" /> Analyze My Document
+                </button>
+              </Link>
+            </div>
+
+            {/* Card 2: Title Rescue Wizard */}
+            <div className="bg-gradient-to-br from-indigo-50 to-white border border-indigo-200 rounded-2xl p-6 flex flex-col">
+              <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+                <Shield className="w-5 h-5 text-indigo-600" />
+              </div>
+              <p className="font-bold text-gray-900 mb-1">Title Rescue Wizard</p>
+              <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">5-step eligibility check. Enter your vehicle and situation &#8212; get a yes/no result plus a personalized TxDMV document checklist in under 2 minutes. No login required.</p>
+              <Link href="/texas-title-rescue">
+                <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                  <Shield className="w-4 h-4" /> Check My Eligibility
+                </button>
+              </Link>
+            </div>
+
+            {/* Card 3: Bond Calculator */}
+            <div className="bg-gradient-to-br from-teal-50 to-white border border-teal-200 rounded-2xl p-6 flex flex-col">
+              <div className="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <Calculator className="w-5 h-5 text-teal-600" />
+              </div>
+              <p className="font-bold text-gray-900 mb-1">Title Bond Calculator</p>
+              <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">Enter your vehicle value (or decode by VIN) and instantly see the exact TxDMV bond amount and Quantum Surety's flat-rate premium. Prevents overbonding and county office rejection.</p>
+              <Link href="/title-bond-calculator">
+                <button className="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                  <Calculator className="w-4 h-4" /> Calculate My Cost
+                </button>
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
       {/* Wizard CTA */}
       <section className="py-10 px-4 bg-indigo-50 border-y border-indigo-100">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-6">

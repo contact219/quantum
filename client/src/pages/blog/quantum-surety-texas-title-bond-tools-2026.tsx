@@ -13,12 +13,21 @@ import {
   Phone,
   MapPin,
   Star,
+  Scan,
 } from "lucide-react";
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the AI Document Analyzer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The AI Document Analyzer at quantumsurety.bond/title-document-analyzer lets you upload any vehicle document and uses AI to extract vehicle details, estimate the required bond amount, flag missing documents, and identify red flags like liens or salvage history. Free, instant, no login required.",
+      },
+    },
     {
       "@type": "Question",
       name: "How fast can I get a Texas title bond from Quantum Surety?",
@@ -68,7 +77,7 @@ const ARTICLE_SCHEMA = {
   headline:
     "Texas Title Bond in Minutes: Free Tools, Same-Day Bond & Direct Apply",
   description:
-    "Quantum Surety built three free tools for Texas vehicle title problems. Here's a full walkthrough of the Title Rescue Wizard, Title Bond Calculator, and same-day direct apply — get bonded today.",
+    "Quantum Surety built four free tools for Texas vehicle title problems. Here's a full walkthrough of the Title Rescue Wizard, Title Bond Calculator, and same-day direct apply — get bonded today.",
   datePublished: "2026-06-05",
   dateModified: "2026-06-05",
   author: {
@@ -111,7 +120,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             Texas Title Bond in Minutes — Quantum Surety's Free Tools
           </h1>
           <p className="text-indigo-100 text-lg mb-6">
-            Quantum Surety built three free tools specifically for Texas vehicle
+            Quantum Surety built four free tools specifically for Texas vehicle
             title problems. Here's what each one does and how they work together
             to get you bonded same day.
           </p>
@@ -405,6 +414,67 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           </div>
         </div>
 
+
+        {/* Tool 5: AI Document Analyzer */}
+        <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-10">
+          Tool 5: AI Document Analyzer
+        </h2>
+        <div className="bg-violet-50 border border-violet-200 rounded-xl p-6 mb-4">
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+            <div className="flex items-center gap-3">
+              <Scan className="w-6 h-6 text-violet-600" />
+              <p className="font-semibold text-violet-900">
+                quantumsurety.bond/title-document-analyzer
+              </p>
+            </div>
+            <span className="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">
+              FREE &middot; AI-Powered &middot; Instant
+            </span>
+          </div>
+          <p className="text-violet-800 text-sm leading-relaxed">
+            Upload a photo of any vehicle document &#8212; bill of sale, old title, out-of-state
+            title, or auction receipt. GPT-4o vision reads it, extracts your vehicle details,
+            calculates the required bond amount, flags missing documents, and spots red flags
+            like active liens or salvage history. Takes about 10 seconds.
+          </p>
+        </div>
+
+        <p className="text-gray-700 leading-relaxed mb-4">
+          The AI Document Analyzer is the fastest way to go from "I have a document but I'm
+          not sure what it means for my title situation" to a complete picture of what you
+          need. Here's what it extracts from a single upload:
+        </p>
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {[
+            { title: "Vehicle Details", desc: "Year, make, model, VIN, mileage, and sale price extracted automatically &#8212; no manual entry." },
+            { title: "Bond Amount", desc: "Calculates TxDMV's 1.5x bond requirement from the vehicle value found in your document." },
+            { title: "Document Checklist", desc: "Lists which of the 7 required TxDMV documents you already have and which are still missing." },
+            { title: "Red Flag Detection", desc: "Flags active liens, salvage or flood history, VIN discrepancies, and out-of-state complications." },
+            { title: "Timeline Estimate", desc: "Gives a realistic TxDMV processing timeline &#8212; typically 3&#8211;5 weeks after bond issuance." },
+            { title: "Next Steps", desc: "Ends with a 2&#8211;3 sentence action plan and a direct link to apply for your bond same day." },
+          ].map((item, i) => (
+            <div key={i} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+              <p className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-violet-600 flex-shrink-0" />
+                {item.title}
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-violet-600 rounded-xl p-5 mb-8 text-white flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <Scan className="w-8 h-8 text-violet-200 flex-shrink-0" />
+          <div className="flex-1">
+            <p className="font-bold mb-1">Start with your document &#8212; let AI do the work.</p>
+            <p className="text-violet-200 text-sm">Upload a bill of sale, old title, or auction receipt. Get vehicle details extracted, bond amount calculated, and missing documents listed in seconds.</p>
+          </div>
+          <Link href="/title-document-analyzer" className="shrink-0">
+            <button className="bg-white text-violet-700 font-semibold px-5 py-2.5 rounded-lg hover:bg-violet-50 transition-colors text-sm flex items-center gap-2 whitespace-nowrap">
+              <Scan className="w-4 h-4" /> Analyze My Document
+            </button>
+          </Link>
+        </div>
         {/* About Quantum Surety */}
         <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-10">
           About Quantum Surety
@@ -550,12 +620,21 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
                 </td>
                 <td className="p-3 text-gray-500">No</td>
               </tr>
-              <tr className="bg-gray-50">
+              <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-600 font-medium">
                   County-specific guides
                 </td>
                 <td className="p-3 text-green-700 font-semibold">
-                  Yes — 10 Texas counties
+                  Yes &#8212; 10 Texas counties
+                </td>
+                <td className="p-3 text-gray-500">No</td>
+              </tr>
+              <tr>
+                <td className="p-3 text-gray-600 font-medium">
+                  AI document reader
+                </td>
+                <td className="p-3 text-green-700 font-semibold">
+                  Yes &#8212; upload any doc
                 </td>
                 <td className="p-3 text-gray-500">No</td>
               </tr>
@@ -572,7 +651,12 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           separate things:
         </p>
         <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
-          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm flex-wrap">
+            <div className="bg-violet-100 text-violet-800 font-semibold px-4 py-2 rounded-lg text-center">
+              AI Doc Analyzer
+              <p className="text-xs font-normal mt-0.5">Extract + estimate</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-gray-400 rotate-90 sm:rotate-0 flex-shrink-0" />
             <div className="bg-indigo-100 text-indigo-800 font-semibold px-4 py-2 rounded-lg text-center">
               Title Rescue Wizard
               <p className="text-xs font-normal mt-0.5">Eligibility check</p>
@@ -596,8 +680,16 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
         </div>
         <ol className="space-y-2 mb-6 text-gray-700 text-sm">
           <li className="flex items-start gap-2">
-            <span className="bg-indigo-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="bg-violet-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
               1
+            </span>
+            <span>
+              <strong>AI Document Analyzer</strong> &#8212; upload your document to extract vehicle details and estimate bond amount in seconds
+            </span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="bg-indigo-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+              2
             </span>
             <span>
               <strong>Title Rescue Wizard</strong> — confirms you qualify and
@@ -606,7 +698,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           </li>
           <li className="flex items-start gap-2">
             <span className="bg-indigo-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-              2
+              3
             </span>
             <span>
               <strong>Bond Calculator</strong> — shows exact bond amount and
@@ -615,7 +707,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           </li>
           <li className="flex items-start gap-2">
             <span className="bg-indigo-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-              3
+              4
             </span>
             <span>
               <strong>Direct Apply</strong> — purchase the bond in 2 minutes,
@@ -624,7 +716,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           </li>
           <li className="flex items-start gap-2">
             <span className="bg-indigo-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-              4
+              5
             </span>
             <span>
               <strong>County Guide</strong> — find your local tax
@@ -668,6 +760,10 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
         <div className="space-y-4 mb-10">
           {[
             {
+              q: "What is the AI Document Analyzer and how does it work?",
+              a: "The AI Document Analyzer (quantumsurety.bond/title-document-analyzer) lets you upload a photo of any vehicle document. GPT-4o vision reads it and returns: extracted vehicle details, required bond amount (1.5x vehicle value), a list of present vs. missing TxDMV documents, red flag warnings, and a 2&#8211;3 sentence action plan. Takes about 10 seconds, completely free, no login required.",
+            },
+            {
               q: "How fast can I get a Texas title bond from Quantum Surety?",
               a: "Same day. Once you complete the online application, Quantum Surety issues your bond certificate digitally the same business day. The certificate is in the VTR-130-SB format required by TxDMV and accepted at all Texas county tax offices.",
             },
@@ -704,6 +800,14 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             <FileText className="w-5 h-5 text-indigo-600" /> Related Resources
           </p>
           <ul className="space-y-2 text-sm">
+            <li>
+              <Link
+                href="/title-document-analyzer"
+                className="text-indigo-600 hover:text-indigo-800 underline"
+              >
+                AI Title Document Analyzer
+              </Link>
+            </li>
             <li>
               <Link
                 href="/texas-title-rescue"

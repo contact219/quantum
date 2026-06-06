@@ -35,6 +35,7 @@ export function Footer() {
         { href: "/chatbot", label: "AI Bond Finder" },
         { href: "/texas-title-rescue", label: "Title Rescue Wizard" },
         { href: "/title-bond-calculator", label: "Title Bond Calculator" },
+          { href: "/title-document-analyzer", label: "AI Document Analyzer" },
       ],
     },
     {

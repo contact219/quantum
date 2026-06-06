@@ -6466,6 +6466,15 @@ const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas Notary Bond vs E&O Insurance</h1><p>Your $10,000 notary bond is required by Texas law and protects the public. E&O insurance is optional and protects you personally. Here's the difference and when you need both.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
   },
 
+  "/title-document-analyzer": {
+    title: "AI Title Document Analyzer - Free Texas Vehicle Title Check | Quantum Surety",
+    description: "Upload your bill of sale, old title, or auction receipt. AI extracts vehicle details, calculates your bond amount, and lists every missing document. Free and instant.",
+    canonical: `${BASE_URL}/title-document-analyzer`,
+    ogType: "website",
+    schema: [],
+    content: `<main><h1>AI Title Document Analyzer</h1><p>Upload your bill of sale or old title. Our AI extracts your vehicle details, calculates your Texas bonded title bond amount, and lists every missing document.</p><a href="/texas-title-rescue">Check Eligibility</a></main>`,
+  },
+
   "/blog/texas-bonded-title-complete-guide-2026": {
     title: "Texas Bonded Title: Complete 2026 Guide (Requirements, Process & Cost) | Quantum Surety",
     description: "Everything about getting a bonded title in Texas — when required, step-by-step process, cost, TxDMV forms, and how to get bonded same day.",

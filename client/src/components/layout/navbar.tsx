@@ -42,6 +42,7 @@ export function Navbar() {
     { href: "/chatbot", label: "Quantum Quote Assistant", description: "AI bond finder & instant quotes", icon: Bot },
     { href: "/texas-title-rescue", label: "Texas Title Rescue", description: "Free eligibility check + document checklist for bonded title bonds", icon: FileText, external: false },
     { href: "/title-bond-calculator", label: "Title Bond Calculator", description: "Instant bond amount and price for vehicles without title", icon: FileText, external: false },
+    { href: "/title-document-analyzer", label: "AI Document Analyzer", description: "Upload a bill of sale or old title - AI extracts details and calculates your bond", icon: FileText, external: false },
     { href: "/quote", label: "Quote Wizard", description: "Step-by-step quote form", icon: FileText },
     {
       href: "https://verify.quantumsurety.bond",

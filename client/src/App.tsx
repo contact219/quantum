@@ -162,6 +162,7 @@ import BlogBondedTitleGuide2026 from "@/pages/blog/texas-bonded-title-complete-g
 import BlogTitleBondCost from "@/pages/blog/texas-certificate-of-title-bond-cost";
 import BlogNoTitleTexas from "@/pages/blog/bought-car-no-title-texas-bonded-title";
 import BlogQSTitleBondTools from "@/pages/blog/quantum-surety-texas-title-bond-tools-2026";
+import TitleDocumentAnalyzer from "@/pages/title-document-analyzer";
 import QSScore from "@/pages/qs-score";
 import QSLeaderboard from "@/pages/qs-leaderboard";
 import PermitPilotLanding from "@/pages/permit-pilot-landing";

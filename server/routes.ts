@@ -2144,4 +2144,85 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   const httpServer = createServer(app);
   return httpServer;
+  // ── AI Title Document Analyzer ─────────────────────────────────────────────
+  const multer = require("multer");
+  const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 10 * 1024 * 1024 },
+    fileFilter: (_req: any, file: any, cb: any) => {
+      const ok = ["image/jpeg","image/jpg","image/png","image/webp","image/heic","image/gif"].includes(file.mimetype);
+      cb(null, ok);
+    },
+  });
+
+  app.post("/api/analyze-title-document", upload.single("document"), async (req: any, res: any) => {
+    try {
+      if (!req.file) return res.status(400).json({ error: "No file uploaded or unsupported file type." });
+
+      const base64 = req.file.buffer.toString("base64");
+      const mime   = req.file.mimetype;
+
+      const prompt = `You are a Texas vehicle title bond specialist at Quantum Surety (TDI license #3480229).
+Analyze this document image carefully and respond with ONLY a valid JSON object — no markdown, no explanation.
+
+JSON schema:
+{
+  "documentType": one of ["bill_of_sale","texas_title","out_of_state_title","auction_receipt","registration","lien_release","other","unreadable"],
+  "documentTypeLabel": string (human-readable, e.g. "Texas Certificate of Title"),
+  "vehicle": {
+    "year": number or null,
+    "make": string or null,
+    "model": string or null,
+    "vin": string or null,
+    "value": number or null,
+    "mileage": number or null
+  },
+  "parties": { "seller": string or null, "buyer": string or null, "saleDate": string or null },
+  "bondAmount": number or null,
+  "estimatedPremium": { "min": number, "max": number } or null,
+  "titleSituation": one of ["bonded_title_needed","duplicate_title_needed","clean_transfer","unclear"],
+  "presentDocuments": string[],
+  "missingDocuments": string[],
+  "redFlags": string[],
+  "timeline": string,
+  "recommendation": string,
+  "confidence": one of ["high","medium","low"]
+}
+
+Rules:
+- bondAmount = Math.ceil(vehicle.value * 1.5) if value is known, else null
+- estimatedPremium: for bond <= 5000 => {min:50,max:50}; <= 15000 => {min:50,max:100}; <= 30000 => {min:100,max:175}; else {min:175,max:300}
+- missingDocuments for a Texas bonded title should include any of these not already present: "Form VTR-130-SOF (Statement of Fact)", "Bill of sale or proof of ownership", "Texas safety inspection certificate", "Proof of liability insurance", "Government-issued photo ID", "Form 130-U (Application for Texas Title)", "Surety bond (Form VTR-130-SB from Quantum Surety)"
+- presentDocuments: list what useful info/docs THIS document provides
+- redFlags: flag active liens, salvage/flood title, VIN tampering, missing odometer, out-of-state complications
+- timeline: typical is "3–5 weeks after bond is issued"; adjust if redFlags present
+- recommendation: 2-3 sentences, actionable, reference Quantum Surety same-day bond if applicable
+- If document is unreadable or not a vehicle document, still return valid JSON with nulls and confidence "low"`;
+
+      const OpenAI = require("openai");
+      const openai = new OpenAI.default({ apiKey: process.env.OPENAI_API_KEY });
+
+      const response = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [{
+          role: "user",
+          content: [
+            { type: "image_url", image_url: { url: `data:${mime};base64,${base64}`, detail: "high" } },
+            { type: "text", text: prompt },
+          ],
+        }],
+        response_format: { type: "json_object" },
+        max_tokens: 1000,
+      });
+
+      const raw  = response.choices[0]?.message?.content ?? "{}";
+      const data = JSON.parse(raw);
+      res.json(data);
+    } catch (err: any) {
+      console.error("[analyze-title-document]", err?.message ?? err);
+      res.status(500).json({ error: "Analysis failed. Please try again or use a clearer image." });
+    }
+  });
+
+
 }

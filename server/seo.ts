@@ -6885,10 +6885,106 @@ Sitemap: ${BASE_URL}/sitemap.xml
 Sitemap: ${BASE_URL}/sitemap-index.xml
 `;
 
+// ─── SSR fetch cache for dynamic notary/contractor pages ────────────────────────
+const _SSR_CACHE = new Map<string, { data: unknown; ts: number }>();
+const _SSR_TTL = 3_600_000; // 1 hour
+
+async function _ssrFetch(url: string): Promise<Record<string, unknown> | null> {
+  const hit = _SSR_CACHE.get(url);
+  if (hit && Date.now() - hit.ts < _SSR_TTL) return hit.data as Record<string, unknown> | null;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 1500);
+    const r = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(timer);
+    const data = r.ok ? (await r.json() as Record<string, unknown>) : null;
+    if (_SSR_CACHE.size > 2000) _SSR_CACHE.clear();
+    _SSR_CACHE.set(url, { data, ts: Date.now() });
+    return data;
+  } catch {
+    _SSR_CACHE.set(url, { data: null, ts: Date.now() });
+    return null;
+  }
+}
+
+function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
+  const first = (d.first_name as string) || "";
+  const last  = (d.last_name  as string) || "";
+  const fullName = `${first} ${last}`.trim() || id;
+  const city  = (d.city as string) || "";
+  const zip   = (d.zip  as string) || "";
+  const loc   = city ? `${city}, TX` : "Texas";
+  const status = (d.status as string) || "unknown";
+  const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Commission Lapsed";
+  const expRaw = (d.expire_date as string) || "";
+  const expDate = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  const agency  = (d.agency as string) || "Quantum Surety";
+  return {
+    title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
+    description: `${fullName} (TX Notary #${id}) in ${loc}. Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. Verified from Texas SOS records. ${agency !== "Quantum Surety" ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
+    canonical: `${BASE_URL}/notary/${id}`,
+    ogType: "profile",
+    noIndex: false,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": fullName,
+      "description": `Texas Notary Public in ${loc}. Commission: ${statusLabel}.`,
+      ...(city ? { "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", ...(zip ? { "postalCode": zip } : {}), "addressCountry": "US" } } : {}),
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "commission",
+        "name": "Texas Notary Public Commission",
+        "identifier": id,
+        ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+      },
+      "url": `${BASE_URL}/notary/${id}`,
+    },
+    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p><p>Bond agency: ${agency}.</p><a href="/bonds/notary-bond-texas">Renew Your Texas Notary Bond — $50 Flat</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
+  };
+}
+
+function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMeta {
+  const name     = (d.business_name as string) || (d.owner_name as string) || license;
+  const cityRaw  = (d.business_city as string) || (d.business_county as string) || "Texas";
+  const city     = cityRaw.split(" ")[0];
+  const loc      = city !== "Texas" ? `${city}, TX` : "Texas";
+  const licType  = (d.license_type as string) || "Contractor";
+  const phone    = (d.business_phone as string) || "";
+  const status   = (d.status as string) || "unknown";
+  const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Bond Lapsed";
+  const expRaw   = (d.expire_date as string) || "";
+  const expDate  = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  return {
+    title: `${name} — ${licType} Bond Status | ${loc} | Quantum Surety`,
+    description: `${name} (TDLR #${license}) — ${licType} in ${loc}. Bond status: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. Verified from TDLR public records by Quantum Surety.`,
+    canonical: `${BASE_URL}/contractor/${license}`,
+    ogType: "profile",
+    noIndex: false,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": name,
+      "description": `${licType} licensed by TDLR in ${loc}. Bond status: ${statusLabel}.`,
+      "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", "addressCountry": "US" },
+      ...(phone ? { "telephone": phone } : {}),
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "license",
+        "name": `TDLR ${licType} License`,
+        "identifier": license,
+        ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+      },
+      "url": `${BASE_URL}/contractor/${license}`,
+    },
+    content: `<main><h1>${name} — Texas ${licType} Bond</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. Bond status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Department of Licensing and Regulation public records.</p><a href="/bonds/contractor-bond-texas">Get a Texas Contractor Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Public Bond Verification</a></main>`,
+  };
+}
+
 // ─── Main middleware ───────────────────────────────────────────────────────────
 
 export function seoMiddleware(distDir: string) {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     const urlPath = req.path;
 
     if (urlPath === "/sitemap.xml") {
@@ -6900,6 +6996,42 @@ export function seoMiddleware(distDir: string) {
     if (urlPath === "/robots.txt") {
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       return res.send(ROBOTS_TXT);
+    }
+
+    // ── SSR for dynamic notary detail pages (/notary/:id) ───────────────────────
+    const notaryIdMatch = urlPath.match(/^\/notary\/([^/]+)$/)
+                       && !urlPath.includes("/qr") && !urlPath.includes("/cert");
+    if (notaryIdMatch) {
+      const notaryId = decodeURIComponent(urlPath.split("/notary/")[1]);
+      const indexPath = path.join(distDir, "index.html");
+      if (fs.existsSync(indexPath)) {
+        const d = await _ssrFetch(`https://verify.quantumsurety.bond/api/notary/lookup/${encodeURIComponent(notaryId)}`);
+        const meta = d ? _notarySSRMeta(notaryId, d) : { title: `Texas Notary #${notaryId} | Quantum Surety`, description: `Look up Texas notary commission status for notary ID ${notaryId}. Verified from Texas SOS public records.`, canonical: `${BASE_URL}/notary/${notaryId}`, noIndex: true } as PageMeta;
+        let html = fs.readFileSync(indexPath, "utf-8");
+        html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["'"]canonical["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]description["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]robots["'"][^>]*>/gi, "").replace(/<meta\s[^>]*property=["'"]og:[^"'"]*["'"][^>]*>/gi, "").replace(/<script\s+type=["'"]application\/ld\+json["'"]>[\s\S]*?<\/script>/gi, "");
+        html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);
+        if (meta.content) html = html.replace('<div id="root"></div>', `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`);
+        res.setHeader("Content-Type", "text/html");
+        return res.send(html);
+      }
+    }
+
+    // ── SSR for dynamic contractor detail pages (/contractor/:id) ────────────────
+    const contractorIdMatch = urlPath.match(/^\/contractor\/([^/]+)$/)
+                           && !urlPath.includes("/qr");
+    if (contractorIdMatch) {
+      const licenseId = decodeURIComponent(urlPath.split("/contractor/")[1]);
+      const indexPath = path.join(distDir, "index.html");
+      if (fs.existsSync(indexPath)) {
+        const d = await _ssrFetch(`https://verify.quantumsurety.bond/api/contractor/lookup/${encodeURIComponent(licenseId)}`);
+        const meta = d ? _contractorSSRMeta(licenseId, d) : { title: `TDLR License #${licenseId} Bond Status | Quantum Surety`, description: `Look up bond status for TDLR license ${licenseId} — Texas contractor bond verification by Quantum Surety.`, canonical: `${BASE_URL}/contractor/${licenseId}`, noIndex: true } as PageMeta;
+        let html = fs.readFileSync(indexPath, "utf-8");
+        html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["'"]canonical["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]description["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]robots["'"][^>]*>/gi, "").replace(/<meta\s[^>]*property=["'"]og:[^"'"]*["'"][^>]*>/gi, "").replace(/<script\s+type=["'"]application\/ld\+json["'"]>[\s\S]*?<\/script>/gi, "");
+        html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);
+        if (meta.content) html = html.replace('<div id="root"></div>', `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`);
+        res.setHeader("Content-Type", "text/html");
+        return res.send(html);
+      }
     }
 
     if (
@@ -6936,11 +7068,11 @@ export function seoMiddleware(distDir: string) {
     const metaTags = buildMetaTags(meta);
     html = html.replace("</head>", `${metaTags}\n</head>`);
 
-    // Inject crawlable static HTML before <div id="root"> (for Google)
+    // Inject crawlable pre-render HTML inside <noscript> (visible to first-pass crawl, not to JS users)
     if (meta.content) {
       html = html.replace(
         '<div id="root"></div>',
-        `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">${meta.content}</div><div id="root"></div>`
+        `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`
       );
     }
 

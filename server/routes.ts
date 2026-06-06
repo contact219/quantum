@@ -7,6 +7,17 @@ import { setupAuth, isAuthenticated, isAdmin } from "./replitAuth";
 import { sendEmail, sendApplicationStatusEmail, sendDocumentUploadNotificationEmail, sendDocumentsCompleteNotificationEmail, sendBondRequestNotification, sendQuoteSubmissionConfirmationEmail } from "./email";
 import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
+import multer from "multer";
+import OpenAI from "openai";
+
+const _docUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 },
+  fileFilter: (_req: any, file: any, cb: any) => {
+    const allowed = ["image/jpeg","image/jpg","image/png","image/webp","image/heic","image/gif"];
+    cb(null, allowed.includes(file.mimetype));
+  },
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // In-memory lead log â€” survives restarts via capture
@@ -2142,20 +2153,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch { res.status(502).send('Sitemap temporarily unavailable'); }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
   // ── AI Title Document Analyzer ─────────────────────────────────────────────
-  const multer = require("multer");
-  const upload = multer({
-    storage: multer.memoryStorage(),
-    limits: { fileSize: 10 * 1024 * 1024 },
-    fileFilter: (_req: any, file: any, cb: any) => {
-      const ok = ["image/jpeg","image/jpg","image/png","image/webp","image/heic","image/gif"].includes(file.mimetype);
-      cb(null, ok);
-    },
-  });
-
-  app.post("/api/analyze-title-document", upload.single("document"), async (req: any, res: any) => {
+  app.post("/api/analyze-title-document", _docUpload.single("document"), async (req: any, res: any) => {
     try {
       if (!req.file) return res.status(400).json({ error: "No file uploaded or unsupported file type." });
 
@@ -2199,8 +2198,7 @@ Rules:
 - recommendation: 2-3 sentences, actionable, reference Quantum Surety same-day bond if applicable
 - If document is unreadable or not a vehicle document, still return valid JSON with nulls and confidence "low"`;
 
-      const OpenAI = require("openai");
-      const openai = new OpenAI.default({ apiKey: process.env.OPENAI_API_KEY });
+      const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
       const response = await openai.chat.completions.create({
         model: "gpt-4o",
@@ -2225,4 +2223,6 @@ Rules:
   });
 
 
+  const httpServer = createServer(app);
+  return httpServer;
 }

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
   Car,
   Search,
@@ -121,6 +121,17 @@ export default function TitleBondCalculator() {
       "Enter your VIN to instantly calculate your Texas bonded title bond amount and price. 1.5× vehicle value. Same-day certificate. TDI-licensed agency.",
     canonical: "/title-bond-calculator",
   });
+  useSchema({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Texas Title Bond Calculator",
+    "description": "Free calculator that computes your required Texas bonded title bond amount (1.5× vehicle value per TxDMV formula) and Quantum Surety flat-rate premium instantly.",
+    "url": "https://quantumsurety.bond/title-bond-calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": { "@type": "Organization", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+  }, "ld-json-WebApp");
 
   // Step state
   const [step, setStep] = useState<1 | 2 | 3>(1);

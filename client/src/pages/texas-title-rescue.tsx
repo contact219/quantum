@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { useSEO } from "@/hooks/useSEO";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -131,6 +131,17 @@ export default function TexasTitleRescue() {
       "Find out if you qualify for a Texas bonded title bond in 2 minutes. Free eligibility check, personalized document checklist, and instant quote. TDI-licensed agency #3480229.",
     canonical: "/texas-title-rescue",
   });
+  useSchema({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Texas Title Rescue Wizard",
+    "description": "Free 5-step eligibility wizard that determines if you qualify for a Texas bonded title bond and generates a personalized TxDMV document checklist.",
+    "url": "https://quantumsurety.bond/texas-title-rescue",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": { "@type": "Organization", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
+  }, "ld-json-WebApp");
 
   const [step, setStep] = useState(1);
   const [data, setData] = useState<WizardData>({

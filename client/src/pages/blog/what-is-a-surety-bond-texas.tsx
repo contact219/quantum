@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight, Clock, ChevronRight, Shield, CheckCircle } from "lucide-react";
 
@@ -187,6 +188,7 @@ export default function BlogWhatIsASuretyBond() {
           </div>
         </div>
       </div>
+        <BlogAuthor updated="June 2026" />
     </div>
   );
 }

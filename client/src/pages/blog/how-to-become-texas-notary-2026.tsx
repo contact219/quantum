@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { CheckCircle, ArrowRight, Clock, ChevronRight, AlertTriangle, FileText } from "lucide-react";
 
@@ -215,6 +216,7 @@ export default function BlogHowToBecomeTexasNotary() {
           </div>
         </div>
       </div>
+        <BlogAuthor updated="June 2026" />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight } from "lucide-react";
 
@@ -101,6 +102,7 @@ export default function BlogTexasContractorBondAndPermits() {
           </a>
         </div>
       </div>
+        <BlogAuthor updated="June 2026" />
     </article>
   );
 }

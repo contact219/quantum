@@ -30,6 +30,16 @@ const FAQ_SCHEMA = {
   ]
 };
 
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 2, "name": "Surety Bonds", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 3, "name": "Texas Notary Bond", "item": "https://quantumsurety.bond/bonds/notary-bond-texas" },
+  ],
+};
+
 export default function NotaryBondTexas() {
   useSEO({
     title: "Texas Notary Bond | $50 Instant Online | SB693 Compliant | Quantum Surety",
@@ -39,6 +49,7 @@ export default function NotaryBondTexas() {
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
   useSchema(FAQ_SCHEMA, "ld-json-FAQ");
+  useSchema(BREADCRUMB_SCHEMA, "ld-json-Breadcrumb");
 
   const steps = [
     { step: "1", title: "Enter your info", body: "Your name, county, and commission details. Takes under 2 minutes." },

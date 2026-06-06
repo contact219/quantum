@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
   CheckCircle,
@@ -701,6 +702,7 @@ export default function TexasBondedTitleCompleteGuide2026() {
           </div>
         </div>
       </div>
+        <BlogAuthor updated="June 2026" />
     </div>
   );
 }

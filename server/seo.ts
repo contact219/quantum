@@ -5205,25 +5205,6 @@ const PAGE_META: Record<string, PageMeta> = {
     },
   },
 
-  "/texas-title-rescue": {
-    title: "Texas Title Rescue | Bonded Title Eligibility Wizard",
-    description: "Find out if you qualify for a Texas bonded title bond in 2 minutes. Free eligibility check, document checklist, and instant quote. TDI-licensed agency #3480229.",
-    canonical: `${BASE_URL}/texas-title-rescue`,
-    content: `<main>
-      <h1>Texas Title Rescue Engine</h1>
-      <p>Answer 4 quick questions to find out if you qualify for a Texas certificate of title bond (bonded title bond), get a personalized document checklist, and receive an instant bond quote. TDI-licensed agency serving all 254 Texas counties.</p>
-      <section><h2>Common Situations That Qualify</h2><ul>
-        <li>Bought vehicle from private seller who never provided the title</li>
-        <li>Won vehicle at Copart, IAA, or estate auction without clean title</li>
-        <li>Inherited vehicle with no title documentation</li>
-        <li>Bought from dealer that went out of business before titling</li>
-        <li>Had title application rejected at county tax office</li>
-      </ul></section>
-      <a href="/bonds/bonded-title-texas">Learn About Texas Certificate of Title Bonds</a>
-      <a href="/title-bond-calculator">Texas Title Bond Calculator</a>
-    </main>`,
-  },
-
   "/bonds/bonded-title-harris-county": {
     title: "Harris County Certificate of Title Bond | Bonded Title | Quantum Surety",
     description: "Get a Texas certificate of title bond in Harris County. File at 1001 Preston St, Houston, TX 77002. Same-day bond issuance. TDI-licensed #3480229.",
@@ -6925,21 +6906,32 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
     canonical: `${BASE_URL}/notary/${id}`,
     ogType: "profile",
     noIndex: false,
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": fullName,
-      "description": `Texas Notary Public in ${loc}. Commission: ${statusLabel}.`,
-      ...(city ? { "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", ...(zip ? { "postalCode": zip } : {}), "addressCountry": "US" } } : {}),
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "commission",
-        "name": "Texas Notary Public Commission",
-        "identifier": id,
-        ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": fullName,
+        "description": `Texas Notary Public in ${loc}. Commission: ${statusLabel}.`,
+        ...(city ? { "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", ...(zip ? { "postalCode": zip } : {}), "addressCountry": "US" } } : {}),
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "commission",
+          "name": "Texas Notary Public Commission",
+          "identifier": id,
+          ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+        },
+        "url": `${BASE_URL}/notary/${id}`,
       },
-      "url": `${BASE_URL}/notary/${id}`,
-    },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond", "item": `${BASE_URL}/bonds/notary-bond-texas` },
+          { "@type": "ListItem", "position": 3, "name": fullName, "item": `${BASE_URL}/notary/${id}` },
+        ],
+      },
+    ],
     content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p><p>Bond agency: ${agency}.</p><a href="/bonds/notary-bond-texas">Renew Your Texas Notary Bond — $50 Flat</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
   };
 }
@@ -6961,22 +6953,33 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
     canonical: `${BASE_URL}/contractor/${license}`,
     ogType: "profile",
     noIndex: false,
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": name,
-      "description": `${licType} licensed by TDLR in ${loc}. Bond status: ${statusLabel}.`,
-      "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", "addressCountry": "US" },
-      ...(phone ? { "telephone": phone } : {}),
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "license",
-        "name": `TDLR ${licType} License`,
-        "identifier": license,
-        ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": name,
+        "description": `${licType} licensed by TDLR in ${loc}. Bond status: ${statusLabel}.`,
+        "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", "addressCountry": "US" },
+        ...(phone ? { "telephone": phone } : {}),
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "license",
+          "name": `TDLR ${licType} License`,
+          "identifier": license,
+          ...(expRaw ? { "validUntil": expRaw.slice(0, 10) } : {}),
+        },
+        "url": `${BASE_URL}/contractor/${license}`,
       },
-      "url": `${BASE_URL}/contractor/${license}`,
-    },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Texas Contractor Bond", "item": `${BASE_URL}/bonds/contractor-bond-texas` },
+          { "@type": "ListItem", "position": 3, "name": name, "item": `${BASE_URL}/contractor/${license}` },
+        ],
+      },
+    ],
     content: `<main><h1>${name} — Texas ${licType} Bond</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. Bond status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Department of Licensing and Regulation public records.</p><a href="/bonds/contractor-bond-texas">Get a Texas Contractor Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Public Bond Verification</a></main>`,
   };
 }

@@ -27,6 +27,16 @@ const FAQ_SCHEMA = {
   ]
 };
 
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 2, "name": "Surety Bonds", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 3, "name": "Texas General Contractor Bond", "item": "https://quantumsurety.bond/bonds/general-contractor-bond-texas" },
+  ],
+};
+
 export default function GeneralContractorBondTexas() {
   useSEO({
     title: "General Contractor Bond Texas | GC License Bond TX | Quantum Surety",
@@ -36,6 +46,7 @@ export default function GeneralContractorBondTexas() {
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
   useSchema(FAQ_SCHEMA, "ld-json-FAQ");
+  useSchema(BREADCRUMB_SCHEMA, "ld-json-Breadcrumb");
 
   const cityRequirements = [
     { city: "Austin", detail: "Austin requires a contractor registration with a $15,000 surety bond for general building contractors operating within city limits." },

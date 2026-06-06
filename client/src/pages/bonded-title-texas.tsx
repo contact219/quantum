@@ -49,6 +49,16 @@ const whoNeeds = [
   "Vehicle was abandoned and obtained through legal process",
 ];
 
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 2, "name": "Surety Bonds", "item": "https://quantumsurety.bond" },
+    { "@type": "ListItem", "position": 3, "name": "Texas Bonded Title Bond", "item": "https://quantumsurety.bond/bonds/bonded-title-texas" },
+  ],
+};
+
 export default function BondedTitleTexas() {
   useSEO({
     title: "Texas Certificate of Title Bond | Bonded Title | Quantum Surety",
@@ -57,6 +67,7 @@ export default function BondedTitleTexas() {
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
   useSchema(FAQ_SCHEMA, "ld-json-FAQ");
+  useSchema(BREADCRUMB_SCHEMA, "ld-json-Breadcrumb");
 
   const [bondForm, setBondForm] = useState({ name: "", email: "", phone: "", vehicle: "", value: "", scenario: "" });
   const [bondSubmitted, setBondSubmitted] = useState(false);

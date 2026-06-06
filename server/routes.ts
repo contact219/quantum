@@ -2118,6 +2118,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // IndexNow key file — required for Bing/Yandex IndexNow verification
+  app.get('/454b42bc1f38f7416497223b5075a278.txt', (_req, res) => {
+    res.setHeader('Content-Type', 'text/plain');
+    res.send('454b42bc1f38f7416497223b5075a278');
+  });
+
   // Sitemap index — covers all quantumsurety.bond pages including 1.37M notary/contractor detail pages
   const NOTARY_SITEMAP_COUNT = 12;
   const CONTRACTOR_SITEMAP_COUNT = 17;

@@ -288,6 +288,7 @@ function Router() {
       <Route path="/bonds/bonded-title-fort-bend-county" component={CountyTitleBondPage} />
       <Route path="/bonds/bonded-title-nueces-county" component={CountyTitleBondPage} />
       <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
+      <Route path="/title-document-analyzer" component={TitleDocumentAnalyzer} />
       <Route path="/texas-title-rescue" component={TitleRescue} />
             <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
       <Route path="/renew" component={Renew} />

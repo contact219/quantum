@@ -159,12 +159,14 @@ export default function CountyTitleBondPage() {
                   <MapPin className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                   <span className="text-gray-700">{data.assessorAddress}</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="w-4 h-4 text-indigo-500 shrink-0" />
-                  <a href={`tel:${data.assessorPhone.replace(/\D/g, "")}`} className="text-indigo-600 hover:underline">
-                    {data.assessorPhone}
-                  </a>
-                </div>
+                {data.assessorPhone && (
+                  <div className="flex items-center gap-2 text-sm">
+                    <Phone className="w-4 h-4 text-indigo-500 shrink-0" />
+                    <a href={`tel:${data.assessorPhone.replace(/\D/g, "")}`} className="text-indigo-600 hover:underline">
+                      {data.assessorPhone}
+                    </a>
+                  </div>
+                )}
                 <div className="flex items-center gap-2 text-sm">
                   <Clock className="w-4 h-4 text-indigo-500 shrink-0" />
                   <span className="text-gray-700">{data.filingHours}</span>

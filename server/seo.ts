@@ -2594,6 +2594,70 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/blog/texas-notary-expiration-data-2026": {
+    title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study | Quantum Surety",
+    description:
+      "We analyzed all 458,845 active Texas notary commissions (TX SOS data, June 2026). August is the biggest renewal month, and one surety holds 43% of the market.",
+    canonical: `${BASE_URL}/blog/texas-notary-expiration-data-2026`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "62,623 Texas Notary Commissions Expire by December — Here's the 2026 Renewal Map",
+        description: "Full-dataset analysis of 458,845 active Texas notary commissions: monthly expiration curve and surety market share.",
+        datePublished: "2026-06-11",
+        dateModified: "2026-06-11",
+        inLanguage: "en-US",
+        articleSection: "Data Studies",
+        keywords: "Texas notary expiration data, Texas notary renewal 2026, how many notaries in Texas, notary bond market share Texas",
+        image: { "@type": "ImageObject", url: `${BASE_URL}/QS_OG_2.png`, width: 1200, height: 630 },
+        author: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "Quantum Surety", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png`, width: 300, height: 300 } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-expiration-data-2026` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Notary Expiration Data Study 2026", item: `${BASE_URL}/blog/texas-notary-expiration-data-2026` },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>62,623 Texas Notary Commissions Expire by December — Here's the 2026 Renewal Map</h1>
+        <p>We analyzed all 458,845 active Texas notary commissions from Texas Secretary of State records (full refresh June 11, 2026). 33,151 commissions expire within 90 days and 62,623 by year-end.</p>
+        <section>
+          <h2>Monthly expirations, June–December 2026</h2>
+          <ul>
+            <li>June 2026 — 6,961</li>
+            <li>July 2026 — 10,721</li>
+            <li>August 2026 — 12,599 (the peak renewal month of the year)</li>
+            <li>September 2026 — 10,969</li>
+            <li>October 2026 — 10,229</li>
+            <li>November 2026 — 8,767</li>
+            <li>December 2026 — 2,977</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Texas notary bond market share (active bonds)</h2>
+          <ul>
+            <li>Western Surety Company (incl. c/o CNA) — 200,093 bonds (43.6%)</li>
+            <li>Merchants Bonding Company — 91,153 (19.9%)</li>
+            <li>Travelers Casualty and Surety — 59,984 (13.1%)</li>
+            <li>Universal Surety of America — 45,441 (9.9%)</li>
+            <li>Notary Public Underwriters of Texas — 16,244 (3.5%)</li>
+            <li>RLI Insurance Company — 12,026 (2.6%)</li>
+          </ul>
+          <p>Texas caps the notary bond at $10,000 regardless of issuer — coverage is identical, only price and service differ. The same bond is $50 flat for the full 4-year term through Quantum Surety, underwritten by RLI Insurance Company.</p>
+        </section>
+        <a href="/get-bond?type=notary">Renew your Texas notary bond — $50 for 4 years</a>
+        <a href="https://verify.quantumsurety.bond">Look up any Texas notary commission free</a>
+      </main>`,
+  },
   "/blog/texas-contractor-license-bond-cost": {
     title: "Texas Contractor Bond Cost 2026 | Quantum Surety",
     description:
@@ -6769,6 +6833,167 @@ const DYN_BOND_META: Record<string, DynBondMeta> = {
   "plumber-bond":    { name: "Texas Plumbing Contractor Bond", shortName: "Plumber Bond",         amount: "$10,000",         cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code Chapter 1301", issuer: "Texas State Board of Plumbing Examiners (TSBPE)",     applyUrl: "/get-bond?type=contractor", description: "Texas plumbing contractors licensed by TSBPE must maintain a surety bond under Occupations Code Ch. 1301 as a condition of their Master Plumber license." },
 };
 
+
+// ─── Dynamic county title bond pages (standard tier; rich top-10 in PAGE_META) ─
+
+const COUNTY_TITLE_SEO: Record<string, { name: string; seat: string; population: string }> = {
+  "hidalgo": { name: "Hidalgo", seat: "Edinburg", population: "~900,000" },
+  "montgomery": { name: "Montgomery", seat: "Conroe", population: "~700,000" },
+  "williamson": { name: "Williamson", seat: "Georgetown", population: "~640,000" },
+  "cameron": { name: "Cameron", seat: "Brownsville", population: "~425,000" },
+  "brazoria": { name: "Brazoria", seat: "Angleton", population: "~390,000" },
+  "bell": { name: "Bell", seat: "Belton", population: "~390,000" },
+  "galveston": { name: "Galveston", seat: "Galveston", population: "~360,000" },
+  "lubbock": { name: "Lubbock", seat: "Lubbock", population: "~320,000" },
+  "webb": { name: "Webb", seat: "Laredo", population: "~270,000" },
+  "jefferson": { name: "Jefferson", seat: "Beaumont", population: "~255,000" },
+  "mclennan": { name: "McLennan", seat: "Waco", population: "~265,000" },
+  "smith": { name: "Smith", seat: "Tyler", population: "~240,000" },
+  "brazos": { name: "Brazos", seat: "Bryan", population: "~240,000" },
+  "hays": { name: "Hays", seat: "San Marcos", population: "~270,000" },
+  "ellis": { name: "Ellis", seat: "Waxahachie", population: "~210,000" },
+  "midland": { name: "Midland", seat: "Midland", population: "~170,000" },
+  "ector": { name: "Ector", seat: "Odessa", population: "~165,000" },
+  "johnson": { name: "Johnson", seat: "Cleburne", population: "~190,000" },
+  "guadalupe": { name: "Guadalupe", seat: "Seguin", population: "~180,000" },
+  "comal": { name: "Comal", seat: "New Braunfels", population: "~175,000" },
+  "parker": { name: "Parker", seat: "Weatherford", population: "~165,000" },
+  "randall": { name: "Randall", seat: "Canyon", population: "~145,000" },
+  "taylor": { name: "Taylor", seat: "Abilene", population: "~145,000" },
+  "grayson": { name: "Grayson", seat: "Sherman", population: "~140,000" },
+  "wichita": { name: "Wichita", seat: "Wichita Falls", population: "~130,000" },
+  "gregg": { name: "Gregg", seat: "Longview", population: "~125,000" },
+  "potter": { name: "Potter", seat: "Amarillo", population: "~115,000" },
+  "kaufman": { name: "Kaufman", seat: "Kaufman", population: "~160,000" },
+  "rockwall": { name: "Rockwall", seat: "Rockwall", population: "~125,000" },
+  "tom-green": { name: "Tom Green", seat: "San Angelo", population: "~120,000" },
+  "bowie": { name: "Bowie", seat: "New Boston", population: "~93,000" },
+  "victoria": { name: "Victoria", seat: "Victoria", population: "~92,000" },
+  "angelina": { name: "Angelina", seat: "Lufkin", population: "~87,000" },
+  "hunt": { name: "Hunt", seat: "Greenville", population: "~105,000" },
+  "orange": { name: "Orange", seat: "Orange", population: "~85,000" },
+  "bastrop": { name: "Bastrop", seat: "Bastrop", population: "~110,000" },
+  "liberty": { name: "Liberty", seat: "Liberty", population: "~100,000" },
+  "henderson": { name: "Henderson", seat: "Athens", population: "~84,000" },
+  "coryell": { name: "Coryell", seat: "Gatesville", population: "~84,000" },
+  "walker": { name: "Walker", seat: "Huntsville", population: "~80,000" },
+  "nacogdoches": { name: "Nacogdoches", seat: "Nacogdoches", population: "~65,000" },
+  "harrison": { name: "Harrison", seat: "Marshall", population: "~69,000" },
+  "san-patricio": { name: "San Patricio", seat: "Sinton", population: "~70,000" },
+  "starr": { name: "Starr", seat: "Rio Grande City", population: "~66,000" },
+  "wise": { name: "Wise", seat: "Decatur", population: "~73,000" },
+  "anderson": { name: "Anderson", seat: "Palestine", population: "~58,000" },
+  "hardin": { name: "Hardin", seat: "Kountze", population: "~58,000" },
+  "hood": { name: "Hood", seat: "Granbury", population: "~65,000" },
+  "van-zandt": { name: "Van Zandt", seat: "Canton", population: "~62,000" },
+  "cherokee": { name: "Cherokee", seat: "Rusk", population: "~51,000" },
+  "rusk": { name: "Rusk", seat: "Henderson", population: "~53,000" },
+  "maverick": { name: "Maverick", seat: "Eagle Pass", population: "~58,000" },
+  "waller": { name: "Waller", seat: "Hempstead", population: "~60,000" },
+  "medina": { name: "Medina", seat: "Hondo", population: "~52,000" },
+  "val-verde": { name: "Val Verde", seat: "Del Rio", population: "~48,000" },
+  "atascosa": { name: "Atascosa", seat: "Jourdanton", population: "~50,000" },
+  "burnet": { name: "Burnet", seat: "Burnet", population: "~52,000" },
+  "wilson": { name: "Wilson", seat: "Floresville", population: "~51,000" },
+  "polk": { name: "Polk", seat: "Livingston", population: "~52,000" },
+  "kerr": { name: "Kerr", seat: "Kerrville", population: "~53,000" },
+  "wood": { name: "Wood", seat: "Quitman", population: "~46,000" },
+  "erath": { name: "Erath", seat: "Stephenville", population: "~43,000" },
+  "jim-wells": { name: "Jim Wells", seat: "Alice", population: "~39,000" },
+  "caldwell": { name: "Caldwell", seat: "Lockhart", population: "~46,000" },
+  "navarro": { name: "Navarro", seat: "Corsicana", population: "~53,000" },
+  "upshur": { name: "Upshur", seat: "Gilmer", population: "~42,000" },
+  "brown": { name: "Brown", seat: "Brownwood", population: "~38,000" },
+  "chambers": { name: "Chambers", seat: "Anahuac", population: "~48,000" },
+  "cooke": { name: "Cooke", seat: "Gainesville", population: "~42,000" },
+  "matagorda": { name: "Matagorda", seat: "Bay City", population: "~36,000" },
+  "hopkins": { name: "Hopkins", seat: "Sulphur Springs", population: "~37,000" },
+  "kendall": { name: "Kendall", seat: "Boerne", population: "~47,000" },
+  "jasper": { name: "Jasper", seat: "Jasper", population: "~33,000" },
+  "hale": { name: "Hale", seat: "Plainview", population: "~32,000" },
+  "howard": { name: "Howard", seat: "Big Spring", population: "~34,000" },
+  "hill": { name: "Hill", seat: "Hillsboro", population: "~36,000" },
+  "washington": { name: "Washington", seat: "Brenham", population: "~36,000" },
+  "fannin": { name: "Fannin", seat: "Bonham", population: "~36,000" },
+  "titus": { name: "Titus", seat: "Mount Pleasant", population: "~31,000" },
+  "bee": { name: "Bee", seat: "Beeville", population: "~31,000" },
+  "kleberg": { name: "Kleberg", seat: "Kingsville", population: "~31,000" },
+  "cass": { name: "Cass", seat: "Linden", population: "~29,000" },
+  "austin": { name: "Austin", seat: "Bellville", population: "~30,000" },
+  "palo-pinto": { name: "Palo Pinto", seat: "Palo Pinto", population: "~29,000" },
+  "grimes": { name: "Grimes", seat: "Anderson", population: "~30,000" },
+  "uvalde": { name: "Uvalde", seat: "Uvalde", population: "~25,000" },
+  "shelby": { name: "Shelby", seat: "Center", population: "~24,000" },
+  "aransas": { name: "Aransas", seat: "Rockport", population: "~24,000" },
+  "milam": { name: "Milam", seat: "Cameron", population: "~25,000" },
+  "panola": { name: "Panola", seat: "Carthage", population: "~23,000" },
+  "gillespie": { name: "Gillespie", seat: "Fredericksburg", population: "~27,000" },
+};
+
+function getDynamicCountyTitleMeta(urlPath: string): PageMeta | null {
+  const m = urlPath.match(/^\/bonds\/bonded-title-(.+)-county$/);
+  if (!m) return null;
+  const county = COUNTY_TITLE_SEO[m[1]];
+  if (!county) return null;
+
+  const title = `${county.name} County Certificate of Title Bond | Bonded Title | Quantum Surety`;
+  const description = `Get a Texas certificate of title bond in ${county.name} County (${county.seat}). Bonds from $50, 1.5x vehicle value, 3-year term. Same-day issuance, file with the county tax office. TDI #3480229.`;
+  const canonical = `${BASE_URL}${urlPath}`;
+  const content = `
+    <main>
+      <h1>${county.name} County Certificate of Title Bond</h1>
+      <p>If you own a vehicle in ${county.name} County, Texas (${county.population} residents, county seat ${county.seat}) and cannot get a negotiable title from the seller, a certificate of title bond (bonded title) is the legal path to ownership through TxDMV. Bonds start at $50 for a 3-year term, set at 1.5x the vehicle's appraised value.</p>
+      <section>
+        <h2>How the bonded title process works in ${county.name} County</h2>
+        <ol>
+          <li>Get a TxDMV Statement of Fact (Form VTR-130-SOF) and vehicle appraisal</li>
+          <li>Purchase your title bond from Quantum Surety — same-day certificate by email</li>
+          <li>File at the ${county.name} County Tax Assessor-Collector office in ${county.seat}</li>
+        </ol>
+      </section>
+      <section>
+        <h2>Frequently Asked Questions</h2>
+        <dl>
+          <dt>How much does a bonded title cost in ${county.name} County?</dt>
+          <dd>The bond itself starts at $50 for 3 years. The bond amount is 1.5x your vehicle's appraised value; premium scales with that amount.</dd>
+          <dt>Where do I file in ${county.name} County?</dt>
+          <dd>At the ${county.name} County Tax Assessor-Collector office in ${county.seat}. Verify current address and hours at txdmv.gov before visiting.</dd>
+          <dt>How fast can I get the bond?</dt>
+          <dd>Same day — apply online and receive your bond certificate by email, usually within minutes.</dd>
+        </dl>
+      </section>
+      <a href="/title-bond-calculator">Calculate your title bond cost</a>
+      <a href="/texas-title-rescue">Check your eligibility free</a>
+    </main>`;
+
+  return {
+    title,
+    description,
+    canonical,
+    content,
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: `Certificate of Title Bond -- ${county.name} County, TX`,
+        provider: { '@type': 'InsuranceAgency', name: 'Quantum Surety', url: BASE_URL },
+        areaServed: { '@type': 'AdministrativeArea', name: `${county.name} County`, containedInPlace: { '@type': 'State', name: 'Texas' } },
+        description,
+        url: canonical,
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: `How much does a bonded title cost in ${county.name} County?`, acceptedAnswer: { '@type': 'Answer', text: 'The bond starts at $50 for a 3-year term. The bond amount is 1.5x your vehicle appraised value; premium scales with that amount.' } },
+          { '@type': 'Question', name: `Where do I file in ${county.name} County?`, acceptedAnswer: { '@type': 'Answer', text: `At the ${county.name} County Tax Assessor-Collector office in ${county.seat}. Verify current address and hours at txdmv.gov before visiting.` } },
+          { '@type': 'Question', name: 'How fast can I get the bond?', acceptedAnswer: { '@type': 'Answer', text: 'Same day -- apply online and receive your bond certificate by email, usually within minutes.' } },
+        ],
+      },
+    ],
+  };
+}
+
 function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
   const m = urlPath.match(/^\/bonds\/(notary-bond|contractor-bond|gdn-bond|mortgage-bond|hvac-bond|plumber-bond)-(.+)$/);
   if (!m) return null;
@@ -6862,6 +7087,8 @@ function getMetaForPath(urlPath: string): PageMeta {
   if (PAGE_META[urlPath]) return PAGE_META[urlPath];
   const dynamicMeta = getDynamicCityBondMeta(urlPath);
   if (dynamicMeta) return dynamicMeta;
+  const countyMeta = getDynamicCountyTitleMeta(urlPath);
+  if (countyMeta) return countyMeta;
   for (const key of Object.keys(PAGE_META)) {
     if (key !== "/" && urlPath.startsWith(key)) return PAGE_META[key];
   }
@@ -6980,9 +7207,23 @@ export function generateSitemap(): string {
     )
     .join("");
 
+  const countyUrls = Object.keys(COUNTY_TITLE_SEO)
+    .map((slug) => `/bonds/bonded-title-${slug}-county`)
+    .filter((p) => !PAGE_META[p])
+    .map(
+      (p) => `
+  <url>
+    <loc>${BASE_URL}${p}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>`
+    )
+    .join("");
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}${dynamicUrls}
+${urls}${dynamicUrls}${countyUrls}
 </urlset>`;
 }
 

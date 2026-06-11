@@ -16,6 +16,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-notary-expiration-data-2026",
+    title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study",
+    description: "We analyzed all 458,845 active Texas notary commissions. August is the biggest renewal month of the year, and one surety holds 43% of the market.",
+    date: "2026-06-11",
+    readTime: "5 min read",
+    category: "Data Studies",
+    tags: ["Notary Bond", "Data Study", "Renewal", "Texas SOS"],
+    featured: true,
+  },
+  {
     slug: "texas-bonded-title-complete-guide-2026",
     title: "Texas Bonded Title: Complete 2026 Guide (Requirements, Process & Cost)",
     description: "Everything you need to know about getting a bonded title in Texas — when it's required, step-by-step process, what it costs, required TxDMV forms, and how to get bonded same day.",

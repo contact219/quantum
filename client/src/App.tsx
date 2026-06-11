@@ -119,6 +119,7 @@ const BlogTexasContractorBondAndPermits = lazy(() => import("@/pages/blog/texas-
 const BlogTDILicense = lazy(() => import("@/pages/blog/TDILicenseAnnouncement"));
 const BlogSB693Renewal = lazy(() => import("@/pages/blog/texas-notary-bond-sb693-renewal-2026"));
 const BlogTDLRBond2026 = lazy(() => import("@/pages/blog/texas-tdlr-contractor-bond-2026"));
+const BlogNotaryData2026 = lazy(() => import("@/pages/blog/texas-notary-expiration-data-2026"));
 const BlogContractorBondCost = lazy(() => import("@/pages/blog/texas-contractor-license-bond-cost"));
 const BlogElectricalBondRequirements = lazy(() => import("@/pages/blog/texas-electrical-contractor-bond-requirements"));
 const GetBond = lazy(() => import("@/pages/get-bond"));
@@ -291,6 +292,97 @@ function Router() {
       <Route path="/bonds/bonded-title-denton-county" component={CountyTitleBondPage} />
       <Route path="/bonds/bonded-title-fort-bend-county" component={CountyTitleBondPage} />
       <Route path="/bonds/bonded-title-nueces-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hidalgo-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-montgomery-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-williamson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-cameron-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-brazoria-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-bell-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-galveston-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-lubbock-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-webb-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-jefferson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-mclennan-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-smith-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-brazos-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hays-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-ellis-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-midland-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-ector-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-johnson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-guadalupe-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-comal-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-parker-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-randall-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-taylor-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-grayson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-wichita-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-gregg-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-potter-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-kaufman-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-rockwall-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-tom-green-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-bowie-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-victoria-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-angelina-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hunt-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-orange-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-bastrop-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-liberty-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-henderson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-coryell-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-walker-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-nacogdoches-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-harrison-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-san-patricio-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-starr-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-wise-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-anderson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hardin-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hood-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-van-zandt-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-cherokee-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-rusk-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-maverick-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-waller-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-medina-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-val-verde-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-atascosa-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-burnet-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-wilson-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-polk-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-kerr-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-wood-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-erath-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-jim-wells-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-caldwell-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-navarro-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-upshur-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-brown-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-chambers-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-cooke-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-matagorda-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hopkins-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-kendall-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-jasper-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hale-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-howard-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-hill-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-washington-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-fannin-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-titus-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-bee-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-kleberg-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-cass-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-austin-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-palo-pinto-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-grimes-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-uvalde-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-shelby-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-aransas-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-milam-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-panola-county" component={CountyTitleBondPage} />
+      <Route path="/bonds/bonded-title-gillespie-county" component={CountyTitleBondPage} />
       <Route path="/bonds/bonded-title-texas" component={BondedTitleTexas} />
       <Route path="/title-document-analyzer" component={TitleDocumentAnalyzer} />
       <Route path="/texas-title-rescue" component={TitleRescue} />
@@ -504,6 +596,7 @@ function Router() {
       <Route path="/blog/quantum-surety-tdi-licensed-agency-3480229" component={BlogTDILicense} />
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
       <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
+      <Route path="/blog/texas-notary-expiration-data-2026" component={BlogNotaryData2026} />
       <Route path="/blog/texas-contractor-license-bond-cost" component={BlogContractorBondCost} />
       <Route path="/blog/texas-electrical-contractor-bond-requirements" component={BlogElectricalBondRequirements} />
       <Route path="/blog/texas-gdn-bond-requirements-2026" component={BlogGDNBondRequirements2026} />

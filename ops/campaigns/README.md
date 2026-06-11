@@ -16,6 +16,12 @@ Also applied directly (not in files): #44 "Surety One" — added missing surety
 filter (was emailing ALL expiring notaries), then paused (Surety One has 0
 active TX notaries).
 
+Also applied 2026-06-11 (direct SQL): #12 lapsed-notary body used
+`{{days_lapsed}}`, a variable drip.js never interpolates — recipients saw raw
+template syntax. Reworded to use `{{expire_date}}` only. Found by
+`ops/crm-scripts/verify_render.py`, which simulates send-time rendering;
+run it after ANY campaign body change.
+
 Templates use `{{first_name}}`, `{{surety_company}}`, `{{expire_date}}`,
 `{{verify_url}}`, `{{unsubscribe_url}}` — interpolated by
 `backend/src/routes/drip.js` in the quantum-surety-crm repo.

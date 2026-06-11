@@ -118,6 +118,16 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <a
+        href={`tel:${phoneNumber.replace(/[^+\d]/g, "")}`}
+        data-testid="link-call-bar"
+        className="flex items-center justify-center gap-2 bg-blue-900 text-white text-sm font-medium py-1.5 px-4 hover:bg-blue-800 transition-colors"
+      >
+        <Phone className="w-3.5 h-3.5" />
+        <span>
+          Call now — answered 24/7: <span className="font-bold underline underline-offset-2">{phoneNumber}</span>
+        </span>
+      </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" data-testid="link-home" onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}>
@@ -177,10 +187,10 @@ export function Navbar() {
               <span>🏛️</span>
               <span>TDI Licensed #3480229</span>
             </div>
-            <a href={`tel:${phoneNumber}`} data-testid="link-call">
+            <a href={`tel:${phoneNumber.replace(/[^+\d]/g, "")}`} data-testid="link-call">
               <Button className="ml-2">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Us
+                {phoneNumber}
               </Button>
             </a>
 

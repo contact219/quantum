@@ -138,6 +138,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
       // Persist lead to database
       storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: "get-bond form", status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
+      // Instant speed-to-lead email — the lead hears from us within seconds, not at the 3 PM batch
+      const firstName = String(name).trim().split(/\s+/)[0];
+      const TITLE_APPLY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
+      let leadIntro: string;
+      let leadCta = "";
+      if (rawBondType === "notary") {
+        leadIntro = `Your Texas Notary Bond is $50 flat for the full 4-year term, underwritten by RLI Insurance — most bonds are issued same day.`;
+      } else if (rawBondType === "title" || rawBondType === "bonded-title") {
+        leadIntro = `Good news — you don't have to wait on us. You can complete your Certificate of Title Bond application online right now and most applicants finish in under 10 minutes.`;
+        leadCta = `<p style="margin:24px 0;"><a href="${TITLE_APPLY_URL}" style="background:#0d9488;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;">Apply for Your Title Bond Now</a></p>`;
+      } else if (rawBondType === "dealer" || rawBondType === "gdn") {
+        leadIntro = `Texas GDN Dealer Bonds start at $100/year, underwritten by RLI Insurance. A bond specialist is reviewing your request now.`;
+      } else {
+        leadIntro = `A licensed bond specialist is reviewing your request now and will reach out shortly with your quote.`;
+      }
+      const instantHtml = `
+        <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1f2937;">
+          <p>Hi ${firstName},</p>
+          <p>Thanks for requesting your <strong>${bondLabel}</strong> — we received it just now.</p>
+          <p>${leadIntro}</p>
+          ${leadCta}
+          <p>Have a question or want to get it done over the phone? Call us anytime — our line is answered 24/7:</p>
+          <p style="font-size:20px;font-weight:bold;margin:12px 0;"><a href="tel:+12146668718" style="color:#1d4ed8;text-decoration:none;">(214) 666-8718</a></p>
+          <p>Talk soon,<br/>The Quantum Surety Team<br/><a href="https://quantumsurety.bond" style="color:#1d4ed8;">quantumsurety.bond</a></p>
+          <p style="font-size:12px;color:#6b7280;margin-top:24px;">Quantum Surety — Texas-licensed surety bond agency. Bonds underwritten by RLI Insurance Company.</p>
+        </div>`;
+      sendEmail({
+        to: email,
+        subject: `We received your ${bondLabel} request — here's what happens next`,
+        html: instantHtml,
+      }).catch((e: any) => console.error("Instant lead email error:", e.message));
       // Instant push notification â€” awaited so autoscale doesn't drop it
       await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",

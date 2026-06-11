@@ -6823,15 +6823,38 @@ function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
     description,
     canonical,
     content,
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: `${bond.name} -- ${city.name}, TX`,
-      provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
-      areaServed: { "@type": "City", name: city.name, containedInPlace: { "@type": "State", name: "Texas" } },
-      description,
-      url: canonical,
-    },
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: `${bond.name} -- ${city.name}, TX`,
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+        areaServed: { "@type": "City", name: city.name, containedInPlace: { "@type": "State", name: "Texas" } },
+        description,
+        url: canonical,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Is a ${bond.shortName} required in ${city.name}?`,
+            acceptedAnswer: { "@type": "Answer", text: bond.description },
+          },
+          {
+            "@type": "Question",
+            name: `How much does a ${bond.shortName} cost in ${city.name}?`,
+            acceptedAnswer: { "@type": "Answer", text: `${bond.cost} through Quantum Surety (${bond.costNote}). No hidden fees.` },
+          },
+          {
+            "@type": "Question",
+            name: "How fast can I get my bond?",
+            acceptedAnswer: { "@type": "Answer", text: `Same day. Apply online, pay, and receive your certificate by email within minutes -- ready to file with ${bond.issuer}.` },
+          },
+        ],
+      },
+    ],
   };
 }
 
@@ -6939,9 +6962,27 @@ export function generateSitemap(): string {
     )
     .join("");
 
+  // Dynamic city x bond pages (served via getDynamicCityBondMeta) — only those
+  // without an explicit PAGE_META entry, so nothing is listed twice
+  const dynamicUrls = Object.keys(DYN_BOND_META)
+    .flatMap((bondSlug) =>
+      Object.keys(CITY_DATA).map((citySlug) => `/bonds/${bondSlug}-${citySlug}`)
+    )
+    .filter((p) => !PAGE_META[p])
+    .map(
+      (p) => `
+  <url>
+    <loc>${BASE_URL}${p}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>`
+    )
+    .join("");
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+${urls}${dynamicUrls}
 </urlset>`;
 }
 

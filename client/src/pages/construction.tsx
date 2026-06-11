@@ -7,9 +7,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Building2, Users, CheckCircle, FileText, Shield, Clock, ArrowRight, Sparkles, Phone } from "lucide-react";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
-import constructionHero from "@assets/generated_images/contractor_with_digital_blueprints.png";
-import gcImage from "@assets/generated_images/general_contractor_in_office.png";
-import subImage from "@assets/generated_images/subcontractor_team_at_work.png";
+import constructionHero from "@assets/generated_images/contractor_with_digital_blueprints.webp";
+import gcImage from "@assets/generated_images/general_contractor_in_office.webp";
+import subImage from "@assets/generated_images/subcontractor_team_at_work.webp";
 
 export default function Construction() {
   useSEO({

@@ -24,7 +24,7 @@ interface PageMeta {
 
 const BASE_URL = "https://quantumsurety.bond";
 
-const NOINDEX_PREFIXES = ["/admin", "/portal", "/api"];
+const NOINDEX_PREFIXES = ["/admin", "/portal", "/api/"];
 const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "/chatbot"]);
 
 const PAGE_META: Record<string, PageMeta> = {
@@ -6591,7 +6591,103 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `<main lang="es"><h1>Fianza de Notario Público en Texas</h1><p>La fianza de notario en Texas cuesta $50 precio fijo por 4 años. Requerida por §406.010 del Código de Gobierno de Texas. Sin verificación de crédito. PDF instantáneo.</p><a href="/get-bond?type=notary">Obtener Mi Fianza de Notario — $50</a></main>`,
   },
-};
+
+
+  "/bond-guard": {
+    title: "Texas Bond Guard — Notary Bond Expiration Monitoring | Quantum Surety",
+    description: "Never let your Texas notary bond lapse. Bond Guard sends 9 automated email reminders from 90 days to 1 day before expiry. Includes live bond status dashboard and one-click renewal. $5.99/month or $49/year.",
+    canonical: `${BASE_URL}/bond-guard`,
+  },
+
+  "/bond-guard-pro": {
+    title: "Bond Guard Pro — Contractor License Bond Dashboard | Quantum Surety",
+    description: "Track all your TDLR contractor license bonds in one dashboard. Automated expiry alerts at 30 and 7 days before each bond lapses. Live data updated daily from TDLR. $19.99/month.",
+    canonical: `${BASE_URL}/bond-guard-pro`,
+  },
+
+  "/contact": {
+    title: "Contact Quantum Surety | Texas Surety Bond Questions",
+    description: "Questions about Texas surety bonds? Contact Quantum Surety at (214) 666-8718 or send a message online. TDI-licensed agency #3480229. Fast response, same-day bonds.",
+    canonical: `${BASE_URL}/contact`,
+  },
+
+  "/press": {
+    title: "Press Kit — Texas Contractor Bond Compliance Data | Quantum Surety",
+    description: "Press resources, live compliance data, and media contacts for Quantum Surety. Research covers 775,000+ TDLR-licensed Texas contractors with daily-updated bond status.",
+    canonical: `${BASE_URL}/press`,
+  },
+
+  "/partner-program": {
+    title: "Partner Program — Earn Up to 25% Commission on Texas Surety Bonds | Quantum Surety",
+    description: "Refer Texas surety bond customers and earn 15-25% commission on every sale. Free to join, instant link activation, real-time earnings dashboard. For notary trainers, insurance agents, and title companies.",
+    canonical: `${BASE_URL}/partner-program`,
+  },
+
+  "/api-access": {
+    title: "Texas Bond Verification API — Real-Time Notary & Contractor Status | Quantum Surety",
+    description: "REST API for instant Texas bond status lookups. Verify notary public bonds and TDLR contractor bonds programmatically. Free tier 500 calls/month. Paid plans from $99/month.",
+    canonical: `${BASE_URL}/api-access`,
+  },
+
+  "/texas-bond-watch": {
+    title: "Texas Bond Watch — Contractor License Compliance Tracker by County | Quantum Surety",
+    description: "Live tracker of Texas contractor bond compliance rates by county. See active vs. expired TDLR-licensed contractors in Harris, Dallas, Tarrant, Travis, and 6 other major counties. Updated daily.",
+    canonical: `${BASE_URL}/texas-bond-watch`,
+  },
+
+  "/bond-compliance-leaderboard": {
+    title: "Texas County Bond Compliance Leaderboard | Quantum Surety",
+    description: "County-by-county bond compliance rankings for Texas TDLR contractors. See which county leads in active bonds vs. expired. Live data covering 775,000+ licensed contractors.",
+    canonical: `${BASE_URL}/bond-compliance-leaderboard`,
+  },
+
+  "/bond-compliance-by-trade": {
+    title: "Texas Contractor Bond Compliance by Trade Type | Quantum Surety",
+    description: "Bond expiration rates by trade type across Texas TDLR licensees. See which industries — electricians, HVAC technicians, plumbers, cosmetology — have the highest percentage of lapsed bonds.",
+    canonical: `${BASE_URL}/bond-compliance-by-trade`,
+  },
+
+  "/bond-ticker": {
+    title: "Texas Bond Expiration Ticker — Live TDLR License Expiry Feed | Quantum Surety",
+    description: "Real-time scrolling feed of Texas TDLR contractor bonds expiring today. Live data from the Texas Department of Licensing and Regulation, sorted by county.",
+    canonical: `${BASE_URL}/bond-ticker`,
+  },
+
+  "/notary-expiration-check": {
+    title: "Texas Notary Bond Expiration Check — Free Lookup Tool | Quantum Surety",
+    description: "Look up any Texas notary bond expiration date instantly. Search by name, notary ID, or email address. Set free automated email reminders before your bond expires. Data from Texas SOS public records.",
+    canonical: `${BASE_URL}/notary-expiration-check`,
+  },
+
+  "/links": {
+    title: "Quantum Surety — Texas Surety Bond Tools & Resources",
+    description: "Quick links to all Quantum Surety tools: Texas Title Rescue, Title Bond Calculator, Notary Bond Expiration Check, Bond Verify, and more. Free tools for Texas property owners and notaries.",
+    canonical: `${BASE_URL}/links`,
+  },
+
+  "/renew": {
+    title: "Renew Your Texas Notary Bond — Instant Online Renewal | Quantum Surety",
+    description: "Look up your Texas notary bond expiration date and renew instantly online. $50 flat, same-day PDF certificate. TDI-licensed agency #3480229.",
+    canonical: `${BASE_URL}/renew`,
+  },
+
+  "/qs-score": {
+    title: "QS Score — Texas Contractor & Notary Bond Rating System | Quantum Surety",
+    description: "The QS Score grades Texas contractors and notaries on bond health, expiration timeline, and profile completeness. A+ (QS Verified) to F (Non-Compliant). Free public scores via Bond Verify.",
+    canonical: `${BASE_URL}/qs-score`,
+  },
+
+  "/qs-leaderboard": {
+    title: "QS Score Leaderboard — Top-Rated Bonded Contractors by City | Quantum Surety",
+    description: "See the highest QS Score contractors in Houston, Dallas, San Antonio, Austin, and other Texas cities. Ranked by bond health, expiration status, and compliance. Live data from TDLR.",
+    canonical: `${BASE_URL}/qs-leaderboard`,
+  },
+
+  "/permit-pilot": {
+    title: "Permit Pilot — AI-Powered Texas Permit & Bond Guidance | Quantum Surety",
+    description: "AI-powered guidance for Texas permit requirements, bond obligations, and contractor license compliance. Know exactly what permits and bonds you need before visiting the permit office. Free tool.",
+    canonical: `${BASE_URL}/permit-pilot`,
+  },};
 
 // ─── Fallback meta ────────────────────────────────────────────────────────────
 

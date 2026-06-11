@@ -109,7 +109,6 @@ export default function LinksPage() {
     description:
       "Free Texas title bond tools, instant notary bonds, TDLR contractor bonds, and GDN dealer bonds. TDI-licensed agency #3480229.",
     canonical: "/links",
-    noIndex: true,
   });
 
   return (

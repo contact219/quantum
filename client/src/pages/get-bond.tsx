@@ -216,6 +216,10 @@ export default function GetBond() {
             >
               {submitting ? "Redirecting…" : "Continue to Application →"}
             </button>
+
+            <p className="text-[11px] text-gray-400 leading-snug">
+              By submitting, you agree that Quantum Surety may contact you about your request by phone, text, or email.
+            </p>
           </form>
 
           <div className="mt-4 space-y-2">

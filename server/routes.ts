@@ -138,6 +138,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
       // Persist lead to database
       storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: "get-bond form", status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
+      // Voice-originated leads use synthetic addresses and just spoke to us — skip outreach
+      const isVoiceOriginated = /@noemail\.quantumsurety\.bond$/i.test(email);
+      // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service
+      if (!isVoiceOriginated) {
+        fetch("https://voice-agent.permitpilot.online/outbound-call", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Outbound-Secret": process.env.OUTBOUND_CALL_SECRET || "3cc10b9c718013495c4d38f26dcd31db" },
+          body: JSON.stringify({ name, email, phone, bond_type: rawBondType || bond_type, source: "get-bond form" }),
+        }).catch((e: any) => console.error("Outbound call trigger error:", e.message));
+      }
       // Instant speed-to-lead email — the lead hears from us within seconds, not at the 3 PM batch
       const firstName = String(name).trim().split(/\s+/)[0];
       const TITLE_APPLY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
@@ -164,11 +174,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           <p>Talk soon,<br/>The Quantum Surety Team<br/><a href="https://quantumsurety.bond" style="color:#1d4ed8;">quantumsurety.bond</a></p>
           <p style="font-size:12px;color:#6b7280;margin-top:24px;">Quantum Surety — Texas-licensed surety bond agency. Bonds underwritten by RLI Insurance Company.</p>
         </div>`;
-      sendEmail({
-        to: email,
-        subject: `We received your ${bondLabel} request — here's what happens next`,
-        html: instantHtml,
-      }).catch((e: any) => console.error("Instant lead email error:", e.message));
+      if (!isVoiceOriginated) {
+        sendEmail({
+          to: email,
+          subject: `We received your ${bondLabel} request — here's what happens next`,
+          html: instantHtml,
+        }).catch((e: any) => console.error("Instant lead email error:", e.message));
+      }
       // Instant push notification â€” awaited so autoscale doesn't drop it
       await fetch("https://ntfy.sh/qs-leads-4a8f2b19c7", {
         method: "POST",

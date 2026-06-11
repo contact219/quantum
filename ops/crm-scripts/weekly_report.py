@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""
+Quantum Surety weekly report — rebuilt 2026-06-10 (original lost to /tmp cleanup).
+7-day rollup: leads, email funnel, top campaigns by clicks, outbound AI calls.
+Cron: 0 8 * * 6 (Saturdays)
+"""
+
+import json
+import os
+import urllib.request
+
+import boto3
+import psycopg2
+
+
+def _load_env(path="/usr/local/etc/qs-crm.env"):
+    try:
+        with open(path) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+    except OSError:
+        pass
+
+
+_load_env()
+
+DB = dict(host="127.0.0.1", port=5433, dbname="quantum_surety",
+          user="quantum_user", password=os.environ["CRM_DB_PASSWORD"])
+SES_REGION = "us-east-2"
+AWS_KEY    = os.environ["QS_AWS_KEY"]
+AWS_SECRET = os.environ["QS_AWS_SECRET"]
+FROM_EMAIL = "nice.shotwell-sparks@quantumsurety.bond"
+TO_EMAILS  = ["contact219@gmail.com"]
+OUTBOUND_STATS_URL = ("https://voice-agent.permitpilot.online/outbound-stats"
+                      "?secret=" + os.environ.get("OUTBOUND_SECRET", ""))
+
+
+def q(cur, sql, params=()):
+    cur.execute(sql, params)
+    return cur.fetchall()
+
+
+def rows_html(rows):
+    return "".join(
+        f"<tr><td style='padding:4px 12px 4px 0;color:#555;'>{a}</td>"
+        f"<td style='padding:4px 0;font-weight:600;'>{b}</td></tr>"
+        for a, b in rows) or "<tr><td style='color:#999;'>none</td></tr>"
+
+
+def main():
+    conn = psycopg2.connect(**DB)
+    cur = conn.cursor()
+
+    leads_7d   = q(cur, "SELECT COUNT(*) FROM leads WHERE created_at > NOW() - INTERVAL '7 days'")[0][0]
+    by_source  = q(cur, """SELECT COALESCE(source,'(none)'), COUNT(*) FROM leads
+                           WHERE created_at > NOW() - INTERVAL '7 days'
+                           GROUP BY 1 ORDER BY 2 DESC LIMIT 10""")
+    by_type    = q(cur, """SELECT COALESCE(bond_type,'(none)'), COUNT(*) FROM leads
+                           WHERE created_at > NOW() - INTERVAL '7 days'
+                           GROUP BY 1 ORDER BY 2 DESC LIMIT 10""")
+    email_7d   = q(cur, """SELECT event_type, COUNT(*) FROM email_events
+                           WHERE created_at > NOW() - INTERVAL '7 days'
+                           GROUP BY 1 ORDER BY 2 DESC""")
+    top_clicks = q(cur, """SELECT 'Drip #' || (metadata->>'drip_id') || ' ' ||
+                                  COALESCE((SELECT name FROM drip_schedules ds
+                                            WHERE ds.id::text = metadata->>'drip_id'), ''),
+                                  COUNT(*)
+                           FROM email_events
+                           WHERE event_type = 'email.clicked'
+                             AND created_at > NOW() - INTERVAL '7 days'
+                             AND metadata->>'drip_id' ~ '^[0-9]+$'
+                           GROUP BY 1 ORDER BY 2 DESC LIMIT 5""")
+    followups  = q(cur, """SELECT COUNT(*) FROM lead_activity
+                           WHERE action='followup_email_sent'
+                           AND created_at > NOW() - INTERVAL '7 days'""")[0][0]
+
+    try:
+        with urllib.request.urlopen(OUTBOUND_STATS_URL, timeout=20) as r:
+            ob = json.loads(r.read())
+        week = ob.get("calls_by_day", [])
+        total_calls = sum(int(d.get("calls", 0)) for d in week)
+        total_mins = round(sum(int(d.get("seconds", 0)) for d in week) / 60, 1)
+        ob_line = f"{total_calls} calls, {total_mins} minutes (7-day window, cap {ob.get('daily_cap')}/day)"
+    except Exception as e:
+        ob_line = f"unavailable: {e}"
+
+    html = f"""
+<div style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;color:#1f2937;">
+  <h2 style="margin:0 0 4px;">Quantum Surety — Weekly Report</h2>
+  <p style="margin:0 0 20px;color:#6b7280;font-size:13px;">Last 7 days</p>
+
+  <h3 style="margin:20px 0 8px;font-size:15px;">Leads: {leads_7d} new this week</h3>
+  <h4 style="margin:14px 0 4px;font-size:13px;color:#6b7280;">By source</h4>
+  <table style="font-size:13px;border-collapse:collapse;">{rows_html(by_source)}</table>
+  <h4 style="margin:14px 0 4px;font-size:13px;color:#6b7280;">By bond type</h4>
+  <table style="font-size:13px;border-collapse:collapse;">{rows_html(by_type)}</table>
+
+  <h3 style="margin:24px 0 8px;font-size:15px;">Email funnel</h3>
+  <table style="font-size:13px;border-collapse:collapse;">{rows_html(email_7d)}</table>
+  <p style="font-size:13px;color:#555;margin:8px 0 0;">Lead follow-ups sent: <strong>{followups}</strong></p>
+
+  <h3 style="margin:24px 0 8px;font-size:15px;">Top campaigns by clicks</h3>
+  <table style="font-size:13px;border-collapse:collapse;">{rows_html(top_clicks)}</table>
+
+  <h3 style="margin:24px 0 8px;font-size:15px;">Outbound AI sales calls</h3>
+  <p style="font-size:13px;color:#555;">{ob_line}</p>
+
+  <p style="font-size:11px;color:#9ca3af;margin-top:28px;">Generated by /usr/local/bin/weekly_report.py on 192.168.4.122</p>
+</div>"""
+
+    ses = boto3.client("ses", region_name=SES_REGION,
+                       aws_access_key_id=AWS_KEY, aws_secret_access_key=AWS_SECRET)
+    ses.send_email(
+        Source=f'"Quantum Surety Reports" <{FROM_EMAIL}>',
+        Destination={"ToAddresses": TO_EMAILS},
+        Message={"Subject": {"Data": "Quantum Surety Weekly Report", "Charset": "UTF-8"},
+                 "Body": {"Html": {"Data": html, "Charset": "UTF-8"}}},
+    )
+    print("weekly report sent")
+    cur.close()
+    conn.close()
+
+
+if __name__ == "__main__":
+    main()

@@ -64,12 +64,23 @@ def parse_date(s):
 
 
 def parse_address(raw):
-    # "123 MAIN ST, HOUSTON, TX 77001" -> street, city, state, zip
+    # TX SOS format is usually "street line(s)\nCity, TX 77001" — newlines inside
+    # the field, and the street may itself contain commas/suite parts. Parse from
+    # the end: state+zip, then city = the last newline/comma-delimited token.
     raw = (raw or "").strip()
-    m = re.match(r"^(.*?),\s*([^,]+?),\s*([A-Z]{2})\s*(\d{5})?", raw)
-    if m:
-        return m.group(1).strip(), m.group(2).strip(), m.group(3), m.group(4) or ""
-    return raw, "", "TX", ""
+    if not raw:
+        return "", "", "TX", ""
+    m = re.search(r"[,\s]+([A-Za-z]{2})\s+(\d{5})(?:-\d{4})?\s*$", raw)
+    if not m:
+        return re.sub(r"\s+", " ", raw), "", "TX", ""
+    state, zip_code = m.group(1).upper(), m.group(2)
+    head = raw[: m.start()].strip()
+    parts = [p.strip() for p in re.split(r"[\n,]", head) if p.strip()]
+    city = parts[-1] if parts else ""
+    street = re.sub(r"\s+", " ", " ".join(parts[:-1])).strip(" ,")
+    # suite/floor fragments that still leak into the city slot
+    city = re.sub(r"^(suite|ste\.?|apt\.?|unit|bldg\.?|floor|fl\.?|#)\s*\S*\s*", "", city, flags=re.I).strip()
+    return street, city.title(), state, zip_code
 
 
 def main():

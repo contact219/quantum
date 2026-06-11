@@ -145,7 +145,7 @@ function TrustBar() {
 
 function PermitPilotBanner() {
   return (
-    <section className="bg-[#020816] px-6 pt-8 lg:px-8">
+    <section className="bg-[#020816] px-6 py-8 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="rounded-2xl border border-cyan-400/20 bg-gradient-to-r from-slate-800 to-slate-900 p-6 md:p-8 flex flex-wrap items-center gap-6">
           <div className="flex-1 min-w-0">
@@ -201,7 +201,7 @@ export default function Home() {
         <div className="flash-motion-left pointer-events-none absolute -left-24 top-24 h-[28rem] w-48 rounded-full bg-cyan-300/10 blur-3xl" />
         <div className="flash-motion-right pointer-events-none absolute -right-20 bottom-10 h-[24rem] w-44 rounded-full bg-blue-400/10 blur-3xl" />
 
-        <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-16 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-cyan-100/80 backdrop-blur-md">
               <img src="/QS_Logo.png" alt="Quantum Surety" className="h-4 w-auto object-contain max-w-[80px] brightness-0 invert" />
@@ -209,10 +209,10 @@ export default function Home() {
             </div>
 
             <h1
-              className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
+              className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
               data-testid="text-hero-headline"
             >
-              Quantum Surety Bonds: Your Texas Bond Partner
+              Texas Surety Bonds, Issued Same Day
             </h1>
 
             <div className="mt-6">
@@ -223,19 +223,17 @@ export default function Home() {
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              Quantum Surety delivers bid bonds, performance bonds, payment bonds, and license bonds — faster than traditional agencies. AI-assisted underwriting, A-rated carriers, licensed in Texas and all 50 states.
+              Notary bonds $50 flat for the full 4-year term. Bonded titles from $50. Dealer bonds from $100/yr. TDI-licensed, A-rated carriers, no credit check on standard bonds.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="https://www.mybondapp.com/329034247"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/get-bond"
                 className="inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.18)] transition hover:-translate-y-0.5 hover:bg-cyan-200"
                 data-testid="link-hero-primary-cta"
               >
-                Search For A Bond
-              </a>
+                Get My Bond — Same Day
+              </Link>
               <a
                 href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX"
                 target="_blank"
@@ -244,9 +242,7 @@ export default function Home() {
                 style={{ background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%)" }}
                 data-testid="link-hero-secondary-cta"
               >
-                <span className="text-base">&#9733;</span>
-                Get Your SB693 Notary Bond Today
-                <span className="text-base">&#9733;</span>
+                Notary Bond — $50, Apply Direct
               </a>
             </div>
 
@@ -272,85 +268,65 @@ export default function Home() {
 
           <div className="relative lg:pl-10">
             <div className="absolute -left-12 top-8 hidden h-40 w-40 rounded-full border border-cyan-300/10 bg-cyan-300/10 blur-2xl lg:block" />
-            <div className="hero-glass-frame relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+            <div className="hero-glass-frame relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 shadow-[0_30px_120px_rgba(0,0,0,0.5)] backdrop-blur-2xl md:p-8">
               <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
-              <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[linear-gradient(160deg,_rgba(8,17,34,0.92),_rgba(17,25,39,0.72))] p-6">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(34,211,238,0.15),_transparent_28%),linear-gradient(180deg,_transparent,_rgba(0,0,0,0.2))]" />
-                  <div className="relative flex items-start justify-between">
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">Placement dashboard</div>
-                      <div className="mt-3 text-2xl font-semibold tracking-tight">Carrier-ready workflow</div>
-                    </div>
-                    <div className="rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">Secure intake</div>
+              <h2 className="text-xl font-semibold text-white md:text-2xl">What do you need a bond for?</h2>
+              <p className="mt-2 text-sm text-slate-400">Pick your bond — most are issued the same day.</p>
+              <div className="mt-6 grid gap-3">
+                <Link
+                  href="/get-bond?type=notary"
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                  data-testid="link-picker-notary"
+                >
+                  <div>
+                    <div className="font-semibold text-white">Texas Notary Bond</div>
+                    <div className="text-sm text-slate-400">$50 flat — full 4-year term, instant PDF</div>
                   </div>
-
-                  <div className="relative mt-8 h-[28rem] overflow-hidden rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(255,255,255,0.02),_rgba(255,255,255,0.01))]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_18%,_rgba(56,189,248,0.18),_transparent_24%),linear-gradient(180deg,_rgba(2,8,22,0.3),_rgba(2,8,22,0.85))]" />
-                    <div className="building-reflection absolute inset-y-0 left-[14%] w-[42%] rounded-t-[1.5rem] border border-cyan-300/10 bg-[linear-gradient(180deg,_rgba(125,211,252,0.22),_rgba(15,23,42,0.08)_20%,_rgba(8,15,29,0.82)_100%)] shadow-[0_0_60px_rgba(34,211,238,0.08)]" />
-                    <div className="building-reflection absolute inset-y-[8%] right-[10%] w-[28%] rounded-t-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(148,163,184,0.25),_rgba(15,23,42,0.1)_24%,_rgba(9,12,22,0.9)_100%)]" />
-                    <div className="absolute inset-y-0 left-[18%] w-px bg-gradient-to-b from-cyan-200/0 via-cyan-200/70 to-cyan-200/0" />
-                    <div className="absolute inset-y-0 left-[27%] w-px bg-gradient-to-b from-cyan-200/0 via-cyan-200/55 to-cyan-200/0" />
-                    <div className="absolute inset-y-0 right-[22%] w-px bg-gradient-to-b from-white/0 via-white/35 to-white/0" />
-                    <div className="absolute inset-x-[8%] top-[18%] h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
-                    <div className="absolute inset-x-[12%] top-[36%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                    <div className="absolute inset-x-[16%] top-[62%] h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-[linear-gradient(180deg,_transparent,_rgba(2,8,22,0.92))]" />
-                    <div className="circuit-arc absolute left-[5%] top-[10%] h-40 w-40 rounded-full border border-cyan-300/20" />
-                    <div className="circuit-arc absolute right-[6%] top-[20%] h-56 w-56 rounded-full border border-cyan-300/10" />
-                    <div className="circuit-node absolute left-[56%] top-[22%]" />
-                    <div className="circuit-node absolute left-[72%] top-[38%]" />
-                    <div className="circuit-node absolute left-[48%] top-[58%]" />
-                    <div className="absolute left-[48%] top-[24%] h-px w-[24%] bg-gradient-to-r from-cyan-300/0 via-cyan-300/70 to-cyan-300/0" />
-                    <div className="absolute left-[50%] top-[40%] h-px w-[22%] bg-gradient-to-r from-cyan-300/0 via-cyan-300/60 to-cyan-300/0" />
-                    <div className="absolute left-[48%] top-[60%] h-px w-[18%] bg-gradient-to-r from-cyan-300/0 via-cyan-300/60 to-cyan-300/0" />
-                    <div className="absolute left-[57%] top-[22%] h-[36%] w-px bg-gradient-to-b from-cyan-300/0 via-cyan-300/60 to-cyan-300/0" />
+                  <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/title-bond-calculator"
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                  data-testid="link-picker-title"
+                >
+                  <div>
+                    <div className="font-semibold text-white">Bonded Title (Lost Vehicle Title)</div>
+                    <div className="text-sm text-slate-400">From $50 — calculate your exact cost in 60 seconds</div>
                   </div>
-                </div>
-
-                <div className="flex flex-col gap-4">
-                  <div className="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,_rgba(255,255,255,0.07),_rgba(255,255,255,0.03))] p-5 backdrop-blur-xl">
-                    <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Placement status</div>
-                    <div className="mt-4 text-4xl font-semibold tracking-tight text-white">Carrier aligned</div>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">Disciplined submissions prepared for appointed carrier underwriting teams.</p>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/get-bond?type=dealer"
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                  data-testid="link-picker-dealer"
+                >
+                  <div>
+                    <div className="font-semibold text-white">Auto Dealer (GDN) Bond</div>
+                    <div className="text-sm text-slate-400">From $100/yr — $50,000 TxDMV-required bond</div>
                   </div>
-                  <div className="rounded-[1.6rem] border border-cyan-300/20 bg-cyan-300/10 p-5 backdrop-blur-xl">
-                    <div className="text-xs uppercase tracking-[0.3em] text-cyan-100/70">Compliance posture</div>
-                    <ul className="mt-4 space-y-3 text-sm text-slate-100/90">
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
-                        <span>Internal review aligned with carrier underwriting standards</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
-                        <span>Technology-enabled intake built for efficient bond placement</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.75)]" />
-                        <span>Final approval and issuance remain with carrier partners</span>
-                      </li>
-                    </ul>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/get-bond?type=contractor"
+                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                  data-testid="link-picker-contractor"
+                >
+                  <div>
+                    <div className="font-semibold text-white">Contractor &amp; Construction Bonds</div>
+                    <div className="text-sm text-slate-400">License, bid, performance &amp; payment bonds</div>
                   </div>
-                  <div className="rounded-[1.6rem] border border-white/10 bg-[#081122]/80 p-5 backdrop-blur-xl">
-                    <div className="flex items-center justify-between text-sm text-slate-400">
-                      <span>Operational cadence</span>
-                      <span className="text-cyan-200">Efficient + controlled</span>
-                    </div>
-                    <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
-                      <div className="h-full w-[82%] rounded-full bg-[linear-gradient(90deg,_rgba(125,211,252,0.45),_rgba(34,211,238,1),_rgba(147,197,253,0.7))] shadow-[0_0_20px_rgba(34,211,238,0.5)]" />
-                    </div>
-                    <p className="mt-4 text-sm leading-6 text-slate-400">A modern interface style with conservative, compliance-forward messaging for business buyers.</p>
-                  </div>
-                </div>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
+                </Link>
               </div>
+              <p className="mt-5 text-center text-sm text-slate-400">
+                Not sure? Call <a href="tel:+12146668718" className="font-semibold text-cyan-200 hover:underline">(214) 666-8718</a> — answered 24/7.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <TrustBar />
-
-      <PermitPilotBanner />
 
       {/* ── Notary Bond Callout ─────────────────────────────────────────── */}
       <section className="bg-white border-b border-slate-100 py-16 px-4">
@@ -717,6 +693,8 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      <PermitPilotBanner />
     </div>
   );
 }

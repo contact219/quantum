@@ -2643,6 +2643,22 @@ const PAGE_META: Record<string, PageMeta> = {
           </ul>
         </section>
         <section>
+          <h2>Top 10 Texas cities by expiring commissions (next 180 days)</h2>
+          <ol>
+            <li>Houston — 7,324</li>
+            <li>San Antonio — 3,489</li>
+            <li>Dallas — 3,105</li>
+            <li>Austin — 2,370</li>
+            <li>Fort Worth — 1,983</li>
+            <li>El Paso — 1,221</li>
+            <li>Katy — 822</li>
+            <li>Spring — 804</li>
+            <li>Arlington — 801</li>
+            <li>Plano — 704</li>
+          </ol>
+          <p>Suburban signing-agent hubs like Katy, Spring, and Plano out-rank most mid-size Texas cities, concentrated around the Houston and DFW mortgage corridors.</p>
+        </section>
+        <section>
           <h2>Texas notary bond market share (active bonds)</h2>
           <ul>
             <li>Western Surety Company (incl. c/o CNA) — 200,093 bonds (43.6%)</li>

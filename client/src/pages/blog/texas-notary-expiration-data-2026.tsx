@@ -13,6 +13,19 @@ const MONTHLY = [
   { month: "December 2026", count: 2977 },
 ];
 
+const CITIES = [
+  { city: "Houston", count: 7324 },
+  { city: "San Antonio", count: 3489 },
+  { city: "Dallas", count: 3105 },
+  { city: "Austin", count: 2370 },
+  { city: "Fort Worth", count: 1983 },
+  { city: "El Paso", count: 1221 },
+  { city: "Katy", count: 822 },
+  { city: "Spring", count: 804 },
+  { city: "Arlington", count: 801 },
+  { city: "Plano", count: 704 },
+];
+
 const MARKET = [
   { company: "Western Surety Company (incl. c/o CNA)", count: 200093, share: "43.6%" },
   { company: "Merchants Bonding Company", count: 91153, share: "19.9%" },
@@ -95,7 +108,38 @@ export default function TexasNotaryExpirationData2026() {
           when the queue is longest. Renewing 60–90 days early avoids any gap in your authority to notarize.
         </p>
 
-        <h2 className="text-2xl font-bold mb-4">Finding 2: One company writes almost half of all Texas notary bonds</h2>
+        <h2 className="text-2xl font-bold mb-4">Finding 2: Where the renewal wave hits hardest</h2>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          Of the 62,623 commissions expiring in the next 180 days, these ten cities account for more than a third.
+          Houston alone has over twice as many expiring notaries as any other Texas city:
+        </p>
+        <div className="overflow-x-auto mb-8">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-gray-300 text-left">
+                <th className="py-2 pr-4">#</th>
+                <th className="py-2 pr-4">City</th>
+                <th className="py-2 text-right">Commissions expiring by December 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CITIES.map((r, i) => (
+                <tr key={r.city} className="border-b border-gray-200">
+                  <td className="py-2 pr-4 text-gray-500">{i + 1}</td>
+                  <td className="py-2 pr-4 font-medium">{r.city}</td>
+                  <td className="py-2 text-right font-semibold">{r.count.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-gray-700 leading-relaxed mb-6">
+          The suburban pattern is worth noting: Katy, Spring, and Plano each out-rank most mid-size Texas cities,
+          reflecting where signing agents and title work actually concentrate — around the Houston and DFW
+          mortgage corridors.
+        </p>
+
+        <h2 className="text-2xl font-bold mb-4">Finding 3: One company writes almost half of all Texas notary bonds</h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           The surety side of the market is heavily concentrated. Share of the 458,845 active bonds:
         </p>

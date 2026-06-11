@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useEffect, useState } from "react";
 import { SEO_PAGES, useSEO, useSchema } from "@/hooks/useSEO";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { GetBondedStepsSection } from "@/components/home/GetBondedStepsSection";
@@ -138,6 +139,87 @@ function TrustBar() {
             return <div key={item.headline} className="flex-1">{content}</div>;
           })}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function LiveBondPulse() {
+  const [expiring30d, setExpiring30d] = useState<number | null>(null);
+  const [samples, setSamples] = useState<string[]>([]);
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const api = "https://verify.quantumsurety.bond/api/bond-watch";
+    fetch(`${api}/summary`)
+      .then((r) => r.json())
+      .then((d) => {
+        const n = parseInt(d?.notaries?.expiring_30d || "0", 10);
+        const c = parseInt(d?.contractors?.expiring_30d || "0", 10);
+        if (n + c > 0) setExpiring30d(n + c);
+      })
+      .catch(() => {});
+    fetch(`${api}/recently-expired?days=3&limit=25`)
+      .then((r) => r.json())
+      .then((d) => {
+        const items = (d?.contractors || [])
+          .map((it: any) => {
+            const rawName = it.owner_name || it.business_name || "";
+            const m = rawName.match(/^([A-Z'-]+),\s*([A-Z'-]+)/i);
+            if (!m) return null;
+            const first = m[2].charAt(0) + m[2].slice(1).toLowerCase();
+            const lastInitial = m[1].charAt(0).toUpperCase();
+            const city = (it.business_city || "").split(/\s+TX\b/)[0].trim().toLowerCase()
+              .replace(/(^|\s)\S/g, (s: string) => s.toUpperCase());
+            const kind = (it.license_type || "license").replace(/\s*\(.*\)$/, "");
+            const ago = it.days_since_expiry === 0 ? "expired today"
+              : it.days_since_expiry === 1 ? "expired yesterday"
+              : `expired ${it.days_since_expiry} days ago`;
+            return `${first} ${lastInitial}.${city ? ` (${city})` : ""} — ${kind} bond ${ago}`;
+          })
+          .filter(Boolean);
+        setSamples(items.slice(0, 15));
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (samples.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % samples.length), 4500);
+    return () => clearInterval(t);
+  }, [samples]);
+
+  if (expiring30d === null) return null;
+
+  return (
+    <div className="bg-[#060c1a] border-b border-white/[0.06]">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-5 gap-y-1 px-6 py-2.5 text-sm lg:px-8">
+        <Link href="/bond-ticker" className="flex min-w-0 flex-1 flex-wrap items-center gap-x-5 gap-y-1 hover:opacity-90">
+          <span className="flex shrink-0 items-center gap-2 font-semibold text-red-400">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+            </span>
+            LIVE
+          </span>
+          <span className="shrink-0 text-slate-300">
+            <span className="font-semibold text-white">{expiring30d.toLocaleString()}</span> Texas bonds expire in the next 30 days
+          </span>
+          {samples.length > 0 && (
+            <span className="hidden min-w-0 truncate text-slate-400 md:inline" key={idx}>
+              {samples[idx]}
+            </span>
+          )}
+        </Link>
+        <a
+          href="https://verify.quantumsurety.bond"
+          target="_blank"
+          rel="noreferrer"
+          className="shrink-0 font-semibold text-cyan-300 hover:text-cyan-200"
+        >
+          Is yours next? Check free →
+        </a>
       </div>
     </div>
   );
@@ -327,6 +409,8 @@ export default function Home() {
       </section>
 
       <TrustBar />
+
+      <LiveBondPulse />
 
       {/* ── Notary Bond Callout ─────────────────────────────────────────── */}
       <section className="bg-white border-b border-slate-100 py-16 px-4">

@@ -120,6 +120,7 @@ const BlogTDILicense = lazy(() => import("@/pages/blog/TDILicenseAnnouncement"))
 const BlogSB693Renewal = lazy(() => import("@/pages/blog/texas-notary-bond-sb693-renewal-2026"));
 const BlogTDLRBond2026 = lazy(() => import("@/pages/blog/texas-tdlr-contractor-bond-2026"));
 const BlogNotaryData2026 = lazy(() => import("@/pages/blog/texas-notary-expiration-data-2026"));
+const CompareWesternSurety = lazy(() => import("@/pages/compare-western-surety"));
 const BlogContractorBondCost = lazy(() => import("@/pages/blog/texas-contractor-license-bond-cost"));
 const BlogElectricalBondRequirements = lazy(() => import("@/pages/blog/texas-electrical-contractor-bond-requirements"));
 const GetBond = lazy(() => import("@/pages/get-bond"));
@@ -597,6 +598,7 @@ function Router() {
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
       <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
       <Route path="/blog/texas-notary-expiration-data-2026" component={BlogNotaryData2026} />
+      <Route path="/compare/western-surety-notary-bond" component={CompareWesternSurety} />
       <Route path="/blog/texas-contractor-license-bond-cost" component={BlogContractorBondCost} />
       <Route path="/blog/texas-electrical-contractor-bond-requirements" component={BlogElectricalBondRequirements} />
       <Route path="/blog/texas-gdn-bond-requirements-2026" component={BlogGDNBondRequirements2026} />

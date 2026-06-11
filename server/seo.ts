@@ -2594,6 +2594,50 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/compare/western-surety-notary-bond": {
+    title: "Western Surety Notary Bond Renewal in Texas: Compare First (2026) | Quantum Surety",
+    description:
+      "Renewing a Western Surety notary bond in Texas? The state-required $10,000 bond is identical from every surety — compare price and delivery before you renew. $50 flat for 4 years.",
+    canonical: `${BASE_URL}/compare/western-surety-notary-bond`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Is it legal to switch sureties when my Texas notary commission renews?", acceptedAnswer: { "@type": "Answer", text: "Yes. Each 4-year commission requires a new bond, and you may buy it from any surety licensed in Texas. The Secretary of State does not favor any carrier." } },
+          { "@type": "Question", name: "Do I lose any coverage by switching from Western Surety?", acceptedAnswer: { "@type": "Answer", text: "No. The $10,000 bond amount and coverage are set by Texas Government Code 406.010 — identical from every surety. Optional E&O insurance is a separate product." } },
+          { "@type": "Question", name: "How much is a Texas notary bond through Quantum Surety?", acceptedAnswer: { "@type": "Answer", text: "$50 flat for the full 4-year term, underwritten by A-rated RLI Insurance Company, with an instant PDF certificate by email." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Renewing a Western Surety Notary Bond in Texas? Compare First.</h1>
+        <p>About 44% of Texas notaries carry a Western Surety bond — most got it bundled inside an application package and have never seen a price comparison. Texas law sets the notary bond at $10,000 no matter who writes it; the Secretary of State accepts every licensed surety equally. The only real differences at renewal are price, speed, and what else is bundled into the bill.</p>
+        <section>
+          <h2>Side-by-side at renewal</h2>
+          <ul>
+            <li>Bond amount: $10,000 from either (set by Texas law)</li>
+            <li>Accepted by the Texas Secretary of State: both, identically</li>
+            <li>Price: Western Surety varies by vendor package — Quantum Surety is $50 flat for the full 4-year term</li>
+            <li>Delivery: instant PDF by email through Quantum Surety, usually same day</li>
+            <li>Add-ons: none required — the bond only</li>
+            <li>Underwriter: RLI Insurance Company (A-rated)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>How to switch at renewal</h2>
+          <ol>
+            <li>Apply online in about 5 minutes — $50 total</li>
+            <li>Bond certificate arrives by email, usually same day</li>
+            <li>File your renewal with the Texas Secretary of State as usual (SB693 course at sos.texas.gov, $20, paid to the state)</li>
+          </ol>
+        </section>
+        <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX">Renew for $50 — same day</a>
+        <a href="https://verify.quantumsurety.bond">Set a free renewal reminder</a>
+        <p>Western Surety Company is a CNA company; the name is used for identification and comparison only. Quantum Surety is not affiliated with Western Surety or CNA.</p>
+      </main>`,
+  },
   "/blog/texas-notary-expiration-data-2026": {
     title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study | Quantum Surety",
     description:

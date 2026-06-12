@@ -2594,6 +2594,35 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/bonds/oversize-permit-bond-texas": {
+    title: "Texas Oversize/Overweight Permit Bond ($15,000) — Same Day | Quantum Surety",
+    description:
+      "TxDMV requires a $15,000 surety bond for many oversize/overweight hauling permits (Transportation Code Ch. 623). Annual term, same-day online issuance for Texas heavy haulers.",
+    canonical: `${BASE_URL}/bonds/oversize-permit-bond-texas`,
+    content: `
+      <main>
+        <h1>Texas Oversize/Overweight Permit Bond — Issued Same Day</h1>
+        <p>TxDMV requires a $15,000 surety bond on file before issuing many oversize/overweight permits under Texas Transportation Code Chapter 623. The bond protects counties for road damage from superheavy moves. You pay only an annual premium — typically from around $100/year — never the full bond amount.</p>
+        <section>
+          <h2>Who needs it</h2>
+          <ul>
+            <li>Heavy-haul trucking companies pulling TxDMV oversize/overweight permits</li>
+            <li>House and manufactured-home movers</li>
+            <li>Oilfield, wind-energy, and construction equipment transporters</li>
+            <li>Crane and rigging companies moving superheavy equipment</li>
+          </ul>
+        </section>
+        <section>
+          <h2>How it works</h2>
+          <ol>
+            <li>Apply online in minutes</li>
+            <li>Same-day issuance by an A-rated carrier — certificate by email</li>
+            <li>File with TxDMV, pull permits, renew annually</li>
+          </ol>
+        </section>
+        <a href="/get-bond?type=oversize-permit">Get your Texas oversize permit bond — same day</a>
+      </main>`,
+  },
   "/compare/western-surety-notary-bond": {
     title: "Western Surety Notary Bond Renewal in Texas: Compare First (2026) | Quantum Surety",
     description:

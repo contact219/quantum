@@ -14,6 +14,7 @@ import AdminUsers from './pages/Admin/Users';
 import AdminScraperLogs from './pages/Admin/ScraperLogs';
 import AdminScraperRun from './pages/Admin/ScraperRun';
 import About from './pages/About';
+import Runners from './pages/Runners';
 import Features from './pages/Features';
 import ApiDocs from './pages/ApiDocs';
 import FortWorthPermits2026 from './pages/blog/FortWorthPermits2026';
@@ -104,6 +105,7 @@ export function App({}: AppProps) {
           <Route path="/admin/scraper/logs" component={AdminScraperLogs} />
           <Route path="/admin/scraper/run" component={AdminScraperRun} />
           <Route path="/about" component={About} />
+          <Route path="/runners" component={Runners} />
           <Route path="/features" component={Features} />
           <Route path="/api-docs" component={ApiDocs} />
           <Route path="/blog/fort-worth-building-permit-requirements-2026" component={FortWorthPermits2026} />

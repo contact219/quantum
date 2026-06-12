@@ -84,6 +84,13 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
     blurb: "Required for registered property tax consultants in Texas. Instant approval available.",
     redirectUrl: DEALER_URL,
   },
+  "oversize-permit": {
+    label: "Texas Oversize/Overweight Permit Bond",
+    amount: "$15,000",
+    from: "from $100/yr",
+    blurb: "Required by TxDMV under Transportation Code Ch. 623 for many oversize/overweight hauling permits. Annual term, same-day issuance.",
+    redirectUrl: DEALER_URL,
+  },
 };
 
 export default function GetBond() {

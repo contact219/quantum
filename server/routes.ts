@@ -117,6 +117,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         "credit-access-business": "Texas Credit Access Business Bond",
         "collection-agency": "Texas Collection Agency Bond",
         "property-tax-consultant": "Texas Property Tax Consultant Bond",
+        "oversize-permit": "Texas Oversize/Overweight Permit Bond",
       };
       const rawBondType = (bond_type || "").toLowerCase().split("?")[0];
       const bondLabel = BOND_LABELS[rawBondType] || (bond_type ? `${bond_type} Bond` : "Texas Surety Bond");

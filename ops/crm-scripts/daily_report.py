@@ -75,6 +75,16 @@ def main():
 
     ob = fetch_outbound_stats()
 
+    # Revenue scoreboard (from RLI weekly report sync -> revenue_events)
+    rev_mtd  = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
+                         WHERE effective_date >= date_trunc('month', CURRENT_DATE)""")[0]
+    rev_30d  = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
+                         WHERE effective_date > CURRENT_DATE - 30""")[0]
+    rev_7d   = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
+                         WHERE effective_date > CURRENT_DATE - 7""")[0]
+    TARGET = 20000.0
+    pct = min(100.0, float(rev_mtd[0]) / TARGET * 100)
+
     def rows_html(rows):
         return "".join(
             f"<tr><td style='padding:4px 12px 4px 0;color:#555;'>{a}</td>"
@@ -99,6 +109,19 @@ def main():
 <div style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;color:#1f2937;">
   <h2 style="margin:0 0 4px;">Quantum Surety — Daily Report</h2>
   <p style="margin:0 0 20px;color:#6b7280;font-size:13px;">Last 24 hours</p>
+
+  <h3 style="margin:20px 0 8px;font-size:15px;">Revenue (commission, from RLI weekly reports)</h3>
+  <table style="font-size:14px;border-collapse:collapse;">
+    <tr><td style="padding:4px 12px 4px 0;color:#555;">Month to date</td><td style="font-weight:600;">${float(rev_mtd[0]):,.2f} ({rev_mtd[1]} bonds)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#555;">Last 7 days</td><td style="font-weight:600;">${float(rev_7d[0]):,.2f} ({rev_7d[1]} bonds)</td></tr>
+    <tr><td style="padding:4px 12px 4px 0;color:#555;">Last 30 days</td><td style="font-weight:600;">${float(rev_30d[0]):,.2f} ({rev_30d[1]} bonds)</td></tr>
+  </table>
+  <div style="margin:10px 0 0;max-width:420px;">
+    <div style="font-size:12px;color:#6b7280;margin-bottom:3px;">Progress to $20,000/mo goal: {pct:.1f}%</div>
+    <div style="height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;">
+      <div style="height:8px;width:{pct:.1f}%;background:#1e40af;border-radius:4px;"></div>
+    </div>
+  </div>
 
   <h3 style="margin:20px 0 8px;font-size:15px;">Leads</h3>
   <table style="font-size:14px;border-collapse:collapse;">

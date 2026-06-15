@@ -255,6 +255,7 @@ const GDNBondOdessa = lazy(() => import("@/pages/gdn-bond-odessa"));
 
 const NotaryExpirationCheck = lazy(() => import("@/pages/notary-expiration-check"));
 const LinksPage = lazy(() => import("@/pages/links"));
+const BondHealthScore = lazy(() => import("@/pages/bond-health-score"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -635,6 +636,7 @@ function Router() {
       <Route path="/blog" component={BlogIndex} />
       <Route path="/qs-score" component={QSScore} />
       <Route path="/qs-leaderboard" component={QSLeaderboard} />
+      <Route path="/bond-health-score" component={BondHealthScore} />
       <Route path="/permit-pilot" component={PermitPilotLanding} />
       <Route path="/hoa-portal" component={HOAPortal} />
 

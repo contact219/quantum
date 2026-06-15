@@ -2623,6 +2623,56 @@ const PAGE_META: Record<string, PageMeta> = {
         <a href="/get-bond?type=oversize-permit">Get your Texas oversize permit bond — same day</a>
       </main>`,
   },
+  "/bond-health-score": {
+    title: "Texas Contractor Bond Health Score — Free QS Score Lookup | Quantum Surety",
+    description: "Check the Bond Health Score for any Texas TDLR-licensed contractor. Free public QS Score™ — 0 to 100 — based on bond status, license type, and profile completeness. Updated daily from public records.",
+    canonical: `${BASE_URL}/bond-health-score`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Texas Contractor Bond Health Score",
+        "url": `${BASE_URL}/bond-health-score`,
+        "description": "Free public QS Score™ for every Texas TDLR-licensed contractor. Check bond status, license health, and trust rating before hiring.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "provider": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": `${BASE_URL}` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "What is a Texas contractor bond health score?", acceptedAnswer: { "@type": "Answer", text: "The QS Score™ is a free 0–100 trust rating for every Texas TDLR-licensed contractor, calculated from bond status (60 pts), license type (20 pts), and profile completeness (20 pts). Updated daily from public records." } },
+          { "@type": "Question", name: "Is it free to check a contractor's bond score?", acceptedAnswer: { "@type": "Answer", text: "Yes — completely free, no account required. Search any Texas contractor by name or license number at quantumsurety.bond/bond-health-score." } },
+          { "@type": "Question", name: "What does a low bond health score mean for homeowners?", acceptedAnswer: { "@type": "Answer", text: "A score below 40 (grade D or F) typically means the contractor's surety bond has expired. Texas law requires most licensed contractors to maintain an active bond — we recommend not starting work until the bond is reinstated." } },
+          { "@type": "Question", name: "How can a contractor improve their QS Score?", acceptedAnswer: { "@type": "Answer", text: "Keeping your surety bond active is the single biggest factor — that's 60 of 100 possible points. Renew at quantumsurety.bond/get-bond?type=contractor." } },
+        ],
+      },
+    ],
+    content: `
+      <main>
+        <h1>Texas Contractor Bond Health Score — Free QS Score Lookup</h1>
+        <p>The QS Score is a free public 0–100 trust rating for every Texas TDLR-licensed contractor, based on bond status, license type, and profile completeness. Updated daily from TDLR public records.</p>
+        <h2>Why Bond Health Scores Matter</h2>
+        <p>Texas has over 816,000 licensed contractors. Most homeowners hire based on word of mouth with no idea whether the contractor's bond is active or expired. The QS Score makes that information searchable in seconds — free, no account needed.</p>
+        <h2>How the QS Score Is Calculated</h2>
+        <ul>
+          <li>Bond Health (0–60 pts): Active bond with 6+ months remaining earns full points. Score drops as expiration approaches.</li>
+          <li>License Type (0–20 pts): Master Electrician, HVAC Contractor, Plumbing Contractor earn full marks.</li>
+          <li>Profile Completeness (0–20 pts): Business name, phone, city, and address on file.</li>
+        </ul>
+        <h2>Score Grades</h2>
+        <ul>
+          <li>A+ (85–100): QS Verified — active bond, strong profile</li>
+          <li>A (70–84): Trusted — active bond, good profile</li>
+          <li>B (55–69): Active — some profile gaps</li>
+          <li>C (40–54): Compliant — expiring within 60 days</li>
+          <li>D (25–39): At Risk — recently expired</li>
+          <li>F (0–24): Non-Compliant — bond long-expired or missing</li>
+        </ul>
+      </main>`,
+  },
   "/compare/western-surety-notary-bond": {
     title: "Western Surety Notary Bond Renewal in Texas: Compare First (2026) | Quantum Surety",
     description:

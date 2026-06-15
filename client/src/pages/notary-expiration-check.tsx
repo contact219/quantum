@@ -23,7 +23,7 @@ function ResultCard({ notary, onSubscribe }: { notary: NotaryResult; onSubscribe
   const daysLeft = notary.days_left ?? notary.daysLeft ?? getDaysLeft(notary.expire_date);
   const expStr = new Date(notary.expire_date).toLocaleDateString("en-US", { year:"numeric", month:"long", day:"numeric" });
   const needsRenewal = daysLeft <= 90;
-  const renewUrl = "https://quantumsurety.bond/bonds/notary-bond-texas?utm_source=expiry_tool&notary_id=" + notary.notary_id;
+  const renewUrl = "/renew?nid=" + notary.notary_id + "&utm_source=expiry_tool&utm_medium=lookup";
 
   async function handleSub(e: React.FormEvent) {
     e.preventDefault();
@@ -96,7 +96,7 @@ function ResultCard({ notary, onSubscribe }: { notary: NotaryResult; onSubscribe
 
 export default function NotaryExpirationCheck() {
   useSEO({
-    title: "Texas Notary Bond Expiration Check — Free Lookup Tool",
+    title: "Texas Notary Bond Expiration Check â€” Free Lookup Tool",
     description: "Look up your Texas notary bond expiration date instantly. Search 558,000+ records by name, notary ID, or email. Set a free 90-day renewal reminder.",
     canonical: "/notary-expiration-check",
   });
@@ -180,7 +180,7 @@ export default function NotaryExpirationCheck() {
         )}
         <div className="mt-10 bg-slate-900 rounded-2xl p-6 text-center">
           <p className="text-white font-semibold mb-1">Ready to renew or get bonded?</p>
-          <p className="text-slate-400 text-sm mb-4">$50 flat · Instant PDF · Same-day · TDI-Licensed Agency #3480229</p>
+          <p className="text-slate-400 text-sm mb-4">$50 flat Â· Instant PDF Â· Same-day Â· TDI-Licensed Agency #3480229</p>
           <a href="/bonds/notary-bond-texas?utm_source=expiry_tool&utm_medium=footer"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-bold px-5 py-2.5 rounded-lg text-sm transition-colors">
             <Shield className="w-4 h-4" /> Get My Notary Bond

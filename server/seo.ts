@@ -2673,6 +2673,27 @@ const PAGE_META: Record<string, PageMeta> = {
         </ul>
       </main>`,
   },
+  "/compare": {
+    title: "Compare Texas Notary Bond Prices — Switch & Save | Quantum Surety",
+    description: "Compare your Texas notary bond renewal price side-by-side. Western Surety, Merchants, Travelers, Markel, and more. $50 flat through Quantum Surety — instant same-day certificate.",
+    canonical: `${BASE_URL}/compare`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "Can I switch surety companies when my Texas notary bond renews?", acceptedAnswer: { "@type": "Answer", text: "Yes. Each 4-year Texas notary commission requires a new bond, and you may buy it from any surety licensed in Texas. The Secretary of State treats every licensed carrier identically." } },
+        { "@type": "Question", name: "How much is a Texas notary bond through Quantum Surety?", acceptedAnswer: { "@type": "Answer", text: "$50 flat for the full 4-year term, underwritten by A-rated RLI Insurance Company. Certificate delivered by email, usually same day." } },
+        { "@type": "Question", name: "Is the Texas notary bond amount the same with every company?", acceptedAnswer: { "@type": "Answer", text: "Yes. Texas law sets the bond amount at $10,000 regardless of provider. The only differences are price, delivery speed, and what else is bundled into the purchase." } },
+      ],
+    },
+    content: `<main><h1>Compare Texas Notary Bond Prices</h1><p>Texas law sets the notary bond at $10,000 regardless of which licensed surety you choose. The Secretary of State accepts bonds from all licensed carriers equally. Use this tool to compare your current carrier against Quantum Surety on price, delivery speed, and bundled add-ons. Western Surety, Merchants Bonding, Travelers, Markel, and Harco all compared side-by-side.</p><h2>Why switch at renewal?</h2><ul><li>Price: Most packages charge $65–100 for the same bond. Quantum Surety charges $50 flat.</li><li>Speed: Traditional providers mail certificates in 3–7 days. Quantum Surety delivers same day by email.</li><li>No bundling: No supplies, stamps, or memberships included in the $50 — bond only.</li></ul></main>`,
+  },
+  "/notary-school-partner": {
+    title: "Notary Training School Partner Program — Quantum Surety Bonds",
+    description: "Earn 10% commission on every Texas notary bond your students purchase. Partner with Quantum Surety — Texas' leading same-day notary bond agency. No paperwork, instant setup.",
+    canonical: `${BASE_URL}/notary-school-partner`,
+    content: `<main><h1>Notary Training School Partner Program</h1><p>Recommend Quantum Surety to your students and earn 10% on every bond purchase. Texas notary bond $50 flat, instant same-day PDF certificate, SB693-compliant. Dedicated co-branded referral link. Track referrals at partners.quantumsurety.bond.</p></main>`,
+  },
   "/compare/western-surety-notary-bond": {
     title: "Western Surety Notary Bond Renewal in Texas: Compare First (2026) | Quantum Surety",
     description:

@@ -123,6 +123,8 @@ const BlogNotaryData2026 = lazy(() => import("@/pages/blog/texas-notary-expirati
 const CompareWesternSurety = lazy(() => import("@/pages/compare-western-surety"));
 const CompareMerchantsBonding = lazy(() => import("@/pages/compare-merchants-bonding"));
 const CompareTravelers = lazy(() => import("@/pages/compare-travelers"));
+const CompareTool = lazy(() => import("@/pages/compare-tool"));
+const NotarySchoolPartner = lazy(() => import("@/pages/notary-school-partner"));
 const SB693ComplianceCheck = lazy(() => import("@/pages/sb693-compliance-check"));
 const VerifyContractor = lazy(() => import("@/pages/verify-contractor"));
 const OversizePermitBond = lazy(() => import("@/pages/oversize-permit-bond"));
@@ -604,6 +606,8 @@ function Router() {
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
       <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
       <Route path="/blog/texas-notary-expiration-data-2026" component={BlogNotaryData2026} />
+      <Route path="/compare" component={CompareTool} />
+      <Route path="/notary-school-partner" component={NotarySchoolPartner} />
       <Route path="/compare/western-surety-notary-bond" component={CompareWesternSurety} />
       <Route path="/compare/merchants-bonding-notary-bond" component={CompareMerchantsBonding} />
       <Route path="/compare/travelers-notary-bond" component={CompareTravelers} />

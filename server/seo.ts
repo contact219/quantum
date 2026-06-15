@@ -2667,6 +2667,75 @@ const PAGE_META: Record<string, PageMeta> = {
         <p>Western Surety Company is a CNA company; the name is used for identification and comparison only. Quantum Surety is not affiliated with Western Surety or CNA.</p>
       </main>`,
   },
+  "/compare/merchants-bonding-notary-bond": {
+    title: "Merchants Bonding Notary Bond Renewal — Texas Comparison 2026 | Quantum Surety",
+    description: "Renewing a Merchants Bonding notary bond in Texas? The $10,000 bond is set by state law — identical from every surety. Compare price and delivery before you renew. $50 flat through Quantum Surety.",
+    canonical: `${BASE_URL}/compare/merchants-bonding-notary-bond`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Can I switch from Merchants Bonding at renewal?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every 4-year Texas notary commission requires a new bond and you may purchase it from any licensed surety. There is no obligation to renew with your previous provider." } },
+          { "@type": "Question", name: "Is the coverage different between Merchants Bonding and Quantum Surety?", acceptedAnswer: { "@type": "Answer", text: "No. The $10,000 bond amount is set by Texas Government Code §406.010 — identical from every licensed surety." } },
+          { "@type": "Question", name: "How much is a Texas notary bond through Quantum Surety?", acceptedAnswer: { "@type": "Answer", text: "$50 flat for the full 4-year term, underwritten by A-rated RLI Insurance Company, with an instant PDF certificate by email." } },
+        ],
+      },
+    ],
+    content: `<main><h1>Renewing a Merchants Bonding Notary Bond in Texas? Compare First.</h1><p>Merchants Bonding Company notary bonds are commonly sold through notary supply vendors as part of a package. Texas law sets the bond at $10,000 from every licensed surety. The differences are price, delivery speed, and what's bundled.</p><a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX">Renew for $50 — same day</a></main>`,
+  },
+  "/compare/travelers-notary-bond": {
+    title: "Travelers Notary Bond Renewal — Texas Comparison 2026 | Quantum Surety",
+    description: "Have a Travelers notary bond in Texas? The $10,000 bond is identical from every licensed surety. Compare price and delivery at renewal. $50 flat, same-day PDF through Quantum Surety.",
+    canonical: `${BASE_URL}/compare/travelers-notary-bond`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Can I buy my Texas notary bond renewal directly without a broker?", acceptedAnswer: { "@type": "Answer", text: "Yes. Travelers typically operates through brokers, but you can buy directly from any licensed surety. Quantum Surety offers direct purchase with same-day certificate delivery." } },
+          { "@type": "Question", name: "Is coverage affected if I switch from Travelers?", acceptedAnswer: { "@type": "Answer", text: "No. The $10,000 bond amount and coverage are set by Texas Government Code §406.010 — identical from every licensed surety." } },
+          { "@type": "Question", name: "Why is Quantum Surety less expensive than broker-channel Travelers bonds?", acceptedAnswer: { "@type": "Answer", text: "Quantum Surety sells direct with no broker commissions or bundled extras. $50 flat for the 4-year term, underwritten by RLI Insurance (A-rated)." } },
+        ],
+      },
+    ],
+    content: `<main><h1>Have a Travelers Notary Bond in Texas? Compare at Renewal.</h1><p>Travelers surety bonds reach Texas notaries primarily through insurance brokers. At renewal, you have the right to shop. Texas law fixes the bond at $10,000 from every licensed surety.</p><a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX">Renew for $50 — same day</a></main>`,
+  },
+  "/sb693-compliance-check": {
+    title: "SB693 Notary Compliance Checker — Is Your Texas Commission Ready? (2026) | Quantum Surety",
+    description: "Free interactive SB693 compliance checker for Texas notaries. Answer 5 questions to verify your commission meets the 2026 SB693 requirements — training course, active bond, journal, and more.",
+    canonical: `${BASE_URL}/sb693-compliance-check`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "What does SB693 require for Texas notaries in 2026?", acceptedAnswer: { "@type": "Answer", text: "SB693 requires a 2-hour online training course ($20 at sos.texas.gov/notary) before commission renewal, maintenance of a notary journal for 5 years, and compliance with new penalty rules ($500–$10,000 for violations). Applies to all commissions renewed after January 1, 2026." } },
+          { "@type": "Question", name: "How much is the SB693 training course?", acceptedAnswer: { "@type": "Answer", text: "The 2-hour SB693 notary training course costs $20 and is paid directly to the Texas Secretary of State at sos.texas.gov/notary." } },
+          { "@type": "Question", name: "How much is a Texas notary bond?", acceptedAnswer: { "@type": "Answer", text: "$50 flat for the required 4-year term through Quantum Surety, underwritten by RLI Insurance Company (A-rated). Certificate delivered by email same day." } },
+        ],
+      },
+    ],
+    content: `<main><h1>SB693 Notary Compliance Checker — Is Your Texas Commission Ready?</h1><p>Texas Senate Bill 693 (effective 2026) adds new requirements for notary commissions: a 2-hour training course, journal maintenance, and updated penalty rules. Use this free checker to see if you're compliant before your next renewal.</p><a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX">Renew your notary bond — $50 same day</a></main>`,
+  },
+  "/verify-contractor": {
+    title: "Verify Texas Contractor License & Bond — Free TDLR Lookup | Quantum Surety",
+    description: "Free instant lookup: verify any Texas TDLR-licensed contractor's license status and surety bond before you hire. Search by name or license number. Updated daily from public TDLR records.",
+    canonical: `${BASE_URL}/verify-contractor`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Texas Contractor License & Bond Verifier",
+        description: "Free tool to verify Texas TDLR contractor license status and surety bond before hiring. Updated daily from public records.",
+        url: `${BASE_URL}/verify-contractor`,
+        applicationCategory: "UtilityApplication",
+        operatingSystem: "Web",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      },
+    ],
+    content: `<main><h1>Verify Any Texas Contractor License & Bond — Free</h1><p>Before hiring a contractor in Texas, verify their TDLR license and surety bond status. Search by name or license number. Unverified contractors may be unlicensed, unbonded, or have expired credentials — putting homeowners at financial risk.</p></main>`,
+  },
   "/blog/texas-notary-expiration-data-2026": {
     title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study | Quantum Surety",
     description:

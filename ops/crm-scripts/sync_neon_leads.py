@@ -6,7 +6,7 @@ Runs hourly via cron. Deduplicates using neon_sync_log table.
 Cron: 0 * * * *  /usr/bin/python3 /usr/local/bin/sync_neon_leads.py >> /tmp/neon_sync.log 2>&1
 """
 
-import requests, psycopg2, logging
+import os, requests, psycopg2, logging
 from datetime import datetime
 
 logging.basicConfig(format="[%(asctime)s] %(message)s", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
@@ -14,10 +14,16 @@ log = logging.getLogger(__name__)
 
 ADMIN_LOGIN_URL = "https://quantumsurety.bond/api/admin/login"
 ADMIN_LEADS_URL = "https://quantumsurety.bond/api/admin/leads"
-ADMIN_CREDS = {"username": "quantumadmin", "password": "zadoL121cu!"}
+ADMIN_CREDS = {
+    "username": os.environ["QS_ADMIN_USER"],
+    "password": os.environ["QS_ADMIN_PASS"],
+}
 
-DB = dict(host="localhost", port=5433, dbname="quantum_surety",
-          user="quantum_user", password="Qs2024Secure!")
+DB = dict(
+    host="localhost", port=5433, dbname="quantum_surety",
+    user=os.environ.get("CRM_DB_USER", "quantum_user"),
+    password=os.environ["CRM_DB_PASS"],
+)
 
 
 def ensure_sync_table(cur):

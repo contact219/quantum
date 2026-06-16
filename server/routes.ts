@@ -103,7 +103,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/leads", async (req, res) => {
     try {
       const { name, email, phone, bond_type, source: reqSource, notes: reqNotes } = req.body || {};
-      if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
+      if (!name || !email) return res.status(400).json({ error: "name and email required" });
       const BOND_LABELS: Record<string, string> = {
         notary: "Texas Notary Bond",
         dealer: "Texas GDN Dealer Bond",

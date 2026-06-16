@@ -187,7 +187,7 @@ export default function Renew() {
               <FormField label="Email" type="email" value={form.email} placeholder="jane@example.com"
                 onChange={v => setForm(f => ({ ...f, email: v }))} prefilled={!!(data?.found && form.email)} />
               <FormField label="Phone" type="tel" value={form.phone} placeholder="(214) 000-0000"
-                onChange={v => setForm(f => ({ ...f, phone: v }))} />
+                onChange={v => setForm(f => ({ ...f, phone: v }))} required={false} />
               <button type="submit" disabled={submitting}
                 style={{ width: "100%", background: "#f59e0b", color: "#000", fontWeight: 800, fontSize: 16, padding: "14px", borderRadius: 8, border: "none", cursor: "pointer", letterSpacing: 1, marginTop: 4 }}>
                 {submitting ? "Redirecting…" : data?.found ? "CONFIRM & RENEW — $50 →" : "RENEW MY BOND — $50 →"}
@@ -219,16 +219,16 @@ function Field({ label, value }: { label: string; value: string }) {
   );
 }
 
-function FormField({ label, type, value, placeholder, onChange, prefilled }: {
-  label: string; type: string; value: string; placeholder: string; onChange: (v: string) => void; prefilled?: boolean;
+function FormField({ label, type, value, placeholder, onChange, prefilled, required = true }: {
+  label: string; type: string; value: string; placeholder: string; onChange: (v: string) => void; prefilled?: boolean; required?: boolean;
 }) {
   return (
     <div style={{ marginBottom: 16 }}>
       <label style={{ display: "flex", justifyContent: "space-between", fontSize: 12, fontWeight: 600, color: "#8b949e", marginBottom: 6 }}>
-        <span>{label}</span>
+        <span>{label}{!required && <span style={{ color: "#64748b", fontWeight: 400 }}> (optional)</span>}</span>
         {prefilled && <span style={{ color: "#3fb950", fontSize: 10, fontWeight: 700 }}>✓ pre-filled</span>}
       </label>
-      <input type={type} required value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
+      <input type={type} required={required} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
         style={{ width: "100%", background: "#0d1117", border: `1px solid ${prefilled ? "#238636" : "#30363d"}`, borderRadius: 8, padding: "10px 12px", color: "#e6edf3", fontSize: 14, boxSizing: "border-box" }} />
     </div>
   );

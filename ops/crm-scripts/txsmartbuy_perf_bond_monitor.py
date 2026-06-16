@@ -14,7 +14,7 @@ from playwright.sync_api import sync_playwright
 logging.basicConfig(format="[%(asctime)s] %(message)s", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
 log = logging.getLogger(__name__)
 
-DB = dict(host="localhost", port=5433, dbname="quantum_surety", user="quantum_user", password="Qs2024Secure!")
+DB = dict(host="localhost", port=5433, dbname="quantum_surety", user="quantum_user", password=os.environ["CRM_DB_PASS"])
 BASE_URL = "https://www.txsmartbuy.gov/esbdawards"
 PLAYWRIGHT_PATH = "/home/tsparks/.playwright"
 MIN_AMOUNT = 50_000   # Texas Gov Code 2253: bonds required on public work > $25K; use $50K to target meaningful contracts

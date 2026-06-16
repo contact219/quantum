@@ -6,7 +6,7 @@ Patches bondverify server.js to add:
 3. HOA portal DB tables
 4. HOA portal API routes
 """
-import subprocess, sys, textwrap
+import subprocess, sys, textwrap, os
 
 HOST = "root@130.51.23.147"
 PW = "W573zI2qnY1HmBs"
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS hoa_vendors (
 );
 """
 sql_escaped = sql.replace("'", "'\\''")
-db_cmd = f"mysql -u bondverify -pBondVerify2026! bondverify -e '{sql_escaped}'"
+db_cmd = f"mysql -u bondverify -p{os.environ['BONDVERIFY_DB_PASS']} bondverify -e '{sql_escaped}'"
 out, err = ssh(db_cmd)
 if err and 'error' in err.lower():
     print("  DB error:", err[:200])

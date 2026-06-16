@@ -15,7 +15,7 @@ DB_HOST = "localhost"
 DB_PORT = 5433
 DB_NAME = "quantum_surety"
 DB_USER = "quantum_user"
-DB_PASS = "Qs2024Secure!"
+DB_PASS = os.environ["CRM_DB_PASS"]
 
 AWS_KEY    = os.environ["AWS_SES_KEY"]
 AWS_SECRET = os.environ["AWS_SES_SECRET"]

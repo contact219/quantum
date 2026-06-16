@@ -23,7 +23,7 @@ const ses = new SESClient({
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET }
 });
 
-const ADMIN_PASS = process.env.ADMIN_PASS || 'QSAdmin2026!';
+const ADMIN_PASS = process.env.ADMIN_PASS;
 const BASE_URL = 'https://partners.quantumsurety.bond';
 
 async function sendEmail(to, subject, html) {

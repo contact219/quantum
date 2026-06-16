@@ -15,7 +15,7 @@ import psycopg2, boto3, time, sys
 
 # ── Config ────────────────────────────────────────────────────────────────────
 DB = dict(host="127.0.0.1", port=5433, dbname="quantum_surety",
-          user="quantum_user", password="Qs2024Secure!")
+          user="quantum_user", password=os.environ["CRM_DB_PASS"])
 
 SES_REGION   = "us-east-2"
 AWS_KEY    = os.environ["AWS_SES_KEY"]

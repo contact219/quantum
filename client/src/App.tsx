@@ -258,6 +258,7 @@ const GDNBondOdessa = lazy(() => import("@/pages/gdn-bond-odessa"));
 const NotaryExpirationCheck = lazy(() => import("@/pages/notary-expiration-check"));
 const LinksPage = lazy(() => import("@/pages/links"));
 const BondHealthScore = lazy(() => import("@/pages/bond-health-score"));
+const ForAgencies = lazy(() => import("@/pages/for-agencies"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -691,6 +692,7 @@ function Router() {
       <Route path="/bonds/gdn-bond-midland" component={GDNBondMidland} />
       <Route path="/bonds/contractor-bond-odessa" component={ContractorBondOdessa} />
       <Route path="/bonds/gdn-bond-odessa" component={GDNBondOdessa} />
+      <Route path="/for-agencies" component={ForAgencies} />
       <Route path="/notary-expiration-check" component={NotaryExpirationCheck} />
       <Route path="/links" component={LinksPage} />
       <Route component={NotFound} />

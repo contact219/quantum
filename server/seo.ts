@@ -2807,6 +2807,24 @@ const PAGE_META: Record<string, PageMeta> = {
     ],
     content: `<main><h1>Verify Any Texas Contractor License & Bond — Free</h1><p>Before hiring a contractor in Texas, verify their TDLR license and surety bond status. Search by name or license number. Unverified contractors may be unlicensed, unbonded, or have expired credentials — putting homeowners at financial risk.</p></main>`,
   },
+  "/for-agencies": {
+    title: "Free Contractor Bond Verification for Texas Agencies | Quantum Surety",
+    description: "Free tool for Texas procurement officers: verify any TDLR-licensed contractor's bond status and license instantly. 816,000+ records. API available for automated verification.",
+    canonical: `${BASE_URL}/for-agencies`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Texas Contractor Bond Verification — For Agencies",
+        description: "Free contractor bond and license verification tool for Texas state agencies, county purchasing agents, and procurement officers. 816,000+ TDLR records.",
+        url: `${BASE_URL}/for-agencies`,
+        applicationCategory: "GovernmentService",
+        operatingSystem: "Web",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      },
+    ],
+    content: `<main><h1>Free Contractor Bond Verification for Texas Procurement Officers</h1><p>Quantum Surety's Bond Verify portal gives Texas state agencies, counties, school districts, and procurement teams free instant access to bond status and license verification for 816,000+ TDLR-licensed contractors. Search by name, license number, or county. QS Score provides a 0-100 contractor trust rating. API access available for automated vendor portal integration.</p><a href="https://verify.quantumsurety.bond">Search contractors free at verify.quantumsurety.bond</a></main>`,
+  },
   "/blog/texas-notary-expiration-data-2026": {
     title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study | Quantum Surety",
     description:

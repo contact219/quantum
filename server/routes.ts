@@ -102,7 +102,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Lead capture from /get-bond page (no auth required)
   app.post("/api/leads", async (req, res) => {
     try {
-      const { name, email, phone, bond_type } = req.body || {};
+      const { name, email, phone, bond_type, source: reqSource, notes: reqNotes } = req.body || {};
       if (!name || !email || !phone) return res.status(400).json({ error: "name, email, and phone required" });
       const BOND_LABELS: Record<string, string> = {
         notary: "Texas Notary Bond",
@@ -138,7 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
       // Persist lead to database
-      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: "get-bond form", status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
+      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: reqSource || "get-bond form", notes: reqNotes || null, status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
       // Voice-originated leads use synthetic addresses and just spoke to us — skip outreach
       const isVoiceOriginated = /@noemail\.quantumsurety\.bond$/i.test(email);
       // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service

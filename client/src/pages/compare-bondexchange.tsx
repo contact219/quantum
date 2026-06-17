@@ -1,6 +1,4 @@
-import { Helmet } from "react-helmet";
-import { useSEO } from "@/lib/useSEO";
-import { useSchema } from "@/lib/useSchema";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import { CheckCircle, XCircle, AlertCircle } from "lucide-react";
 
@@ -60,14 +58,7 @@ export default function CompareBondExchange() {
   });
 
   return (
-    <>
-      <Helmet>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="canonical" href="https://quantumsurety.bond/compare-bondexchange" />
-      </Helmet>
-
-      <main className="max-w-3xl mx-auto px-4 py-12">
+    <main className="max-w-3xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
           <span className="text-xs font-bold tracking-widest text-amber-600 uppercase">Side-by-Side Comparison</span>
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">
@@ -164,7 +155,6 @@ export default function CompareBondExchange() {
             <Link href="/compare-tool" className="text-amber-600 underline">Compare all surety companies →</Link>
           </p>
         </div>
-      </main>
-    </>
+    </main>
   );
 }

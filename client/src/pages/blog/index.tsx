@@ -16,6 +16,26 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "best-texas-surety-bond-company-2026",
+    title: "Best Texas Surety Bond Company 2026 — Full Comparison Guide",
+    description: "We compared the top Texas surety bond companies on price, speed, Texas licensing, and digital tools. Ranked for notaries, TDLR contractors, and GDN dealers.",
+    date: "2026-06-17",
+    readTime: "7 min read",
+    category: "Buyer's Guide",
+    tags: ["Surety Bond Company", "Texas", "Comparison", "Review", "Best"],
+    featured: true,
+  },
+  {
+    slug: "texas-contractor-bond-market-data-2026",
+    title: "Texas Has 816,000+ Active TDLR Contractor Licenses — 2026 Market Data",
+    description: "We analyzed TDLR open data across all Texas contractor trade types: 816,000 licenses, bond requirements by category, top counties, new license velocity, and what bonds cost.",
+    date: "2026-06-17",
+    readTime: "6 min read",
+    category: "Data Studies",
+    tags: ["TDLR", "Contractor Bond", "Texas", "Data Study", "Market Data"],
+    featured: true,
+  },
+  {
     slug: "texas-notary-expiration-data-2026",
     title: "62,623 Texas Notary Commissions Expire by December: 2026 Data Study",
     description: "We analyzed all 458,845 active Texas notary commissions. August is the biggest renewal month of the year, and one surety holds 43% of the market.",

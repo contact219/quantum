@@ -120,6 +120,8 @@ const BlogTDILicense = lazy(() => import("@/pages/blog/TDILicenseAnnouncement"))
 const BlogSB693Renewal = lazy(() => import("@/pages/blog/texas-notary-bond-sb693-renewal-2026"));
 const BlogTDLRBond2026 = lazy(() => import("@/pages/blog/texas-tdlr-contractor-bond-2026"));
 const BlogNotaryData2026 = lazy(() => import("@/pages/blog/texas-notary-expiration-data-2026"));
+const BlogBestTexasSuretyBondCompany = lazy(() => import("@/pages/blog/best-texas-surety-bond-company-2026"));
+const BlogTexasContractorBondMarketData = lazy(() => import("@/pages/blog/texas-contractor-bond-market-data-2026"));
 const CompareWesternSurety = lazy(() => import("@/pages/compare-western-surety"));
 const CompareMerchantsBonding = lazy(() => import("@/pages/compare-merchants-bonding"));
 const CompareTravelers = lazy(() => import("@/pages/compare-travelers"));
@@ -607,6 +609,8 @@ function Router() {
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />
       <Route path="/blog/texas-tdlr-contractor-bond-2026" component={BlogTDLRBond2026} />
       <Route path="/blog/texas-notary-expiration-data-2026" component={BlogNotaryData2026} />
+      <Route path="/blog/best-texas-surety-bond-company-2026" component={BlogBestTexasSuretyBondCompany} />
+      <Route path="/blog/texas-contractor-bond-market-data-2026" component={BlogTexasContractorBondMarketData} />
       <Route path="/compare" component={CompareTool} />
       <Route path="/notary-school-partner" component={NotarySchoolPartner} />
       <Route path="/compare/western-surety-notary-bond" component={CompareWesternSurety} />

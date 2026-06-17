@@ -99,9 +99,19 @@ export default function BondBadgeSetup() {
               <p style={s.stepP}>You'll receive your certificate and bond number by email. Takes about 2 minutes.</p>
             </div>
           </div>
-          {next && (
+          {next && badgeType === "contractor" ? (
+            <>
+              <a href={next} style={s.btn}>Complete My Application →</a>
+              <a href="tel:+12146668718" style={{ ...s.btnGhost, marginBottom: 10 }}>
+                Or call us now: (214) 666-8718
+              </a>
+              <p style={{ fontSize: 12, color: "#64748b", textAlign: "center", margin: "0 0 8px" }}>
+                A licensed agent is reviewing your request. Most contractor bonds are approved same-day.
+              </p>
+            </>
+          ) : next ? (
             <a href={next} style={s.btn}>Complete Purchase →</a>
-          )}
+          ) : null}
 
           <div style={s.divider} />
 

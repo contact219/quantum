@@ -8,7 +8,7 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 
 | System | URL / Access | Notes |
 |--------|-------------|-------|
-| Main site | https://quantumsurety.bond | Replit Autoscale, auto-deploys from GitHub |
+| Main site | https://quantumsurety.bond | VPS 130.51.23.147, PM2 `quantumsurety`, dir `/var/www/quantumsurety/` |
 | Bond Verify portal | https://verify.quantumsurety.bond | VPS 130.51.23.147, Node.js + Caddy |
 | Partner Portal | https://partners.quantumsurety.bond | VPS 130.51.23.147, PM2 `partner-portal` port 3002 |
 | Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on 192.168.4.122 |
@@ -22,7 +22,9 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 
 ### 1. quantumsurety.bond — Main Public Website
 - **Stack:** React/TypeScript SPA — Vite + Wouter + Shadcn/ui + Express.js + Drizzle ORM + Neon (serverless PostgreSQL)
-- **Deployment:** Replit Autoscale — push to GitHub → Replit auto-deploys
+- **Deployment:** VPS 130.51.23.147, PM2 `quantumsurety`, dir `/var/www/quantumsurety/`
+  - Deploy: `git pull && npm run build && pm2 restart quantumsurety` (run on VPS)
+  - GitHub remote is configured on VPS — push to GitHub, then pull on VPS to deploy
 - **GitHub:** `contact219/quantum`
 - **Token:** stored in local Claude memory (`project_quantum_surety_server.md`)
 - **Remote:** `https://<token>@github.com/contact219/quantum.git`

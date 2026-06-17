@@ -536,6 +536,49 @@ app.post('/api/send-link-email', async (req, res) => {
 });
 
 // Test outbound call
+
+// Callback request from voice agent when live transfer fails
+app.post('/api/request-callback', async (req, res) => {
+  const body = req.body?.args || req.body || {};
+  const name  = body.name  || 'Unknown caller';
+  const phone = body.phone || '(not provided)';
+  const bond  = body.bond_type || 'general';
+
+  console.log(`[Callback] Request from ${name} | ${phone} | ${bond}`);
+
+  const html = `<div style="font-family:sans-serif;max-width:560px;background:#fff;padding:28px;border:1px solid #e5e7eb;border-radius:8px;">
+  <div style="background:#ef4444;color:#fff;padding:14px 18px;border-radius:6px;margin-bottom:20px;">
+    <strong style="font-size:16px;">LIVE AGENT CALLBACK NEEDED</strong>
+  </div>
+  <p style="font-size:15px;color:#111;">A caller requested to speak with a live agent but the transfer failed. Please call them back.</p>
+  <table style="width:100%;border-collapse:collapse;margin:16px 0;">
+    <tr><td style="padding:8px;font-weight:600;color:#374151;">Name:</td><td style="padding:8px;color:#111;">${name}</td></tr>
+    <tr style="background:#f9fafb;"><td style="padding:8px;font-weight:600;color:#374151;">Phone:</td><td style="padding:8px;color:#111;font-size:16px;"><strong>${phone}</strong></td></tr>
+    <tr><td style="padding:8px;font-weight:600;color:#374151;">Bond type:</td><td style="padding:8px;color:#111;">${bond}</td></tr>
+  </table>
+  <p style="font-size:13px;color:#6b7280;">Quantum Surety Voice Agent - ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })} CDT</p>
+</div>`;
+
+  try {
+    await sesClient.send(new SendEmailCommand({
+      Source: FROM_EMAIL,
+      Destination: { ToAddresses: ['administrator@quantumsurety.bond'] },
+      Message: {
+        Subject: { Data: `CACLLBACK NEEDED: ${name} (${phone}) - ${bond}` },
+        Body: {
+          Html: { Data: html },
+          Text: { Data: `CALLBAACK REQUEST\nName: ${name}\nPhone: ${phone}\nBond: ${bond}` }
+        }
+      }
+    }));
+    console.log(`[Callback] Alert sent for ${name} / ${phone}`);
+  } catch (e) {
+    console.error('[Callback] Email failed:', e.message);
+  }
+
+  res.json({ success: true, message: 'Got it. A specialist will call you back shortly.' });
+});
+
 app.post('/api/call/test', async (req, res) => {
   if (!RETELL_API_KEY) return res.status(500).json({ error: 'Retell API key not configured' });
   const { to, task } = req.body;

@@ -5,8 +5,8 @@ import { track } from "@/hooks/useTracker";
 
 const DEALER_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
 const NOTARY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
-// Non-commodity bonds route to the application form — an agent closes these manually
-const APPLICATION_URL = "https://quantumsurety.bond/application";
+// License/contractor bonds — same URL used across all site trade/license bond pages
+const LICENSE_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
 
 const BOND_META: Record<string, { label: string; amount: string; from: string; blurb: string; redirectUrl?: string }> = {
   notary: {
@@ -35,63 +35,63 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
     amount: "$10,000+",
     from: "from $75/yr",
     blurb: "Required for Texas contractor and trade licenses (TDLR, City, County). Fast approval and same-day certificate available.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   construction: {
     label: "Texas Construction Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Bid, performance, and payment bonds for Texas construction projects. TDI-licensed, fast turnaround.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   bid: {
     label: "Texas Bid Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Bid bonds for Texas public and private construction projects. TDI-licensed surety agency.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   performance: {
     label: "Texas Performance & Payment Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Performance and payment bonds for Texas construction contracts. TDI-licensed, competitive rates.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   mortgage: {
     label: "Texas Mortgage Broker Bond",
     amount: "$50,000",
     from: "from $150/yr",
     blurb: "Required for Texas mortgage brokers and loan officers (TDHCA/SML). Same-day certificate available.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   "credit-access-business": {
     label: "Texas Credit Access Business Bond",
     amount: "$10,000",
     from: "from $75/yr",
     blurb: "Required by Texas municipalities for credit access businesses (CABs). Fast approval, TDI-licensed.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   "collection-agency": {
     label: "Texas Collection Agency Bond",
     amount: "$10,000",
     from: "from $75/yr",
     blurb: "Required for Texas collection agency licenses. TDI-licensed surety agency, fast turnaround.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   "property-tax-consultant": {
     label: "Texas Property Tax Consultant Bond",
     amount: "$5,000",
     from: "from $50/yr",
     blurb: "Required for registered property tax consultants in Texas. Instant approval available.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
   "oversize-permit": {
     label: "Texas Oversize/Overweight Permit Bond",
     amount: "$15,000",
     from: "from $100/yr",
     blurb: "Required by TxDMV under Transportation Code Ch. 623 for many oversize/overweight hauling permits. Annual term, same-day issuance.",
-    redirectUrl: APPLICATION_URL,
+    redirectUrl: LICENSE_URL,
   },
 };
 

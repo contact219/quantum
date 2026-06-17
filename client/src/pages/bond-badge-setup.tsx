@@ -101,12 +101,12 @@ export default function BondBadgeSetup() {
           </div>
           {next && badgeType === "contractor" ? (
             <>
-              <a href={next} style={s.btn}>Complete My Application →</a>
+              <a href={next} style={s.btn}>Complete My Bond Purchase →</a>
               <a href="tel:+12146668718" style={{ ...s.btnGhost, marginBottom: 10 }}>
-                Or call us now: (214) 666-8718
+                Questions? Call (214) 666-8718
               </a>
               <p style={{ fontSize: 12, color: "#64748b", textAlign: "center", margin: "0 0 8px" }}>
-                A licensed agent is reviewing your request. Most contractor bonds are approved same-day.
+                Same-day approval · Starting at $75/yr · Instant digital certificate
               </p>
             </>
           ) : next ? (

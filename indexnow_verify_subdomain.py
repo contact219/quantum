@@ -48,6 +48,8 @@ QS_PAGES = [
     "https://quantumsurety.bond/blog/texas-contractor-bond-compliance-report-2026",
     "https://quantumsurety.bond/blog/best-texas-surety-bond-company-2026",
     "https://quantumsurety.bond/blog/texas-contractor-bond-market-data-2026",
+    "https://quantumsurety.bond/compare-suretybonds",
+    "https://quantumsurety.bond/compare-bondexchange",
 ]
 
 def post_indexnow(host, urls, key_host=None):

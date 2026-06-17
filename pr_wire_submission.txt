@@ -1,0 +1,134 @@
+PR WIRE SUBMISSION PACKAGE — QUANTUM SURETY LLC
+Generated: 2026-06-17
+=====================================================
+
+SUBMIT TO THESE FREE SERVICES (in priority order):
+1. PRLog (free, DA 77): https://www.prlog.org/post.html
+2. OpenPR (free, DA 64): https://www.openpr.com/press-releases/new.html
+3. PR.com (free): https://www.pr.com/press-release/submit
+4. 1888PressRelease (free): https://www.1888pressrelease.com/post.php
+5. NewswireToday (free): https://www.newswiretoday.com/submit.php
+
+EIN Presswire ($99 for wide distribution — worth it if budget allows):
+https://www.einpresswire.com/
+
+=====================================================
+HEADLINE (use exactly):
+Nearly Half of Texas Apprentice Electricians Operating With Expired
+Surety Bonds, Public Data Shows
+
+SUBHEADLINE:
+Free online tool lets any Texas consumer verify contractor bond status
+before hiring; 29.3% of all TDLR licensees found non-compliant
+
+=====================================================
+CATEGORY: Business / Consumer Affairs / Real Estate
+LOCATION: Dallas, Texas
+DATE: May 27, 2026
+KEYWORDS: texas contractor bonds, surety bonds texas, TDLR compliance,
+          electrician bond, notary bond texas, consumer protection texas,
+          bond status check, texas licensing
+
+=====================================================
+BODY (paste this):
+
+FOR IMMEDIATE RELEASE
+
+Contact: Theodore Sparks
+Quantum Surety LLC | TDI License #3480229
+(214) 666-8718 | contact@quantumsurety.bond
+quantumsurety.bond
+
+-----------------------------------------------------------------------
+NEARLY HALF OF TEXAS APPRENTICE ELECTRICIANS OPERATING WITH EXPIRED
+SURETY BONDS, PUBLIC DATA SHOWS
+-----------------------------------------------------------------------
+
+New Free Tool Lets Any Texas Consumer Check Contractor Bond Status
+Before Hiring; 29.3% of All TDLR Licensees Found Non-Compliant
+
+DALLAS, TX, May 27, 2026 — A new analysis of Texas Department of
+Licensing and Regulation (TDLR) public records reveals that 46.9
+percent of Texas apprentice electricians — 93,509 out of 199,435 —
+currently have expired surety bonds, technically violating state
+licensing requirements.
+
+The finding comes from a comprehensive database built by Quantum Surety
+LLC, a Texas-licensed surety bond agency (TDI License #3480229), which
+has indexed all 816,000+ TDLR contractor license records into a free,
+publicly searchable compliance tracker at quantumsurety.bond/texas-bond-
+watch.
+
+KEY FINDINGS (from TDLR public records):
+• 46.9% of Texas apprentice electricians: expired surety bonds
+• 44.8% of consent tow truck operators: expired bonds
+• 38.9% of Texas A/C technicians: expired bonds
+• 29.3% of ALL TDLR licensees statewide: non-compliant
+
+"A surety bond is a consumer protection mechanism — it's what a
+homeowner can make a claim against when a licensed contractor causes
+damage and can't or won't make it right," said Theodore Sparks, founder
+of Quantum Surety LLC. "When nearly 100,000 electricians are operating
+with lapsed bonds, consumers who hire them in good faith have materially
+reduced legal protection, even though those contractors still have
+license numbers."
+
+THE FREE TOOL
+Any Texas consumer, property manager, real estate agent, or title
+company can now verify any TDLR-licensed contractor's bond status in
+real time at quantumsurety.bond/texas-bond-watch. The site covers all
+816,000+ TDLR records and 558,000+ Texas notary commissions, updated
+daily from public records.
+
+A trade-by-trade compliance grade report (A through F) is available at
+quantumsurety.bond/bond-compliance-by-trade, showing all 22 TDLR
+license categories ranked by expiration rate.
+
+Quantum Surety also offers instant online bond renewals for out-of-
+compliance contractors and notaries at quantumsurety.bond, starting at
+$50 per year.
+
+ABOUT QUANTUM SURETY LLC
+Quantum Surety LLC is a Texas Department of Insurance-licensed surety
+bond agency (License #3480229) headquartered in Dallas, Texas,
+specializing in TDLR contractor bonds, Texas notary bonds, and related
+surety products. The company built and maintains the largest publicly
+accessible Texas contractor bond compliance database, covering 1.37
+million licensees from TDLR and Texas Secretary of State records.
+
+###
+
+MEDIA CONTACT:
+Theodore Sparks
+(214) 666-8718
+contact@quantumsurety.bond
+quantumsurety.bond/press
+
+Full data, methodology, and downloadable datasets available at:
+quantumsurety.bond/press
+
+=====================================================
+ANCHOR TEXT FOR BACKLINKS (use when PRLog asks for website links):
+Main URL: https://quantumsurety.bond
+Anchor: "Texas surety bond agency"
+
+Data tool URL: https://quantumsurety.bond/texas-bond-watch
+Anchor: "Texas contractor bond compliance checker"
+
+Blog URL: https://quantumsurety.bond/blog/texas-contractor-bond-market-data-2026
+Anchor: "Texas TDLR contractor bond market data 2026"
+
+=====================================================
+LOGO / IMAGE:
+Use the QS logo at: https://quantumsurety.bond/QS_Logo.png
+Or download and upload: it's a gold-and-black circular logo
+
+=====================================================
+TIPS:
+- PRLog: Creates a do-follow backlink from DA77 domain — very valuable
+- OpenPR: Syndicates to Google News — gets you news indexing
+- PR.com: Fast indexing, good for local SEO authority
+- Submit all within 24 hours of each other for maximum signal
+
+After submitting, run: python3 indexnow_verify_subdomain.py
+to ping Google/Bing with all updated URLs.

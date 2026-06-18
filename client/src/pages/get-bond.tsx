@@ -143,7 +143,7 @@ export default function GetBond() {
     }
     track({ type: "mybondapp_redirect", element: "lead_form", value: type });
     const dest = meta.redirectUrl || DEALER_URL;
-    window.location.href = `/badge-setup?type=${encodeURIComponent(type)}&next=${encodeURIComponent(dest)}`;
+    window.location.href = dest;
   }
 
   return (

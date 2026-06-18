@@ -287,7 +287,7 @@ export default function Home() {
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-cyan-100/80 backdrop-blur-md">
               <img src="/QS_Logo.png" alt="Quantum Surety" className="h-4 w-auto object-contain max-w-[80px] brightness-0 invert" />
-              Quantum Surety
+              Texas's #1 Surety Bond Agency
             </div>
 
             <h1

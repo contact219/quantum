@@ -1463,6 +1463,7 @@ const PAGE_META: Record<string, PageMeta> = {
         <h1>Texas Surety Bond Blog</h1>
         <p>Straight-talk guides on Texas bond requirements, law changes, and licensing — written by Quantum Surety, a TDI-licensed Texas surety bond agency.</p>
         <ul>
+          <li><a href="/blog/texas-contractor-bond-crisis-june-2026">Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data</a></li>
           <li><a href="/blog/quantum-surety-tdi-licensed-agency-3480229">Quantum Surety Receives TDI Agency License #3480229</a></li>
           <li><a href="/blog/texas-contractor-bond-and-permits">Texas Contractors: Get Your Bond and Pull Your Permits in One Day</a></li>
           <li><a href="/blog/texas-notary-bond-sb693-renewal-2026">Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do</a></li>
@@ -6839,6 +6840,38 @@ const PAGE_META: Record<string, PageMeta> = {
       },
     ],
     content: `<main><h1>Google Business Profile for Surety Bonds: Complete Texas Guide</h1><p>Step-by-step guide to optimizing a Google Business Profile for a Texas surety bond agency — category selection, photos, posts, reviews, Q&A, and GBP insights. Rank for notary bond, GDN bond, and contractor bond searches in the local 3-pack.</p><a href="/get-bond?type=notary">Get My Notary Bond — $50</a></main>`,
+  },
+
+  "/blog/texas-contractor-bond-crisis-june-2026": {
+    title: "Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data | Quantum Surety",
+    description: "31% of Texas TDLR contractors have expired surety bonds as of June 2026. Quantum Surety analyzed 775,173 records. Full county breakdown, live verification tool, and renewal options.",
+    canonical: `${BASE_URL}/blog/texas-contractor-bond-crisis-june-2026`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        headline: "Texas Contractor Bond Crisis: We Checked 775,173 TDLR Records. 31% Have Expired Bonds.",
+        description: "Quantum Surety's analysis of 775,173 Texas TDLR contractor license records reveals 31% — 240,627 contractors — are operating with expired surety bonds as of June 2026.",
+        datePublished: "2026-06-18",
+        dateModified: "2026-06-18",
+        author: { "@type": "Person", name: "Theodore Sparks", jobTitle: "Founder, Quantum Surety LLC" },
+        publisher: { "@type": "Organization", name: "Quantum Surety LLC", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png` } },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-bond-crisis-june-2026` },
+        image: `${BASE_URL}/QS_OG_2.png`,
+        keywords: "texas contractor bond expired, TDLR bond compliance, surety bond expired texas, contractor license bond, texas contractor bond check",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: "Texas Contractor Bond Crisis June 2026", item: `${BASE_URL}/blog/texas-contractor-bond-crisis-june-2026` },
+        ],
+      },
+    ],
+    content: `<main><h1>Texas Contractor Bond Crisis: We Checked 775,173 TDLR Records. 31% Have Expired Bonds.</h1><p>240,627 Texas-licensed contractors are currently operating with expired surety bonds. Quantum Surety analyzed all TDLR public records (data.texas.gov, Socrata 7358-krk7, updated daily). Harris County: 41,799 expired (30.6%). Hidalgo County: 11,172 expired (36.3%). Jefferson County: 2,831 expired (37.8%). A surety bond is the consumer's recourse when a contractor causes damage — when the bond lapses, that protection lapses too.</p><p>Live verification: <a href="https://verify.quantumsurety.bond">verify.quantumsurety.bond</a>. County compliance leaderboard: <a href="/bond-compliance-leaderboard">/bond-compliance-leaderboard</a>.</p><a href="/get-bond?type=contractor">Renew Your Contractor Bond — Same Day</a></main>`,
   },
 
   "/es": {

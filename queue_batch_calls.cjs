@@ -14,7 +14,7 @@ const leads = [
   { name: 'Dale Evere', email: 'dale.evers@yahoo.com', phone: '2547222157', bond_type: 'notary' },
 ];
 
-const SECRET = '3cc10b9c718013495c4d38f26dcd31db';
+const SECRET = '4aa5c579a3cedbf298b5f6717e385e63';
 
 async function main() {
   let queued = 0;

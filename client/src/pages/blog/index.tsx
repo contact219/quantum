@@ -16,6 +16,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-contractor-bond-crisis-june-2026",
+    title: "Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data",
+    description: "We analyzed 775,173 Texas TDLR contractor license records. 31% — 240,627 contractors — are operating with expired surety bonds. Full county breakdown with live data.",
+    date: "2026-06-18",
+    readTime: "6 min read",
+    category: "Data Investigation",
+    tags: ["Contractor Bond", "TDLR", "Data Study", "Texas", "Consumer Protection", "Compliance"],
+    featured: true,
+  },
+  {
     slug: "best-texas-surety-bond-company-2026",
     title: "Best Texas Surety Bond Company 2026 — Full Comparison Guide",
     description: "We compared the top Texas surety bond companies on price, speed, Texas licensing, and digital tools. Ranked for notaries, TDLR contractors, and GDN dealers.",

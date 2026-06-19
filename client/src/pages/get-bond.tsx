@@ -148,8 +148,6 @@ export default function GetBond() {
     setCheckoutUrl(dest);
     setSubmitting(false);
     setSubmitted(true);
-    // Open checkout in new tab so user doesn't lose their place
-    window.open(dest, "_blank", "noopener");
   }
 
   return (
@@ -190,22 +188,22 @@ export default function GetBond() {
                 <CheckCircle className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Your checkout is open!</h2>
+                <h2 className="text-lg font-semibold text-gray-900">One more step — complete your payment</h2>
                 <p className="text-sm text-gray-500 mt-1">
-                  We opened your secure bond application in a new tab. Complete your payment there to receive your certificate instantly.
+                  Click the button below to open your secure bond application and receive your certificate instantly.
                 </p>
               </div>
               <a
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => track({ type: "checkout_reopen", element: "submitted_link", value: type })}
-                className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-sm text-center"
+                onClick={() => track({ type: "checkout_click", element: "submitted_link", value: type })}
+                className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-4 rounded-lg transition-colors text-base text-center"
               >
-                Open Checkout Again →
+                Complete Your Purchase →
               </a>
-              <p className="text-xs text-gray-400">
-                Need help? Call (214) 666-8718 — we answer during business hours.
+              <p className="text-xs text-gray-400 text-center">
+                Secure checkout · Certificate emailed instantly · Need help? (214) 666-8718
               </p>
             </div>
           ) : (

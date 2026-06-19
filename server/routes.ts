@@ -199,18 +199,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Quote submission endpoint - PROTECTED (requires authentication)
+  // Quote submission endpoint - OPEN (auth optional; associates with account if logged in)
   app.post("/api/quotes", async (req: any, res) => {
     try {
-      // Check if user is authenticated (simpler check without strict token validation)
-      if (!req.isAuthenticated()) {
-        return res.status(401).json({ success: false, error: "User not authenticated" });
-      }
-
-      const userId = req.user?.claims?.sub;
-      if (!userId) {
-        return res.status(401).json({ success: false, error: "User not authenticated" });
-      }
+      const userId = req.isAuthenticated?.() ? (req.user?.claims?.sub ?? null) : null;
 
       const validatedData = quoteFormSchema.parse(req.body);
 

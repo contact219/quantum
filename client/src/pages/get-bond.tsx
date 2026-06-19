@@ -12,8 +12,8 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
   notary: {
     label: "Texas Notary Bond",
     amount: "$10,000",
-    from: "$50 flat (4-year)",
-    blurb: "Required by the Texas Secretary of State for all commissioned notaries. $50 flat for a 4-year bond — instant PDF certificate, same-day issuance.",
+    from: "from $27.50",
+    blurb: "Required by the Texas Secretary of State for all commissioned notaries. 4-year term — instant PDF certificate, same-day issuance.",
     redirectUrl: NOTARY_URL,
   },
   dealer: {

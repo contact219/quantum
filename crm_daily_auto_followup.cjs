@@ -62,19 +62,19 @@ function buildEmail(lead) {
   if (bt.includes('notary')) {
     const url = `https://quantumsurety.bond/get-bond?type=notary&utm_source=crm-daily&utm_campaign=notary-auto`;
     return {
-      subject: noName ? 'Your Texas notary bond — $50, instant certificate' : `${name}, your Texas notary bond — $50, instant certificate`,
+      subject: noName ? 'Your Texas notary bond — from $27.50, instant certificate' : `${name}, your Texas notary bond — from $27.50, instant certificate`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You looked into a Texas notary bond. We haven't heard back — if you're still getting bonded, it takes under 5 minutes and your certificate is instant.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You looked into a Texas notary bond. We haven't heard back — if you're still getting bonded, it takes under 5 minutes and your certificate is emailed instantly.</p>
   <div style="background:#f8fafc;border-left:4px solid #f59e0b;padding:16px;margin:0 0 20px;border-radius:4px">
-    <strong style="color:#0f172a">$50 flat · 4-year term · Instant PDF · TX SOS compliant</strong>
+    <strong style="color:#0f172a">From $27.50 · 4-year term · Instant PDF · TX SOS compliant</strong>
   </div>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get My Notary Bond →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply here or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\nYou looked into a Texas notary bond. $50 flat for 4 years, instant certificate.\n\nGet bonded: ${url}\n\nQuestions? Reply or call (214) 666-8718.\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nYou looked into a Texas notary bond. From $27.50 for a 4-year term — certificate emailed instantly.\n\nGet bonded: ${url}\n\nQuestions? Reply or call (214) 666-8718.\n\nQuantum Surety | TDI #3480229`,
     };
   }
 
@@ -135,7 +135,7 @@ function buildEmail(lead) {
 async function main() {
   const db = new Client({
     host: '192.168.4.122', port: 5433, database: 'quantum_surety',
-    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'Qs2024Secure!',
+    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
   });
   await db.connect();
 

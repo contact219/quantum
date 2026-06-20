@@ -188,9 +188,9 @@ export default function GetBond() {
                 <CheckCircle className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">One more step — complete your payment</h2>
+                <h2 className="text-lg font-semibold text-gray-900">One more step — complete your bond application</h2>
                 <p className="text-sm text-gray-500 mt-1">
-                  Click the button below to open your secure bond application and receive your certificate instantly.
+                  Click the button below. The next page will ask you to agree to terms — just check the box and continue. Your certificate is emailed instantly after checkout.
                 </p>
               </div>
               <a

@@ -11,9 +11,9 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 | Main site | https://quantumsurety.bond | VPS 130.51.23.147, PM2 `quantumsurety`, dir `/var/www/quantumsurety/` |
 | Bond Verify portal | https://verify.quantumsurety.bond | VPS 130.51.23.147, Node.js + Caddy |
 | Partner Portal | https://partners.quantumsurety.bond | VPS 130.51.23.147, PM2 `partner-portal` port 3002 |
-| Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on 192.168.4.122 |
+| Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel (still on 192.168.4.122 — migrate pending) |
 | Permit Pilot | https://permitpilot.online | VPS 130.51.23.147, Docker Compose port 7842 |
-| CRM dashboard | http://192.168.4.122:8095 | Local network only, Docker Compose |
+| CRM dashboard | http://130.51.22.226:8095 | VPS (CRM VPS), Docker Compose |
 | GitHub repo | github.com/contact219/quantum | Main site source |
 
 ---
@@ -147,48 +147,58 @@ Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tun
 
 ---
 
-### 4. quantum-surety-crm — Internal CRM Dashboard
-- **Server:** 192.168.4.122 (local network only)
-- **SSH:** `tsparks` / `zadoL4cu!` (sudo password same)
-- **Access:** http://192.168.4.122:8095
+### 4. quantum-surety-crm — CRM Dashboard
+- **Server:** 130.51.22.226 (CRM VPS — migrated from local 2026-06-24)
+- **SSH:** `root` / `6sCgf4H80nPM5kQ`
+- **Access:** http://130.51.22.226:8095
 - **Stack:** React JSX (Vite) frontend + Node.js Express backend, Docker Compose
 - **Project dir:** `/usr/quantum-surety-crm/`
-- **Rebuild:** `cd /usr/quantum-surety-crm && sudo docker compose up -d --build --force-recreate`
-- **Note:** Files are root-owned. Write to `/tmp/` first, then `sudo tee` to destination.
+- **Rebuild:** `cd /usr/quantum-surety-crm && docker compose up -d --build --force-recreate`
+- **Operational scripts:** `/opt/quantum-ops/` (432 .cjs + 22 .py), `/usr/local/bin/*.py`, `/root/*.cjs`, `/tmp/*.py`
+- **Quantum repo clone:** `/opt/quantum/` (git pull to update)
 
 **CRM containers:**
 | Container | Port | Purpose |
 |-----------|------|---------|
 | `qs-crm-frontend` | 8095 | React JSX UI (Vite) |
 | `qs-crm-backend` | 4001 | Node.js Express API |
-| `scraper-postgres` | 5433 | PostgreSQL — db: `quantum_surety`, user: `quantum_user`, pass: `Qs2024Secure!` |
+| `scraper-postgres` | 5433 | PostgreSQL — db: `quantum_surety`, user: `quantum_user`, pass: `QsCRMV8yNgKOoaNPu67JF!` |
 
 **Key CRM file paths:**
 - Frontend pages: `/usr/quantum-surety-crm/frontend/src/pages/`
 - Backend routes: `/usr/quantum-surety-crm/backend/src/routes/`
 - App entry: `/usr/quantum-surety-crm/frontend/src/App.jsx`
 
-**CRM cron jobs (tsparks):**
+**CRM cron jobs (root on 130.51.22.226):**
 ```
-15 18 * * *  curl -s -X POST http://localhost:4001/api/drip/auto-pipeline >> /home/tsparks/crm-autopipeline.log 2>&1
-45 1 * * *   curl -s -X POST http://localhost:4001/api/drip/auto-pipeline >> /home/tsparks/crm-autopipeline.log 2>&1
-0 7 1 * *    python3 /tmp/refresh_notaries.py >> /tmp/refresh_notaries.log 2>&1
-0 9 2 * *    python3 /tmp/tdlr_monitor.py >> /tmp/tdlr_monitor.log 2>&1
-0 8 * * *    python3 /tmp/daily_report.py >> /tmp/daily_report.log 2>&1
-0 8 * * 6    python3 /tmp/weekly_report.py >> /tmp/weekly_report.log 2>&1
+0 * * * *      sync_neon_leads.py (hourly Neon→CRM sync)
+15 18 * * *    drip auto-pipeline
+45 1 * * *     drip auto-pipeline
+0 8 * * *      daily_report.py
+0 8 * * 6      weekly_report.py
+5 8 * * *      daily_revenue_report.py
+*/30 * * * *   sale_alert_monitor.py
+0 15 * * *     send_review_requests.py
+30 13 * * 1-5  crm_daily_auto_followup.cjs
+0 14 * * 1     crm_reengagement_blast.cjs
+0 13 * * 1-5   morning_call_list.cjs
+0 8 * * 1      tdlr_renewal_target.py
+0 7 * * 1-5    esbd_commercial_monitor.py
+30 12 * * 1-5  lead-gen agent + report
 ```
 
 **CRM scripts:**
 | Script | Purpose |
 |--------|---------|
-| `/tmp/refresh_notaries.py` | Downloads TX SOS notary CSV → upserts PostgreSQL `notaries` table |
-| `/tmp/tdlr_monitor.py` | Downloads TDLR data from Socrata, finds recently-issued contractor licenses, inserts as leads. Source: `TDLR Monitor`, bond_type: `Texas Contractor License Bond` |
-| `/tmp/daily_report.py` | Daily leads report via SES → contact219@gmail.com |
-| `/tmp/weekly_report.py` | Weekly revenue/leads summary via SES |
+| `/usr/local/bin/daily_report.py` | Daily leads report via SES → contact219@gmail.com |
+| `/usr/local/bin/weekly_report.py` | Weekly revenue/leads summary via SES |
+| `/usr/local/bin/tdlr_monitor.py` | TDLR data → contractor license leads |
+| `/usr/local/bin/sync_neon_leads.py` | Hourly Neon (main site) → CRM lead sync |
+| `/usr/local/lead-gen/agent.js` | Lead gen agent (7:30 AM CDT weekdays) |
 
 **Connect to CRM DB:**
 ```bash
-plink -batch -pw "zadoL4cu!" tsparks@192.168.4.122 "echo 'zadoL4cu!' | sudo -S docker exec scraper-postgres psql -U quantum_user -d quantum_surety -c \"<SQL>\""
+plink -batch -pw "6sCgf4H80nPM5kQ" root@130.51.22.226 "docker exec scraper-postgres psql -U quantum_user -d quantum_surety -c \"<SQL>\""
 ```
 
 ---

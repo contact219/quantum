@@ -182,6 +182,9 @@ Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tun
 0 15 * * *     send_review_requests.py
 30 13 * * 1-5  crm_daily_auto_followup.cjs
 0 14 * * 1     crm_reengagement_blast.cjs
+0 8 * * 1      tdlr_renewal_target.py (weekly — licenses expiring 60-90 days)
+0 8 1 * *      import_tdlr_licenses.py (monthly — full TDLR CSV from data.texas.gov → tdlr_licenses table)
+0 9 2 * *      tdlr_monitor.py (monthly — new electrical contractor leads from refreshed table)
 0 13 * * 1-5   morning_call_list.cjs
 0 8 * * 1      tdlr_renewal_target.py
 0 7 * * 1-5    esbd_commercial_monitor.py

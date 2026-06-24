@@ -11,7 +11,7 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 | Main site | https://quantumsurety.bond | VPS 130.51.23.147, PM2 `quantumsurety`, dir `/var/www/quantumsurety/` |
 | Bond Verify portal | https://verify.quantumsurety.bond | VPS 130.51.23.147, Node.js + Caddy |
 | Partner Portal | https://partners.quantumsurety.bond | VPS 130.51.23.147, PM2 `partner-portal` port 3002 |
-| Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel (still on 192.168.4.122 — migrate pending) |
+| Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on CRM VPS 130.51.22.226 |
 | Permit Pilot | https://permitpilot.online | VPS 130.51.23.147, Docker Compose port 7842 |
 | CRM dashboard | http://130.51.22.226:8095 | VPS (CRM VPS), Docker Compose |
 | GitHub repo | github.com/contact219/quantum | Main site source |
@@ -129,12 +129,13 @@ docker exec permitpilot-postgres-1 psql -U permitpilot permitpilot  # Permit Pil
 - **Retell LLM ID:** `llm_d524048e266596071e10ce98ec26`
 - **Transfer to live agent:** +1-214-506-7373 (cold transfer on request)
 
-**CRITICAL — Cloudflare tunnel routing:**
-Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tunnel on the LOCAL server (192.168.4.122)**, NOT the VPS directly.
-- Tunnel config: `/home/tsparks/.cloudflared/voice-agent.yml` (LOCAL server)
-- Systemd service: `cloudflared-voice.service` (LOCAL server, runs as user tsparks)
-- Tunnel forwards to: `http://130.51.23.147:3003` (VPS voice agent)
-- Restart tunnel: `plink -batch -pw "zadoL4cu!" tsparks@192.168.4.122 "sudo systemctl restart cloudflared-voice"`
+**Cloudflare tunnel routing:**
+Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tunnel on CRM VPS 130.51.22.226** (migrated from local 192.168.4.122 on 2026-06-24).
+- Tunnel config: `/root/.cloudflared/voice-agent.yml` (CRM VPS)
+- Systemd service: `cloudflared-voice.service` (CRM VPS, runs as root)
+- Tunnel ID: `afbf0154-520c-41fc-b4b7-ffcdeb16708b`
+- Tunnel forwards to: `http://130.51.23.147:3003` (voice agent VPS)
+- Restart tunnel: `plink -batch -pw "6sCgf4H80nPM5kQ" root@130.51.22.226 "systemctl restart cloudflared-voice"`
 
 **Post-call pipeline (fires once per call on `call_analyzed` event):**
 1. `call_logs` table in MariaDB `bondverify` (ON DUPLICATE KEY UPDATE)

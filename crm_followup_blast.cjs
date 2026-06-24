@@ -249,7 +249,7 @@ async function main() {
     port: 5433,
     database: 'quantum_surety',
     user: 'quantum_user',
-    password: process.env.CRM_DB_PASS || 'Qs2024Secure!',
+    password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
   });
   await db.connect();
   console.log('Connected to CRM DB');

@@ -17,6 +17,8 @@ const path = require('path');
 
 const DRY_RUN  = process.argv.includes('--dry-run');
 const SEGMENT  = process.argv.includes('--segment') ? process.argv[process.argv.indexOf('--segment') + 1] : 'all';
+const LIMIT_IDX = process.argv.indexOf('--limit');
+const SEND_LIMIT = LIMIT_IDX !== -1 ? parseInt(process.argv[LIMIT_IDX + 1], 10) : Infinity;
 const SENT_LOG = path.join(__dirname, 'gdn_blast_sent.json');
 const RATE_MS  = 150; // ~6/sec, well within SES limits
 
@@ -229,6 +231,7 @@ async function main() {
   let count = 0, skipped = 0, errors = 0;
 
   for (const dealer of rows) {
+    if (count >= SEND_LIMIT) { console.log(`[GDN Blast] Limit of ${SEND_LIMIT} reached, stopping.`); break; }
     if (sent.has(dealer.email)) { skipped++; continue; }
 
     const isExpired = daysUntil(dealer.license_expiration) < 0;

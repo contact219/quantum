@@ -1,16 +1,18 @@
 // Outreach to data journalism desks — they can use the API directly, not just visit the page
 // Targeted at journalists who regularly cover Texas and publish data-driven investigations
-require('dotenv').config();
 const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
 
 const DRY_RUN = process.argv.includes('--dry-run');
 
 const ses = new SESClient({
   region: process.env.SES_REGION || 'us-east-2',
-  credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET },
+  credentials: {
+    accessKeyId: process.env.SES_KEY,
+    secretAccessKey: process.env.SES_SECRET,
+  },
 });
 
-const FROM = 'contact@quantumsurety.bond';
+const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
 
 const TARGETS = [
   { name: 'ProPublica Texas Data Team', email: 'texas@propublica.org', org: 'ProPublica Texas' },

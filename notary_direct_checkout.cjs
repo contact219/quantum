@@ -96,7 +96,7 @@ function buildEmail(lead) {
 async function main() {
   const db = new Client({
     host: '192.168.4.122', port: 5433, database: 'quantum_surety',
-    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'Qs2024Secure!',
+    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
   });
   await db.connect();
 

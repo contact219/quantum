@@ -1,170 +1,168 @@
-/* Quantum Surety Bond Verification Widget — embed with:
-   <script src="https://verify.quantumsurety.bond/widget.js"></script>
-   Optional attributes on the script tag:
-     data-type="notary|contractor|both"  (default: both)
-     data-theme="dark|light"             (default: dark)
-*/
-(function () {
+(function() {
   'use strict';
-  const API = 'https://verify.quantumsurety.bond';
+  var API = 'https://verify.quantumsurety.bond/api';
+  var HOST = 'https://quantumsurety.bond';
 
-  const scripts = document.getElementsByTagName('script');
-  const thisScript = scripts[scripts.length - 1];
-  const typeAttr = thisScript.getAttribute('data-type') || 'both';
-  const theme = thisScript.getAttribute('data-theme') || 'dark';
-  const isDark = theme !== 'light';
+  var CSS = `
+    .qs-widget-wrap { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 480px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .qs-widget-head { background: #0a0f1e; color: #f59e0b; padding: 12px 16px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .qs-widget-head svg { flex-shrink: 0; }
+    .qs-widget-body { padding: 14px 16px; }
+    .qs-widget-row { display: flex; gap: 8px; }
+    .qs-widget-input { flex: 1; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; color: #1e293b; }
+    .qs-widget-input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); }
+    .qs-widget-btn { padding: 9px 16px; background: #f59e0b; color: #0a0f1e; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
+    .qs-widget-btn:hover { background: #d97706; }
+    .qs-widget-btn:disabled { opacity: 0.6; cursor: default; }
+    .qs-widget-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+    .qs-widget-tab { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .qs-widget-tab.active { background: #0a0f1e; color: #f59e0b; border-color: #0a0f1e; }
+    .qs-widget-result { margin-top: 12px; }
+    .qs-badge-active { display: inline-block; background: #dcfce7; color: #166534; border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
+    .qs-badge-expiring { display: inline-block; background: #fef9c3; color: #854d0e; border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
+    .qs-badge-expired { display: inline-block; background: #fee2e2; color: #991b1b; border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 700; }
+    .qs-result-name { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .qs-result-row { font-size: 12px; color: #475569; margin-top: 3px; }
+    .qs-result-link { display: inline-block; margin-top: 8px; font-size: 12px; color: #2563eb; text-decoration: none; }
+    .qs-result-link:hover { text-decoration: underline; }
+    .qs-error { color: #dc2626; font-size: 13px; margin-top: 8px; }
+    .qs-footer { text-align: right; padding: 6px 16px 8px; font-size: 10px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+    .qs-footer a { color: #94a3b8; text-decoration: none; }
+    .qs-footer a:hover { color: #2563eb; }
+  `;
 
-  const host = document.createElement('div');
-  host.setAttribute('id', 'qs-bond-widget-host');
-  thisScript.parentNode.insertBefore(host, thisScript.nextSibling);
-
-  const shadow = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
-
-  const bg      = isDark ? '#0d1117' : '#ffffff';
-  const surface = isDark ? '#161b22' : '#f8fafc';
-  const border  = isDark ? '#30363d' : '#e2e8f0';
-  const text     = isDark ? '#e6edf3' : '#0f172a';
-  const textDim  = isDark ? '#8b949e' : '#64748b';
-  const gold     = '#f59e0b';
-  const green    = isDark ? '#4ade80' : '#16a34a';
-  const yellow   = '#fbbf24';
-  const red      = isDark ? '#f87171' : '#dc2626';
-  const inputBg  = isDark ? '#21262d' : '#ffffff';
-
-  shadow.innerHTML = `
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-  .w{background:${bg};border:1px solid ${border};border-radius:12px;padding:20px;max-width:520px;width:100%}
-  .hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-  .hdr-badge{font-size:9px;font-family:monospace;letter-spacing:3px;color:${gold};background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:4px;padding:3px 7px}
-  .hdr-title{font-size:14px;font-weight:700;color:${text}}
-  .tabs{display:flex;gap:4px;margin-bottom:14px}
-  .tab{flex:1;padding:7px;border-radius:6px;border:1px solid ${border};background:${surface};color:${textDim};font-size:11px;font-family:monospace;cursor:pointer;text-align:center;transition:all 0.15s}
-  .tab.active{background:${gold};color:#000;border-color:${gold};font-weight:700}
-  .row{display:flex;gap:8px;margin-bottom:10px}
-  .inp{flex:1;padding:9px 12px;background:${inputBg};border:1px solid ${border};border-radius:7px;color:${text};font-size:13px;outline:none;transition:border-color 0.15s}
-  .inp:focus{border-color:${gold}}
-  .inp::placeholder{color:${textDim}}
-  .btn{padding:9px 18px;background:${gold};color:#000;border:none;border-radius:7px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;font-family:monospace;letter-spacing:1px}
-  .btn:hover{opacity:0.9}
-  .results{margin-top:12px;display:flex;flex-direction:column;gap:8px}
-  .card{background:${surface};border:1px solid ${border};border-radius:8px;padding:12px 14px}
-  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .card-name{font-size:13px;font-weight:600;color:${text}}
-  .card-sub{font-size:11px;color:${textDim};margin-top:2px}
-  .badge{font-size:10px;font-family:monospace;padding:3px 9px;border-radius:10px;font-weight:700;white-space:nowrap}
-  .badge.active{background:rgba(74,222,128,0.12);color:${green};border:1px solid rgba(74,222,128,0.3)}
-  .badge.expiring{background:rgba(251,191,36,0.12);color:${yellow};border:1px solid rgba(251,191,36,0.3)}
-  .badge.expired{background:rgba(248,113,113,0.12);color:${red};border:1px solid rgba(248,113,113,0.3)}
-  .card-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:11px;color:${textDim}}
-  .card-meta span{display:flex;align-items:center;gap:4px}
-  .cta{display:inline-block;margin-top:8px;background:${gold};color:#000;font-size:11px;font-weight:700;padding:5px 12px;border-radius:5px;text-decoration:none;font-family:monospace;letter-spacing:1px}
-  .msg{text-align:center;padding:20px;color:${textDim};font-size:12px}
-  .spin{display:inline-block;width:14px;height:14px;border:2px solid ${border};border-top-color:${gold};border-radius:50%;animation:spin 0.7s linear infinite;margin-right:6px;vertical-align:middle}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  .footer{margin-top:14px;padding-top:12px;border-top:1px solid ${border};display:flex;justify-content:space-between;align-items:center}
-  .footer a{font-size:10px;color:${textDim};text-decoration:none;font-family:monospace}
-  .footer a:hover{color:${gold}}
-  .footer-brand{font-size:10px;color:${textDim};font-family:monospace}
-  .footer-brand span{color:${gold};font-weight:700}
-</style>
-<div class="w">
-  <div class="hdr">
-    <div class="hdr-badge">BOND VERIFY</div>
-    <div class="hdr-title">Texas Bond Status Check</div>
-  </div>
-  <div class="tabs" id="tabs" style="${typeAttr === 'notary' || typeAttr === 'contractor' ? 'display:none' : ''}">
-    <button class="tab active" data-t="notary">Notary</button>
-    <button class="tab" data-t="contractor">Contractor</button>
-  </div>
-  <div class="row">
-    <input class="inp" id="q" placeholder="Search by name or license number…" autocomplete="off"/>
-    <button class="btn" id="go">VERIFY</button>
-  </div>
-  <div id="results"></div>
-  <div class="footer">
-    <a href="https://verify.quantumsurety.bond" target="_blank">Full search →</a>
-    <div class="footer-brand">Powered by <span>Quantum Surety</span></div>
-  </div>
-</div>`;
-
-  let activeType = typeAttr === 'contractor' ? 'contractor' : 'notary';
-
-  const tabsEl   = shadow.getElementById('tabs');
-  const qEl      = shadow.getElementById('q');
-  const goEl     = shadow.getElementById('go');
-  const results  = shadow.getElementById('results');
-
-  if (tabsEl) {
-    tabsEl.addEventListener('click', e => {
-      const t = e.target.dataset.t;
-      if (!t) return;
-      activeType = t;
-      tabsEl.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.t === t));
-      qEl.placeholder = t === 'notary' ? 'Search notary by name…' : 'Search contractor by name or license…';
-      results.innerHTML = '';
-    });
+  function injectStyles(doc) {
+    if (doc.getElementById('qs-widget-styles')) return;
+    var s = doc.createElement('style');
+    s.id = 'qs-widget-styles';
+    s.textContent = CSS;
+    doc.head.appendChild(s);
   }
 
-  function statusBadge(s) {
-    if (s === 'active')   return '<span class="badge active">● BONDED</span>';
-    if (s === 'expiring') return '<span class="badge expiring">⚠ EXPIRING</span>';
-    return '<span class="badge expired">✕ EXPIRED</span>';
+  function statusBadge(status) {
+    if (status === 'active') return '<span class="qs-badge-active">Active</span>';
+    if (status === 'expiring') return '<span class="qs-badge-expiring">Expiring Soon</span>';
+    return '<span class="qs-badge-expired">Expired</span>';
   }
 
-  function fmtDate(d) {
-    if (!d) return '—';
-    return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
+  function renderResult(data, type, wrap) {
+    var resultEl = wrap.querySelector('.qs-widget-result');
+    if (!data) { resultEl.innerHTML = '<div class="qs-error">Not found. Check the license/ID and try again.</div>'; return; }
 
-  async function doSearch() {
-    const q = qEl.value.trim();
-    if (!q) return;
-    results.innerHTML = '<div class="msg"><span class="spin"></span>Checking bond status…</div>';
-    try {
-      const endpoint = activeType === 'notary'
-        ? `${API}/api/search?q=${encodeURIComponent(q)}`
-        : `${API}/api/contractor-search?q=${encodeURIComponent(q)}`;
-      const res = await fetch(endpoint);
-      const data = await res.json();
-      const items = data.results || [];
-      if (!items.length) {
-        results.innerHTML = `<div class="msg">No results found for "<strong>${q}</strong>".<br>
-          <a href="https://quantumsurety.bond" target="_blank" style="color:${gold};text-decoration:none;font-weight:700;margin-top:8px;display:inline-block">
-            Get Bonded Instantly →
-          </a></div>`;
-        return;
-      }
-      results.innerHTML = '<div class="results">' + items.slice(0, 5).map(r => {
-        const isNotary = !!r.notary_id;
-        const name = isNotary ? `${r.first_name || ''} ${r.last_name || ''}`.trim() : (r.business_name || r.owner_name || '');
-        const sub  = isNotary ? (r.city || '') : (r.business_county ? r.business_county + ' County' : '');
-        const exp  = r.expire_date ? fmtDate(r.expire_date) : null;
-        const s    = r.status || 'unknown';
-        const ctaShow = s === 'expired' || s === 'expiring';
-        return `<div class="card">
-          <div class="card-top">
-            <div>
-              <div class="card-name">${name}</div>
-              ${sub ? `<div class="card-sub">${sub}</div>` : ''}
-            </div>
-            ${statusBadge(s)}
-          </div>
-          <div class="card-meta">
-            ${exp ? `<span>Bond expires: <strong style="color:${s==='expired'?red:s==='expiring'?yellow:text}">${exp}</strong></span>` : ''}
-            ${r.surety_company ? `<span>Carrier: ${r.surety_company}</span>` : ''}
-            ${r.license_number ? `<span>License: ${r.license_number}</span>` : ''}
-          </div>
-          ${ctaShow ? `<a class="cta" href="https://quantumsurety.bond/get-bond" target="_blank">
-            ${s==='expired'?'Renew Bond Now →':'Renew Before Expiration →'}
-          </a>` : ''}
-        </div>`;
-      }).join('') + '</div>';
-    } catch (e) {
-      results.innerHTML = `<div class="msg">Unable to verify — try <a href="https://verify.quantumsurety.bond" target="_blank" style="color:${gold}">verify.quantumsurety.bond</a></div>`;
+    if (type === 'notary') {
+      var name = (data.first_name || '') + ' ' + (data.last_name || '');
+      var expiry = data.expire_date ? data.expire_date.substring(0, 10) : '';
+      resultEl.innerHTML = `
+        <div class="qs-result-name">${name.trim()} ${statusBadge(data.status)}</div>
+        <div class="qs-result-row">Commission expires: ${expiry || 'N/A'}</div>
+        ${data.surety_company ? '<div class="qs-result-row">Surety: ' + data.surety_company + '</div>' : ''}
+        <a class="qs-result-link" href="${HOST}/notary/${data.notary_id}" target="_blank">View full commission page &rarr;</a>
+      `;
+    } else {
+      var cname = data.name || data.business_name || (data.first_name + ' ' + data.last_name) || '';
+      var cexpiry = data.expire_date || data.expiry_date || '';
+      if (cexpiry.length > 10) cexpiry = cexpiry.substring(0, 10);
+      resultEl.innerHTML = `
+        <div class="qs-result-name">${cname.trim()} ${statusBadge(data.status)}</div>
+        ${data.license_type ? '<div class="qs-result-row">License type: ' + data.license_type + '</div>' : ''}
+        <div class="qs-result-row">Bond expires: ${cexpiry || 'N/A'}</div>
+        <a class="qs-result-link" href="${HOST}/contractor/${data.license_number || data.tdlr_number}" target="_blank">View full license page &rarr;</a>
+      `;
     }
   }
 
-  goEl.addEventListener('click', doSearch);
-  qEl.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+  function buildWidget(container, opts) {
+    injectStyles(document);
+    var defaultType = opts.type || 'contractor';
+
+    container.innerHTML = `
+      <div class="qs-widget-wrap">
+        <div class="qs-widget-head">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Verify Texas License / Bond
+        </div>
+        <div class="qs-widget-body">
+          <div class="qs-widget-tabs">
+            <div class="qs-widget-tab ${defaultType === 'contractor' ? 'active' : ''}" data-t="contractor">Contractor</div>
+            <div class="qs-widget-tab ${defaultType === 'notary' ? 'active' : ''}" data-t="notary">Notary</div>
+          </div>
+          <div class="qs-widget-row">
+            <input class="qs-widget-input" type="text" placeholder="License or ID number..." autocomplete="off" />
+            <button class="qs-widget-btn">Check</button>
+          </div>
+          <div class="qs-widget-result"></div>
+        </div>
+        <div class="qs-footer">Powered by <a href="${HOST}" target="_blank">Quantum Surety</a></div>
+      </div>
+    `;
+
+    var activeType = defaultType;
+    var input = container.querySelector('.qs-widget-input');
+    var btn = container.querySelector('.qs-widget-btn');
+    var resultEl = container.querySelector('.qs-widget-result');
+
+    container.querySelectorAll('.qs-widget-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        container.querySelectorAll('.qs-widget-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        activeType = tab.dataset.t;
+        input.placeholder = activeType === 'notary' ? 'Notary ID (e.g. 10000125)...' : 'TDLR license number...';
+        resultEl.innerHTML = '';
+        input.value = '';
+        input.focus();
+      });
+    });
+
+    async function lookup() {
+      var val = input.value.trim();
+      if (!val) { input.focus(); return; }
+      btn.disabled = true;
+      btn.textContent = '...';
+      resultEl.innerHTML = '';
+      try {
+        var url = activeType === 'notary'
+          ? API + '/notary/lookup/' + encodeURIComponent(val)
+          : API + '/contractor/lookup/' + encodeURIComponent(val);
+        var resp = await fetch(url);
+        var data = resp.ok ? await resp.json() : null;
+        renderResult(data && !data.error ? data : null, activeType, container);
+      } catch(e) {
+        resultEl.innerHTML = '<div class="qs-error">Lookup failed. Please try again.</div>';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Check';
+      }
+    }
+
+    btn.addEventListener('click', lookup);
+    input.addEventListener('keydown', function(e) { if (e.key === 'Enter') lookup(); });
+  }
+
+  // Track external embed loads (fires once per page load, only on non-quantumsurety.bond domains)
+  function trackEmbed() {
+    try {
+      var h = window.location.hostname;
+      if (h && h !== 'quantumsurety.bond' && h !== 'verify.quantumsurety.bond' && h !== 'localhost') {
+        var img = new Image();
+        img.src = API + '/widget/embed-ping?host=' + encodeURIComponent(h) + '&t=' + Date.now();
+      }
+    } catch(e) {}
+  }
+
+  // Auto-init: <div data-qs-widget></div>
+  function init() {
+    var found = document.querySelectorAll('[data-qs-widget]');
+    if (found.length > 0) trackEmbed();
+    found.forEach(function(el) {
+      if (el.dataset.qsInit) return;
+      el.dataset.qsInit = '1';
+      buildWidget(el, { type: el.dataset.qsType || 'contractor' });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

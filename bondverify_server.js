@@ -1,4 +1,4 @@
-require('dotenv').config();
+﻿require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2/promise');
 const crypto = require('crypto');
@@ -6,19 +6,9 @@ const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
 const path = require('path');
 
 const app = express();
-app.use(express.json({ limit: '15mb' }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Global CORS — allow all origins for public API endpoints
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
-  if (req.method === 'OPTIONS') return res.sendStatus(200);
-  next();
-});
-
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST || '127.0.0.1',
@@ -114,7 +104,7 @@ async function sendEmail(to, subject, html) {
   } catch(e) { console.error('SES:', e.message); }
 }
 
-// â”€â”€â”€ Notary endpoints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Notary endpoints Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
 app.get('/api/search', async (req, res) => {
   try {
@@ -150,7 +140,7 @@ app.post('/api/alerts/subscribe', async (req, res) => {
     const n = rows[0];
     await pool.execute('INSERT IGNORE INTO alert_subscriptions (notary_id, email) VALUES (?, ?)', [notary_id, email.toLowerCase()]);
     const expStr = n.expire_date ? new Date(n.expire_date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : 'N/A';
-    await sendEmail(email, 'Bond Renewal Alert Confirmed â€” Quantum Surety',
+    await sendEmail(email, 'Bond Renewal Alert Confirmed Ã¢â‚¬â€ Quantum Surety',
       `<div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px">
         <img src="https://quantumsurety.bond/QS_Logo.png" width="40" style="margin-bottom:16px">
         <h2 style="color:#0f172a;margin:0 0 8px">You're set, ${n.first_name}!</h2>
@@ -160,17 +150,17 @@ app.post('/api/alerts/subscribe', async (req, res) => {
           <p style="margin:6px 0 0;font-size:14px;color:#64748b">Bond expires: <strong style="color:#0f172a">${expStr}</strong></p>
         </div>
         <p style="color:#475569;font-size:14px">When it's time to renew, we'll send a link to renew instantly at <strong>$50</strong>.</p>
-        <a href="https://quantumsurety.bond/bonds/notary-bond" style="display:inline-block;margin-top:16px;background:#f59e0b;color:#000;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none">Renew Now â€” $50 Instant</a>
-        <p style="color:#94a3b8;font-size:12px;margin-top:24px">Quantum Surety Â· <a href="https://quantumsurety.bond" style="color:#94a3b8">quantumsurety.bond</a></p>
+        <a href="https://quantumsurety.bond/bonds/notary-bond-texas" style="display:inline-block;margin-top:16px;background:#f59e0b;color:#000;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none">Renew Now Ã¢â‚¬â€ $50 Instant</a>
+        <p style="color:#94a3b8;font-size:12px;margin-top:24px">Quantum Surety Ã‚Â· <a href="https://quantumsurety.bond" style="color:#94a3b8">quantumsurety.bond</a></p>
       </div>`
     );
     res.json({ success: true });
   } catch(e) { console.error(e); res.status(500).json({ error: 'Subscription failed' }); }
 });
 
-// â”€â”€â”€ Contractor endpoints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Contractor endpoints Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
-// Public contractor search â€” no key required
+// Public contractor search Ã¢â‚¬â€ no key required
 app.get('/api/contractor-search', async (req, res) => {
   try {
     const { q, county, type } = req.query;
@@ -180,7 +170,7 @@ app.get('/api/contractor-search', async (req, res) => {
     const params = [];
 
     if (terms.length >= 2) {
-      // Likely "first last" â€” try owner name split
+      // Likely "first last" Ã¢â‚¬â€ try owner name split
       conditions.push('(owner_name LIKE ? OR business_name LIKE ?)');
       params.push(`%${q}%`, `%${q}%`);
     } else {
@@ -219,7 +209,7 @@ app.post('/api/keys/register', async (req, res) => {
         <p style="color:#475569;font-size:14px"><strong>Free tier:</strong> 1,000 requests/day</p>
         <p style="color:#475569;font-size:14px">Pass as header: <code>X-API-Key: ${key}</code></p>
         <a href="https://verify.quantumsurety.bond/api-docs.html" style="display:inline-block;margin-top:16px;background:#f59e0b;color:#000;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none">View API Docs</a>
-        <p style="color:#94a3b8;font-size:12px;margin-top:24px">Quantum Surety API Â· <a href="https://verify.quantumsurety.bond" style="color:#94a3b8">verify.quantumsurety.bond</a></p>
+        <p style="color:#94a3b8;font-size:12px;margin-top:24px">Quantum Surety API Ã‚Â· <a href="https://verify.quantumsurety.bond" style="color:#94a3b8">verify.quantumsurety.bond</a></p>
       </div>`
     );
     res.json({ success: true, api_key: key, plan: 'free', daily_limit: 1000 });
@@ -227,39 +217,25 @@ app.post('/api/keys/register', async (req, res) => {
 });
 
 // API key middleware
-// Plan limits: free=500/month, starter=10000/month, pro=100000/month, enterprise=unlimited
-const PLAN_LIMITS = { free: 500, starter: 10000, pro: 100000, enterprise: null };
-
 async function requireKey(req, res, next) {
   const key = req.headers['x-api-key'] || req.query.api_key;
   if (!key) return res.status(401).json({ error: 'API key required', docs: 'https://verify.quantumsurety.bond/api-docs.html' });
   const [rows] = await pool.execute('SELECT * FROM api_keys WHERE api_key = ?', [key]);
   if (!rows.length) return res.status(401).json({ error: 'Invalid API key' });
   const k = rows[0];
-  const plan = k.plan || 'free';
-  const monthLimit = PLAN_LIMITS[plan] !== undefined ? PLAN_LIMITS[plan] : 500;
-
-  // Monthly reset
-  const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
-  const resetDate = monthStart.toISOString().split('T')[0];
-  if (!k.monthly_reset || k.monthly_reset < resetDate) {
-    await pool.execute('UPDATE api_keys SET monthly_requests=0, monthly_reset=? WHERE api_key=?', [resetDate, key]);
-    k.monthly_requests = 0;
+  const today = new Date().toISOString().split('T')[0];
+  if (k.last_reset !== today) {
+    await pool.execute('UPDATE api_keys SET requests_today=0, last_reset=? WHERE api_key=?', [today, key]);
+    k.requests_today = 0;
   }
-
-  if (monthLimit !== null && (k.monthly_requests || 0) >= monthLimit)
-    return res.status(429).json({
-      error: 'Monthly limit reached',
-      plan, limit: monthLimit, used: k.monthly_requests,
-      upgrade: 'https://verify.quantumsurety.bond/api-access'
-    });
-
-  await pool.execute('UPDATE api_keys SET monthly_requests=monthly_requests+1, requests_today=requests_today+1 WHERE api_key=?', [key]);
-  req.apiKey = { ...k, plan, monthLimit };
+  if (k.plan === 'free' && k.requests_today >= 1000)
+    return res.status(429).json({ error: 'Daily limit of 1,000 requests reached', upgrade: 'api@quantumsurety.bond' });
+  await pool.execute('UPDATE api_keys SET requests_today=requests_today+1 WHERE api_key=?', [key]);
+  req.apiKey = k;
   next();
 }
 
-// â”€â”€â”€ API v1 â€” notary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ API v1 Ã¢â‚¬â€ notary Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
 app.get('/api/v1/status', async (req, res) => {
   try {
@@ -298,7 +274,7 @@ app.get('/api/v1/search', requireKey, async (req, res) => {
     api_requests_remaining: 1000 - req.apiKey.requests_today });
 });
 
-// â”€â”€â”€ API v1 â€” contractor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ API v1 Ã¢â‚¬â€ contractor Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
 app.get('/api/v1/contractor/lookup/:license_number', requireKey, async (req, res) => {
   try {
@@ -329,7 +305,7 @@ app.get('/api/v1/contractor/search', requireKey, async (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 
-// ─── HOA / Vendor Compliance Portal ───────────────────────────────────────────
+// â”€â”€â”€ HOA / Vendor Compliance Portal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const hoaPool = pool; // same DB
 
 async function hoaAccount(token) {
@@ -361,9 +337,9 @@ app.post('/api/hoa/register', async (req, res) => {
       'Your Quantum Surety Vendor Portal Access',
       `<p>Hello${contact_name ? ' ' + contact_name : ''},</p>
 <p>Click the link below to access your <strong>free HOA/Property Manager Vendor Compliance Portal</strong>.</p>
-<p><a href="${loginUrl}" style="background:#0a0f1e;color:#f59e0b;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:bold;display:inline-block;">Open My Vendor Dashboard →</a></p>
+<p><a href="${loginUrl}" style="background:#0a0f1e;color:#f59e0b;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:bold;display:inline-block;">Open My Vendor Dashboard â†’</a></p>
 <p style="font-size:12px;color:#64748b">Link expires in 7 days. If you didn't request this, ignore this email.</p>
-<p style="font-size:12px;color:#64748b">Quantum Surety LLC · (214) 666-8718 · quantumsurety.bond</p>`
+<p style="font-size:12px;color:#64748b">Quantum Surety LLC Â· (214) 666-8718 Â· quantumsurety.bond</p>`
     );
     res.json({ ok: true, message: 'Check your email for the login link.' });
   } catch (e) {
@@ -379,7 +355,7 @@ app.get('/api/hoa/auth', async (req, res) => {
   res.json({ ok: true, account: { id: account.id, email: account.email, org_name: account.org_name, contact_name: account.contact_name } });
 });
 
-// Dashboard — get all vendors with live bond status
+// Dashboard â€” get all vendors with live bond status
 app.get('/api/hoa/dashboard', async (req, res) => {
   const token = req.headers['x-hoa-token'] || req.query.token;
   const account = await hoaAccount(token);
@@ -450,7 +426,7 @@ app.delete('/api/hoa/vendors/:id', async (req, res) => {
   res.json({ ok: true });
 });
 
-// Alert check — expose for cron: GET /api/hoa/send-alerts?secret=xxx
+// Alert check â€” expose for cron: GET /api/hoa/send-alerts?secret=xxx
 app.get('/api/hoa/send-alerts', async (req, res) => {
   if (req.query.secret !== process.env.HOA_ALERT_SECRET) return res.status(403).json({ error: 'forbidden' });
   const [accounts] = await hoaPool.execute('SELECT * FROM hoa_accounts');
@@ -483,14 +459,14 @@ app.get('/api/hoa/send-alerts', async (req, res) => {
       ).join('');
       const loginUrl = `https://quantumsurety.bond/hoa-portal?token=${account.token}`;
       await sendEmail(account.email,
-        `⚠️ ${expiring.length} vendor bond(s) need attention — ${account.org_name}`,
+        `âš ï¸ ${expiring.length} vendor bond(s) need attention â€” ${account.org_name}`,
         `<p>Hello${account.contact_name ? ' ' + account.contact_name : ''},</p>
 <p>The following vendors in your <strong>${account.org_name}</strong> compliance list have expiring or expired bonds:</p>
 <table style="border-collapse:collapse;width:100%;font-size:14px">
 <thead><tr style="background:#0a0f1e;color:#f59e0b"><th style="padding:8px 12px;text-align:left">Vendor</th><th style="padding:8px 12px;text-align:left">License #</th><th style="padding:8px 12px;text-align:left">Status</th><th style="padding:8px 12px;text-align:left">Expires</th></tr></thead>
 <tbody>${rows}</tbody></table>
-<p style="margin-top:20px"><a href="${loginUrl}" style="background:#0a0f1e;color:#f59e0b;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:bold;display:inline-block;">View Full Vendor Dashboard →</a></p>
-<p style="font-size:12px;color:#64748b">Quantum Surety LLC · quantumsurety.bond</p>`
+<p style="margin-top:20px"><a href="${loginUrl}" style="background:#0a0f1e;color:#f59e0b;padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:bold;display:inline-block;">View Full Vendor Dashboard â†’</a></p>
+<p style="font-size:12px;color:#64748b">Quantum Surety LLC Â· quantumsurety.bond</p>`
       );
       sent++;
     }
@@ -498,462 +474,9 @@ app.get('/api/hoa/send-alerts', async (req, res) => {
   res.json({ ok: true, accounts_alerted: sent });
 });
 
-
-// ── Public QS Score API (no key required, IP rate limited) ───────────────────
-const ipQsHits = new Map();
-setInterval(() => ipQsHits.clear(), 60 * 60 * 1000);
-
-app.get('/api/qs-score', async (req, res) => {
-  const ip = req.ip;
-  const hits = (ipQsHits.get(ip) || 0) + 1;
-  ipQsHits.set(ip, hits);
-  if (hits > 100) return res.status(429).json({ error: 'Rate limit exceeded. For higher limits: api@quantumsurety.bond' });
-
-  const { id, type } = req.query;
-  if (!id) return res.status(400).json({ error: 'id parameter required (notary_id or license_number)' });
-
-  try {
-    let row = null;
-    if ((type || '').toLowerCase() !== 'contractor') {
-      const [nr] = await pool.execute(
-        'SELECT notary_id as id, first_name, last_name, city, state, expire_date FROM notaries WHERE notary_id = ? LIMIT 1', [id]
-      );
-      if (nr.length) { row = nr[0]; row._type = 'notary'; }
-    }
-    if (!row) {
-      const [cr] = await pool.execute(
-        'SELECT license_number as id, business_name as name, business_city as city, business_county as county, license_type, expire_date FROM contractors WHERE license_number = ? LIMIT 1', [id]
-      );
-      if (cr.length) { row = cr[0]; row._type = 'contractor'; }
-    }
-    if (!row) return res.status(404).json({ error: 'No record found for this ID' });
-
-    const qs = calculateQSScore(row, row._type);
-    const st = statusInfo(row.expire_date);
-    const name = row.name || ((row.first_name || '') + ' ' + (row.last_name || '')).trim();
-    res.json({
-      id: row.id, name, type: row._type,
-      city: row.city, state: row.state,
-      expire_date: row.expire_date,
-      bond_status: st.status,
-      qs_score: qs.qs_score, qs_grade: qs.qs_grade, qs_label: qs.qs_label,
-      profile_url: row._type === 'notary'
-        ? 'https://verify.quantumsurety.bond/?q=' + encodeURIComponent(row.id)
-        : 'https://verify.quantumsurety.bond/?tab=contractor&q=' + encodeURIComponent(row.id),
-      powered_by: 'Quantum Surety — quantumsurety.bond'
-    });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-// ── QS Score Leaderboard ──────────────────────────────────────────────────────
-app.get('/api/qs-leaderboard', async (req, res) => {
-  const { city, county, type, limit } = req.query;
-  const n = Math.min(parseInt(limit) || 25, 100);
-  const qtype = (type || 'contractor').toLowerCase();
-
-  try {
-    let rows;
-    if (qtype === 'notary') {
-      const param = city || county;
-      const whereClause = city ? 'AND city = ?' : county ? 'AND state = ?' : '';
-      const queryArgs = param ? [param, n] : [n];
-      const [r] = await pool.execute(
-        'SELECT notary_id as id, CONCAT(first_name, \' \', last_name) as name, city, state as county, expire_date, DATEDIFF(expire_date, CURDATE()) as days_until_expiry FROM notaries WHERE expire_date > CURDATE() ' + whereClause + ' ORDER BY expire_date DESC LIMIT ?',
-        queryArgs
-      );
-      rows = r;
-    } else {
-      const param = city || county;
-      const whereClause = city ? 'AND business_city LIKE ?' : county ? 'AND business_county = ?' : '';
-      const queryArgs = param ? [city ? '%' + param.toUpperCase() + '%' : param, n] : [n];
-      const [r] = await pool.execute(
-        'SELECT license_number as id, business_name as name, business_city as city, business_county as county, license_type, expire_date, DATEDIFF(expire_date, CURDATE()) as days_until_expiry FROM contractors WHERE expire_date > CURDATE() ' + whereClause + ' ORDER BY expire_date DESC LIMIT ?',
-        queryArgs
-      );
-      rows = r;
-    }
-
-    const results = rows
-      .map(r => ({ ...r, ...statusInfo(r.expire_date), ...calculateQSScore(r, qtype) }))
-      .sort((a, b) => b.qs_score - a.qs_score);
-
-    res.json({ results, total: results.length, type: qtype, powered_by: 'Quantum Surety' });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-
-
-// ── HOA Bulk Vendor Audit ─────────────────────────────────────────────────────
-app.post('/api/hoa/bulk-audit', async (req, res) => {
-  const { licenses } = req.body;
-  if (!Array.isArray(licenses) || licenses.length === 0) {
-    return res.status(400).json({ error: 'licenses array required' });
-  }
-  if (licenses.length > 200) {
-    return res.status(400).json({ error: 'Maximum 200 licenses per request' });
-  }
-  const results = [];
-  for (const item of licenses) {
-    const id = typeof item === 'string' ? item : item.id;
-    const hint = typeof item === 'object' ? (item.type || '') : '';
-    let row = null, rtype = null;
-    if (hint.toLowerCase() !== 'contractor') {
-      const [nr] = await pool.execute('SELECT notary_id as id, CONCAT(first_name,\' \',last_name) as name, city, expire_date FROM notaries WHERE notary_id = ? LIMIT 1', [id]);
-      if (nr.length) { row = nr[0]; rtype = 'notary'; }
-    }
-    if (!row) {
-      const [cr] = await pool.execute('SELECT license_number as id, business_name as name, business_city as city, license_type, expire_date FROM contractors WHERE license_number = ? LIMIT 1', [id]);
-      if (cr.length) { row = cr[0]; rtype = 'contractor'; }
-    }
-    if (!row) {
-      results.push({ id, status: 'not_found', qs_grade: 'N/A', compliant: false });
-    } else {
-      const qs = calculateQSScore(row, rtype);
-      const st = statusInfo(row.expire_date);
-      results.push({
-        id: row.id, name: row.name, type: rtype, city: row.city,
-        expire_date: row.expire_date, bond_status: st.status,
-        days_until_expiry: st.days_until_expiry,
-        qs_score: qs.qs_score, qs_grade: qs.qs_grade, qs_label: qs.qs_label,
-        compliant: st.status === 'active' || st.status === 'expiring',
-        action_required: st.status === 'expired' || st.status === 'expiring'
-      });
-    }
-  }
-  const compliant = results.filter(r => r.compliant).length;
-  const nonCompliant = results.filter(r => !r.compliant).length;
-  res.json({
-    summary: { total: results.length, compliant, non_compliant: nonCompliant,
-      compliance_rate: Math.round(compliant / results.length * 100) + '%' },
-    results, generated_at: new Date().toISOString(),
-    powered_by: 'Quantum Surety HOA Portal'
-  });
-});
-
-// ── Bond Watch — email alert signup ──────────────────────────────────────────
-app.post('/api/bond-watch/subscribe', async (req, res) => {
-  const { email, license_id } = req.body;
-  if (!email || !license_id) return res.status(400).json({ error: 'email and license_id required' });
-  try {
-    await pool.execute('INSERT INTO alert_subscriptions (notary_id, email) VALUES (?, ?) ON DUPLICATE KEY UPDATE email = VALUES(email)', [license_id, email]);
-    res.json({ ok: true, message: 'Alert subscription saved.' });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-// ── Bond Watch — embeddable county widget (SVG) ───────────────────────────────
-app.get('/api/bond-watch/county-widget', async (req, res) => {
-  const county = req.query.county || '';
-  const where = county ? 'AND business_county = ?' : '';
-  const args = county ? [county] : [];
-  try {
-    const [[a]] = await pool.execute('SELECT COUNT(*) as cnt FROM contractors WHERE expire_date > CURDATE() ' + where, args);
-    const [[e]] = await pool.execute('SELECT COUNT(*) as cnt FROM contractors WHERE expire_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY) ' + where, args);
-    const [[x]] = await pool.execute('SELECT COUNT(*) as cnt FROM contractors WHERE expire_date < CURDATE() ' + where, args);
-    const label = (county || 'Texas').toUpperCase() + ' BOND STATUS';
-    res.setHeader('Content-Type', 'image/svg+xml');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.send([
-      '<svg xmlns="http://www.w3.org/2000/svg" width="280" height="90" viewBox="0 0 280 90">',
-      '<rect width="280" height="90" rx="8" fill="#0f172a"/>',
-      '<text x="14" y="22" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#94a3b8">' + label + '</text>',
-      '<rect x="14" y="32" width="70" height="44" rx="6" fill="#052e16"/>',
-      '<text x="49" y="52" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#22c55e" text-anchor="middle">' + a.cnt + '</text>',
-      '<text x="49" y="66" font-family="Arial,sans-serif" font-size="9" fill="#86efac" text-anchor="middle">ACTIVE</text>',
-      '<rect x="100" y="32" width="70" height="44" rx="6" fill="#431407"/>',
-      '<text x="135" y="52" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#fb923c" text-anchor="middle">' + e.cnt + '</text>',
-      '<text x="135" y="66" font-family="Arial,sans-serif" font-size="9" fill="#fed7aa" text-anchor="middle">EXPIRING SOON</text>',
-      '<rect x="186" y="32" width="70" height="44" rx="6" fill="#450a0a"/>',
-      '<text x="221" y="52" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#f87171" text-anchor="middle">' + x.cnt + '</text>',
-      '<text x="221" y="66" font-family="Arial,sans-serif" font-size="9" fill="#fca5a5" text-anchor="middle">EXPIRED</text>',
-      '<text x="140" y="84" font-family="Arial,sans-serif" font-size="8" fill="#475569" text-anchor="middle">quantumsurety.bond/texas-bond-watch</text>',
-      '</svg>'
-    ].join(''));
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-
-
-// ── Badge Analytics — track impressions and clicks ───────────────────────────
-app.post('/api/badge/track', async (req, res) => {
-  const { id, type, event } = req.body;
-  if (!id || !event) return res.status(400).json({ error: 'id and event required' });
-  const rtype = (type || 'notary').toLowerCase() === 'contractor' ? 'contractor' : 'notary';
-  const evt = event === 'click' ? 'click' : 'impression';
-  const referrer = (req.headers.referer || req.headers.referrer || '').slice(0, 500);
-  try {
-    await pool.execute(
-      'INSERT INTO badge_analytics (recipient_type, recipient_id, event_type, referrer) VALUES (?, ?, ?, ?)',
-      [rtype, id, evt, referrer]
-    );
-    res.json({ ok: true });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-// ── Badge Analytics — stats for a business ───────────────────────────────────
-app.get('/api/badge/stats/:id', async (req, res) => {
-  const { id } = req.params;
-  try {
-    const [[impressions]] = await pool.execute(
-      'SELECT COUNT(*) as cnt FROM badge_analytics WHERE recipient_id = ? AND event_type = "impression" AND recorded_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)',
-      [id]
-    );
-    const [[clicks]] = await pool.execute(
-      'SELECT COUNT(*) as cnt FROM badge_analytics WHERE recipient_id = ? AND event_type = "click" AND recorded_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)',
-      [id]
-    );
-    const [[allTime]] = await pool.execute(
-      'SELECT COUNT(*) as cnt FROM badge_analytics WHERE recipient_id = ? AND event_type = "impression"', [id]
-    );
-    res.json({
-      id,
-      last_30_days: { impressions: impressions.cnt, clicks: clicks.cnt,
-        click_rate: impressions.cnt > 0 ? Math.round(clicks.cnt / impressions.cnt * 100) + '%' : '0%' },
-      all_time_impressions: allTime.cnt,
-      badge_embed_url: 'https://verify.quantumsurety.bond/api/v1/badge/' + id
-    });
-  } catch(e) { res.status(500).json({ error: e.message }); }
-});
-
-
-
-// Bond Guard Subscription endpoints
-const Stripe = require('stripe');
-const stripeClient = new Stripe(process.env.STRIPE_SECRET_KEY);
-const BG_PRICE_MONTHLY = 'price_1Te16FFaDYYRjEqx5KiHLMeJ';
-const BG_PRICE_ANNUAL  = 'price_1Te16GFaDYYRjEqxoj5XOKj9';
-
-app.post('/bond-guard/checkout', async (req, res) => {
-  const { email, name, notary_id, bond_type, plan } = req.body;
-  if (!email || !name) return res.status(400).json({ error: 'name and email required' });
-  const priceId = plan === 'monthly' ? BG_PRICE_MONTHLY : BG_PRICE_ANNUAL;
-  try {
-    const session = await stripeClient.checkout.sessions.create({
-      mode: 'subscription',
-      customer_email: email,
-      line_items: [{ price: priceId, quantity: 1 }],
-      success_url: 'https://quantumsurety.bond/bond-guard?success=1',
-      cancel_url: 'https://quantumsurety.bond/bond-guard',
-      metadata: { name: name || '', notary_id: notary_id || '', bond_type: bond_type || 'notary', plan: plan || 'annual' },
-    });
-    res.json({ url: session.url });
-  } catch (e) { res.status(500).json({ error: e.message }); }
-});
-
-app.post('/bond-guard/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
-  let event;
-  try {
-    event = stripeClient.webhooks.constructEvent(req.body, req.headers['stripe-signature'], process.env.BG_WEBHOOK_SECRET);
-  } catch (e) { return res.status(400).send('Webhook error: ' + e.message); }
-  if (event.type === 'checkout.session.completed') {
-    const s = event.data.object;
-    const email = s.customer_email || '';
-    const meta  = s.metadata || {};
-    if (email) {
-      const token = crypto.randomBytes(32).toString('hex');
-      await pool.execute(
-        "INSERT INTO bond_guard_subscribers (email,notary_id,bond_type,stripe_customer_id,stripe_subscription_id,plan,token,status) VALUES (?,?,?,?,?,?,?,'active') ON DUPLICATE KEY UPDATE stripe_subscription_id=VALUES(stripe_subscription_id),status='active',token=VALUES(token)",
-        [email, meta.notary_id||'', meta.bond_type||'notary', s.customer, s.subscription, meta.plan||'annual', token]
-      );
-      await sendEmail(email, 'Bond Guard is active — your bond is now monitored',
-        '<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px"><h2>Welcome to Bond Guard!</h2><p>Your bond is now monitored. We will alert you at 90, 60, 45, 30, 21, 14, 7, 3 and 1 day before expiry.</p><a href="https://quantumsurety.bond/bond-guard/status?token=' + token + '" style="display:inline-block;background:#22c55e;color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;margin:16px 0">View Your Bond Status</a></div>'
-      );
-    }
-  }
-  if (event.type === 'customer.subscription.deleted') {
-    await pool.execute("UPDATE bond_guard_subscribers SET status='cancelled' WHERE stripe_subscription_id=?", [event.data.object.id]);
-  }
-  res.json({ received: true });
-});
-
-app.get('/bond-guard/status', async (req, res) => {
-  const { token } = req.query;
-  if (!token) return res.status(400).json({ error: 'token required' });
-  const [[sub]] = await pool.execute("SELECT * FROM bond_guard_subscribers WHERE token=? AND status='active'", [token]);
-  if (!sub) return res.status(404).json({ error: 'Not found or inactive' });
-  if (!sub.notary_id) return res.json({ email: sub.email, bond_type: sub.bond_type, plan: sub.plan, note: 'Add your notary ID to see live status' });
-  const [[n]] = await pool.execute('SELECT first_name, last_name, expire_date, surety_company, city FROM notaries WHERE notary_id=? LIMIT 1', [sub.notary_id]);
-  if (!n) return res.json({ email: sub.email, notary_id: sub.notary_id, error: 'Notary not found in TX SOS' });
-  const days = n.expire_date ? Math.max(0, Math.floor((new Date(n.expire_date) - Date.now()) / 86400000)) : null;
-  const status = !n.expire_date ? 'UNKNOWN' : days <= 0 ? 'EXPIRED' : days <= 30 ? 'EXPIRING' : 'ACTIVE';
-  res.json({ email: sub.email, name: n.first_name + ' ' + n.last_name, city: n.city, status, expire_date: n.expire_date, days_remaining: days, carrier: n.surety_company, plan: sub.plan });
-});
-
-
-// ══════════════════════════════════════════════════════════════════════════════
-// FILING SERVICE — append to /var/www/bondverify/server.js before app.listen
-// ══════════════════════════════════════════════════════════════════════════════
-
-const FILING_WEBHOOK_SECRET = process.env.FILING_WEBHOOK_SECRET;
-const CRM_API = 'http://crm-api.permitpilot.online';
-
-// Public filing-service page
-app.get('/filing-service', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'filing-service.html'));
-});
-
-// Success page
-app.get('/filing-service/success', (req, res) => {
-  res.send(`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Filing Received — Quantum Surety</title>
-<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#060b17;color:#e2e8f0;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}.card{background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:40px;max-width:500px;width:100%;text-align:center}.icon{font-size:52px;margin-bottom:20px}.h1{font-size:26px;font-weight:800;color:#fff;margin-bottom:12px}.sub{color:#94a3b8;font-size:15px;line-height:1.7;margin-bottom:28px}.btn{display:inline-block;background:#f59e0b;color:#000;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px}</style>
-</head><body>
-<div class="card">
-  <div class="icon">✅</div>
-  <div class="h1">Filing Received!</div>
-  <div class="sub">Check your email — we sent a confirmation with your filing details. We'll mail your bond certificate to the county clerk within 2 business days and email you the tracking number.</div>
-  <a href="https://quantumsurety.bond" class="btn">Back to Quantum Surety →</a>
-</div>
-</body></html>`);
-});
-
-// Checkout — create Stripe session + store pending filing
-app.post('/filing-service/checkout', express.json({ limit: '15mb' }), async (req, res) => {
-  const {
-    notary_name, notary_email, notary_phone, county,
-    bond_number, bond_amount, effective_date, expiry_date,
-    surety_company, cert_base64, cert_filename,
-  } = req.body;
-
-  if (!notary_name || !notary_email || !county)
-    return res.status(400).json({ error: 'Name, email, and county are required.' });
-  if (!cert_base64)
-    return res.status(400).json({ error: 'Bond certificate PDF is required.' });
-
-  const id = crypto.randomUUID();
-
-  try {
-    await pool.execute(
-      `INSERT INTO bond_filing_requests
-         (id, notary_name, notary_email, notary_phone, county,
-          bond_number, bond_amount, effective_date, expiry_date,
-          surety_company, cert_base64, cert_filename)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`,
-      [
-        id, notary_name, notary_email, notary_phone || '',
-        county, bond_number || '', bond_amount || null,
-        effective_date || null, expiry_date || null,
-        surety_company || '', cert_base64, cert_filename || 'bond-cert.pdf',
-      ]
-    );
-
-    const session = await stripeClient.checkout.sessions.create({
-      mode: 'payment',
-      customer_email: notary_email,
-      line_items: [{
-        price_data: {
-          currency: 'usd',
-          unit_amount: 1299,
-          product_data: {
-            name: 'Notary Bond Filing Service',
-            description: `County Clerk filing — ${county} County, TX · USPS Certified Mail`,
-          },
-        },
-        quantity: 1,
-      }],
-      success_url: `https://verify.quantumsurety.bond/filing-service/success?id=${id}`,
-      cancel_url:  `https://verify.quantumsurety.bond/filing-service`,
-      metadata: { filing_id: id, county, notary_email },
-    });
-
-    await pool.execute(
-      'UPDATE bond_filing_requests SET stripe_session_id=? WHERE id=?',
-      [session.id, id]
-    );
-
-    res.json({ url: session.url });
-  } catch(e) {
-    console.error('[filing/checkout]', e.message);
-    res.status(500).json({ error: 'Could not create checkout session. Please try again.' });
-  }
-});
-
-// Stripe webhook — on payment, forward to CRM + send confirmation email
-app.post('/filing-service/webhook',
-  express.raw({ type: 'application/json' }),
-  async (req, res) => {
-    let event;
-    try {
-      event = stripeClient.webhooks.constructEvent(
-        req.body, req.headers['stripe-signature'], FILING_WEBHOOK_SECRET
-      );
-    } catch(e) { return res.status(400).send('Webhook error: ' + e.message); }
-
-    if (event.type === 'checkout.session.completed') {
-      const s       = event.data.object;
-      const filingId = s.metadata?.filing_id;
-      if (!filingId) return res.json({ received: true });
-
-      try {
-        const [[filing]] = await pool.execute(
-          'SELECT * FROM bond_filing_requests WHERE id=?', [filingId]
-        );
-        if (!filing) return res.json({ received: true });
-
-        await pool.execute(
-          'UPDATE bond_filing_requests SET status="paid", stripe_payment_id=? WHERE id=?',
-          [s.payment_intent, filingId]
-        );
-
-        // Forward to CRM
-        try {
-          const crmRes = await fetch(`${CRM_API}/api/filings`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              request_id:        filing.id,
-              notary_name:       filing.notary_name,
-              notary_email:      filing.notary_email,
-              notary_phone:      filing.notary_phone,
-              county:            filing.county,
-              bond_number:       filing.bond_number,
-              bond_amount:       filing.bond_amount,
-              effective_date:    filing.effective_date,
-              expiry_date:       filing.expiry_date,
-              surety_company:    filing.surety_company,
-              cert_base64:       filing.cert_base64,
-              cert_filename:     filing.cert_filename,
-              price_paid:        12.99,
-              stripe_payment_id: s.payment_intent,
-            }),
-          });
-          if (!crmRes.ok) console.error('[filing/webhook] CRM responded', crmRes.status);
-        } catch(e) { console.error('[filing/webhook] CRM forward failed:', e.message); }
-
-        // Confirmation email
-        const first = (filing.notary_name || '').split(' ')[0];
-        await sendEmail(
-          filing.notary_email,
-          `We received your bond filing — ${filing.county} County`,
-          `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px;background:#0a0f1e;color:#e2e8f0;border-radius:12px">
-            <div style="color:#f59e0b;font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:20px">QUANTUM SURETY · FILING SERVICE</div>
-            <h2 style="color:#fff;margin-bottom:16px">We received your bond filing</h2>
-            <p>Hi ${first},</p>
-            <p style="margin-top:12px">We received your notary bond certificate for filing with <strong>${filing.county} County Clerk</strong>. We'll send it via USPS Certified Mail within 2 business days and email you the tracking number once it ships.</p>
-            <div style="background:#1e293b;border-radius:8px;padding:20px;margin:24px 0">
-              <div style="font-size:11px;color:#94a3b8;margin-bottom:10px;letter-spacing:1px">FILING SUMMARY</div>
-              <table style="width:100%;font-size:13px;border-collapse:collapse">
-                <tr><td style="color:#94a3b8;padding:4px 0">County</td><td style="color:#e2e8f0;text-align:right">${filing.county} County</td></tr>
-                ${filing.bond_number ? `<tr><td style="color:#94a3b8;padding:4px 0">Bond #</td><td style="color:#e2e8f0;text-align:right">${filing.bond_number}</td></tr>` : ''}
-                ${filing.surety_company ? `<tr><td style="color:#94a3b8;padding:4px 0">Surety</td><td style="color:#e2e8f0;text-align:right">${filing.surety_company}</td></tr>` : ''}
-                <tr><td style="color:#94a3b8;padding:4px 0">Filing fee paid</td><td style="color:#f59e0b;text-align:right;font-weight:700">$12.99</td></tr>
-              </table>
-            </div>
-            <p style="color:#94a3b8;font-size:13px">Questions? Reply to this email or call us at (214) 666-8718.</p>
-            <div style="margin-top:28px;padding-top:16px;border-top:1px solid #1e293b;font-size:12px;color:#64748b">Quantum Surety LLC · Texas Bonds · quantumsurety.bond</div>
-          </div>`
-        );
-      } catch(e) { console.error('[filing/webhook]', e.message); }
-    }
-
-    res.json({ received: true });
-  }
-);
-
-
 app.listen(PORT, '127.0.0.1', () => console.log(`Bond Verify running on port ${PORT}`));
 
-// Public embed stats â€” used for social proof ("X sites embed this widget")
+// Public embed stats Ã¢â‚¬â€ used for social proof ("X sites embed this widget")
 app.get('/api/embed-stats', async (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   try {
@@ -1108,13 +631,13 @@ app.get('/api/notary-renew', async (req, res) => {
 });
 
 
-// â”€â”€â”€ Bond Badge + Verification System â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// Contractors/notaries embed our badge on their site â†’ backlink + brand exposure
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Bond Badge + Verification System Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// Contractors/notaries embed our badge on their site Ã¢â€ â€™ backlink + brand exposure
 
 function bondBadgeSVG(name, status, expDate, type) {
   const safe = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const statusColors = { ACTIVE: '#059669', EXPIRING: '#d97706', EXPIRED: '#dc2626', UNKNOWN: '#6b7280' };
-  const statusLabels = { ACTIVE: 'âœ“ BOND ACTIVE', EXPIRING: 'âš  EXPIRING SOON', EXPIRED: 'âœ• BOND LAPSED', UNKNOWN: '? NOT FOUND' };
+  const statusLabels = { ACTIVE: 'Ã¢Å“â€œ BOND ACTIVE', EXPIRING: 'Ã¢Å¡Â  EXPIRING SOON', EXPIRED: 'Ã¢Å“â€¢ BOND LAPSED', UNKNOWN: '? NOT FOUND' };
   const color = statusColors[status] || '#6b7280';
   const label = statusLabels[status] || 'UNKNOWN';
   const nameText = safe((name || type || 'Texas License').substring(0, 30));
@@ -1139,7 +662,7 @@ function verifyPageHTML(data, type, id) {
   const statusColor = { ACTIVE: '#059669', EXPIRING: '#d97706', EXPIRED: '#dc2626', UNKNOWN: '#6b7280' }[status];
   const name = data ? (type === 'notary' ? [data.first_name, data.last_name].filter(Boolean).join(' ') : (data.business_name || data.owner_name || '')) : '';
   const badgeEmbed = `<a href="https://verify.quantumsurety.bond/verify/${type}/${id}" target="_blank">\n  <img src="https://verify.quantumsurety.bond/api/badge/${type}/${id}" alt="Bond Verified by Quantum Surety" width="280" height="56">\n</a>`;
-  const statusLabel = status === 'ACTIVE' ? 'âœ“ BOND ACTIVE' : status === 'EXPIRING' ? 'âš  EXPIRING SOON' : 'âœ• BOND LAPSED';
+  const statusLabel = status === 'ACTIVE' ? 'Ã¢Å“â€œ BOND ACTIVE' : status === 'EXPIRING' ? 'Ã¢Å¡Â  EXPIRING SOON' : 'Ã¢Å“â€¢ BOND LAPSED';
   const renewHref = `https://quantumsurety.bond/get-bond?type=${type === 'notary' ? 'notary' : 'contractor'}&src=badge-verify`;
   const idLabel = type === 'notary' ? 'NOTARY ID' : 'LICENSE NUMBER';
 
@@ -1148,7 +671,7 @@ function verifyPageHTML(data, type, id) {
     const expDisplay = new Date(data.expire_date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
     const cityRow = data.city ? `<div class="field"><div class="field-label">CITY</div><div class="field-value">${safe(data.city)}</div></div>` : '';
     const daysRow = daysLeft > 0 ? `<div class="field"><div class="field-label">DAYS REMAINING</div><div class="field-value" style="color:${statusColor}">${daysLeft} days</div></div>` : '';
-    const renewRow = status !== 'ACTIVE' ? `<div class="cta"><a href="${renewHref}">Renew Bond Now â€” $50 â†’</a></div>` : '';
+    const renewRow = status !== 'ACTIVE' ? `<div class="cta"><a href="${renewHref}">Renew Bond Now Ã¢â‚¬â€ $50 Ã¢â€ â€™</a></div>` : '';
     bodyContent = `
 <div class="status-badge" style="background:${statusColor}1a;border-color:${statusColor}40;color:${statusColor}">${statusLabel}</div>
 <div class="field"><div class="field-label">NAME</div><div class="field-value">${safe(name)}</div></div>
@@ -1172,13 +695,13 @@ ${renewRow}`;
     bodyContent = `
 <div class="status-badge" style="color:#6b7280;border-color:#6b7280;background:#6b728019">? NOT FOUND</div>
 <p style="color:#8b949e;font-size:14px">No bond record found for ${type} ${safe(id)}.</p>
-<div class="cta" style="margin-top:16px"><a href="https://verify.quantumsurety.bond">Search Again â†’</a></div>`;
+<div class="cta" style="margin-top:16px"><a href="https://verify.quantumsurety.bond">Search Again Ã¢â€ â€™</a></div>`;
   }
 
   return `<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bond Verification â€” ${safe(name || id)} | Quantum Surety</title>
-<meta name="description" content="Verify the bond status of ${safe(name || id)} â€” ${type} license ${safe(id)}.">
+<title>Bond Verification Ã¢â‚¬â€ ${safe(name || id)} | Quantum Surety</title>
+<meta name="description" content="Verify the bond status of ${safe(name || id)} Ã¢â‚¬â€ ${type} license ${safe(id)}.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,sans-serif;background:#0a0f1e;color:#e2e8f0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
@@ -1203,9 +726,9 @@ footer{margin-top:20px;text-align:center;font-size:11px;color:#475569}
 footer a{color:#64748b}
 </style>
 </head><body><div class="card">
-<div class="logo">QUANTUM SURETY â€” BOND VERIFICATION</div>
+<div class="logo">QUANTUM SURETY Ã¢â‚¬â€ BOND VERIFICATION</div>
 ${bodyContent}
-<footer>Verified by <a href="https://quantumsurety.bond">Quantum Surety LLC</a> Â· Texas-Licensed Surety Agency Â· Data from TX SOS &amp; TDLR</footer>
+<footer>Verified by <a href="https://quantumsurety.bond">Quantum Surety LLC</a> Ã‚Â· Texas-Licensed Surety Agency Ã‚Â· Data from TX SOS &amp; TDLR</footer>
 </div></body></html>`;
 }
 
@@ -1297,7 +820,7 @@ app.get('/verify/contractor/:id', async (req, res) => {
 // --- widget embed route ---
 
 // ============================================================
-// EMBEDDABLE COUNTY STATS WIDGET â€” any site can embed with one line:
+// EMBEDDABLE COUNTY STATS WIDGET Ã¢â‚¬â€ any site can embed with one line:
 // <script src="https://verify.quantumsurety.bond/county-stats.js?county=harris"></script>
 // ============================================================
 app.get('/county-stats.js', async (req, res) => {
@@ -1335,8 +858,8 @@ el.innerHTML='<div style="font-size:10px;letter-spacing:3px;color:#f59e0b;font-f
 +'<div style="font-size:22px;font-weight:800;color:#64748b;">${pct}%</div>'
 +'<div style="font-size:10px;color:#94a3b8;margin-top:2px;">LAPSED</div></div>'
 +'</div>'
-+'<a href="${verifyLink}" target="_blank" style="display:block;text-align:center;background:#f59e0b;color:#000;font-weight:700;font-size:12px;padding:8px;border-radius:6px;text-decoration:none;">Verify a Contractor â†’ Texas Bond Watch</a>'
-+'<div style="font-size:9px;color:#475569;margin-top:8px;text-align:center;">Live TDLR data Â· Updated daily Â· <a href="${homeLink}" target="_blank" style="color:#64748b;">quantumsurety.bond</a></div>';
++'<a href="${verifyLink}" target="_blank" style="display:block;text-align:center;background:#f59e0b;color:#000;font-weight:700;font-size:12px;padding:8px;border-radius:6px;text-decoration:none;">Verify a Contractor Ã¢â€ â€™ Texas Bond Watch</a>'
++'<div style="font-size:9px;color:#475569;margin-top:8px;text-align:center;">Live TDLR data Ã‚Â· Updated daily Ã‚Â· <a href="${homeLink}" target="_blank" style="color:#64748b;">quantumsurety.bond</a></div>';
 var scripts=document.querySelectorAll('script[src*="widget.js"]');
 var s=scripts[scripts.length-1];
 if(s&&s.parentNode)s.parentNode.insertBefore(el,s.nextSibling);
@@ -1353,7 +876,7 @@ else document.body.appendChild(el);
   }
 });
 
-// ── GDN Dealer Search ──────────────────────────────────────────────────────
+// â”€â”€ GDN Dealer Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 app.get('/api/dealer-search', async (req, res) => {
   try {
     const { q, city, type, status } = req.query;
@@ -1395,14 +918,14 @@ app.get('/verify/dealer/:license', async (req, res) => {
     const statusText = daysLeft === null ? 'Unknown' : daysLeft < 0 ? 'EXPIRED' : daysLeft <= 60 ? `Expiring in ${daysLeft} days` : 'Active & Bonded';
     const expStr = exp ? exp.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Unknown';
     const renewCTA = !isActive
-      ? `<a href="https://quantumsurety.bond/get-bond?type=dealer&license=${encodeURIComponent(d.license_number)}" style="display:inline-block;background:#f59e0b;color:#000;font-weight:700;padding:14px 28px;border-radius:8px;text-decoration:none;font-size:16px;margin-top:8px">Renew GDN Bond Now →</a>`
+      ? `<a href="https://quantumsurety.bond/get-bond?type=dealer&license=${encodeURIComponent(d.license_number)}" style="display:inline-block;background:#f59e0b;color:#000;font-weight:700;padding:14px 28px;border-radius:8px;text-decoration:none;font-size:16px;margin-top:8px">Renew GDN Bond Now â†’</a>`
       : `<a href="https://quantumsurety.bond/get-bond?type=dealer" style="display:inline-block;background:#1e3a5f;color:#fff;font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;font-size:14px;margin-top:8px">Get a Quote from Quantum Surety</a>`;
     res.send(`<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${d.business_name} — Texas GDN Bond Verification | Quantum Surety</title>
+<title>${d.business_name} â€” Texas GDN Bond Verification | Quantum Surety</title>
 <meta name="description" content="Verify the GDN dealer bond status for ${d.business_name} in ${d.city}, Texas. License #${d.license_number}.">
-<meta property="og:title" content="${d.business_name} — Texas Dealer Bond Status">
+<meta property="og:title" content="${d.business_name} â€” Texas Dealer Bond Status">
 <meta property="og:description" content="GDN Bond Status: ${statusText} | License expires ${expStr}">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -1422,24 +945,24 @@ h1{font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:6px}
 </style>
 </head><body>
 <div class="card">
-  <div class="logo">QUANTUM SURETY · TEXAS DEALER BOND VERIFICATION</div>
+  <div class="logo">QUANTUM SURETY Â· TEXAS DEALER BOND VERIFICATION</div>
   <span class="status-badge">${statusText}</span>
   <h1>${d.business_name}</h1>
   ${d.dba_name ? `<div class="dba">DBA: ${d.dba_name}</div>` : ''}
   <div class="grid">
-    <div class="field"><div class="field-label">GDN License #</div><div class="field-value">${d.license_number || '—'}</div></div>
+    <div class="field"><div class="field-label">GDN License #</div><div class="field-value">${d.license_number || 'â€”'}</div></div>
     <div class="field"><div class="field-label">Bond Expires</div><div class="field-value" style="color:${statusColor}">${expStr}</div></div>
-    <div class="field"><div class="field-label">License Type</div><div class="field-value">${d.license_type || '—'}</div></div>
-    <div class="field"><div class="field-label">Status</div><div class="field-value">${d.license_status || '—'}</div></div>
-    <div class="field"><div class="field-label">City</div><div class="field-value">${d.city || '—'}, TX</div></div>
-    <div class="field"><div class="field-label">County</div><div class="field-value">${d.county || '—'}</div></div>
+    <div class="field"><div class="field-label">License Type</div><div class="field-value">${d.license_type || 'â€”'}</div></div>
+    <div class="field"><div class="field-label">Status</div><div class="field-value">${d.license_status || 'â€”'}</div></div>
+    <div class="field"><div class="field-label">City</div><div class="field-value">${d.city || 'â€”'}, TX</div></div>
+    <div class="field"><div class="field-label">County</div><div class="field-value">${d.county || 'â€”'}</div></div>
   </div>
   <div class="cta">
     ${renewCTA}
-    <p style="color:#64748b;font-size:12px;margin-top:12px">Data sourced from TxDMV · Updated monthly</p>
+    <p style="color:#64748b;font-size:12px;margin-top:12px">Data sourced from TxDMV Â· Updated monthly</p>
   </div>
 </div>
-<a href="https://verify.quantumsurety.bond" class="search-link">← Search all Texas dealers & notaries</a>
+<a href="https://verify.quantumsurety.bond" class="search-link">â† Search all Texas dealers & notaries</a>
 </body></html>`);
   } catch(e) { console.error(e); res.status(500).send('Error'); }
 });

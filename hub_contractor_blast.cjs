@@ -202,7 +202,7 @@ async function main() {
       await pg.query(`
         INSERT INTO leads (name, email, phone, bond_type, source, status, notes, lead_time, created_at, updated_at)
         SELECT $1, $2, $3, 'contractor', 'hub_blast', 'contacted', $4, NOW(), NOW(), NOW()
-        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2))
+        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2::text))
       `, [
         c.company_name || 'HUB Contractor',
         c.email.toLowerCase(),

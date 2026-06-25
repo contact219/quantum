@@ -16,6 +16,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-auto-dealer-bond-compliance-jun2026",
+    title: "1,700+ Texas Auto Dealers Are Operating With Expired Surety Bonds — New Data",
+    description: "TxDMV data shows 1,777 Texas GDN-licensed auto dealers have expired surety bonds. Free dealer lookup available at verify.quantumsurety.bond. What car buyers need to know.",
+    date: "2026-06-24",
+    readTime: "5 min read",
+    category: "Consumer Protection",
+    tags: ["GDN Bond", "Auto Dealer Bond", "Texas", "TxDMV", "Consumer Protection", "Compliance"],
+    featured: true,
+  },
+  {
     slug: "texas-contractor-bond-crisis-june-2026",
     title: "Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data",
     description: "We analyzed 775,173 Texas TDLR contractor license records. 31% — 240,627 contractors — are operating with expired surety bonds. Full county breakdown with live data.",

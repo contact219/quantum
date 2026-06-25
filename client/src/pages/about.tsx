@@ -69,11 +69,27 @@ export default function About() {
       <div className="mx-auto max-w-5xl px-6 lg:px-8 space-y-10">
         <section className="space-y-4">
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">About Quantum Surety</p>
-          <h1 className="text-4xl font-bold text-white">Modern surety placement, built for contractors.</h1>
+          <h1 className="text-4xl font-bold text-white">Texas's leading surety bond agency — and the only one with a live statewide compliance database.</h1>
           <p className="text-slate-300 leading-relaxed max-w-3xl">
-            We combine AI-assisted workflows with experienced bond support to help contractors secure bonds quickly,
-            accurately, and with full transparency.
+            Quantum Surety is a TDI-licensed Texas surety bond agency (License #3480229) serving contractors,
+            notaries, auto dealers, and businesses across all 254 Texas counties. We issue bonds same-day through
+            A-rated carriers — and we're the only Texas agency that tracks 816,000+ TDLR contractor licenses,
+            558,000+ notary commissions, and 19,700+ auto dealer records in a free public verification database
+            updated daily from state records.
           </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+            {[
+              { stat: "816K+", label: "TDLR licenses monitored" },
+              { stat: "558K+", label: "TX notary records" },
+              { stat: "19,700+", label: "Auto dealer records" },
+              { stat: "254", label: "Texas counties served" },
+            ].map((item) => (
+              <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-2xl font-bold text-cyan-300">{item.stat}</div>
+                <div className="text-xs text-slate-400 mt-1">{item.label}</div>
+              </div>
+            ))}
+          </div>
         </section>
         <LicensingSection />
       </div>

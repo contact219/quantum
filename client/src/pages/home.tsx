@@ -80,17 +80,17 @@ const TRUST_ITEMS = [
   {
     icon: Shield,
     headline: "A-Rated Carrier",
-    sub: "RLI Insurance",
+    sub: "RLI Insurance — A+, S&P",
     href: null,
     external: false,
     accent: "text-cyan-400",
   },
   {
     icon: MapPin,
-    headline: "254 Texas Counties",
-    sub: "All counties covered",
-    href: null,
-    external: false,
+    headline: "816K+ TX Licenses Tracked",
+    sub: "Real-time TDLR compliance data",
+    href: "https://verify.quantumsurety.bond",
+    external: true,
     accent: "text-indigo-400",
   },
   {

@@ -147,6 +147,7 @@ const BadgePage = lazy(() => import("@/pages/badge"));
 const CountyBondWatch = lazy(() => import("@/pages/county-bond-watch"));
 const BondComplianceLeaderboard = lazy(() => import("@/pages/bond-compliance-leaderboard"));
 const Press = lazy(() => import("@/pages/press"));
+const Newsroom = lazy(() => import("@/pages/newsroom"));
 const ContractorDetail = lazy(() => import("@/pages/contractor-detail"));
 const ContractorQR = lazy(() => import("@/pages/contractor-qr"));
 const BondTicker = lazy(() => import("@/pages/bond-ticker"));
@@ -172,6 +173,7 @@ const BlogNotaryBondVsEO = lazy(() => import("@/pages/blog/texas-notary-bond-vs-
 const BlogGBPGuide = lazy(() => import("@/pages/blog/google-business-profile-texas-surety-bond"));
 const BlogLostCarTitleTexas = lazy(() => import("@/pages/blog/how-to-get-lost-car-title-texas"));
 const BlogContractorBondComplianceReport2026 = lazy(() => import("@/pages/blog/texas-contractor-bond-compliance-report-2026"));
+const BlogAutoDealerBondCompliance2026 = lazy(() => import("@/pages/blog/texas-auto-dealer-bond-compliance-jun2026"));
 const BlogBondedTitleGuide2026 = lazy(() => import("@/pages/blog/texas-bonded-title-complete-guide-2026"));
 const BlogTitleBondCost = lazy(() => import("@/pages/blog/texas-certificate-of-title-bond-cost"));
 const BlogNoTitleTexas = lazy(() => import("@/pages/blog/bought-car-no-title-texas-bonded-title"));
@@ -461,6 +463,7 @@ function Router() {
       <Route path="/texas-bond-watch/:county" component={CountyBondWatch} />
       <Route path="/bond-compliance-leaderboard" component={BondComplianceLeaderboard} />
       <Route path="/press" component={Press} />
+      <Route path="/newsroom" component={Newsroom} />
       <Route path="/bond-ticker" component={BondTicker} />
       <Route path="/contractor/:license/qr" component={ContractorQR} />
       <Route path="/contractor/:license" component={ContractorDetail} />
@@ -643,6 +646,7 @@ function Router() {
       <Route path="/blog/google-business-profile-texas-surety-bond" component={BlogGBPGuide} />
       <Route path="/blog/how-to-get-lost-car-title-texas" component={BlogLostCarTitleTexas} />
       <Route path="/blog/texas-contractor-bond-compliance-report-2026" component={BlogContractorBondComplianceReport2026} />
+      <Route path="/blog/texas-auto-dealer-bond-compliance-jun2026" component={BlogAutoDealerBondCompliance2026} />
       <Route path="/blog/texas-bonded-title-complete-guide-2026" component={BlogBondedTitleGuide2026} />
       <Route path="/blog/texas-certificate-of-title-bond-cost" component={BlogTitleBondCost} />
       <Route path="/blog/bought-car-no-title-texas-bonded-title" component={BlogNoTitleTexas} />

@@ -4,3 +4,6 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+.rli_session.json
+*_sent.json
+commission_correction_log.txt

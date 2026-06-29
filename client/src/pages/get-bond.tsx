@@ -93,6 +93,27 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
     blurb: "Required by TxDMV under Transportation Code Ch. 623 for many oversize/overweight hauling permits. Annual term, same-day issuance.",
     redirectUrl: LICENSE_URL,
   },
+  title: {
+    label: "Texas Vehicle Title Bond",
+    amount: "1.5× vehicle value",
+    from: "from $50",
+    blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
+    redirectUrl: LICENSE_URL,
+  },
+  "bonded-title": {
+    label: "Texas Vehicle Title Bond",
+    amount: "1.5× vehicle value",
+    from: "from $50",
+    blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
+    redirectUrl: LICENSE_URL,
+  },
+  "vehicle-title": {
+    label: "Texas Vehicle Title Bond",
+    amount: "1.5× vehicle value",
+    from: "from $50",
+    blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
+    redirectUrl: LICENSE_URL,
+  },
 };
 
 export default function GetBond() {

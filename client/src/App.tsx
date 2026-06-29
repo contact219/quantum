@@ -710,6 +710,7 @@ function Router() {
       <Route path="/for-agencies" component={ForAgencies} />
       <Route path="/notary-expiration-check" component={NotaryExpirationCheck} />
       <Route path="/links" component={LinksPage} />
+      <Route path="/bonds/texas-vehicle-title-bond" component={BondedTitleTexas} />
       <Route path="/bonds/:slug">{(p: any) => <CityBondPage slug={p.slug || ""} />}</Route>
       <Route component={NotFound} />
     </Switch>

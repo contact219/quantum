@@ -153,8 +153,8 @@ export default function LinksPage() {
                   <a
                     key={item.href}
                     href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
+                    target={(item as { external?: boolean }).external ? "_blank" : undefined}
+                    rel={(item as { external?: boolean }).external ? "noreferrer" : undefined}
                     className={`flex items-center gap-3 bg-gray-900 border border-gray-800 ${c.hover} rounded-xl px-4 py-3.5 transition-all group`}
                   >
                     <div className="flex-1 min-w-0">
@@ -170,7 +170,7 @@ export default function LinksPage() {
                       </div>
                       <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
                     </div>
-                    {item.external ? (
+                    {(item as { external?: boolean }).external ? (
                       <ExternalLink className="w-4 h-4 text-gray-600 group-hover:text-gray-400 flex-shrink-0 transition-colors" />
                     ) : (
                       <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-gray-400 flex-shrink-0 transition-colors" />

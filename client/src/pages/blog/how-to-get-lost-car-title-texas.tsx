@@ -393,7 +393,7 @@ export default function BlogLostCarTitleTexas() {
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
-                {sec.cta && (
+                {(sec as { cta?: boolean }).cta && (
                   <div className="mt-4 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
                     <p className="text-sm text-indigo-800 font-semibold mb-3">Ready to get your Texas title bond?</p>
                     <div className="flex flex-wrap gap-3">

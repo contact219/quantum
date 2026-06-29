@@ -114,7 +114,7 @@ export default function BondComplianceLeaderboard() {
           </p>
           {/* Share buttons */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 20, flexWrap: "wrap" }}>
-            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`🚨 ${overallPct > 0 ? overallPct : "29.3"}% of Texas licensed contractors have EXPIRED surety bonds — data from TDLR. See every county ranked: https://quantumsurety.bond/bond-compliance-leaderboard #Texas #HomeImprovement #ConsumerProtection`)}`}
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`🚨 ${Number(overallPct) > 0 ? overallPct : "29.3"}% of Texas licensed contractors have EXPIRED surety bonds — data from TDLR. See every county ranked: https://quantumsurety.bond/bond-compliance-leaderboard #Texas #HomeImprovement #ConsumerProtection`)}`}
               target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#1d9bf0", color: "#fff", fontWeight: 700, fontSize: 12, padding: "9px 16px", borderRadius: 8, textDecoration: "none" }}>
               Share on X/Twitter

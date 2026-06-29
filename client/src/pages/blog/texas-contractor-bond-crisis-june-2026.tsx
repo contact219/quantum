@@ -44,7 +44,6 @@ export default function TexasContractorBondCrisisJune2026() {
     title: "Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data | Quantum Surety",
     description: "31% of Texas TDLR contractors have expired surety bonds as of June 2026. Quantum Surety analyzed 775,173 records. Full county breakdown, live verification tool, and renewal options.",
     canonical: "/blog/texas-contractor-bond-crisis-june-2026",
-    ogImage: "/QS_OG_2.png",
   });
 
   return (

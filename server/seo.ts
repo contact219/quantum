@@ -6764,7 +6764,7 @@ const PAGE_META: Record<string, PageMeta> = {
     description: "Upload your bill of sale, old title, or auction receipt. AI extracts vehicle details, calculates your bond amount, and lists every missing document. Free and instant.",
     canonical: `${BASE_URL}/title-document-analyzer`,
     ogType: "website",
-    schema: [],
+    structuredData: [],
     content: `<main><h1>AI Title Document Analyzer</h1><p>Upload your bill of sale or old title. Our AI extracts your vehicle details, calculates your Texas bonded title bond amount, and lists every missing document.</p><a href="/texas-title-rescue">Check Eligibility</a></main>`,
   },
 
@@ -6773,7 +6773,7 @@ const PAGE_META: Record<string, PageMeta> = {
     description: "Everything about getting a bonded title in Texas — when required, step-by-step process, cost, TxDMV forms, and how to get bonded same day.",
     canonical: `${BASE_URL}/blog/texas-bonded-title-complete-guide-2026`,
     ogType: "article",
-    schema: [
+    structuredData: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Bonded Title Complete 2026 Guide", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Bonded Title Guide", "item": `${BASE_URL}/blog/texas-bonded-title-complete-guide-2026` } ] },
     ],
@@ -6785,7 +6785,7 @@ const PAGE_META: Record<string, PageMeta> = {
     description: "The 1.5x rule explained, pricing table for common vehicle values, and why most Texas title bonds start at just $50. Plus the free Title Bond Calculator.",
     canonical: `${BASE_URL}/blog/texas-certificate-of-title-bond-cost`,
     ogType: "article",
-    schema: [
+    structuredData: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Certificate of Title Bond Cost 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Title Bond Cost", "item": `${BASE_URL}/blog/texas-certificate-of-title-bond-cost` } ] },
     ],
@@ -6797,7 +6797,7 @@ const PAGE_META: Record<string, PageMeta> = {
     description: "A bonded title is the legal route when a Texas seller could not provide a title. Covers 3 options, red flags to check, the complete bonded title process, and restrictions.",
     canonical: `${BASE_URL}/blog/bought-car-no-title-texas-bonded-title`,
     ogType: "article",
-    schema: [
+    structuredData: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Bought Car No Title Texas 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Bought Car No Title Texas", "item": `${BASE_URL}/blog/bought-car-no-title-texas-bonded-title` } ] },
     ],
@@ -6809,7 +6809,7 @@ const PAGE_META: Record<string, PageMeta> = {
     description: "A walkthrough of every free Quantum Surety tool for Texas vehicle title problems: Title Rescue Wizard, Title Bond Calculator, 10 county guides, and the direct apply link.",
     canonical: `${BASE_URL}/blog/quantum-surety-texas-title-bond-tools-2026`,
     ogType: "article",
-    schema: [
+    structuredData: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Title Bond Tools Quantum Surety 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Title Bond Tools", "item": `${BASE_URL}/blog/quantum-surety-texas-title-bond-tools-2026` } ] },
     ],

@@ -1062,7 +1062,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await storage.createCarrier({
           name: "RLI Surety",
           website: "https://www.rlicorp.com",
-          commissionRate: 15,
+          commissionRate: "15",
           minCreditScore: 650,
           contact: "John Smith",
           email: "john.smith@rli.com",
@@ -1072,7 +1072,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await storage.createCarrier({
           name: "Liberty Surety",
           website: "https://www.libertysurety.com",
-          commissionRate: 12,
+          commissionRate: "12",
           minCreditScore: 600,
           contact: "Sarah Johnson",
           email: "sarah@libertysurety.com",
@@ -1082,7 +1082,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await storage.createCarrier({
           name: "Travelers Surety",
           website: "https://www.travelers.com",
-          commissionRate: 18,
+          commissionRate: "18",
           minCreditScore: 700,
           contact: "Mike Davis",
           email: "mike.davis@travelers.com",
@@ -1092,7 +1092,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await storage.createCarrier({
           name: "American Surety",
           website: "https://www.americansurety.com",
-          commissionRate: 14,
+          commissionRate: "14",
           minCreditScore: 620,
           contact: "Lisa Chen",
           email: "lisa.chen@americansurety.com",
@@ -1102,7 +1102,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await storage.createCarrier({
           name: "Hartford Surety",
           website: "https://www.thehartford.com",
-          commissionRate: 16,
+          commissionRate: "16",
           minCreditScore: 680,
           contact: "Robert Martinez",
           email: "robert@hartsurety.com",

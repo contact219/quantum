@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Shield, AlertCircle, FileText, Car, Clock, Phone, Calculator, Scan } from "lucide-react";
@@ -73,7 +73,7 @@ export default function BondedTitleTexas() {
   const [bondSubmitted, setBondSubmitted] = useState(false);
   const [bondSubmitting, setBondSubmitting] = useState(false);
 
-  async function handleBondSubmit(e) {
+  async function handleBondSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setBondSubmitting(true);
     try {

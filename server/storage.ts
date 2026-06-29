@@ -954,6 +954,25 @@ export class MemStorage implements IStorage {
     return undefined;
   }
 
+  async createLead(lead: InsertLead): Promise<Lead> {
+    const newLead: Lead = { ...lead, id: randomUUID(), createdAt: new Date(), updatedAt: new Date() } as Lead;
+    return newLead;
+  }
+
+  async getAllLeads(): Promise<Lead[]> {
+    return [];
+  }
+
+  async updateLead(_id: string, _data: Partial<InsertLead>): Promise<Lead | undefined> {
+    return undefined;
+  }
+
+  async getLeadById(_id: string): Promise<Lead | undefined> {
+    return undefined;
+  }
+
+  async deleteLead(_id: string): Promise<void> {}
+
   // Helper methods
   private calculatePremium(contractValue: string): string {
     const value = parseFloat(contractValue.replace(/[^0-9.]/g, "")) || 0;

@@ -18,7 +18,7 @@ export interface BondType {
   applyUrl: string;
   applyType: string;    // bond_type query param
   description: string;
-  faqs: { q: string; a: (city: TxCity) => string }[];
+  faqs: { q: string | ((city: TxCity) => string); a: (city: TxCity) => string }[];
   color: string;        // tailwind color class for accent
 }
 

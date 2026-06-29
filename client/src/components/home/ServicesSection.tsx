@@ -97,10 +97,10 @@ export function ServicesSection() {
                 }`}
               >
                 {/* Badge for new services */}
-                {service.badge && (
+                {(service as { badge?: string }).badge && (
                   <div className="absolute -top-3 left-6">
                     <span className="bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {service.badge}
+                      {(service as { badge?: string }).badge}
                     </span>
                   </div>
                 )}

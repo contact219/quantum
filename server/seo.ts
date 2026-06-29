@@ -1827,6 +1827,34 @@ const PAGE_META: Record<string, PageMeta> = {
       </main>`,
   },
 
+  "/blog/texas-notary-bond-income-side-hustle-2026": {
+    title: "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Income Streams | Quantum Surety",
+    description: "Most Texas notaries never monetize their credential. Here are 7 proven ways to turn your notary bond into $500–$8,000/month — loan signing, RON, weddings, fingerprinting, apostille, and more.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026`,
+    ogType: "article",
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Proven Income Streams",
+        "datePublished": "2026-06-29",
+        "author": { "@type": "Person", "name": "Theodore Sparks" },
+        "publisher": { "@type": "Organization", "name": "Quantum Surety LLC", "url": BASE_URL },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026` },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "Notary Bond Income Guide", "item": `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026` },
+        ],
+      },
+    ],
+    content: `<main><h1>Your $50 Texas Notary Bond Can Make You $1,000+/Month</h1><p>Most Texas notaries earn $0 extra from their credential. Here are 7 proven income streams: Loan Signing Agent ($75–$200/signing), Mobile Notary, Remote Online Notarization (RON), Wedding Officiant, Fingerprinting/LiveScan, Apostille Coordination, and Corporate Retainer.</p><a href="/bonds/notary-bond-texas">Get or Renew Your Notary Bond — $50</a></main>`,
+  },
+
   "/blog/texas-notary-vs-notary-signing-agent": {
     title: "Texas Notary vs Signing Agent | Quantum Surety",
     description:

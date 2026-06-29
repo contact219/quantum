@@ -115,6 +115,7 @@ const BlogIndex = lazy(() => import("@/pages/blog/index"));
 const BlogSB693 = lazy(() => import("@/pages/blog/texas-notary-bond-sb693-2026-requirements"));
 const BlogNotaryBondCost = lazy(() => import("@/pages/blog/texas-notary-bond-cost-2026"));
 const BlogNotaryVsNSA = lazy(() => import("@/pages/blog/texas-notary-vs-notary-signing-agent"));
+const BlogNotaryBondIncome = lazy(() => import("@/pages/blog/texas-notary-bond-income-side-hustle-2026"));
 const BlogTexasContractorBondAndPermits = lazy(() => import("@/pages/blog/texas-contractor-bond-and-permits"));
 const BlogTDILicense = lazy(() => import("@/pages/blog/TDILicenseAnnouncement"));
 const BlogSB693Renewal = lazy(() => import("@/pages/blog/texas-notary-bond-sb693-renewal-2026"));
@@ -609,6 +610,7 @@ function Router() {
       <Route path="/blog/texas-notary-bond-sb693-2026-requirements" component={BlogSB693} />
       <Route path="/blog/texas-notary-bond-cost-2026" component={BlogNotaryBondCost} />
       <Route path="/blog/texas-notary-vs-notary-signing-agent" component={BlogNotaryVsNSA} />
+      <Route path="/blog/texas-notary-bond-income-side-hustle-2026" component={BlogNotaryBondIncome} />
       <Route path="/blog/texas-contractor-bond-and-permits" component={BlogTexasContractorBondAndPermits} />
       <Route path="/blog/quantum-surety-tdi-licensed-agency-3480229" component={BlogTDILicense} />
       <Route path="/blog/texas-notary-bond-sb693-renewal-2026" component={BlogSB693Renewal} />

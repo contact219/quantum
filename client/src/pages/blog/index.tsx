@@ -16,6 +16,16 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "texas-notary-bond-income-side-hustle-2026",
+    title: "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Proven Income Streams",
+    description: "Most Texas notaries never monetize their credential. Here are 7 concrete ways to turn your notary bond into $500–$8,000/month — loan signing, RON, weddings, fingerprinting, corporate retainers, and more.",
+    date: "2026-06-29",
+    readTime: "8 min read",
+    category: "Texas Notary",
+    tags: ["Notary Bond", "Texas Notary", "Side Hustle", "Loan Signing Agent", "RON", "Income Guide"],
+    featured: true,
+  },
+  {
     slug: "texas-auto-dealer-bond-compliance-jun2026",
     title: "1,700+ Texas Auto Dealers Are Operating With Expired Surety Bonds — New Data",
     description: "TxDMV data shows 1,777 Texas GDN-licensed auto dealers have expired surety bonds. Free dealer lookup available at verify.quantumsurety.bond. What car buyers need to know.",

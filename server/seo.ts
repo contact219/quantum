@@ -7699,7 +7699,7 @@ export function seoMiddleware(distDir: string) {
         let html = fs.readFileSync(indexPath, "utf-8");
         html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["'"]canonical["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]description["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]robots["'"][^>]*>/gi, "").replace(/<meta\s[^>]*property=["'"]og:[^"'"]*["'"][^>]*>/gi, "").replace(/<script\s+type=["'"]application\/ld\+json["'"]>[\s\S]*?<\/script>/gi, "");
         html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);
-        if (meta.content) html = html.replace('<div id="root"></div>', `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`);
+        if (meta.content) html = html.replace('<div id="root"></div>', `<div id="root">${meta.content}</div>`);
         res.setHeader("Content-Type", "text/html");
         return res.send(html);
       }
@@ -7717,7 +7717,7 @@ export function seoMiddleware(distDir: string) {
         let html = fs.readFileSync(indexPath, "utf-8");
         html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["'"]canonical["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]description["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]robots["'"][^>]*>/gi, "").replace(/<meta\s[^>]*property=["'"]og:[^"'"]*["'"][^>]*>/gi, "").replace(/<script\s+type=["'"]application\/ld\+json["'"]>[\s\S]*?<\/script>/gi, "");
         html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);
-        if (meta.content) html = html.replace('<div id="root"></div>', `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`);
+        if (meta.content) html = html.replace('<div id="root"></div>', `<div id="root">${meta.content}</div>`);
         res.setHeader("Content-Type", "text/html");
         return res.send(html);
       }
@@ -7757,11 +7757,11 @@ export function seoMiddleware(distDir: string) {
     const metaTags = buildMetaTags(meta);
     html = html.replace("</head>", `${metaTags}\n</head>`);
 
-    // Inject crawlable pre-render HTML inside <noscript> (visible to first-pass crawl, not to JS users)
+    // Inject crawlable pre-render HTML inside <div id="root"> (visible to first-pass crawl, replaced by JS)
     if (meta.content) {
       html = html.replace(
         '<div id="root"></div>',
-        `<noscript><div id="seo-content">${meta.content}</div></noscript>\n<div id="root"></div>`
+        `<div id="root">${meta.content}</div>`
       );
     }
 

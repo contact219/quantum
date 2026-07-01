@@ -1,0 +1,17 @@
+{
+  "name": "qs-lead-gen",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Quantum Surety autonomous lead gen MCP agent",
+  "scripts": {
+    "start": "node agent.js",
+    "mcp": "node mcp-server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.54.0",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.0",
+    "puppeteer-core": "^23.0.0"
+  }
+}

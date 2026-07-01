@@ -27,7 +27,7 @@ const BASE_URL = "https://quantumsurety.bond";
 const NOINDEX_PREFIXES = ["/admin", "/portal", "/api/"];
 const NOINDEX_EXACT = new Set(["/admin-login", "/admin-setup", "/application", "/chatbot"]);
 
-const PAGE_META: Record<string, PageMeta> = {
+export const PAGE_META: Record<string, PageMeta> = {
   "/": {
     title: "Texas Surety Bonds | Notary, Contractor & Dealer | Quantum Surety",
     description:
@@ -49,7 +49,7 @@ const PAGE_META: Record<string, PageMeta> = {
           name: "Quantum Surety",
           legalName: "Quantum Surety LLC",
           description:
-            "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, freight broker bonds, and commercial surety bonds.",
+            "Texas-licensed AI-powered surety bond agency issuing notary bonds, contractor license bonds, and commercial surety bonds.",
           url: BASE_URL,
           telephone: "+12146668718",
           email: "info@quantumsurety.bond",
@@ -122,16 +122,6 @@ const PAGE_META: Record<string, PageMeta> = {
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
-                  name: "BMC-84 Freight Broker Bond",
-                  description:
-                    "FMCSA-required $75,000 BMC-84 freight broker surety bond with guaranteed FMCSA filing.",
-                  url: `${BASE_URL}/bonds/bmc-84-freight-broker-bond`,
-                },
-              },
-              {
-                "@type": "Offer",
-                itemOffered: {
-                  "@type": "Service",
                   name: "Contract Surety Bonds",
                   description:
                     "Bid bonds, performance bonds, and payment bonds for Texas construction contractors.",
@@ -147,7 +137,6 @@ const PAGE_META: Record<string, PageMeta> = {
             "Surety Bonds",
             "Texas Notary Bond",
             "SB693 Notary Requirements",
-            "BMC-84 Freight Broker Bond",
             "Contractor License Bond",
             "Texas Department of Insurance",
             "FMCSA Bond Filing",
@@ -245,7 +234,6 @@ const PAGE_META: Record<string, PageMeta> = {
             <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — Guarantees project completion. Required on public contracts over $25,000 under Government Code §2253.</li>
             <li><a href="/bonds/payment-bond-texas">Texas Payment Bond</a> — Protects subcontractors and suppliers from non-payment. Issued alongside performance bonds.</li>
             <li><a href="/bonds/construction-bond-texas">Texas Construction Bonds</a> — Bid, performance, and payment bond packages for construction contractors.</li>
-            <li><a href="/bonds/freight-broker-bond-texas">BMC-84 Freight Broker Bond</a> — $75,000 FMCSA-required bond for licensed freight brokers, with guaranteed FMCSA filing.</li>
             <li><a href="/bonds/mortgage-broker-bond-texas">Texas Mortgage Broker Bond</a> — Required by TDSML for all licensed Texas mortgage companies.</li>
             <li><a href="/bonds/commercial">Texas Commercial Surety Bonds</a> — License and permit bonds for all regulated Texas businesses and industries.</li>
           </ul>
@@ -454,8 +442,8 @@ const PAGE_META: Record<string, PageMeta> = {
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "What is a commercial surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "A commercial surety bond is a bond required by a government agency or obligee as a condition of obtaining a business license or permit. Unlike construction bonds, commercial bonds protect the public or government from business misconduct, fraud, or failure to comply with regulations. Common types include notary bonds, dealer bonds, contractor license bonds, mortgage company bonds, and court bonds." }},
-          { "@type": "Question", "name": "What commercial surety bonds are required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas requires many types of commercial surety bonds depending on your industry: notary bonds ($10,000, Secretary of State), GDN auto dealer bonds ($50,000, TxDMV), TDLR contractor license bonds (various amounts), mortgage company bonds ($50K–$250K, TDSML), collection agency bonds ($10,000, OCCC), and freight broker bonds ($75,000, FMCSA). Quantum Surety issues all Texas commercial bond types instantly online." }},
-          { "@type": "Question", "name": "How much does a commercial surety bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas commercial surety bond premiums vary widely by bond type. Notary bonds are a flat $50 regardless of credit. GDN dealer bonds start at $100/year. TDLR contractor license bonds start at $75/year. Specialty bonds like mortgage company bonds and freight broker bonds are credit-based and range from 1%–3% of the bond amount annually. Same-day issuance on most types." }},
+          { "@type": "Question", "name": "What commercial surety bonds are required in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas requires many types of commercial surety bonds depending on your industry: notary bonds ($10,000, Secretary of State), GDN auto dealer bonds ($50,000, TxDMV), TDLR contractor license bonds (various amounts), mortgage company bonds ($50K–$250K, TDSML), and collection agency bonds ($10,000, OCCC). Quantum Surety issues all Texas commercial bond types instantly online." }},
+          { "@type": "Question", "name": "How much does a commercial surety bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas commercial surety bond premiums vary widely by bond type. Notary bonds are a flat $50 regardless of credit. GDN dealer bonds start at $100/year. TDLR contractor license bonds start at $75/year. Specialty bonds like mortgage company bonds are credit-based and range from 1%–3% of the bond amount annually. Same-day issuance on most types." }},
           { "@type": "Question", "name": "What is the difference between a commercial bond and a construction bond?", "acceptedAnswer": { "@type": "Answer", "text": "Commercial surety bonds are license and permit bonds required as a condition of doing business — they protect consumers and government agencies from business misconduct. Construction surety bonds (bid, performance, payment) are project-specific bonds that guarantee contract performance. Most Texas contractors need both: a license bond to get their license, and construction bonds for specific public projects." }}
         ],
       },
@@ -960,7 +948,6 @@ const PAGE_META: Record<string, PageMeta> = {
         <h2>Federal Bond Obligees</h2>
         <ul>
           <li><strong>United States of America</strong> — Used on all federal construction contracts (Miller Act bonds)</li>
-          <li><strong>Federal Motor Carrier Safety Administration (FMCSA)</strong> — Required for freight broker bonds ($75,000)</li>
           <li><strong>U.S. Customs and Border Protection (CBP)</strong> — Required for customs bonds and importer bonds</li>
         </ul>
       </section>
@@ -1311,7 +1298,6 @@ const PAGE_META: Record<string, PageMeta> = {
       <section>
         <h2>Texas Transportation Bonds</h2>
         <ul>
-          <li><a href="/bonds/freight-broker-bond-texas">Freight Broker Bond (BMC-84)</a> — $75,000, FMCSA</li>
           <li><a href="/bonds/auto-dealer-bond-texas">Auto Dealer Bond</a> — $50,000, TxDMV GDN</li>
         </ul>
       </section>
@@ -4722,53 +4708,6 @@ const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
 
-  "/bonds/freight-broker-bond-texas": {
-    title: "Texas Freight Broker Bond | $75,000 BMC-84 | Quantum Surety",
-    description: "Get your FMCSA-required $75,000 BMC-84 freight broker surety bond for Texas-based brokers. Instant approval, same-day FMCSA filing. TDI-licensed agency.",
-    canonical: `${BASE_URL}/bonds/freight-broker-bond-texas`,
-    structuredData: [
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Texas Freight Broker Surety Bond (BMC-84)",
-        "serviceType": "Surety Bond",
-        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "FMCSA-required $75,000 BMC-84 freight broker bond. Rates from $750–$2,250/year." },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          { "@type": "Question", "name": "What bond do freight brokers need?", "acceptedAnswer": { "@type": "Answer", "text": "FMCSA requires all licensed freight brokers to carry a $75,000 surety bond or trust fund (BMC-84 or BMC-85). This bond protects shippers and carriers from broker fraud. It must be on file with FMCSA before a broker authority is issued." }},
-          { "@type": "Question", "name": "How much does a freight broker bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Premium rates for the $75,000 BMC-84 bond range from 1%–3% per year. Most applicants pay $750–$2,250/year depending on credit score and business history. Quantum Surety files directly with FMCSA after issuance." }},
-        ],
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
-          { "@type": "ListItem", "position": 2, "name": "Texas Freight Broker Bond", "item": "https://quantumsurety.bond/bonds/freight-broker-bond-texas" },
-        ],
-      },
-    ],
-    content: `<main>
-      <h1>Texas Freight Broker Bond — BMC-84</h1>
-      <p>FMCSA requires every licensed freight broker to maintain a $75,000 surety bond (BMC-84 form) or equivalent trust fund. Texas-based freight brokers need this bond before FMCSA will issue or renew their broker authority. Quantum Surety files the BMC-84 directly with FMCSA after issuance — same-day filing available.</p>
-      <section>
-        <h2>BMC-84 Bond Requirements</h2>
-        <ul>
-          <li>Required by: FMCSA under 49 U.S.C. §13906</li>
-          <li>Bond amount: $75,000</li>
-          <li>Premium: From $750/year (1% for qualified applicants)</li>
-          <li>FMCSA filing: Direct electronic filing included</li>
-        </ul>
-      </section>
-      <a href="/get-bond?type=freight-broker">Get My Freight Broker Bond</a>
-    </main>`,
-  },
-
   "/bonds/general-contractor-bond-texas": {
     title: "Texas General Contractor Bond | Quantum Surety",
     description: "Get your Texas general contractor license bond same-day. City licensing requirements across major Texas metros. Bonds from $75/yr. Instant PDF certificate.",
@@ -7453,6 +7392,19 @@ function buildMetaTags(meta: PageMeta): string {
   `.trim();
 }
 
+// ─── Sitemap lastmod cache ────────────────────────────────────────────────────
+// Populated by `npm run build` (scripts/update-sitemap-lastmod.ts), which hashes
+// each PAGE_META entry's content and only bumps the date when it actually changed,
+// instead of every URL claiming to be modified today on every sitemap request.
+// Gitignored — persists on disk across deploys so dates accumulate real history.
+const SITEMAP_LASTMOD_PATH = path.join(process.cwd(), "server", "sitemap-lastmod.json");
+let _sitemapLastmod: Record<string, { hash: string; lastmod: string }> = {};
+try {
+  _sitemapLastmod = JSON.parse(fs.readFileSync(SITEMAP_LASTMOD_PATH, "utf-8"));
+} catch {
+  // Not generated yet (fresh checkout) — falls back to today's date below.
+}
+
 // ─── Sitemap generator ────────────────────────────────────────────────────────
 
 export function generateSitemap(): string {
@@ -7471,8 +7423,7 @@ export function generateSitemap(): string {
       p.startsWith("/bonds/collection-agency-") ||
       p.startsWith("/bonds/credit-access-") ||
       p.startsWith("/bonds/property-tax-") ||
-      p.startsWith("/bonds/auctioneer-") ||
-      p.startsWith("/bonds/freight-broker-")
+      p.startsWith("/bonds/auctioneer-")
     ) return "0.80";
     if (p.startsWith("/blog/")) return "0.8";
     if (p.startsWith("/bonds/")) return "0.75";
@@ -7490,7 +7441,7 @@ export function generateSitemap(): string {
       ([p, meta]) => `
   <url>
     <loc>${meta.canonical}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${_sitemapLastmod[p]?.lastmod ?? today}</lastmod>
     <changefreq>${getChangefreq(p)}</changefreq>
     <priority>${getPriority(p)}</priority>
   </url>`

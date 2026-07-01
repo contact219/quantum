@@ -104,7 +104,6 @@ const PestControlBondTexas = lazy(() => import("@/pages/pest-control-bond-texas"
 const PaymentBondTexas = lazy(() => import("@/pages/payment-bond-texas"));
 const GeneralContractorBondTexas = lazy(() => import("@/pages/general-contractor-bond-texas"));
 const RoofingContractorBondTexas = lazy(() => import("@/pages/roofing-contractor-bond-texas"));
-const FreightBrokerBondTexas = lazy(() => import("@/pages/freight-broker-bond-texas"));
 // Comparison / educational pages
 const BidBondVsPerformanceBond = lazy(() => import("@/pages/bid-bond-vs-performance-bond"));
 const SuretyBondVsInsurance = lazy(() => import("@/pages/surety-bond-vs-insurance"));
@@ -554,7 +553,6 @@ function Router() {
       <Route path="/bonds/payment-bond-texas" component={PaymentBondTexas} />
       <Route path="/bonds/general-contractor-bond-texas" component={GeneralContractorBondTexas} />
       <Route path="/bonds/roofing-contractor-bond-texas" component={RoofingContractorBondTexas} />
-      <Route path="/bonds/freight-broker-bond-texas" component={FreightBrokerBondTexas} />
 
       {/* Comparison / educational pages */}
       <Route path="/bonds/bid-bond-vs-performance-bond" component={BidBondVsPerformanceBond} />

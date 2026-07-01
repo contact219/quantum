@@ -55,7 +55,7 @@ const LINKS = [
       },
       {
         label: "All Bond Types →",
-        desc: "Freight broker, mortgage, process server, auctioneer & more",
+        desc: "Mortgage, process server, auctioneer & more",
         href: "/get-bond",
       },
     ],

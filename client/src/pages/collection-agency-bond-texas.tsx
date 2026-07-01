@@ -222,7 +222,6 @@ export default function CollectionAgencyBondTexas() {
               { href: "/bonds/mortgage-broker-bond-texas", label: "Mortgage Company Bond", desc: "$50K–$250K TDSML bond" },
               { href: "/bonds/credit-access-business-bond-texas", label: "Credit Access Business Bond", desc: "OCCC CAB license bond" },
               { href: "/bonds/license-bond-texas", label: "License & Permit Bond", desc: "General business license bonds" },
-              { href: "/bonds/freight-broker-bond-texas", label: "Freight Broker Bond", desc: "$75,000 FMCSA bond" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-slate-300 hover:shadow-sm transition-all cursor-pointer">

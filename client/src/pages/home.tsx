@@ -740,7 +740,7 @@ export default function Home() {
             About Quantum Surety
           </h2>
           <p className="mt-6 text-lg leading-8 text-slate-700" data-testid="text-about-body-primary">
-            Quantum Surety is a licensed Texas insurance producer and surety bond agency specializing in placement for contractors, freight brokers, and businesses across Texas and all 50 states.
+            Quantum Surety is a licensed Texas insurance producer and surety bond agency specializing in placement for contractors and businesses across Texas and all 50 states.
           </p>
           <p className="mt-4 text-base leading-8 text-slate-600" data-testid="text-about-body-secondary">
             We combine AI-powered underwriting technology with deep surety expertise to deliver faster bond approvals than traditional agencies. Our carrier network includes A-rated, T-listed companies authorized to issue bonds on federal and public projects nationwide. From a $5,000 license bond to a $10 million performance bond — we handle it.

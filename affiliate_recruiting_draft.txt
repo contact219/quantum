@@ -1,0 +1,51 @@
+AFFILIATE RECRUITING DRAFT — Texas Notary Educators & Signing Agent Trainers
+Status: DRAFT — do not send without Ted's approval. No send script exists yet.
+Target list: Texas SOS-approved notary education providers, 6-hour course instructors,
+loan signing agent trainers/YouTubers, notary Facebook group admins.
+Partner signup: https://partners.quantumsurety.bond
+Related site page: https://quantumsurety.bond/notary-school-partner
+
+---
+
+Subject: Partner idea for [SCHOOL/NAME] — earn on every student's notary bond
+
+Hi [FIRST_NAME],
+
+Every student who finishes your course needs the same two things before they
+can notarize in Texas: their commission and a $10,000 surety bond. Right now,
+the bond money goes to whoever they stumble onto first.
+
+I run Quantum Surety, a Dallas-based, TDI-licensed surety agency (License
+#3480229). All our bonds are written by RLI Insurance (A+ rated) — a 4-year
+Texas notary bond is $50 flat, issued instantly online with the certificate
+emailed the same day.
+
+I'd like to make you a referral partner:
+
+  - You get a personal referral link through our partner portal
+    (partners.quantumsurety.bond) — takes 2 minutes to set up
+  - You earn a commission on every bond purchased through your link
+  - Your students get a clean, instant, no-upsell bond experience,
+    plus free tools most agencies don't offer: a public bond-expiration
+    checker and free renewal reminders (verify.quantumsurety.bond)
+
+No cost, no commitment, no minimums — it just turns a step your students
+already have to take into a small revenue stream for [SCHOOL/NAME].
+
+Want me to set up your partner link? Reply here or call me directly at
+(214) 506-7373.
+
+Best,
+Theodore Sparks
+Quantum Surety LLC · Dallas, TX
+TDI License #3480229
+https://quantumsurety.bond
+
+---
+[Unsubscribe footer: https://quantumsurety.bond/api/unsubscribe?e={email}]
+
+NOTES FOR SEND SCRIPT (when approved):
+- Personalize [SCHOOL/NAME] and [FIRST_NAME] per row; skip generic greetings
+- Check unsubscribes table before sending; include unsubscribe footer
+- Small batches (25-50/day), morning CDT sends only per house rules
+- Track in campaign_sends with campaign_name='affiliate-recruiting-2026'

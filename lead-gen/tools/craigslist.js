@@ -4,11 +4,23 @@ const TX_CITIES = ['houston','dallas','sanantonio','austin','fortworth','elpaso'
 const QUERIES   = ['no title','bonded title','lost title','title bond'];
 const CHROME    = process.env.CHROMIUM_PATH || '/usr/bin/chromium-browser';
 
-function extractPhone(text) {
+// Not-yet-assigned NANP area codes as of 2026 — matching one means the "phone" is
+// almost certainly a false-positive digit sequence (e.g. Craigslist's own post id,
+// which currently runs in the 793x/794x-million range and otherwise looks exactly
+// like a formatted 10-digit phone number).
+const INVALID_AREA_CODES = new Set(['000','555','700','710','792','793','794','795','796','797','798','799']);
+
+function extractPhone(rawText) {
+  // Every Craigslist detail page ends with a literal "post id: 1234567890" line —
+  // strip it before matching so it can never be mistaken for a phone number.
+  const text = rawText.replace(/post\s*id[:\s]*\d+/gi, '');
   const m = text.match(/\b(\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})\b/);
   if (!m) return null;
   const digits = m[1].replace(/\D/g, '');
-  return digits.length >= 10 ? digits.slice(-10) : null;
+  const tenDigit = digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits;
+  if (tenDigit.length !== 10) return null;
+  if (INVALID_AREA_CODES.has(tenDigit.slice(0, 3))) return null;
+  return tenDigit;
 }
 
 export async function searchCraigslistTitleListings({ cities = TX_CITIES.slice(0,6) } = {}) {

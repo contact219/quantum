@@ -214,6 +214,16 @@ export default function GetBond() {
                   Click the button below. The next page will ask you to agree to terms — just check the box and continue. Your certificate is emailed instantly after checkout.
                 </p>
               </div>
+              {type === "notary" && (
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-left">
+                  <p className="text-sm text-amber-900 font-semibold">💡 Recommended: add E&amp;O coverage at checkout</p>
+                  <p className="text-xs text-amber-800 mt-1">
+                    Your bond protects the public — it doesn't protect <em>you</em>. Errors &amp; Omissions coverage
+                    shields you personally from claims over honest mistakes, for just a few dollars more per year.
+                    Look for the E&amp;O option on the next page — most Texas notaries add it.
+                  </p>
+                </div>
+              )}
               <a
                 href={checkoutUrl}
                 target="_blank"

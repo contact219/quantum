@@ -9,6 +9,22 @@ import bcrypt from "bcryptjs";
 import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring";
 import multer from "multer";
 import OpenAI from "openai";
+import { Pool as PgPool } from "pg";
+
+// CRM Postgres pool for the shared email suppression list (unsubscribes table).
+// Lazy — only connects when someone actually unsubscribes.
+let crmUnsubPool: PgPool | null = null;
+function getCrmUnsubPool(): PgPool | null {
+  if (!process.env.CRM_UNSUB_DB_URL) return null;
+  if (!crmUnsubPool) {
+    crmUnsubPool = new PgPool({
+      connectionString: process.env.CRM_UNSUB_DB_URL,
+      max: 2,
+      connectionTimeoutMillis: 5000,
+    });
+  }
+  return crmUnsubPool;
+}
 
 const _docUpload = multer({
   storage: multer.memoryStorage(),
@@ -29,6 +45,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.setHeader('Content-Type', 'text/plain');
     res.send('quantumsurety-indexnow-2026');
   });
+
+  // ── Email unsubscribe (one-click, writes to CRM suppression list) ──────────
+  // GET renders a confirmation page; POST supports RFC 8058 List-Unsubscribe-Post.
+  const handleUnsubscribe = async (req: any, res: any) => {
+    const email = String(req.query.e || req.query.email || req.body?.email || "")
+      .trim().toLowerCase();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
+    if (valid) {
+      try {
+        const pool = getCrmUnsubPool();
+        if (pool) {
+          await pool.query(
+            `INSERT INTO unsubscribes (email, source) VALUES ($1, 'link')
+             ON CONFLICT (email) DO NOTHING`,
+            [email],
+          );
+        } else {
+          console.error("[unsubscribe] CRM_UNSUB_DB_URL not configured — request not recorded:", email);
+        }
+      } catch (err: any) {
+        console.error("[unsubscribe] failed to record:", err.message);
+      }
+    }
+    if (req.method === "POST") return res.status(200).send("OK");
+    res.setHeader("Content-Type", "text/html");
+    res.send(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unsubscribed — Quantum Surety</title></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;margin:0;padding:40px 16px;">
+<div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:32px;text-align:center;">
+<h1 style="font-size:20px;color:#0f172a;margin:0 0 12px;">You've been unsubscribed</h1>
+<p style="color:#475569;font-size:14px;line-height:1.6;">${valid ? "We won't send any more marketing emails to <strong>" + email.replace(/</g, "&lt;") + "</strong>." : "We couldn't read that email address — reply to any of our emails with \"unsubscribe\" and we'll take care of it."}</p>
+<p style="color:#94a3b8;font-size:12px;margin-top:24px;">Quantum Surety LLC · Dallas, TX · TDI License #3480229</p>
+</div></body></html>`);
+  };
+  app.get("/api/unsubscribe", handleUnsubscribe);
+  app.post("/api/unsubscribe", handleUnsubscribe);
 
   // â”€â”€ Permanent URL redirects (301) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const REDIRECTS: Record<string, string> = {

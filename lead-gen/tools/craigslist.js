@@ -11,7 +11,7 @@ function extractPhone(text) {
   return digits.length >= 10 ? digits.slice(-10) : null;
 }
 
-export async function searchCraigslistTitleListings({ cities = TX_CITIES.slice(0,4) } = {}) {
+export async function searchCraigslistTitleListings({ cities = TX_CITIES.slice(0,6) } = {}) {
   const browser = await puppeteer.launch({
     executablePath: CHROME,
     args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--disable-gpu'],
@@ -20,14 +20,17 @@ export async function searchCraigslistTitleListings({ cities = TX_CITIES.slice(0
   const leads = [];
   try {
     for (const city of cities) {
-      for (const query of QUERIES.slice(0,2)) {
+      const seenInCity = new Set(); // avoid re-fetching a listing that matches multiple queries
+      for (const query of QUERIES.slice(0,3)) {
         const page = await browser.newPage();
         await page.setUserAgent(
           'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36'
         );
         try {
-          const url = 'https://' + city + '.craigslist.org/search/cta?query='
-            + encodeURIComponent(query) + '&sort=date';
+          // Craigslist retired the city-subdomain search path in 2026 — use the
+          // unified search host directly instead of relying on its 301 redirect.
+          const url = 'https://www.craigslist.org/search/area/' + city
+            + '?cat=cta&query=' + encodeURIComponent(query) + '&sort=date';
           await page.goto(url, { waitUntil: 'networkidle2', timeout: 25000 });
           await new Promise(r => setTimeout(r, 2000));
 
@@ -41,13 +44,15 @@ export async function searchCraigslistTitleListings({ cities = TX_CITIES.slice(0
                 seen.add(a.href);
                 return a.textContent.trim().length > 3;
               })
-              .slice(0, 6)
+              .slice(0, 5)
               .map(function(a) {
                 return { title: a.textContent.trim().slice(0, 120), href: a.href };
               });
           });
 
-          for (const listing of listings.slice(0,4)) {
+          for (const listing of listings.slice(0,3)) {
+            if (seenInCity.has(listing.href)) continue;
+            seenInCity.add(listing.href);
             try {
               const dp = await browser.newPage();
               await dp.setUserAgent(

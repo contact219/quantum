@@ -14,7 +14,7 @@ import fs                       from 'fs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOG_FILE  = '/var/log/qs-lead-gen.log';
 const MAX_INSERTS_PER_SESSION = 80;  // voice agent enforces 10/day server-side; this is just DB insert cap
-const TOOL_TIMEOUT_MS = 150000;      // 2.5 min for slow tools like craigslist
+const TOOL_TIMEOUT_MS = 330000;      // 5.5 min — craigslist now scans 6 TX cities x 3 queries (~2026-07-03 widen)
 
 function log(msg) {
   const line = '[' + new Date().toISOString() + '] ' + msg;

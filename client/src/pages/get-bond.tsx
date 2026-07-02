@@ -5,8 +5,11 @@ import { track } from "@/hooks/useTracker";
 
 const DEALER_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX";
 const NOTARY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX";
-// License/contractor bonds — same URL used across all site trade/license bond pages
-const LICENSE_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
+// Certificate/Defective Title Bond (TX DMV) — R42DA. Verified 2026-07-02: this is the
+// vehicle TITLE bond product, so only title bond types may redirect to it. RLI has no
+// generic TX contractor/mortgage/property-tax product — those types stay lead-only
+// (no redirectUrl) and get a personal follow-up instead of a wrong-product checkout.
+const TITLE_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
 
 const BOND_META: Record<string, { label: string; amount: string; from: string; blurb: string; redirectUrl?: string }> = {
   notary: {
@@ -35,84 +38,75 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
     amount: "$10,000+",
     from: "from $75/yr",
     blurb: "Required for Texas contractor and trade licenses (TDLR, City, County). Fast approval and same-day certificate available.",
-    redirectUrl: LICENSE_URL,
   },
   construction: {
     label: "Texas Construction Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Bid, performance, and payment bonds for Texas construction projects. TDI-licensed, fast turnaround.",
-    redirectUrl: LICENSE_URL,
   },
   bid: {
     label: "Texas Bid Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Bid bonds for Texas public and private construction projects. TDI-licensed surety agency.",
-    redirectUrl: LICENSE_URL,
   },
   performance: {
     label: "Texas Performance & Payment Bond",
     amount: "Project-Based",
     from: "Custom Rate",
     blurb: "Performance and payment bonds for Texas construction contracts. TDI-licensed, competitive rates.",
-    redirectUrl: LICENSE_URL,
   },
   mortgage: {
     label: "Texas Mortgage Broker Bond",
     amount: "$50,000",
     from: "from $150/yr",
     blurb: "Required for Texas mortgage brokers and loan officers (TDHCA/SML). Same-day certificate available.",
-    redirectUrl: LICENSE_URL,
   },
   "credit-access-business": {
     label: "Texas Credit Access Business Bond",
     amount: "$10,000",
     from: "from $75/yr",
     blurb: "Required by Texas municipalities for credit access businesses (CABs). Fast approval, TDI-licensed.",
-    redirectUrl: LICENSE_URL,
   },
   "collection-agency": {
     label: "Texas Collection Agency Bond",
     amount: "$10,000",
     from: "from $75/yr",
     blurb: "Required for Texas collection agency licenses. TDI-licensed surety agency, fast turnaround.",
-    redirectUrl: LICENSE_URL,
   },
   "property-tax-consultant": {
     label: "Texas Property Tax Consultant Bond",
     amount: "$5,000",
     from: "from $50/yr",
     blurb: "Required for registered property tax consultants in Texas. Instant approval available.",
-    redirectUrl: LICENSE_URL,
   },
   "oversize-permit": {
     label: "Texas Oversize/Overweight Permit Bond",
     amount: "$15,000",
     from: "from $100/yr",
     blurb: "Required by TxDMV under Transportation Code Ch. 623 for many oversize/overweight hauling permits. Annual term, same-day issuance.",
-    redirectUrl: LICENSE_URL,
   },
   title: {
     label: "Texas Vehicle Title Bond",
     amount: "1.5× vehicle value",
     from: "from $50",
     blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
-    redirectUrl: LICENSE_URL,
+    redirectUrl: TITLE_URL,
   },
   "bonded-title": {
     label: "Texas Vehicle Title Bond",
     amount: "1.5× vehicle value",
     from: "from $50",
     blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
-    redirectUrl: LICENSE_URL,
+    redirectUrl: TITLE_URL,
   },
   "vehicle-title": {
     label: "Texas Vehicle Title Bond",
     amount: "1.5× vehicle value",
     from: "from $50",
     blurb: "Required by TxDMV when the original vehicle title is lost, missing, or unavailable. Bond equals 1.5× the appraised value. Apply online — most complete in under 10 minutes.",
-    redirectUrl: LICENSE_URL,
+    redirectUrl: TITLE_URL,
   },
 };
 
@@ -164,9 +158,10 @@ export default function GetBond() {
     } catch (_) {
       // don't block redirect on network error
     }
-    track({ type: "mybondapp_redirect", element: "lead_form", value: type });
-    const dest = meta.redirectUrl || DEALER_URL;
-    setCheckoutUrl(dest);
+    if (meta.redirectUrl) {
+      track({ type: "mybondapp_redirect", element: "lead_form", value: type });
+      setCheckoutUrl(meta.redirectUrl);
+    }
     setSubmitting(false);
     setSubmitted(true);
   }
@@ -203,7 +198,29 @@ export default function GetBond() {
 
         {/* Form */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-          {submitted ? (
+          {submitted && !checkoutUrl ? (
+            <div className="text-center space-y-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
+                <CheckCircle className="w-6 h-6 text-green-600" />
+              </div>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">Application received — we're on it</h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  {meta.label} requests are quoted personally so you get the exact bond your obligee requires.
+                  A licensed agent will call you within one business hour (Mon–Fri, 8am–6pm CT) with your rate.
+                </p>
+              </div>
+              <a
+                href="tel:+12146668718"
+                className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-4 rounded-lg transition-colors text-base text-center"
+              >
+                In a hurry? Call (214) 666-8718 now
+              </a>
+              <p className="text-xs text-gray-400 text-center">
+                TDI-licensed agency · Bonds written by RLI Insurance (A+ rated)
+              </p>
+            </div>
+          ) : submitted ? (
             <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
                 <CheckCircle className="w-6 h-6 text-green-600" />

@@ -68,7 +68,7 @@ export default function ContractorBondPlano() {
             Required by the City of Plano for licensed contractors across all trades. Get bonded same-day with instant PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -186,7 +186,7 @@ export default function ContractorBondPlano() {
           <h2 className="text-2xl font-bold mb-2">Get Your Plano Contractor Bond Today</h2>
           <p className="text-indigo-200 mb-6">Same-day issuance · All Plano trades · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX" target="_blank" rel="noreferrer">
+            <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
                 Get My License Bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

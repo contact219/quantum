@@ -481,6 +481,26 @@ export const PAGE_META: Record<string, PageMeta> = {
     </main>`,
   },
 
+  "/newsroom": {
+    title: "Newsroom & Press Center | Quantum Surety",
+    description:
+      "Quantum Surety press center: company news, announcements, and media resources from Texas's AI-powered surety bond agency. TDI License #3480229.",
+    canonical: `${BASE_URL}/newsroom`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Quantum Surety Newsroom & Press Center",
+        url: `${BASE_URL}/newsroom`,
+        description: "Company news, announcements, and media resources from Quantum Surety, a TDI-licensed Texas surety bond agency.",
+        publisher: {
+          "@type": "Organization",
+          "@id": `${BASE_URL}/#business`,
+          name: "Quantum Surety",
+        },
+      },
+    ],
+  },
   "/about": {
     title: "About Quantum Surety | AI-Powered Surety Bond Agency",
     description:

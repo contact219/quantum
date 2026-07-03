@@ -87,6 +87,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     "/notary-bond-sb693":  "/sb-693-notary-bond-requirements-2026",
     "/notary-bonds":       "/bonds/notary-bond-texas",
     "/notary-bond":        "/bonds/notary-bond-texas",
+    // Orphan duplicate of the established /bonded-title-texas page (same component,
+    // zero inbound internal links) — consolidate link equity instead of splitting it.
+    "/bonds/texas-vehicle-title-bond": "/bonded-title-texas",
   };
   Object.entries(REDIRECTS).forEach(([from, to]) => {
     app.get(from, (_req, res) => res.redirect(301, to));

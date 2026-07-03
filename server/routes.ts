@@ -75,7 +75,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 <div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:32px;text-align:center;">
 <h1 style="font-size:20px;color:#0f172a;margin:0 0 12px;">You've been unsubscribed</h1>
 <p style="color:#475569;font-size:14px;line-height:1.6;">${valid ? "We won't send any more marketing emails to <strong>" + email.replace(/</g, "&lt;") + "</strong>." : "We couldn't read that email address — reply to any of our emails with \"unsubscribe\" and we'll take care of it."}</p>
-<p style="color:#94a3b8;font-size:12px;margin-top:24px;">Quantum Surety LLC · Dallas, TX · TDI License #3480229</p>
+<p style="color:#94a3b8;font-size:12px;margin-top:24px;">Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI License #3480229</p>
 </div></body></html>`);
   };
   app.get("/api/unsubscribe", handleUnsubscribe);

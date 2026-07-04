@@ -5457,6 +5457,69 @@ export const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas Construction Bonds</h1><p>Bid bonds, performance bonds, and payment bonds for Texas public and private construction projects. Required under Texas Little Miller Act § 2253 for contracts over $25,000. TDI-licensed agency #3480229.</p><a href="/quote">Get a Construction Bond Quote</a></main>`,
   },
 
+  "/surety-bond-calculator": {
+    title: "Surety Bond Cost Calculator | Free Instant Estimates | Quantum Surety",
+    description:
+      "Free surety bond calculator — estimate premiums for Texas notary, GDN dealer, title, contractor license, bid, and performance bonds in seconds. TDI #3480229.",
+    canonical: `${BASE_URL}/surety-bond-calculator`,
+    content: `<main>
+      <h1>Surety Bond Cost Calculator</h1>
+      <p>Estimate the cost of any Texas surety bond in seconds. A surety bond premium is a small percentage of the bond amount (the penal sum) — not the full amount. Pick your bond type, enter the amount, and see an instant estimate.</p>
+      <section>
+        <h2>Surety Bond Costs by Type</h2>
+        <ul>
+          <li><strong>Texas Notary Bond:</strong> $50 flat for the full 4-year term ($10,000 bond)</li>
+          <li><strong>GDN Dealer Bond:</strong> from $250/yr for the $25,000 TxDMV bond (credit-based, most dealers pay $250–$500)</li>
+          <li><strong>Vehicle Title Bond:</strong> from $50 — bond equals 1.5x the vehicle's appraised value, 3-year term</li>
+          <li><strong>Contractor License Bond:</strong> typically 1–3% of the required bond amount per year (from $75/yr)</li>
+          <li><strong>Bid Bond:</strong> from $100 — usually 5–10% of your bid amount, often free with a performance bond commitment</li>
+          <li><strong>Performance &amp; Payment Bond:</strong> 1–3% of the contract value, tiered lower for larger contracts</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How Surety Bond Premiums Are Calculated</h2>
+        <p>Three things drive your surety bond rate: the bond amount required by the obligee, the risk class of the bond type, and (for underwritten bonds) your credit. Flat-rate bonds like the Texas notary bond cost the same for everyone. Credit-underwritten bonds like dealer, contractor, and performance bonds are quoted as a percentage rate — better credit means a lower rate.</p>
+      </section>
+      <section>
+        <h2>Frequently Asked Questions</h2>
+        <dl>
+          <dt>How much does a surety bond cost?</dt>
+          <dd>Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at $50.</dd>
+          <dt>Do I pay the full bond amount?</dt>
+          <dd>No. You pay only the premium — a small percentage. A $25,000 GDN dealer bond costs around $250–$500 per year, not $25,000.</dd>
+          <dt>Is this calculator free?</dt>
+          <dd>Yes — free, instant, and no credit check to see estimates. Final premium is confirmed at checkout or by a licensed agent.</dd>
+          <dt>How fast can I get my bond after the estimate?</dt>
+          <dd>Notary, dealer, and title bonds are issued same-day with the certificate emailed to you, usually within minutes of checkout.</dd>
+        </dl>
+      </section>
+      <a href="/get-bond">Get an exact quote</a>
+      <a href="/title-bond-calculator">Texas Title Bond Calculator</a>
+      <a href="/bonds/notary-bond-texas">Texas Notary Bond — $50</a>
+      <a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a>
+    </main>`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: "Surety Bond Cost Calculator",
+        applicationCategory: "FinanceApplication",
+        operatingSystem: "Web",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        url: `${BASE_URL}/surety-bond-calculator`,
+        provider: { "@type": "InsuranceAgency", name: "Quantum Surety", url: BASE_URL },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "How much does a surety bond cost?", acceptedAnswer: { "@type": "Answer", text: "Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at $50." } },
+          { "@type": "Question", name: "Do I pay the full bond amount?", acceptedAnswer: { "@type": "Answer", text: "No. You pay only the premium — a small percentage of the bond amount. A $25,000 GDN dealer bond costs around $250–$500 per year, not $25,000." } },
+          { "@type": "Question", name: "Is the calculator free?", acceptedAnswer: { "@type": "Answer", text: "Yes — free, instant, and no credit check to see estimates. Final premium is confirmed at checkout or by a licensed agent." } },
+        ],
+      },
+    ],
+  },
   "/title-bond-calculator": {
     title: "Texas Title Bond Calculator | Instant Bond Amount & Price",
     description: "Enter your VIN to instantly calculate your Texas bonded title bond amount and price. 1.5x vehicle value. Same-day certificate. TDI-licensed agency #3480229.",

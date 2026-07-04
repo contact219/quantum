@@ -34,6 +34,7 @@ export function Footer() {
         { href: "/renewals", label: "Renewal Reminders" },
         { href: "/chatbot", label: "AI Bond Finder" },
         { href: "/texas-title-rescue", label: "Title Rescue Wizard" },
+        { href: "/surety-bond-calculator", label: "Surety Bond Calculator" },
         { href: "/title-bond-calculator", label: "Title Bond Calculator" },
           { href: "/title-document-analyzer", label: "AI Document Analyzer" },
       ],

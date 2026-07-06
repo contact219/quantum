@@ -1,13 +1,22 @@
 #!/usr/bin/env node
 /**
- * abandoned_bond_recovery.cjs — recover RLI bonds stuck in "Abandoned" status.
+ * abandoned_bond_recovery.cjs — recover RLI bonds stuck in "Abandoned" or
+ * "Cancelled" status.
  *
- * Two distinct situations, two messages:
- *   - Real bond number (MBS...) = an existing customer's RENEWAL stalled after
- *     RLI staff created the rider on their behalf. Framing: "your renewal is
- *     one step from done."
- *   - "ABANDON-" synthetic key = a fresh application that never finished.
- *     Framing: "you started an application that didn't get completed."
+ * Three distinct situations, three messages:
+ *   - status='abandoned' + real bond number (MBS...) = an existing customer's
+ *     RENEWAL stalled after RLI staff created the rider on their behalf.
+ *     Framing: "your renewal is one step from done."
+ *   - status='abandoned' + "ABANDON-" synthetic key = a fresh application
+ *     that never finished. Framing: "you started an application that didn't
+ *     get completed."
+ *   - status='cancelled' = RLI voided the bond retroactive to its term start
+ *     ("Cancellation Effective" = term start date), meaning it never actually
+ *     went live — confirmation/payment never came through. Framing: "your
+ *     application didn't go through, let's redo it." Cancelled bonds always
+ *     carry a real bond number (mybondapp_sync only records a bond number for
+ *     entries that have one), so they're told apart from abandoned ones by
+ *     status, not by bond_number format.
  *
  * One email per bond, ever (tracked in abandoned_bond_recovery_sends). Skips
  * unsubscribed addresses. Dedupes by email within a single run.
@@ -41,19 +50,29 @@ function firstName(full) {
   return /^[A-Za-z]{2,}$/.test(w) ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : 'there';
 }
 
+function classify(b) {
+  if (b.status === 'cancelled') return 'cancelled';
+  return b.bond_number.startsWith('ABANDON-') ? 'fresh' : 'renewal';
+}
+
 function buildEmail(b) {
   const name = firstName(b.insured_name);
-  const isRenewal = !b.bond_number.startsWith('ABANDON-');
-  const subject = isRenewal
-    ? 'Your Texas Notary Bond renewal is almost done — one step left'
-    : 'Your Texas Notary Bond application — let\'s finish it';
+  const kind = classify(b);
+  const subject = {
+    renewal:   'Your Texas Notary Bond renewal is almost done — one step left',
+    fresh:     'Your Texas Notary Bond application — let\'s finish it',
+    cancelled: 'Your Texas Notary Bond application — let\'s finish it',
+  }[kind];
 
-  const introRenewal = `You have an active Texas Notary Bond with us, and we started processing your renewal — but it never got finished on our end. Nothing was your fault; this happens when a renewal sits without the last details confirmed.`;
-  const introFresh = `You started a Texas Notary Bond application with us but it didn't get completed. Your info is saved — picking it back up takes about 2 minutes.`;
+  const intro = {
+    renewal:   `You have an active Texas Notary Bond with us, and we started processing your renewal — but it never got finished on our end. Nothing was your fault; this happens when a renewal sits without the last details confirmed.`,
+    fresh:     `You started a Texas Notary Bond application with us but it didn't get completed. Your info is saved — picking it back up takes about 2 minutes.`,
+    cancelled: `You started a Texas Notary Bond with us, but it didn't go through — the application never got confirmed on our end, so it fell through the cracks. Nothing was lost on your side; it just needs to be redone.`,
+  }[kind];
 
   const html = `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;color:#1e293b;line-height:1.7;font-size:14px;">
 <p>Hi ${name === 'there' ? 'there' : name},</p>
-<p>${isRenewal ? introRenewal : introFresh}</p>
+<p>${intro}</p>
 <p style="text-align:center;margin:28px 0;"><a href="${RESUME_URL}" style="background:#2563eb;color:#fff;text-decoration:none;padding:14px 32px;border-radius:6px;font-weight:700;font-size:15px;display:inline-block;">Finish My Bond &rarr;</a></p>
 <p style="color:#475569;">Your bond certificate is emailed immediately after checkout &mdash; written by RLI Insurance (A+ rated), accepted statewide by the Texas SOS.</p>
 <p style="color:#64748b;font-size:13px;">💡 <strong>Tip:</strong> add <strong>Errors &amp; Omissions coverage</strong> at checkout &mdash; your bond protects the public, E&amp;O protects <em>you</em>. A few dollars more per year; most Texas notaries add it.</p>
@@ -64,7 +83,7 @@ function buildEmail(b) {
 
   const text = `Hi ${name},
 
-${isRenewal ? introRenewal : introFresh}
+${intro}
 
 Finish here (takes about 2 minutes): ${RESUME_URL}
 
@@ -90,9 +109,9 @@ async function main() {
   )`);
 
   const { rows } = await db.query(`
-    SELECT b.id, b.bond_number, b.insured_name, b.insured_email, b.premium, b.commission_amt
+    SELECT b.id, b.bond_number, b.insured_name, b.insured_email, b.premium, b.commission_amt, b.status
     FROM bk_bonds b
-    WHERE b.status = 'abandoned'
+    WHERE b.status IN ('abandoned', 'cancelled')
       AND b.insured_email IS NOT NULL AND b.insured_email != ''
       AND NOT EXISTS (SELECT 1 FROM abandoned_bond_recovery_sends s WHERE s.bond_id = b.id)
       AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(b.insured_email))
@@ -119,10 +138,11 @@ async function main() {
     seenEmails.add(key);
 
     const { subject, html, text } = buildEmail(b);
-    const isRenewal = !b.bond_number.startsWith('ABANDON-');
+    const kind = classify(b);
+    const campaign = kind === 'cancelled' ? 'cancelled-bond-recovery' : 'abandoned-bond-recovery';
 
     if (DRY_RUN) {
-      console.log(`  [DRY] ${b.insured_name} <${b.insured_email}> | ${isRenewal ? 'renewal' : 'fresh'} | comm $${b.commission_amt}`);
+      console.log(`  [DRY] ${b.insured_name} <${b.insured_email}> | ${kind} | comm $${b.commission_amt}`);
       sent++; continue;
     }
     try {
@@ -130,13 +150,13 @@ async function main() {
         Source: FROM, ReplyToAddresses: [REPLY_TO],
         Destination: { ToAddresses: [b.insured_email.trim()] },
         Message: { Subject: { Data: subject }, Body: { Html: { Data: html }, Text: { Data: text } } },
-        Tags: [{ Name: 'campaign', Value: 'abandoned-bond-recovery' }],
+        Tags: [{ Name: 'campaign', Value: campaign }],
       }));
       await db.query(
         `INSERT INTO abandoned_bond_recovery_sends (bond_id, email) VALUES ($1, $2) ON CONFLICT (bond_id) DO NOTHING`,
         [b.id, b.insured_email.trim()]
       );
-      console.log(`  ✓ ${b.insured_name} <${b.insured_email}> | ${isRenewal ? 'renewal' : 'fresh'}`);
+      console.log(`  ✓ ${b.insured_name} <${b.insured_email}> | ${kind}`);
       sent++;
     } catch (e) {
       console.error(`  ✗ ${b.insured_email}: ${e.message}`);

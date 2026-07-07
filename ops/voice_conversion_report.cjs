@@ -63,6 +63,20 @@ async function main() {
     }
   }
 
+  // 3b. THE decision cohort: high-value calls placed since the 2026-07-07 scoping fix.
+  // This isolates the newly-scoped calls from the pre-fix bulk-dealer/notary noise so
+  // the keep-or-kill call is made on the right data.
+  const FIX_DATE = new Date('2026-07-07T00:00:00Z');
+  const HIGH_VALUE = new Set(['dealer', 'gdn', 'contractor', 'construction', 'bid', 'performance',
+    'payment', 'mortgage', 'credit-access-business', 'collection-agency', 'property-tax-consultant',
+    'oversize-permit', 'title', 'bonded-title', 'vehicle-title']);
+  const newHV = [...dialedPeople.values()].filter(c => new Date(c.created_at) >= FIX_DATE && HIGH_VALUE.has((c.bond_type || '').toLowerCase()));
+  const newHVphones = new Set(newHV.map(c => last10(c.phone)));
+  const newHVdialed = newHVphones.size;
+  const newHVconverted = converted.filter(c => newHVphones.has(c.phone));
+  const newHVrev = newHVconverted.reduce((s, c) => s + c.revenue, 0);
+  const newHVrate = newHVdialed ? (100 * newHVconverted.length / newHVdialed).toFixed(1) : '—';
+
   // 4. Break down dialed + converted by bond_type
   const byType = {};
   for (const [, c] of dialedPeople) { const t = (c.bond_type || 'unknown').toLowerCase(); byType[t] = byType[t] || { dialed: 0, converted: 0, revenue: 0 }; byType[t].dialed++; }
@@ -78,7 +92,12 @@ async function main() {
 
   const html = `<div style="font-family:-apple-system,sans-serif;max-width:640px;margin:0 auto;color:#1e293b">
 <h2 style="color:#0f172a">Voice Outbound Conversion — Weekly</h2>
-<p style="color:#475569">Of the distinct people we placed an outbound AI call to (dialed = done + failed), how many later show up as a sold lead or issued bond in the CRM. Correlation, not strict attribution.</p>
+<div style="background:${newHVdialed && newHVconverted.length ? '#ecfdf5' : '#fef2f2'};border:1px solid ${newHVdialed && newHVconverted.length ? '#a7f3d0' : '#fecaca'};border-radius:8px;padding:16px;margin:12px 0">
+<strong style="color:#0f172a">DECISION COHORT — high-value calls since 2026-07-07 (notary excluded):</strong><br>
+<span style="font-size:20px;font-weight:800">${newHVconverted.length}/${newHVdialed} dialed → ${newHVrate === '—' ? 'no calls yet' : newHVrate + '%'} · $${newHVrev.toFixed(2)}</span><br>
+<span style="color:#64748b;font-size:12px">This is the number that decides keep-vs-kill. Baseline to beat: pre-fix cohort was 2/196 = 1.0%, both notary, dealer 0/many.</span>
+</div>
+<p style="color:#475569">Below: full cohort (includes pre-fix bulk calls). Of the distinct people we dialed (done + failed), how many later show up as a sold lead or issued bond in the CRM. Correlation, not strict attribution.</p>
 <table style="border-collapse:collapse;width:100%;font-size:14px;margin:16px 0">
 <tr><td><strong>Distinct people dialed</strong></td><td style="text-align:right"><strong>${totalDialed}</strong></td></tr>
 <tr><td>Converted (sold lead / issued bond)</td><td style="text-align:right">${totalConv}</td></tr>
@@ -95,7 +114,7 @@ ${converted.length ? `<h3 style="color:#0f172a;font-size:15px;margin-top:20px">C
 <p style="color:#94a3b8;font-size:12px;margin-top:20px">Context: the voice channel is 0-for-281 all-time. Calls are now scoped to high-value bond leads only; new calls will accumulate here as they happen. This cohort is dominated by pre-fix bulk dealer calls until new scoped calls build up.</p>
 </div>`;
 
-  const summary = `[VoiceConversion] dialed=${totalDialed} converted=${totalConv} (${rate}%) revenue=$${totalRev.toFixed(2)} | queue: ${Object.entries(byStatus).map(([s, n]) => `${s}=${n}`).join(' ')}`;
+  const summary = `[VoiceConversion] ALL: dialed=${totalDialed} converted=${totalConv} (${rate}%) $${totalRev.toFixed(2)} | NEW high-value since 2026-07-07: dialed=${newHVdialed} converted=${newHVconverted.length} (${newHVrate}%) $${newHVrev.toFixed(2)} | queue: ${Object.entries(byStatus).map(([s, n]) => `${s}=${n}`).join(' ')}`;
   console.log(summary);
   converted.forEach(c => console.log(`  ✓ converted: ${c.name} (${c.bond_type}) $${c.revenue.toFixed(2)}`));
 

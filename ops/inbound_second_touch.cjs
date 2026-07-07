@@ -116,7 +116,9 @@ async function main() {
   const { rows } = await db.query(`
     WITH form_open AS (
       SELECT id, name, email, bond_type,
-             lower(regexp_replace(name, '[^a-zA-Z ]', '', 'g')) AS nname
+             -- normalize: non-alpha -> space, collapse whitespace, trim. (trailing
+             -- spaces / punctuation previously defeated the bond-match exclusion.)
+             trim(regexp_replace(regexp_replace(lower(name), '[^a-z ]', ' ', 'g'), '\\s+', ' ', 'g')) AS nname
       FROM leads
       WHERE source = 'get-bond form'
         AND email ~ '@' AND email !~ 'placeholder|example|noemail'
@@ -131,14 +133,18 @@ async function main() {
         AND NOT EXISTS (SELECT 1 FROM inbound_second_touch_sends s WHERE s.lead_id = leads.id)
     ),
     norm_bonds AS (
-      SELECT lower(regexp_replace(insured_name,'[^a-zA-Z ]','','g')) AS bname,
-             split_part(lower(regexp_replace(insured_name,'[^a-zA-Z ]','','g')),' ',1) AS bfirst,
-             reverse(split_part(reverse(lower(regexp_replace(insured_name,'[^a-zA-Z ]','','g'))),' ',1)) AS blast
-      FROM bk_bonds
+      SELECT bname,
+             split_part(bname,' ',1) AS bfirst,
+             reverse(split_part(reverse(bname),' ',1)) AS blast
+      FROM (
+        SELECT trim(regexp_replace(regexp_replace(lower(insured_name), '[^a-z ]', ' ', 'g'), '\\s+', ' ', 'g')) AS bname
+        FROM bk_bonds
+      ) b
+      WHERE bname <> ''
     )
     SELECT f.id, f.name, f.email, f.bond_type
     FROM form_open f
-    WHERE NOT EXISTS (
+    WHERE f.nname <> '' AND NOT EXISTS (
       SELECT 1 FROM norm_bonds nb
       WHERE nb.bname = f.nname
          OR (split_part(f.nname,' ',1) = nb.bfirst AND reverse(split_part(reverse(f.nname),' ',1)) = nb.blast)

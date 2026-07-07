@@ -24,13 +24,16 @@ async function main() {
   const { rows } = await db.query(`
     WITH recips AS (
       SELECT s.lead_id, s.sent_at, l.name, l.email, l.status, COALESCE(l.sale_amount,0) AS sale_amount,
-             lower(regexp_replace(l.name,'[^a-zA-Z ]','','g')) AS nname
+             -- normalize: non-alpha -> space, collapse whitespace, trim (so trailing
+             -- spaces / punctuation don't defeat the name match against bonds)
+             trim(regexp_replace(regexp_replace(lower(l.name),'[^a-z ]',' ','g'),'\\s+',' ','g')) AS nname
       FROM inbound_second_touch_sends s JOIN leads l ON l.id = s.lead_id
     )
     SELECT r.name, r.email, r.status, r.sale_amount, r.sent_at::date AS sent_on,
       (r.status='sold') AS lead_sold,
       (SELECT b.commission_amt FROM bk_bonds b
-        WHERE b.status='issued' AND lower(regexp_replace(b.insured_name,'[^a-zA-Z ]','','g'))=r.nname LIMIT 1) AS bond_comm
+        WHERE b.status='issued' AND r.nname <> ''
+          AND trim(regexp_replace(regexp_replace(lower(b.insured_name),'[^a-z ]',' ','g'),'\\s+',' ','g'))=r.nname LIMIT 1) AS bond_comm
     FROM recips r ORDER BY r.name
   `);
   await db.end();

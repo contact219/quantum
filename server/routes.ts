@@ -202,11 +202,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // "voice-agent" unless the caller passed an explicit source.
       const leadSource = reqSource || (isVoiceOriginated ? "voice-agent" : "get-bond form");
       storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: leadSource, notes: reqNotes || null, status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
-      // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service
-      if (!isVoiceOriginated) {
+      // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service.
+      // Scoped to high-value bond types only: notary is a $50 self-serve product whose thin commission
+      // doesn't justify a call (and would burn the scarce daily call cap). Unknown/general inquiries are
+      // excluded too — we only call when we know the intent is worth it. The secret must come from the
+      // OUTBOUND_CALL_SECRET env (no hardcoded fallback — a missing env fails safe with no call rather
+      // than silently 401-ing, and keeps the rotated secret out of this public repo).
+      const HIGH_VALUE_BOND_TYPES = new Set([
+        "dealer", "gdn", "contractor", "construction", "bid", "performance",
+        "payment", "mortgage", "credit-access-business", "collection-agency",
+        "property-tax-consultant", "oversize-permit", "title", "bonded-title", "vehicle-title",
+      ]);
+      const outboundSecret = process.env.OUTBOUND_CALL_SECRET;
+      if (!isVoiceOriginated && outboundSecret && HIGH_VALUE_BOND_TYPES.has(rawBondType)) {
         fetch("https://voice-agent.permitpilot.online/outbound-call", {
           method: "POST",
-          headers: { "Content-Type": "application/json", "X-Outbound-Secret": process.env.OUTBOUND_CALL_SECRET || "3cc10b9c718013495c4d38f26dcd31db" },
+          headers: { "Content-Type": "application/json", "X-Outbound-Secret": outboundSecret },
           body: JSON.stringify({ name, email, phone, bond_type: rawBondType || bond_type, source: "get-bond form" }),
         }).catch((e: any) => console.error("Outbound call trigger error:", e.message));
       }

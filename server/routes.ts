@@ -194,10 +194,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
       capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
-      // Persist lead to database
-      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: reqSource || "get-bond form", notes: reqNotes || null, status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
       // Voice-originated leads use synthetic addresses and just spoke to us — skip outreach
       const isVoiceOriginated = /@noemail\.quantumsurety\.bond$/i.test(email);
+      // Persist lead to database. Voice-originated synthetic emails must NOT default
+      // to "get-bond form" — that pollutes the inbound-form channel (the only one that
+      // converts) with call leads that never submitted the form. Attribute them to
+      // "voice-agent" unless the caller passed an explicit source.
+      const leadSource = reqSource || (isVoiceOriginated ? "voice-agent" : "get-bond form");
+      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: leadSource, notes: reqNotes || null, status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
       // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service
       if (!isVoiceOriginated) {
         fetch("https://voice-agent.permitpilot.online/outbound-call", {

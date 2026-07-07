@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
  * inbound_second_touch.cjs — personal second-touch to warm inbound get-bond
- * form leads that the 48h auto-followup cron has permanently aged past.
+ * form leads that the automation left behind.
  *
  * Targets leads that:
  *   - came in through the website get-bond form (highest-converting channel),
- *   - are still status='new' (never closed),
  *   - have a valid email,
- *   - are older than 48h (so crm_daily_auto_followup.cjs will never touch them
- *     again — this fills that gap, it does not double up),
+ *   - EITHER status='new' and older than 48h (aged past crm_daily_auto_followup,
+ *     which only looks back 48h), OR status='contacted' but gone cold for 7+
+ *     days (got a single touch, then abandoned — nothing else revisits these),
  *   - do NOT already have a matching RLI bond in bk_bonds (genuinely open, not
  *     someone who already bought / is in the saved/abandoned recovery flow),
  *   - are not unsubscribed and haven't already gotten this second touch.
@@ -110,17 +110,23 @@ async function main() {
     sent_at TIMESTAMPTZ DEFAULT NOW()
   )`);
 
-  // Warm inbound form leads the 48h auto-followup has aged past, that don't
-  // already have a matching RLI bond (name-normalized), never second-touched.
+  // Warm inbound form leads the automation left behind — 'new' aged past the 48h
+  // daily followup, or 'contacted' gone cold 7+ days — that don't already have a
+  // matching RLI bond (name-normalized), never second-touched.
   const { rows } = await db.query(`
     WITH form_open AS (
       SELECT id, name, email, bond_type,
              lower(regexp_replace(name, '[^a-zA-Z ]', '', 'g')) AS nname
       FROM leads
       WHERE source = 'get-bond form'
-        AND status = 'new'
         AND email ~ '@' AND email !~ 'placeholder|example|noemail'
-        AND created_at < NOW() - INTERVAL '48 hours'
+        AND (
+          -- 'new' leads the 48h daily auto-followup has aged past
+          (status = 'new' AND created_at < NOW() - INTERVAL '48 hours')
+          -- 'contacted' leads that got one touch, then went cold 7+ days ago
+          -- (the daily followup only revisits <48h; nothing re-engages these)
+          OR (status = 'contacted' AND updated_at < NOW() - INTERVAL '7 days')
+        )
         AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
         AND NOT EXISTS (SELECT 1 FROM inbound_second_touch_sends s WHERE s.lead_id = leads.id)
     ),

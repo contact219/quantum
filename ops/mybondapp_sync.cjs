@@ -494,7 +494,7 @@ function parseBondCards(text) {
       status:          /Expired/i.test(statusLine)   ? 'expired'
                      : /Abandoned/i.test(statusLine) ? 'abandoned'
                      : /Cancelled/i.test(statusLine) ? 'cancelled'
-                     : /Saved/i.test(statusLine)     ? 'saved'
+                     : /Saved/i.test(statusLine)     ? ((insuredName === '—' && premium === 21) ? 'saved_empty' : 'saved')
                      : /Pending/i.test(statusLine)   ? 'pending'
                      : 'issued',
       status_detail:   statusLine,

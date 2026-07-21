@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
+import NotaryRenewalAlert from "@/components/NotaryRenewalAlert";
 import {
   CheckCircle, ArrowRight, Clock, FileText, Shield,
   AlertTriangle, BookOpen, Star, Phone
@@ -208,6 +209,19 @@ export default function NotaryBondTexas() {
               </Button>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Renewal alert capture — this page is the single highest-traffic page on the
+          site (8,462 human views in 21 days), and most visitors are notaries who are
+          not buying today. Capturing their expiration date turns a bounce into a lead
+          timed to the only moment this business has ever converted. */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <NotaryRenewalAlert
+            heading="Not renewing yet? Find out exactly when you are."
+            blurb="Look up your Texas commission below and we'll email you a free reminder 60 days before it expires — so you never end up unable to notarize while you wait on paperwork."
+          />
         </div>
       </section>
 

@@ -206,6 +206,7 @@ const LicensePermitBondTexas = lazy(() => import("@/pages/license-permit-bond-te
 const TitleBondCalculator = lazy(() => import("@/pages/title-bond-calculator"));
 const SuretyBondCalculator = lazy(() => import("@/pages/surety-bond-calculator"));
 const TexasBondData = lazy(() => import("@/pages/texas-bond-data"));
+const TexasNotaryLookup = lazy(() => import("@/pages/texas-notary-lookup"));
 const CountyTitleBondPage = lazy(() => import("@/pages/county-title-bond-page"));
 const TitleRescue = lazy(() => import("@/pages/texas-title-rescue"));
 // Additional notary city pages
@@ -580,6 +581,7 @@ function Router() {
       <Route path="/title-bond-calculator" component={TitleBondCalculator} />
       <Route path="/surety-bond-calculator" component={SuretyBondCalculator} />
       <Route path="/texas-bond-data" component={TexasBondData} />
+      <Route path="/texas-notary-lookup" component={TexasNotaryLookup} />
       <Route path="/bonds/license-permit-bond-texas" component={LicensePermitBondTexas} />
 
       {/* Additional notary city pages */}

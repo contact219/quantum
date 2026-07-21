@@ -1492,7 +1492,7 @@ export const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Notary Bond SB693 2026 | Quantum Surety",
     description:
       "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what.",
-    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`,
+    canonical: `${BASE_URL}/sb-693-notary-bond-requirements-2026`, // consolidated: this post split signal with the standalone page (13 vs 1,499 visits)
     ogType: "article",
     structuredData: [
       {
@@ -1733,7 +1733,7 @@ export const PAGE_META: Record<string, PageMeta> = {
     title: "Texas Notary Bond Renewal Under SB693 2026 | Quantum Surety",
     description:
       "Renewing your Texas notary commission in 2026? SB693 added a mandatory education course and journal requirement that now apply to renewals. Step-by-step.",
-    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-renewal-2026`,
+    canonical: `${BASE_URL}/sb-693-notary-bond-requirements-2026`, // consolidated: see above
     ogType: "article",
     structuredData: [
       {
@@ -5460,6 +5460,29 @@ export const PAGE_META: Record<string, PageMeta> = {
   // Live content for this route is generated in _bondDataSSR() and intercepts the
   // middleware before this map is consulted. This entry exists so the page is
   // listed in the sitemap and still resolves if the stats API is unreachable.
+  "/texas-notary-lookup": {
+    title: "Texas Notary Lookup | Search 558,898 Commissions | Quantum Surety",
+    description:
+      "Free Texas notary lookup. Search 558,898 notary commissions from Secretary of State records by name or city. See commission status and expiration date instantly.",
+    canonical: `${BASE_URL}/texas-notary-lookup`,
+    ogType: "website",
+    content: `<main>
+      <h1>Texas Notary Lookup</h1>
+      <p>Search 558,898 Texas notary commissions from Texas Secretary of State public records. Enter a notary's name, optionally narrowed by city, to see their commission status and expiration date. Free, with no account required.</p>
+      <h2>What the lookup shows</h2>
+      <ul>
+        <li>Notary name and commission ID</li>
+        <li>City of record</li>
+        <li>Commission expiration date</li>
+        <li>Current status — active, expiring within 60 days, or expired</li>
+      </ul>
+      <h2>About the data</h2>
+      <p>Records come from the Texas Secretary of State's published notary file and are re-imported monthly. Of 558,898 commissions on record, 445,100 are currently active. Status reflects the commission expiration date only and does not account for voluntary resignation or administrative action.</p>
+      <h2>Texas notary bonds</h2>
+      <p>Every Texas notary must hold a $10,000 surety bond for the four-year commission term. Quantum Surety issues them for about $50 for the full term through an A+ rated carrier, with the certificate emailed the same day.</p>
+    </main>`,
+  },
+
   "/texas-bond-data": {
     title: "Texas Bond Data | Live Notary, Dealer & Contractor Counts",
     description:

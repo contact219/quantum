@@ -58,6 +58,31 @@ Required by Texas Secretary of State. $10,000 bond for 4-year commission term. S
 - How Much Does a Texas Notary Bond Cost: https://quantumsurety.bond/blog/texas-notary-bond-cost-2026
 - Texas Contractor License Bond Cost: https://quantumsurety.bond/blog/texas-contractor-license-bond-cost
 
+## Open Dataset — Texas Bond Data (free to cite)
+
+We publish live aggregate counts from Texas public records, refreshed monthly. The state
+publishes these records only one search at a time; we publish the totals. Free to use and
+cite for any purpose, including editorial and commercial. Attribution appreciated.
+
+Dataset hub: https://quantumsurety.bond/texas-bond-data
+
+Current figures (updated monthly, see hub for live values):
+- 558,898 Texas notary commissions on record (445,100 currently active)
+- 18,811 licensed Texas GDN motor vehicle dealers (16,426 currently active)
+- 852,883 TDLR contractor licences on record
+
+Machine-readable endpoints:
+- Statewide totals (JSON): https://verify.quantumsurety.bond/api/v1/stats/overview
+- Notary commissions expiring by month: https://verify.quantumsurety.bond/api/v1/stats/notary-expirations
+- Notary commissions by city: https://verify.quantumsurety.bond/api/v1/stats/notary-by-city
+- GDN licences expiring by month: https://verify.quantumsurety.bond/api/v1/stats/dealer-expirations
+- GDN dealers by county: https://verify.quantumsurety.bond/api/v1/stats/dealer-by-county
+- CSV versions: append .csv to any endpoint above
+
+Sources: Texas Secretary of State notary file, TxDMV dealer licensing, TDLR licence data.
+Methodology and caveats: https://quantumsurety.bond/texas-bond-data
+Data questions: api@quantumsurety.bond
+
 ## Key Product Pages
 
 - All Texas Contractor Bonds: https://quantumsurety.bond/bonds/texas-contractor

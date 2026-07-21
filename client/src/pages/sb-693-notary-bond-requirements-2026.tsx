@@ -3,6 +3,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, CheckCircle2, Download, ExternalLink, FileText } from "lucide-react";
+import NotaryRenewalAlert from "@/components/NotaryRenewalAlert";
 
 const checklistItems = [
   "Confirm you are at least 18 and a legal Texas resident.",
@@ -157,6 +158,15 @@ export default function SB693NotaryBondRequirements2026() {
               </ul>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 bg-white border-t border-slate-200">
+        <div className="max-w-5xl mx-auto">
+          <NotaryRenewalAlert
+            heading="Track your own SB-693 renewal date"
+            blurb="SB-693 compliance is tied to your commission term. Look up your Texas commission below and we'll email you a free reminder 60 days before it expires, so the paperwork never catches you short."
+          />
         </div>
       </section>
 

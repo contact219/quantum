@@ -5457,6 +5457,17 @@ export const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>Texas Construction Bonds</h1><p>Bid bonds, performance bonds, and payment bonds for Texas public and private construction projects. Required under Texas Little Miller Act § 2253 for contracts over $25,000. TDI-licensed agency #3480229.</p><a href="/quote">Get a Construction Bond Quote</a></main>`,
   },
 
+  // Live content for this route is generated in _bondDataSSR() and intercepts the
+  // middleware before this map is consulted. This entry exists so the page is
+  // listed in the sitemap and still resolves if the stats API is unreachable.
+  "/texas-bond-data": {
+    title: "Texas Bond Data | Live Notary, Dealer & Contractor Counts",
+    description:
+      "Live counts of Texas notary commissions, GDN dealer licences, and TDLR contractor licences. Updated monthly from state public records. Free CSV downloads.",
+    canonical: `${BASE_URL}/texas-bond-data`,
+    ogType: "website",
+  },
+
   "/surety-bond-calculator": {
     title: "Surety Bond Cost Calculator | Free Instant Estimates | Quantum Surety",
     description:
@@ -7706,6 +7717,164 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
 
 // ─── Main middleware ───────────────────────────────────────────────────────────
 
+// ─── Texas Bond Data Hub ──────────────────────────────────────────────────────
+// Live aggregates from our own SOS/TxDMV/TDLR mirrors, rendered server-side so
+// crawlers and LLMs see real numbers in the HTML rather than an empty React root.
+// No one else publishes this — the state makes you search one record at a time —
+// so it is the one page on this domain that can earn citations rather than buy them.
+
+const VERIFY_API = "https://verify.quantumsurety.bond/api/v1/stats";
+
+type StatRow = Record<string, string | number>;
+
+function _num(n: unknown): string {
+  return typeof n === "number" ? n.toLocaleString("en-US") : String(n ?? "—");
+}
+
+function _monthLabel(ym: string): string {
+  const [y, m] = ym.split("-");
+  const d = new Date(Number(y), Number(m) - 1, 1);
+  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
+function _rowsTable(caption: string, cols: string[], rows: StatRow[], keys: string[]): string {
+  if (!rows.length) return "";
+  const head = cols.map((c) => `<th scope="col">${c}</th>`).join("");
+  const body = rows
+    .map((r) => `<tr>${keys.map((k) => `<td>${k === "month" ? _monthLabel(String(r[k])) : _num(r[k])}</td>`).join("")}</tr>`)
+    .join("");
+  return `<table><caption>${caption}</caption><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+}
+
+async function _bondDataSSR(): Promise<PageMeta> {
+  const [overview, notaryExp, dealerExp, byCity, byCounty] = await Promise.all([
+    _ssrFetch(`${VERIFY_API}/overview`),
+    _ssrFetch(`${VERIFY_API}/notary-expirations`),
+    _ssrFetch(`${VERIFY_API}/dealer-expirations`),
+    _ssrFetch(`${VERIFY_API}/notary-by-city`),
+    _ssrFetch(`${VERIFY_API}/dealer-by-county`),
+  ]);
+
+  const o = (overview ?? {}) as {
+    as_of?: string;
+    notaries?: { total: number; active: number; expired: number; last_updated?: string };
+    gdn_dealers?: { total: number; active: number; expired: number };
+    contractors?: { total: number };
+  };
+  const nExp = (Array.isArray(notaryExp) ? notaryExp : []) as unknown as StatRow[];
+  const dExp = (Array.isArray(dealerExp) ? dealerExp : []) as unknown as StatRow[];
+  const cities = ((Array.isArray(byCity) ? byCity : []) as unknown as StatRow[]).slice(0, 25);
+  const counties = ((Array.isArray(byCounty) ? byCounty : []) as unknown as StatRow[]).slice(0, 25);
+
+  const asOf = o.as_of ?? new Date().toISOString().slice(0, 10);
+  const nTotal = o.notaries?.total ?? 0;
+  const nActive = o.notaries?.active ?? 0;
+  const dTotal = o.gdn_dealers?.total ?? 0;
+  const cTotal = o.contractors?.total ?? 0;
+
+  // The single most quotable fact on the page: the next big expiration wave.
+  const nextWave = nExp.length > 1 ? nExp[1] : nExp[0];
+  const waveLine = nextWave
+    ? `${_num(nextWave.expiring)} Texas notary commissions expire in ${_monthLabel(String(nextWave.month))}.`
+    : "";
+
+  const description =
+    `Live Texas bond data: ${_num(nTotal)} notary commissions, ${_num(dTotal)} licensed GDN dealers, ` +
+    `and ${_num(cTotal)} TDLR contractor licences. Updated monthly from state public records. Free CSV downloads.`;
+
+  const content = `
+<article>
+  <h1>Texas Bond Data</h1>
+  <p><strong>Live counts from Texas public records, updated monthly.</strong> Figures below are current as of ${asOf}.
+  The Texas Secretary of State, TxDMV, and TDLR publish these records one search at a time; this page publishes the aggregates.
+  Free to use and cite — attribution to Quantum Surety appreciated.</p>
+
+  ${waveLine ? `<p><strong>${waveLine}</strong></p>` : ""}
+
+  <h2>Statewide totals</h2>
+  <table>
+    <thead><tr><th scope="col">Dataset</th><th scope="col">Total records</th><th scope="col">Currently active</th></tr></thead>
+    <tbody>
+      <tr><td>Texas notary commissions</td><td>${_num(nTotal)}</td><td>${_num(nActive)}</td></tr>
+      <tr><td>Texas GDN motor vehicle dealers</td><td>${_num(dTotal)}</td><td>${_num(o.gdn_dealers?.active)}</td></tr>
+      <tr><td>TDLR contractor licences</td><td>${_num(cTotal)}</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Notary commissions expiring by month</h2>
+  <p>Every Texas notary commission runs a four-year term and requires a $10,000 surety bond to renew.
+  This is the renewal curve for the next twelve months.</p>
+  ${_rowsTable("Texas notary commissions expiring, next 12 months", ["Month", "Commissions expiring"], nExp, ["month", "expiring"])}
+
+  <h2>GDN dealer licences expiring by month</h2>
+  <p>Texas General Distinguishing Number (GDN) licences renew annually and require a $25,000 dealer bond.</p>
+  ${_rowsTable("Texas GDN dealer licences expiring, next 12 months", ["Month", "Licences expiring"], dExp, ["month", "expiring"])}
+
+  <h2>Notary commissions by city</h2>
+  ${_rowsTable("Texas cities by notary commission count", ["City", "Commissions", "Active"], cities, ["city", "notaries", "active"])}
+
+  <h2>GDN dealers by county</h2>
+  ${_rowsTable("Texas counties by licensed GDN dealer count", ["County", "Dealers", "Active"], counties, ["county", "dealers", "active"])}
+
+  <h2>Download the data</h2>
+  <ul>
+    <li><a href="${VERIFY_API}/notary-expirations.csv">Notary commissions expiring by month (CSV)</a></li>
+    <li><a href="${VERIFY_API}/notary-by-city.csv">Notary commissions by city (CSV)</a></li>
+    <li><a href="${VERIFY_API}/dealer-expirations.csv">GDN dealer licences expiring by month (CSV)</a></li>
+    <li><a href="${VERIFY_API}/dealer-by-county.csv">GDN dealers by county (CSV)</a></li>
+    <li><a href="${VERIFY_API}/overview">Statewide totals (JSON API)</a></li>
+  </ul>
+
+  <h2>Methodology</h2>
+  <p>Notary records come from the Texas Secretary of State's published notary file, GDN dealer records from TxDMV,
+  and contractor licences from TDLR. Each dataset is re-imported on a monthly schedule and counts are computed
+  directly against those mirrors — no sampling or estimation. "Active" means the commission or licence expiration
+  date is today or later. Records the state publishes with missing city or county values are excluded from the
+  geographic breakdowns but included in statewide totals, so the geographic tables sum to slightly less than the total.</p>
+  <p>Questions about the data, or need a cut we don't publish? Email api@quantumsurety.bond.</p>
+</article>`.trim();
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      name: "Texas Bond Data — notary, GDN dealer, and contractor licence counts",
+      description,
+      url: `${BASE_URL}/texas-bond-data`,
+      keywords: ["Texas notary commissions", "GDN dealer licences", "TDLR contractor licences", "surety bonds", "Texas"],
+      license: "https://creativecommons.org/licenses/by/4.0/",
+      isAccessibleForFree: true,
+      dateModified: asOf,
+      spatialCoverage: { "@type": "Place", name: "Texas, United States" },
+      creator: { "@type": "Organization", name: "Quantum Surety LLC", url: BASE_URL },
+      distribution: [
+        { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${VERIFY_API}/notary-expirations.csv` },
+        { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${VERIFY_API}/notary-by-city.csv` },
+        { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${VERIFY_API}/dealer-expirations.csv` },
+        { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${VERIFY_API}/dealer-by-county.csv` },
+        { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${VERIFY_API}/overview` },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Texas Bond Data", item: `${BASE_URL}/texas-bond-data` },
+      ],
+    },
+  ];
+
+  return {
+    title: `Texas Bond Data — ${_num(nTotal)} Notary Commissions & ${_num(dTotal)} GDN Dealers | Quantum Surety`,
+    description,
+    canonical: `${BASE_URL}/texas-bond-data`,
+    ogType: "website",
+    structuredData,
+    content,
+  };
+}
+
 export function seoMiddleware(distDir: string) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const urlPath = req.path;
@@ -7719,6 +7888,31 @@ export function seoMiddleware(distDir: string) {
     if (urlPath === "/robots.txt") {
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       return res.send(ROBOTS_TXT);
+    }
+
+    // ── SSR for the Texas Bond Data Hub (live aggregates) ───────────────────────
+    if (urlPath === "/texas-bond-data") {
+      const indexPath = path.join(distDir, "index.html");
+      if (fs.existsSync(indexPath)) {
+        let meta: PageMeta;
+        try {
+          meta = await _bondDataSSR();
+        } catch {
+          // Never fail the page on a stats outage — fall back to static meta.
+          meta = {
+            title: "Texas Bond Data | Quantum Surety",
+            description:
+              "Live counts of Texas notary commissions, GDN dealer licences, and TDLR contractor licences, updated monthly from state public records.",
+            canonical: `${BASE_URL}/texas-bond-data`,
+          };
+        }
+        let html = fs.readFileSync(indexPath, "utf-8");
+        html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["']canonical["'][^>]*>/gi, "").replace(/<meta\s[^>]*name=["']description["'][^>]*>/gi, "").replace(/<meta\s[^>]*name=["']robots["'][^>]*>/gi, "").replace(/<meta\s[^>]*property=["']og:[^"']*["'][^>]*>/gi, "").replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, "");
+        html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);
+        if (meta.content) html = html.replace('<div id="root"></div>', `<div id="root">${meta.content}</div>`);
+        res.setHeader("Content-Type", "text/html");
+        return res.send(html);
+      }
     }
 
     // ── SSR for dynamic notary detail pages (/notary/:id) ───────────────────────

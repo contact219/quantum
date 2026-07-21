@@ -73,19 +73,42 @@ cd texas-bond-data && git add . && git commit -m "Initial dataset" && git push
 
 ---
 
-## Regenerating the data
+## Regenerating the data — automated
 
-The CSVs come from `/var/www/bondverify/export_datasets.js` on 130.51.23.147:
+A cron on 130.51.23.147 refreshes the whole package quarterly:
 
-```bash
-ssh root@130.51.23.147
-cd /var/www/bondverify && node export_datasets.js   # writes to /tmp/txbond/
+```
+0 10 1 1,4,7,10 *   node /var/www/bondverify/scripts/quarterly_dataset_refresh.js
 ```
 
-Source registries are re-imported monthly by cron (notaries on the 1st, contractors on
-the 1st, dealers with the TxDMV refresh), so **a quarterly re-upload is enough**. Stale
-data is the one thing that would undermine the "live" claim, so if these go a year
-without an update, either refresh them or drop the word "live" from the descriptions.
+It runs on the 1st of Jan/Apr/Jul/Oct at 10:00 UTC — deliberately after the monthly
+source imports (notaries 07:00, contractors 08:00 on the 1st), so a refresh always
+reflects the newest state data. Each run regenerates all 8 CSVs, republishes them,
+diffs row counts against the previous run, and emails a summary to contact219@gmail.com.
+
+Run it by hand any time with `--dry-run` to preview, or without to publish.
+
+### Permanent download URLs (always current)
+
+The refresh publishes to a stable location, so these never go stale:
+
+- Tarball: https://verify.quantumsurety.bond/datasets/texas-bond-data.tar.gz
+- Manifest (row counts + totals + generation date): https://verify.quantumsurety.bond/datasets/manifest.json
+- Individual CSVs: `https://verify.quantumsurety.bond/datasets/<filename>`
+
+Point the aggregator listings' "source" links at these rather than at the API endpoints.
+
+### The step that is NOT automated
+
+**Re-uploading to data.world, Kaggle and Hugging Face.** Those need per-platform API
+tokens which are not on the server, so the cron stops after publishing and emails a
+reminder. The quarterly email is the prompt — grab the tarball and re-upload.
+
+If you ever add tokens, Kaggle and Hugging Face are two CLI calls (both shown above) and
+the cron could do them directly; data.world would need its API.
+
+Stale data is the one thing that undermines the "live" claim. If a year passes with the
+listings unrefreshed, either update them or drop the word "live" from the descriptions.
 
 ## After uploading
 

@@ -1,0 +1,545 @@
+city,dealers_total,dealers_active
+HOUSTON,2519,2412
+Dallas,1121,1067
+SAN ANTONIO,931,884
+Fort Worth,606,581
+EL PASO,552,532
+AUSTIN,415,391
+LAREDO,296,277
+Amarillo,293,286
+Lubbock,240,231
+ARLINGTON,230,224
+Brownsville,220,213
+McAllen,207,200
+Grand Prairie,200,191
+Corpus Christi,194,189
+TYLER,185,183
+Irving,180,169
+GARLAND,179,173
+Odessa,158,157
+WACO,133,130
+Conroe,125,124
+EDINBURG,124,122
+LONGVIEW,123,122
+ABILENE,122,120
+Spring,118,114
+Lewisville,114,109
+MISSION,114,109
+Pharr,110,110
+Beaumont,103,99
+WICHITA FALLS,102,98
+Plano,100,96
+KATY,97,92
+Lufkin,87,83
+Midland,85,83
+New Braunfels,83,83
+SAN ANGELO,83,81
+DONNA,81,80
+BRYAN,81,79
+MCKINNEY,79,72
+Haltom City,79,75
+KILLEEN,79,75
+Texarkana,78,74
+Pasadena,78,76
+Denton,75,70
+SUGAR LAND,75,73
+Victoria,74,74
+HUMBLE,73,70
+Nacogdoches,72,69
+Harlingen,69,66
+Alvarado,68,66
+Mansfield,66,64
+CARROLLTON,64,60
+ALAMO,63,60
+RICHARDSON,62,60
+Temple,62,61
+Sherman,61,59
+BURLESON,61,60
+Cleburne,59,57
+Greenville,58,57
+Kennedale,57,57
+WEATHERFORD,56,55
+Rosenberg,54,52
+EAGLE PASS,54,53
+Baytown,53,53
+SEGUIN,53,53
+San Benito,53,50
+Sulphur Springs,51,50
+SOUTH HOUSTON,50,50
+CYPRESS,48,44
+Round Rock,48,47
+Paris,47,47
+Mesquite,47,46
+Duncanville,46,45
+Alvin,46,45
+Hidalgo,46,42
+RICHMOND,46,42
+Boerne,46,45
+Waxahachie,46,45
+Georgetown,46,45
+CORSICANA,45,45
+San Juan,45,44
+BUDA,43,43
+HUNTSVILLE,41,40
+SEMINOLE,40,40
+Kerrville,39,39
+Livingston,39,37
+San Marcos,38,38
+GAINESVILLE,38,37
+Terrell,38,36
+GRANBURY,38,36
+ROCKWALL,38,37
+DECATUR,37,37
+Tomball,36,33
+PALMVIEW,35,34
+Kyle,35,33
+STEPHENVILLE,35,34
+MOUNT PLEASANT,35,34
+Socorro,34,33
+PALESTINE,34,34
+GRAPEVINE,34,34
+Rio Grande City,34,33
+Port Arthur,34,31
+Marshall,34,32
+Stafford,34,34
+Denison,33,32
+HUTTO,32,30
+Balch Springs,32,32
+Converse,31,28
+WYLIE,30,28
+Henderson,30,29
+WESLACO,30,29
+Pflugerville,30,28
+CLEVELAND,29,28
+Del Rio,29,27
+College Station,28,27
+BRENHAM,27,27
+ATHENS,27,27
+ANGLETON,27,27
+ADDISON,27,27
+BROWNWOOD,27,26
+PEARLAND,27,26
+PRINCETON,27,26
+MAGNOLIA,27,26
+Canutillo,26,26
+FRISCO,26,26
+Wills Point,26,26
+Springtown,25,23
+Channelview,25,23
+LA FERIA,25,25
+Belton,24,24
+Royse City,23,20
+PLAINVIEW,23,22
+Rowlett,23,23
+MARBLE FALLS,23,21
+Jasper,23,23
+ORANGE,23,23
+Selma,23,23
+LEAGUE CITY,22,20
+NAVASOTA,22,22
+Sealy,22,22
+Lancaster,22,21
+Seagoville,22,21
+Silsbee,21,20
+Gilmer,21,21
+CADDO MILLS,21,20
+WILLIS,21,20
+DICKINSON,21,21
+KILGORE,20,20
+Pampa,20,20
+RED OAK,20,19
+La Marque,20,19
+Aransas Pass,20,18
+FARMERS BRANCH,19,18
+Euless,19,17
+La Porte,19,19
+JUSTIN,19,18
+DALHART,19,19
+Pittsburg,19,18
+Lampasas,18,18
+Webster,18,17
+BIG SPRING,18,18
+Texas City,18,18
+Cedar Park,18,18
+Vidor,18,17
+FAIRFIELD,18,18
+PORTER,18,18
+Bastrop,18,16
+Hurst,18,17
+CANYON,17,17
+Uvalde,17,17
+Floresville,17,17
+LA GRANGE,17,17
+TAYLOR,17,16
+Jacksonville,17,15
+Whitesboro,17,16
+GATESVILLE,17,16
+Dumas,17,17
+CARTHAGE,17,17
+CANTON,17,17
+KAUFMAN,17,17
+ROMA,17,17
+NEW CANEY,16,16
+BOWIE,16,16
+STANTON,16,16
+ROBSTOWN,16,16
+MONTGOMERY,16,15
+Ennis,16,15
+Allen,16,15
+Azle,16,15
+Vernon,15,15
+Bedford,15,14
+ALICE,15,14
+ELM MOTT,15,14
+Rockport,15,15
+Madisonville,15,15
+FLORENCE,15,14
+ATASCOSA,15,14
+Ferris,15,15
+Mineola,15,14
+BURNET,15,15
+Forest Hill,15,12
+ROSHARON,15,15
+BONHAM,14,14
+DEL VALLE,14,14
+El Campo,14,13
+BROWNFIELD,14,14
+Bay City,14,14
+Desoto,14,14
+Forney,14,13
+PANTEGO,14,14
+MERCEDES,14,14
+Kemah,14,14
+WALLER,14,14
+NORTH RICHLAND HILLS,14,14
+Lockhart,13,13
+BROOKSHIRE,13,13
+CROSBY,13,13
+Haslet,13,13
+SPICEWOOD,13,12
+LINDALE,13,12
+LIBERTY,13,13
+Andrews,13,13
+HEWITT,13,13
+Nederland,13,12
+Hudson Oaks,13,12
+Flint,13,12
+CEDAR CREEK,12,12
+Galveston,12,12
+Kingsville,12,12
+Los Fresnos,12,10
+Wharton,12,12
+Rhome,12,12
+Devine,12,11
+QUINLAN,12,12
+Crowley,12,11
+Manor,12,12
+COMANCHE,12,12
+HILLSBORO,12,11
+Leander,12,12
+Canyon Lake,12,12
+Graham,12,11
+RICE,12,12
+BORGER,12,12
+Pleasanton,12,12
+Gladewater,12,12
+LULING,11,11
+Clute,11,11
+Snyder,11,10
+MEXIA,11,10
+FREDERICKSBURG,11,11
+WOLFFORTH,11,11
+The Woodlands,11,11
+GIDDINGS,11,11
+PENITAS,11,11
+Kingwood,11,11
+MIDLOTHIAN,11,11
+DRIPPING SPRINGS,11,11
+FT WORTH,11,10
+PORT LAVACA,11,11
+WHITEHOUSE,11,11
+New Boston,11,11
+PERRYTON,11,11
+Early,11,11
+VINTON,11,10
+Sanger,11,11
+San Elizario,10,9
+Eastland,10,10
+Center,10,10
+Liberty Hill,10,10
+Hitchcock,10,10
+Tye,10,9
+Yoakum,10,9
+Hutchins,10,10
+Live Oak,10,9
+Dale,10,10
+Mt Pleasant,10,10
+Schertz,10,10
+BEEVILLE,9,8
+VAN ALSTYNE,9,9
+Lacy Lakeview,9,7
+MARION,9,9
+Anthony,9,9
+Kirby,9,9
+BACLIFF,9,8
+SPRING BRANCH,9,9
+Queen City,9,8
+WINNSBORO,9,9
+Krum,9,9
+WILMER,9,8
+FARMERSVILLE,9,9
+Cedar Hill,9,9
+MABANK,9,9
+BRIDGEPORT,9,9
+Lumberton,9,9
+BOYD,9,9
+Gonzales,9,9
+GODLEY,9,9
+QUITMAN,9,9
+Corinth,9,9
+HONDO,9,9
+COLUMBUS,9,9
+Lytle,8,8
+DUBLIN,8,8
+JARRELL,8,8
+White Settlement,8,7
+ALTON,8,8
+CALDWELL,8,6
+Adkins,8,7
+SOUTHLAKE,8,8
+Levelland,8,8
+Gun Barrel City,8,8
+VENUS,8,8
+ROANOKE,8,7
+Cuero,8,8
+SLATON,8,8
+Lamesa,8,8
+LORENA,8,8
+Hearne,8,8
+LITTLE ELM,8,7
+VON ORMY,8,8
+ARGYLE,8,8
+MISSOURI CITY,8,6
+JERSEY VILLAGE,8,8
+Robinson,8,7
+ANSON,8,6
+Coleman,8,8
+SWEETWATER,8,8
+Crockett,8,7
+Trinity,8,8
+Elgin,8,7
+Burkburnett,8,8
+Fort Stockton,8,8
+Commerce,8,8
+Hereford,7,7
+Emory,7,7
+Friendswood,7,7
+HEMPSTEAD,7,7
+FREEPORT,7,7
+Lake Jackson,7,7
+SEVEN POINTS,7,7
+Muleshoe,7,7
+Copperas Cove,7,6
+Prosper,7,6
+NIEDERWALD,7,6
+Breckenridge,7,7
+Brady,7,7
+CAMPBELL,7,7
+PALACIOS,7,7
+WEST,7,7
+GOLDTHWAITE,7,7
+EDNA,7,7
+BELLVILLE,7,7
+GROESBECK,7,7
+Cameron,7,7
+ELMENDORF,7,7
+Lake Worth,7,7
+Littlefield,7,7
+Manvel,7,6
+JOURDANTON,7,7
+COLLEYVILLE,6,5
+Salado,6,6
+Lakeway,6,5
+COTTONWOOD SHORES,6,5
+WATAUGA,6,6
+HARKER HEIGHTS,6,5
+GEORGE WEST,6,6
+Presidio,6,6
+Dalworthington Gardens,6,6
+Mineral Wells,6,6
+Castroville,6,6
+KINGSLAND,6,6
+Henrietta,6,6
+Elsa,6,6
+PONDER,6,5
+KEMP,6,6
+Sachse,6,5
+Bulverde,6,6
+PROGRESO,6,3
+EAST BERNARD,6,6
+Whitney,6,5
+VALLEY VIEW,6,6
+FRIONA,6,6
+GRAND SALINE,6,6
+Clarksville,6,6
+NASH,6,6
+Pinehurst,6,5
+PECOS,6,6
+Leon Valley,5,5
+Newark,5,5
+Nevada,5,4
+CISCO,5,5
+Cresson,5,5
+Saginaw,5,5
+Bandera,5,4
+KELLER,5,5
+Buna,5,5
+PIPE CREEK,5,4
+Pilot Point,5,5
+Santa Fe,5,5
+POTTSBORO,5,5
+WILLOW PARK,5,5
+Portland,5,5
+ITASCA,5,5
+Richwood,5,5
+MERIDIAN,5,5
+NEEDVILLE,5,5
+Melissa,5,5
+Diana,5,4
+AUBREY,5,5
+ROCKDALE,5,5
+BRAZORIA,5,5
+IOWA PARK,5,5
+SHINER,5,5
+PALMER,5,5
+Frankston,5,4
+CRANDALL,5,5
+Raymondville,5,5
+Marlin,5,5
+LA JOYA,5,4
+COOKVILLE,5,5
+ATLANTA,5,5
+EDCOUCH,5,5
+THE COLONY,5,5
+HALLETTSVILLE,5,3
+Fate,5,5
+KRUGERVILLE,5,5
+HOCKLEY,5,4
+Jefferson,5,5
+Daingerfield,4,4
+Whitewright,4,4
+Riesel,4,4
+ALVORD,4,4
+MERKEL,4,3
+San Augustine,4,4
+DIMMITT,4,4
+Kerens,4,4
+Poolville,4,4
+INEZ,4,4
+STRAWN,4,4
+HEBBRONVILLE,4,4
+MASON,4,3
+SPLENDORA,4,4
+Joshua,4,4
+Pearsall,4,4
+Galena Park,4,4
+Groom,4,4
+PARADISE,4,4
+TAFT,4,4
+PORT O CONNOR,4,4
+GRANDVIEW,4,3
+Hemphill,4,4
+CIBOLO,4,4
+Reno,4,4
+Crawford,4,4
+Mc Gregor,4,4
+Murchison,4,4
+LA VERNIA,4,4
+Muenster,4,4
+Seabrook,4,4
+Dayton,4,4
+NOCONA,4,4
+TATUM,4,4
+Jacksboro,4,4
+Lavon,4,4
+Clyde,4,4
+Kenedy,4,4
+Helotes,4,4
+Aledo,4,4
+Rusk,4,4
+SEYMOUR,4,4
+Haskell,4,4
+Woodville,4,4
+FLOWER MOUND,4,4
+Chappell Hill,4,4
+Hamilton,4,4
+Rocksprings,4,4
+CELESTE,4,4
+Bellmead,4,4
+DWG,4,4
+Sour Lake,4,4
+Kirbyville,3,3
+Groves,3,3
+ANNA,3,3
+Highlands,3,0
+RIO VISTA,3,3
+Anderson,3,3
+Richland Hills,3,3
+Crosbyton,3,3
+Troy,3,3
+Lone Star,3,3
+NAPLES,3,3
+Franklin,3,3
+Trinidad,3,3
+Murphy,3,3
+Blue Ridge,3,3
+ONALASKA,3,3
+GOLIAD,3,3
+Hughes Springs,3,3
+Howe,3,3
+MOUNT VERNON,3,3
+Bruceville,3,3
+Wallisville,3,3
+Perrin,3,3
+Comfort,3,2
+Monahans,3,3
+Joaquin,3,3
+NORMANGEE,3,3
+EVERMAN,3,3
+West Tawakoni,3,2
+Natalia,3,3
+POINT,3,3
+BOGATA,3,3
+Elkhart,3,3
+RAINBOW,3,3
+Rotan,3,3
+BLANCO,3,3
+FLOYDADA,3,3
+De Leon,3,3
+Olmito,3,3
+HONEY GROVE,3,3
+MALAKOFF,3,3
+POTH,3,3
+SMITHVILLE,3,3
+Eustace,3,3
+BEACH CITY,3,3
+DODD CITY,3,3
+Universal City,3,3
+Clifton,3,3
+Lott,3,3
+Pollok,3,3
+WEST ORANGE,3,3
+IDALOU,3,3
+PAIGE,3,3
+YANTIS,3,3
+Corrigan,3,3
+OLTON,3,3
+Childress,3,3
+Deer Park,3,3
+Three Rivers,3,3
+WALNUT SPRINGS,3,2
+Winnie,3,3
+DE KALB,3,3
+Horizon City,3,3
+WIMBERLEY,3,3
+Monte Alto,3,3

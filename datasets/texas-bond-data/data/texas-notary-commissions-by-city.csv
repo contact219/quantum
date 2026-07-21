@@ -1,0 +1,1393 @@
+city,commissions_total,commissions_active,commissions_expired
+Houston,58662,50519,8136
+San Antonio,27304,23675,3629
+Dallas,24244,20926,3316
+Austin,18411,15868,2539
+Fort Worth,16109,13884,2224
+El Paso,10322,8991,1330
+Katy,7141,6212,929
+Spring,6765,5903,862
+Arlington,6248,5351,897
+Plano,5360,4615,745
+Corpus Christi,4931,4277,653
+Lubbock,4874,4250,624
+Midland,4375,3799,576
+Cypress,4020,3504,516
+Conroe,3993,3516,476
+Amarillo,3808,3345,462
+Mckinney,3800,3282,518
+Irving,3732,3210,522
+Frisco,3648,3176,471
+Humble,3588,3027,561
+Garland,3536,3077,459
+Richmond,3529,3066,463
+Grand Prairie,3113,2686,427
+Tyler,3042,2621,421
+Odessa,2974,2598,376
+Pearland,2880,2476,404
+Round Rock,2875,2489,386
+Laredo,2865,2493,371
+Sugar Land,2735,2376,359
+Beaumont,2656,2342,314
+Carrollton,2643,2277,365
+Mesquite,2630,2279,351
+New Braunfels,2587,2252,335
+Waco,2563,2195,368
+Mcallen,2535,2229,306
+Brownsville,2337,2045,292
+Edinburg,2310,2051,259
+Tomball,2309,2040,269
+Missouri City,2308,1975,333
+Denton,2286,2002,284
+Georgetown,2251,1969,282
+Richardson,2178,1892,286
+Baytown,2140,1859,281
+Killeen,2100,1744,355
+Lewisville,2099,1801,298
+Pasadena,2079,1794,285
+Abilene,2060,1802,258
+Longview,1961,1722,239
+Allen,1877,1658,219
+Pflugerville,1786,1526,260
+Weatherford,1728,1526,202
+Waxahachie,1728,1512,216
+Forney,1727,1506,221
+Mansfield,1722,1495,227
+Burleson,1685,1473,212
+Bryan,1678,1472,206
+League City,1674,1467,207
+Magnolia,1630,1416,214
+Rockwall,1626,1440,185
+Wichita Falls,1622,1421,201
+Mission,1597,1408,187
+San Angelo,1589,1399,189
+Leander,1564,1383,181
+College Station,1563,1358,205
+Temple,1548,1334,214
+The Woodlands,1472,1253,219
+Desoto,1457,1252,205
+Montgomery,1377,1203,174
+Cedar Park,1343,1151,192
+Victoria,1321,1162,159
+Rowlett,1299,1128,171
+Wylie,1249,1093,156
+Kingwood,1240,1067,173
+Kyle,1209,1059,150
+Mound,1206,1063,143
+Rosenberg,1202,1072,130
+Cedar Hill,1174,979,195
+Boerne,1157,1030,127
+Granbury,1134,994,139
+North Richland Hills,1131,960,171
+Harlingen,1125,988,137
+Lufkin,1111,957,154
+Midlothian,1111,995,116
+Little Elm,1087,932,155
+San Marcos,1077,929,148
+Grapevine,1069,933,136
+Universal City,1068,944,124
+Seguin,1043,911,132
+Aubrey,1037,896,141
+Texas City,1029,884,145
+Euless,1008,853,155
+Rosharon,1003,889,114
+Friendswood,995,845,150
+Lancaster,991,830,161
+Huntsville,983,861,122
+Alvin,983,875,108
+Cleveland,967,858,109
+Buda,956,826,130
+Bedford,927,787,140
+Hutto,919,814,105
+Keller,918,781,137
+Sherman,917,823,94
+The Colony,908,778,130
+Cleburne,905,802,103
+Converse,904,778,126
+Royse City,873,774,99
+Orange,870,761,107
+Pharr,863,770,93
+Prosper,834,729,105
+New Caney,831,731,100
+Hurst,827,720,106
+Nacogdoches,824,723,100
+Porter,824,716,108
+Galveston,815,694,120
+Weslaco,814,703,111
+Texarkana,812,701,111
+Deer Park,800,687,113
+Kerrville,800,701,99
+Coppell,797,691,106
+Willis,793,705,88
+Princeton,788,722,66
+Addison,754,645,108
+Duncanville,743,632,111
+Schertz,735,641,94
+Bastrop,733,641,92
+La Porte,730,620,110
+Crowley,729,630,99
+Azle,724,646,77
+Terrell,722,628,94
+Haslet,721,604,117
+Belton,720,642,78
+Farmers Branch,718,623,95
+Dickinson,712,605,107
+Southlake,704,613,91
+Crosby,703,607,96
+Greenville,696,604,92
+Livingston,689,607,82
+Angleton,678,593,85
+Port Arthur,676,589,87
+Red Oak,662,575,86
+Manvel,646,586,60
+Stafford,645,561,84
+Manor,640,554,86
+Brenham,629,550,78
+Cibolo,621,555,66
+Kaufman,616,550,65
+Del Rio,611,530,81
+Anna,607,540,67
+Hockley,605,534,71
+Eagle Pass,591,517,74
+Liberty Hill,591,533,58
+Celina,591,517,74
+Fresno,583,512,71
+Haltom City,569,489,80
+Ennis,567,507,60
+Fulshear,564,516,48
+Marshall,563,507,56
+Corsicana,560,501,59
+Decatur,559,494,65
+Copperas Cove,554,468,86
+Dayton,544,481,63
+Sachse,531,466,65
+Paris,521,457,64
+Denison,515,453,62
+Athens,515,455,60
+Palestine,498,449,49
+Gainesville,497,438,59
+Lake Jackson,495,427,68
+Springtown,493,425,68
+Harker Heights,489,417,72
+Sulphur Springs,489,420,69
+Helotes,478,408,70
+Nederland,477,415,62
+Corinth,472,416,56
+Melissa,471,410,61
+Argyle,468,422,46
+Henderson,465,415,50
+Elgin,464,413,51
+Colleyville,454,394,60
+Dripping Springs,454,388,66
+Webster,453,381,71
+Aledo,449,400,49
+Channelview,448,384,64
+Justin,447,403,44
+Roanoke,447,394,53
+Bellaire,442,382,60
+Vidor,440,378,62
+Fredericksburg,438,382,56
+San Juan,435,387,48
+Big Spring,430,389,41
+Brownwood,426,369,57
+Rio Grande City,424,369,55
+Lumberton,420,368,52
+San Benito,418,356,62
+Canyon,415,367,48
+Alvarado,412,367,45
+Gilmer,406,361,45
+Fate,402,355,47
+Glenn Heights,401,325,76
+Rockport,401,350,51
+Saginaw,400,353,47
+Sanger,399,346,53
+Kilgore,398,355,43
+Spring Branch,398,337,61
+Jacksonville,392,340,52
+Lockhart,391,341,50
+Jarrell,389,340,49
+Donna,389,343,46
+Portland,388,344,44
+Bulverde,386,348,38
+Santa Fe,386,324,62
+Benbrook,383,337,46
+Burnet,382,337,45
+Alice,378,331,47
+Taylor,377,338,39
+Del Valle,373,320,53
+Seagoville,371,325,46
+Uvalde,371,321,50
+Kingsville,364,311,53
+Balch Springs,359,315,44
+Canyon Lake,358,318,40
+Bay City,355,307,48
+Canton,353,311,42
+Marble Falls,353,301,52
+Watauga,350,312,38
+Waller,348,311,37
+Joshua,341,304,37
+Wills Point,341,286,55
+Lindale,340,295,45
+Alamo,340,302,38
+Liberty,336,303,32
+La Marque,330,282,48
+La Vernia,326,285,41
+Mineral Wells,325,285,40
+Mabank,324,280,44
+El Campo,317,286,30
+Brookshire,317,276,41
+Sealy,314,283,31
+Graham,310,279,31
+Mount Pleasant,308,263,45
+Seabrook,303,258,45
+Van Alstyne,301,267,34
+Seminole,300,270,30
+Gatesville,296,252,44
+Huffman,295,267,28
+Carthage,292,252,40
+Silsbee,292,258,34
+Plainview,291,256,35
+Hempstead,288,262,26
+Pampa,288,248,40
+Robstown,287,252,35
+Wharton,285,245,40
+Andrews,285,249,36
+Jasper,285,253,32
+Port Neches,284,250,34
+Mercedes,279,251,28
+Whitehouse,278,242,36
+Crandall,277,243,34
+Beeville,276,231,45
+Lampasas,276,247,29
+Mc Kinney,273,239,34
+Bullard,272,239,33
+Pleasanton,269,232,37
+Farmersville,268,228,40
+Caddo Mills,262,241,21
+La Grange,261,229,32
+Murphy,260,237,23
+Wimberley,258,211,47
+Hewitt,258,221,37
+Horizon City,258,215,43
+Quinlan,257,236,21
+Navasota,256,236,20
+Groves,255,218,37
+Splendora,254,224,30
+Bellville,249,222,27
+Highland Village,249,213,36
+Dumas,248,225,23
+Center,247,223,23
+Needville,246,218,28
+Venus,246,212,34
+Northlake,244,219,25
+Caldwell,244,207,37
+Los Fresnos,238,199,39
+Spicewood,238,203,35
+Pecos,236,200,36
+Hondo,236,213,23
+Woodway,235,206,29
+Pittsburg,234,205,29
+Port Lavaca,233,207,26
+Hereford,232,198,34
+Lago Vista,230,210,20
+Levelland,228,190,38
+Bandera,226,194,32
+Lakeway,223,199,24
+Krum,222,200,22
+Bonham,220,191,29
+Godley,218,201,17
+Castroville,218,185,33
+Gonzales,216,190,26
+Lavon,216,192,24
+Mineola,216,195,21
+Snyder,215,190,25
+Cedar Creek,215,176,39
+Hillsboro,215,190,25
+Kemp,215,188,27
+Salado,214,196,18
+Whitesboro,214,189,25
+Sunnyvale,213,184,29
+Kennedale,213,188,25
+Giddings,212,183,29
+Monahans,210,177,33
+Fort Stockton,205,184,21
+Lorena,204,175,29
+Lamesa,204,186,18
+South Houston,204,184,20
+Vernon,197,171,26
+Bridge City,197,178,19
+Selma,197,177,20
+Bowie,196,175,21
+Rusk,195,172,23
+Heartland,193,164,29
+Crockett,193,161,32
+Heath,191,168,23
+Gladewater,190,162,28
+Sinton,189,175,14
+Quitman,189,163,26
+Sweetwater,188,167,21
+Socorro,188,170,18
+Cuero,187,167,20
+Freeport,185,156,29
+Rhome,184,162,22
+Bridgeport,184,163,21
+Borger,184,166,18
+Live Oak,183,163,20
+Robinson,181,161,19
+Alton,181,166,15
+Burkburnett,181,147,34
+Clute,180,160,20
+Woodville,176,149,27
+Smithville,175,153,22
+Wolfforth,175,159,16
+Hallettsville,174,154,20
+Winnsboro,174,150,24
+Kountze,173,161,12
+Lake Dallas,172,145,27
+Dalhart,172,151,21
+Pinehurst,172,148,24
+Anahuac,171,144,27
+Columbus,171,159,12
+Chandler,170,153,17
+Hallsville,170,149,21
+Ft Worth,169,149,20
+West Columbia,168,150,18
+Boyd,168,145,23
+Pilot Point,168,156,12
+Paradise,168,152,16
+Trophy Club,167,149,18
+Aransas Pass,167,142,25
+Rockdale,167,150,17
+Highlands,165,137,28
+Fairfield,165,146,19
+Ingleside,165,140,25
+Kingsland,164,150,14
+Mexia,164,148,16
+Sugarland,164,151,13
+Kemah,162,138,24
+Madisonville,162,146,16
+Devine,161,139,22
+Coldspring,161,143,17
+Cameron,160,143,17
+Ferris,160,148,12
+Pottsboro,159,131,28
+Blanco,159,142,17
+Poteet,159,143,16
+Iowa Park,158,135,23
+Gun Barrel City,158,139,19
+Mont Belvieu,158,143,15
+Perryton,158,144,14
+Alpine,158,140,18
+Scurry,157,128,29
+Marion,155,130,25
+Comanche,155,132,23
+Whitney,155,132,23
+Llano,154,137,17
+Brazoria,153,140,13
+Eastland,152,137,15
+Bertram,152,130,22
+Franklin,149,135,14
+Nevada,149,129,20
+Ponder,149,131,18
+Clyde,149,132,17
+Glen Rose,149,138,11
+Edna,148,129,19
+Brownfield,148,125,23
+Jourdanton,148,127,21
+Adkins,147,127,20
+Buna,147,131,16
+Richland Hills,145,128,17
+Jefferson,145,129,16
+White Oak,143,118,25
+Hidalgo,143,127,16
+Troup,143,126,17
+Hitchcock,142,128,14
+Grandview,142,127,15
+Von Ormy,142,120,22
+Groesbeck,142,124,18
+Lytle,140,120,20
+Raymondville,140,125,15
+La Feria,139,124,15
+Trinity,138,120,18
+Atlanta,138,120,18
+Jacksboro,137,118,19
+New Boston,137,122,15
+Breckenridge,135,118,17
+Willow Park,134,115,19
+Nolanville,134,117,17
+Winnie,134,114,20
+Clifton,133,116,17
+Early,133,111,22
+Pearsall,132,116,16
+Yoakum,132,120,12
+Luling,131,114,17
+Josephine,131,120,11
+Huntington,130,114,16
+Emory,130,114,16
+Roma,130,114,16
+Tx,129,129,0
+Shepherd,129,112,17
+Sweeny,128,109,19
+Kempner,126,106,20
+Elmendorf,126,112,14
+Fairview,126,107,19
+Dale,125,114,11
+Forest Hill,123,99,24
+Dublin,123,112,11
+West,123,106,17
+Galena Park,122,98,24
+Commerce,121,108,13
+Manchaca,121,109,12
+Grand Saline,121,103,18
+Palmview,120,111,9
+Frankston,120,108,12
+Kirbyville,120,104,16
+Jersey Village,119,100,19
+Troy,118,109,9
+New Waverly,116,97,19
+Lantana,115,93,22
+Johnson City,115,105,10
+Sour Lake,114,98,16
+Oak Point,114,97,17
+Eustace,114,92,22
+Horseshoe Bay,113,103,10
+Slaton,113,93,20
+Savannah,111,91,20
+Diana,110,98,12
+Hearne,110,98,12
+Saint Hedwig,110,101,9
+Providence Village,109,92,17
+Moody,109,94,15
+Brady,109,93,16
+White Settlement,108,92,16
+Ovilla,108,97,11
+Bacliff,108,97,11
+Mt Pleasant,108,92,16
+Leonard,108,90,18
+Denver City,108,97,11
+Mathis,107,95,11
+Onalaska,106,96,10
+Shallowater,106,94,12
+Palmer,106,93,13
+Whitewright,104,95,9
+N Richland Hills,104,85,19
+Howe,104,87,17
+Centerville,104,96,8
+Mount Vernon,104,89,15
+Ben Wheeler,104,91,13
+Nocona,103,81,22
+Diboll,103,90,13
+Port Aransas,102,86,16
+Refugio,101,80,21
+Merkel,101,90,11
+Daingerfield,101,88,13
+Ingram,100,90,10
+Lucas,100,88,12
+Iowa Colony,100,91,9
+Anderson,100,87,13
+Penitas,99,85,14
+Colorado City,99,85,14
+Wilmer,98,85,13
+China Spring,98,89,9
+Valley View,98,85,13
+East Bernard,97,89,8
+Mason,96,89,7
+Littlefield,96,86,10
+Fair Oaks Ranch,95,83,12
+Blue Ridge,94,83,11
+Driftwood,94,80,14
+Hamilton,94,80,14
+Hutchins,94,83,11
+Gunter,94,84,10
+Kermit,93,81,12
+Somerville,93,84,9
+Carrizo Springs,93,81,12
+Zapata,93,81,12
+Van,93,80,13
+Canutillo,92,83,9
+Shiner,92,78,14
+Natalia,92,72,20
+Overton,92,85,7
+San Augustine,91,76,15
+Muleshoe,91,83,8
+Hawkins,91,80,11
+Hickory Creek,91,81,10
+River Oaks,91,82,9
+Shenandoah,91,84,7
+Teague,91,78,13
+Weimar,91,82,9
+Atascosa,90,84,6
+Hemphill,90,79,11
+Wallis,90,75,15
+Haskell,89,80,9
+Junction,88,78,10
+Mcgregor,88,78,10
+Ballinger,88,80,8
+Henrietta,88,79,9
+Brownsboro,87,71,16
+Plantersville,87,79,8
+Millsap,87,66,21
+Goliad,87,76,11
+Anson,87,80,7
+Coleman,87,74,13
+Collinsville,87,73,14
+Palacios,87,77,10
+Canadian,86,80,6
+Hughes Springs,86,74,12
+Lipan,86,78,8
+George West,86,78,8
+Iola,86,75,11
+Lexington,85,75,10
+Pipe Creek,85,71,14
+Hudson Oaks,85,79,6
+Stanton,85,73,12
+Ozona,85,78,7
+Tulia,84,70,14
+Buffalo,84,74,10
+Poolville,83,74,9
+Windcrest,83,79,4
+Comfort,83,72,11
+Crossroads,83,67,16
+Tuscola,82,68,14
+Big Sandy,82,75,7
+Karnes City,81,68,13
+Edgewood,81,71,10
+Edcouch,81,76,5
+Westlake Hills,81,76,5
+Schulenburg,80,67,13
+Mc Gregor,80,68,12
+Alba,80,72,8
+Newark,80,72,8
+Childress,80,73,7
+Kenedy,79,67,12
+Cisco,79,69,10
+Linden,79,71,8
+San Saba,79,66,13
+Post,79,67,12
+Stockdale,78,67,11
+Elkhart,78,72,6
+Panhandle,78,69,9
+Goldthwaite,77,67,10
+Fabens,76,71,5
+Taft,76,68,8
+West Lake Hills,76,62,14
+Winona,75,53,22
+Hooks,75,61,14
+Marlin,75,68,7
+Cotulla,74,65,9
+Malakoff,74,64,10
+Tolar,73,65,8
+Somerset,73,64,9
+Baird,73,65,8
+Bee Cave,73,67,6
+Yantis,72,61,11
+Crystal City,72,59,13
+Chico,71,65,6
+Trenton,71,63,8
+Meadows Place,71,66,5
+Tatum,71,65,6
+Groveton,71,60,11
+Orange Grove,70,62,8
+Falfurrias,70,63,7
+Gardendale,70,59,11
+Paige,70,60,10
+Valley Mills,70,60,10
+Lake Worth,70,61,9
+Clint,70,63,7
+Pantego,70,60,10
+Wolfe City,69,54,15
+Maxwell,69,61,8
+Elsa,69,63,6
+Newton,68,58,10
+Tahoka,68,63,5
+Dimmitt,68,57,11
+Crane,68,60,8
+Normangee,67,57,10
+Idalou,67,62,5
+Eagle Lake,67,57,10
+Olney,67,56,11
+Rio Vista,66,62,4
+Danbury,66,62,4
+Brackettville,66,60,6
+Odem,66,59,7
+Waskom,66,59,7
+South Padre Island,66,53,13
+Thorndale,65,60,5
+Pollok,65,59,6
+Bishop,65,58,7
+Rio Hondo,65,57,8
+Richwood,65,58,7
+Stamford,65,57,8
+San Elizario,65,58,7
+Alvord,65,58,7
+Italy,64,56,8
+Riesel,64,59,5
+Spearman,64,59,5
+Port Isabel,64,56,8
+Corrigan,64,56,8
+Grapeland,64,54,10
+Seymour,64,58,6
+Albany,63,59,4
+Parker,62,53,9
+Everman,62,56,6
+Kerens,62,56,6
+Wake Village,62,57,5
+Lakehills,62,56,6
+Granite Shoals,61,55,6
+San Leon,61,52,9
+Meridian,61,53,8
+Lone Oak,60,54,6
+San Diego,59,51,8
+Clarksville,59,53,6
+Keene,59,53,6
+Beasley,59,51,8
+Arp,58,47,11
+Bedias,58,50,8
+Cumby,58,53,5
+Celeste,58,53,5
+Hawley,57,50,7
+Cooper,57,49,8
+Hico,56,55,1
+Tool,56,47,9
+Abernathy,56,53,3
+Friona,56,50,6
+Anthony,55,50,5
+Harper,55,50,5
+De Leon,55,52,3
+Murchison,55,48,7
+Itasca,55,48,7
+Fritch,55,48,7
+La Joya,55,46,9
+Winters,55,47,8
+Blossom,55,53,2
+Lovelady,55,50,5
+Muenster,55,51,4
+Klein,54,50,4
+Nash,54,48,6
+Olmito,54,47,7
+Ganado,54,45,8
+Archer City,54,48,6
+Chappell Hill,54,47,7
+Naples,54,49,5
+Quanah,54,47,7
+Sonora,54,48,6
+Three Rivers,53,48,5
+Bells,53,47,6
+Big Lake,53,48,5
+Larue,52,45,7
+Eddy,52,47,5
+Timpson,52,47,5
+Palmhurst,52,40,12
+Streetman,52,46,6
+Clarendon,52,46,6
+Corp Christi,52,51,1
+Axtell,51,47,4
+Inez,51,48,3
+Wellington,51,42,9
+Omaha,51,43,8
+Yorktown,51,47,4
+Leakey,51,51,0
+Garden Ridge,51,42,9
+Alto,50,43,7
+Warren,50,43,7
+Harleton,50,46,4
+Ore City,50,45,5
+Sandia,50,46,4
+Graford,50,47,3
+Westlake,49,40,9
+Tioga,49,41,8
+Presidio,49,43,6
+Brookeland,49,46,3
+Point,49,43,6
+Fort Hood,48,33,15
+Seagraves,48,43,5
+Hebbronville,48,38,10
+Powderly,48,42,6
+Queen City,48,41,7
+Double Oak,47,42,5
+Jonestown,47,43,4
+Lott,47,41,6
+De Kalb,47,40,7
+Shady Shores,47,43,4
+Marfa,47,40,7
+Combine,47,42,5
+Holliday,46,42,4
+Ranger,46,40,6
+Boling,46,44,2
+Rogers,46,39,7
+Red Rock,46,43,3
+Wheeler,46,42,4
+Prairie View,46,46,0
+Elm Mott,46,42,4
+Maud,46,42,4
+Cresson,45,40,5
+Stratford,45,42,3
+Honey Grove,45,40,5
+Uhland,45,39,6
+Maypearl,45,37,8
+Kingsbury,44,39,5
+Santa Rosa,44,39,5
+Hubbard,44,36,8
+Woodsboro,44,35,9
+Crawford,44,33,11
+Electra,44,41,3
+Dilley,43,36,7
+Farwell,43,43,0
+Campbell,43,39,4
+Hamshire,43,39,4
+Granger,43,38,5
+Holland,43,39,4
+Premont,43,38,5
+Shavano Park,43,40,3
+Sullivan City,43,39,4
+Fort Davis,43,37,6
+Shamrock,42,39,3
+Joaquin,42,30,12
+North Zulch,41,39,2
+Mart,41,38,3
+Runaway Bay,41,35,6
+Eldorado,41,40,1
+New Ulm,41,38,3
+Lyford,41,36,5
+Falls City,41,37,4
+Garrison,41,34,7
+Avinger,41,35,6
+Laguna Vista,41,36,5
+Beckville,41,32,9
+Zavalla,40,37,3
+Pattison,40,38,2
+Bartlett,40,32,8
+Beach City,40,34,6
+Atascocita,40,33,7
+Damon,40,36,4
+Bluff Dale,39,33,6
+El Lago,39,35,4
+Hull,39,37,2
+Fischer,39,35,4
+Mico,39,31,8
+Texas,39,39,0
+Pointblank,39,33,6
+Plains,39,34,5
+Burton,38,35,3
+Martindale,38,36,2
+Buchanan Dam,38,32,6
+Sunset,38,35,3
+Stinnett,37,31,6
+Rice,37,29,8
+Nixon,37,31,6
+Meadowlakes,37,35,2
+Crystal Beach,36,31,5
+Hamlin,36,33,3
+Covington,36,33,3
+Fayetteville,36,30,6
+Bremond,36,36,0
+Richards,36,32,4
+Tenaha,35,31,4
+Thornton,35,29,6
+Colmesneil,35,30,5
+Bogata,35,32,3
+Van Horn,35,30,5
+Trinidad,35,33,2
+Tennessee Colony,35,33,2
+Goodrich,35,27,8
+Menard,35,28,7
+Dfw Airport,35,29,6
+Shelbyville,34,27,7
+Hideaway,34,31,3
+Marquez,34,27,7
+Savoy,34,28,6
+Miles,34,25,9
+Lockney,34,31,3
+Lamarque,34,30,4
+Roby,34,31,3
+Palo Pinto,34,30,4
+Crosbyton,33,30,3
+Booker,33,33,0
+Vega,33,30,3
+Santo,33,31,2
+Cushing,33,28,5
+Morgan,33,29,4
+Krugerville,33,29,4
+Frost,33,31,2
+Cross Plains,33,30,3
+Rocksprings,33,28,5
+Cove,33,28,5
+La Villa,32,29,3
+Hale Center,32,28,4
+Bayou Vista,32,26,6
+Sadler,32,26,6
+Oakwood,32,27,5
+Como,31,28,3
+Gordonville,31,24,7
+Bangs,31,30,1
+Ralls,31,27,4
+Ft. Worth,31,30,1
+Gregory,31,26,5
+Reno,31,26,5
+Gruver,31,26,5
+Cottonwood Shores,31,28,3
+Mount Enterprise,31,23,8
+Holly Lake Ranch,31,28,3
+Center Point,31,28,3
+Rancho Viejo,31,26,5
+Memphis,30,28,2
+Little River Academy,30,26,4
+Arcola,30,26,4
+Van Vleck,30,28,2
+Blum,30,27,3
+Gordon,30,26,4
+Robert Lee,30,22,8
+Brock,30,29,1
+Saint Jo,30,29,1
+Spur,29,28,1
+Wink,29,26,3
+Monte Alto,29,28,1
+Rosebud,29,25,4
+Freer,29,26,3
+Olton,29,28,1
+Westworth Village,29,24,5
+Waelder,29,25,4
+Washington,28,21,7
+Lake Kiowa,28,25,3
+Moulton,28,28,0
+Kennard,28,27,1
+Cat Spring,28,23,5
+Cross Roads,28,26,2
+Morton,28,25,3
+Midway,28,23,5
+Barry,28,28,0
+Liverpool,27,23,4
+Mt Vernon,27,26,1
+City,27,24,3
+Throckmorton,27,22,5
+Sundown,27,24,3
+Pineland,27,22,5
+Ropesville,27,25,2
+Bruceville,27,23,4
+Mertzon,27,27,0
+Sunray,27,24,3
+De Berry,27,22,5
+Sierra Blanca,27,26,1
+Claude,27,25,2
+Karnack,26,25,1
+Pickton,26,19,7
+Kirby,26,22,4
+Aquilla,26,24,2
+Blue Mound,26,21,5
+Bartonville,26,23,3
+Thrall,26,24,2
+Skidmore,26,21,5
+Milano,26,26,0
+Village Mills,26,24,2
+Montague,26,24,2
+Coupland,25,20,5
+Avery,25,23,2
+Louise,25,22,3
+Mc Camey,25,22,3
+Wortham,25,22,3
+Barker,25,23,2
+Buffalo Gap,25,20,5
+Apple Springs,25,22,3
+Mc Allen,25,22,3
+Christoval,25,22,3
+Sumner,25,23,2
+Rankin,25,23,2
+Blanket,25,24,1
+Seadrift,25,19,6
+Santa Anna,25,24,1
+Roscoe,25,21,4
+Detroit,25,23,2
+May,24,19,5
+Eden,24,23,1
+Perrin,24,21,3
+Medina,24,21,3
+Aspermont,24,23,1
+Hardin,24,20,4
+Poth,24,21,3
+La Coste,24,23,1
+Munday,24,22,2
+Fulton,24,23,1
+Bloomburg,24,21,3
+Gary,24,21,3
+Lakeside,24,19,5
+Scroggins,23,23,0
+The Hills,23,18,5
+Bronte,23,20,3
+Rosanky,23,18,5
+Tornillo,23,20,3
+Dodd City,23,22,1
+Crowell,23,23,0
+Laneville,23,18,5
+Douglass,23,22,1
+Alleyton,23,22,1
+Riviera,23,18,5
+Hilltop Lakes,23,21,2
+White Deer,23,16,7
+Sabinal,22,16,6
+China,22,21,1
+Sudan,22,20,2
+Jewett,22,19,3
+Dike,22,21,1
+Dawson,22,20,2
+College Sta,22,22,0
+West Orange,22,20,2
+Vinton,22,20,2
+Gorman,22,19,3
+Paducah,22,18,4
+Ledbetter,22,20,2
+Tow,22,18,4
+Niederwald,22,21,1
+Lorenzo,22,20,2
+Laporte,22,20,2
+Garden City,22,21,1
+Forth Worth,22,17,5
+Broaddus,22,19,3
+Blessing,21,18,3
+Milford,21,19,2
+Mountain Home,21,21,0
+Walnut Springs,21,16,5
+Fort Cavazos,21,21,0
+Rotan,21,18,3
+Chilton,21,20,1
+Round Top,21,19,2
+Tom Bean,21,17,4
+Harwood,21,20,1
+Calvert,21,16,5
+Windthorst,21,18,3
+Knox City,21,20,1
+Talco,21,15,6
+Bellmead,21,18,3
+Oak Leaf,21,19,2
+Strawn,20,18,2
+Iowa City,20,14,6
+Lone Star,20,17,3
+Purdon,20,18,2
+Seven Points,20,17,3
+Lincoln,20,16,4
+Clear Lake Shores,20,20,0
+Leesburg,20,17,3
+Blooming Grove,20,16,4
+Simms,20,15,5
+Pattonville,20,20,0
+Oglesby,20,20,0
+Happy,20,16,4
+Benavides,20,15,5
+Sheridan,20,20,0
+Hunt,20,19,1
+Evant,20,18,2
+Abbott,20,18,2
+Moore,20,17,3
+Fruitvale,20,19,1
+Port Bolivar,19,15,4
+Mount Calm,19,18,1
+Coahoma,19,18,1
+Garciasville,19,19,0
+Charlotte,19,16,3
+Industry,19,18,1
+Nrh,19,16,3
+Castle Hills,19,18,1
+Bronson,19,17,2
+Saltillo,19,18,1
+Chillicothe,19,16,3
+Daisetta,19,16,3
+Tilden,19,17,2
+Hankamer,19,18,1
+Lometa,19,17,2
+Bloomington,18,14,4
+Utopia,18,15,3
+Rowena,18,16,2
+Buckholts,18,16,2
+Call,18,16,2
+Dell City,18,13,5
+Cookville,18,17,1
+Anton,18,17,1
+Miami,18,16,2
+Gause,18,17,1
+Tiki Island,18,13,5
+Mclean,17,14,3
+Earth,17,15,2
+Kosse,17,17,0
+Tye,17,15,2
+Etoile,17,17,0
+Jonesboro,17,17,0
+Mc Queeney,17,17,0
+Saint Paul,17,13,4
+Orchard,17,16,1
+Silverton,17,17,0
+Alief,17,16,1
+Hobson,17,14,3
+Horizon,16,13,3
+Carmine,16,15,1
+Ivanhoe,16,14,2
+Rising Star,16,14,2
+Quemado,16,16,0
+Snook,16,12,4
+Newcastle,16,13,3
+Leon Valley,16,14,2
+Groom,16,14,2
+Woodson,16,14,2
+Fort Hancock,16,14,2
+Devers,16,15,1
+Spurger,16,15,1
+Brashear,16,15,1
+Hartley,16,14,2
+Ector,16,15,1
+Bovina,15,13,2
+Smiley,15,13,2
+Fort Sam Houston,15,14,1
+Shoreacres,15,13,2
+Paint Rock,15,14,1
+Bellevue,15,15,0
+Dickens,15,15,0
+Mccamey,15,15,0
+Batson,15,12,3
+Iredell,15,13,2
+Chester,15,13,2
+Coolidge,15,14,1
+Nemo,15,12,3
+Oakhurst,15,11,4
+Bon Wier,15,13,2
+Iraan,15,14,1
+Dime Box,15,14,1
+Matador,15,13,2
+Wilson,15,13,2
+Stonewall,15,14,1
+Jones Creek,15,12,3
+Lawn,15,12,3
+Klondike,14,13,1
+Ravenna,14,13,1
+Point Venture,14,11,3
+Ovalo,14,11,3
+Chireno,14,12,2
+Lolita,14,14,0
+Missouri,14,13,1
+Simonton,14,11,3
+West Point,14,14,0
+Jayton,14,12,2
+Balcones Heights,14,12,2
+Fortworth,14,13,1
+Moscow,14,14,0
+Progreso,14,12,2
+N Richlnd Hls,14,11,3
+Rainbow,14,14,0
+Marietta,14,12,2
+Dekalb,14,12,2
+Mcqueeney,14,14,0
+Mauriceville,14,13,1
+Bivins,14,12,2
+Cherokee,14,11,3
+Encinal,14,12,2
+Copper Canyon,14,13,1
+Briggs,14,13,1
+Runge,14,14,0
+Grand Prarie,14,14,0
+Edgecliff Village,14,9,5
+Sutherland Springs,14,11,3
+Aurora,14,14,0
+Farmers Brnch,13,12,1
+Benjamin,13,9,4
+Guy,13,11,2
+Sarita,13,12,1
+Odonnell,13,12,1
+Follett,13,11,2
+Arthur City,13,10,3
+Garwood,13,8,5
+Lindsay,13,12,1
+Round Mountain,13,13,0
+Hollywood Park,13,11,2
+Camp Wood,13,10,3
+Burkeville,13,13,0
+Kopperl,13,10,3
+Petersburg,13,13,0
+Richland Springs,13,11,2
+Hermleigh,13,12,1
+Mc Dade,13,12,1
+Zephyr,13,11,2
+West Tawakoni,13,10,3
+Nazareth,13,12,1
+Bynum,13,11,2
+Banquete,13,10,3
+Leming,12,11,1
+Pettus,12,11,1
+Rio Bravo,12,10,2
+Port O Connor,12,9,3
+Judson,12,12,0
+Hosuton,12,12,0
+Meadow,12,10,2
+Nome,12,11,1
+Terlingua,12,11,1
+Hillister,12,10,2
+Matagorda,12,11,1
+Wells,12,9,3
+Jacinto City,12,4,8
+Woodlands,12,11,1
+Moran,12,10,2
+Deport,12,10,2
+Saratoga,12,12,0
+Wallisville,12,9,3
+Lillian,12,11,1
+Forestburg,12,11,1
+Kress,12,11,1
+Bushland,12,12,0
+Lavernia,12,12,0
+Carbon,12,10,2
+Burlington,12,12,0
+Nassau Bay,11,10,1
+Oak Ridge North,11,9,2
+Bryson,11,11,0
+Era,11,11,0
+Whiteface,11,10,1
+La Pryor,11,7,4
+Mustang Ridge,11,11,0
+Brookston,11,10,1
+Dyess Afb,11,9,2
+New Deal,11,10,1
+Douglassville,11,11,0
+Morgans Point Resort,11,8,3
+Oyster Creek,11,8,3
+Agua Dulce,11,11,0
+Haltom,11,10,1
+Stagecoach,11,7,4
+Point Comfort,11,10,1
+Evadale,11,11,0
+Knippa,11,11,0
+Fort Bliss,11,6,5
+Highland Park,11,9,2
+Nordheim,11,8,3
+Carlsbad,11,10,1
+New Home,11,8,3
+Montalba,11,8,3
+Point Blank,11,9,2
+States,11,11,0
+Sanderson,11,8,3
+Glidden,11,9,2
+Lefors,11,9,2
+Wiergate,11,10,1
+Rock Island,10,9,1
+Dalworthington Gardens,10,9,1
+Bigfoot,10,9,1
+Windom,10,8,2
+Donie,10,8,2
+Penelope,10,8,2
+New London,10,9,1
+Cactus,10,9,1
+Lyons,10,8,2
+Raywood,10,9,1
+Trent,10,7,3
+Creedmoor,10,10,0
+Ransom Canyon,10,10,0
+Lacy Lakeview,10,7,3
+Sheppard Afb,10,9,1
+Sunset Valley,10,8,2
+China Grove,10,8,2
+Ackerly,10,10,0
+Long Branch,10,10,0
+Bergheim,10,10,0
+University Park,9,6,3
+Gail,9,8,1
+Cut And Shoot,9,8,1
+Hargill,9,9,0
+Royce City,9,9,0
+Combes,9,9,0
+Leesville,9,8,1
+Rosenburg,9,7,2
+Ladonia,9,8,1
+Burke,9,7,2
+Petrolia,9,8,1
+Roxton,9,7,2
+Doss,9,9,0
+Sargent,9,6,3
+Mentone,9,8,1
+Rochelle,9,9,0
+Ysleta Del Sur Pueblo,9,7,2
+Merit,9,6,3
+Rule,9,8,1
+Bardwell,9,7,2
+Kendleton,9,8,1
+Rio Grande,9,8,1
+Los Indios,9,9,0
+La Blanca,9,8,1
+Dodge,9,9,0
+Callisburg,9,8,1
+Mccoy,9,9,0
+Midland (Midland),9,9,0
+Driscoll,8,7,1
+Markham,8,6,2
+Kendalia,8,8,0
+Volente,8,8,0
+Cranfills Gap,8,5,3
+Mullin,8,8,0
+Dripping Spgs,8,8,0
+Hart,8,7,1
+Deweyville,8,7,1
+Placedo,8,8,0
+Rio Grande Cy,8,8,0
+Malone,8,6,2
+Telephone,8,8,0
+Byers,8,7,1
+Slidell,8,6,2
+Mountain City,8,7,1
+Rio Medina,8,8,0
+Bagwell,8,6,2
+Pyote,8,7,1
+Channing,8,6,2
+Wellborn,8,6,2
+Blackwell,8,8,0
+Milam,8,8,0
+Redwater,8,6,2
+Sebastian,8,6,2
+East Tawakoni,8,8,0
+Wall,8,6,2
+Lakewood Village,8,8,0
+Old River Winfree,8,5,3
+Forreston,8,6,2
+Tuleta,8,7,1
+Muldoon,8,8,0
+Gustine,8,7,1
+New Summerfield,8,8,0
+Balmorhea,8,6,2
+Tivoli,8,8,0
+Smyer,8,7,1
+Westbrook,8,8,0
+Christine,8,7,1
+Mt Enterprise,8,4,4
+Darrouzett,8,8,0
+Grand Praire,8,7,1
+Chatfield,7,7,0
+El Cenizo,7,7,0
+Taylor Lake Village,7,7,0
+Riverside,7,6,1
+Desdemona,7,4,3
+Skellytown,7,7,0
+Lackland Afb,7,6,1
+Alamo Heights,7,5,2
+Imperial,7,6,1
+Powell,7,6,1
+Weir,7,7,0
+Rochester,7,6,1
+Bleiblerville,7,6,1
+Meyersville,7,5,2
+Mineral,7,6,1
+Romayor,7,5,2
+Hungerford,7,6,1
+Brookside Village,7,6,1
+Concan,7,6,1
+West University Place,7,7,0
+Lagrange,7,7,0
+Mt. Pleasant,7,7,0
+Richland,7,6,1
+Wingate,7,7,0
+Fredericksbrg,7,7,0
+Mcdade,7,6,1
+Loving,7,6,1
+Grulla,7,7,0
+Golden,7,7,0
+Randolph,7,6,1
+Fair Oaks,7,6,1
+Sabine Pass,7,4,2
+Comstock,7,5,2
+Cost,7,5,2
+Petty,7,6,1
+Mingus,7,6,1
+Turkey,7,6,1
+Lohn,7,7,0
+Houstonhouston,7,6,1
+Asherton,7,6,1
+Woodland,7,6,1
+Hedwig Village,7,5,2
+Wadsworth,7,6,1
+Orangefield,7,4,3
+Megargel,7,7,0
+Loop,6,6,0
+Eliasville,6,6,0
+Nursery,6,5,1
+La Grulla,6,6,0
+Lueders,6,6,0
+Knollwood,6,5,1
+Dallasdallas,6,6,0
+Votaw,6,4,2
+Gilchrist,6,5,1
+Panorama Village,6,4,2
+Roaring Springs,6,6,0
+Rye,6,6,0
+Fentress,6,4,2
+Austinaustin,6,6,0
+Sheffield,6,6,0
+Pledger,6,5,1
+Carrolton,6,5,1
+Prairie Lea,6,4,2
+San  Antonio,6,6,0
+Vanderpool,6,3,3
+Deberry,6,5,1
+Grandfalls,6,5,1
+Fred,6,5,1
+Lake Creek,6,6,0
+Sunrise Beach,6,3,3
+Stowell,6,6,0
+Waring,6,5,1
+Annona,6,5,1
+Wildorado,6,6,0
+Roman Forest,6,6,0
+Valentine,6,5,1
+Thompsons,6,5,1
+Webberville,6,6,0
+Marathon,6,5,1
+Fort,6,6,0
+D Hanis,6,6,0
+Batesville,6,5,1
+Water Valley,6,5,1
+St Hedwig,6,5,1
+Elysian Fields,6,6,0
+Reklaw,6,5,1
+Telferner,6,4,2
+Thicket,6,6,0
+Ira,6,6,0
+Amherst,5,5,0
+Austwell,5,5,0
+Palm Valley,5,4,1
+Roundrock,5,4,1
+Lowry Crossing,5,5,0
+Enchanted Oaks,5,5,0
+Dennis,5,3,2
+Quitaque,5,5,0
+Surfside Beach,5,5,0
+Barksdale,5,3,2
+Boys Ranch,5,4,1
+Egypt,5,5,0
+Rollingwood,5,5,0
+Hedley,5,5,0
+Bayside,5,5,0
+Housotn,5,4,1
+Weston,5,5,0
+Sansom Park,5,4,1
+Sulphur Spgs,5,4,1
+Sienna Plantation,5,5,0
+Gun Barrel Cy,5,5,0
+Pawnee,5,4,1
+High Island,5,3,2
+Shiro,5,5,0
+Guthrie,5,5,0
+Ausitn,5,5,0
+Loraine,5,2,3
+Avalon,5,4,1
+Wheelock,5,5,0
+Yancey,5,5,0
+Los Ebanos,5,5,0
+Leggett,5,3,2
+Copeville,5,5,0
+Deanville,5,5,0
+San Anotnio,5,5,0
+Pennington,5,5,0
+Tarpley,5,5,0
+Providnce Village,5,5,0
+Lenorah,5,4,1
+St. Hedwig,5,4,1
+Lake City,5,5,0
+Rosser,5,3,2
+Wellman,5,5,0
+Edingburg,5,5,0
+Lacoste,5,4,1
+Tarzan,5,5,0
+Gillett,5,5,0
+Texline,5,3,2
+De Soto,5,5,0

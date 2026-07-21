@@ -1,0 +1,54 @@
+{
+  "title": "Texas Bond Data: Notary, Dealer & Contractor Licences",
+  "id": "REPLACE_WITH_KAGGLE_USERNAME/texas-bond-data",
+  "subtitle": "558K notary commissions, 18.8K GDN dealers, 852K contractor licences — with expiration curves",
+  "description": "Aggregate counts derived from Texas state licensing records: 558,898 notary commissions, 18,811 licensed motor vehicle (GDN) dealers, and 852,883 TDLR contractor licences.\n\nTexas publishes all three registries, but only as one-record-at-a-time search forms with no official aggregate. This dataset fills that gap with statewide totals, monthly expiration curves, and geographic breakdowns to city and ZIP level.\n\nThe expiration curve is the most useful cut: Texas notary commissions run four-year terms and GDN dealer licences renew annually, and because commissions were issued in uneven waves the curve is lumpy rather than flat. 12,599 notary commissions expire in August 2026 against roughly 8,000 in a typical month.\n\nSources: Texas Secretary of State notary file, Texas Department of Motor Vehicles dealer licensing, Texas Department of Licensing and Regulation. Re-imported monthly and computed against the full record set — no sampling or estimation.\n\nAggregate data only; no individual names, addresses, or contact details are included.\n\nLive version updated monthly: https://quantumsurety.bond/texas-bond-data",
+  "licenses": [{ "name": "CC-BY-4.0" }],
+  "keywords": [
+    "united-states",
+    "government",
+    "business",
+    "economics",
+    "texas",
+    "licensing",
+    "notary",
+    "automotive",
+    "construction",
+    "public-records"
+  ],
+  "collaborators": [],
+  "data": [
+    {
+      "path": "data/texas-bond-data-summary.csv",
+      "description": "Statewide totals for all three registries"
+    },
+    {
+      "path": "data/texas-notary-expirations-by-month.csv",
+      "description": "Notary commissions expiring per month, 2020-2031"
+    },
+    {
+      "path": "data/texas-notary-commissions-by-city.csv",
+      "description": "Notary commissions per city (cities with 5 or more)"
+    },
+    {
+      "path": "data/texas-notary-commissions-by-zip.csv",
+      "description": "Notary commissions per ZIP code (ZIPs with 5 or more)"
+    },
+    {
+      "path": "data/texas-gdn-dealer-expirations-by-month.csv",
+      "description": "GDN dealer licences expiring per month"
+    },
+    {
+      "path": "data/texas-gdn-dealers-by-county.csv",
+      "description": "Licensed GDN dealers per county"
+    },
+    {
+      "path": "data/texas-gdn-dealers-by-city.csv",
+      "description": "Licensed GDN dealers per city (cities with 3 or more)"
+    },
+    {
+      "path": "data/texas-gdn-dealers-by-license-type.csv",
+      "description": "GDN dealers by licence type and category"
+    }
+  ]
+}

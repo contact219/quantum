@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
   CheckCircle,
@@ -890,6 +891,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           </p>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

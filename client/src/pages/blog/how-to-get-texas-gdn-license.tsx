@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight, Clock, ChevronRight, AlertTriangle, CheckCircle } from "lucide-react";
 
@@ -193,6 +194,7 @@ export default function BlogHowToGetTexasGDNLicense() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

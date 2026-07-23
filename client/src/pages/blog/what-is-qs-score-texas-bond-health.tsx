@@ -1,4 +1,5 @@
 export const metadata = {
+import { BlogAuthor } from "@/components/BlogAuthor";
   title: "What Is a QS Score? The Free Bond Health Score for Texas Businesses",
   date: "2026-05-31",
   slug: "what-is-qs-score-texas-bond-health",
@@ -56,6 +57,7 @@ export default function BlogPost() {
         <p className="font-semibold mb-3">Ready to renew your Texas bond and boost your QS Score?</p>
         <a href="/get-bond" className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold">Get a Quote in 2 Minutes →</a>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

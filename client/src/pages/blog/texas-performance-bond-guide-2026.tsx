@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
   ArrowRight, CheckCircle, Clock, BookOpen,
@@ -542,6 +543,7 @@ export default function BlogTexasPerformanceBondGuide2026() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

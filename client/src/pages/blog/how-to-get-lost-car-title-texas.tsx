@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { CheckCircle, AlertCircle, FileText, Car, Clock, ArrowRight, ExternalLink, Shield, ChevronRight } from "lucide-react";
 
@@ -556,6 +557,7 @@ export default function BlogLostCarTitleTexas() {
         </div>
 
       </div>
+    <BlogAuthor />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
   CheckCircle,
@@ -640,6 +641,7 @@ export default function BoughtCarNoTitleTexas() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

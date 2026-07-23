@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { CheckCircle, X, ArrowRight, Clock, Calendar, Shield, Star, Award, Zap } from "lucide-react";
 
@@ -350,6 +351,7 @@ export default function BestTexasSuretyBondCompany2026() {
           <p className="text-indigo-400 text-xs mt-4">TDI License #3480229 · Wylie, TX · quantumsurety.bond</p>
         </div>
       </article>
+    <BlogAuthor />
     </div>
   );
 }

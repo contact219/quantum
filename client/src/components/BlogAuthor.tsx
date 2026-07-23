@@ -1,6 +1,6 @@
 export function BlogAuthor({
-  name = "Quantum Surety Editorial Team",
-  role = "Texas Surety Bond Specialists",
+  name = "Nice Shotwell-Sparks",
+  role = "Founder, Quantum Surety LLC",
   updated,
 }: {
   name?: string;
@@ -11,7 +11,7 @@ export function BlogAuthor({
     <div className="mt-12 pt-8 border-t border-gray-200 not-prose">
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
-          <span className="text-indigo-700 font-bold text-base">QS</span>
+          <span className="text-indigo-700 font-bold text-base">NS</span>
         </div>
         <div>
           <p className="font-semibold text-gray-900 text-sm">{name}</p>

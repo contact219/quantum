@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, ArrowRight, Clock, ChevronRight, AlertTriangle, Phone } from "lucide-react";
@@ -378,6 +379,7 @@ export default function BlogNotaryVsNSA() {
         </div>
       </section>
 
+    <BlogAuthor />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, ChevronRight, Clock, Phone } from "lucide-react";
@@ -170,6 +171,7 @@ export default function BlogTDILicense() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

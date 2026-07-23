@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight, Clock, Calendar, TrendingUp, Shield, Users, FileText } from "lucide-react";
 
@@ -244,6 +245,7 @@ export default function TexasContractorBondMarketData2026() {
           <p className="text-indigo-400 text-xs mt-4">Quantum Surety LLC · TDI License #3480229 · Wylie, TX</p>
         </div>
       </article>
+    <BlogAuthor />
     </div>
   );
 }

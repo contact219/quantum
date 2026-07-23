@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Calendar, User, CheckCircle } from "lucide-react";
@@ -236,6 +237,7 @@ export default function TexasElectricalContractorBondRequirements() {
           </div>
         </div>
       </article>
+    <BlogAuthor />
     </div>
   );
 }

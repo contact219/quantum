@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import {
@@ -397,6 +398,7 @@ export default function BlogSB693() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Clock, Phone, ChevronRight } from "lucide-react";
@@ -221,6 +222,7 @@ export default function BlogGDNBondCost2026() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

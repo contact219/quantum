@@ -1,4 +1,5 @@
 export const metadata = {
+import { BlogAuthor } from "@/components/BlogAuthor";
   title: "How Texas HOAs Can Verify Contractor Bonds in 30 Seconds — For Free",
   date: "2026-05-31",
   slug: "texas-hoa-contractor-bond-verification",
@@ -47,6 +48,7 @@ export default function BlogPost() {
         <p className="font-semibold mb-3">Start verifying your HOA vendors for free.</p>
         <a href="/hoa-portal" className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold">Open HOA Portal →</a>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

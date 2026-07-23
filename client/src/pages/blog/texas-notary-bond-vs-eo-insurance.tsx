@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { ArrowRight, Clock, ChevronRight, CheckCircle, Shield } from "lucide-react";
 
@@ -208,6 +209,7 @@ export default function BlogNotaryBondVsEO() {
           </div>
         </div>
       </div>
+    <BlogAuthor />
     </div>
   );
 }

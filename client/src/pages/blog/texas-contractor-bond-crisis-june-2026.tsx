@@ -9,7 +9,7 @@ const SCHEMA = {
   "description": "Quantum Surety's analysis of 775,173 Texas TDLR contractor license records reveals 31% — 240,627 contractors — are operating with expired surety bonds as of June 2026. Full county breakdown inside.",
   "datePublished": "2026-06-18",
   "dateModified": "2026-06-18",
-  "author": { "@type": "Person", "name": "Theodore Sparks", "jobTitle": "Founder, Quantum Surety LLC" },
+  "author": { "@type": "Person", "name": "Nice Shotwell-Sparks", "jobTitle": "Founder, Quantum Surety LLC" },
   "publisher": {
     "@type": "Organization",
     "name": "Quantum Surety LLC",
@@ -56,7 +56,7 @@ export default function TexasContractorBondCrisisJune2026() {
           <span className="mx-2">·</span>
           June 18, 2026
           <span className="mx-2">·</span>
-          By <span className="font-medium">Theodore Sparks</span>, Quantum Surety LLC
+          By <span className="font-medium">Nice Shotwell-Sparks</span>, Quantum Surety LLC
         </div>
 
         {/* Headline */}
@@ -286,9 +286,9 @@ export default function TexasContractorBondCrisisJune2026() {
 
         {/* Author box */}
         <div className="mt-10 pt-6 border-t border-slate-200 flex gap-4 items-start">
-          <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">TS</div>
+          <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">NS</div>
           <div>
-            <div className="font-semibold text-slate-900">Theodore Sparks</div>
+            <div className="font-semibold text-slate-900">Nice Shotwell-Sparks</div>
             <div className="text-sm text-slate-500">Founder, Quantum Surety LLC · TDI License #3480229 · Wylie, TX</div>
             <div className="text-sm text-slate-500 mt-1">
               Quantum Surety is a Texas-licensed surety bond agency that built and maintains the largest

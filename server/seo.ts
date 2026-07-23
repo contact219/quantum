@@ -6940,7 +6940,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         description: "Quantum Surety's analysis of 775,173 Texas TDLR contractor license records reveals 31% — 240,627 contractors — are operating with expired surety bonds as of June 2026.",
         datePublished: "2026-06-18",
         dateModified: "2026-06-18",
-        author: { "@type": "Person", name: "Theodore Sparks", jobTitle: "Founder, Quantum Surety LLC" },
+        author: { "@type": "Person", name: "Nice Shotwell-Sparks", jobTitle: "Founder, Quantum Surety LLC" },
         publisher: { "@type": "Organization", name: "Quantum Surety LLC", url: BASE_URL, logo: { "@type": "ImageObject", url: `${BASE_URL}/QS_Logo.png` } },
         mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-contractor-bond-crisis-june-2026` },
         image: `${BASE_URL}/QS_OG_2.png`,

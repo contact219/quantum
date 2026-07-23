@@ -11,7 +11,7 @@ export default function TexasAutoDealerBondCompliance2026() {
     "headline": "More Than 1,700 Texas Auto Dealers Operating With Expired Surety Bonds, Data Analysis Reveals",
     "datePublished": PUBLISHED,
     "dateModified": MODIFIED,
-    "author": { "@type": "Person", "name": "Theodore Sparks" },
+    "author": { "@type": "Person", "name": "Nice Shotwell-Sparks" },
     "publisher": {
       "@type": "Organization",
       "name": "Quantum Surety LLC",
@@ -55,7 +55,7 @@ export default function TexasAutoDealerBondCompliance2026() {
             A free public lookup tool now lets Texas car buyers verify any dealer's bond status before they sign.
           </p>
           <p style={{ fontSize: 13, color: "#94a3b8" }}>
-            By Theodore Sparks, Quantum Surety LLC · June 24, 2026
+            By Nice Shotwell-Sparks, Quantum Surety LLC · June 24, 2026
           </p>
         </div>
 

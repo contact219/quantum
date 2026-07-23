@@ -11,7 +11,7 @@ export default function ContractorBondComplianceReport2026() {
     "headline": "Nearly Half of Texas Apprentice Electricians Have Expired Surety Bonds, TDLR Data Shows",
     "datePublished": PUBLISHED,
     "dateModified": MODIFIED,
-    "author": { "@type": "Person", "name": "Theodore Sparks" },
+    "author": { "@type": "Person", "name": "Nice Shotwell-Sparks" },
     "publisher": {
       "@type": "Organization",
       "name": "Quantum Surety LLC",
@@ -59,7 +59,7 @@ export default function ContractorBondComplianceReport2026() {
             Nearly Half of Texas Apprentice Electricians Have Expired Surety Bonds, TDLR Data Shows
           </h1>
           <div style={{ display: "flex", gap: 16, fontSize: 13, color: "#64748b", flexWrap: "wrap", alignItems: "center" }}>
-            <span>By <strong style={{ color: "#334155" }}>Theodore Sparks</strong>, Quantum Surety LLC</span>
+            <span>By <strong style={{ color: "#334155" }}>Nice Shotwell-Sparks</strong>, Quantum Surety LLC</span>
             <span>·</span>
             <time dateTime={PUBLISHED}>May 27, 2026</time>
             <span>·</span>
@@ -123,7 +123,7 @@ export default function ContractorBondComplianceReport2026() {
 
         <blockquote style={{ borderLeft: "3px solid #f59e0b", paddingLeft: 20, margin: "28px 0", color: "#334155", fontStyle: "italic", fontSize: 16 }}>
           "Most Texas consumers have no idea that a contractor's license number doesn't guarantee an active bond. They check the license exists and assume they're protected. But nearly 1 in 3 licensed TDLR contractors is currently operating without that consumer protection layer."
-          <footer style={{ fontSize: 13, color: "#64748b", marginTop: 8, fontStyle: "normal" }}>— Theodore Sparks, Quantum Surety LLC (TDI License #3480229)</footer>
+          <footer style={{ fontSize: 13, color: "#64748b", marginTop: 8, fontStyle: "normal" }}>— Nice Shotwell-Sparks, Quantum Surety LLC (TDI License #3480229)</footer>
         </blockquote>
 
         <h2 style={{ fontSize: 22, fontWeight: 800, color: "#0f172a", margin: "36px 0 12px" }}>Free Verification Tool Now Available</h2>

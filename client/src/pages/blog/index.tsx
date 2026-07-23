@@ -17,10 +17,10 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-notary-bond-income-side-hustle-2026",
-    title: "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Proven Income Streams",
-    description: "Most Texas notaries never monetize their credential. Here are 7 concrete ways to turn your notary bond into $500–$8,000/month — loan signing, RON, weddings, fingerprinting, corporate retainers, and more.",
-    date: "2026-06-29",
-    readTime: "8 min read",
+    title: "Your $50 Texas Notary Bond Can Earn $500–$8,500/Month: 8 Proven Income Streams (2026)",
+    description: "A data-backed guide to the proven, legal ways Texas notaries earn monthly income in 2026 — loan signing, RON, mobile, apostilles, I-9 verification — with real rates, revenue charts, and achievable targets.",
+    date: "2026-07-23",
+    readTime: "9 min read",
     category: "Texas Notary",
     tags: ["Notary Bond", "Texas Notary", "Side Hustle", "Loan Signing Agent", "RON", "Income Guide"],
     featured: true,

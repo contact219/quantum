@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { Link } from "wouter";
 
 const PUBLISHED = "2026-05-27T08:00:00-05:00";
@@ -157,6 +158,7 @@ export default function ContractorBondComplianceReport2026() {
           </Link>
         </div>
 
+      <BlogAuthor />
       </article>
     </>
   );

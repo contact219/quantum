@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { BlogAuthor } from "@/components/BlogAuthor";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { AlertTriangle, Shield, Search, TrendingUp, MapPin, ArrowRight, ExternalLink } from "lucide-react";
 
@@ -285,18 +286,7 @@ export default function TexasContractorBondCrisisJune2026() {
         </div>
 
         {/* Author box */}
-        <div className="mt-10 pt-6 border-t border-slate-200 flex gap-4 items-start">
-          <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">NS</div>
-          <div>
-            <div className="font-semibold text-slate-900">Nice Shotwell-Sparks</div>
-            <div className="text-sm text-slate-500">Founder, Quantum Surety LLC · TDI License #3480229 · Wylie, TX</div>
-            <div className="text-sm text-slate-500 mt-1">
-              Quantum Surety is a Texas-licensed surety bond agency that built and maintains the largest
-              publicly accessible Texas contractor and notary bond compliance database, covering 1.37 million
-              TDLR and Texas SOS licensee records.
-            </div>
-          </div>
-        </div>
+        <BlogAuthor />
 
       </div>
     </div>

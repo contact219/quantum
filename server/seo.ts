@@ -1845,7 +1845,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         "headline": "Your $50 Texas Notary Bond Can Earn $500–$8,500/Month: 8 Proven Income Streams (2026)",
         "datePublished": "2026-06-29",
         "dateModified": "2026-07-23",
-        "author": { "@type": "Person", "name": "Theodore Sparks" },
+        "author": { "@type": "Person", "name": "Nice Shotwell-Sparks" },
         "publisher": { "@type": "Organization", "name": "Quantum Surety LLC", "url": BASE_URL },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026` },
       },

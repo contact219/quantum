@@ -9,7 +9,7 @@ const SCHEMA = {
   "description": "A data-backed guide to the proven, legal ways Texas notaries earn recurring monthly income in 2026 — loan signing, remote online notarization, mobile work, apostilles, I-9 verification, and more. With real rates and achievable monthly targets.",
   "datePublished": "2026-06-29",
   "dateModified": "2026-07-23",
-  "author": { "@type": "Person", "name": "Theodore Sparks", "jobTitle": "Founder, Quantum Surety LLC" },
+  "author": { "@type": "Person", "name": "Nice Shotwell-Sparks", "jobTitle": "Founder, Quantum Surety LLC" },
   "publisher": {
     "@type": "Organization",
     "name": "Quantum Surety LLC",
@@ -457,11 +457,11 @@ export default function BlogNotaryBondIncome() {
           <strong className="text-slate-500">Sources:</strong> Texas Gov. Code §406.024 (notary fee schedule); Texas Family Code §2.202 (who may conduct marriage ceremonies); ZipRecruiter &amp; Salary.com Texas notary-signing-agent wage data (2026); NNA and signing-service rate ranges; BlueNotary and Notarize published RON payouts (2026). Income figures are illustrative ranges based on cited 2026 market data and depend on effort, location, and volume — they are not guarantees of earnings.
         </div>
         <div className="mt-8 border border-slate-200 rounded-xl p-5 flex items-start gap-4">
-          <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 text-lg font-bold text-emerald-700">TS</div>
+          <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 text-lg font-bold text-emerald-700">NS</div>
           <div>
-            <p className="font-bold text-slate-900">Theodore Sparks</p>
+            <p className="font-bold text-slate-900">Nice Shotwell-Sparks</p>
             <p className="text-sm text-slate-500">Founder, Quantum Surety LLC · TDI License #3480229</p>
-            <p className="text-sm text-slate-600 mt-1">Texas-licensed surety bond agency specializing in notary, contractor, and GDN dealer bonds. We've helped thousands of Texas notaries get bonded since 2023.</p>
+            <p className="text-sm text-slate-600 mt-1">Texas-licensed surety bond agency specializing in notary, contractor, and GDN dealer bonds. We've helped thousands of Texas notaries get bonded since 2025.</p>
           </div>
         </div>
       </article>

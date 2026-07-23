@@ -1834,16 +1834,17 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-income-side-hustle-2026": {
-    title: "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Income Streams | Quantum Surety",
-    description: "Most Texas notaries never monetize their credential. Here are 7 proven ways to turn your notary bond into $500–$8,000/month — loan signing, RON, weddings, fingerprinting, apostille, and more.",
+    title: "Your $50 Texas Notary Bond Can Earn $500–$8,500/Month: 8 Income Streams (2026) | Quantum Surety",
+    description: "A data-backed guide to the proven, legal ways Texas notaries earn monthly income in 2026 — loan signing, RON, mobile, apostilles, I-9 verification — with real rates and achievable targets.",
     canonical: `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026`,
     ogType: "article",
     structuredData: [
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Your $50 Texas Notary Bond Can Make You $1,000+/Month: 7 Proven Income Streams",
+        "headline": "Your $50 Texas Notary Bond Can Earn $500–$8,500/Month: 8 Proven Income Streams (2026)",
         "datePublished": "2026-06-29",
+        "dateModified": "2026-07-23",
         "author": { "@type": "Person", "name": "Theodore Sparks" },
         "publisher": { "@type": "Organization", "name": "Quantum Surety LLC", "url": BASE_URL },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/texas-notary-bond-income-side-hustle-2026` },
@@ -1858,7 +1859,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>Your $50 Texas Notary Bond Can Make You $1,000+/Month</h1><p>Most Texas notaries earn $0 extra from their credential. Here are 7 proven income streams: Loan Signing Agent ($75–$200/signing), Mobile Notary, Remote Online Notarization (RON), Wedding Officiant, Fingerprinting/LiveScan, Apostille Coordination, and Corporate Retainer.</p><a href="/bonds/notary-bond-texas">Get or Renew Your Notary Bond — $50</a></main>`,
+    content: `<main><h1>Your $50 Texas Notary Bond Can Earn $500–$8,500/Month: 8 Proven Income Streams</h1><p>Most Texas notaries earn $0 extra from their credential. In 2026 Texas raised the maximum notarial fee to $10 per signature (Gov. Code §406.024), plus up to $25 more per online notarization. Here are eight proven, legal income streams: Loan Signing Agent ($75–$250/signing), Remote Online Notarization (RON), Mobile &amp; General Notary, Apostille &amp; Authentication, I-9 Employment Verification, Field Inspections &amp; Courier, Fingerprinting/LiveScan, and Retainers/Signing-Service Ownership. Note: Texas notaries cannot legally officiate weddings (Family Code §2.202).</p><a href="/bonds/notary-bond-texas">Get or Renew Your Notary Bond — $50</a></main>`,
   },
 
   "/blog/texas-notary-vs-notary-signing-agent": {

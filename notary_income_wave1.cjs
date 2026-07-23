@@ -111,7 +111,7 @@ const buildHtml = l => `<div style="font-family:-apple-system,BlinkMacSystemFont
     <li><strong>Loan Signing Agent</strong> — $75–$200 per mortgage closing (2–3/day for full-time agents)</li>
     <li><strong>Mobile notary route</strong> — hospitals, nursing homes, law firms, car dealerships</li>
     <li><strong>Remote Online Notarization</strong> — notarize from home, no travel, flexible volume</li>
-    <li><strong>Wedding officiant</strong> — $150–$500 per ceremony (Texas notaries can legally marry couples)</li>
+    <li><strong>I-9 employment verification</strong> — $25–$75 per hire (verify remote hires' ID as an employer's authorized rep)</li>
     <li><strong>Corporate retainer</strong> — $75–$200/month per client for recurring notary access</li>
   </ul>
 </div>
@@ -138,7 +138,7 @@ Here's what active Texas notaries are earning with the same credential:
 • Loan Signing Agent — $75–$200 per mortgage closing
 • Mobile notary route — hospitals, nursing homes, law firms, dealerships
 • Remote Online Notarization (RON) — notarize from home
-• Wedding officiant — $150–$500/ceremony (Texas notaries can legally marry couples)
+• I-9 employment verification — $25–$75 per hire (verify remote hires' ID as an authorized rep)
 • Corporate retainer — $75–$200/month per client
 
 Full income guide with step-by-step paths for each:

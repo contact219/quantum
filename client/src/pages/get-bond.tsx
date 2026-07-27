@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Shield, CheckCircle } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { track } from "@/hooks/useTracker";
@@ -136,7 +136,16 @@ export default function GetBond() {
   const [checkoutUrl, setCheckoutUrl] = useState("");
   const [error, setError] = useState("");
 
+  // Funnel diagnostics: fire once on first keystroke so we can separate
+  // "landed and left without touching the form" from "started but abandoned it".
+  // Pairs with lead_submit / checkout_click to locate the real drop-off.
+  const startedRef = useRef(false);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!startedRef.current) {
+      startedRef.current = true;
+      track({ type: "form_start", element: e.target.name, value: type });
+    }
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
   }
 

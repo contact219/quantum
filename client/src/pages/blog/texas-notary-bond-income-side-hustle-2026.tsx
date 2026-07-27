@@ -371,6 +371,29 @@ export default function BlogNotaryBondIncome() {
           </div>
         </section>
 
+        {/* Mid-article CTA — placed right after the earnings numbers, at peak motivation */}
+        <div className="mb-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 sm:p-7">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+            <div className="flex-1">
+              <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Step one, before any of this</p>
+              <h3 className="mt-1 text-xl font-bold text-slate-900">None of it starts without an active bond</h3>
+              <p className="mt-1.5 text-sm text-slate-600">
+                Whether you're renewing or getting commissioned for the first time, the $10,000 Texas notary bond is
+                what makes you legal to notarize — and legal to get paid. $50 for the full 4-year term, certificate
+                emailed in minutes.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <Link href="/get-bond?type=notary&utm_source=blog&utm_medium=midarticle&utm_campaign=notary-income-guide">
+                <span className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl transition-colors cursor-pointer whitespace-nowrap">
+                  Get my bond — $50 <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+              <p className="mt-2 text-center text-xs text-slate-500">RLI (A-rated) · 5 minutes</p>
+            </div>
+          </div>
+        </div>
+
         {/* Plan */}
         <section id="plan" className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-2">A Realistic Path to $2,000/Month — Part-Time</h2>

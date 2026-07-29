@@ -1,5 +1,5 @@
-export const metadata = {
 import { BlogAuthor } from "@/components/BlogAuthor";
+export const metadata = {
   title: "What Is a QS Score? The Free Bond Health Score for Texas Businesses",
   date: "2026-05-31",
   slug: "what-is-qs-score-texas-bond-health",

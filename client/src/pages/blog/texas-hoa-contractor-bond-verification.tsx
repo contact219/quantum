@@ -1,5 +1,5 @@
-export const metadata = {
 import { BlogAuthor } from "@/components/BlogAuthor";
+export const metadata = {
   title: "How Texas HOAs Can Verify Contractor Bonds in 30 Seconds — For Free",
   date: "2026-05-31",
   slug: "texas-hoa-contractor-bond-verification",

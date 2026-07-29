@@ -32,6 +32,37 @@ function parseCityFromAddress(address?: string): string {
   return match ? match[1].trim() : "";
 }
 
+/**
+ * Parse a YYYY-MM-DD date as LOCAL midnight.
+ *
+ * `new Date("2026-07-28")` is parsed as UTC midnight, which renders as July 27
+ * anywhere west of Greenwich. This page tells a notary when their own commission
+ * expires, so a one-day shift is not cosmetic — it is wrong.
+ */
+function localDate(raw?: string): Date | null {
+  if (!raw) return null;
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(raw);
+  if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+  const d = new Date(raw);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function longDate(raw?: string): string {
+  const d = localDate(raw);
+  return d ? d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+}
+
+/** Whole days from today (local midnight) to `date`. Negative once it has passed. */
+function daysFromToday(date: Date): number {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((date.getTime() - today.getTime()) / 86_400_000);
+}
+
+function plural(n: number, word: string) {
+  return `${n} ${word}${n === 1 ? "" : "s"}`;
+}
+
 function statusInfo(s: string) {
   if (s === "active") return { label: "COMMISSION ACTIVE", color: "#059669", bg: "rgba(5,150,105,0.1)" };
   if (s === "expiring") return { label: "EXPIRING SOON", color: "#d97706", bg: "rgba(217,119,6,0.1)" };
@@ -65,12 +96,36 @@ export default function NotaryDetail() {
   const isExpired = notary?.status === "expired";
   const isExpiring = notary?.status === "expiring";
 
-  const expDate = notary?.expire_date
-    ? new Date(notary.expire_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
-    : "";
-  const commDate = notary?.effective_date
-    ? new Date(notary.effective_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
-    : "";
+  const expDate = longDate(notary?.expire_date);
+  const commDate = longDate(notary?.effective_date);
+
+  // Days to (or since) expiry, computed from the date rather than the API's
+  // days_until_expiry so the sign is always meaningful for lapsed commissions.
+  const expObj = localDate(notary?.expire_date);
+  const days = expObj ? daysFromToday(expObj) : null;
+
+  // Speak to where this person actually is in their commission, using their own date.
+  const ctaHeadline = isExpired
+    ? (expDate
+        ? `Commission lapsed ${expDate}`
+        : "Commission Lapsed — Renew to Remain Active")
+    : (expDate
+        ? (days === 0 ? `Commission expires today — ${expDate}`
+          : days === 1 ? `Commission expires tomorrow — ${expDate}`
+          : `Commission expires ${expDate}`)
+        : "Commission Expiring Soon — Renew Now");
+
+  const lapsedPrefix = days === null || days >= 0 ? ""
+    : days === -1 ? "That was yesterday. "
+    : `That was ${plural(Math.abs(days), "day")} ago. `;
+  const leftPrefix = days === null || days <= 1 ? ""
+    : `${plural(days, "day")} left. `;
+
+  const ctaSubhead = isExpired
+    ? lapsedPrefix
+      + "A Texas notary commission requires an active $10,000 surety bond for its full term. A new 4-year bond is $50 flat — certificate emailed in minutes, no credit check."
+    : leftPrefix
+      + "Renew before it lapses and your commission stays continuous. $50 flat for the full 4-year term — certificate emailed in minutes, no credit check.";
 
   const verifyUrl = `https://verify.quantumsurety.bond/verify/notary/${notaryId}`;
   const pageUrl = `https://quantumsurety.bond/notary/${notaryId}`;
@@ -206,14 +261,14 @@ export default function NotaryDetail() {
               {(isExpired || isExpiring) && (
                 <div style={{ background: isExpired ? "rgba(220,38,38,0.08)" : "rgba(217,119,6,0.08)", border: `1px solid ${isExpired ? "rgba(220,38,38,0.25)" : "rgba(217,119,6,0.25)"}`, borderRadius: 10, padding: "16px 20px", marginBottom: 20 }}>
                   <div style={{ fontWeight: 800, color: isExpired ? "#dc2626" : "#d97706", marginBottom: 6 }}>
-                    {isExpired ? "Commission Lapsed — Renew to Remain Active" : "Commission Expiring Soon — Renew Now"}
+                    {ctaHeadline}
                   </div>
                   <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, marginBottom: 12 }}>
-                    Texas notaries must maintain an active $10,000 surety bond throughout their commission. Renew your notary bond online in minutes — instant electronic certificate.
+                    {ctaSubhead}
                   </p>
                   <Link href={`/get-bond?type=notary&src=notary-detail&id=${notaryId}`}>
                     <span style={{ display: "inline-block", background: isExpired ? "#dc2626" : "#d97706", color: "#fff", fontWeight: 700, fontSize: 13, padding: "10px 20px", borderRadius: 8, textDecoration: "none", cursor: "pointer" }}>
-                      Renew Notary Bond — $50 Flat →
+                      {isExpired ? "Get a New 4-Year Bond — $50 Flat →" : "Renew Notary Bond — $50 Flat →"}
                     </span>
                   </Link>
                 </div>

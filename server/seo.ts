@@ -7643,6 +7643,27 @@ async function _ssrFetch(url: string): Promise<Record<string, unknown> | null> {
   }
 }
 
+/**
+ * Parse a YYYY-MM-DD date as LOCAL midnight.
+ *
+ * `new Date("2026-07-28")` is parsed as UTC midnight, which renders as July 27
+ * anywhere west of Greenwich. These pages tell a notary when their own
+ * commission expires, so a one-day shift is not cosmetic — it is wrong.
+ */
+function _localDate(raw: string): Date | null {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(raw);
+  if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+  const d = new Date(raw);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+/** Whole days from today (local midnight) to `date`. Negative once it has passed. */
+function _daysFromToday(date: Date): number {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((date.getTime() - today.getTime()) / 86_400_000);
+}
+
 function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   const first = (d.first_name as string) || "";
   const last  = (d.last_name  as string) || "";
@@ -7653,11 +7674,43 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   const status = (d.status as string) || "unknown";
   const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Commission Lapsed";
   const expRaw = (d.expire_date as string) || "";
-  const expDate = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  const expObj = expRaw ? _localDate(expRaw) : null;
+  const expDate = expObj ? expObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
   const agency  = (d.agency as string) || "Quantum Surety";
+
+  const days = expObj ? _daysFromToday(expObj) : null;
+  const _plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
+
+  // "expires July 28, 2026 — 12 days left" / "— today" / "— tomorrow"
+  const countdown = days === null ? ""
+    : days === 0 ? " — today"
+    : days === 1 ? " — tomorrow"
+    : days > 1   ? ` — ${_plural(days, "day")} left`
+    : "";
+  const lapsedFor = days === null || days >= 0 ? ""
+    : days === -1 ? " — yesterday"
+    : ` — ${_plural(Math.abs(days), "day")} ago`;
+
+  // The CTA speaks to this notary's own date instead of a generic renewal pitch.
+  const ctaText = status === "expired"
+    ? (expDate
+        ? `Commission lapsed ${expDate}${lapsedFor}. Get a new 4-year Texas notary bond — $50 flat`
+        : "Get a New 4-Year Texas Notary Bond — $50 Flat")
+    : status === "expiring"
+      ? (expDate
+          ? `Commission expires ${expDate}${countdown}. Renew for $50 flat`
+          : "Renew Your Texas Notary Bond — $50 Flat")
+      : "Renew Your Texas Notary Bond — $50 Flat";
+
+  const descLead = status === "expired" && expDate
+    ? `Commission lapsed ${expDate}${lapsedFor}.`
+    : status === "expiring" && expDate
+      ? `Commission expires ${expDate}${countdown}.`
+      : `Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}.`;
+
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
-    description: `${fullName} (TX Notary #${id}) in ${loc}. Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. Verified from Texas SOS records. ${agency !== "Quantum Surety" ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
+    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Verified from Texas SOS records. ${agency !== "Quantum Surety" ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
     canonical: `${BASE_URL}/notary/${id}`,
     ogType: "profile",
     noIndex: false,
@@ -7687,7 +7740,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
         ],
       },
     ],
-    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p><p>Bond agency: ${agency}.</p><a href="/bonds/notary-bond-texas">Renew Your Texas Notary Bond — $50 Flat</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
+    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p><p>Bond agency: ${agency}.</p><a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
   };
 }
 

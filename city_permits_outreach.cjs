@@ -17,7 +17,7 @@ const LIMIT = LIMIT_IDX >= 0 ? parseInt(process.argv[LIMIT_IDX + 1]) : Infinity;
 
 const ses = new SESClient({ region: process.env.AWS_REGION || 'us-east-2' });
 
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 const SENT_LOG = path.join(__dirname, 'city_outreach_sent.json');
 
@@ -80,7 +80,7 @@ TDI License #3480229 | (214) 666-8718<br>
 <p style="font-size:12px;color:#94a3b8;margin-bottom:4px"><strong>About the data:</strong> Bond status data is pulled daily from the Texas Department of Licensing and Regulation (TDLR) public records at data.texas.gov, dataset 7358-krk7. Quantum Surety LLC is licensed by the Texas Department of Insurance (TDI #3480229) as a surplus lines agent.</p>
 
 <p style="font-size:11px;color:#94a3b8">
-  Quantum Surety LLC · Dallas, TX · (214) 666-8718<br>
+  Quantum Surety LLC · Wylie, TX · (214) 666-8718<br>
   <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe" style="color:#94a3b8">Unsubscribe</a>
 </p>
 

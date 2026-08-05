@@ -15,7 +15,7 @@ const ses = new SESClient({
 });
 
 const CHECKOUT = 'https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX&utm_source=crm-batch&utm_campaign=notary-new-batch';
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const SKIP_EMAILS = new Set(['contact219@gmail.com', 'julie.gonzalez@rivnet.com']);
 const DRY_RUN = process.argv.includes('--dry-run');
 

@@ -18,7 +18,7 @@ const LIMIT = LIMIT_IDX >= 0 ? parseInt(process.argv[LIMIT_IDX + 1]) : Infinity;
 
 const ses = new SESClient({ region: process.env.AWS_REGION || 'us-east-2' });
 
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 const SENT_LOG = path.join(__dirname, 'hoa_outreach_sent.json');
 
@@ -85,7 +85,7 @@ TDI License #3480229 | (214) 666-8718<br>
 
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0">
 <p style="font-size:11px;color:#94a3b8">
-  Quantum Surety LLC · 1910 Pacific Ave Ste 8090, Dallas TX 75201 · TDI #3480229<br>
+  Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
   Texas contractor bond data sourced from TDLR public records (data.texas.gov).<br>
   <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe" style="color:#94a3b8">Unsubscribe</a>
 </p>

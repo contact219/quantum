@@ -21,7 +21,7 @@ const ses = new SESClient({
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET },
 });
 
-const FROM     = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 const JOIN_URL  = 'https://partners.quantumsurety.bond/?utm_source=partner-blast&utm_campaign=recruitment';
 

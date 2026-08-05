@@ -29,7 +29,7 @@ const ses = new SESClient({
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET },
 });
 
-const FROM     = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }

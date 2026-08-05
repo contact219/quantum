@@ -21,7 +21,7 @@ const RATE_MS     = 200;
 
 const ses = new SESClient({ region: process.env.AWS_REGION || 'us-east-2' });
 
-const FROM     = 'Theodore Sparks <nice.shotwell-sparks@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 
 const DB = {
@@ -51,15 +51,16 @@ async function ensureTable(pg) {
 }
 
 function buildEmail(c) {
-  const biz  = c.company_name || 'there';
-  const city = c.city ? ` in ${c.city}` : '';
+  const biz   = c.company_name || 'there';
+  const first = biz.split(/[\s,]+/)[0];
+  const city  = c.city ? ` in ${c.city}` : '';
   const quoteUrl = [
     'https://quantumsurety.bond/get-bond?type=contractor',
     `&company=${encodeURIComponent(c.company_name || '')}`,
     '&utm_source=hub_blast&utm_medium=email&utm_campaign=hub_contractor_jun2026',
   ].join('');
 
-  const subject = `Your HUB certification is only half the equation`;
+  const subject = `${first}, HUB certification is only half the equation`;
 
   const html = `<!DOCTYPE html>
 <html>
@@ -71,7 +72,7 @@ function buildEmail(c) {
   <p style="margin:2px 0 0;font-size:11px;color:#888;letter-spacing:2px">TEXAS CONTRACTOR BOND SPECIALIST</p>
 </div>
 
-<p>Hi ${biz},</p>
+<p>Hi ${first},</p>
 
 <p>Congratulations on your <strong>HUB certification</strong> — that opens the door to state and local government contracts most contractors can't even bid on.</p>
 
@@ -115,14 +116,14 @@ TDI License #3480229 | (214) 666-8718<br>
 
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:28px 0">
 <p style="font-size:11px;color:#94a3b8">
-  Quantum Surety LLC · 1910 Pacific Ave Ste 8090, Dallas TX 75201 · TDI #3480229<br>
+  Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
   You are receiving this because ${biz} appears in the Texas HUB/CMBL directory as an active certified vendor.<br>
   <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe&body=Please unsubscribe ${c.email}" style="color:#94a3b8">Unsubscribe</a>
 </p>
 </body>
 </html>`;
 
-  const text = `Hi ${biz},
+  const text = `Hi ${first},
 
 Congratulations on your HUB certification — that opens the door to state and local government contracts most contractors can't even bid on.
 
@@ -201,8 +202,8 @@ async function main() {
 
       await pg.query(`
         INSERT INTO leads (name, email, phone, bond_type, source, status, notes, lead_time, created_at, updated_at)
-        SELECT $1, $2, $3, 'contractor', 'hub_blast', 'contacted', $4, NOW(), NOW(), NOW()
-        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2::text))
+        SELECT $1, $2::text, $3, 'contractor', 'hub_blast', 'contacted', $4, NOW(), NOW(), NOW()
+        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2))
       `, [
         c.company_name || 'HUB Contractor',
         c.email.toLowerCase(),

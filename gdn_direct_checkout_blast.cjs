@@ -15,7 +15,7 @@ const ses = new SESClient({
 });
 
 const CHECKOUT = 'https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX&utm_source=crm-direct&utm_campaign=gdn-second-touch';
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // Load already-sent log

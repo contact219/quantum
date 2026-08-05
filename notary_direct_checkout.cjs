@@ -24,7 +24,7 @@ const ses = new SESClient({
   region: 'us-east-2',
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET },
 });
-const FROM     = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 
 function loadSent() { try { return new Set(JSON.parse(fs.readFileSync(SENT_LOG,'utf8'))); } catch { return new Set(); } }

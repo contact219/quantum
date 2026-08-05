@@ -20,7 +20,7 @@ const ses = new SESClient({
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET },
 });
 
-const FROM     = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 // Google Business Profile review link — update with your actual GBP place ID
 const REVIEW_URL = 'https://g.page/r/CfUj5WxGiI1KEBM/review';
@@ -60,7 +60,9 @@ function buildEmail(lead) {
 
 async function main() {
   const db = new Client({
-    host: '192.168.4.122', port: 5433, database: 'quantum_surety',
+    // Was 192.168.4.122 -- the local machine retired 2026-06-24. Script has
+    // pointed at a dead host since, so it has never successfully run post-migration.
+    host: 'localhost', port: 5433, database: 'quantum_surety',
     user: 'quantum_user', password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
   });
   await db.connect();
@@ -71,6 +73,23 @@ async function main() {
     WHERE status = 'sold'
       AND email IS NOT NULL AND email != ''
       AND email NOT LIKE '%noemail%'
+      -- Never ask for a review from someone whose bond never actually delivered.
+      -- Added 2026-07-27 for CANCELLED only: on Jul 21 three customers (Carranza,
+      -- Duran, Stedman) were asked to review bonds already voided on the SB 693
+      -- step. Widened 2026-07-30: the same drift exists for 'abandoned' and
+      -- 'saved' -- caught in a pre-cron dry-run asking Alecia Lewis, Tara
+      -- Mitchell, and Ramona Campbell to review bonds that are currently stuck
+      -- mid-process (see the abandoned-bond call sheet from that date). The
+      -- guard now checks the general case: any bk_bonds match on this email
+      -- where NONE of the rows are 'issued' or 'expired' means nothing was
+      -- ever actually delivered, regardless of which non-delivered status it's
+      -- currently in. Leads with no bk_bonds match at all pass through
+      -- unaffected (unproven, separate ambiguity -- not addressed here).
+      AND NOT (
+        EXISTS (SELECT 1 FROM bk_bonds b2 WHERE lower(b2.insured_email) = lower(leads.email))
+        AND NOT EXISTS (SELECT 1 FROM bk_bonds b3
+                WHERE lower(b3.insured_email) = lower(leads.email) AND b3.status IN ('issued', 'expired'))
+      )
     ORDER BY email, updated_at DESC
   `);
 

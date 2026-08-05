@@ -13,7 +13,7 @@ const ses = new SESClient({
 });
 
 const CHECKOUT = 'https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX&utm_source=crm-instant&utm_campaign=gdn-new-lead';
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 
 const leads = [
   { name: 'Zamarai', email: 'alpha4su@gmail.com', phone: '18329193000' },

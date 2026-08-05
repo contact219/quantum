@@ -13,7 +13,7 @@ const ses = new SESClient({
   }
 });
 
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 
 const contacts = [
   {

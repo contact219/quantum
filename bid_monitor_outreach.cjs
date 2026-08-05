@@ -12,7 +12,7 @@ const ses = new SESClient({
   credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET }
 });
 
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // Already emailed in a prior session

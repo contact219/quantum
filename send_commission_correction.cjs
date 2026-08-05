@@ -10,7 +10,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const ses      = new SESClient({ region: 'us-east-2', credentials: { accessKeyId: process.env.SES_KEY, secretAccessKey: process.env.SES_SECRET } });
-const FROM     = 'Theodore Sparks <nice.shotwell-sparks@quantumsurety.bond>';
+const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 const SENT_LOG = path.join(__dirname, 'commission_correction_sent.json');
 const CSV      = process.argv[2] || '/tmp/referral_openers.csv';
@@ -73,7 +73,7 @@ TDI License #3480229 | (214) 666-8718<br>
 
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:28px 0">
 <p style="font-size:11px;color:#94a3b8">
-  Quantum Surety LLC · 1910 Pacific Ave Ste 8090, Dallas TX 75201 · TDI #3480229<br>
+  Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
   <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe" style="color:#94a3b8">Unsubscribe</a>
 </p>
 

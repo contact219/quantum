@@ -14,7 +14,7 @@ const ses = new SESClient({
   },
 });
 
-const FROM = 'Theodore Sparks <ted@quantumsurety.bond>';
+const FROM = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const BLOG_URL = 'https://quantumsurety.bond/blog/texas-notary-bond-income-side-hustle-2026';
 const BOND_URL = 'https://quantumsurety.bond/bonds/notary-bond-texas';
 

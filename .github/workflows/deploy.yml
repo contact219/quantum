@@ -1,9 +1,23 @@
 name: Deploy to VPS
 
+# MANUAL ONLY. This used to run on every push to main, which meant `git push`
+# was indistinguishable from `deploy to production` -- 1.37M live pages, with no
+# review step between committing and shipping. Changed 2026-08-12 after work was
+# pushed for safekeeping and went live unintentionally.
+#
+# To deploy:
+#   gh workflow run deploy.yml
+#   gh workflow run deploy.yml -f ref=<branch-or-sha>     # deploy something else
+# or use the "Run workflow" button on the Actions tab.
+#
+# The VPS pulls whatever `ref` names, so deploying an older commit is a rollback.
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch, tag or commit SHA to deploy"
+        required: false
+        default: "main"
 
 jobs:
   deploy:
@@ -15,10 +29,18 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          # REF is passed through rather than interpolated into the script, so a
+          # branch name cannot inject shell.
+          envs: REF
           script: |
+            set -e
             cd /var/www/quantumsurety
-            git pull origin main
+            git fetch origin --prune
+            git checkout "$REF" 2>/dev/null || git checkout -B "$REF" "origin/$REF"
+            git pull --ff-only origin "$REF" || git reset --hard "origin/$REF"
             npm install --silent
             npm run build
             pm2 restart quantumsurety --update-env
-            echo "Deployed at $(date)"
+            echo "Deployed $REF at $(date -u) -- $(git rev-parse --short HEAD)"
+        env:
+          REF: ${{ inputs.ref || 'main' }}

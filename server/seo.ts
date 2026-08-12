@@ -7672,7 +7672,13 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   const zip   = (d.zip  as string) || "";
   const loc   = city ? `${city}, TX` : "Texas";
   const status = (d.status as string) || "unknown";
-  const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Commission Lapsed";
+  // A future-dated commission is neither active nor lapsed. Without this branch
+  // the else fell through to "Commission Lapsed" on every not-yet-started record.
+  const statusLabel = status === "active" ? "Active"
+    : status === "expiring" ? "Expiring Soon"
+    : status === "not_yet_effective" ? "Not Yet In Effect"
+    : status === "unknown" ? "Status Unknown"
+    : "Commission Lapsed";
   const expRaw = (d.expire_date as string) || "";
   const expObj = expRaw ? _localDate(expRaw) : null;
   const expDate = expObj ? expObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
@@ -7705,11 +7711,17 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
           : "Renew Your Texas Notary Bond — $50 Flat")
       : "Renew Your Texas Notary Bond — $50 Flat";
 
+  const effRaw  = (d.effective_date as string) || "";
+  const effObj  = effRaw ? _localDate(effRaw) : null;
+  const effDate = effObj ? effObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+
   const descLead = status === "expired" && expDate
     ? `Commission lapsed ${expDate}${lapsedFor}.`
     : status === "expiring" && expDate
       ? `Commission expires ${expDate}${countdown}.`
-      : `Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}.`;
+      : status === "not_yet_effective"
+        ? `Commission not yet in effect${effDate ? `; it begins ${effDate}` : ""}.`
+        : `Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}.`;
 
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,

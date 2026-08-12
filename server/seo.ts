@@ -7672,20 +7672,49 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   const zip   = (d.zip  as string) || "";
   const loc   = city ? `${city}, TX` : "Texas";
   const status = (d.status as string) || "unknown";
-  // A future-dated commission is neither active nor lapsed. Without this branch
-  // the else fell through to "Commission Lapsed" on every not-yet-started record.
+  // Mirrors statusInfo().plain on the client page (client/src/pages/notary-detail.tsx).
+  // A future-dated commission is neither active nor lapsed, so it gets its own
+  // label rather than falling through. Bond Verify returns 'not_yet_effective'
+  // for these; there were 1,497 such records on 2026-08-12.
   const statusLabel = status === "active" ? "Active"
-    : status === "expiring" ? "Expiring Soon"
-    : status === "not_yet_effective" ? "Not Yet In Effect"
-    : status === "unknown" ? "Status Unknown"
-    : "Commission Lapsed";
+    : status === "expiring" ? "Active, expires soon"
+    : status === "expired" ? "Expired"
+    : status === "not_yet_effective" ? "Not yet in effect"
+    : "Unknown";
   const expRaw = (d.expire_date as string) || "";
   const expObj = expRaw ? _localDate(expRaw) : null;
   const expDate = expObj ? expObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
-  // The bond agency the state has on file for THIS notary. Deliberately not
-  // defaulted to "Quantum Surety": doing so asserted we were the agency of
-  // record on the 815 rows where the SOS file names none. Absent stays absent.
+  // The bond agency the state has on file. This used to fall back to "Quantum
+  // Surety" when the source row had no agency, which asserted a commercial
+  // relationship that may not exist — and directly contradicts the PUBLISHER
+  // disclosure below. Absent data now stays absent.
   const agency  = ((d.agency as string) || "").trim();
+
+  /*
+   * PUBLISHER disclosure — mirrors publisherDisclosure() in
+   * client/src/pages/notary-detail.tsx. This page reports whether a commission is
+   * valid and sells the remedy when it is not, so the commercial interest is
+   * stated in the record's own voice. The agency-of-record sentence is derived
+   * from the data, case-insensitively on "quantum", and is not softened when the
+   * answer is us.
+   */
+  const _pubBase =
+    "Quantum Surety is a licensed Texas bond agency (TDI license #3480229) that sells notary bonds, "
+    + "including renewals of commissions like this one. It has no role in this commission and cannot "
+    + "issue, change or revoke it.";
+  const agencyIsQS = /quantum/i.test(agency);
+  const publisher = !agency
+    ? `${_pubBase} The source record does not state which bond agency is on file for this notary.`
+    : agencyIsQS
+      ? `${_pubBase} Quantum Surety is itself the bond agency on file for this notary, recorded as &ldquo;${agency}&rdquo;, so this page reports on its own customer &mdash; a closer commercial interest in this record, not a lesser one.`
+      : `${_pubBase} The bond agency on file for this notary is ${agency}, not Quantum Surety.`;
+
+  // Real retrieval timestamp from the lookup API, mirrored from the client page's
+  // RECORD PROVENANCE strip so the pre-hydration paint and crawlers agree with users.
+  const updRaw  = (d.updated_at as string) || "";
+  const updObj  = updRaw ? _localDate(updRaw) : null;
+  const retrieved = updObj ? updObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  const correctionMailto = `mailto:administrator@quantumsurety.bond?subject=${encodeURIComponent(`Correction request — TX Notary #${id}`)}`;
 
   const days = expObj ? _daysFromToday(expObj) : null;
   const _plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
@@ -7711,6 +7740,22 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
           : "Renew Your Texas Notary Bond — $50 Flat")
       : "Renew Your Texas Notary Bond — $50 Flat";
 
+  // Mirrors verdictSentence() on the client page so the pre-hydration paint answers
+  // the reader's actual question in the same words the hydrated page will use.
+  const verdict = status === "active"
+    ? (expDate
+        ? `${fullName} is currently commissioned as a Texas notary. The commission runs through ${expDate}.`
+        : `${fullName} is currently commissioned as a Texas notary.`)
+    : status === "expiring"
+      ? (expDate
+          ? `${fullName} is currently commissioned as a Texas notary. The commission is valid through ${expDate}. After that date it is no longer valid unless it is renewed.`
+          : `${fullName} is currently commissioned as a Texas notary. The commission is near the end of its term, and is no longer valid once it expires unless it is renewed.`)
+      : status === "expired"
+        ? (expDate
+            ? `This commission expired on ${expDate}. It is not currently valid, and ${fullName} is not commissioned as a Texas notary today.`
+            : `This commission has expired. It is not currently valid, and ${fullName} is not commissioned as a Texas notary today.`)
+        : `The state record for this commission does not show a current status, so whether ${fullName} is commissioned today cannot be answered from this page. Check the Texas Secretary of State search below.`;
+
   const effRaw  = (d.effective_date as string) || "";
   const effObj  = effRaw ? _localDate(effRaw) : null;
   const effDate = effObj ? effObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
@@ -7725,7 +7770,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
 
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
-    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Verified from Texas SOS records. ${agency && !/quantum/i.test(agency) ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
+    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Source: Texas Secretary of State public records. ${agency && !agencyIsQS ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.replace(/\s+/g, " ").trim(),
     canonical: `${BASE_URL}/notary/${id}`,
     ogType: "profile",
     noIndex: false,
@@ -7755,7 +7800,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
         ],
       },
     ],
-    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p>${agency ? `<p>Bond agency: ${agency}.</p>` : ""}<a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
+    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>${verdict}</p><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""}</p><section><h2>Record provenance</h2><p>Source: Texas Secretary of State, notary public records. Quantum Surety republishes this record; it does not issue, hold or amend it.</p><p>Publisher: ${publisher}</p>${retrieved ? `<p>Retrieved from Texas Secretary of State records on ${retrieved}.</p>` : ""}<p>Check it against the state yourself: <a href="https://texas-sos.appianportalsgov.com/sos-direct" rel="noopener noreferrer external nofollow">Texas SOS notary search portal</a> (leaves quantumsurety.bond). The state publishes no direct link to an individual notary, so the link lands on the state&rsquo;s Notary Public Search form. Type ${id} into Notary ID, the first field on that form, and search.</p><p>That link is not a texas.gov address. The Texas Secretary of State runs its notary search on the vendor-hosted portal texas-sos.appianportalsgov.com, and the SOS website&rsquo;s own Notary Public Search link points to the same host.</p><p>If anything here does not match the state&rsquo;s record, <a href="${correctionMailto}">report an error in this record</a> and we will re-pull it.</p></section>${agency ? `<p>Bond agency: ${agency}.</p>` : ""}<a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
   };
 }
 

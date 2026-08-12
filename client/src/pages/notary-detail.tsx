@@ -22,7 +22,18 @@ interface Notary {
   qs_grade?: string;
   qs_label?: string;
   qs_color?: string;
+  /** When this row was last pulled from the Texas SOS file, e.g. "2026-08-01T07:02:38.000Z". */
+  updated_at?: string;
 }
+
+/**
+ * The Texas SOS no longer exposes a per-notary URL. The old
+ * direct.sos.state.tx.us/notaries/NotarySearch.asp now JavaScript-redirects to
+ * an Appian portal, and the SOS site's own "Notary Public Search" link points at
+ * that portal's root. So we link the portal and tell the reader what to type.
+ * Do not invent a deep link — there isn't one.
+ */
+const TX_SOS_NOTARY_PORTAL = "https://texas-sos.appianportalsgov.com/sos-direct";
 
 function parseCityFromAddress(address?: string): string {
   if (!address) return "";
@@ -63,11 +74,98 @@ function plural(n: number, word: string) {
   return `${n} ${word}${n === 1 ? "" : "s"}`;
 }
 
+/**
+ * Status display.
+ *
+ * The finding gets real semantic colour, because the finding is the most important
+ * object on this page: valid (green), valid-but-ending (amber), not valid (red),
+ * unknown (neutral slate) must be separable at a glance, without reading the label.
+ *
+ * An earlier pass made all four statuses identical grey to stop the record echoing
+ * the renewal CTA's palette. That solved the collision from the wrong end — an
+ * active and an expired commission became visually indistinguishable, so a stranger
+ * had to read the words to learn whether a notary was valid. The separation is now
+ * kept by demoting the CTA (see the renewal card below, which is neutral and
+ * outlined) rather than by muting the record.
+ *
+ * Colour is never the only cue: the marker stays filled when the commission is
+ * valid today and hollow when it is not, and the label and verdict sentence say it
+ * in words, so the distinction survives greyscale and colour-blindness.
+ *
+ * Contrast, computed (not eyeballed) against the pill fill over both ends of the
+ * hero gradient #0a0f1e → #111827, worst case of the two:
+ *   valid   #4ade80 on rgba(74,222,128,0.12)  → 7.99:1
+ *   ending  #fbbf24 on rgba(251,191,36,0.12)  → 8.38:1
+ *   invalid #f87171 on rgba(248,113,113,0.12) → 5.44:1
+ *   unknown #cbd5e1 on rgba(255,255,255,0.05) → 10.47:1
+ *   unknown border #8792a3                    → 4.94:1
+ * Borders reuse the text colour (6.41:1 worst case, red on the gradient).
+ *
+ * `label` is the pill (caps, monospace); `plain` is for prose, meta descriptions
+ * and structured data.
+ */
 function statusInfo(s: string) {
-  if (s === "active") return { label: "COMMISSION ACTIVE", color: "#059669", bg: "rgba(5,150,105,0.1)" };
-  if (s === "expiring") return { label: "EXPIRING SOON", color: "#d97706", bg: "rgba(217,119,6,0.1)" };
-  if (s === "expired") return { label: "COMMISSION LAPSED", color: "#dc2626", bg: "rgba(220,38,38,0.1)" };
-  return { label: "UNKNOWN", color: "#6b7280", bg: "rgba(107,114,128,0.1)" };
+  const tint = (hex: string, rgb: string) => ({ color: hex, bg: `rgba(${rgb},0.12)`, border: hex });
+  if (s === "active") return { ...tint("#4ade80", "74,222,128"), label: "COMMISSION ACTIVE", plain: "Active", filled: true };
+  if (s === "expiring") return { ...tint("#fbbf24", "251,191,36"), label: "ACTIVE — EXPIRES SOON", plain: "Active, expires soon", filled: true };
+  if (s === "expired") return { ...tint("#f87171", "248,113,113"), label: "COMMISSION EXPIRED", plain: "Expired", filled: false };
+  return { color: "#cbd5e1", bg: "rgba(255,255,255,0.05)", border: "#8792a3", label: "STATUS UNKNOWN", plain: "Unknown", filled: false };
+}
+
+/**
+ * Publisher disclosure for the RECORD PROVENANCE block.
+ *
+ * This page reports whether a commission is valid and, when it has lapsed, sells
+ * the remedy a few hundred pixels later. That the publisher profits from one of the
+ * outcomes it reports is a fact about the record, so it is stated in the record's
+ * own voice, above the data, rather than buried in the advertisement.
+ *
+ * The agency-of-record sentence is derived, never hardcoded: `agency` is the bond
+ * agency the state has on file. When it is us, that is a stronger conflict than
+ * when it is someone else, and it is said plainly rather than softened or omitted.
+ * Matching is case-insensitive on "quantum" because the source data is free text
+ * ("Quantum Surety", "QUANTUM SURETY LLC", …).
+ */
+function publisherDisclosure(agency?: string): string {
+  const a = (agency || "").trim();
+  const base =
+    "Quantum Surety is a licensed Texas bond agency (TDI license #3480229) that sells notary bonds, "
+    + "including renewals of commissions like this one. It has no role in this commission and cannot "
+    + "issue, change or revoke it.";
+  if (!a) return `${base} The source record does not state which bond agency is on file for this notary.`;
+  if (/quantum/i.test(a)) {
+    return `${base} Quantum Surety is itself the bond agency on file for this notary, recorded as `
+      + `"${a}", so this page reports on its own customer — a closer commercial interest in this record, not a lesser one.`;
+  }
+  return `${base} The bond agency on file for this notary is ${a}, not Quantum Surety.`;
+}
+
+/**
+ * The one sentence this page exists to answer: is this person a valid Texas notary
+ * right now? Written for someone who was sent the link and knows nothing about
+ * notary commissions — third person, no jargon, no abbreviations, no pill to decode.
+ *
+ * `expDate` must come from longDate()/localDate(). Never format the date here with
+ * `new Date(raw).toLocaleDateString()`: that parses YYYY-MM-DD as UTC midnight and
+ * renders the day before anywhere west of Greenwich.
+ */
+function verdictSentence(name: string, status: string, expDate: string): string {
+  if (status === "active") {
+    return expDate
+      ? `${name} is currently commissioned as a Texas notary. The commission runs through ${expDate}.`
+      : `${name} is currently commissioned as a Texas notary.`;
+  }
+  if (status === "expiring") {
+    return expDate
+      ? `${name} is currently commissioned as a Texas notary. The commission is valid through ${expDate}. After that date it is no longer valid unless it is renewed.`
+      : `${name} is currently commissioned as a Texas notary. The commission is near the end of its term, and is no longer valid once it expires unless it is renewed.`;
+  }
+  if (status === "expired") {
+    return expDate
+      ? `This commission expired on ${expDate}. It is not currently valid, and ${name} is not commissioned as a Texas notary today.`
+      : `This commission has expired. It is not currently valid, and ${name} is not commissioned as a Texas notary today.`;
+  }
+  return `The state record for this commission does not show a current status, so whether ${name} is commissioned today cannot be answered from this page. Check the Texas Secretary of State search below.`;
 }
 
 export default function NotaryDetail() {
@@ -98,6 +196,15 @@ export default function NotaryDetail() {
 
   const expDate = longDate(notary?.expire_date);
   const commDate = longDate(notary?.effective_date);
+  // Real retrieval timestamp from the lookup API — not a vague "updated monthly".
+  const retrievedDate = longDate(notary?.updated_at);
+
+  const correctionMailto =
+    `mailto:administrator@quantumsurety.bond`
+    + `?subject=${encodeURIComponent(`Correction request — TX Notary #${notaryId}`)}`
+    + `&body=${encodeURIComponent(
+        `Notary ID: ${notaryId}\nPage: https://quantumsurety.bond/notary/${notaryId}\n\nWhat is wrong with this record:\n`
+      )}`;
 
   // Days to (or since) expiry, computed from the date rather than the API's
   // days_until_expiry so the sign is always meaningful for lapsed commissions.
@@ -134,14 +241,22 @@ export default function NotaryDetail() {
     ? `${fullName} — Texas Notary Commission Status | ${location} | Quantum Surety`
     : `Texas Notary Commission — ID ${notaryId} | Quantum Surety`;
   const pageDesc = notary
-    ? `${fullName} (TX Notary #${notaryId}) — ${location}. Commission status: ${si.label}. Expires ${expDate}. Verified from Texas SOS public records.`
+    ? `${fullName} (TX Notary #${notaryId}) — ${location}. Commission status: ${si.plain}. Expires ${expDate}. Source: Texas Secretary of State public records.`
     : `Look up Texas notary commission status for notary ID ${notaryId}.`;
 
-  const tweetText = notary && notary.status === "active"
-    ? `✅ ${fullName} (TX Notary #${notaryId}) has an active notary commission — verified by @QuantumSurety. ${pageUrl}`
-    : notary
-    ? `⚠️ ${fullName} (TX Notary #${notaryId}) — commission: ${si.label}. Check Texas notary status: ${pageUrl}`
-    : "";
+  // Share copy must not claim Quantum Surety verified or vouched for the commission
+  // — the provenance strip says the opposite ("republishes this record; it does not
+  // issue, hold or amend it"). The state is named as the source; we are named only
+  // as the place the lookup was read.
+  const shareFinding = !notary
+    ? ""
+    : notary.status === "expired"
+      ? `${fullName} (TX Notary #${notaryId}) — Texas Secretary of State records show this notary commission expired${expDate ? ` on ${expDate}` : ""}.`
+      : notary.status === "unknown"
+        ? `${fullName} (TX Notary #${notaryId}) — Texas Secretary of State records do not show a current status for this notary commission.`
+        : `${fullName} (TX Notary #${notaryId}) — Texas Secretary of State records show this notary commission active${expDate ? ` through ${expDate}` : ""}.`;
+
+  const tweetText = shareFinding ? `${shareFinding} Record: ${pageUrl}` : "";
 
   const embedCode = notary
     ? `<a href="${verifyUrl}" target="_blank">\n  <img src="https://verify.quantumsurety.bond/api/badge/notary/${notaryId}" alt="Notary Commission — ${fullName}" width="280" height="56">\n</a>`
@@ -151,7 +266,7 @@ export default function NotaryDetail() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": fullName,
-    "description": `Texas Notary Public in ${location}. Commission status: ${si.label}.`,
+    "description": `Texas Notary Public in ${location}. Commission status: ${si.plain}.`,
     ...(resolvedCity ? { "address": {
       "@type": "PostalAddress",
       "addressLocality": resolvedCity,
@@ -202,14 +317,112 @@ export default function NotaryDetail() {
 
           {notary && !loading && (
             <>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: si.bg, border: `1px solid ${si.color}40`, borderRadius: 8, padding: "8px 18px", marginBottom: 16 }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: si.color, display: "inline-block" }} />
+              {/*
+                Status indicator: the loudest thing on the page, deliberately. See
+                statusInfo() for the palette and its computed contrast ratios (5.44:1
+                worst case). It no longer collides with the renewal CTA because the
+                CTA is now neutral and outlined, not because the record is muted.
+                The marker is filled when the commission is valid today and hollow
+                when it is not, so validity survives greyscale.
+              */}
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: si.bg, border: `1px solid ${si.border}`, borderRadius: 8, padding: "8px 18px", marginBottom: 16 }}>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: 10, height: 10, borderRadius: "50%", boxSizing: "border-box", display: "inline-block",
+                    background: si.filled ? si.color : "transparent",
+                    border: `2px solid ${si.color}`,
+                  }}
+                />
                 <span style={{ fontWeight: 800, color: si.color, fontSize: 14, fontFamily: "monospace", letterSpacing: 1 }}>{si.label}</span>
               </div>
               <h1 style={{ fontSize: "clamp(22px,4vw,36px)", fontWeight: 900, color: "#fff", lineHeight: 1.1, margin: "0 0 10px" }}>{fullName}</h1>
               <p style={{ fontSize: 14, color: "#64748b", marginBottom: 20 }}>
                 Texas Notary Public · ID #{notaryId} · {location}
               </p>
+
+              {/*
+                The verdict. Whoever was sent this link came to ask one question, and
+                it gets answered in a sentence before any table, score or offer —
+                not encoded in a pill the reader has to interpret.
+              */}
+              <p style={{ fontSize: 17, lineHeight: 1.55, color: "#e2e8f0", textAlign: "left", margin: "0 0 24px", fontWeight: 500 }}>
+                {verdictSentence(fullName, notary.status, expDate)}
+              </p>
+
+              {/*
+                Provenance strip. Deliberately placed above the data, not below it:
+                the point is that a stranger can check the record before reading it.
+                Styled as a citation block — no fills, no brand color, no urgency.
+                Every colour here is >= 4.5:1 on #0d1117 (worst case: link #4C9AC9, 6.10:1).
+              */}
+              <div style={{ background: "#0d1117", border: "1px solid #30363d", borderRadius: 8, padding: "16px 18px", textAlign: "left", marginBottom: 24 }}>
+                <div style={{ fontSize: 13, fontFamily: "monospace", letterSpacing: 1.5, color: "#94a3b8", paddingBottom: 10, marginBottom: 12, borderBottom: "1px solid #30363d" }}>
+                  RECORD PROVENANCE
+                </div>
+
+                <dl style={{ margin: 0, display: "grid", gridTemplateColumns: "minmax(96px,auto) 1fr", columnGap: 16, rowGap: 10, fontSize: 13, lineHeight: 1.6 }}>
+                  <dt style={{ fontFamily: "monospace", fontSize: 13, color: "#94a3b8", letterSpacing: 0.5 }}>SOURCE</dt>
+                  <dd style={{ margin: 0, color: "#cbd5e1" }}>
+                    Texas Secretary of State, notary public records. Quantum Surety republishes this record; it does not issue, hold or amend it.
+                  </dd>
+
+                  {/*
+                    Who publishes this, and what they sell. Placed before the data,
+                    in the record's own voice — a reader should learn that money
+                    flows between the publisher and the subject without having to
+                    ask, and before they read the finding. #cbd5e1 on #0d1117 is
+                    12.75:1.
+                  */}
+                  <dt style={{ fontFamily: "monospace", fontSize: 13, color: "#94a3b8", letterSpacing: 0.5 }}>PUBLISHER</dt>
+                  <dd style={{ margin: 0, color: "#cbd5e1" }}>
+                    {publisherDisclosure(notary.agency)}
+                  </dd>
+
+                  {retrievedDate && (
+                    <>
+                      <dt style={{ fontFamily: "monospace", fontSize: 13, color: "#94a3b8", letterSpacing: 0.5 }}>RETRIEVED</dt>
+                      <dd style={{ margin: 0, color: "#cbd5e1" }}>
+                        Retrieved from Texas Secretary of State records on {retrievedDate}.
+                      </dd>
+                    </>
+                  )}
+
+                  <dt style={{ fontFamily: "monospace", fontSize: 13, color: "#94a3b8", letterSpacing: 0.5 }}>VERIFY</dt>
+                  <dd style={{ margin: 0, color: "#cbd5e1" }}>
+                    Check it against the state yourself:{" "}
+                    <a
+                      href={TX_SOS_NOTARY_PORTAL}
+                      target="_blank"
+                      rel="noopener noreferrer external"
+                      style={{ color: "#4C9AC9", textDecoration: "underline" }}
+                    >
+                      Texas SOS notary search portal ↗
+                    </a>
+                    {" "}(leaves quantumsurety.bond, opens in a new tab). The state publishes no direct link to an individual notary, so the link lands on the state's Notary Public Search form. Type{" "}
+                    <strong style={{ fontFamily: "monospace", color: "#e2e8f0", fontWeight: 600 }}>{notaryId}</strong>{" "}
+                    into <strong style={{ color: "#e2e8f0", fontWeight: 600 }}>Notary ID</strong>, the first field on that form, and search.
+                    {/*
+                      A cautious reader checks the address bar, sees a non-texas.gov
+                      host, and reasonably suspects a redirect to a vendor's own site.
+                      Say plainly that the state runs it there. #94a3b8 on #0d1117 is
+                      7.38:1.
+                    */}
+                    <span style={{ display: "block", marginTop: 8, color: "#94a3b8", fontSize: 12.5, lineHeight: 1.55 }}>
+                      That link is not a texas.gov address. The Texas Secretary of State runs its notary search on the vendor-hosted portal <span style={{ fontFamily: "monospace" }}>texas-sos.appianportalsgov.com</span>, and the SOS website's own Notary Public Search link points to the same host.
+                    </span>
+                  </dd>
+
+                  <dt style={{ fontFamily: "monospace", fontSize: 13, color: "#94a3b8", letterSpacing: 0.5 }}>CORRECTIONS</dt>
+                  <dd style={{ margin: 0, color: "#cbd5e1" }}>
+                    If anything here does not match the state's record,{" "}
+                    <a href={correctionMailto} style={{ color: "#4C9AC9", textDecoration: "underline" }}>
+                      report an error in this record
+                    </a>
+                    {" "}and we will re-pull it.
+                  </dd>
+                </dl>
+              </div>
 
               {/* QS Score */}
               {notary.qs_score !== undefined && (
@@ -244,30 +457,52 @@ export default function NotaryDetail() {
                     ...(resolvedCity ? [{ label: "City", value: resolvedCity }] : []),
                     ...(notary.zip ? [{ label: "ZIP Code", value: notary.zip }] : []),
                     ...(commDate ? [{ label: "Commission Date", value: commDate }] : []),
-                    { label: "Commission Expires", value: expDate, color: si.color },
-                    ...(notary.days_until_expiry > 0 ? [{ label: "Days Until Expiry", value: `${notary.days_until_expiry} days`, color: si.color }] : []),
+                    // No status colour on these values either — the record's data
+                    // stays neutral so nothing in it echoes the CTA's palette.
+                    { label: "Commission Expires", value: expDate },
+                    ...(notary.days_until_expiry > 0 ? [{ label: "Days Until Expiry", value: `${notary.days_until_expiry} days` }] : []),
                     ...(notary.surety_company ? [{ label: "Surety Company", value: notary.surety_company }] : []),
                     ...(notary.agency ? [{ label: "Bond Agency", value: notary.agency }] : []),
                   ].map(f => (
                     <div key={f.label}>
                       <div style={{ fontSize: 10, color: "#475569", fontFamily: "monospace", letterSpacing: 1, marginBottom: 3 }}>{f.label.toUpperCase()}</div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: (f as any).color || "#e2e8f0" }}>{f.value}</div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "#e2e8f0" }}>{f.value}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Renewal CTA */}
+              {/*
+                Renewal CTA — deliberately subordinate to the record above it.
+                It used to be the only saturated element on the page: a #dc2626 /
+                #d97706 tinted card with a solid fill button, so the advertisement
+                was louder than the finding it was selling against (that headline
+                was also only 3.53:1 on its own card — it failed contrast as well as
+                taste). It is now a neutral outlined card with an outline button and
+                an explicit "offer" label, so a stranger reads the status first and
+                the offer second.
+
+                Gating is unchanged and must stay unchanged: active commissions get
+                no CTA at all, because notaries share this page as proof of standing.
+
+                Contrast on the card fill rgba(255,255,255,0.03) over the hero
+                gradient, worst case of the two ends: label/body #94a3b8 6.44:1,
+                headline #cbd5e1 11.11:1, button text #e2e8f0 13.38:1, button border
+                #7d8899 4.60:1.
+              */}
               {(isExpired || isExpiring) && (
-                <div style={{ background: isExpired ? "rgba(220,38,38,0.08)" : "rgba(217,119,6,0.08)", border: `1px solid ${isExpired ? "rgba(220,38,38,0.25)" : "rgba(217,119,6,0.25)"}`, borderRadius: 10, padding: "16px 20px", marginBottom: 20 }}>
-                  <div style={{ fontWeight: 800, color: isExpired ? "#dc2626" : "#d97706", marginBottom: 6 }}>
+                <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.10)", borderRadius: 10, padding: "16px 20px", marginBottom: 20, textAlign: "left" }}>
+                  <div style={{ fontSize: 11, fontFamily: "monospace", letterSpacing: 1.5, color: "#94a3b8", marginBottom: 8 }}>
+                    OFFER FROM QUANTUM SURETY
+                  </div>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "#cbd5e1", marginBottom: 6 }}>
                     {ctaHeadline}
                   </div>
                   <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, marginBottom: 12 }}>
                     {ctaSubhead}
                   </p>
                   <Link href={`/get-bond?type=notary&src=notary-detail&id=${notaryId}`}>
-                    <span style={{ display: "inline-block", background: isExpired ? "#dc2626" : "#d97706", color: "#fff", fontWeight: 700, fontSize: 13, padding: "10px 20px", borderRadius: 8, textDecoration: "none", cursor: "pointer" }}>
+                    <span style={{ display: "inline-block", background: "transparent", color: "#e2e8f0", border: "1px solid #7d8899", fontWeight: 600, fontSize: 13, padding: "9px 18px", borderRadius: 8, textDecoration: "none", cursor: "pointer" }}>
                       {isExpired ? "Get a New 4-Year Bond — $50 Flat →" : "Renew Notary Bond — $50 Flat →"}
                     </span>
                   </Link>
@@ -319,11 +554,12 @@ export default function NotaryDetail() {
         </div>
       </section>
 
-      {/* Data note */}
+      {/* Footer nav. The data-source sentence that used to live here is superseded
+          by the RECORD PROVENANCE strip above, which states a real retrieval date
+          and links the state's own search portal. */}
       <section style={{ background: "#0a0f1e", padding: "24px", borderTop: "1px solid #1e293b", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <p style={{ fontSize: 11, color: "#334155", lineHeight: 1.6 }}>
-            Data source: Texas Secretary of State public records. Updated monthly. Commission status may have a 24-hour lag. &nbsp;
+          <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>
             <a href="https://verify.quantumsurety.bond" style={{ color: "#4C9AC9" }}>Search All Notaries</a> &nbsp;·&nbsp;
             <Link href="/bonds/notary-bond-texas"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Texas Notary Bond</span></Link> &nbsp;·&nbsp;
             <Link href="/press"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Press Kit</span></Link>

@@ -5478,7 +5478,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <li>Current status — active, expiring within 60 days, or expired</li>
       </ul>
       <h2>About the data</h2>
-      <p>Records come from the Texas Secretary of State's published notary file and are re-imported monthly. Of 558,898 commissions on record, 445,100 are currently active. Status reflects the commission expiration date only and does not account for voluntary resignation or administrative action.</p>
+      <p>Records come from the Texas Secretary of State's published notary file. The state republishes that file quarterly; we re-import each publication monthly, so a record can be up to a full publication cycle behind the state's own counter. Every result carries the date the state last published it. Of 558,898 commissions on the most recent publication, 445,100 had not yet reached their expiration date. Status reflects the commission expiration date only and does not account for voluntary resignation or administrative action.</p>
       <h2>Texas notary bonds</h2>
       <p>Every Texas notary must hold a $10,000 surety bond for the four-year commission term. Quantum Surety issues them for about $50 for the full term through an A+ rated carrier, with the certificate emailed the same day.</p>
     </main>`,
@@ -7053,8 +7053,11 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/api-access": {
-    title: "Texas Bond Verification API — Real-Time Notary & Contractor Status | Quantum Surety",
-    description: "REST API for instant Texas bond status lookups. Verify notary public bonds and TDLR contractor bonds programmatically. Free tier 500 calls/month. Paid plans from $99/month.",
+    // Not "Real-Time": the notary dataset behind this API is the Texas SOS quarterly
+    // publication, and the API returns `source_published_at` precisely so callers can
+    // see that. Selling it as real-time sold a freshness the endpoint cannot deliver.
+    title: "Texas Bond Verification API — Notary & Contractor Status Lookups | Quantum Surety",
+    description: "REST API for Texas bond status lookups. Verify notary public bonds and TDLR contractor bonds programmatically. Every response carries the state's publication date, so you can see how current the record is. Free tier 500 calls/month. Paid plans from $99/month.",
     canonical: `${BASE_URL}/api-access`,
   },
 
@@ -7676,8 +7679,14 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   // A future-dated commission is neither active nor lapsed, so it gets its own
   // label rather than falling through. Bond Verify returns 'not_yet_effective'
   // for these; there were 1,497 such records on 2026-08-12.
-  const statusLabel = status === "active" ? "Active"
-    : status === "expiring" ? "Active, expires soon"
+  // "In term" rather than "Active": the dataset publishes a start date and an end
+  // date, which establish that a term is running and cannot establish that a
+  // commission is in force — it can end early by resignation, revocation, death or a
+  // failure to qualify, none of which is a date in this file. See statusInfo() on the
+  // client for the full argument. This label is quoted in search snippets away from
+  // every qualifier on the page, so it is the one that most needs to be true alone.
+  const statusLabel = status === "active" ? "In term"
+    : status === "expiring" ? "In term, expires soon"
     : status === "expired" ? "Expired"
     : status === "not_yet_effective" ? "Not yet in effect"
     : "Unknown";
@@ -7709,15 +7718,72 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
       ? `${_pubBase} Quantum Surety is itself the bond agency on file for this notary, recorded as &ldquo;${agency}&rdquo;, so this page reports on its own customer &mdash; a closer commercial interest in this record, not a lesser one.`
       : `${_pubBase} The bond agency on file for this notary is ${agency}, not Quantum Surety.`;
 
-  // Real retrieval timestamp from the lookup API, mirrored from the client page's
-  // RECORD PROVENANCE strip so the pre-hydration paint and crawlers agree with users.
-  const updRaw  = (d.updated_at as string) || "";
-  const updObj  = updRaw ? _localDate(updRaw) : null;
-  const retrieved = updObj ? updObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
   const correctionMailto = `mailto:administrator@quantumsurety.bond?subject=${encodeURIComponent(`Correction request — TX Notary #${id}`)}`;
 
   const days = expObj ? _daysFromToday(expObj) : null;
   const _plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
+  const _longDate = (o: Date | null) =>
+    o ? o.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+
+  /*
+   * TWO DATES, AND ONLY ONE OF THEM MEANS ANYTHING. Mirrors the Evidence doc in
+   * client/src/pages/notary-detail.tsx.
+   *
+   * `source_published_at` is when the Texas SOS last republished the notary dataset —
+   * the date the facts were last true, and the only date a status claim may be
+   * attributed to. `updated_at` is when our cron fetched that publication; it is a
+   * fact about our pipeline, stated separately and never used as an "as of". The
+   * state republishes this dataset quarterly, so the two are routinely weeks apart.
+   *
+   * Either may be absent. The copy degrades down the same ladder the client uses and
+   * never falls back to the present tense.
+   */
+  const updRaw  = (d.updated_at as string) || "";
+  const updObj  = updRaw ? _localDate(updRaw) : null;
+  const retrieved = _longDate(updObj);
+  const pubRaw  = (d.source_published_at as string) || "";
+  const pubObj  = pubRaw ? _localDate(pubRaw) : null;
+  const published = _longDate(pubObj);
+  const cadence = ((d.source_update_frequency as string) || "").trim().toLowerCase();
+
+  // A future timestamp is clock skew, not freshness, so it reads "today".
+  const _ageLabel = (o: Date | null) => {
+    if (!o) return "";
+    const age = -_daysFromToday(o);
+    return age <= 0 ? "today" : age === 1 ? "yesterday" : `${_plural(age, "day")} ago`;
+  };
+  const pubRel = _ageLabel(pubObj);
+  const retRel = _ageLabel(updObj);
+
+  // Freshness + cadence line, mirroring evidenceLine() on the client page.
+  const freshLine = published
+    ? `Texas SOS published this data ${published}${pubRel ? ` &middot; ${pubRel}` : ""} &middot; ${
+        cadence
+          ? `republished ${cadence} by the state, so it may have changed since`
+          : "the state does not say how often it republishes this data, so it may have changed since"}.`
+    : retrieved
+      ? `State record as this page read it on ${retrieved} &middot; the state publishes no date for this data, so the facts behind it may be older still.`
+      : "Snapshot of the state record &mdash; this page has no date for when the data was published or read, so it cannot say how old this record is.";
+
+  // PUBLISHED and RETRIEVED stay two separate statements for the same reason as on
+  // the client: a reader shown only one will assume it means the other, and a fetch
+  // date alone reads as freshness the data does not have.
+  const publishedLine = published
+    ? `Published: the Texas Secretary of State last published this dataset on ${published}${pubRel ? ` (${pubRel})` : ""}. ${
+        cadence
+          ? `The state republishes it ${cadence}, so a record can be up to a full publication cycle behind the state&rsquo;s own counter.`
+          : "The state does not state how often it republishes this dataset."} Anything that changed after that date is not in this record, however recently we fetched it.`
+    : `Published: the Texas Secretary of State publishes no date for the version of this dataset behind this record${
+        cadence ? `, though it states the dataset is republished ${cadence}` : ""}. This page therefore cannot say how old the underlying facts are.`;
+  const retrievedLine = retrieved
+    ? `Retrieved: Quantum Surety fetched that publication on ${retrieved}${retRel ? ` (${retRel})` : ""}. This is when our copy was made, not when the facts were last true &mdash; that is the publication date above.`
+    : "";
+
+  // Commission start date. Needed above the verdict now, because a not_yet_effective
+  // record's verdict is built around when the term begins rather than when it ends.
+  const effRaw  = (d.effective_date as string) || "";
+  const effObj  = effRaw ? _localDate(effRaw) : null;
+  const _effDate = effObj ? effObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
 
   // "expires July 28, 2026 — 12 days left" / "— today" / "— tomorrow"
   const countdown = days === null ? ""
@@ -7740,33 +7806,129 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
           : "Renew Your Texas Notary Bond — $50 Flat")
       : "Renew Your Texas Notary Bond — $50 Flat";
 
-  // Mirrors verdictSentence() on the client page so the pre-hydration paint answers
-  // the reader's actual question in the same words the hydrated page will use.
+  /*
+   * Mirrors verdictSentence() on the client page so the pre-hydration paint answers
+   * the reader's actual question in the same words the hydrated page will use.
+   *
+   * Every claim is attributed to the state's PUBLICATION date. This body is what
+   * crawlers and LLMs index, so a present-tense "is not commissioned as a Texas
+   * notary today" off a quarterly dataset is the version of this bug with the longest
+   * half-life — it outlives the page view by however long the snippet is cached.
+   *
+   * Note the split the client note explains at length: the state publishes term
+   * DATES, not a status word. "Expired" is our calendar arithmetic against those
+   * dates, and that arithmetic is sound today. What the publication date bounds is
+   * only what has been FILED since. The sentences say exactly that and no more.
+   */
+  const _lead = published
+    ? `The state&rsquo;s published record of ${published} `
+    : retrieved
+      ? `The state record, as this page read it on ${retrieved}, `
+      : "The state record ";
+  const _undated = published
+    ? ""
+    : retrieved
+      ? " The state publishes no date for that data, so it may be older still."
+      : " This page has no date for when that record was published or read, so it may already be out of date.";
+
+  // The valid-today sentences say "term", matching the pill and statusLabel, because
+  // a term is what the state publishes. They do not assert the commission is in force
+  // today; _caveat below states why the record cannot reach that claim.
   const verdict = status === "active"
-    ? (expDate
-        ? `${fullName} is currently commissioned as a Texas notary. The commission runs through ${expDate}.`
-        : `${fullName} is currently commissioned as a Texas notary.`)
+    ? _lead + (expDate
+        ? `gives ${fullName} a Texas notary commission whose term runs through ${expDate}. That date has not passed.`
+        : `gives ${fullName} a Texas notary commission, and does not give the date its term ends.`) + _undated
     : status === "expiring"
-      ? (expDate
-          ? `${fullName} is currently commissioned as a Texas notary. The commission is valid through ${expDate}. After that date it is no longer valid unless it is renewed.`
-          : `${fullName} is currently commissioned as a Texas notary. The commission is near the end of its term, and is no longer valid once it expires unless it is renewed.`)
+      ? _lead + (expDate
+          ? `gives ${fullName} a Texas notary commission whose term runs through ${expDate}. That date has not passed, but it is close: after it the commission is no longer valid unless it is renewed.`
+          : `gives ${fullName} a Texas notary commission near the end of its term. Once it expires it is no longer valid unless it is renewed.`) + _undated
       : status === "expired"
-        ? (expDate
-            ? `This commission expired on ${expDate}. It is not currently valid, and ${fullName} is not commissioned as a Texas notary today.`
-            : `This commission has expired. It is not currently valid, and ${fullName} is not commissioned as a Texas notary today.`)
-        : `The state record for this commission does not show a current status, so whether ${fullName} is commissioned today cannot be answered from this page. Check the Texas Secretary of State search below.`;
+        // No _undated tail — the caveat below carries it.
+        //
+        // The opener "It records no renewal for <name> &mdash; but …" is gone. It was
+        // an absence-of-evidence claim about the whole dataset on a page where every
+        // other sentence is scoped to this record: Texas renewals typically land as a
+        // new record under a new notary ID, names are not unique, and we run no
+        // name-level scan. The surviving clause does the same work honestly.
+        ? _lead + (expDate
+            ? `gives this commission an expiry date of ${expDate}, which has now passed. `
+            : "shows this commission at the end of its term. ")
+            + (published
+              ? `A renewal filed after ${published} would not appear in it.`
+              : retrieved
+                ? "A renewal filed after the state last published this data would not appear in it."
+                : "A renewal filed since the state published that data would not appear in it.")
+        : status === "not_yet_effective"
+          ? (_effDate
+              ? _lead + `gives this commission a start date of ${_effDate}`
+                + `${expDate ? `, running from then through ${expDate}` : ""}. `
+                + `That date has not arrived, so ${fullName} cannot notarize under it yet. Nothing here has expired &mdash; the term has simply not begun.` + _undated
+              : _lead + `shows a commission whose term has not begun, so ${fullName} cannot notarize under it yet. `
+                + `Nothing here has expired &mdash; the term has simply not begun. The record does not give the date it starts.` + _undated)
+          : _lead + `does not show a status for this commission, so whether ${fullName} is commissioned cannot be answered from this page. Check the Texas Secretary of State search below.`;
 
-  const effRaw  = (d.effective_date as string) || "";
-  const effObj  = effRaw ? _localDate(effRaw) : null;
-  const effDate = effObj ? effObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  /*
+   * Mirrors recordCaveat() on the client, word for word.
+   *
+   * It used to be expired-only and ~114 words, against 25 words and no caveat block at
+   * all on a valid record — hedging placed where a false result costs us a $50 sale
+   * and absent where a false result gets a client's deed notarized by someone with no
+   * commission. The valid-today statuses now carry the caveat with the greater reach,
+   * at full weight, because the state publishes TERM DATES and term dates cannot
+   * establish that a commission is in force.
+   *
+   * The lapsed branch is cut hard for the opposite reason: expired was saying the same
+   * thing five times over and ending on a retraction of its own answer. The verdict
+   * tail and the PUBLISHED line already carry it; what survives is the one fact
+   * neither states — a Texas renewal arrives as a NEW record.
+   */
+  const _afterPub = published
+    ? `after ${published}`
+    : retrieved
+      ? "after the state last published this data"
+      : "since the state published this data";
+  const _caveat = status === "active" || status === "expiring"
+    ? `What the state publishes here is a term: a start date and an end date. A commission can also end inside that term &mdash; by resignation, revocation, or death &mdash; and none of those would appear as a date in this record. Neither would anything filed ${_afterPub}. To confirm ${fullName} holds this commission today, use the state&rsquo;s own search below.`
+    : status === "expired"
+      ? `A Texas renewal is filed as a new record, so a commission renewed ${_afterPub} still reads as lapsed here. The state&rsquo;s own search below is the one that would show it.`
+      : "";
 
+  /*
+   * CORRECTIONS — mirrors the client. This used to promise "report an error in this
+   * record and we will re-pull it". A re-pull returns the identical publication, so on
+   * the exact failure this page names two paragraphs earlier — a commission that
+   * changed after the state's last publication — it routed the affected person to a
+   * channel structurally incapable of fixing it, and let them believe it was fixed.
+   * The mailto stays (a re-pull does fix a garbled or unrefreshed row); the copy now
+   * draws the line and hands the rest to the state's own search.
+   */
+  const _corrections = `If this does not match the state&rsquo;s record, <a href="${correctionMailto}">report an error in this record</a> and we will re-pull our copy. `
+    + "That fixes what we got wrong &mdash; a garbled field, or a row we failed to refresh from a publication we already hold. "
+    + `It cannot add what the state has not published yet: if this commission changed ${published ? `after ${published}` : "after the version of the dataset behind this record was published"}, a re-pull returns the same data`
+    + `${cadence ? `, and will keep doing so until the state next republishes (${cadence})` : ""}. `
+    + "For that, the state&rsquo;s own search above is the record that will show it.";
+
+  // The description is a status claim too, and it is the one that gets quoted in
+  // search results away from every qualifier on the page — so it carries the state's
+  // publication date inline rather than relying on the reader clicking through.
+  // Appended as its own sentence rather than woven in as "status as of X", because
+  // the state publishes dates, not statuses — see the verdict note above.
+  const pubClause = published
+    ? ` State data published ${published}${cadence ? `, republished ${cadence}` : ""}.`
+    : " State publication date not stated.";
   const descLead = status === "expired" && expDate
-    ? `Commission lapsed ${expDate}${lapsedFor}.`
+    ? `Commission lapsed ${expDate}${lapsedFor}.${pubClause}`
     : status === "expiring" && expDate
-      ? `Commission expires ${expDate}${countdown}.`
+      ? `Commission expires ${expDate}${countdown}.${pubClause}`
       : status === "not_yet_effective"
-        ? `Commission not yet in effect${effDate ? `; it begins ${effDate}` : ""}.`
-        : `Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}.`;
+        ? `Commission not yet in effect${_effDate ? `; it begins ${_effDate}` : ""}.${pubClause}`
+        : `Commission: ${statusLabel}${expDate ? ". Expires " + expDate : ""}.${pubClause}`;
+
+  // Same rule as descLead: a future-dated commission leads with its start date, so the
+  // crawler-visible body never opens with an expiry that implies the term is running.
+  const factLine = status === "not_yet_effective"
+    ? `Commission status: ${statusLabel}.${_effDate ? " Takes effect " + _effDate + "." : ""}${expDate ? " Runs through " + expDate + "." : ""}${pubClause}`
+    : `Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""}${pubClause}`;
 
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
@@ -7779,7 +7941,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": fullName,
-        "description": `Texas Notary Public in ${loc}. Commission: ${statusLabel}.`,
+        "description": `Texas Notary Public in ${loc}. Commission: ${statusLabel}.${pubClause}`,
         ...(city ? { "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", ...(zip ? { "postalCode": zip } : {}), "addressCountry": "US" } } : {}),
         "hasCredential": {
           "@type": "EducationalOccupationalCredential",
@@ -7800,7 +7962,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
         ],
       },
     ],
-    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>${verdict}</p><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""}</p><section><h2>Record provenance</h2><p>Source: Texas Secretary of State, notary public records. Quantum Surety republishes this record; it does not issue, hold or amend it.</p><p>Publisher: ${publisher}</p>${retrieved ? `<p>Retrieved from Texas Secretary of State records on ${retrieved}.</p>` : ""}<p>Check it against the state yourself: <a href="https://texas-sos.appianportalsgov.com/sos-direct" rel="noopener noreferrer external nofollow">Texas SOS notary search portal</a> (leaves quantumsurety.bond). The state publishes no direct link to an individual notary, so the link lands on the state&rsquo;s Notary Public Search form. Type ${id} into Notary ID, the first field on that form, and search.</p><p>That link is not a texas.gov address. The Texas Secretary of State runs its notary search on the vendor-hosted portal texas-sos.appianportalsgov.com, and the SOS website&rsquo;s own Notary Public Search link points to the same host.</p><p>If anything here does not match the state&rsquo;s record, <a href="${correctionMailto}">report an error in this record</a> and we will re-pull it.</p></section>${agency ? `<p>Bond agency: ${agency}.</p>` : ""}<a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
+    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>${freshLine}</p><p>${verdict}</p>${_caveat ? `<p>${_caveat}</p>` : ""}<p>Texas Notary ID: ${id}. Location: ${loc}. ${factLine}</p><section><h2>Record provenance</h2><p>Source: Texas Secretary of State, notary public records. Quantum Surety republishes this record; it does not issue, hold or amend it.</p><p>Publisher: ${publisher}</p><p>${publishedLine}</p>${retrievedLine ? `<p>${retrievedLine}</p>` : ""}<p>Check it against the state yourself: <a href="https://texas-sos.appianportalsgov.com/sos-direct" rel="noopener noreferrer external nofollow">Texas SOS notary search portal</a> (leaves quantumsurety.bond). The state publishes no direct link to an individual notary, so the link lands on the state&rsquo;s Notary Public Search form. Type ${id} into Notary ID, the first field on that form, and search.</p><p>That link is not a texas.gov address. The Texas Secretary of State runs its notary search on the vendor-hosted portal texas-sos.appianportalsgov.com, and the SOS website&rsquo;s own Notary Public Search link points to the same host.</p><p>${_corrections}</p></section>${agency ? `<p>Bond agency: ${agency}.</p>` : ""}<a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
   };
 }
 

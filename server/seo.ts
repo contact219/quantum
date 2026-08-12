@@ -7676,7 +7676,10 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
   const expRaw = (d.expire_date as string) || "";
   const expObj = expRaw ? _localDate(expRaw) : null;
   const expDate = expObj ? expObj.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
-  const agency  = (d.agency as string) || "Quantum Surety";
+  // The bond agency the state has on file for THIS notary. Deliberately not
+  // defaulted to "Quantum Surety": doing so asserted we were the agency of
+  // record on the 815 rows where the SOS file names none. Absent stays absent.
+  const agency  = ((d.agency as string) || "").trim();
 
   const days = expObj ? _daysFromToday(expObj) : null;
   const _plural = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
@@ -7710,7 +7713,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
 
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
-    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Verified from Texas SOS records. ${agency !== "Quantum Surety" ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
+    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Verified from Texas SOS records. ${agency && !/quantum/i.test(agency) ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.trim(),
     canonical: `${BASE_URL}/notary/${id}`,
     ogType: "profile",
     noIndex: false,
@@ -7740,7 +7743,7 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
         ],
       },
     ],
-    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p><p>Bond agency: ${agency}.</p><a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
+    content: `<main><h1>${fullName} — Texas Notary Commission</h1><p>Texas Notary ID: ${id}. Location: ${loc}. Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Secretary of State public records.</p>${agency ? `<p>Bond agency: ${agency}.</p>` : ""}<a href="/get-bond?type=notary&amp;src=notary-detail&amp;id=${id}">${ctaText}</a> &middot; <a href="/bonds/notary-bond-texas">Texas Notary Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/notary/${id}">Public Verification Page</a></main>`,
   };
 }
 

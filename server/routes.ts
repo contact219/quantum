@@ -176,6 +176,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         title: "Texas Vehicle Title Bond",
         "bonded-title": "Texas Vehicle Title Bond",
         "vehicle-title": "Texas Vehicle Title Bond",
+        // Sent by the "Not sure — help me work it out" option on /get-bond's bond picker.
+        // Never has a redirectUrl: an unidentified bond must not be pushed to a checkout
+        // for the wrong product. Keep in sync with the CRM's BOND_LABELS.
+        other: "Bond type not yet identified — needs agent triage",
       };
       const rawBondType = (bond_type || "").toLowerCase().split("?")[0];
       const bondLabel = BOND_LABELS[rawBondType] || (bond_type ? `${bond_type} Bond` : "Texas Surety Bond");

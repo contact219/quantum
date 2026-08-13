@@ -36,8 +36,9 @@ const _docUpload = multer({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // In-memory lead log â€” survives restarts via capture
-  const capturedLeads: { name: string; email: string; phone: string; bond: string; time: string }[] = [];
+  // The in-memory capturedLeads array was removed 2026-08-13 along with the
+  // unauthenticated /api/leads-log endpoint that exposed it. Leads persist via
+  // storage.createLead() and are read through /api/admin/leads, which is behind isAdmin.
   // In-memory site event log for real-time CRM tracking
   const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; time: string }[] = [];
   // IndexNow key verification file (must return plain text before SPA catch-all)
@@ -193,7 +194,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
         subject: leadSubject,
         html: leadHtml,
       } as any).catch((e: any) => console.error("Lead Gmail copy error:", e.message));
-      capturedLeads.push({ name, email, phone, bond: bondLabel, time: new Date().toISOString() });
       // Voice-originated leads use synthetic addresses and just spoke to us — skip outreach
       const isVoiceOriginated = /@noemail\.quantumsurety\.bond$/i.test(email);
       // Persist lead to database. Voice-originated synthetic emails must NOT default
@@ -618,9 +618,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ status: "ok", timestamp: new Date().toISOString(), build: "deploy-v5" });
   });
 
-  app.get("/api/leads-log", (req, res) => {
-    res.json({ count: capturedLeads.length, leads: capturedLeads });
-  });
+  // /api/leads-log removed 2026-08-13. It served the in-process capturedLeads
+  // array — full name, email and phone for every lead — over the public internet
+  // with no authentication, and nothing consumed it. The array itself is gone too,
+  // so the process no longer holds customer contact details in memory at all.
 
   // Admin leads management — full CRUD on persistent leads
   app.get("/api/admin/leads", isAdmin, async (req, res) => {
@@ -701,7 +702,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (_) { res.json({ ok: true }); }
   });
 
+  // Read side of the event stream. Feeds sync_site_events.py on the CRM VPS every
+  // 5 minutes; nothing else consumes it. Until 2026-08-13 it was public, which handed
+  // anyone the full event trail including client IPs. Token-gated now, and it fails
+  // CLOSED — an unset EVENTS_LOG_TOKEN denies rather than reverting to open. Answers
+  // 404 rather than 401 so the endpoint does not advertise that it exists.
   app.get("/api/events-log", (req, res) => {
+    const expected = process.env.EVENTS_LOG_TOKEN;
+    const given = (req.headers["x-sync-token"] as string) || "";
+    if (!expected || given !== expected) {
+      return res.status(404).json({ error: "Not found" });
+    }
     const since = req.query.since as string;
     const limit = Math.min(parseInt(req.query.limit as string || "500"), 1000);
     const events = since

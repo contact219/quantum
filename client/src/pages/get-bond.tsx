@@ -15,7 +15,16 @@ const TITLE_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4
 const PHONE_DISPLAY = "(214) 666-8718";
 const PHONE_HREF = "tel:+12146668718";
 
-type Price = { headline: string; detail: string };
+type PriceLine = { label: string; sub?: string; amount: string };
+type Price = {
+  /** Used when there's no itemised ladder. */
+  headline: string;
+  detail: string;
+  /** Itemised breakdown. When present, the ladder renders instead of the headline. */
+  lines?: PriceLine[];
+  total?: PriceLine;
+  addon?: { label: string; amount: string; note: string };
+};
 
 type BondMeta = {
   label: string;
@@ -31,27 +40,56 @@ type BondMeta = {
   keywords?: string;
 };
 
-// Price copy policy — read before editing.
+// Price copy policy — read this whole block before editing any number below.
 //
-// This page used to advertise "$50 Instant" (title) and "from $27.50" (price block).
-// Against 45 notary bonds this agency has actually issued, the observed distribution is
-// min $71.00, median $107.56, max $195.56. ZERO bonds were issued at or below $50, and
-// ZERO at or below $27.50. Both numbers described a transaction that has never happened,
-// and a customer who arrived at RLI's checkout expecting $27.50 and saw ~$108 had a
-// concrete reason to close the tab on a screen we cannot instrument.
+// THREE presentations of the same bond have shipped on this page. Two were wrong in
+// opposite directions, and the difference between all three is not honesty — every version
+// used true numbers — it is which number was placed under which label.
 //
-// Rule now: only quote a number we can source to bonds we actually issued. Where we have
-// no such data (dealer, title), say the carrier prices it and show no number at all.
-// Never re-introduce a "from $X" figure that isn't backed by issued-bond data.
+//   v1 (until 2026-08-13): "$50 Instant" / "from $27.50", shown as THE TOTAL.
+//       Wrong because $50 is the bond premium alone. The Texas SOS filing fee is $21 on
+//       top and is unavoidable, so nobody has ever been commissioned for $50. Of 45 bonds
+//       issued, ZERO came in at or below $50. A customer who arrived at RLI's checkout
+//       expecting $27.50 and saw ~$108 had a concrete reason to close the tab on a screen
+//       we cannot instrument. ($27.50 was probably $107.56/4yr = $26.89 restated per-year,
+//       but it sat under the words "Your Cost" with no "per year" anywhere near it.)
 //
-// On $27.50 specifically: the arithmetic was probably fine and the label was the lie.
-// $107.56 median / 4-year term = $26.89/yr, so $27.50 reads as a per-year figure — but it
-// sat under the words "Your Cost" with no "per year" anywhere on the page. Kept below as
-// an explicitly-labelled per-year restatement of the median, never as the headline.
+//   v2 (same day, over-corrected): "Most pay about $108."
+//       True — that is our median — but it BUNDLES an optional add-on that 42 of 45
+//       customers happen to choose into a figure the whole market quotes unbundled.
+//       SuretyBonds.com, NNA and others headline "$50 / 4 years" and quote the $21 fee and
+//       the E&O ladder separately. Side by side in two tabs we read as $108 vs $50 — more
+//       than double, for a bond that is IDENTICAL by statute — when on the same basket
+//       (bond + fee + $10k E&O) we are $107.56 against their ~$111. Being honest in a
+//       structure nobody else uses is not honesty, it is a self-inflicted handicap.
+//
+//   v3 (current): market structure, same numbers, nothing bundled.
+//       $50 bond + $21 statutory fee = $71 to be commissioned, E&O optional on top.
+//
+// THE RULE. $50 may appear ONLY as a labelled line item with the $21 fee adjacent and the
+// $71 subtotal at least as prominent. It must never again be the headline total — that is
+// the exact bug v1 shipped. Any number quoted here must be sourceable to bonds we issued
+// or to a statutory fee. Where we have neither (dealer, title), quote nothing.
+//
+// WHY THE OBSERVED RANGE STAYS. $71–$195.56 across 45 bonds is the strongest trust device
+// on the page (a blind critic singled it out). It now reads as a CONSEQUENCE of a coverage
+// choice rather than an unexplained spread: $71 is the floor with no E&O, $195.56 is the
+// most cover we have written. That turns the top of the range from a surprise quote into
+// somebody buying more protection.
 const NOTARY_PRICE: Price = {
-  headline: "Most pay about $108",
+  headline: "$71 to be commissioned",
+  lines: [
+    { label: "The bond itself", sub: "$10,000 · full 4-year term", amount: "$50" },
+    { label: "Texas Secretary of State filing fee", sub: "Statutory — every agency pays it", amount: "$21" },
+  ],
+  total: { label: "To be commissioned", amount: "$71" },
+  addon: {
+    label: "Errors & Omissions cover",
+    amount: "from about $25",
+    note: "Optional, and most people take it — 42 of our last 45 customers did. More cover costs more: ours have run from about $25 up to roughly $125.",
+  },
   detail:
-    "Across the last 45 Texas notary bonds we issued, customers paid between $71 and $196 for the full 4-year term. The typical $108 works out to roughly $27 a year — but it is charged once, up front, not annually. RLI sets your exact figure and shows it before you enter a card; we don't set it and can't see it in advance.",
+    "Across those 45 bonds, totals ran from $71 with no E&O to $195.56 with the most cover we've written; the typical basket came to $107.56. RLI charges the card and shows your exact total before you enter it.",
 };
 
 const CARRIER_PRICED: Price = {
@@ -268,15 +306,18 @@ export default function GetBond() {
   const meta = BOND_META[type];
 
   useSEO({
+    // SERP parity: the market headlines "$50 / 4 years". We match the structure and add
+    // the fee the others leave for the checkout page, so the snippet reads as complete
+    // rather than as double the price.
     title:
       type === "notary"
-        ? "Texas Notary Bond — Apply Online | Quantum Surety"
+        ? "Texas Notary Bond — $50 + $21 State Fee | Quantum Surety"
         : type === "dealer" || type === "gdn"
         ? "Texas GDN Dealer Bond — Apply Online | Quantum Surety"
         : `${meta.label} — Apply Online | Quantum Surety`,
     description:
       type === "notary"
-        ? "Apply for your $10,000 Texas notary bond, 4-year term. Recent customers paid $71–$196, most about $108. TDI-licensed agency, bonds written by RLI (A+ rated)."
+        ? "$10,000 Texas notary bond, full 4-year term: $50 for the bond plus the $21 Secretary of State filing fee — $71 to be commissioned. E&O cover optional from about $25. TDI-licensed agency, bonds written by RLI (A+ rated)."
         : `Apply for your ${meta.label} online. ${meta.blurb}`,
     canonical: `/get-bond`,
   });
@@ -571,8 +612,41 @@ function ConfirmScreen({
       </dl>
 
       <div className="mt-4 rounded-xl bg-gray-50 border border-gray-200 p-4">
-        <p className="text-base font-bold text-gray-900">{meta.price.headline}</p>
-        <p className="mt-1 text-xs text-gray-600 leading-relaxed">{meta.price.detail}</p>
+        {meta.price.lines && meta.price.total ? (
+          <>
+            <ul className="space-y-2">
+              {meta.price.lines.map(line => (
+                <li key={line.label} className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm text-gray-700">
+                    {line.label}
+                    {line.sub && <span className="block text-[11px] text-gray-500">{line.sub}</span>}
+                  </span>
+                  <span className="text-sm font-semibold text-gray-900 tabular-nums shrink-0">{line.amount}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-2.5 pt-2.5 border-t border-gray-300 flex items-baseline justify-between gap-3">
+              <span className="text-sm font-bold text-gray-900">{meta.price.total.label}</span>
+              <span className="text-xl font-bold text-indigo-600 tabular-nums shrink-0">
+                {meta.price.total.amount}
+              </span>
+            </div>
+            {meta.price.addon && (
+              <div className="mt-3 pt-3 border-t border-dashed border-gray-300">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm text-gray-700">{meta.price.addon.label}</span>
+                  <span className="text-sm font-semibold text-gray-700 tabular-nums shrink-0">
+                    {meta.price.addon.amount}
+                  </span>
+                </div>
+                <p className="mt-1 text-[11px] text-gray-500 leading-relaxed">{meta.price.addon.note}</p>
+              </div>
+            )}
+          </>
+        ) : (
+          <p className="text-base font-bold text-gray-900">{meta.price.headline}</p>
+        )}
+        <p className="mt-3 text-xs text-gray-600 leading-relaxed">{meta.price.detail}</p>
       </div>
 
       <button
@@ -940,10 +1014,11 @@ function HandoffScreen({
           <HandoffStep n={3} title="Your price appears before you pay">
             {meta.redirectUrl && type === "notary" ? (
               <>
-                RLI shows the exact total on that page before any card details are taken. Across the last 45 notary
-                bonds we issued, that number came out between <strong>$71 and $196</strong> — most often around{" "}
-                <strong>$108</strong>, for the full four-year term. If what you see is outside that, stop and call us
-                before paying.
+                RLI shows the exact total on that page before any card details are taken. Decline E&amp;O and it should
+                come to <strong>$71</strong> — $50 for the bond, $21 for the Secretary of State's filing fee. Add
+                E&amp;O and it rises by roughly $25 to $125 depending on how much cover you pick; across our last 45
+                bonds nobody paid more than <strong>$195.56</strong>. If the number doesn't fit that shape, stop and
+                call us before paying.
               </>
             ) : (
               <>
@@ -979,11 +1054,12 @@ function HandoffScreen({
         <div className="rounded-xl border border-gray-200 bg-white p-4">
           <p className="text-sm font-semibold text-gray-900">One decision you'll have to make on that page: E&amp;O</p>
           <p className="mt-1.5 text-xs text-gray-600 leading-relaxed">
-            RLI's form offers Errors &amp; Omissions coverage as an add-on. It's worth understanding before you're
-            asked: the bond protects the <em>public</em> from your mistakes — it doesn't protect{" "}
-            <em>you</em>, and if the bond pays a claim, you repay it. E&amp;O is what covers you personally. Adding it
-            is the main reason a notary's total lands at the top of the $71–$196 range rather than the bottom. Your
-            call — the bond alone satisfies the Secretary of State.
+            RLI's form offers Errors &amp; Omissions coverage as an add-on, priced by how much cover you pick. Worth
+            understanding before you're asked: the bond protects the <em>public</em> from your mistakes — it doesn't
+            protect <em>you</em>, and if the bond pays a claim, <em>you repay it</em>. E&amp;O is the part that covers
+            you personally. It's why two notaries pay different totals for the same statutory bond, and it's the whole
+            distance between the $71 floor and the $195.56 top of our range. Entirely your call — the $71 alone
+            satisfies the Secretary of State — but 42 of our last 45 customers took it.
           </p>
         </div>
       )}

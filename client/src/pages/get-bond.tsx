@@ -113,7 +113,16 @@ const BOND_META: Record<string, { label: string; amount: string; from: string; b
 export default function GetBond() {
   const params = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
   const rawType = (params.get("type") || "").toLowerCase().split("?")[0];
-  const type = rawType in BOND_META ? rawType : (rawType.startsWith("notary") ? "notary" : "dealer");
+  // Default to notary, not dealer. 97.7% of get-bond traffic arrives with no `type`
+  // (10,536 of 10,788 views in the 90 days to 2026-08-13), and the old fallback showed
+  // every one of them a $50,000 GDN dealer bond. Notary is the only product with sales
+  // history. Dealer-ish params still resolve to dealer; everything else lands on the
+  // product a stranger is overwhelmingly likely to want.
+  const type = rawType in BOND_META
+    ? rawType
+    : rawType.startsWith("dealer") || rawType.startsWith("gdn")
+    ? "dealer"
+    : "notary";
   const meta = BOND_META[type];
 
   useSEO({

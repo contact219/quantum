@@ -139,7 +139,7 @@ export default function NotaryQR() {
             <>
               <div style={{ fontSize: 16, fontWeight: 800, color: "#dc2626", marginBottom: 8 }}>Commission Lapsed — QR shows EXPIRED to clients</div>
               <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.6, marginBottom: 16 }}>Renew your notary bond so this QR shows ACTIVE. Texas $10,000 notary bond — $50 flat, instant certificate.</p>
-              <a href={`https://quantumsurety.bond/get-bond?type=notary&src=notary-qr&id=${notaryId}`}
+              <a href={`https://quantumsurety.bond/get-bond?type=notary&utm_source=notary-qr&id=${notaryId}`}
                 style={{ display: "inline-block", background: "#dc2626", color: "#fff", fontWeight: 700, fontSize: 14, padding: "12px 24px", borderRadius: 8, textDecoration: "none" }}>
                 Renew Notary Bond — $50 →
               </a>
@@ -148,7 +148,7 @@ export default function NotaryQR() {
             <>
               <div style={{ fontSize: 15, fontWeight: 800, color: "#059669", marginBottom: 8 }}>Commission active — show it off</div>
               <p style={{ fontSize: 13, color: "#64748b", lineHeight: 1.6, marginBottom: 16 }}>Keep your bond current so this QR always shows green. Quantum Surety handles renewal reminders automatically.</p>
-              <a href={`https://quantumsurety.bond/get-bond?type=notary&src=notary-qr-cta&id=${notaryId}`}
+              <a href={`https://quantumsurety.bond/get-bond?type=notary&utm_source=notary-qr-cta&id=${notaryId}`}
                 style={{ display: "inline-block", background: "#f59e0b", color: "#000", fontWeight: 700, fontSize: 14, padding: "12px 24px", borderRadius: 8, textDecoration: "none" }}>
                 Get a Renewal Reminder →
               </a>

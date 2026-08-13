@@ -952,7 +952,7 @@ export default function NotaryDetail() {
                   <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, marginBottom: 12 }}>
                     {ctaSubhead}
                   </p>
-                  <Link href={`/get-bond?type=notary&src=notary-detail&id=${notaryId}`}>
+                  <Link href={`/get-bond?type=notary&utm_source=notary-detail&id=${notaryId}`}>
                     <span style={{ display: "inline-block", background: "transparent", color: "#e2e8f0", border: "1px solid #7d8899", fontWeight: 600, fontSize: 13, padding: "9px 18px", borderRadius: 8, textDecoration: "none", cursor: "pointer" }}>
                       {isExpired ? "Get a New 4-Year Bond — $50 Flat →" : "Renew Notary Bond — $50 Flat →"}
                     </span>

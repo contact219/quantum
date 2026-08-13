@@ -11,19 +11,82 @@ import multer from "multer";
 import OpenAI from "openai";
 import { Pool as PgPool } from "pg";
 
-// CRM Postgres pool for the shared email suppression list (unsubscribes table).
-// Lazy — only connects when someone actually unsubscribes.
+// CRM Postgres pool. Added originally for the shared email suppression list; it now
+// also carries the PRIMARY lead write (see saveLeadToCrm below). Same database either
+// way, so one pool serves both. Lazy — only connects on first use.
 let crmUnsubPool: PgPool | null = null;
 function getCrmUnsubPool(): PgPool | null {
   if (!process.env.CRM_UNSUB_DB_URL) return null;
   if (!crmUnsubPool) {
     crmUnsubPool = new PgPool({
       connectionString: process.env.CRM_UNSUB_DB_URL,
-      max: 2,
+      max: 4,
       connectionTimeoutMillis: 5000,
     });
   }
   return crmUnsubPool;
+}
+
+/**
+ * Write a lead straight into the CRM, which is where leads are actually worked.
+ *
+ * WHY THIS EXISTS. Until 2026-08-13 the only lead write went to Neon, and an hourly
+ * job copied it into the CRM. When Neon's endpoint was disabled on 2026-07-30 that
+ * chain broke and stayed broken for fourteen days: 28 people submitted the form on
+ * the only channel this business has ever sold through, and every one was accepted
+ * and thrown away. The API returned 200 to all of them because storage.createLead()
+ * is fire-and-forget. Nothing alarmed. The leads were unrecoverable — the alert
+ * emails were dead too.
+ *
+ * So the CRM is written FIRST and awaited. Neon stays as a secondary write for the
+ * rest of the app.
+ *
+ * Callers must NOT fail the request when this returns false. The customer has done
+ * their part and still needs the checkout link; losing the lead is our problem, not
+ * theirs. The failure is logged loudly and health-check.mjs alarms on it hourly.
+ */
+async function saveLeadToCrm(lead: {
+  name: string; email: string; phone: string;
+  bondType: string; source: string; notes?: string | null;
+}): Promise<{ ok: boolean }> {
+  const pool = getCrmUnsubPool();
+  if (!pool) {
+    console.error("[lead->CRM] CRM_UNSUB_DB_URL not configured — lead NOT written to CRM:", lead.email);
+    return { ok: false };
+  }
+  try {
+    await pool.query(
+      `INSERT INTO leads (name, email, phone, bond_type, source, status, notes, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, 'new', $6, NOW(), NOW())`,
+      [lead.name, lead.email, lead.phone, lead.bondType, lead.source, lead.notes ?? null]
+    );
+    console.log(`[lead->CRM] stored ${lead.email} (${lead.bondType}, ${lead.source})`);
+    return { ok: true };
+  } catch (e: any) {
+    console.error(`[lead->CRM] WRITE FAILED for ${lead.email}: ${e.message}`);
+    return { ok: false };
+  }
+}
+
+/**
+ * Tell the hourly Neon→CRM sync to skip a lead we have already written directly.
+ *
+ * sync_neon_leads.py dedupes on neon_sync_log.neon_id, so pre-registering the Neon
+ * row's id stops the same person being inserted twice. If this fails we leave the id
+ * unregistered on purpose: the sync then re-inserts, and a duplicate lead is a far
+ * smaller problem than a lost one.
+ */
+async function markNeonLeadSynced(neonId: string): Promise<void> {
+  const pool = getCrmUnsubPool();
+  if (!pool || !neonId) return;
+  try {
+    await pool.query(
+      `INSERT INTO neon_sync_log (neon_id) VALUES ($1) ON CONFLICT (neon_id) DO NOTHING`,
+      [String(neonId)]
+    );
+  } catch (e: any) {
+    console.warn(`[lead->CRM] could not pre-register neon id ${neonId}: ${e.message}`);
+  }
 }
 
 const _docUpload = multer({
@@ -201,7 +264,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // converts) with call leads that never submitted the form. Attribute them to
       // "voice-agent" unless the caller passed an explicit source.
       const leadSource = reqSource || (isVoiceOriginated ? "voice-agent" : "get-bond form");
-      storage.createLead({ name, email, phone, bondType: rawBondType || bond_type, source: leadSource, notes: reqNotes || null, status: "new" }).catch((e: any) => console.error("Lead DB save error:", e.message));
+      const leadRecord = { name, email, phone, bondType: rawBondType || bond_type, source: leadSource, notes: reqNotes || null };
+
+      // PRIMARY write — the CRM is where leads are worked, so this one is awaited and
+      // its failure is loud. See saveLeadToCrm for why this stopped going through Neon.
+      const crmWrite = await saveLeadToCrm(leadRecord);
+
+      // SECONDARY write — keeps the app's own table populated. Still fire-and-forget:
+      // it must never delay or fail the customer's request. When it succeeds we register
+      // its id so the hourly Neon→CRM sync doesn't insert this person a second time.
+      storage.createLead({ ...leadRecord, status: "new" })
+        .then((saved: any) => { if (crmWrite.ok && saved?.id) return markNeonLeadSynced(saved.id); })
+        .catch((e: any) => console.error("Lead DB save error (secondary):", e.message));
       // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service.
       // Scoped to high-value bond types only: notary is a $50 self-serve product whose thin commission
       // doesn't justify a call (and would burn the scarce daily call cap). Unknown/general inquiries are

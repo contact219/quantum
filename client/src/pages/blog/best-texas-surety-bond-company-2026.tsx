@@ -7,7 +7,7 @@ const SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Best Texas Surety Bond Company 2026 — Full Comparison Guide",
-  "description": "Independent comparison of the top Texas surety bond companies: Quantum Surety, Western Surety, Merchants Bonding, SuretyBonds.com, and more. Ranked by speed, price, and Texas-specific expertise.",
+  "description": "A comparison of the top Texas surety bond companies, published by Quantum Surety: Quantum Surety, Western Surety, Merchants Bonding, SuretyBonds.com, and more. Ranked by speed, price, and Texas-specific expertise.",
   "datePublished": "2026-06-17",
   "dateModified": "2026-06-17",
   "author": { "@type": "Organization", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" },
@@ -30,7 +30,7 @@ const COMPANIES = [
     tdlrMonitor: true,
     voiceAgent: true,
     rating: 5,
-    summary: "Texas-only surety agency built for speed. Lowest flat-rate notary pricing ($50 for 4 years), same-day approval for contractors and dealers, and the only agency with a free bond verification portal and live TDLR monitoring.",
+    summary: "Texas-only surety agency built for speed. Matches the best flat-rate notary pricing available ($50 for the 4-year term, plus the $21 state filing fee everyone charges), same-day approval for contractors and dealers, and the only agency here with a free bond verification portal and live TDLR monitoring.",
   },
   {
     name: "Western Surety Company",
@@ -68,7 +68,7 @@ const COMPANIES = [
     name: "SuretyBonds.com",
     url: null,
     ours: false,
-    notaryPrice: "~$60–80",
+    notaryPrice: "$50 flat (4-yr)",
     contractorPrice: "from $100/yr",
     dealerPrice: "from $150/yr",
     speed: "Same day–2 days",
@@ -78,7 +78,7 @@ const COMPANIES = [
     tdlrMonitor: false,
     voiceAgent: false,
     rating: 3,
-    summary: "National online bond marketplace. Works across all 50 states — TX is not their specialty. Higher prices for notary bonds. No Texas-specific tools or license monitoring.",
+    summary: "National online bond marketplace. Works across all 50 states — TX is not their specialty. Notary bond pricing matches ours at $50 for the 4-year term, with E&O sold as a separate ladder. No Texas-specific tools, no bond verification portal and no license monitoring.",
   },
   {
     name: "BondExchange",
@@ -117,7 +117,7 @@ function Check({ ok }: { ok: boolean }) {
 export default function BestTexasSuretyBondCompany2026() {
   useSEO({
     title: "Best Texas Surety Bond Company 2026 — Full Comparison Guide",
-    description: "Independent comparison of the top Texas surety bond companies. Ranked by price, speed, and Texas-specific features. See who wins for notary bonds, contractor bonds, and GDN dealer bonds.",
+    description: "A comparison of the top Texas surety bond companies, published by Quantum Surety — we are one of the companies listed. Ranked by price, speed, and Texas-specific features. See who wins for notary bonds, contractor bonds, and GDN dealer bonds.",
     canonical: "/blog/best-texas-surety-bond-company-2026",
   });
   useSchema(SCHEMA, "ld-json-Article");
@@ -143,6 +143,12 @@ export default function BestTexasSuretyBondCompany2026() {
             <Shield className="w-3 h-3" />
             <span>Quantum Surety — TDI Licensed Agency #3480229 — Updated June 2026</span>
           </div>
+          <p className="mt-4 text-sm text-indigo-100 bg-white/10 border border-white/15 rounded-lg px-4 py-3 leading-relaxed">
+            <strong>Who wrote this:</strong> Quantum Surety published this guide, and we are one of the
+            companies compared in it. Treat our own ranking accordingly. Competitor prices were checked
+            against their public pages in August 2026 and are quoted as they advertise them — where a
+            rival matches or beats us, we say so.
+          </p>
         </div>
       </section>
 
@@ -150,9 +156,8 @@ export default function BestTexasSuretyBondCompany2026() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>Bottom line:</strong> For Texas notary bonds, Quantum Surety is the fastest and cheapest option at $50 flat for 4 years with an instant PDF.
-            For TDLR contractor bonds, Quantum Surety starts at $75/yr with same-day approval.
-            For GDN dealer bonds, from $100/yr. Other carriers are slower, more expensive, or aren't built for Texas.
+            <strong>Bottom line:</strong> $50 for the full 4-year term is the going rate for a Texas notary bond, and several providers charge it — Quantum Surety among them. Add the $21 state filing fee and you are commissioned for $71. What separates providers is speed, whether a human has to be involved, and what you get afterwards. Quantum Surety issues instantly by PDF, is Texas-only, and is the only one here with a free bond verification portal and live TDLR license monitoring.
+            For TDLR contractor bonds, Quantum Surety starts at $75/yr with same-day approval. For GDN dealer bonds, from $100/yr.
           </p>
         </div>
       </div>
@@ -247,7 +252,7 @@ export default function BestTexasSuretyBondCompany2026() {
         <h2 className="text-2xl font-bold mb-6">Winner by category</h2>
         <div className="grid sm:grid-cols-3 gap-4 mb-12">
           {[
-            { title: "Best for Texas Notaries", winner: "Quantum Surety", why: "$50 flat for 4 years — lowest price available. Instant PDF. Texas SOS–compliant.", type: "notary" },
+            { title: "Best for Texas Notaries", winner: "Quantum Surety", why: "$50 flat for 4 years — matches the best rate available, issued instantly by PDF. Texas SOS–compliant.", type: "notary" },
             { title: "Best for TDLR Contractors", winner: "Quantum Surety", why: "Starts at $75/yr. Same-day approval. Free TDLR license monitoring included.", type: "contractor" },
             { title: "Best for GDN Dealers", winner: "Quantum Surety", why: "From $100/yr. TxDMV-accepted bond, 24-hr turnaround, no agent required.", type: "dealer" },
           ].map((cat) => (
@@ -305,15 +310,15 @@ export default function BestTexasSuretyBondCompany2026() {
           {[
             {
               q: "Which surety bond company is best for Texas notaries?",
-              a: "Quantum Surety charges $50 flat for a 4-year Texas notary bond — the lowest available price — with an instant PDF certificate accepted by the Texas Secretary of State. Western Surety and Merchants Bonding are the largest carriers by market share but require an agent and take 1–3 business days."
+              a: "Quantum Surety charges $50 flat for a 4-year Texas notary bond, which matches the best rate available online, with an instant PDF certificate accepted by the Texas Secretary of State. Price is rarely the deciding factor at this end of the market — several providers charge $50 — so the difference comes down to speed and what you get afterwards. Western Surety and Merchants Bonding are the largest carriers by market share but require an agent and take 1–3 business days."
             },
             {
               q: "Is Quantum Surety legitimate?",
               a: "Yes. Quantum Surety LLC is licensed by the Texas Department of Insurance (license #3480229) and writes bonds through TDI-admitted carriers. You can verify the license at tdi.texas.gov. The company is based in Wylie, TX and operates quantumsurety.bond."
             },
             {
-              q: "What's the cheapest Texas notary bond?",
-              a: "The cheapest Texas notary bond available online is $50 for the full 4-year term, available from Quantum Surety. Some carriers charge $50–70 per year; the $50 flat rate covers the entire commission period."
+              q: "What does a Texas notary bond actually cost?",
+              a: "$50 for the full 4-year term is the standard online rate, charged by Quantum Surety and several other providers. On top of that the Texas Secretary of State takes a $21 filing fee, so being commissioned costs $71 — no provider can avoid that fee. Errors & Omissions coverage is optional and priced separately, typically $25 to $80 more depending on the cover you choose. Agent-sold bonds can run higher because the agent sets the final price."
             },
             {
               q: "How fast can I get a Texas surety bond?",
@@ -334,9 +339,9 @@ export default function BestTexasSuretyBondCompany2026() {
         {/* CTA */}
         <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 rounded-2xl p-8 text-white text-center">
           <Award className="w-10 h-10 text-amber-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-3">Ready to get bonded by Texas's #1 surety agency?</h2>
+          <h2 className="text-2xl font-bold mb-3">Ready to get bonded?</h2>
           <p className="text-indigo-200 mb-6 max-w-md mx-auto">
-            TDI-licensed. Instant certificates. Texas-only focus. The fastest and most affordable surety bonds in the state.
+            TDI-licensed (#3480229). Instant certificates at the best rate available. Texas-only focus, a free bond verification portal, and live TDLR license monitoring — none of which the national marketplaces offer.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/get-bond">

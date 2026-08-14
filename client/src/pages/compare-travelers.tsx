@@ -7,7 +7,7 @@ const ROWS = [
   { label: "Bond amount (set by Texas law)", travelers: "$10,000", quantum: "$10,000" },
   { label: "Accepted by the Texas Secretary of State", travelers: "Yes", quantum: "Yes" },
   { label: "Term", travelers: "4 years", quantum: "4 years" },
-  { label: "Price", travelers: "Typically $75–100 through broker channels", quantum: "$50 flat, total" },
+  { label: "Price", travelers: "Typically $75–100 through broker channels", quantum: "$50 bond + $21 state fee = $71" },
   { label: "Certificate delivery", travelers: "Varies by broker — often 3–7 business days", quantum: "Instant PDF by email, same day" },
   { label: "Required add-ons", travelers: "Often requires an agent/broker — not direct purchase", quantum: "None — bond only" },
   { label: "Underwriter", travelers: "Travelers Insurance / St. Paul Fire and Marine", quantum: "RLI Insurance Company (A-rated)" },
@@ -67,7 +67,7 @@ export default function CompareTravelers() {
 
         <h2 className="text-2xl font-bold mb-4">How to switch at renewal (5 minutes)</h2>
         <ol className="list-decimal pl-6 text-gray-700 leading-relaxed mb-8 space-y-2">
-          <li>Apply online — name, commission details, payment. <strong>$50 total for the 4-year term.</strong> No broker or agent required.</li>
+          <li>Apply online — name, commission details, payment. <strong>$50 for the 4-year term, plus the $21 state filing fee.</strong> No broker or agent required.</li>
           <li>Your bond certificate (underwritten by A-rated RLI Insurance) arrives by email, usually same day.</li>
           <li>File your renewal with the Texas Secretary of State as usual. Remember the SB693 2-hour training course at sos.texas.gov ($20, paid to the state).</li>
         </ol>

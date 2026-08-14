@@ -7,7 +7,7 @@ const ROWS = [
   { label: "Bond amount (set by Texas law)", western: "$10,000", quantum: "$10,000" },
   { label: "Accepted by the Texas Secretary of State", western: "Yes", quantum: "Yes" },
   { label: "Term", western: "4 years", quantum: "4 years" },
-  { label: "Price", western: "Varies by vendor package — check your renewal notice", quantum: "$50 flat, total" },
+  { label: "Price", western: "Varies by vendor package — check your renewal notice", quantum: "$50 bond + $21 state fee = $71" },
   { label: "Certificate delivery", western: "Varies by vendor", quantum: "Instant PDF by email, usually same day" },
   { label: "Required add-ons", western: "Often bundled with supplies/memberships", quantum: "None — the bond only" },
   { label: "Underwriter", western: "Western Surety Company (CNA)", quantum: "RLI Insurance Company (A-rated)" },
@@ -71,7 +71,7 @@ export default function CompareWesternSurety() {
 
         <h2 className="text-2xl font-bold mb-4">How to switch at renewal (5 minutes)</h2>
         <ol className="list-decimal pl-6 text-gray-700 leading-relaxed mb-8 space-y-2">
-          <li>Apply online — name, commission details, payment. <strong>$50 total for the 4-year term.</strong></li>
+          <li>Apply online — name, commission details, payment. <strong>$50 for the 4-year term, plus the $21 state filing fee.</strong></li>
           <li>Your bond certificate (underwritten by A-rated RLI Insurance) arrives by email, usually same day.</li>
           <li>File your renewal application with the Texas Secretary of State as usual — the SOS treats every licensed surety's bond identically. Don't forget the state's required SB693 course at sos.texas.gov ($20, paid to the state).</li>
         </ol>

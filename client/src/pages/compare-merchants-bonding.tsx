@@ -7,7 +7,7 @@ const ROWS = [
   { label: "Bond amount (set by Texas law)", merchants: "$10,000", quantum: "$10,000" },
   { label: "Accepted by the Texas Secretary of State", merchants: "Yes", quantum: "Yes" },
   { label: "Term", merchants: "4 years", quantum: "4 years" },
-  { label: "Price", merchants: "Varies — often $65–85 when bundled via notary supply vendors", quantum: "$50 flat, total" },
+  { label: "Price", merchants: "Varies — often $65–85 when bundled via notary supply vendors", quantum: "$50 bond + $21 state fee = $71" },
   { label: "Certificate delivery", merchants: "3–5 business days by mail (some vendors)", quantum: "Instant PDF by email, same day" },
   { label: "Required add-ons", merchants: "Frequently bundled with notary supply packages", quantum: "None — bond only" },
   { label: "Underwriter", merchants: "Merchants Bonding Company (Iowa)", quantum: "RLI Insurance Company (A-rated)" },
@@ -67,7 +67,7 @@ export default function CompareMerchantsBonding() {
 
         <h2 className="text-2xl font-bold mb-4">How to switch at renewal (5 minutes)</h2>
         <ol className="list-decimal pl-6 text-gray-700 leading-relaxed mb-8 space-y-2">
-          <li>Apply online — name, commission details, payment. <strong>$50 total for the 4-year term.</strong></li>
+          <li>Apply online — name, commission details, payment. <strong>$50 for the 4-year term, plus the $21 state filing fee.</strong></li>
           <li>Your bond certificate (underwritten by A-rated RLI Insurance) arrives by email, usually same day — no waiting for mail.</li>
           <li>File your renewal with the Texas Secretary of State as usual. Don't forget the SB693 2-hour training course at sos.texas.gov ($20, paid to the state).</li>
         </ol>

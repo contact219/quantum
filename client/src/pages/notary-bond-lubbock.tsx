@@ -43,7 +43,7 @@ const FAQ_SCHEMA = {
       "name": "How much is a notary bond in Lubbock?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The Texas notary bond costs $50 from Quantum Surety — regardless of which county you're in. The bond is $10,000 face value, valid for 4 years (matching your notary commission term). The $50 is your total cost for the full 4-year period."
+        "text": "The Texas notary bond costs $50 from Quantum Surety — regardless of which county you're in. The bond is $10,000 face value, valid for 4 years (matching your notary commission term). The $50 is the bond premium for the full 4-year period; the Texas Secretary of State also charges a $21 filing fee, so being commissioned costs $71. No provider can waive that fee."
       }
     },
     {
@@ -100,7 +100,7 @@ export default function NotaryBondLubbock() {
           {[
             { icon: <FileText className="w-5 h-5" />, label: "Bond amount", value: "$10,000" },
             { icon: <Clock className="w-5 h-5" />, label: "Term", value: "4 years" },
-            { icon: <Shield className="w-5 h-5" />, label: "Total cost", value: "$50" },
+            { icon: <Shield className="w-5 h-5" />, label: "Total cost", value: "$71 ($50 bond + $21 state fee)" },
             { icon: <CheckCircle className="w-5 h-5" />, label: "Delivery", value: "Same day" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">

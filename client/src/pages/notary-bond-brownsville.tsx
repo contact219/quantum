@@ -71,7 +71,7 @@ export default function NotaryBondBrownsville() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$10,000", sub: "Required by Texas SOS" }, { label: "Total cost", value: "$50 flat", sub: "Full 4-year term, no renewals" }, { label: "Delivery", value: "Instant PDF", sub: "Email within minutes" }].map((item) => (
+          {[{ label: "Bond amount", value: "$10,000", sub: "Required by Texas SOS" }, { label: "Total cost", value: "$50 + $21 state fee", sub: "$71 to be commissioned, full 4-year term" }, { label: "Delivery", value: "Instant PDF", sub: "Email within minutes" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>

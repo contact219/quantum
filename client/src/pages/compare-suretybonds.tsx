@@ -10,7 +10,10 @@ export const metadata = {
 };
 
 const COMPARISON = [
-  { feature: "Texas Notary Bond",        qs: "$50 flat (4-yr)",    them: "$65–$79 (variable)",  winner: "qs" },
+  // Verified against suretybonds.com Aug 2026: they charge $50 for the 4-year term, the
+  // same as us, with the $21 SOS filing fee quoted separately exactly as we do. The old
+  // "$65–$79 (variable)" overstated a named competitor's price. We do not win on price here.
+  { feature: "Texas Notary Bond",        qs: "$50 flat (4-yr)",    them: "$50 flat (4-yr)",     winner: "tie" },
   { feature: "TDLR Contractor Bond",     qs: "$75/yr same-day",   them: "$99–$150/yr",          winner: "qs" },
   { feature: "TX GDN Dealer Bond",       qs: "$100/yr",            them: "$150–$250/yr",         winner: "qs" },
   { feature: "Texas-Specific Expertise", qs: "HQ in Wylie, TX",   them: "Missouri-based",       winner: "qs" },
@@ -28,8 +31,8 @@ const FAQS = [
     a: "SuretyBonds.com is a national broker headquartered in Missouri. They work with various sureties but are not a Texas-licensed insurance agency. Quantum Surety is TDI-licensed (#3480229) specifically to sell surety bonds in Texas.",
   },
   {
-    q: "Why does Quantum Surety charge less for Texas notary bonds?",
-    a: "Quantum Surety focuses exclusively on Texas bonds, which lets us negotiate better rates with underwriters. Our notary bond is $50 flat for a 4-year term — no add-ons, no upsells.",
+    q: "Is Quantum Surety cheaper than SuretyBonds.com for a Texas notary bond?",
+    a: "No — both charge $50 for the full 4-year term, plus the $21 Texas Secretary of State filing fee that nobody can waive. $50 is the going rate across the market. The difference is what happens around the bond: we issue an instant PDF rather than taking 1–3 business days, we work only Texas, and we run a free bond verification portal and live TDLR license monitoring that they don't offer.",
   },
   {
     q: "Does SuretyBonds.com offer instant certificates?",

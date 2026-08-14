@@ -78,7 +78,7 @@ export default function NotaryBondDallas() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
             { label: "Bond amount", value: "$10,000", sub: "Required by Texas SOS" },
-            { label: "Total cost", value: "$50 flat", sub: "Full 4-year term, no renewals" },
+            { label: "Total cost", value: "$50 + $21 state fee", sub: "$71 to be commissioned, full 4-year term" },
             { label: "Delivery", value: "Instant PDF", sub: "Email within minutes" }
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">

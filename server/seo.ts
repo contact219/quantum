@@ -2764,7 +2764,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <section>
           <h2>How to switch at renewal</h2>
           <ol>
-            <li>Apply online in about 5 minutes — $50 total</li>
+            <li>Apply online in about 5 minutes — $50 bond + $21 state filing fee</li>
             <li>Bond certificate arrives by email, usually same day</li>
             <li>File your renewal with the Texas Secretary of State as usual (SB693 course at sos.texas.gov, $20, paid to the state)</li>
           </ol>

@@ -84,7 +84,7 @@ export default function NotaryBondRichardson() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
             { label: "Bond amount", value: "$10,000", sub: "Required by Texas SOS" },
-            { label: "Total cost", value: "$50 flat", sub: "Full 4-year term, no renewals" },
+            { label: "Total cost", value: "$50 + $21 state fee", sub: "$71 to be commissioned, full 4-year term" },
             { label: "Turnaround", value: "Instant", sub: "PDF emailed in minutes" },
           ].map((item) => (
             <div key={item.label}>

@@ -92,7 +92,7 @@ const ROWS: Array<{ label: string; key: keyof Carrier; quantum: string }> = [
   { label: "Bond amount (set by Texas law)", key: "price", quantum: "$10,000" },
   { label: "Accepted by Texas Secretary of State", key: "marketShare", quantum: "Yes" },
   { label: "Term", key: "delivery", quantum: "4 years" },
-  { label: "Price", key: "price", quantum: "$50 flat, total" },
+  { label: "Price", key: "price", quantum: "$50 bond + $21 state fee = $71" },
   { label: "Certificate delivery", key: "delivery", quantum: "Instant PDF by email, same day" },
   { label: "Required add-ons", key: "addons", quantum: "None — bond only" },
   { label: "Underwriter", key: "underwriter", quantum: "RLI Insurance Company (A-rated)" },
@@ -102,7 +102,7 @@ const TABLE_ROWS = [
   { label: "Bond amount (set by Texas law)", getTheirs: () => "$10,000", quantum: "$10,000" },
   { label: "Accepted by Texas Secretary of State", getTheirs: () => "Yes", quantum: "Yes" },
   { label: "Term", getTheirs: () => "4 years", quantum: "4 years" },
-  { label: "Price", getTheirs: (c: Carrier) => c.price, quantum: "$50 flat, total" },
+  { label: "Price", getTheirs: (c: Carrier) => c.price, quantum: "$50 bond + $21 state fee = $71" },
   { label: "Certificate delivery", getTheirs: (c: Carrier) => c.delivery, quantum: "Instant PDF by email, same day" },
   { label: "Required add-ons", getTheirs: (c: Carrier) => c.addons, quantum: "None — bond only" },
   { label: "Underwriter", getTheirs: (c: Carrier) => c.underwriter, quantum: "RLI Insurance Company (A-rated)" },
@@ -210,7 +210,7 @@ export default function CompareTool() {
               <div className="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2">Step 3</div>
               <h3 className="font-bold text-gray-900 text-base mb-4">Switch in 5 minutes</h3>
               <ol className="list-decimal pl-5 text-sm text-gray-700 space-y-2 mb-5">
-                <li>Click below — apply online with your name, commission details, and payment. <strong>$50 total for 4 years.</strong></li>
+                <li>Click below — apply online with your name, commission details, and payment. <strong>$50 for 4 years, plus the $21 state filing fee.</strong></li>
                 <li>Your bond certificate (RLI Insurance, A-rated) arrives by email, usually same day.</li>
                 <li>File your renewal with the Texas Secretary of State as usual — don't forget the SB693 course ($20 at sos.texas.gov/notary).</li>
               </ol>

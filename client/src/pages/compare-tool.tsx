@@ -62,7 +62,7 @@ const CARRIERS: Record<string, Carrier> = {
   "suretybonds": {
     name: "SuretyBonds.com",
     marketShare: "National broker",
-    price: "$65–79 (notary), $99–150 (contractor)",
+    price: "$50 flat 4-yr (notary), $99–150 (contractor)",
     delivery: "1–3 business days",
     addons: "None, but not TX-licensed",
     underwriter: "Various via Missouri broker",
@@ -71,7 +71,7 @@ const CARRIERS: Record<string, Carrier> = {
   "bondexchange": {
     name: "BondExchange",
     marketShare: "Wholesale platform",
-    price: "$60–80 (notary), $99–175 (contractor)",
+    price: "$50 flat 4-yr (notary), $99–175 (contractor)",
     delivery: "24–48 hrs via agent",
     addons: "Agent required — no direct purchase",
     underwriter: "Various wholesale carriers",

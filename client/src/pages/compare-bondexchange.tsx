@@ -10,7 +10,12 @@ export const metadata = {
 };
 
 const COMPARISON = [
-  { feature: "Texas Notary Bond",          qs: "$50 flat (4-yr)",    them: "$60–$80/yr",           winner: "qs" },
+  // Verified against bondexchange.com's own Texas notary guide, Aug 2026: "The Texas
+  // Notary Public bond costs just $50 for a four-year term." The old "$60–$80/yr" was
+  // wrong twice — on the number and on the period. Their page also confirms the $21 SOS
+  // filing fee. They are a wholesaler, so a retail agent may mark it up, but their
+  // published rate is ours. We do not win this row.
+  { feature: "Texas Notary Bond",          qs: "$50 flat (4-yr)",    them: "$50 flat (4-yr)",      winner: "tie" },
   { feature: "TDLR Contractor Bond",       qs: "$75/yr",             them: "$99–$175/yr",          winner: "qs" },
   { feature: "TX GDN Dealer Bond",         qs: "$100/yr",            them: "$150–$299/yr",         winner: "qs" },
   { feature: "Texas TDI Licensed",         qs: "Yes — #3480229",     them: "Agent network only",   winner: "qs" },
@@ -32,8 +37,8 @@ const FAQS = [
     a: "Not directly — BondExchange requires going through a licensed agent. Quantum Surety lets contractors apply and purchase online in minutes, with instant certificate delivery.",
   },
   {
-    q: "Is Quantum Surety more expensive than BondExchange?",
-    a: "No. Quantum Surety's direct pricing is lower than what most agents charge through BondExchange for Texas bonds. Our notary bond is $50 flat; TDLR contractor bonds start at $75/yr.",
+    q: "Is Quantum Surety cheaper than BondExchange for a Texas notary bond?",
+    a: "No — BondExchange publishes the same $50 for the four-year term that we charge, plus the $21 Texas Secretary of State filing fee that applies either way. $50 is the going rate across the market. The real difference is that BondExchange is a wholesaler serving insurance agents, so a notary buys through an agent who may add their own fee, and delivery runs 24–48 hours. We sell direct, issue an instant PDF, and run a free bond lookup portal they don't offer.",
   },
   {
     q: "Does Quantum Surety work with other agents?",

@@ -1,7 +1,25 @@
 import { Link } from "wouter";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, AlertCircle } from "lucide-react";
+import { CheckCircle, ArrowRight, Shield, Phone, ChevronRight, AlertCircle } from "lucide-react";
+
+/**
+ * /bonds/notary-eo-insurance — the "bond vs E&O" query, held as its own URL.
+ *
+ * This page earns its place. notarypublicunderwriters.com holds TWO first-page
+ * slots for Texas notary bond searches: the head term AND a separate page titled
+ * "Texas Notary Public Bond versus Errors & Omissions Insurance". Folding this
+ * into the money page would hand them that second slot uncontested. So the money
+ * page answers the question inline for the buyer who is already there, and this
+ * page targets the standalone query — cross-linked in both directions.
+ *
+ * Corrected 2026-08-16: this page stated the notary bond premium as "$50/year"
+ * in two places. It is $50 for the entire 4-year term, and the Texas SOS charges
+ * a separate $21 filing fee. Never present $50 as the cost of being commissioned.
+ */
+
+/** Our own book. Last 45 issued Texas notary bonds. Same source as the money page. */
+const BOOK = { count: 45, eoAttached: 42, eoAvg: "$46.85" };
 
 const faqs = [
   {
@@ -18,7 +36,7 @@ const faqs = [
   },
   {
     q: "How much does notary E&O insurance cost in Texas?",
-    a: "Notary E&O insurance typically costs $30–$75 per year for $25,000–$100,000 in coverage. Notary signing agent (NSA) policies with higher limits ($100,000+) may cost more. Policies are available from several providers specializing in notary professional liability.",
+    a: `It depends entirely on the limit you choose, so treat any single figure with suspicion. What we can tell you is what our own buyers paid: across the last ${BOOK.count} Texas notary bonds we issued, ${BOOK.eoAttached} buyers added E&O coverage, and the average amount added to the order was ${BOOK.eoAvg}. That average sits above what a typical buyer spends — a few signing agents bought high limits and pulled it up. Higher NSA-grade limits of $100,000 or more cost meaningfully more than that.`,
   },
   {
     q: "Does E&O insurance cover notary signing agents (NSAs)?",
@@ -26,7 +44,11 @@ const faqs = [
   },
   {
     q: "Can I get my notary bond and E&O insurance together?",
-    a: "Quantum Surety issues Texas notary bonds ($10,000, $50/year) directly. For E&O insurance, we can refer you to specialized providers. Some insurers bundle both the bond and E&O coverage into a single notary protection package.",
+    a: "Yes. Quantum Surety issues the required Texas notary bond ($10,000 coverage, $50 for the full 4-year term) and E&O can be added to the same order. The Texas Secretary of State's separate $21 filing fee still applies either way — it is paid to the state, not to us, and no provider can waive it.",
+  },
+  {
+    q: "Is there any reason NOT to buy E&O?",
+    a: "Two. First, if you notarize occasionally for an employer, check whether their policy already extends to notarizations you perform in the course of your job — buying your own may duplicate coverage you already have. Second, E&O is not compliance. Nobody at the Secretary of State will ever ask whether you carry it, and you are fully commissioned without it. Of our last 45 notary bond buyers, 3 bought the bond alone and are just as validly commissioned as the other 42.",
   },
 ];
 
@@ -65,7 +87,7 @@ export default function NotaryEOInsurance() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/bonds/notary-bond-texas">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Notary Bond — $50 <ArrowRight className="w-4 h-4 ml-2" />
+                Get the required notary bond <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <a href="tel:2146668718">
@@ -90,7 +112,7 @@ export default function NotaryEOInsurance() {
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">Texas Notary Bond</p>
-                  <p className="text-xs text-indigo-700 font-semibold">Required by law · $10,000 · $50/year</p>
+                  <p className="text-xs text-indigo-700 font-semibold">Required by law · $10,000 · $50 for the full 4-year term</p>
                 </div>
               </div>
               <ul className="space-y-2">
@@ -115,7 +137,7 @@ export default function NotaryEOInsurance() {
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">E&O Insurance</p>
-                  <p className="text-xs text-teal-700 font-semibold">Optional but recommended · $30–$75/year</p>
+                  <p className="text-xs text-teal-700 font-semibold">Optional · not required in Texas · priced by limit</p>
                 </div>
               </div>
               <ul className="space-y-2">
@@ -181,6 +203,39 @@ export default function NotaryEOInsurance() {
           </div>
         </section>
 
+        {/* What our own buyers actually did. Published because no competitor
+            page on this query offers anything but generalities — and because
+            the 3 who declined are part of the answer, not an omission. */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">What Texas notaries actually decide</h2>
+          <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+            Rather than tell you what "most notaries" do, here is our own order book — the last{" "}
+            {BOOK.count} Texas notary bonds we issued.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 mb-5">
+            {/* Bond-only first, deliberately. Leading with the 42 makes an
+                optional product look mandatory, which is the one thing this
+                page exists to stop people believing. */}
+            {[
+              { v: `${BOOK.count - BOOK.eoAttached}/${BOOK.count}`, l: "Bought the bond alone", s: "Fully and validly commissioned" },
+              { v: `${BOOK.eoAttached}/${BOOK.count}`, l: "Chose to add E&O", s: "Optional protection beyond the bond" },
+              { v: BOOK.eoAvg, l: "Average E&O added", s: "Mean amount added to the order" },
+            ].map((s) => (
+              <div key={s.l} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p className="text-xl font-bold text-gray-900">{s.v}</p>
+                <p className="text-xs font-semibold text-gray-700 mt-1">{s.l}</p>
+                <p className="text-[11px] text-gray-500 mt-1 leading-snug">{s.s}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Basis: the last {BOOK.count} Texas notary bonds issued by Quantum Surety, measured August
+            2026. This is our whole recent book, not a survey — read it as what we see, not as a
+            statewide statistic. The {BOOK.eoAvg} average sits above the typical order because a few
+            signing agents bought high limits.
+          </p>
+        </section>
+
         {/* Alert box */}
         <section className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
           <div className="flex items-start gap-3">
@@ -217,8 +272,14 @@ export default function NotaryEOInsurance() {
       {/* CTA */}
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
-          <h2 className="text-2xl font-bold mb-2">Start With Your Texas Notary Bond — $50</h2>
-          <p className="text-indigo-200 mb-6">Required by law · Same-day issuance · Instant PDF · TDI Licensed Agency #3480229</p>
+          <h2 className="text-2xl font-bold mb-2">Start with the bond Texas actually requires</h2>
+          <p className="text-indigo-200 mb-1">
+            $10,000 coverage · $50 for the full 4-year term · no credit check
+          </p>
+          <p className="text-indigo-300 text-sm mb-6">
+            Plus the Secretary of State's separate $21 filing fee, paid to the state — $71 to be
+            commissioned. TDI licensed agency #3480229.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

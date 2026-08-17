@@ -56,8 +56,17 @@ export default function DealerRenewalAlert({
       const found: Dealer[] = r.results || [];
       setResults(found);
       if (!found.length) setError("No Texas GDN licence found under that name. Try a shorter version of the business name.");
-    } catch {
-      setError("Lookup is temporarily unavailable. Please try again in a moment.");
+    } catch (err) {
+      // Do not claim the service is down — from here we cannot tell a network problem
+      // from a blocked request from an outage. Say what is true and offer a route that
+      // does not depend on the call that just failed.
+      console.error("[dealer licence lookup] lookup failed:", err);
+      setError(
+        typeof navigator !== "undefined" && navigator.onLine === false
+          ? "You appear to be offline. Reconnect and try again."
+          : "We couldn't reach the lookup just now. You can search directly at verify.quantumsurety.bond, or call (214) 666-8718 and we'll check it for you."
+      );
+
     } finally {
       setBusy(false);
     }

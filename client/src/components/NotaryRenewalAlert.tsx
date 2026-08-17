@@ -65,8 +65,17 @@ export default function NotaryRenewalAlert({
       const found: Notary[] = (r.results || []).slice(0, 8);
       setResults(found);
       if (!found.length) setError("No Texas commission found under that name. Check the spelling, or try without a city.");
-    } catch {
-      setError("Lookup is temporarily unavailable. Please try again in a moment.");
+    } catch (err) {
+      // Do not claim the service is down — from here we cannot tell a network problem
+      // from a blocked request from an outage. Say what is true and offer a route that
+      // does not depend on the call that just failed.
+      console.error("[notary commission lookup] lookup failed:", err);
+      setError(
+        typeof navigator !== "undefined" && navigator.onLine === false
+          ? "You appear to be offline. Reconnect and try again."
+          : "We couldn't reach the lookup just now. You can search directly at verify.quantumsurety.bond, or call (214) 666-8718 and we'll check it for you."
+      );
+
     } finally {
       setBusy(false);
     }

@@ -8375,6 +8375,25 @@ export function seoMiddleware(distDir: string) {
     const metaTags = buildMetaTags(meta);
     html = html.replace("</head>", `${metaTags}\n</head>`);
 
+    // Google Search Console ownership, driven by env so a token can be added without
+    // a rebuild: set GOOGLE_SITE_VERIFICATION in .env, pm2 delete + start, done.
+    //
+    // Try the Google Analytics method in Search Console FIRST. This site already
+    // loads gtag.js (G-QGDQ6JDMMH); if the Google account has Edit on that property,
+    // GSC verifies with no code and no token at all. This is the fallback.
+    //
+    // Why it matters: as of 2026-08-16 the domain is not verified, so nobody can see
+    // the real position, impressions or clicks for "texas notary bond" -- the term the
+    // notary page rebuild was aimed at. Until then every rank answer is a guess.
+    const gsc = process.env.GOOGLE_SITE_VERIFICATION;
+    if (gsc) {
+      html = html.replace(
+        "</head>",
+        `<meta name="google-site-verification" content="${gsc}" />
+</head>`
+      );
+    }
+
     // Inject crawlable pre-render HTML inside <div id="root"> (visible to first-pass crawl, replaced by JS)
     if (meta.content) {
       html = html.replace(

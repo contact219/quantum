@@ -41,6 +41,7 @@ const TexasContractorBonds = lazy(() => import("@/pages/texas-contractor"));
 const BidBondTexas = lazy(() => import("@/pages/bid-bond-texas"));
 const ContractSuretyApply = lazy(() => import("@/pages/contract-surety-apply"));
 const TexasNotaryExamPractice = lazy(() => import("@/pages/texas-notary-exam-practice"));
+const TexasNotaryJournal = lazy(() => import("@/pages/texas-notary-journal"));
 const PerformanceBondTexas = lazy(() => import("@/pages/performance-bond-texas"));
 const LicenseBondTexas = lazy(() => import("@/pages/license-bond-texas"));
 const NotaryBondTexas = lazy(() => import("@/pages/notary-bond-texas"));
@@ -482,6 +483,7 @@ function Router() {
       <Route path="/bonds/bid-bond-texas" component={BidBondTexas} />
       <Route path="/contract-surety" component={ContractSuretyApply} />
       <Route path="/texas-notary-exam-practice" component={TexasNotaryExamPractice} />
+      <Route path="/texas-notary-journal" component={TexasNotaryJournal} />
       <Route path="/bonds/performance-bond-texas" component={PerformanceBondTexas} />
       <Route path="/bonds/license-bond-texas" component={LicenseBondTexas} />
       <Route path="/bonds/notary-bond-texas" component={NotaryBondTexas} />

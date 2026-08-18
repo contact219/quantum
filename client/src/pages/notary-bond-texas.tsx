@@ -879,7 +879,15 @@ export default function NotaryBondTexas() {
               </li>
             ))}
           </ol>
-          <div className="mt-10">
+          <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-700 leading-relaxed">
+            Starting from zero rather than mid-application? The{" "}
+            <Link href="/become-a-texas-notary">
+              <span className="text-indigo-600 font-semibold hover:underline cursor-pointer">complete guide to becoming a Texas notary</span>
+            </Link>{" "}
+            walks every step — eligibility, the state course and assessment, filing, seal,
+            record-keeping, renewal — with every cost itemized and who each dollar goes to.
+          </div>
+          <div className="mt-8">
             <a href="/get-bond?type=notary">
               <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8">
                 Get My Notary Bond — $50 <ArrowRight className="w-4 h-4 ml-2" />

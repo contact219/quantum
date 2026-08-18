@@ -6,7 +6,9 @@ import { Download, Trash2, Plus, ShieldCheck, AlertTriangle, Printer } from "luc
 /**
  * Free Texas notary record book (journal), local-first.
  *
- * WHY. SB 693 doubled the retention period to ten years from the date of notarization and
+ * WHY. SB 693 set the retention period at ten years from the date of notarization
+ * (Gov't Code § 406.014(b) — do NOT describe this as "doubled"/"the old five"; the prior
+ * administrative rule, 1 TAC § 87.44, said three years, so the comparative is wrong) and
  * made failure to keep the required record expressly "good cause" to suspend or revoke a
  * commission. Every Texas notary now carries a decade-long statutory duty with real teeth,
  * and nothing on the market attaches a product to it. Tex. Gov't Code § 406.014(c)
@@ -260,9 +262,24 @@ export default function TexasNotaryJournal() {
                   {ID_METHODS.map((m) => <option key={m}>{m}</option>)}
                 </select>
               </Field>
-              <Field label="ID detail" hint="Issuing agency, or leave blank if personally known">
+              <Field label="ID detail" hint="Issuing agency ONLY — never the ID number">
                 <input value={form.idDetail} onChange={(e) => set("idDetail", e.target.value)} className="inp" />
               </Field>
+            </div>
+
+            {/* 1 TAC § 87.40 prohibits identification numbers and biometrics in the
+                record. A journal that brags about capturing required fields while
+                staying silent on the prohibited ones is a liability trap — this
+                warning sits next to the one field where the mistake happens. */}
+            <div className="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg p-3 -mt-1">
+              <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
+              <p className="text-xs text-amber-900 leading-relaxed">
+                <strong>Never record ID numbers.</strong> Texas rules (1 TAC &sect; 87.40)
+                prohibit the record from containing identification numbers &mdash; driver's
+                license, Social Security, passport &mdash; or any biometric data. Note the
+                issuing agency ("TX DPS driver's license"), never the number on the card.
+                Leave blank if the signer is personally known to you.
+              </p>
             </div>
 
             {form.idMethod === "Introduced by a credible witness" && (

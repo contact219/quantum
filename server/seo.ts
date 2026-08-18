@@ -1516,6 +1516,13 @@ export const PAGE_META: Record<string, PageMeta> = {
       </section>
 
       <section>
+        <h2>Free Tools for Texas Notaries</h2>
+        <p>Both are free, need no account, and exist because SB 693 created two obligations nothing else on the market helps with.</p>
+        <ul>
+          <li><a href="/texas-notary-exam-practice">Texas notary exam practice test</a> &mdash; 20 questions in the same format as the state assessment, 70% to pass, every answer sourced to the statute. The real assessment costs $20 per attempt, so it is worth knowing where you stand first.</li>
+          <li><a href="/texas-notary-journal">Texas notary record book</a> &mdash; every field Gov't Code &sect; 406.014 requires, with CSV export for the ten-year retention SB 693 now demands. Entries stay on your own device; we never see them.</li>
+        </ul>
+
         <h2>Look Up Any Texas Notary Free</h2>
         <p>Quantum Surety runs a public bond verification portal covering more than 570,000 Texas notary records sourced from the Secretary of State. No account, no payment, and no obligation to buy anything. Use it to confirm your own commission status and expiry date, or to check a notary before relying on their seal. You can also ask us to email you a free reminder 60 days before your commission expires, which is the single most common way Texas notaries lose the ability to notarize.</p>
         <p><a href="/texas-notary-lookup">Search the Texas notary lookup</a>.</p>

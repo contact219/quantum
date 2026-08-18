@@ -963,6 +963,40 @@ export default function NotaryBondTexas() {
         </div>
       </section>
 
+      {/* ── 07b. Free tools ─────────────────────────────────────────────
+          Placed straight after SB693 on purpose: the person reading about the new
+          education requirement is the person who wants the practice test, and the
+          person reading about ten-year retention is the person who needs a record
+          book. Mirrored in server/seo.ts — this page exists in two versions and
+          letting them drift is what made it underperform for months. */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-slate-900 mb-3">Free tools for Texas notaries</h2>
+          <p className="text-slate-700 leading-relaxed mb-6">
+            Both are free and need no account. They exist because SB 693 created two
+            obligations that nothing else on the market helps with.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <a href="/texas-notary-exam-practice" className="block rounded-xl border border-slate-200 bg-white p-5 hover:border-slate-400 transition">
+              <h3 className="font-bold text-slate-900 mb-1">Exam practice test</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Twenty questions in the same format as the state assessment, 70% to pass,
+                every answer sourced to the statute. The real thing costs $20 an attempt —
+                worth knowing where you stand first.
+              </p>
+            </a>
+            <a href="/texas-notary-journal" className="block rounded-xl border border-slate-200 bg-white p-5 hover:border-slate-400 transition">
+              <h3 className="font-bold text-slate-900 mb-1">Notary record book</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Every field Gov&rsquo;t Code &sect;&nbsp;406.014 requires, with CSV export for the
+                ten-year retention SB 693 now demands. Entries stay on your own device — we
+                never see them.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── 08. Verification portal + renewal capture ──────────────────────
           The genuinely uncopyable asset. Nothing on the current first page of
           results for this term offers a public record lookup at all. */}

@@ -18,6 +18,10 @@ interface PageMeta {
   structuredData?: object | object[];
   content?: string; // crawlable static HTML (Google sees this)
   noIndex?: boolean;
+  /** Explicit robots directive, overriding the noIndex default. Needed because the
+   *  default pairs noindex with nofollow, and the notary records are noindexed but
+   *  must stay followable so internal links keep flowing across 1.2M pages. */
+  robots?: string;
   alternates?: Array<{ hreflang: string; href: string }>;
   locale?: string; // og:locale override (default "en_US")
 }
@@ -7600,7 +7604,7 @@ function buildMetaTags(meta: PageMeta): string {
     <meta name="twitter:image" content="${BASE_URL}/QS_OG_2.png" />
     <meta name="twitter:site" content="@quantumsurety" />
     <meta name="twitter:creator" content="@quantumsurety" />
-    <meta name="robots" content="${meta.noIndex ? "noindex, nofollow" : "index, follow"}" />
+    <meta name="robots" content="${meta.robots ?? (meta.noIndex ? "noindex, nofollow" : "index, follow")}" />
     ${
       meta.alternates && meta.alternates.length > 0
         ? meta.alternates.map(a => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}" />`).join("\n    ")
@@ -8028,12 +8032,39 @@ function _notarySSRMeta(id: string, d: Record<string, unknown>): PageMeta {
     ? `Commission status: ${statusLabel}.${_effDate ? " Takes effect " + _effDate + "." : ""}${expDate ? " Runs through " + expDate + "." : ""}${pubClause}`
     : `Commission status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""}${pubClause}`;
 
+  /*
+   * INDEX ONLY THE PAGES THAT CAN CONVERT.
+   *
+   * Measured 2026-08-18. There are ~1,370,000 of these pages. Over 90 days Search Console
+   * recorded 5,360 impressions and 215 clicks across the whole corpus, and site analytics
+   * show exactly 226 distinct pages received a visit — 0.016% of them. Google is not
+   * penalising these so much as declining to surface them, while 1.37M thin pages consume
+   * crawl budget and sit on the domain trying to rank a commercial page.
+   *
+   * Worse, ~88% of the traffic that does arrive lands on IN-TERM records, which show no
+   * call to action by deliberate design — a notary sharing their page as proof of standing
+   * should not meet a renewal pitch. So of 215 clicks only ~26 were addressable at all.
+   *
+   * So: index the records where the reader has a reason to act, and noindex the rest.
+   * Expiring and expired commissions stay indexed. In-term, not-yet-effective and unknown
+   * are noindexed but still FOLLOW, so internal links keep flowing and the pages remain
+   * fully reachable to anyone who has the URL — a notary can still share their own record.
+   *
+   * Reversible: flip this condition and Google re-indexes. The measurement is impressions
+   * on /bonds/notary-bond-texas in Search Console, which now has baseline history.
+   */
+  const _addressable = status === "expiring" || status === "expired";
+
   return {
     title: `${fullName} — Texas Notary Commission | ${loc} | Quantum Surety`,
-    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Source: Texas Secretary of State public records. ${agency && !agencyIsQS ? "Bonded through " + agency + "." : ""} Renew your Texas notary bond for $50 flat at Quantum Surety.`.replace(/\s+/g, " ").trim(),
+    description: `${fullName} (TX Notary #${id}) in ${loc}. ${descLead} Source: Texas Secretary of State public records. ${agency && !agencyIsQS ? "Bonded through " + agency + "." : ""} Texas notary bond renewal is $50 for the 4-year term plus the state's $21 filing fee.`.replace(/\s+/g, " ").trim(),
     canonical: `${BASE_URL}/notary/${id}`,
     ogType: "profile",
-    noIndex: false,
+    noIndex: !_addressable,
+    // FOLLOW deliberately. These are noindexed to stop 1.2M thin pages diluting the
+    // domain, not to cut them off — links out of them still carry weight, and the
+    // page stays fully readable to any notary who shares their own record.
+    robots: _addressable ? "index, follow" : "noindex, follow",
     structuredData: [
       {
         "@context": "https://schema.org",

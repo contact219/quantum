@@ -75,8 +75,8 @@ const QUESTIONS: Q[] = [
     q: "Under SB 693, how long must a Texas notary retain their records?",
     options: ["3 years", "5 years", "10 years", "For the life of the commission"],
     answer: 2,
-    why: "Ten years from the date of notarization. SB 693 doubled the previous five-year requirement.",
-    source: "SB 693 (89th Leg., 2025)",
+    why: "Ten years from the date of notarization — Gov't Code § 406.014(b) requires records to be kept until the 10th anniversary of the notarial act.",
+    source: "Tex. Gov't Code § 406.014(b), as amended by SB 693 (89th Leg., 2025)",
   },
   {
     q: "A regular customer asks you to notarize a document. They are not with you, but they signed it earlier and you recognise the signature. What must you do?",
@@ -293,8 +293,10 @@ export default function TexasNotaryExamPractice() {
           <p className="text-slate-300 text-lg leading-relaxed">
             From 1 January 2026 every new and renewing Texas notary must pass a 20-question
             assessment after the Secretary of State's course. You need 70% — six wrong and you
-            resit, at $20 an attempt. These 20 questions cover the same law, in the same format,
-            so you know where you stand before it costs you anything.
+            resit, at $20 an attempt — and the real thing runs on a hard 30-minute clock: run
+            over and the attempt fails. The course itself must be completed within 90 days of
+            paying for it. These 20 questions cover the same law, in the same format, so you
+            know where you stand before any of that is on the line.
           </p>
         </div>
       </section>

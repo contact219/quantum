@@ -319,7 +319,7 @@ export const PAGE_META: Record<string, PageMeta> = {
       </section>
       <section>
         <h2>SB 693 — What Changed for Texas Notaries in 2026</h2>
-        <p>Senate Bill 693 passed in the 2025 session and took effect on September 1, 2025, but its requirements apply to applications for appointment or reappointment submitted on or after January 1, 2026. From that date, new and renewing Texas notaries must complete a two-hour education course provided by the Secretary of State. SB 693 also created a criminal offence for notarising a document when the signer is not personally present, and doubled the record retention period from five years to ten. It did not change the bond amount or the length of the commission term, both of which were already $10,000 and four years. The bond premium is $50 for the full four-year term, plus the $21 Secretary of State filing fee.</p>
+        <p>Senate Bill 693 passed in the 2025 session and took effect on September 1, 2025, but its requirements apply to applications for appointment or reappointment submitted on or after January 1, 2026. From that date, new and renewing Texas notaries must complete a two-hour education course provided by the Secretary of State. SB 693 also created a criminal offence for notarising a document when the signer is not personally present, and set the record retention period at ten years from the date of notarization (Gov't Code &sect;406.014(b)). It did not change the bond amount or the length of the commission term, both of which were already $10,000 and four years. The bond premium is $50 for the full four-year term, plus the $21 Secretary of State filing fee.</p>
       </section>
       <section>
         <h2>Texas Notary Bond by City</h2>
@@ -1508,9 +1508,10 @@ export const PAGE_META: Record<string, PageMeta> = {
           <li>Complete the SB693 two-hour education course from the Texas Secretary of State and pass the assessment. The $20 is the assessment fee and you may retake it up to three times within three months. Applies to applications for appointment or reappointment submitted on or after January 1, 2026.</li>
           <li>Buy your $10,000 notary bond. No credit check, no underwriting questions, checkout open around the clock. Your executed bond PDF is emailed to you.</li>
           <li>File the bond with your application through the Texas SOS Portal Notary System and pay the $21 state filing fee there. Written instructions come with every bond, and you can call (214) 666-8718 if the portal rejects something.</li>
-          <li>Receive your commission from the Secretary of State, then order your seal — after you have the commission, so the expiry date on it is right.</li>
+          <li>Receive your commission from the Secretary of State and take the oath of office on the form it arrives with — any current notary can administer it. Then order your seal, after you have the commission, so the expiry date on it is right.</li>
           <li>Record your expiry date somewhere you will see it in four years. A lapsed commission cannot be renewed; you start the application over.</li>
         </ol>
+        <p>Starting from zero rather than mid-application? The <a href="/become-a-texas-notary">complete guide to becoming a Texas notary</a> walks every step &mdash; eligibility, the state course and assessment, filing, seal, record-keeping, renewal &mdash; with every cost itemized and who each dollar goes to.</p>
       </section>
 
       <section>
@@ -1556,6 +1557,267 @@ export const PAGE_META: Record<string, PageMeta> = {
           <li><a href="/bonds/notary-bond-corpus-christi">Corpus Christi Notary Bond</a> — Nueces County</li>
           <li><a href="/bonds/notary-bond-lubbock">Lubbock Notary Bond</a> — Lubbock County</li>
         </ul>
+      </section>
+    </main>`,
+  },
+
+  // ─── /become-a-texas-notary ──────────────────────────────────────────────
+  // The head of the journey. The competitor that holds positions 1–2 for
+  // "texas notary bond" wins by owning the "become a notary" journey and
+  // selling the bond as step 3 of it; this page is our version of that head
+  // page, with the honesty wedge they cannot follow: the full cost table with
+  // payees, the SOS-only course disclosure, and the free tools at each step.
+  // MIRRORED in client/src/pages/become-a-texas-notary.tsx — change facts in
+  // both in the same commit. The page that ranks is THIS one.
+  "/become-a-texas-notary": {
+    title: "How to Become a Notary in Texas (2026) — Every Step, Every Dollar | Quantum Surety",
+    description:
+      "The complete 2026 guide to becoming a Texas notary: eligibility, the SB 693 state course and $20 assessment, the $50 bond plus the $21 state fee, the seal, the 10-year record rule, and renewal. Required spend: $91 — itemized with who each dollar goes to.",
+    canonical: `${BASE_URL}/become-a-texas-notary`,
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: "How to Become a Notary Public in Texas",
+        description:
+          "The complete 2026 process for becoming a Texas notary public: eligibility, the Secretary of State education course and assessment required by SB 693, the $10,000 surety bond, filing at the SOS portal, the seal, record-keeping, and renewal.",
+        estimatedCost: { "@type": "MonetaryAmount", currency: "USD", value: "91" },
+        step: [
+          {
+            "@type": "HowToStep",
+            name: "Confirm you are eligible",
+            text: "You must be at least 18 years old, a Texas resident, and have no conviction for a felony or a crime involving moral turpitude.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Complete the Secretary of State education course and pass the assessment",
+            text: "For applications submitted on or after January 1, 2026, SB 693 requires an education course of up to 2 hours delivered only by the Texas Secretary of State at notarytraining.sos.texas.gov, followed by a 20-question assessment with a hard 30-minute time limit. 70% is passing. The $20 covers the course sitting and its assessment — failing means paying it again, up to three attempts within three months — and the course must be completed within 90 days of payment.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Buy your $10,000 Texas notary bond",
+            text: "Texas requires a $10,000 surety bond covering the full 4-year commission term. The premium is $50 — the standard market rate. No credit check. Exception: notaries acting primarily as officers or employees of Texas state agencies are exempt and do not need a bond.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Apply and file your bond at the SOS portal",
+            text: "Submit your application with the executed bond through the Texas Secretary of State's SOS Portal Notary System and pay the $21 state filing fee there.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Receive your commission, take the oath of office, and verify it",
+            text: "The Secretary of State issues your 4-year commission. Confirm your record and expiry date on a public notary verification portal before you rely on it.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Get your seal and set up your record book",
+            text: "Order your seal after you have the commission so the name and dates are right — any office supplier sells one for roughly $15–30, made to the specification in Texas Government Code §406.013. Set up a record book: records must be kept until the 10th anniversary of the notarization (Gov't Code §406.014(b)), and must not contain identification numbers or biometric data (1 TAC §87.40). A free digital record book meets the requirement.",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Start notarizing — and know the rules that changed",
+            text: "The signer must personally appear before you: SB 693 made notarizing without personal appearance a Class A misdemeanor, and a state jail felony where real property is involved. Keep every record for 10 years from the date of notarization, and post your fee schedule conspicuously as Gov't Code §406.024 requires.",
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "How much does it cost to become a notary in Texas?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The required spend is $91: a $10,000 surety bond at $50 for the full 4-year term, the Texas Secretary of State's $21 filing fee, and the $20 fee covering the state education course and its assessment. Texas.gov adds small card-processing surcharges to the state payments — call it about $93–94 in practice, assuming you pass the assessment first time; each extra attempt is another $20. A seal is also required and costs roughly $15–30 from any office supplier, putting the realistic all-in total at about $106–121 before those surcharges. The record-keeping requirement can be met with a free digital record book, and E&O insurance is optional. Packages priced near $170–195 include a provider's own training, seal and journal — none of which has to be bought from them.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Who is eligible to become a Texas notary?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You must be at least 18 years old, a resident of Texas, and have no conviction for a felony or a crime involving moral turpitude. One narrow exception to residency: an escrow officer residing in a state adjacent to Texas may qualify without Texas residency (1 TAC §87.70).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I have to take a course to become a Texas notary?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, for applications for appointment or reappointment submitted on or after January 1, 2026. SB 693 (effective September 1, 2025) requires an education course of up to 2 hours delivered only by the Texas Secretary of State at notarytraining.sos.texas.gov, followed by an assessment: 20 questions, 70% to pass, with a hard 30-minute time limit. The $20 covers the course sitting and its assessment — failing means paying it again, up to three attempts within three months — and the course must be completed within 90 days of payment. No third party can sell you the required course — the only course that counts is the state's own.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What happens if I fail the notary assessment?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You may attempt the assessment up to three times within three months, and each new attempt costs another $20. The assessment is timed — 30 minutes, hard cutoff; run over and the attempt fails. A free practice test in the same 20-question, 70%-to-pass format lets you find out where you stand before an attempt costs you anything.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How long does a Texas notary commission last?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Four years. The $10,000 bond runs concurrent with the commission — one $50 premium covers the whole term, with no annual renewal. SB 693 did not change the commission term or the bond.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do Texas notaries need a journal or record book?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Texas notaries must keep records of their notarial acts until the 10th anniversary of the notarization (Texas Government Code §406.014(b)). The record must NOT contain identification numbers — driver's license, Social Security, or passport numbers — or biometric data (1 TAC §87.40). The requirement can be met at no cost with a free digital record book that captures every field §406.014 requires and exports to CSV.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I renew my Texas notary commission?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You reapply before your 4-year commission expires — the renewal window opens 90 days before your expiry date, and no sooner. Reappointment counts as an application, so from January 1, 2026 it carries the same education and assessment requirement, plus a new bond and the state filing fee. A lapsed commission cannot be renewed: if it expires, you start the application over. A free reminder emailed 60 days before expiry — inside the renewal window — is the cheapest insurance against that.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What did SB 693 change for Texas notaries?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "SB 693 (2025 session, effective September 1, 2025, applying to applications from January 1, 2026) added a mandatory education course delivered only by the Secretary of State with a $20-per-attempt assessment, set record retention at 10 years from the date of notarization, and made notarizing without the signer personally present a crime — a Class A misdemeanor, rising to a state jail felony where real property is involved. It did not change the 4-year commission term and did not change the $10,000 bond requirement.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What can a Texas notary charge?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Texas Government Code §406.024 sets maximum fees: $10 for the first signature on an acknowledgment and $1 for each additional signature, $10 for administering an oath, $1 per page for certifying a copy, and $1 per 100 words for a deposition. These are maximums — you may charge less, or nothing at all — and you must post your fee schedule conspicuously. The posting is a free printout you make yourself.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do I need E&O insurance to become a Texas notary?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. Texas requires only the $10,000 surety bond, which protects the public — not you. Errors & omissions insurance is the optional product that protects the notary personally. You are fully commissioned without it.",
+            },
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Become a Texas Notary", item: `${BASE_URL}/become-a-texas-notary` },
+        ],
+      },
+    ],
+    content: `<main>
+      <h1>How to Become a Notary in Texas (2026)</h1>
+      <p>Last updated: August 18, 2026.</p>
+      <p>Seven steps, in the order the state imposes them. Required spend: <strong>$91</strong> &mdash; a $50 bond, the state's $21 filing fee, and the $20 fee covering the course and its assessment. Every other dollar on this page is optional or a commodity, and we say which is which. Updated for SB 693, which applies to every application from January 1, 2026. Quantum Surety is a Texas Department of Insurance licensed bond agency, license #3480229 &mdash; step 3 is ours; the rest of this page exists so you get the other steps right without paying anyone who says you must.</p>
+
+      <section>
+        <h2>Start here &mdash; the state's own two links</h2>
+        <ol>
+          <li>Read <a href="https://www.sos.state.tx.us/statdoc/guides/TraditionalNotaryApplication.pdf">the state's own step-by-step application guide (PDF)</a> &mdash; the Secretary of State's official walkthrough, revised December 2025. Ten minutes, and every form name below will make sense.</li>
+          <li>When you reach step 2, the required course lives at <a href="https://notarytraining.sos.texas.gov">notarytraining.sos.texas.gov</a> &mdash; the Secretary of State's training site, the only place the required course exists.</li>
+        </ol>
+        <p>Everything below is our plain-English walkthrough of the same process, with the costs itemized and the free tools that help at each step.</p>
+      </section>
+
+      <section>
+        <h2>The 30-second version</h2>
+        <p>To become a Texas notary you must be 18 or older, a Texas resident, with no conviction for a felony or a crime involving moral turpitude. Since January 1, 2026 you complete a short education course from the Secretary of State &mdash; only the state delivers it &mdash; and pass a 20-question assessment with a hard 30-minute time limit ($20 per attempt, 70% to pass, up to three attempts in three months). You file a $10,000 surety bond ($50 for the full 4-year term) with your application at the SOS portal and pay the state's $21 filing fee. Commission in hand, you buy a seal from any office supplier (roughly $15&ndash;30) and keep records of every notarization for 10 years from the date of notarization. Required spend: $91 &mdash; call it about $93&ndash;94 in practice once Texas.gov's small card-processing surcharges land on the two state payments, assuming you pass first time. With a seal, about $106&ndash;121 all-in. Anything above that is optional coverage or bundled extras you could have bought separately &mdash; or not at all.</p>
+      </section>
+
+      <section>
+        <h2>Step 1 — Check you're eligible (free)</h2>
+        <p>Texas keeps the list short: at least 18 years old, a resident of Texas, and no conviction for a felony or a crime involving moral turpitude. That is the entire test &mdash; no degree, no employer sign-off, no sponsorship. "Moral turpitude" is the statute's phrase; it covers crimes of dishonesty such as fraud or theft. If you have a record and are unsure how it reads, resolve that before spending anything on the steps below. One narrow exception to the residency rule: an escrow officer residing in a state adjacent to Texas may qualify without Texas residency (1 TAC &sect;87.70).</p>
+      </section>
+
+      <section>
+        <h2>Step 2 — Take the state's course and pass the assessment ($20 per attempt)</h2>
+        <p>SB 693 &mdash; passed in the 2025 session, effective September 1, 2025 &mdash; requires every applicant whose application is submitted on or after January 1, 2026 to complete an education course of up to 2 hours, delivered <strong>only by the Texas Secretary of State</strong>, at <a href="https://notarytraining.sos.texas.gov">notarytraining.sos.texas.gov</a>. Nobody can sell you the required course &mdash; including us. If a provider offers "Texas notary training" as part of a package, it is their own material, not the course the state requires. Quantum Surety is a bond agency, not a state training provider, and we are not affiliated with the Secretary of State.</p>
+        <p>The assessment that follows the course: 20 questions, 70% to pass, with a <strong>hard 30-minute time limit</strong> &mdash; run over and the attempt fails. The $20 covers the course sitting and its assessment; failing means paying it again, up to three attempts within three months. The course itself must be completed within <strong>90 days of paying for it</strong>.</p>
+        <p>Before you pay for an attempt, take our <a href="/texas-notary-exam-practice">free Texas notary practice test</a> &mdash; twenty questions in the same format, 70% to pass, every answer sourced to the statute. Free, no account, no email required.</p>
+      </section>
+
+      <section>
+        <h2>Step 3 — Buy your $10,000 notary bond ($50)</h2>
+        <p>Texas will not commission you until you file a $10,000 surety bond covering the full 4-year term. The bond protects the public, not you &mdash; if your error costs someone money they claim against the bond, and the surety can then seek that money back from you personally. It is a compliance requirement, not insurance for you.</p>
+        <p>The premium is $50 for the entire four years, and that is the <strong>standard market rate</strong>, charged by the national providers too. The bond is a commodity: the amount is fixed by statute and the bond you file is legally identical whoever sells it. We are not cheaper than the market and do not claim to be. What differs between providers is speed, and whether a human answers when the SOS portal rejects your filing.</p>
+        <p><strong>$50 is not the total cost of becoming a notary.</strong> The state's $21 filing fee lands on you at the SOS portal in step 4 regardless of who sold you the bond, and the $20 assessment came in step 2.</p>
+        <p><strong>One case where you don't need us &mdash; or any bond at all:</strong> notaries who act primarily as officers or employees of Texas state agencies are exempt from the bond requirement. If that is you, confirm it with your agency before buying anything &mdash; do not pay $50 for a bond the state does not require of you.</p>
+        <ul>
+          <li>No credit check, no underwriting questions.</li>
+          <li>Checkout open 24/7; the executed bond PDF is emailed to you, typically within minutes.</li>
+          <li>Filing instructions included free, and a real phone number &mdash; (214) 666-8718 &mdash; if the portal rejects something.</li>
+        </ul>
+        <p><a href="/get-bond?type=notary">Get my Texas notary bond</a>. For the deep dive &mdash; bond vs. E&amp;O, what our last 45 buyers actually paid &mdash; see the <a href="/bonds/notary-bond-texas">full Texas notary bond page</a>.</p>
+      </section>
+
+      <section>
+        <h2>Step 4 — Apply and file your bond at the SOS portal ($21)</h2>
+        <p>With the course passed and the executed bond PDF in hand, submit your application through the Texas Secretary of State's SOS Portal Notary System: upload the bond, complete the application, and pay the $21 state filing fee there. The fee goes to the state &mdash; no bond provider can waive, discount, or absorb it. The most common rejection we see is avoidable: details on the application not matching the bond exactly. Use the same legal name on both.</p>
+        <p>How long until you hear back? The parts you control &mdash; course, assessment, bond, filing &mdash; can all be done in a day. The remaining wait is the state's review of your application, which no provider controls. Be wary of any site promising a specific number of days; that is the state's timeline to give, not theirs.</p>
+      </section>
+
+      <section>
+        <h2>Step 5 — Receive your commission, take the oath, then verify it (free)</h2>
+        <p>Your commission certificate arrives with an oath of office form. Before you may notarize anything, take the oath: bring the form to any current Texas notary, swear it, and have it notarized. The state supplies the form with your commission — nothing to buy, nothing to download. Skip it and every notarization you perform is done without authority.</p>
+        <p>The Secretary of State issues your commission for a 4-year term. Before you order anything with your name and dates on it, confirm the record: we run a free public <a href="https://verify.quantumsurety.bond">bond verification portal</a> covering more than 570,000 Texas notary records sourced from the Secretary of State. Look yourself up, check the spelling of your name and your exact expiry date. Your seal and your renewal calendar both depend on those details being right. You can also <a href="/texas-notary-lookup">search from this site</a>.</p>
+      </section>
+
+      <section>
+        <h2>Step 6 — Get your seal and set up your record book (~$15&ndash;30)</h2>
+        <p><strong>The seal is required, and it is a commodity.</strong> Any office supply company makes Texas notary seals, typically for around $15&ndash;30 &mdash; no reason to pay a bundle price for a branded one. Order it after your commission arrives: the seal must match your commissioned name and dates, and ordering early is how people end up paying twice. We do not sell seals, so take this as disinterested advice.</p>
+        <p>Check any seal against the legal spec (Gov't Code &sect;406.013): circular no larger than 2 inches across or rectangular no larger than 1 inch &times; 2.5 inches, with a serrated or milled edge border, containing "Notary Public, State of Texas" around a five-pointed star, plus your name, your notary ID number, and your commission expiration date. Any seal meeting that spec is legal, whoever made it.</p>
+        <p><strong>The record book requirement can be met free.</strong> You must keep records of your notarial acts until the 10th anniversary of the notarization (Gov't Code &sect;406.014(b)). Our <a href="/texas-notary-journal">free digital record book</a> captures every field &sect;406.014 requires and exports to CSV; entries stay on your own device and we never see them. Prefer paper? Bound record books are sold widely &mdash; the requirement is the records, not any particular book.</p>
+        <p><strong>As important as what goes in: what must stay out.</strong> The record must not contain identification numbers &mdash; driver's license, Social Security, or passport numbers &mdash; or any biometric data (1 TAC &sect;87.40). Record the issuing agency of the ID, never the number on it.</p>
+      </section>
+
+      <section>
+        <h2>Step 7 — Start notarizing, knowing the two rules that changed</h2>
+        <p><strong>The signer must personally appear before you.</strong> SB 693 made notarizing a document without the signer personally present a Class A misdemeanor &mdash; and a state jail felony where real property is involved. <strong>Every record, kept 10 years from the date of notarization</strong> (Gov't Code &sect;406.014(b)).</p>
+        <p>And one housekeeping rule before your first paying customer: <strong>post your fees conspicuously.</strong> Gov't Code &sect;406.024 requires a notary who charges to display the fee schedule. It is a piece of paper you print yourself, for free &mdash; worth knowing, because "fee schedule" also appears as a paid line item in some become-a-notary bundles. The same statute caps what you may charge: $10 for the first signature on an acknowledgment and $1 for each additional signature, $10 for an oath, $1 per page for certifying a copy, $1 per 100 words for a deposition &mdash; maximums, chargeable lower or not at all.</p>
+        <p>One more decision, genuinely optional: errors &amp; omissions insurance. Your bond protects the public; if a claim is paid from it, the surety can pursue you for the money. E&amp;O is the product that protects you. Texas does not require it and never asks. Signing agents and mobile notaries usually want it; someone notarizing occasionally for an employer often does not. <a href="/bonds/notary-eo-insurance">Full E&amp;O guide</a>.</p>
+      </section>
+
+      <section>
+        <h2>What becoming a Texas notary costs — every line, and who gets it</h2>
+        <ul>
+          <li>SOS education course + assessment: $20 per attempt, paid to the state. Required. The course itself is delivered only by the Secretary of State, and the $20 covers the course sitting and its assessment &mdash; failing means paying it again.</li>
+          <li>Notary surety bond ($10,000, 4-year term): $50, paid to a bond agency. Required &mdash; unless you act primarily as an officer or employee of a Texas state agency, in which case you are exempt. The standard market rate, whoever you buy from. No credit check.</li>
+          <li>Texas Secretary of State filing fee: $21, paid to the state at the SOS portal. Required. No provider can waive it.</li>
+          <li>Notary seal: roughly $15&ndash;30, from any office supplier, made to the &sect;406.013 spec. Required, but a commodity &mdash; shop around.</li>
+          <li>Record book (10-year retention): $0 with our free digital record book. The requirement is the records, not a particular book.</li>
+          <li>Fee schedule posting (&sect;406.024): $0 &mdash; a printout you make yourself, even where it appears as a paid line item in bundles.</li>
+          <li>Errors &amp; Omissions insurance: optional, your choice. Not required by Texas.</li>
+        </ul>
+        <p><strong>Required state + bond spend: $91.</strong> Fine print: Texas.gov adds small card-processing surcharges to the two state payments &mdash; roughly $2&ndash;3 across both &mdash; so call it about $93&ndash;94 in practice, assuming you pass the assessment first time; each extra attempt is another $20. Realistic all-in with a seal: about $106&ndash;121 before those surcharges.</p>
+        <p><strong>Why you may have seen totals near $170&ndash;195:</strong> some providers bundle their own training, a branded seal, and a journal into a single "become a notary" package at that price. There is nothing wrong with wanting one vendor for everything &mdash; but since SB 693 the only course that satisfies the state requirement is the Secretary of State's own, the seal is a $15&ndash;30 commodity, and the record-keeping requirement can be met free. Buy a bundle because you want the convenience, not because you think you must.</p>
+      </section>
+
+      <section>
+        <h2>SB 693 — what changed, what didn't</h2>
+        <p>Changed, for applications from January 1, 2026: a mandatory education course of up to 2 hours delivered only by the Secretary of State; an assessment of 20 questions, 70% to pass, on a hard 30-minute timer, $20 per attempt, three attempts in three months; record retention set at 10 years from the date of notarization (Gov't Code &sect;406.014(b)); and notarizing without the signer personally present became a crime &mdash; a Class A misdemeanor, a state jail felony for real property.</p>
+        <p>Did not change: the 4-year commission term, the $10,000 bond at $50 for the full term, eligibility, and the $21 state filing fee. If a provider charges more "because of SB 693," that is not what the bill did. <a href="/sb-693-notary-bond-requirements-2026">Full SB 693 breakdown</a>.</p>
+      </section>
+
+      <section>
+        <h2>Renewing — and the mistake that cannot be undone</h2>
+        <p>Your commission runs four years. Renewal means reapplying before it expires &mdash; and because reappointment counts as an application, from January 1, 2026 it carries the same course-and-assessment requirement, a new bond, and the state filing fee again. The window is fixed: <strong>renewal opens 90 days before your expiry date, and no sooner</strong> &mdash; you cannot get ahead of it, which is exactly why our free reminder fires at 60 days, inside the window with time to spare.</p>
+        <p><strong>A lapsed commission cannot be renewed.</strong> If your expiry date passes you start the whole application over, and you cannot legally notarize in the gap. Four years is exactly long enough to forget, which is why we email a free reminder 60 days before your expiry date &mdash; <a href="/notary-expiration-check">look up your commission and set it up here</a>.</p>
+      </section>
+
+      <section>
+        <h2>Get your Texas notary bond</h2>
+        <p>$10,000 bond, $50 for the full 4-year term, no credit check. Plus the state's $21 filing fee at the portal, and the $20 assessment if you still owe the course &mdash; $91 covers everything the state and the bond require.</p>
+        <p><a href="/get-bond?type=notary">Get My Notary Bond</a>, or call (214) 666-8718. Quantum Surety Bonds, Texas Department of Insurance licensed agency #3480229 &mdash; a bond agency, not a state training provider, and not affiliated with the Texas Secretary of State.</p>
       </section>
     </main>`,
   },
@@ -5472,7 +5734,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         "mainEntity": [
           { "@type": "Question", "name": "When should I renew my Texas notary bond?", "acceptedAnswer": { "@type": "Answer", "text": "You should renew your Texas notary bond when you apply for a new notary commission with the Texas Secretary of State. Under SB693 (effective September 1, 2023), Texas notary commissions run for 4 years — your bond must cover the full 4-year term. When your commission expires, you must purchase a new 4-year bond to apply for a new commission. Do not wait until your bond expires — start the renewal process 30–60 days before your commission expires." }},
           { "@type": "Question", "name": "How much does Texas notary bond renewal cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond renewal costs $50 for a new 4-year, $10,000 SB693-compliant bond. The price is a flat $50 regardless of credit — there is no credit check for Texas notary bonds. Quantum Surety issues renewal bonds instantly online with same-day PDF delivery, making the renewal process simple and fast." }},
-          { "@type": "Question", "name": "What changed with Texas notary bond renewal after SB693?", "acceptedAnswer": { "@type": "Answer", "text": "Senate Bill 693 passed in the 2025 session, took effect on September 1, 2025, and applies to applications for appointment or reappointment submitted on or after January 1, 2026. From that date every renewing Texas notary must complete a two-hour education course provided by the Secretary of State before the commission can be issued. SB 693 also doubled the record retention period from five years to ten and created a criminal offence for notarising when the signer is not personally present. It did not change the bond: the commission term was already four years and the bond has been $10,000 throughout. A renewal bond is $50 for the full four-year term, plus the $21 Secretary of State filing fee." }},
+          { "@type": "Question", "name": "What changed with Texas notary bond renewal after SB693?", "acceptedAnswer": { "@type": "Answer", "text": "Senate Bill 693 passed in the 2025 session, took effect on September 1, 2025, and applies to applications for appointment or reappointment submitted on or after January 1, 2026. From that date every renewing Texas notary must complete a two-hour education course provided by the Secretary of State before the commission can be issued. SB 693 also set the record retention period at ten years from the date of notarization and created a criminal offence for notarising when the signer is not personally present. It did not change the bond: the commission term was already four years and the bond has been $10,000 throughout. A renewal bond is $50 for the full four-year term, plus the $21 Secretary of State filing fee." }},
           { "@type": "Question", "name": "Can I renew my Texas notary bond before it expires?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary bonds are tied to your notary commission — they expire when your commission expires. You purchase a new bond when you apply for a new commission. If you are renewing your commission, you purchase a new 4-year bond as part of the Texas Secretary of State application process. The bond takes effect when your new commission begins and runs for the full 4-year term." }}
         ],
       },
@@ -7638,6 +7900,7 @@ export function generateSitemap(): string {
     if (p === "/es") return "0.9";
     if (p === "/es/fianza-notario-texas") return "0.85";
     if (p === "/bonds/notary-bond-texas" || p === "/bonds/gdn-bond-texas") return "0.95";
+    if (p === "/become-a-texas-notary") return "0.9";
     if (p === "/get-bond") return "0.9";
     if (p === "/blog") return "0.85";
     if (p.startsWith("/bonds/notary-bond-") || p.startsWith("/bonds/gdn-bond-")) return "0.85";

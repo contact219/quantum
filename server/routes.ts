@@ -281,22 +281,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .then((saved: any) => { if (crmWrite.ok && saved?.id) return markNeonLeadSynced(saved.id); })
         .catch((e: any) => console.error("Lead DB save error (secondary):", e.message));
       // Trigger outbound AI sales call — daily cap, business hours, and dedup enforced by the voice-agent service.
-      // Scoped to high-value bond types only: notary is a $50 self-serve product whose thin commission
-      // doesn't justify a call (and would burn the scarce daily call cap). Unknown/general inquiries are
-      // excluded too — we only call when we know the intent is worth it. The secret must come from the
-      // OUTBOUND_CALL_SECRET env (no hardcoded fallback — a missing env fails safe with no call rather
-      // than silently 401-ing, and keeps the rotated secret out of this public repo).
-      const HIGH_VALUE_BOND_TYPES = new Set([
-        "dealer", "gdn", "contractor", "construction", "bid", "performance",
+      // Notary was excluded until 2026-08-24 on a "thin $50 commission" rationale, but the real
+      // median premium is ~$107/4yr AND notary is the only product line that has ever sold — a
+      // same-day callback on the one converting channel is the cheapest sales lever we have.
+      // Unknown/general inquiries stay excluded — we only call when we know the intent.
+      // The secret must come from the OUTBOUND_CALL_SECRET env (no hardcoded fallback — a missing
+      // env fails safe with no call rather than silently 401-ing, and keeps the rotated secret
+      // out of this public repo). The voice-agent routes these to its follow-up agent (the
+      // default agent_kind), never the cancelled-bond notification script.
+      const CALLBACK_BOND_TYPES = new Set([
+        "notary", "dealer", "gdn", "contractor", "construction", "bid", "performance",
         "payment", "mortgage", "credit-access-business", "collection-agency",
         "property-tax-consultant", "oversize-permit", "title", "bonded-title", "vehicle-title",
       ]);
       const outboundSecret = process.env.OUTBOUND_CALL_SECRET;
-      if (!isVoiceOriginated && outboundSecret && HIGH_VALUE_BOND_TYPES.has(rawBondType)) {
+      if (!isVoiceOriginated && outboundSecret && CALLBACK_BOND_TYPES.has(rawBondType)) {
         fetch("https://voice-agent.permitpilot.online/outbound-call", {
           method: "POST",
           headers: { "Content-Type": "application/json", "X-Outbound-Secret": outboundSecret },
-          body: JSON.stringify({ name, email, phone, bond_type: rawBondType || bond_type, source: "get-bond form" }),
+          body: JSON.stringify({
+            name, email, phone, bond_type: rawBondType || bond_type, source: "get-bond form",
+            agent_kind: "followup",
+            context: { call_reason_line: `you just asked us for a quote on a ${bondLabel} at quantumsurety.bond` },
+          }),
         }).catch((e: any) => console.error("Outbound call trigger error:", e.message));
       }
       // Instant speed-to-lead email — the lead hears from us within seconds, not at the 3 PM batch

@@ -71,11 +71,18 @@ type BondMeta = {
 // the exact bug v1 shipped. Any number quoted here must be sourceable to bonds we issued
 // or to a statutory fee. Where we have neither (dealer, title), quote nothing.
 //
-// WHY THE OBSERVED RANGE STAYS. $71–$195.56 across 45 bonds is the strongest trust device
-// on the page (a blind critic singled it out). It now reads as a CONSEQUENCE of a coverage
-// choice rather than an unexplained spread: $71 is the floor with no E&O, $195.56 is the
-// most cover we have written. That turns the top of the range from a surprise quote into
-// somebody buying more protection.
+// WHY THE OBSERVED RANGE STAYS. The observed range across our whole book is the strongest
+// trust device on the page (a blind critic singled it out). It reads as a CONSEQUENCE of a
+// coverage choice rather than an unexplained spread: the floor is the bond with no E&O, the
+// top is the most cover we have written. That turns the top of the range from a surprise
+// quote into somebody buying more protection.
+//
+//   v4 (2026-08-29, DATA corrected — structure unchanged): the v1–v3 numbers ($107.56
+//       median, $195.56 max, "42 of 45 took E&O") were computed from bk_bonds premiums,
+//       which the old scraper FABRICATED (~1.4–2x actual; xls=$75 where bk=$107.56). The
+//       carrier's own ledger (revenue_events, 73 bonds May–Aug 2026) says: bond-only
+//       $50–$80 before the $21 fee, E&O attach 23 of 73 (~1 in 3, not 93%), E&O orders
+//       $85–$167, whole-book median $72. The v3 RULE and unbundled structure both stand.
 const NOTARY_PRICE: Price = {
   headline: "$71 to be commissioned",
   lines: [
@@ -85,11 +92,11 @@ const NOTARY_PRICE: Price = {
   total: { label: "To be commissioned", amount: "$71" },
   addon: {
     label: "Errors & Omissions cover",
-    amount: "from about $25",
-    note: "Optional, and most people take it — 42 of our last 45 customers did. More cover costs more: ours have run from about $25 up to roughly $125.",
+    amount: "typically $35–$40",
+    note: "Optional — about 1 in 3 of our last 73 customers took it, typically $35–$40 for the full four-year term. More cover costs more: the most we've written took an order to $167 before the state fee.",
   },
   detail:
-    "Across those 45 bonds, totals ran from $71 with no E&O to $195.56 with the most cover we've written; the typical basket came to $107.56. RLI charges the card and shows your exact total before you enter it.",
+    "Across those 73 bonds, carrier totals before the state fee ran from $50 with no E&O to $167 with the most cover we've written; the median was $72. RLI charges the card and shows your exact total before you enter it.",
 };
 
 const CARRIER_PRICED: Price = {
@@ -1016,9 +1023,9 @@ function HandoffScreen({
               <>
                 RLI shows the exact total on that page before any card details are taken. Decline E&amp;O and it should
                 come to <strong>$71</strong> — $50 for the bond, $21 for the Secretary of State's filing fee. Add
-                E&amp;O and it rises by roughly $25 to $125 depending on how much cover you pick; across our last 45
-                bonds nobody paid more than <strong>$195.56</strong>. If the number doesn't fit that shape, stop and
-                call us before paying.
+                E&amp;O and it typically rises by <strong>$35–$40</strong> for the full four-year term, more if you
+                pick higher limits; across our last 73 bonds no carrier total ran past <strong>$167</strong> before
+                the state fee. If the number doesn't fit that shape, stop and call us before paying.
               </>
             ) : (
               <>
@@ -1057,9 +1064,10 @@ function HandoffScreen({
             RLI's form offers Errors &amp; Omissions coverage as an add-on, priced by how much cover you pick. Worth
             understanding before you're asked: the bond protects the <em>public</em> from your mistakes — it doesn't
             protect <em>you</em>, and if the bond pays a claim, <em>you repay it</em>. E&amp;O is the part that covers
-            you personally. It's why two notaries pay different totals for the same statutory bond, and it's the whole
-            distance between the $71 floor and the $195.56 top of our range. Entirely your call — the $71 alone
-            satisfies the Secretary of State — but 42 of our last 45 customers took it.
+            you personally, and unlike the bond, you never repay a claim it pays. It's why two notaries pay different
+            totals for the same statutory bond — typically about $35–$40 more for the full four-year term, under $9 a
+            year. Entirely your call — the $71 alone satisfies the Secretary of State — and about 1 in 3 of our last
+            73 customers took it. If a single document ever goes wrong, it will be the best $35 of your commission.
           </p>
         </div>
       )}

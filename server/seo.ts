@@ -1342,7 +1342,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/bonds/notary-bond-texas": {
     title: "Texas Notary Bond — $50 Bond + $21 State Fee | Bond vs E&O | Quantum Surety",
     description:
-      "Texas notary bond: $50 for the full 4-year term, plus the state's unavoidable $21 filing fee — $71 commissioned. What the bond does and does not cover, how it differs from E&O insurance, and what our last 45 Texas notaries actually paid.",
+      "Texas notary bond: $50 for the full 4-year term, plus the state's unavoidable $21 filing fee — $71 commissioned. What the bond does and does not cover, how it differs from E&O insurance, and what our last 73 Texas notaries actually paid.",
     canonical: `${BASE_URL}/bonds/notary-bond-texas`,
     alternates: [
       { hreflang: "en-US", href: `${BASE_URL}/bonds/notary-bond-texas` },
@@ -1402,7 +1402,7 @@ export const PAGE_META: Record<string, PageMeta> = {
             name: "Is E&O insurance required for Texas notaries?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. Texas requires only the $10,000 surety bond. E&O is optional and nobody at the Secretary of State will ask whether you carry it. Of the last 45 Texas notary bonds Quantum Surety issued, 42 buyers chose to add E&O coverage and 3 bought the bond alone — all 45 are equally validly commissioned.",
+              text: "No. Texas requires only the $10,000 surety bond. E&O is optional and nobody at the Secretary of State will ask whether you carry it. In our current book — the last 73 Texas notary bonds, from the carrier's own records — 23 buyers (about 1 in 3) chose to add E&O coverage and 50 bought the bond alone. All 73 are equally validly commissioned.",
             },
           },
           {
@@ -1485,20 +1485,21 @@ export const PAGE_META: Record<string, PageMeta> = {
           <li>High-volume notaries: probably. Exposure scales with the number of signatures you witness.</li>
           <li>Occasional notaries working for an employer: check first. Many employers carry coverage extending to notarizations performed in the course of your job, and buying your own may duplicate it. Ask before you spend.</li>
         </ul>
+        <p>If you decide it fits you, there is nothing extra to arrange: the E&amp;O option appears inside the same RLI checkout as the bond, and among our own buyers it typically adds about $35&ndash;$40 for the full four-year term &mdash; under $9 a year. About 1 in 3 takes it. The bond alone fully satisfies the Secretary of State either way.</p>
         <p><a href="/bonds/notary-eo-insurance">Read the full Texas notary E&amp;O insurance guide</a>.</p>
       </section>
 
       <section>
         <h2>What Texas Notaries Actually Pay — Our Own Order Book</h2>
-        <p>Rather than quote a price and leave it there, here is the real spread across the last 45 Texas notary bonds Quantum Surety issued, measured August 2026. Totals include the $21 state filing fee.</p>
-        <p><strong>3 of the 45 paid $71</strong> — the bond and the state fee, nothing else added. They are fully and validly commissioned Texas notaries, with an identical bond and identical legal standing to everyone else on this list. $71 is a complete answer, and if that is all you want, that is all you need to buy.</p>
-        <p><strong>The other 42 chose to add E&amp;O coverage, averaging $46.85 on the order.</strong> That is optional cover, bought by people who decided the bond alone did not protect them enough — which, as the section above explains, it does not. That choice is the only reason any order here costs more than $71.</p>
+        <p>Rather than quote a price and leave it there, here is the real spread across the last 73 Texas notary bonds in Quantum Surety's book, taken from the carrier's own bookkeeping, May through August 2026. Add the state's $21 filing fee to every figure below &mdash; it is paid at filing, goes to Texas, and no provider can waive it.</p>
+        <p><strong>50 of the 73 bought the bond alone</strong>, paying $50 to $80 at checkout (median $67) depending on the options chosen with it. They are fully and validly commissioned Texas notaries, with an identical bond and identical legal standing to everyone else on this list. The bond by itself is a complete answer, and if that is all you want, that is all you need to buy.</p>
+        <p><strong>The other 23 &mdash; about 1 in 3 &mdash; chose to add E&amp;O coverage</strong>, taking their orders to $85&ndash;$167 (median $103). That is optional cover, bought by people who decided the bond alone did not protect them enough &mdash; which, as the section above explains, it does not. That choice is the main reason any order here runs past $80.</p>
         <ul>
-          <li>Lowest order: $71 — bond plus state fee, nothing added.</li>
-          <li>Median order: $107.56 — typical, and most of these buyers added E&amp;O.</li>
-          <li>Highest order: $195.56 — higher E&amp;O limits chosen.</li>
+          <li>Lowest order: $50 &mdash; the bond, nothing added.</li>
+          <li>Median across the whole book: $72.</li>
+          <li>Highest order: $167 &mdash; higher E&amp;O limits chosen.</li>
         </ul>
-        <p>Do not read the median as the price. The price is $71. The median order is $107.56 only because most buyers added optional cover on top of it, and the $46.85 average E&amp;O add itself sits above what a typical buyer spends, because a handful of signing agents bought high limits and pulled it up — the same reason the top of the range reaches $195.56. This is our whole recent book rather than a survey, so treat it as what we see, not as a statewide statistic. We have not found another Texas bond provider that publishes this at all.</p>
+        <p>Do not read the top of the range as the price. The price is $50 plus the $21 state fee. Orders run higher only where buyers added optional cover, and the top of the range reaches $167 because a handful of signing agents bought high limits. This is our whole recent book rather than a survey, so treat it as what we see, not as a statewide statistic. We have not found another Texas bond provider that publishes this at all.</p>
       </section>
 
       <section>
@@ -1506,7 +1507,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <ol>
           <li>Confirm you are eligible: 18 or older, a Texas resident, no felony conviction or crime of moral turpitude.</li>
           <li>Complete the SB693 two-hour education course from the Texas Secretary of State and pass the assessment. The $20 is the assessment fee and you may retake it up to three times within three months. Applies to applications for appointment or reappointment submitted on or after January 1, 2026.</li>
-          <li>Buy your $10,000 notary bond. No credit check, no underwriting questions, checkout open around the clock. Your executed bond PDF is emailed to you.</li>
+          <li>Buy your $10,000 notary bond. No credit check, no underwriting questions, checkout open around the clock. Your executed bond PDF is emailed to you. The same checkout offers optional E&amp;O coverage &mdash; the part that protects <em>you</em> rather than the public; about 1 in 3 of our notaries adds it, typically $35&ndash;$40 for the four years.</li>
           <li>File the bond with your application through the Texas SOS Portal Notary System and pay the $21 state filing fee there. Written instructions come with every bond, and you can call (214) 666-8718 if the portal rejects something.</li>
           <li>Receive your commission from the Secretary of State and take the oath of office on the form it arrives with — any current notary can administer it. Then order your seal, after you have the commission, so the expiry date on it is right.</li>
           <li>Record your expiry date somewhere you will see it in four years. A lapsed commission cannot be renewed; you start the application over.</li>
@@ -1757,7 +1758,7 @@ export const PAGE_META: Record<string, PageMeta> = {
           <li>Checkout open 24/7; the executed bond PDF is emailed to you, typically within minutes.</li>
           <li>Filing instructions included free, and a real phone number &mdash; (214) 666-8718 &mdash; if the portal rejects something.</li>
         </ul>
-        <p><a href="/get-bond?type=notary">Get my Texas notary bond</a>. For the deep dive &mdash; bond vs. E&amp;O, what our last 45 buyers actually paid &mdash; see the <a href="/bonds/notary-bond-texas">full Texas notary bond page</a>.</p>
+        <p><a href="/get-bond?type=notary">Get my Texas notary bond</a>. For the deep dive &mdash; bond vs. E&amp;O, what our last 73 buyers actually paid &mdash; see the <a href="/bonds/notary-bond-texas">full Texas notary bond page</a>.</p>
       </section>
 
       <section>

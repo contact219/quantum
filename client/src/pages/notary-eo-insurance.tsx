@@ -18,8 +18,13 @@ import { CheckCircle, ArrowRight, Shield, Phone, ChevronRight, AlertCircle } fro
  * a separate $21 filing fee. Never present $50 as the cost of being commissioned.
  */
 
-/** Our own book. Last 45 issued Texas notary bonds. Same source as the money page. */
-const BOOK = { count: 45, eoAttached: 42, eoAvg: "$46.85" };
+/**
+ * Our own book. Last 73 Texas notary bonds, from the carrier's own ledger
+ * (same source as the money page). CORRECTED 2026-08-29 — the old figures
+ * (42 of 45 attached, $46.85 avg) came from scraper-fabricated premiums;
+ * RLI's ledger says 23 of 73, typical add $35–$40 for the four-year term.
+ */
+const BOOK = { count: 73, eoAttached: 23, eoTypicalAdd: "$35–$40" };
 
 const faqs = [
   {
@@ -36,7 +41,7 @@ const faqs = [
   },
   {
     q: "How much does notary E&O insurance cost in Texas?",
-    a: `It depends entirely on the limit you choose, so treat any single figure with suspicion. What we can tell you is what our own buyers paid: across the last ${BOOK.count} Texas notary bonds we issued, ${BOOK.eoAttached} buyers added E&O coverage, and the average amount added to the order was ${BOOK.eoAvg}. That average sits above what a typical buyer spends — a few signing agents bought high limits and pulled it up. Higher NSA-grade limits of $100,000 or more cost meaningfully more than that.`,
+    a: `It depends entirely on the limit you choose, so treat any single figure with suspicion. What we can tell you is what our own buyers paid: across the last ${BOOK.count} Texas notary bonds in our book, ${BOOK.eoAttached} buyers — about 1 in 3 — added E&O coverage, typically ${BOOK.eoTypicalAdd} for the full four-year term. A few signing agents bought high limits and paid more; NSA-grade limits of $100,000 or more cost meaningfully more than that.`,
   },
   {
     q: "Does E&O insurance cover notary signing agents (NSAs)?",
@@ -48,7 +53,7 @@ const faqs = [
   },
   {
     q: "Is there any reason NOT to buy E&O?",
-    a: "Two. First, if you notarize occasionally for an employer, check whether their policy already extends to notarizations you perform in the course of your job — buying your own may duplicate coverage you already have. Second, E&O is not compliance. Nobody at the Secretary of State will ever ask whether you carry it, and you are fully commissioned without it. Of our last 45 notary bond buyers, 3 bought the bond alone and are just as validly commissioned as the other 42.",
+    a: "Two. First, if you notarize occasionally for an employer, check whether their policy already extends to notarizations you perform in the course of your job — buying your own may duplicate coverage you already have. Second, E&O is not compliance. Nobody at the Secretary of State will ever ask whether you carry it, and you are fully commissioned without it. Of our last 73 notary bond buyers, 50 bought the bond alone and are just as validly commissioned as the 23 who added E&O.",
   },
 ];
 
@@ -205,7 +210,7 @@ export default function NotaryEOInsurance() {
 
         {/* What our own buyers actually did. Published because no competitor
             page on this query offers anything but generalities — and because
-            the 3 who declined are part of the answer, not an omission. */}
+            the 50 who declined are part of the answer, not an omission. */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">What Texas notaries actually decide</h2>
           <p className="text-gray-600 mb-6 text-sm leading-relaxed">
@@ -213,13 +218,13 @@ export default function NotaryEOInsurance() {
             {BOOK.count} Texas notary bonds we issued.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 mb-5">
-            {/* Bond-only first, deliberately. Leading with the 42 makes an
-                optional product look mandatory, which is the one thing this
-                page exists to stop people believing. */}
+            {/* Bond-only first, deliberately. Making the optional product look
+                mandatory is the one thing this page exists to stop people
+                believing — and with corrected data, bond-alone is the majority. */}
             {[
               { v: `${BOOK.count - BOOK.eoAttached}/${BOOK.count}`, l: "Bought the bond alone", s: "Fully and validly commissioned" },
               { v: `${BOOK.eoAttached}/${BOOK.count}`, l: "Chose to add E&O", s: "Optional protection beyond the bond" },
-              { v: BOOK.eoAvg, l: "Average E&O added", s: "Mean amount added to the order" },
+              { v: BOOK.eoTypicalAdd, l: "Typical E&O added", s: "For the full four-year term" },
             ].map((s) => (
               <div key={s.l} className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
                 <p className="text-xl font-bold text-gray-900">{s.v}</p>
@@ -229,10 +234,10 @@ export default function NotaryEOInsurance() {
             ))}
           </div>
           <p className="text-xs text-gray-500 leading-relaxed">
-            Basis: the last {BOOK.count} Texas notary bonds issued by Quantum Surety, measured August
-            2026. This is our whole recent book, not a survey — read it as what we see, not as a
-            statewide statistic. The {BOOK.eoAvg} average sits above the typical order because a few
-            signing agents bought high limits.
+            Basis: the last {BOOK.count} Texas notary bonds in Quantum Surety&apos;s book, from the
+            carrier&apos;s own bookkeeping, May&ndash;August 2026. This is our whole recent book, not
+            a survey — read it as what we see, not as a statewide statistic. A few signing agents
+            bought high limits and paid more than the typical add.
           </p>
         </section>
 

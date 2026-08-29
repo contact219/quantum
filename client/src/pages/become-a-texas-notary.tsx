@@ -713,7 +713,7 @@ export default function BecomeATexasNotary() {
             </div>
           </div>
           <p className="text-xs text-gray-500 mt-3">
-            Want the deep dive — bond vs. E&amp;O, what our last 45 buyers actually paid?{" "}
+            Want the deep dive — bond vs. E&amp;O, what our last 73 buyers actually paid?{" "}
             <Link href="/bonds/notary-bond-texas">
               <span className="text-indigo-600 hover:underline cursor-pointer">The full Texas notary bond page</span>
             </Link>{" "}
@@ -916,9 +916,12 @@ export default function BecomeATexasNotary() {
               One more decision, and it is genuinely optional: <strong>errors &amp; omissions
               insurance</strong>. Your bond protects the public — if a claim is paid from it,
               the surety can pursue you for the money. E&amp;O is the product that protects{" "}
-              <em>you</em>. Texas does not require it and never asks. Signing agents and mobile
-              notaries usually want it; someone notarizing occasionally for an employer often
-              does not — check whether your employer's coverage extends to you before spending.{" "}
+              <em>you</em>, and unlike the bond, you never repay a claim it pays. Texas does not
+              require it and never asks. It appears as an option inside the same checkout as the
+              bond; about 1 in 3 of our buyers takes it, typically $35&ndash;$40 for the full
+              four-year term — under $9 a year. Signing agents and mobile notaries usually want
+              it; someone notarizing occasionally for an employer often does not — check whether
+              your employer's coverage extends to you before spending.{" "}
               <Link href="/bonds/notary-eo-insurance">
                 <span className="text-indigo-600 hover:underline cursor-pointer">Full E&amp;O guide here</span>
               </Link>.

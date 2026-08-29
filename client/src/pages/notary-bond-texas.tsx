@@ -54,14 +54,30 @@ const PORTAL_RECORDS = "more than 570,000";
  */
 const PRICE_CHECK_DATE = "August 2026";
 
-/** Our own book. Last 45 issued Texas notary bonds. Do not round or embellish. */
+/**
+ * Our own book: the last 73 Texas notary bonds, from the CARRIER'S own
+ * bookkeeping (revenue_events — RLI's ledger), May–August 2026. Do not round
+ * or embellish.
+ *
+ * CORRECTED 2026-08-29. The previous figures here (45 bonds, min $71, median
+ * $107.56, max $195.56, "42 of 45 added E&O") were computed from bk_bonds
+ * premiums, which the old scraper FABRICATED (~1.4–2x actual; its own header
+ * says so). RLI's ledger says 23 of 73 added E&O — about 1 in 3, not 93%.
+ * Figures are carrier checkout totals and EXCLUDE the $21 state filing fee,
+ * which is paid to Texas at filing.
+ */
 const BOOK = {
-  count: 45,
-  min: "$71.00",
-  median: "$107.56",
-  max: "$195.56",
-  eoAttached: 42,
-  eoAvg: "$46.85",
+  count: 73,
+  bondOnly: 50,
+  min: "$50",
+  bondOnlyMax: "$80",
+  bondOnlyMedian: "$67",
+  median: "$72",
+  max: "$167",
+  eoAttached: 23,
+  eoOrderMin: "$85",
+  eoOrderMedian: "$103",
+  eoTypicalAdd: "$35–$40",
 };
 
 const SERVICE_SCHEMA = {
@@ -117,7 +133,7 @@ const FAQ_SCHEMA = {
       "name": "Is E&O insurance required for Texas notaries?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Texas does not require notary E&O insurance. Only the $10,000 surety bond is required. E&O is a business decision, not a compliance one. Of our last 45 issued Texas notary bonds, 42 buyers chose to add E&O coverage.",
+        "text": "No. Texas does not require notary E&O insurance. Only the $10,000 surety bond is required. E&O is a business decision, not a compliance one. In our current book — the last 73 Texas notary bonds — about 1 in 3 buyers chose to add E&O coverage.",
       },
     },
     {
@@ -190,7 +206,7 @@ export default function NotaryBondTexas() {
   useSEO({
     title: "Texas Notary Bond — $50 Bond + $21 State Fee | Bond vs E&O Explained | Quantum Surety",
     description:
-      "Texas notary bond: $50 for the full 4-year term, plus the state's unavoidable $21 filing fee — $71 commissioned. What the bond does and does not cover, how it differs from E&O insurance, and what our last 45 Texas notaries actually paid. TDI licensed agency #3480229.",
+      "Texas notary bond: $50 for the full 4-year term, plus the state's unavoidable $21 filing fee — $71 commissioned. What the bond does and does not cover, how it differs from E&O insurance, and what our last 73 Texas notaries actually paid. TDI licensed agency #3480229.",
     canonical: "/bonds/notary-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -419,9 +435,10 @@ export default function NotaryBondTexas() {
                 optional product that protects you. Texas does not require it and never asks about it.
               </p>
               <p>
-                So: the bond is compliance, E&amp;O is protection. Most working notaries buy both —
-                of our last {BOOK.count} Texas notary bonds, {BOOK.eoAttached} buyers added E&amp;O.
-                But you are legally commissioned with the bond alone.
+                So: the bond is compliance, E&amp;O is protection. About 1 in 3 of our buyers adds
+                E&amp;O — {BOOK.eoAttached} of our last {BOOK.count} Texas notary bonds — typically{" "}
+                {BOOK.eoTypicalAdd} for the full four-year term, chosen inside the same checkout as
+                the bond. You are legally commissioned with the bond alone.
               </p>
             </div>
           </div>
@@ -493,7 +510,7 @@ export default function NotaryBondTexas() {
                 item: "Errors & Omissions insurance",
                 amt: "Optional",
                 who: "Your choice",
-                note: `Not required by Texas. When our buyers add it, it has averaged ${BOOK.eoAvg} on the order.`,
+                note: `Not required by Texas. About 1 in 3 of our buyers adds it, typically ${BOOK.eoTypicalAdd} for the four-year term.`,
                 required: false,
               },
             ].map((row, i) => (
@@ -576,7 +593,7 @@ export default function NotaryBondTexas() {
                 {[
                   ["Protects", "you personally, and your own money"],
                   ["Amount", "you choose the limit"],
-                  ["Cost", `separate and variable — averaged ${BOOK.eoAvg} on our recent orders`],
+                  ["Cost", `separate and optional — typically ${BOOK.eoTypicalAdd} for the four years on our recent orders`],
                   ["If a claim is paid", "the insurer pays your defense and settlement; no reimbursement from you"],
                   ["Do you need it", "not to be commissioned. It is a judgment about your own exposure"],
                 ].map(([k, v]) => (
@@ -722,37 +739,41 @@ export default function NotaryBondTexas() {
             that publishes this.
           </p>
 
-          {/* Order matters here. Leading with the median re-anchored price from
-              $71 to $107.56 and read, to a suspicious buyer, as the upsell
-              arriving in a lab coat. Same facts, honest order: the floor and the
-              people who paid it come first. */}
+          {/* Order matters here. Leading with the median re-anchors price upward
+              and reads, to a suspicious buyer, as the upsell arriving in a lab
+              coat. Same facts, honest order: the floor and the people who paid
+              it come first — and with corrected data the floor group is the
+              MAJORITY, which makes the honest ordering stronger, not weaker. */}
           <div className="rounded-2xl border-2 border-teal-200 bg-teal-50/50 p-6 mb-5">
             <p className="text-2xl font-bold text-gray-900 mb-2">
-              {BOOK.count - BOOK.eoAttached} of {BOOK.count} paid {BOOK.min}.
+              {BOOK.bondOnly} of {BOOK.count} bought the bond alone.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed">
-              The bond and the state fee, nothing else added. They are fully and validly
-              commissioned Texas notaries — identical bond, identical legal standing to everyone
-              else on this list. <strong>{BOOK.min} is a complete answer</strong>, and if that is
-              all you want, that is all you need to buy.
+              They paid {BOOK.min} to {BOOK.bondOnlyMax} at checkout (median {BOOK.bondOnlyMedian}),
+              depending on the options chosen with it, plus the $21 state filing fee everyone pays
+              at filing. They are fully and validly commissioned Texas notaries — identical bond,
+              identical legal standing to everyone else on this list. <strong>The bond by itself is
+              a complete answer</strong>, and if that is all you want, that is all you need to buy.
             </p>
           </div>
 
           <div className="rounded-xl border border-gray-200 bg-white p-6 mb-5">
             <p className="text-lg font-bold text-gray-900 mb-2">
-              The other {BOOK.eoAttached} chose to add E&amp;O, averaging {BOOK.eoAvg}.
+              The other {BOOK.eoAttached} — about 1 in 3 — chose to add E&amp;O.
             </p>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Optional coverage, bought by people who decided the bond alone did not protect them
-              enough — which, as the box above explains, it does not. That choice is the only
-              reason any order here costs more than {BOOK.min}.
+              Their orders ran {BOOK.eoOrderMin} to {BOOK.max} (median {BOOK.eoOrderMedian}); the
+              typical add is {BOOK.eoTypicalAdd} for the full four-year term. Optional coverage,
+              bought by people who decided the bond alone did not protect them enough — which, as
+              the box above explains, it does not. That choice is the main reason any order here
+              runs past {BOOK.bondOnlyMax}.
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-6">
             {[
-              { v: BOOK.min, l: "Lowest", s: "Bond + state fee, nothing added", accent: true },
-              { v: BOOK.median, l: "Median", s: "Typical, most added E&O" },
+              { v: BOOK.min, l: "Lowest", s: "The bond, nothing added", accent: true },
+              { v: BOOK.median, l: "Median", s: "Across the whole book" },
               { v: BOOK.max, l: "Highest", s: "Higher E&O limits chosen" },
             ].map((s) => (
               <div key={s.l} className={`rounded-xl p-4 text-center border ${s.accent ? "bg-teal-50 border-teal-200" : "bg-gray-50 border-gray-200"}`}>
@@ -765,17 +786,17 @@ export default function NotaryBondTexas() {
 
           <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 space-y-4 text-sm text-gray-700 leading-relaxed">
             <p>
-              <strong className="text-gray-900">Do not read the median as the price.</strong> The
-              price is {BOOK.min}. The median order is {BOOK.median} only because most buyers
-              added optional cover on top of it. And the {BOOK.eoAvg} average E&amp;O add sits
-              above what a typical buyer spends, because a handful of signing agents bought high
-              limits and pulled it up — the same reason the top of the range reaches {BOOK.max}.
+              <strong className="text-gray-900">Do not read the top of the range as the price.</strong>{" "}
+              The price is $50, plus the $21 state filing fee. Orders run higher only where buyers
+              added optional cover, and the top of the range reaches {BOOK.max} because a handful
+              of signing agents bought high limits.
             </p>
             <p className="text-xs text-gray-500 border-t border-gray-200 pt-4">
-              Basis: the last {BOOK.count} Texas notary bonds issued by Quantum Surety, measured
-              August 2026. Totals include the $21 Texas Secretary of State filing fee. A sample of{" "}
-              {BOOK.count} is our whole recent book, not a survey — treat it as what we see, not as
-              a statewide statistic.
+              Basis: the last {BOOK.count} Texas notary bonds in Quantum Surety&apos;s book, from
+              the carrier&apos;s own bookkeeping, May&ndash;August 2026. Figures are carrier
+              checkout totals before the $21 Texas Secretary of State filing fee, which is paid
+              at filing. A sample of {BOOK.count} is our whole recent book, not a survey — treat
+              it as what we see, not as a statewide statistic.
             </p>
           </div>
         </div>

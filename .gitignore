@@ -8,3 +8,47 @@ vite.config.ts.*
 server/sitemap-lastmod.json
 *_sent.json
 commission_correction_log.txt
+
+# ---------------------------------------------------------------------------
+# THIS REPOSITORY IS PUBLIC. Everything below exists so that a careless
+# `git add -A` cannot publish credentials or customer data. Rules are scoped to
+# the repo root with a leading slash, so tracked assets under attached_assets/
+# and client/ are unaffected. To commit something these rules cover, name the
+# file explicitly and check it first -- do not relax the pattern.
+# ---------------------------------------------------------------------------
+
+# Secrets. outreach-runner/.env carries live SES keys.
+.env
+.env.*
+**/.env
+
+# Customer data: real names, emails and phone numbers. The lead lists at the
+# repo root hold roughly 9,000 people between them.
+/*.csv
+/*_leads.json
+/badge_leads*.json
+/call_sheet_*.md
+/gbp_review_replies.md
+
+# One-off ops scripts kept at the repo root. 382 of the 468 present on 2026-08-28
+# carry hardcoded live credentials (root SSH, DB, SES), so none may be committed.
+# They are deliberately NOT moved out of the tree: quantum-sync-status.ps1 hashes
+# C:\quantum\*.cjs against /opt/quantum-ops on the CRM VPS, and relocating them
+# would break that check. Scripts already tracked here stay tracked -- these rules
+# only stop new ones being added. To commit a genuinely clean script, `git add -f`
+# it after confirming it reads every secret from the environment.
+/*.cjs
+/*.py
+/*.js
+/*.mjs
+/*.sh
+/*.php
+/*.bat
+
+# Local scratch: RLI portal screenshots, diagnostic dumps, run logs.
+__pycache__/
+*.pyc
+/*.png
+/*.log
+/*.zip
+/*.b64

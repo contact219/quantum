@@ -14,6 +14,7 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 | Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on CRM VPS 130.51.22.226 |
 | Permit Pilot | https://permitpilot.online | VPS 130.51.23.147, Docker Compose port 7842 |
 | CRM dashboard | http://130.51.22.226:8095 | VPS (CRM VPS), Docker Compose |
+| Telegram Bot (tsqs-bot) | @tsqs_bot on Telegram | VPS 130.51.23.147, PM2 `tsqs-bot`, dir `/var/www/telegram-bot/` — personal Claude bridge, allowlisted to `tsparks_qs` only |
 | GitHub repo | github.com/contact219/quantum | Main site source |
 
 ---
@@ -187,6 +188,7 @@ Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tun
 0 9 2 * *      tdlr_monitor.py (monthly — new electrical contractor leads from refreshed table)
 0 13 * * 1-5   morning_call_list.cjs
 0 8 * * 1      tdlr_renewal_target.py
+10 13 * * 1    notary_call_sheet.py (weekly Mon 8:10am CDT — notary leads w/ name+phone, last 21 days → administrator@)
 0 7 * * 1-5    esbd_commercial_monitor.py
 30 12 * * 1-5  lead-gen agent + report
 ```
@@ -204,6 +206,16 @@ Traffic for `voice-agent.permitpilot.online` routes via a **named Cloudflare tun
 ```bash
 plink -batch -pw "6sCgf4H80nPM5kQ" root@130.51.22.226 "docker exec scraper-postgres psql -U quantum_user -d quantum_surety -c \"<SQL>\""
 ```
+
+### 5. tsqs-bot — Personal Telegram/Claude Bridge
+- **What it is:** A personal Telegram bot (@tsqs_bot, display name "my_claude_bot") that lets Ted chat directly with Claude from Telegram, with a system prompt wired into Quantum Surety infra context (VPS IPs, PM2 services, stack details). Not customer-facing, not part of any product.
+- **VPS:** 130.51.23.147, PM2 `tsqs-bot`, dir `/var/www/telegram-bot/`
+- **App file:** `/var/www/telegram-bot/telegram_bot.js` — not tracked in this repo (standalone on the VPS, like `bondverify` and `voice-agent`)
+- **Start config:** `/var/www/telegram-bot/ecosystem.config.js` holds `TELEGRAM_TOKEN`, `ANTHROPIC_API_KEY`, `ALLOWED_USERS` — no `.env` file, PM2 env only
+- **Restart after editing env:** a plain `pm2 restart tsqs-bot` does NOT pick up ecosystem.config.js changes reliably — use `pm2 delete tsqs-bot && pm2 start /var/www/telegram-bot/ecosystem.config.js && pm2 save`
+- **Access control:** `ALLOWED_USERS` (comma-separated Telegram usernames/IDs) — **must never be left empty**. `isAllowed()` in telegram_bot.js treats an empty list as "open to everyone," meaning any Telegram user could reach it and burn the Anthropic key. Currently locked to `tsparks_qs` (Ted's Telegram username) only.
+- **History:** Deployed 2026-09-06. Found undocumented and with `ALLOWED_USERS` unset (fully open) during a 2026-09-12 infra check; locked down same day.
+- **502 polling errors are normal:** `node-telegram-bot-api` logs intermittent `ETELEGRAM: 502 Bad Gateway` from Telegram's long-polling infrastructure — self-recovers, not an outage. Only worry if `pm2 status` shows the process actually down or crash-looping.
 
 ---
 

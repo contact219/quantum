@@ -13,6 +13,7 @@ This file provides guidance to Claude Code when working with the Quantum Surety 
 | Partner Portal | https://partners.quantumsurety.bond | VPS 130.51.23.147, PM2 `partner-portal` port 3002 |
 | Voice Agent | https://voice-agent.permitpilot.online | VPS 130.51.23.147, PM2 `voice-agent` port 3003 + Cloudflare named tunnel on CRM VPS 130.51.22.226 |
 | Permit Pilot | https://permitpilot.online | VPS 130.51.23.147, Docker Compose port 7842 |
+| Bond Guard Pro | https://dashboard.quantumsurety.bond | VPS 130.51.23.147, PM2 `dashboard` port 3005 — Stripe-subscription bond monitoring product, 0 subscribers ever (live since 2026-06) |
 | CRM dashboard | http://130.51.22.226:8095 | VPS (CRM VPS), Docker Compose |
 | Telegram Bot (tsqs-bot) | @tsqs_bot on Telegram | VPS 130.51.23.147, PM2 `tsqs-bot`, dir `/var/www/telegram-bot/` — personal Claude bridge, allowlisted to `tsparks_qs` only |
 | GitHub repo | github.com/contact219/quantum | Main site source |
@@ -217,6 +218,21 @@ plink -batch -pw "6sCgf4H80nPM5kQ" root@130.51.22.226 "docker exec scraper-postg
 - **History:** Deployed 2026-09-06. Found undocumented and with `ALLOWED_USERS` unset (fully open) during a 2026-09-12 infra check; locked down same day.
 - **502 polling errors are normal:** `node-telegram-bot-api` logs intermittent `ETELEGRAM: 502 Bad Gateway` from Telegram's long-polling infrastructure — self-recovers, not an outage. Only worry if `pm2 status` shows the process actually down or crash-looping.
 
+### 6. Bond Guard Pro — dashboard.quantumsurety.bond
+- **What it is:** A standalone Stripe-subscription product for bond monitoring — separate from the main site's free `/api/search` and `/api/v1/lookup`. Not referenced anywhere else in this repo.
+- **VPS:** 130.51.23.147, PM2 `dashboard` port 3005, dir `/var/www/dashboard/`
+- **App file:** `/var/www/dashboard/server.js` — not tracked in this repo. Uses `express`, `stripe`, `mysql2`, `nodemailer`
+- **DB:** shares the Bond Verify MariaDB (`bondverify` DB, same host/creds) — tables `bond_guard_subscribers` and `dashboard_bonds`
+- **Env:** `/var/www/dashboard/.env` — `STRIPE_SECRET_KEY`, `STRIPE_PRICE_DASHBOARD`, `STRIPE_WEBHOOK_SECRET`, `SES_KEY`, `SES_SECRET`, `CRON_SECRET`, loaded into PM2 via `/var/www/dashboard/ecosystem.config.cjs`
+- **Flow:** `POST /api/checkout` creates a Stripe subscription checkout session → `POST /webhook` (Stripe webhook) activates the account in `bond_guard_subscribers` on `checkout.session.completed`, deactivates on `customer.subscription.deleted` → active subscribers can `POST/GET/DELETE /api/bonds` to track bonds
+- **Status (checked 2026-09-12):** deployed 2026-06-02, live and reachable for 3+ months, **zero rows ever in `bond_guard_subscribers`** — no one has subscribed. Found undocumented during an infra audit; not in any prior memory or CLAUDE.md revision. Needs a product decision (promote it, or tear it down) rather than being left running silently.
+
+### 7. Bookkeeping module (CRM backend)
+- **What it is:** An expense-tracking feature inside the CRM backend, not previously documented.
+- **Routes:** `/usr/quantum-surety-crm/backend/src/routes/bookkeeping.js` → `/api/bookkeeping/expenses/recurring/*`
+- **Cron (CRM VPS):** `0 7 * * *` hits `POST /api/bookkeeping/expenses/recurring/run-due` (via `X-Cron-Secret`); `bk_status_sync.cjs` (6 7 * * *) and `bk_revenue_report.cjs` (10 7 * * *) in `/opt/quantum-ops/` also touch it
+- Found during the same 2026-09-12 audit that surfaced Bond Guard Pro — CLAUDE.md's CRM cron list above is a curated excerpt, not exhaustive; the live crontab on the CRM VPS has roughly 3x the jobs shown there (mostly campaign/recovery scripts already covered individually in memory).
+
 ---
 
 ## AWS SES (Email — all systems)
@@ -339,3 +355,4 @@ Monorepo with three top-level directories:
 - **Bond Verify DB host:** Must use `127.0.0.1` not `localhost` — mysql2 resolves `localhost` to IPv6 (`::1`) but MariaDB only listens on IPv4.
 - **CRM file ownership:** Files in `/usr/quantum-surety-crm/` are root-owned. Always write to `/tmp/` first, then `sudo tee` to destination.
 - **Notary CSV column headers:** Texas SOS CSV uses title case — `"Notary ID"`, `"First Name"`, `"Last Name"`, etc. (not snake_case).
+- **Cockpit web admin (CRM VPS) — disabled, keep it that way:** was found running on `0.0.0.0:9090` with no firewall rule (since 2026-08-05, being actively scanned by internet bots) and disabled 2026-09-12 via `systemctl disable --now cockpit.socket cockpit.service`. If server management via Cockpit is ever wanted again, put it behind the Cloudflare tunnel or a loopback-only bind — never re-enable it on the bare public port.

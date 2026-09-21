@@ -504,7 +504,7 @@ function toIso(dateStr) {
 }
 
 const STATUS_TEST_RE =
-  /(?:Rider|Bond)\s*[-–—]\s*(?:Active|Issued|Abandoned|Cancelled|Expired|Pending|Saved)/i;
+  /(?:Rider|Bond)\s*[-–—]\s*(?:Active|Issued|Abandoned|Cancelled|Expired|Pending|Saved|Submitted|Payment Pending|Declined)/i;
 
 // Lines that are field labels / page chrome — never part of a principal name.
 const LABEL_LINE_RE = new RegExp(
@@ -583,6 +583,10 @@ function parseBondCards(text) {
       review.push('conflicting-status-lines');
     }
     const isSaved = /Saved/i.test(statusLine);
+    // In-flight portal states (no bond number yet, like drafts): the old parser
+    // dropped these as no-status-line, so live applications never reached the CRM.
+    const isInFlight = /Submitted|Payment Pending|Declined/i.test(statusLine);
+    const isDraftLike = isSaved || isInFlight;
 
     // ── Submission number (always captured; lets the server retire DRAFT rows)
     const submLine = lines.find(l => /^Subm(?:ission)?\s*No[:.]/i.test(l));
@@ -630,7 +634,7 @@ function parseBondCards(text) {
     let bondNumber = bondNoLine ? bondNoLine.replace(/^Bond No:\s*/i, '').trim() : null;
     if (bondNumber && bondNumber.startsWith('—')) bondNumber = null;
     if (!bondNumber) {
-      if (!isSaved) {
+      if (!isDraftLike) {
         skipped.push({ reason: 'no-bond-number-non-saved', raw: card.trim() });
         continue;
       }
@@ -647,7 +651,7 @@ function parseBondCards(text) {
 
     // ── Dates policy: non-saved bonds need both dates; saved drafts may lack them
     if (!effectiveDate || !expirationDate) {
-      if (!isSaved) {
+      if (!isDraftLike) {
         skipped.push({ reason: 'missing-term-dates', raw: card.trim() });
         continue;
       }
@@ -734,7 +738,8 @@ function parseBondCards(text) {
                      : /Abandoned/i.test(statusLine) ? 'abandoned'
                      : /Cancelled/i.test(statusLine) ? 'cancelled'
                      : /Saved/i.test(statusLine)     ? 'saved'
-                     : /Pending/i.test(statusLine)   ? 'pending'
+                     : /Declined/i.test(statusLine)  ? 'declined'
+                     : /Submitted|Pending/i.test(statusLine) ? 'pending'
                      : 'issued',
       status_detail:   statusLine,
       needs_review:    review.length > 0,

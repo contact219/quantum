@@ -31,6 +31,8 @@ const REPLY_TO = 'contact@quantumsurety.bond';
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
+
 const BIZ_SUFFIXES = new Set(['llc','inc','corp','co','ltd','services','construction','group','solutions','consulting','management','associates','enterprises','company','industries','systems','technologies','contractors']);
 const KNOWN_NAMES  = new Set('james,john,robert,michael,william,david,richard,joseph,thomas,charles,christopher,daniel,matthew,anthony,mark,donald,steven,paul,andrew,joshua,kenneth,kevin,brian,george,edward,ronald,timothy,jason,jeffrey,ryan,gary,jacob,nicholas,eric,jonathan,stephen,larry,justin,scott,brandon,benjamin,samuel,frank,raymond,gregory,alexander,patrick,jack,dennis,jerry,tyler,henry,aaron,jose,adam,nathan,zachary,douglas,peter,kyle,noah,ethan,jeremy,walter,christian,keith,roger,terry,austin,sean,gerald,carl,harold,dylan,arthur,lawrence,jordan,jesse,bryan,billy,joe,bruce,gabriel,logan,albert,willie,alan,juan,wayne,elijah,randy,roy,vincent,ralph,eugene,russell,bobby,mason,philip,louis,omar,liam,oliver'.split(','));
 const KNOWN_NAMES_F = new Set('mary,patricia,jennifer,linda,barbara,elizabeth,susan,jessica,sarah,karen,lisa,nancy,betty,margaret,sandra,ashley,emily,kimberly,donna,carol,michelle,amanda,melissa,deborah,stephanie,dorothy,sharon,amy,anna,helen,kathleen,angela,brenda,pamela,emma,nicole,ruth,samantha,rachel,carolyn,virginia,maria,heather,diane,julie,joyce,victoria,kelly,christina,lauren,joan,evelyn,olivia,judy,cheryl,megan,andrea,hannah,jacqueline,martha,gloria,teresa,ann,sara,madison,frances,kathryn,janice,jean,abigail,alice,julia,jill,grace,denise,amber,marilyn,beverly,danielle,theresa,sophia,marie,diana,brittany,natalie,isabella,charlotte,rose,alexis,tiffany,kayla,crystal,brianna,janet,cathy,debra,lynn,claire,paula,dawn'.split(','));
@@ -134,8 +136,8 @@ function buildEmail(lead) {
 
 async function main() {
   const db = new Client({
-    host: '192.168.4.122', port: 5433, database: 'quantum_surety',
-    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
+    host: '127.0.0.1', port: 5433, database: 'quantum_surety',
+    user: 'quantum_user', password: process.env.CRM_DB_PASS,
   });
   await db.connect();
 
@@ -148,6 +150,7 @@ async function main() {
       AND source NOT IN ('TxSmartBuy Bid Monitor', 'TxSmartBuy Monitor', 'ESBD Monitor')
       AND created_at >= NOW() - INTERVAL '${LOOKBACK} hours'
       AND created_at < NOW() - INTERVAL '4 hours'
+      AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
     ORDER BY created_at ASC
   `);
 
@@ -167,7 +170,7 @@ async function main() {
         Source: FROM,
         ReplyToAddresses: [REPLY_TO],
         Destination: { ToAddresses: [lead.email.toLowerCase().trim()] },
-        Message: { Subject: { Data: subject }, Body: { Html: { Data: html }, Text: { Data: text } } },
+        Message: { Subject: { Data: subject }, Body: { Html: { Data: html + unsubFooter(lead.email.toLowerCase().trim()) }, Text: { Data: text } } },
       }));
       await db.query(
         `UPDATE leads SET status='contacted', notes=COALESCE(notes||' | ','')|| $1 WHERE id=$2`,

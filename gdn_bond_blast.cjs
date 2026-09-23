@@ -99,7 +99,7 @@ TDI License #3480229 | (214) 666-8718<br>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:28px 0">
 <p style="font-size:11px;color:#94a3b8">
   Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
-  <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe&body=Please unsubscribe ${encodeURIComponent(dealer.email)}" style="color:#94a3b8">Unsubscribe</a>
+  <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(dealer.email)}" style="color:#94a3b8">Unsubscribe</a>
 </p>
 </body></html>`;
 
@@ -168,7 +168,7 @@ TDI License #3480229 | (214) 666-8718<br>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:28px 0">
 <p style="font-size:11px;color:#94a3b8">
   Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
-  <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe&body=Please unsubscribe ${encodeURIComponent(dealer.email)}" style="color:#94a3b8">Unsubscribe</a>
+  <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(dealer.email)}" style="color:#94a3b8">Unsubscribe</a>
 </p>
 </body></html>`;
 
@@ -193,11 +193,11 @@ quantumsurety.bond`;
 
 async function main() {
   const pg = new Client({
-    host: '192.168.4.122',
+    host: 'localhost',
     port: 5433,
     database: 'quantum_surety',
     user: 'quantum_user',
-    password: process.env.CRM_DB_PASS,
+    password: process.env.CRM_DB_PASSWORD,
   });
   await pg.connect();
 
@@ -223,6 +223,8 @@ async function main() {
   }
 
   const { rows } = await pg.query(query);
+  const { rows: unsubRows } = await pg.query('SELECT lower(email) AS email FROM unsubscribes');
+  const unsubs = new Set(unsubRows.map(r => r.email));
   await pg.end();
 
   console.log(`[GDN Blast] Segment: ${SEGMENT} | ${rows.length} dealers loaded${DRY_RUN ? ' | DRY RUN' : ''}`);
@@ -231,8 +233,9 @@ async function main() {
   let count = 0, skipped = 0, errors = 0;
 
   for (const dealer of rows) {
-    if (count >= SEND_LIMIT) { console.log(`[GDN Blast] Limit of ${SEND_LIMIT} reached, stopping.`); break; }
+    if (count >= SEND_LIMIT) break;
     if (sent.has(dealer.email)) { skipped++; continue; }
+    if (unsubs.has(String(dealer.email).toLowerCase())) { skipped++; continue; }
 
     const isExpired = daysUntil(dealer.license_expiration) < 0;
     const { subject, html, text } = isExpired ? buildExpiredEmail(dealer) : buildExpiringEmail(dealer);

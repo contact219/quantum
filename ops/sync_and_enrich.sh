@@ -10,8 +10,16 @@
 # gives it the freshest possible session. A FATAL is echoed to the sync log so
 # the failure is visible, not silent.
 export NODE_PATH=/root/node_modules
-export CRM_DB_PASSWORD='QsCRMV8yNgKOoaNPu67JF!'
 export CHROMIUM_PATH=/usr/bin/chromium-browser
+# CRM_DB_PASSWORD must already be exported by the caller (cron env or a sourced
+# .env) — never hardcode it here; this file is tracked in a public repo.
+
+# RLI portal credential. Added 2026-07-27: the sync had failed silently every night
+# since ~Jul 15 because RLI_PASSWORD was unset (the hardcoded fallback was removed in
+# the June secret-scrub), so Okta login typed undefined -> "text is not iterable".
+[ -f /opt/quantum-ops/.rli_env ] && { set -a; . /opt/quantum-ops/.rli_env; set +a; }
+if [ -z "$RLI_PASSWORD" ]; then echo "FATAL: RLI_PASSWORD unset - see /opt/quantum-ops/.rli_env"; fi
+
 cd /opt/quantum-ops || exit 1
 
 node mybondapp_sync.cjs >> /var/log/mybondapp-sync.log 2>&1

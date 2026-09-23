@@ -29,7 +29,7 @@ const DB = {
   port: 5433,
   database: 'quantum_surety',
   user: 'quantum_user',
-  password: process.env.CRM_DB_PASSWORD || 'QsCRMV8yNgKOoaNPu67JF!',
+  password: process.env.CRM_DB_PASSWORD,
 };
 
 async function ensureTable(pg) {
@@ -118,7 +118,7 @@ TDI License #3480229 | (214) 666-8718<br>
 <p style="font-size:11px;color:#94a3b8">
   Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI #3480229<br>
   You are receiving this because ${biz} appears in the Texas HUB/CMBL directory as an active certified vendor.<br>
-  <a href="mailto:contact@quantumsurety.bond?subject=Unsubscribe&body=Please unsubscribe ${c.email}" style="color:#94a3b8">Unsubscribe</a>
+  <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(c.email)}" style="color:#94a3b8">Unsubscribe</a>
 </p>
 </body>
 </html>`;
@@ -203,7 +203,7 @@ async function main() {
       await pg.query(`
         INSERT INTO leads (name, email, phone, bond_type, source, status, notes, lead_time, created_at, updated_at)
         SELECT $1, $2::text, $3, 'contractor', 'hub_blast', 'contacted', $4, NOW(), NOW(), NOW()
-        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2))
+        WHERE NOT EXISTS (SELECT 1 FROM leads WHERE LOWER(email) = LOWER($2::text))
       `, [
         c.company_name || 'HUB Contractor',
         c.email.toLowerCase(),

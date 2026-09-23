@@ -33,6 +33,8 @@ const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
 function loadSent() { try { return new Set(JSON.parse(fs.readFileSync(SENT_LOG,'utf8'))); } catch { return new Set(); } }
 function logSent(e, s) { s.add(e); fs.writeFileSync(SENT_LOG, JSON.stringify([...s])); }
 
@@ -150,8 +152,8 @@ function buildEmail(lead) {
 
 async function main() {
   const db = new Client({
-    host: '192.168.4.122', port: 5433, database: 'quantum_surety',
-    user: 'quantum_user', password: process.env.CRM_DB_PASS || 'QsCRMV8yNgKOoaNPu67JF!',
+    host: '127.0.0.1', port: 5433, database: 'quantum_surety',
+    user: 'quantum_user', password: process.env.CRM_DB_PASS,
   });
   await db.connect();
 
@@ -165,6 +167,7 @@ async function main() {
       AND source NOT IN ('TxSmartBuy Bid Monitor', 'TxSmartBuy Monitor', 'ESBD Monitor')
       AND updated_at >= NOW() - INTERVAL '21 days'
       AND updated_at < NOW() - INTERVAL '6 days'
+      AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
     ORDER BY updated_at ASC
   `);
 
@@ -189,7 +192,7 @@ async function main() {
       await ses.send(new SendEmailCommand({
         Source: FROM, ReplyToAddresses: [REPLY_TO],
         Destination: { ToAddresses: [email] },
-        Message: { Subject: { Data: subject }, Body: { Html: { Data: html }, Text: { Data: text } } },
+        Message: { Subject: { Data: subject }, Body: { Html: { Data: html + unsubFooter(email) }, Text: { Data: text } } },
       }));
       logSent(email, sent);
       count++;

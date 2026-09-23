@@ -472,7 +472,9 @@ export default function TitleBondCalculator() {
                         {typeof premium === "number" ? formatCurrency(premium as number) : premium}
                       </div>
                       {typeof premium === "number" && (
-                        <div style={{ fontSize: 11, color: "#475569", marginTop: 2 }}>one-time payment</div>
+                        <div style={{ fontSize: 11, color: "#475569", marginTop: 2 }}>
+                          one-time payment{premium === 100 ? " — $100 minimum" : ""}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -480,7 +482,10 @@ export default function TitleBondCalculator() {
                     marginTop: 16, padding: "10px 12px",
                     background: "rgba(99,102,241,0.08)", borderRadius: 8, fontSize: 12, color: "#64748b",
                   }}>
-                    Exact pricing confirmed after reviewing your vehicle details. No credit check required.
+                    Our underwriting carrier applies a $100 minimum premium on every title bond, regardless of
+                    bond amount. This estimate is the bond premium only — it doesn't include the TxDMV
+                    application fee, state title fee, or county registration fees. Exact pricing confirmed
+                    after reviewing your vehicle details. No credit check required.
                   </div>
                 </div>
               )}

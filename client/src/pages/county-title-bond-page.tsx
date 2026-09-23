@@ -235,6 +235,13 @@ export default function CountyTitleBondPage() {
                 </div>
               </div>
             )}
+            {bondAmount > 0 && (
+              <p className="text-xs text-gray-500 mt-4">
+                Our underwriting carrier applies a $100 minimum premium on every title bond, regardless of
+                bond amount. This estimate is the bond premium only — it doesn't include the TxDMV
+                application fee, state title fee, or county registration fees.
+              </p>
+            )}
           </div>
         </div>
       </section>

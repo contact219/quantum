@@ -58,7 +58,7 @@ const BOND_MODELS: Record<BondKey, BondModel> = {
       const p = titlePremium(bond);
       return {
         premium: p ? fmt(p) : "Call for quote",
-        detail: `Bond amount: ${fmt(bond)} (1.5× vehicle value), 3-year term filed with TxDMV.`,
+        detail: `Bond amount: ${fmt(bond)} (1.5× vehicle value), 3-year term filed with TxDMV. $100 minimum premium applies, regardless of bond amount.`,
       };
     },
     applyType: "title",

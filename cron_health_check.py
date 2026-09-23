@@ -34,7 +34,7 @@ STATE_FILE = "/var/lib/quantum-ops/cron_health_offsets.json"
 SES_KEY    = os.environ.get("SES_KEY") or os.environ.get("AWS_ACCESS_KEY_ID", "")
 SES_SECRET = os.environ.get("SES_SECRET") or os.environ.get("AWS_SECRET_ACCESS_KEY", "")
 SES_REGION = "us-east-2"
-ALERT_TO   = "contact219@gmail.com"
+ALERT_TO   = ["contact219@gmail.com", "administrator@quantumsurety.bond"]
 ALERT_FROM = "Quantum Surety Ops <nice.shotwell-sparks@quantumsurety.bond>"
 
 HOURS = 3600
@@ -251,7 +251,7 @@ def main():
                        aws_access_key_id=SES_KEY, aws_secret_access_key=SES_SECRET)
     ses.send_email(
         Source=ALERT_FROM,
-        Destination={"ToAddresses": [ALERT_TO]},
+        Destination={"ToAddresses": ALERT_TO},
         Message={"Subject": {"Data": subject},
                  "Body": {"Html": {"Data": html}, "Text": {"Data": text}}},
     )

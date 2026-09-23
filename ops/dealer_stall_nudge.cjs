@@ -16,7 +16,7 @@ const DRY_RUN = process.argv.includes('--dry-run');
 const RATE_MS = 400;
 const ses = new SESClient({ region: 'us-east-2', credentials: { accessKeyId: process.env.AWS_ACCESS_KEY_ID || process.env.SES_KEY, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || process.env.SES_SECRET } });
 
-const FROM = 'Ted Sparks <ted@quantumsurety.bond>';
+const FROM = 'Ted Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 const RESUME = 'https://www.mybondapp.com/329034247/DirectNavBond?BondType=R4210CMBA2&State=TX';
 const ADDR = 'Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098';

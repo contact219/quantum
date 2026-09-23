@@ -305,7 +305,7 @@ export default function Home() {
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              Notary bonds $50 flat for the full 4-year term. Bonded titles from $50. Dealer bonds from $100/yr. TDI-licensed, A-rated carriers, no credit check on standard bonds.
+              Notary bonds $50 flat for the full 4-year term. Bonded titles from $100. Dealer bonds from $100/yr. TDI-licensed, A-rated carriers, no credit check on standard bonds.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -373,7 +373,7 @@ export default function Home() {
                 >
                   <div>
                     <div className="font-semibold text-white">Bonded Title (Lost Vehicle Title)</div>
-                    <div className="text-sm text-slate-400">From $50 — calculate your exact cost in 60 seconds</div>
+                    <div className="text-sm text-slate-400">From $100 — calculate your exact cost in 60 seconds</div>
                   </div>
                   <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
                 </Link>
@@ -626,7 +626,7 @@ export default function Home() {
                 <ul className="space-y-3 mb-8">
                   {[
                     "Works for auction buys, private sales, inherited vehicles, and rejected titles",
-                    "Bond = 1.5x vehicle appraised value — premiums start at $50",
+                    "Bond = 1.5x vehicle appraised value — premiums start at $100",
                     "Free eligibility wizard — find out if you qualify in 2 minutes",
                     "County-specific guidance for all 10 major Texas metros",
                   ].map((item) => (
@@ -655,7 +655,7 @@ export default function Home() {
               <div className="lg:w-72 p-8 lg:p-10 flex flex-col justify-center gap-5" style={{background: "rgba(255,255,255,0.05)", borderLeft: "1px solid rgba(255,255,255,0.07)"}}>
                 <div className="text-center">
                   <p className="text-sm font-medium mb-1" style={{color: "#fb923c"}}>Premium starts at</p>
-                  <p className="text-6xl font-bold text-white tracking-tight">$50</p>
+                  <p className="text-6xl font-bold text-white tracking-tight">$100</p>
                   <p className="text-slate-400 text-sm mt-1">for most personal vehicles</p>
                 </div>
                 <div className="space-y-3">

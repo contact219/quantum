@@ -71,8 +71,8 @@ const TX_COUNTIES_REST = [
 const ALL_COUNTIES = [...TX_COUNTIES_TOP, ...TX_COUNTIES_REST];
 
 function getPremium(bondAmt: number): string {
-  if (bondAmt <= 7500) return "$50";
-  if (bondAmt <= 15000) return "$75";
+  // RLI enforces a $100 minimum premium on every title bond regardless of the
+  // computed rate, so no bracket below that floor can ever be quoted.
   if (bondAmt <= 22500) return "$100";
   if (bondAmt <= 37500) return "$150";
   if (bondAmt <= 75000) return "$250";
@@ -601,6 +601,11 @@ export default function TexasTitleRescue() {
                     <p className="text-xl font-bold text-teal-600">{premium}</p>
                   </div>
                 </div>
+                <p className="text-xs text-gray-500 mt-4">
+                  Our underwriting carrier applies a $100 minimum premium on every title bond, regardless of
+                  bond amount. This estimate is the bond premium only — it doesn't include the TxDMV
+                  application fee, state title fee, or county registration fees.
+                </p>
               </div>
             )}
 

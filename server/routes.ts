@@ -2400,7 +2400,7 @@ JSON schema:
 
 Rules:
 - bondAmount = Math.ceil(vehicle.value * 1.5) if value is known, else null
-- estimatedPremium: for bond <= 5000 => {min:50,max:50}; <= 15000 => {min:50,max:100}; <= 30000 => {min:100,max:175}; else {min:175,max:300}
+- estimatedPremium: RLI (our underwriting carrier) enforces a $100 minimum premium on every title bond — for bond <= 22500 => {min:100,max:100}; <= 37500 => {min:100,max:150}; <= 75000 => {min:150,max:250}; <= 150000 => {min:250,max:400}; above $150,000 bond amount, estimatedPremium must be null (requires a manual quote — do not extrapolate a numeric range)
 - missingDocuments for a Texas bonded title should include any of these not already present: "Form VTR-130-SOF (Statement of Fact)", "Bill of sale or proof of ownership", "Texas safety inspection certificate", "Proof of liability insurance", "Government-issued photo ID", "Form 130-U (Application for Texas Title)", "Surety bond (Form VTR-130-SB from Quantum Surety)"
 - presentDocuments: list what useful info/docs THIS document provides
 - redFlags: flag active liens, salvage/flood title, VIN tampering, missing odometer, out-of-state complications

@@ -314,7 +314,7 @@ export default function BoughtCarNoTitleTexas() {
                 Facts (VTR-130-SOF) to TxDMV, get approved, obtain a surety
                 bond from a TDI-licensed agency like Quantum Surety, and file
                 for the title at your county tax office. Takes 2–6 weeks total.
-                Bond premium starts at $50.
+                Bond premium starts at a $100 minimum.
               </p>
               <div className="bg-indigo-50 rounded-lg p-3 text-sm text-indigo-700">
                 <strong>Works best when:</strong> Seller is uncooperative or
@@ -381,7 +381,7 @@ export default function BoughtCarNoTitleTexas() {
             {
               step: "3",
               title: "Get your surety bond from Quantum Surety",
-              desc: "TxDMV's letter specifies the required bond amount. Apply with Quantum Surety — same-day approval, no credit check, bond starts at $50. You receive the bond certificate (VTR-130-SB format) digitally.",
+              desc: "TxDMV's letter specifies the required bond amount. Apply with Quantum Surety — same-day approval, no credit check, bond starts at a $100 minimum. You receive the bond certificate (VTR-130-SB format) digitally.",
             },
             {
               step: "4",

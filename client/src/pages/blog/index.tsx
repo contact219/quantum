@@ -88,7 +88,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-certificate-of-title-bond-cost",
     title: "How Much Does a Texas Certificate of Title Bond Cost? (2026 Pricing)",
-    description: "The 1.5x rule explained, a full pricing table for common vehicle values, and why most Texas title bonds start at just $50. Plus the Title Bond Calculator to get your exact number instantly.",
+    description: "The 1.5x rule explained, a full pricing table for common vehicle values, and why most Texas title bonds start at a $100 minimum. Plus the Title Bond Calculator to get your exact number instantly.",
     date: "2026-06-05",
     readTime: "6 min read",
     category: "Texas Vehicle Titles",

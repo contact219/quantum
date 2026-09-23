@@ -36,8 +36,8 @@ function getBondAmount(vehicleValue: number): number {
 }
 
 function getPremium(bondAmount: number): string | number {
-  if (bondAmount <= 7500)   return 50;
-  if (bondAmount <= 15000)  return 75;
+  // RLI enforces a $100 minimum premium on every title bond regardless of the
+  // computed rate, so no bracket below that floor can ever be quoted.
   if (bondAmount <= 22500)  return 100;
   if (bondAmount <= 37500)  return 150;
   if (bondAmount <= 75000)  return 250;
@@ -472,7 +472,9 @@ export default function TitleBondCalculator() {
                         {typeof premium === "number" ? formatCurrency(premium as number) : premium}
                       </div>
                       {typeof premium === "number" && (
-                        <div style={{ fontSize: 11, color: "#475569", marginTop: 2 }}>one-time payment</div>
+                        <div style={{ fontSize: 11, color: "#475569", marginTop: 2 }}>
+                          one-time payment{premium === 100 ? " — $100 minimum" : ""}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -480,7 +482,10 @@ export default function TitleBondCalculator() {
                     marginTop: 16, padding: "10px 12px",
                     background: "rgba(99,102,241,0.08)", borderRadius: 8, fontSize: 12, color: "#64748b",
                   }}>
-                    Exact pricing confirmed after reviewing your vehicle details. No credit check required.
+                    Our underwriting carrier applies a $100 minimum premium on every title bond, regardless of
+                    bond amount. This estimate is the bond premium only — it doesn't include the TxDMV
+                    application fee, state title fee, or county registration fees. Exact pricing confirmed
+                    after reviewing your vehicle details. No credit check required.
                   </div>
                 </div>
               )}
@@ -714,6 +719,7 @@ export default function TitleBondCalculator() {
           </h2>
           <p style={{ fontSize: 14, color: "#64748b", textAlign: "center", marginBottom: 28 }}>
             Bond amount = 1.5&times; vehicle value. Premium is a one-time payment &mdash; no annual renewal.
+            $100 minimum premium on every title bond.
           </p>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
@@ -726,9 +732,7 @@ export default function TitleBondCalculator() {
               </thead>
               <tbody>
                 {[
-                  { value: "Up to $5,000",        bond: "Up to $7,500",        premium: "$50" },
-                  { value: "$5,001 – $10,000",   bond: "$7,501 – $15,000",   premium: "$75" },
-                  { value: "$10,001 – $15,000",  bond: "$15,001 – $22,500",  premium: "$100" },
+                  { value: "Up to $15,000",       bond: "Up to $22,500",       premium: "$100" },
                   { value: "$15,001 – $25,000",  bond: "$22,501 – $37,500",  premium: "$150" },
                   { value: "$25,001 – $50,000",  bond: "$37,501 – $75,000",  premium: "$250" },
                   { value: "$50,001 – $100,000", bond: "$75,001 – $150,000", premium: "$400" },

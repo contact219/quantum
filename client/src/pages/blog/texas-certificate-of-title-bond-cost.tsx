@@ -21,7 +21,7 @@ const FAQ_SCHEMA = {
       name: "How much does a Texas title bond cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Texas title bonds start at $50 from Quantum Surety. The premium is based on the required bond amount, which equals 1.5 times TxDMV's appraised vehicle value. Vehicles valued at $3,334 or less still require the $5,000 minimum bond, and Quantum Surety's minimum premium is $50 regardless.",
+        text: "Texas title bonds start at $100 from Quantum Surety — RLI, our underwriting carrier, enforces a $100 minimum premium on every title bond. The premium is based on the required bond amount, which equals 1.5 times TxDMV's appraised vehicle value. Vehicles valued at $3,334 or less still require the $5,000 minimum bond, and Quantum Surety's minimum premium is $100 regardless.",
       },
     },
     {
@@ -45,7 +45,7 @@ const FAQ_SCHEMA = {
       name: "Are there other fees besides the bond premium?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. In addition to the bond premium, you'll pay a $15 TxDMV application fee (VTR-130-SOF), a state title fee of approximately $28–33 (Form 130-U), and county registration fees which vary by county and vehicle weight, typically $50–$100. Total costs for most vehicles are $140–$220.",
+        text: "Yes. In addition to the bond premium, you'll pay a $15 TxDMV application fee (VTR-130-SOF), a state title fee of approximately $28–33 (Form 130-U), and county registration fees which vary by county and vehicle weight, typically $50–$100. Total costs for most vehicles are $190–$220.",
       },
     },
     {
@@ -65,7 +65,7 @@ const ARTICLE_SCHEMA = {
   headline:
     "How Much Does a Texas Certificate of Title Bond Cost? (2026 Pricing)",
   description:
-    "Texas title bond cost explained: the 1.5x rule, example prices for common vehicle values, and why most bonds start at $50 from Quantum Surety. No credit check.",
+    "Texas title bond cost explained: the 1.5x rule, example prices for common vehicle values, and why most bonds start at $100 from Quantum Surety. No credit check.",
   datePublished: "2026-06-05",
   dateModified: "2026-06-05",
   author: {
@@ -85,7 +85,7 @@ export default function TexasTitleBondCost2026() {
     title:
       "How Much Does a Texas Certificate of Title Bond Cost? 2026 Pricing | Quantum Surety",
     description:
-      "Texas title bond cost guide: the 1.5x rule, pricing examples for common vehicle values, total cost breakdown, and why most title bonds start at $50. No credit check.",
+      "Texas title bond cost guide: the 1.5x rule, pricing examples for common vehicle values, total cost breakdown, and why most title bonds start at $100. No credit check.",
     canonical: "/blog/texas-certificate-of-title-bond-cost",
     ogType: "article",
   });
@@ -109,7 +109,7 @@ export default function TexasTitleBondCost2026() {
           </h1>
           <p className="text-indigo-100 text-lg mb-6">
             The 1.5x rule explained, example costs for common vehicle values,
-            and why most Texas title bonds start at just $50 from Quantum
+            and why most Texas title bonds start at a $100 minimum from Quantum
             Surety.
           </p>
           <div className="flex items-center gap-4 text-sm text-indigo-300 flex-wrap">
@@ -132,7 +132,7 @@ export default function TexasTitleBondCost2026() {
           bonded title is: <em>"How much is this going to cost me?"</em> The
           answer depends on your vehicle's value — but for most common cars and
           trucks, the surety bond premium alone is surprisingly affordable,
-          starting at just $50.
+          starting at a $100 minimum.
         </p>
         <p className="text-gray-700 leading-relaxed mb-6">
           In this guide we break down exactly how TxDMV calculates the required
@@ -173,8 +173,10 @@ export default function TexasTitleBondCost2026() {
         <p className="text-gray-700 leading-relaxed mb-4">
           The minimum bond amount under Texas law is <strong>$5,000</strong>,
           regardless of vehicle value. So even if your vehicle is worth only
-          $1,500, you still need a $5,000 bond. Quantum Surety's minimum premium
-          is $50 for any bond up to $5,000.
+          $1,500, you still need a $5,000 bond. RLI, our underwriting carrier,
+          enforces a $100 minimum premium on every title bond, so Quantum
+          Surety's minimum premium is $100 regardless of how small the bond
+          amount is.
         </p>
 
         {/* How vehicle value is determined */}
@@ -242,13 +244,13 @@ export default function TexasTitleBondCost2026() {
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$1,500</td>
                 <td className="p-3 text-gray-700">$5,000 (min)</td>
-                <td className="p-3 font-bold text-teal-700">$50</td>
-                <td className="p-3 text-gray-500 text-xs">Min bond applies</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
+                <td className="p-3 text-gray-500 text-xs">$100 minimum applies</td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$3,334</td>
                 <td className="p-3 text-gray-700">$5,001 → $5,000 min</td>
-                <td className="p-3 font-bold text-teal-700">$50</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Tipping point for min bond
                 </td>
@@ -256,29 +258,29 @@ export default function TexasTitleBondCost2026() {
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$5,000</td>
                 <td className="p-3 text-gray-700">$7,500</td>
-                <td className="p-3 font-bold text-teal-700">$50</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
                 <td className="p-3 text-gray-500 text-xs">
-                  Still at minimum premium
+                  Still at $100 minimum
                 </td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$8,000</td>
                 <td className="p-3 text-gray-700">$12,000</td>
-                <td className="p-3 font-bold text-teal-700">$60–75</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
                 <td className="p-3 text-gray-500 text-xs">
-                  Rate scales with bond amount
+                  Still at $100 minimum
                 </td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$10,000</td>
                 <td className="p-3 text-gray-700">$15,000</td>
-                <td className="p-3 font-bold text-teal-700">$75–100</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
                 <td className="p-3 text-gray-500 text-xs">Common sedan range</td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$15,000</td>
                 <td className="p-3 text-gray-700">$22,500</td>
-                <td className="p-3 font-bold text-teal-700">$112–150</td>
+                <td className="p-3 font-bold text-teal-700">$100</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Mid-range truck/SUV
                 </td>
@@ -286,7 +288,7 @@ export default function TexasTitleBondCost2026() {
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$20,000</td>
                 <td className="p-3 text-gray-700">$30,000</td>
-                <td className="p-3 font-bold text-teal-700">$150–200</td>
+                <td className="p-3 font-bold text-teal-700">$150</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Higher-value vehicles
                 </td>
@@ -294,9 +296,9 @@ export default function TexasTitleBondCost2026() {
               <tr className="bg-gray-50">
                 <td className="p-3 text-gray-700">$30,000+</td>
                 <td className="p-3 text-gray-700">$45,000+</td>
-                <td className="p-3 font-bold text-teal-700">Quote-based</td>
+                <td className="p-3 font-bold text-teal-700">$250+</td>
                 <td className="p-3 text-gray-500 text-xs">
-                  Call 214-666-8718
+                  Use the calculator for your exact quote
                 </td>
               </tr>
             </tbody>
@@ -351,7 +353,7 @@ export default function TexasTitleBondCost2026() {
                     term. Not a recurring annual fee.
                   </p>
                 </div>
-                <span className="font-bold text-teal-700 ml-4">$50+</span>
+                <span className="font-bold text-teal-700 ml-4">$100+</span>
               </div>
             </div>
             <div className="p-4 bg-gray-50">
@@ -405,21 +407,21 @@ export default function TexasTitleBondCost2026() {
                     Typical Total (vehicle under $10,000)
                   </p>
                   <p className="text-sm text-indigo-700 mt-1">
-                    Bond premium $50 + VTR fee $15 + title fee $30 + county
+                    Bond premium $100 + VTR fee $15 + title fee $30 + county
                     fees ~$75
                   </p>
                 </div>
                 <span className="font-bold text-indigo-700 text-lg ml-4">
-                  ~$170
+                  ~$220
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Why Quantum Surety starts at $50 */}
+        {/* Why Quantum Surety starts at $100 */}
         <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-10">
-          Why Quantum Surety's Title Bonds Start at $50
+          Why Quantum Surety's Title Bonds Start at $100
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Traditional surety bonds from insurance brokers or agents typically go
@@ -439,7 +441,7 @@ export default function TexasTitleBondCost2026() {
             "Same-day bond certificate delivery (digital, printable)",
             "Online application takes 2–3 minutes",
             "TDI-licensed Texas agency #3480229 — legally authorized to write this bond",
-            "$50 minimum covers bonds up to $5,000 (most vehicles under $7,500 value)",
+            "$100 minimum premium — set by RLI, our underwriting carrier — covers every bond up to $22,500 (most vehicles under $15,000 value)",
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-2 mb-2 text-gray-700">
               <CheckCircle className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
@@ -514,7 +516,7 @@ export default function TexasTitleBondCost2026() {
           {[
             {
               q: "How much does a Texas title bond cost?",
-              a: "Texas title bonds start at $50 from Quantum Surety. The bond premium scales with the required bond amount (1.5x vehicle value). Most vehicles under $10,000 in value will have a bond premium of $50–$100. Use the Title Bond Calculator at quantumsurety.bond/title-bond-calculator for your exact quote.",
+              a: "Texas title bonds start at a $100 minimum premium from Quantum Surety — RLI, our underwriting carrier, does not go below $100 regardless of the calculated rate. The bond premium then scales with the required bond amount (1.5x vehicle value) once it exceeds that floor. Use the Title Bond Calculator at quantumsurety.bond/title-bond-calculator for your exact quote.",
             },
             {
               q: "Why does TxDMV require a bond at 1.5 times vehicle value?",
@@ -526,7 +528,7 @@ export default function TexasTitleBondCost2026() {
             },
             {
               q: "Are there other fees besides the bond premium?",
-              a: "Yes. Total bonded title costs include: bond premium ($50+), VTR-130-SOF application fee ($15), state title fee ($28–33 via Form 130-U), and county registration fees ($50–100+). Total for most vehicles is approximately $140–220.",
+              a: "Yes. Total bonded title costs include: bond premium ($100 minimum), VTR-130-SOF application fee ($15), state title fee ($28–33 via Form 130-U), and county registration fees ($50–100+). Total for most vehicles is approximately $190–220.",
             },
             {
               q: "Does my credit score affect the cost of a Texas title bond?",

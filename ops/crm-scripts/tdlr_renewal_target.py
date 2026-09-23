@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 # TDLR Renewal Targeting - targets licenses expiring in 60-90 days.
 # Contractors need to renew their bond at the same time as their TDLR license.
-# Cron: 0 8 * * 1 (Mondays 8 AM)
+# Cron: 0 8 * * * (daily 8 AM).
+#   Was Mondays until 2026-08-22. The 30-day dedup guard below can suppress a licence
+#   that is only just inside the 60-day floor; on a weekly cadence it would drop below
+#   60 days before the next run and never be captured at all. Daily narrows that miss
+#   window from 7 days to 1. Re-running is safe: the dedup guard is 30 days wide and
+#   the target window is 30 days wide, so nothing is inserted twice.
 # Usage: tdlr_renewal_target.py [--dry-run]
 import os, sys
 from datetime import datetime, date

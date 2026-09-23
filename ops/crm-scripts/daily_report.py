@@ -5,6 +5,7 @@ Leads, email activity, and outbound AI call stats for the last 24h.
 Runs daily 8 AM via cron. Sends via AWS SES.
 """
 
+import datetime
 import json
 import os
 import urllib.request
@@ -34,7 +35,7 @@ SES_REGION = "us-east-2"
 AWS_KEY    = os.environ["QS_AWS_KEY"]
 AWS_SECRET = os.environ["QS_AWS_SECRET"]
 FROM_EMAIL = "nice.shotwell-sparks@quantumsurety.bond"
-TO_EMAILS  = ["contact219@gmail.com"]
+TO_EMAILS  = ["contact219@gmail.com", "administrator@quantumsurety.bond"]
 
 OUTBOUND_STATS_URL = ("https://voice-agent.permitpilot.online/outbound-stats"
                       "?secret=" + os.environ.get("OUTBOUND_SECRET", ""))
@@ -77,11 +78,11 @@ def main():
 
     # Revenue scoreboard (from RLI weekly report sync -> revenue_events)
     rev_mtd  = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
-                         WHERE effective_date >= date_trunc('month', CURRENT_DATE)""")[0]
+                         WHERE created_at >= date_trunc('month', CURRENT_DATE)""")[0]
     rev_30d  = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
-                         WHERE effective_date > CURRENT_DATE - 30""")[0]
+                         WHERE created_at > CURRENT_DATE - 30""")[0]
     rev_7d   = q(cur, """SELECT COALESCE(SUM(commission),0), COUNT(*) FROM revenue_events
-                         WHERE effective_date > CURRENT_DATE - 7""")[0]
+                         WHERE created_at > CURRENT_DATE - 7""")[0]
     TARGET = 20000.0
     pct = min(100.0, float(rev_mtd[0]) / TARGET * 100)
 
@@ -111,6 +112,7 @@ def main():
   <p style="margin:0 0 20px;color:#6b7280;font-size:13px;">Last 24 hours</p>
 
   <h3 style="margin:20px 0 8px;font-size:15px;">Revenue (commission, from RLI weekly reports)</h3>
+  {"<div style='background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#92400e;'><strong>Note:</strong> the rli_revenue_sync.py cron had been missing since the June 24 migration and was just restored today. Today's catch-up sync backfilled ~2 months of RLI reports in one run, so the numbers below include that backlog landing all at once &mdash; not a real one-day spike. Expect this to normalize starting tomorrow.</div>" if datetime.date.today().isoformat() == "2026-08-07" else ""}
   <table style="font-size:14px;border-collapse:collapse;">
     <tr><td style="padding:4px 12px 4px 0;color:#555;">Month to date</td><td style="font-weight:600;">${float(rev_mtd[0]):,.2f} ({rev_mtd[1]} bonds)</td></tr>
     <tr><td style="padding:4px 12px 4px 0;color:#555;">Last 7 days</td><td style="font-weight:600;">${float(rev_7d[0]):,.2f} ({rev_7d[1]} bonds)</td></tr>

@@ -55,7 +55,7 @@ def main():
         url += "&since=" + urllib.parse.quote(last)
 
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "CRM-Sync/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "CRM-Sync/1.0", "X-Sync-Token": os.environ.get("EVENTS_LOG_TOKEN", "")})
         with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read())
     except Exception as e:

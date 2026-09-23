@@ -33,7 +33,7 @@ SES_REGION = "us-east-2"
 AWS_KEY    = os.environ["QS_AWS_KEY"]
 AWS_SECRET = os.environ["QS_AWS_SECRET"]
 FROM_EMAIL = "nice.shotwell-sparks@quantumsurety.bond"
-TO_EMAILS  = ["contact219@gmail.com"]
+TO_EMAILS  = ["contact219@gmail.com", "administrator@quantumsurety.bond"]
 OUTBOUND_STATS_URL = ("https://voice-agent.permitpilot.online/outbound-stats"
                       "?secret=" + os.environ.get("OUTBOUND_SECRET", ""))
 

@@ -71,9 +71,9 @@ async function run() {
   // 4. Compute KPIs
   const [mtdR, ytdR, activeR, expiringR, billsR, expensesR] = await Promise.all([
     pool.query(`SELECT COUNT(*) AS bonds, COALESCE(SUM(premium),0) AS premium, COALESCE(SUM(commission_amt),0) AS commission
-                FROM bk_bonds WHERE to_char(effective_date,'YYYY-MM')=$1 AND status='issued'`, [month]),
+                FROM bk_bonds WHERE to_char(created_at,'YYYY-MM')=$1 AND status='issued'`, [month]),
     pool.query(`SELECT COUNT(*) AS bonds, COALESCE(SUM(premium),0) AS premium, COALESCE(SUM(commission_amt),0) AS commission
-                FROM bk_bonds WHERE EXTRACT(YEAR FROM effective_date)=$1 AND status='issued'`, [year]),
+                FROM bk_bonds WHERE EXTRACT(YEAR FROM created_at)=$1 AND status='issued'`, [year]),
     pool.query(`SELECT COUNT(*) AS count FROM bk_bonds WHERE status='issued'`),
     pool.query(`SELECT COUNT(*) AS count FROM bk_bonds WHERE status='issued' AND expiration_date BETWEEN CURRENT_DATE AND CURRENT_DATE + 30`),
     pool.query(`SELECT COALESCE(SUM(amount),0) AS total FROM bk_bills WHERE status='unpaid'`),

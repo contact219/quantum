@@ -34,6 +34,7 @@ VARS = {
     "{{surety_company}}": "Western Surety Company c/o CNA",
     "{{unsubscribe_url}}": "https://quantumsurety.bond/api/unsubscribe?email=t",
     "{{verify_url}}": "https://verify.quantumsurety.bond/verify/notary/123",
+    "{{notary_id}}": "10003453",
 }
 
 def render(body, drip_id):

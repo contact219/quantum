@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// Credentials come from /var/www/bondverify/.env (same file server.js uses).
+// __dirname-anchored so this works no matter what cwd the script is run from.
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 /**
  * HUB Contractor Outreach
  * Reads HUB vendor data from /tmp/hub_vendors.json (scraped via hub_scrape.py)

@@ -71,8 +71,8 @@ const TX_COUNTIES_REST = [
 const ALL_COUNTIES = [...TX_COUNTIES_TOP, ...TX_COUNTIES_REST];
 
 function getPremium(bondAmt: number): string {
-  if (bondAmt <= 7500) return "$50";
-  if (bondAmt <= 15000) return "$75";
+  // RLI enforces a $100 minimum premium on every title bond regardless of the
+  // computed rate, so no bracket below that floor can ever be quoted.
   if (bondAmt <= 22500) return "$100";
   if (bondAmt <= 37500) return "$150";
   if (bondAmt <= 75000) return "$250";

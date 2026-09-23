@@ -500,8 +500,8 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             },
             {
               icon: <Calculator className="w-5 h-5 text-amber-600" />,
-              title: "$50 Minimum, Flat-Rate Pricing",
-              desc: "No credit check. No income verification. Pricing is flat-rate starting at $50 for the most common vehicle values.",
+              title: "$100 Minimum, Flat-Rate Pricing",
+              desc: "No credit check. No income verification. Pricing is flat-rate starting at a $100 minimum for the most common vehicle values.",
             },
             {
               icon: <Phone className="w-5 h-5 text-green-600" />,
@@ -580,7 +580,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
                 <td className="p-3 text-gray-600 font-medium">
                   Minimum premium
                 </td>
-                <td className="p-3 text-green-700 font-semibold">$50</td>
+                <td className="p-3 text-green-700 font-semibold">$100</td>
                 <td className="p-3 text-gray-500">$75–200+ (varies)</td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">

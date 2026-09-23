@@ -20,8 +20,8 @@ function fmt(n: number): string {
 }
 
 function titlePremium(bondAmount: number): number | null {
-  if (bondAmount <= 7500) return 50;
-  if (bondAmount <= 15000) return 75;
+  // RLI enforces a $100 minimum premium on every title bond regardless of the
+  // computed rate, so no bracket below that floor can ever be quoted.
   if (bondAmount <= 22500) return 100;
   if (bondAmount <= 37500) return 150;
   if (bondAmount <= 75000) return 250;

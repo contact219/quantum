@@ -5870,7 +5870,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <ul>
           <li><strong>Texas Notary Bond:</strong> $50 flat for the full 4-year term ($10,000 bond)</li>
           <li><strong>GDN Dealer Bond:</strong> from $250/yr for the $25,000 TxDMV bond (credit-based, most dealers pay $250–$500)</li>
-          <li><strong>Vehicle Title Bond:</strong> from $50 — bond equals 1.5x the vehicle's appraised value, 3-year term</li>
+          <li><strong>Vehicle Title Bond:</strong> from a $100 minimum premium — bond equals 1.5x the vehicle's appraised value, 3-year term</li>
           <li><strong>Contractor License Bond:</strong> typically 1–3% of the required bond amount per year (from $75/yr)</li>
           <li><strong>Bid Bond:</strong> from $100 — usually 5–10% of your bid amount, often free with a performance bond commitment</li>
           <li><strong>Performance &amp; Payment Bond:</strong> 1–3% of the contract value, tiered lower for larger contracts</li>
@@ -5884,7 +5884,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h2>Frequently Asked Questions</h2>
         <dl>
           <dt>How much does a surety bond cost?</dt>
-          <dd>Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at $50.</dd>
+          <dd>Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at a $100 minimum premium.</dd>
           <dt>Do I pay the full bond amount?</dt>
           <dd>No. You pay only the premium — a small percentage. A $25,000 GDN dealer bond costs around $250–$500 per year, not $25,000.</dd>
           <dt>Is this calculator free?</dt>
@@ -5913,7 +5913,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "How much does a surety bond cost?", acceptedAnswer: { "@type": "Answer", text: "Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at $50." } },
+          { "@type": "Question", name: "How much does a surety bond cost?", acceptedAnswer: { "@type": "Answer", text: "Between 0.5% and 3% of the bond amount per year for most Texas license and contract bonds. Simple bonds are flat-rate: a Texas notary bond is $50 for 4 years, and title bonds start at a $100 minimum premium." } },
           { "@type": "Question", name: "Do I pay the full bond amount?", acceptedAnswer: { "@type": "Answer", text: "No. You pay only the premium — a small percentage of the bond amount. A $25,000 GDN dealer bond costs around $250–$500 per year, not $25,000." } },
           { "@type": "Question", name: "Is the calculator free?", acceptedAnswer: { "@type": "Answer", text: "Yes — free, instant, and no credit check to see estimates. Final premium is confirmed at checkout or by a licensed agent." } },
         ],
@@ -5937,12 +5937,13 @@ export const PAGE_META: Record<string, PageMeta> = {
       </section>
       <section>
         <h2>Texas Bonded Title Bond Pricing</h2>
+        <p>$100 minimum premium on every title bond.</p>
         <ul>
-          <li>Vehicle value $5,000 -- Bond $7,500 -- Premium ~$50</li>
-          <li>Vehicle value $10,000 -- Bond $15,000 -- Premium ~$75</li>
-          <li>Vehicle value $15,000 -- Bond $22,500 -- Premium ~$100</li>
-          <li>Vehicle value $25,000 -- Bond $37,500 -- Premium ~$150</li>
-          <li>Vehicle value $50,000 -- Bond $75,000 -- Premium ~$250</li>
+          <li>Vehicle value $5,000 -- Bond $7,500 -- Premium $100 (minimum)</li>
+          <li>Vehicle value $10,000 -- Bond $15,000 -- Premium $100 (minimum)</li>
+          <li>Vehicle value $15,000 -- Bond $22,500 -- Premium $100</li>
+          <li>Vehicle value $25,000 -- Bond $37,500 -- Premium $150</li>
+          <li>Vehicle value $50,000 -- Bond $75,000 -- Premium $250</li>
         </ul>
       </section>
       <section>
@@ -6295,7 +6296,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "What is a Texas bonded title?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas bonded title is a vehicle title issued by TxDMV when the original title is unavailable. The owner purchases a surety bond equal to 1.5x the vehicle's appraised value. After 3 years with no claims, TxDMV issues a clear title." } },
-          { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety's premium is typically $50–$200 for most personal vehicles, depending on the bond amount (1.5x appraised value)." } },
+          { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety's premium is typically $100–$200 for most personal vehicles ($100 minimum), depending on the bond amount (1.5x appraised value)." } },
         ],
       },
       {
@@ -7232,14 +7233,14 @@ export const PAGE_META: Record<string, PageMeta> = {
 
   "/blog/texas-certificate-of-title-bond-cost": {
     title: "How Much Does a Texas Certificate of Title Bond Cost? (2026 Pricing) | Quantum Surety",
-    description: "The 1.5x rule explained, pricing table for common vehicle values, and why most Texas title bonds start at just $50. Plus the free Title Bond Calculator.",
+    description: "The 1.5x rule explained, pricing table for common vehicle values, and why most Texas title bonds start at a $100 minimum. Plus the free Title Bond Calculator.",
     canonical: `${BASE_URL}/blog/texas-certificate-of-title-bond-cost`,
     ogType: "article",
     structuredData: [
       { "@context": "https://schema.org", "@type": "Article", "headline": "Texas Certificate of Title Bond Cost 2026", "datePublished": "2026-06-05", "author": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL }, "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": BASE_URL } },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` }, { "@type": "ListItem", "position": 3, "name": "Texas Title Bond Cost", "item": `${BASE_URL}/blog/texas-certificate-of-title-bond-cost` } ] },
     ],
-    content: `<main><h1>Texas Certificate of Title Bond Cost 2026</h1><p>Texas title bonds start at $50 from Quantum Surety. Bond amount equals 1.5x the vehicle value assigned by TxDMV.</p><a href="/title-bond-calculator">Calculate My Bond Cost</a></main>`,
+    content: `<main><h1>Texas Certificate of Title Bond Cost 2026</h1><p>Texas title bonds start at a $100 minimum premium from Quantum Surety. Bond amount equals 1.5x the vehicle value assigned by TxDMV.</p><a href="/title-bond-calculator">Calculate My Bond Cost</a></main>`,
   },
 
   "/blog/bought-car-no-title-texas-bonded-title": {
@@ -7670,12 +7671,12 @@ function getDynamicCountyTitleMeta(urlPath: string): PageMeta | null {
   if (!county) return null;
 
   const title = `${county.name} County Certificate of Title Bond | Bonded Title | Quantum Surety`;
-  const description = `Get a Texas certificate of title bond in ${county.name} County (${county.seat}). Bonds from $50, 1.5x vehicle value, 3-year term. Same-day issuance, file with the county tax office. TDI #3480229.`;
+  const description = `Get a Texas certificate of title bond in ${county.name} County (${county.seat}). Bonds from a $100 minimum premium, 1.5x vehicle value, 3-year term. Same-day issuance, file with the county tax office. TDI #3480229.`;
   const canonical = `${BASE_URL}${urlPath}`;
   const content = `
     <main>
       <h1>${county.name} County Certificate of Title Bond</h1>
-      <p>If you own a vehicle in ${county.name} County, Texas (${county.population} residents, county seat ${county.seat}) and cannot get a negotiable title from the seller, a certificate of title bond (bonded title) is the legal path to ownership through TxDMV. Bonds start at $50 for a 3-year term, set at 1.5x the vehicle's appraised value.</p>
+      <p>If you own a vehicle in ${county.name} County, Texas (${county.population} residents, county seat ${county.seat}) and cannot get a negotiable title from the seller, a certificate of title bond (bonded title) is the legal path to ownership through TxDMV. Bonds start at a $100 minimum premium for a 3-year term, set at 1.5x the vehicle's appraised value.</p>
       <section>
         <h2>How the bonded title process works in ${county.name} County</h2>
         <ol>
@@ -7688,7 +7689,7 @@ function getDynamicCountyTitleMeta(urlPath: string): PageMeta | null {
         <h2>Frequently Asked Questions</h2>
         <dl>
           <dt>How much does a bonded title cost in ${county.name} County?</dt>
-          <dd>The bond itself starts at $50 for 3 years. The bond amount is 1.5x your vehicle's appraised value; premium scales with that amount.</dd>
+          <dd>The bond itself starts at a $100 minimum premium for 3 years. The bond amount is 1.5x your vehicle's appraised value; premium scales with that amount above the $100 floor.</dd>
           <dt>Where do I file in ${county.name} County?</dt>
           <dd>At the ${county.name} County Tax Assessor-Collector office in ${county.seat}. Verify current address and hours at txdmv.gov before visiting.</dd>
           <dt>How fast can I get the bond?</dt>
@@ -7718,7 +7719,7 @@ function getDynamicCountyTitleMeta(urlPath: string): PageMeta | null {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: [
-          { '@type': 'Question', name: `How much does a bonded title cost in ${county.name} County?`, acceptedAnswer: { '@type': 'Answer', text: 'The bond starts at $50 for a 3-year term. The bond amount is 1.5x your vehicle appraised value; premium scales with that amount.' } },
+          { '@type': 'Question', name: `How much does a bonded title cost in ${county.name} County?`, acceptedAnswer: { '@type': 'Answer', text: 'The bond starts at a $100 minimum premium for a 3-year term. The bond amount is 1.5x your vehicle appraised value; premium scales with that amount above the $100 floor.' } },
           { '@type': 'Question', name: `Where do I file in ${county.name} County?`, acceptedAnswer: { '@type': 'Answer', text: `At the ${county.name} County Tax Assessor-Collector office in ${county.seat}. Verify current address and hours at txdmv.gov before visiting.` } },
           { '@type': 'Question', name: 'How fast can I get the bond?', acceptedAnswer: { '@type': 'Answer', text: 'Same day -- apply online and receive your bond certificate by email, usually within minutes.' } },
         ],

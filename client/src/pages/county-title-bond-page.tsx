@@ -8,8 +8,8 @@ import { CheckCircle, MapPin, Phone, Clock, FileText, Shield, ArrowRight, Car } 
 import { COUNTY_TITLE_BOND_DATA } from "@/data/county-title-bonds";
 
 function getPremium(bondAmt: number): string {
-  if (bondAmt <= 7500) return "$50";
-  if (bondAmt <= 15000) return "$75";
+  // RLI enforces a $100 minimum premium on every title bond regardless of the
+  // computed rate, so no bracket below that floor can ever be quoted.
   if (bondAmt <= 22500) return "$100";
   if (bondAmt <= 37500) return "$150";
   if (bondAmt <= 75000) return "$250";
@@ -127,7 +127,7 @@ export default function CountyTitleBondPage() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-4 gap-4 text-center">
           {[
             { label: "Bond amount", value: "1.5x value" },
-            { label: "Typical premium", value: "$50-$200" },
+            { label: "Typical premium", value: "$100-$200" },
             { label: "Bond term", value: "3 years" },
             { label: "File at", value: `${data.county} Co. Tax Office` },
           ].map((item) => (
@@ -444,7 +444,7 @@ export default function CountyTitleBondPage() {
               },
               {
                 q: `How much does a certificate of title bond cost in ${data.name}?`,
-                a: "The bond amount is 1.5 times your vehicle appraised value. Quantum Surety's premium starts at $50 for most personal vehicles and ranges up to $400 depending on the bond amount required.",
+                a: "The bond amount is 1.5 times your vehicle appraised value. Quantum Surety's premium starts at a $100 minimum for most personal vehicles and ranges up to $400 depending on the bond amount required.",
               },
             ].map((faq) => (
               <div key={faq.q} className="border border-gray-200 rounded-xl overflow-hidden">

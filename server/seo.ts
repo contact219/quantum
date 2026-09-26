@@ -36,7 +36,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/": {
     title: "Texas Surety Bonds | Notary, Contractor & Dealer | Quantum Surety",
     description:
-      "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $100/yr. Contractor bonds same-day. TDI license #3480229.",
+      "TDI-licensed Texas surety bond agency. Notary bonds $50 instant download. GDN dealer bonds from $250 for the 2-year term. Contractor bonds same-day. TDI license #3480229.",
     canonical: `${BASE_URL}/`,
     ogType: "website",
     alternates: [
@@ -2641,7 +2641,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         </section>
         <section>
           <h2>How Much Does a Texas GDN Bond Cost?</h2>
-          <p>Most dealers pay $100–$300/year. Rates start at 0.5% of the $50,000 bond amount for dealers with good credit. Bad credit dealers may pay up to $600/year. All quotes are instant — no waiting.</p>
+          <p>GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.</p>
         </section>
         <section>
           <h2>Frequently Asked Questions</h2>

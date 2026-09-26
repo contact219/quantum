@@ -10,7 +10,7 @@ export default function BlogGDNBondRequirements2026() {
   useSEO({
     title: "Texas GDN Bond Requirements 2026: What Every Motor Vehicle Dealer Needs to Know | Quantum Surety",
     description:
-      "Complete guide to Texas GDN bond requirements in 2026. What a GDN bond is, why it's required under §503.033, all 6 dealer license types, bond amount, and what happens if you operate without one.",
+      "Texas GDN bond requirements in 2026: what the $50,000 dealer bond is, why Transportation Code §503.033 requires it, which license types need one, and what happens without it.",
     canonical: "/blog/texas-gdn-bond-requirements-2026",
     ogType: "article",
   });

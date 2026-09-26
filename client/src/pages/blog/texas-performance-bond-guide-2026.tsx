@@ -10,7 +10,7 @@ export default function BlogTexasPerformanceBondGuide2026() {
   useSEO({
     title: "Texas Performance Bond Requirements & Cost Guide 2026 | Quantum Surety Blog",
     description:
-      "Complete guide to Texas performance bonds in 2026: who needs them, how much they cost (0.5%–3%), legal requirements under Texas Gov. Code § 2253 and the Miller Act, and how to get approved fast.",
+      "Texas performance bonds in 2026: who needs one, what Texas Gov. Code § 2253 and the federal Miller Act require, and how pricing works.",
     canonical: "/blog/texas-performance-bond-guide-2026",
     ogType: "article",
   });

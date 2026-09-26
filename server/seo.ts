@@ -1857,6 +1857,64 @@ export const PAGE_META: Record<string, PageMeta> = {
         </ul>
       </main>`,
   },
+  // Indexed posts that had no entry (added 2026-09-26): the prefix fallback gave them the
+  // /blog index title and canonical=/blog, marking them duplicates of the index.
+  "/blog/best-texas-surety-bond-company-2026": {
+    title: "Best Texas Surety Bond Company 2026 — Full Comparison Guide",
+    description: "A comparison of the top Texas surety bond companies, published by Quantum Surety — we are one of the companies listed. Ranked by price, speed, and Texas-specific features. See who wins for notary bonds, contractor bonds, and GDN dealer bonds.",
+    canonical: `${BASE_URL}/blog/best-texas-surety-bond-company-2026`,
+    ogType: "article",
+    content: `<main><h1>Best Texas Surety Bond Company 2026 — Full Comparison Guide</h1><p>A comparison of the top Texas surety bond companies, published by Quantum Surety — we are one of the companies listed. Ranked by price, speed, and Texas-specific features. See who wins for notary bonds, contractor bonds, and GDN dealer bonds.</p></main>`,
+  },
+  "/blog/texas-gdn-bond-requirements-2026": {
+    title: "Texas GDN Bond Requirements 2026: What Every Motor Vehicle Dealer Needs to Know | Quantum Surety",
+    description: "Texas GDN bond requirements in 2026: what the $50,000 dealer bond is, why Transportation Code §503.033 requires it, which license types need one, and what happens without it.",
+    canonical: `${BASE_URL}/blog/texas-gdn-bond-requirements-2026`,
+    ogType: "article",
+    content: `<main><h1>Texas GDN Bond Requirements 2026: What Every Motor Vehicle Dealer Needs to Know</h1><p>Texas GDN bond requirements in 2026: what the $50,000 dealer bond is, why Transportation Code §503.033 requires it, which license types need one, and what happens without it.</p></main>`,
+  },
+  "/blog/texas-gdn-bond-cost-2026": {
+    title: "How Much Does a Texas GDN Bond Cost in 2026? | Quantum Surety",
+    description: "How much a Texas GDN dealer bond costs in 2026: from $250 for the 2-year term, what RLI actually quoted dealers, and what to do if you are declined.",
+    canonical: `${BASE_URL}/blog/texas-gdn-bond-cost-2026`,
+    ogType: "article",
+    content: `<main><h1>How Much Does a Texas GDN Bond Cost in 2026?</h1><p>How much a Texas GDN dealer bond costs in 2026: from $250 for the 2-year term, what RLI actually quoted dealers, and what to do if you are declined.</p></main>`,
+  },
+  "/blog/texas-dealer-license-renewal-gdn-bond": {
+    title: "Texas Dealer License Renewal 2026: GDN Bond Checklist & TxDMV Steps | Quantum Surety",
+    description: "Complete Texas dealer license renewal guide for 2026. Step-by-step GDN bond renewal checklist, TxDMV eLICENSING instructions, key deadlines, and what happens if your bond lapses.",
+    canonical: `${BASE_URL}/blog/texas-dealer-license-renewal-gdn-bond`,
+    ogType: "article",
+    content: `<main><h1>Texas Dealer License Renewal 2026: GDN Bond Checklist &amp; TxDMV Steps</h1><p>Complete Texas dealer license renewal guide for 2026. Step-by-step GDN bond renewal checklist, TxDMV eLICENSING instructions, key deadlines, and what happens if your bond lapses.</p></main>`,
+  },
+  "/blog/texas-performance-bond-guide-2026": {
+    title: "Texas Performance Bond Requirements & Cost Guide 2026 | Quantum Surety Blog",
+    description: "Texas performance bonds in 2026: who needs one, what Texas Gov. Code § 2253 and the federal Miller Act require, and how pricing works.",
+    canonical: `${BASE_URL}/blog/texas-performance-bond-guide-2026`,
+    ogType: "article",
+    content: `<main><h1>Texas Performance Bond Requirements &amp;amp; Cost Guide (2026)</h1><p>Texas performance bonds in 2026: who needs one, what Texas Gov. Code § 2253 and the federal Miller Act require, and how pricing works.</p></main>`,
+  },
+  "/blog/texas-bid-bond-requirements-2026": {
+    title: "Texas Bid Bond Requirements 2026: What Contractors Need to Know | Quantum Surety",
+    description: "Texas bid bond requirements for 2026: who needs one, when it is required, how the bond amount is set, and how pricing works. A guide for Texas contractors.",
+    canonical: `${BASE_URL}/blog/texas-bid-bond-requirements-2026`,
+    ogType: "article",
+    content: `<main><h1>Texas Bid Bond Requirements 2026: What Every Contractor Needs to Know</h1><p>Texas bid bond requirements for 2026: who needs one, when it is required, how the bond amount is set, and how pricing works. A guide for Texas contractors.</p></main>`,
+  },
+  "/blog/how-to-get-lost-car-title-texas": {
+    title: "How to Get a Lost Car Title in Texas in 5 Easy Steps (2026) | Quantum Surety",
+    description: "Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded same day.",
+    canonical: `${BASE_URL}/blog/how-to-get-lost-car-title-texas`,
+    ogType: "article",
+    content: `<main><h1>How to Get a Lost Car Title in Texas in 5 Easy Steps (2026)</h1><p>Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded same day.</p></main>`,
+  },
+  "/blog/texas-auto-dealer-bond-compliance-jun2026": {
+    title: "1,777 Texas Dealer Bonds Past Expiration in TxDMV Records | Quantum Surety",
+    description: "In June 2026, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. How to check a dealer's bond before you buy.",
+    canonical: `${BASE_URL}/blog/texas-auto-dealer-bond-compliance-jun2026`,
+    ogType: "article",
+    content: `<main><h1>TxDMV Records Show 1,777 Texas Auto Dealer Surety Bonds Past Their Expiration Date</h1><p>In June 2026, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. How to check a dealer's bond before you buy.</p></main>`,
+  },
 
   "/blog/texas-notary-bond-sb693-2026-requirements": {
     title: "Texas Notary SB 693: New 2-Hour Course to Renew (2026)",

@@ -73,11 +73,13 @@ export function Helmet({ children }: { children?: ReactNode }) {
     if (title) document.title = title;
     for (const [attr, k, v] of metas) upsertMeta(attr, k, v);
     for (const [rel, href] of links) upsertLink(rel, href);
+    // Robots: never default to "index". The server sets robots per record (most notary pages are
+    // deliberately "noindex, follow"), and Google renders JS, so overwriting it here would index
+    // pages the server excluded. Only enforce the shared noindex list; otherwise leave it alone.
     const setsRobots = metas.some(([attr, k]) => attr === "name" && k === "robots");
-    if (!setsRobots) {
-      const robots = isNoindexedPath(window.location.pathname) ? CITY_BOND_ROBOTS : "index, follow";
-      upsertMeta("name", "robots", robots);
-      upsertMeta("name", "googlebot", robots);
+    if (!setsRobots && isNoindexedPath(window.location.pathname)) {
+      upsertMeta("name", "robots", CITY_BOND_ROBOTS);
+      upsertMeta("name", "googlebot", CITY_BOND_ROBOTS);
     }
     const created = schemas.map((json, i) => {
       const el = document.createElement("script");

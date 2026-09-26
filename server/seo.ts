@@ -5926,13 +5926,13 @@ export const PAGE_META: Record<string, PageMeta> = {
       </section>
       <section>
         <h2>Texas Bonded Title Bond Pricing</h2>
-        <p>$100 minimum premium on every title bond.</p>
+        <p>The premium is 1.5% of the bond amount, with a $100 minimum premium on every title bond.</p>
         <ul>
-          <li>Vehicle value $5,000 -- Bond $7,500 -- Premium $100 (minimum)</li>
-          <li>Vehicle value $10,000 -- Bond $15,000 -- Premium $100 (minimum)</li>
-          <li>Vehicle value $15,000 -- Bond $22,500 -- Premium $100</li>
-          <li>Vehicle value $25,000 -- Bond $37,500 -- Premium $150</li>
-          <li>Vehicle value $50,000 -- Bond $75,000 -- Premium $250</li>
+          <li>Vehicle value $4,000 -- Bond $6,000 -- Premium $100</li>
+          <li>Vehicle value $10,000 -- Bond $15,000 -- Premium $225</li>
+          <li>Vehicle value $15,000 -- Bond $22,500 -- Premium $338</li>
+          <li>Vehicle value $25,000 -- Bond $37,500 -- Premium $563</li>
+          <li>Vehicle value $50,000 -- Bond $75,000 -- Premium $1,125</li>
         </ul>
       </section>
       <section>
@@ -6285,7 +6285,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "What is a Texas bonded title?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas bonded title is a vehicle title issued by TxDMV when the original title is unavailable. The owner purchases a surety bond equal to 1.5x the vehicle's appraised value. After 3 years with no claims, TxDMV issues a clear title." } },
-          { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety's premium is typically $100–$200 for most personal vehicles ($100 minimum), depending on the bond amount (1.5x appraised value)." } },
+          { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety's premium is 1.5% of the bond amount (which is 1.5x the appraised value), with a $100 minimum. A $15,000 vehicle needs a $22,500 bond, which costs $338." } },
         ],
       },
       {
@@ -7548,12 +7548,12 @@ interface DynBondMeta {
 }
 
 const DYN_BOND_META: Record<string, DynBondMeta> = {
-  "notary-bond":     { name: "Texas Notary Bond",              shortName: "Notary Bond",          amount: "$10,000",         cost: "$50 flat",       costNote: "4-year term, no annual renewal", legal: "Texas Government Code §406.010",      issuer: "Texas Secretary of State",                            applyUrl: "/get-bond?type=notary",     description: "Every Texas notary public must hold a $10,000 surety bond before the Texas Secretary of State will issue or renew a notary commission." },
-  "contractor-bond": { name: "Texas Contractor License Bond",  shortName: "Contractor Bond",      amount: "$10,000-$25,000", cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code (TDLR)",        issuer: "Texas Department of Licensing and Regulation (TDLR)", applyUrl: "/get-bond?type=contractor", description: "Texas contractors licensed by TDLR must maintain a surety bond as a condition of their license. Protects consumers from contractor misconduct." },
+  "notary-bond":     { name: "Texas Notary Bond",              shortName: "Notary Bond",          amount: "$10,000",         cost: "$50",            costNote: "for the 4-year term, plus the state's $21 filing fee", legal: "Texas Government Code §406.010",      issuer: "Texas Secretary of State",                            applyUrl: "/get-bond?type=notary",     description: "Every Texas notary public must hold a $10,000 surety bond before the Texas Secretary of State will issue or renew a notary commission." },
+  "contractor-bond": { name: "Texas Contractor Bond",          shortName: "Contractor Bond",      amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (no statewide TDLR bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TDLR licenses require liability insurance, not a surety bond. A contractor bond is needed when a city or a project owner requires one, and they set the amount." },
   "gdn-bond":        { name: "Texas GDN Auto Dealer Bond",     shortName: "GDN Dealer Bond",      amount: "$50,000",         cost: "from $250",      costNote: "for the 2-year term",           legal: "Texas Occupations Code §503.033",      issuer: "Texas Department of Motor Vehicles (TxDMV)",          applyUrl: "/get-bond?type=gdn",        description: "Every Texas motor vehicle dealer holding a GDN license must post a $50,000 surety bond with TxDMV under Texas Occupations Code §503.033." },
   "mortgage-bond":   { name: "Texas Mortgage Broker Bond",     shortName: "Mortgage Broker Bond", amount: "$50,000",         cost: "from $375/year", costNote: "annual renewal",                 legal: "Texas Finance Code §156.204",          issuer: "Texas Dept. of Savings and Mortgage Lending (SML)",   applyUrl: "/get-bond?type=mortgage",   description: "Texas mortgage brokers and mortgage bankers must post a $50,000 surety bond with the Texas SML under Texas Finance Code §156.204 as a condition of licensure." },
-  "hvac-bond":       { name: "Texas HVAC Contractor Bond",     shortName: "HVAC Bond",            amount: "$10,000",         cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code Chapter 1302", issuer: "Texas Department of Licensing and Regulation (TDLR)", applyUrl: "/get-bond?type=contractor", description: "Texas HVAC contractors licensed by TDLR under Texas Occupations Code Chapter 1302 must maintain a surety bond as a condition of their ACR license." },
-  "plumber-bond":    { name: "Texas Plumbing Contractor Bond", shortName: "Plumber Bond",         amount: "$10,000",         cost: "from $75/year",  costNote: "annual renewal",                 legal: "Texas Occupations Code Chapter 1301", issuer: "Texas State Board of Plumbing Examiners (TSBPE)",     applyUrl: "/get-bond?type=contractor", description: "Texas plumbing contractors licensed by TSBPE must maintain a surety bond under Occupations Code Ch. 1301 as a condition of their Master Plumber license." },
+  "hvac-bond":       { name: "Texas HVAC Contractor Bond",     shortName: "HVAC Bond",            amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (TDLR requires insurance, not a bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TDLR's air conditioning and refrigeration contractor license requires commercial general liability insurance, not a surety bond. A bond is needed only when a city or a project owner requires one, and they set the amount." },
+  "plumber-bond":    { name: "Texas Plumbing Contractor Bond", shortName: "Plumber Bond",         amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (TSBPE requires insurance, not a bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TSBPE requires a Responsible Master Plumber to carry at least $300,000 of liability insurance, not a surety bond. A bond is needed only when a city or a project owner requires one, and they set the amount." },
 };
 
 
@@ -7726,7 +7726,8 @@ function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
   if (!city || !bond) return null;
 
   const title = `${bond.shortName} ${city.name} TX | ${bond.amount} | Quantum Surety`;
-  const description = `Get a ${bond.name} in ${city.name}, ${city.county} County, TX. ${bond.amount} bond -- ${bond.cost} (${bond.costNote}). Required by ${bond.issuer}. Instant online issuance.`;
+  const amountPhrase = bond.amount.startsWith("$") ? `${bond.amount} bond` : "Bond amount varies";
+  const description = `Get a ${bond.name} in ${city.name}, ${city.county} County, TX. ${amountPhrase} -- ${bond.cost} (${bond.costNote}). Required by ${bond.issuer}. Instant online issuance.`;
   const canonical = `${BASE_URL}${urlPath}`;
 
   const content = `

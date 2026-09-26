@@ -1,3 +1,4 @@
+import { titleBondPremium } from "@shared/title-bond-pricing";
 import { useState, useRef } from "react";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import {
@@ -36,13 +37,8 @@ function getBondAmount(vehicleValue: number): number {
 }
 
 function getPremium(bondAmount: number): string | number {
-  // RLI enforces a $100 minimum premium on every title bond regardless of the
-  // computed rate, so no bracket below that floor can ever be quoted.
-  if (bondAmount <= 22500)  return 100;
-  if (bondAmount <= 37500)  return 150;
-  if (bondAmount <= 75000)  return 250;
-  if (bondAmount <= 150000) return 400;
-  return "Call for quote";
+  // 1.5% of the bond amount, $100 minimum (RLI's actual pricing; see shared/title-bond-pricing.ts).
+  return titleBondPremium(bondAmount) ?? "Call for quote";
 }
 
 function parseDollarInput(raw: string): number {
@@ -125,7 +121,7 @@ export default function TitleBondCalculator() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Texas Title Bond Calculator",
-    "description": "Free calculator that computes your required Texas bonded title bond amount (1.5× vehicle value per TxDMV formula) and Quantum Surety flat-rate premium instantly.",
+    "description": "Free calculator that computes your required Texas bonded title bond amount (1.5× vehicle value per TxDMV formula) and Quantum Surety fixed-rate premium (1.5% of the bond, $100 minimum) instantly.",
     "url": "https://quantumsurety.bond/title-bond-calculator",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
@@ -732,11 +728,12 @@ export default function TitleBondCalculator() {
               </thead>
               <tbody>
                 {[
-                  { value: "Up to $15,000",       bond: "Up to $22,500",       premium: "$100" },
-                  { value: "$15,001 – $25,000",  bond: "$22,501 – $37,500",  premium: "$150" },
-                  { value: "$25,001 – $50,000",  bond: "$37,501 – $75,000",  premium: "$250" },
-                  { value: "$50,001 – $100,000", bond: "$75,001 – $150,000", premium: "$400" },
-                  { value: "Over $100,000",         bond: "Over $150,000",      premium: "Call for quote" },
+                  { value: "$5,000",  bond: "$7,500",  premium: "$113" },
+                  { value: "$10,000",  bond: "$15,000",  premium: "$225" },
+                  { value: "$15,000",  bond: "$22,500",  premium: "$338" },
+                  { value: "$20,000",  bond: "$30,000",  premium: "$450" },
+                  { value: "$30,000",  bond: "$45,000",  premium: "$675" },
+                  { value: "$50,000",  bond: "$75,000",  premium: "$1,125" },
                 ].map((row, i) => (
                   <tr key={i} style={{
                     borderBottom: "1px solid #334155",

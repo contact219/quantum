@@ -53,7 +53,7 @@ const FAQ_SCHEMA = {
       name: "Does my credit score affect the cost of a Texas title bond?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Quantum Surety does not run a credit check for Texas certificate of title bonds. The pricing is flat-rate based solely on the required bond amount. Your credit history has no effect on approval or cost.",
+        text: "No. Quantum Surety does not run a credit check for Texas certificate of title bonds. The premium is a fixed 1.5% of the required bond amount. Your credit history has no effect on approval or cost.",
       },
     },
   ],
@@ -220,7 +220,7 @@ export default function TexasTitleBondCost2026() {
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Below are real-world examples showing the relationship between vehicle
-          value, required bond amount, and Quantum Surety's flat-rate premium:
+          value, required bond amount, and Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum):
         </p>
         <div className="overflow-x-auto mb-6">
           <table className="w-full bg-white border border-gray-200 rounded-xl text-sm shadow-sm">
@@ -258,29 +258,29 @@ export default function TexasTitleBondCost2026() {
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$5,000</td>
                 <td className="p-3 text-gray-700">$7,500</td>
-                <td className="p-3 font-bold text-teal-700">$100</td>
+                <td className="p-3 font-bold text-teal-700">$113</td>
                 <td className="p-3 text-gray-500 text-xs">
-                  Still at $100 minimum
+                  1.5% of the bond amount
                 </td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$8,000</td>
                 <td className="p-3 text-gray-700">$12,000</td>
-                <td className="p-3 font-bold text-teal-700">$100</td>
+                <td className="p-3 font-bold text-teal-700">$180</td>
                 <td className="p-3 text-gray-500 text-xs">
-                  Still at $100 minimum
+                  1.5% of the bond amount
                 </td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$10,000</td>
                 <td className="p-3 text-gray-700">$15,000</td>
-                <td className="p-3 font-bold text-teal-700">$100</td>
+                <td className="p-3 font-bold text-teal-700">$225</td>
                 <td className="p-3 text-gray-500 text-xs">Common sedan range</td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$15,000</td>
                 <td className="p-3 text-gray-700">$22,500</td>
-                <td className="p-3 font-bold text-teal-700">$100</td>
+                <td className="p-3 font-bold text-teal-700">$338</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Mid-range truck/SUV
                 </td>
@@ -288,7 +288,7 @@ export default function TexasTitleBondCost2026() {
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$20,000</td>
                 <td className="p-3 text-gray-700">$30,000</td>
-                <td className="p-3 font-bold text-teal-700">$150</td>
+                <td className="p-3 font-bold text-teal-700">$450</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Higher-value vehicles
                 </td>
@@ -296,7 +296,7 @@ export default function TexasTitleBondCost2026() {
               <tr className="bg-gray-50">
                 <td className="p-3 text-gray-700">$30,000+</td>
                 <td className="p-3 text-gray-700">$45,000+</td>
-                <td className="p-3 font-bold text-teal-700">$250+</td>
+                <td className="p-3 font-bold text-teal-700">$675+</td>
                 <td className="p-3 text-gray-500 text-xs">
                   Use the calculator for your exact quote
                 </td>
@@ -319,7 +319,7 @@ export default function TexasTitleBondCost2026() {
               </p>
               <p className="text-teal-100 text-sm mb-4">
                 Enter your vehicle's value (or decode by VIN) and instantly see
-                your required bond amount and Quantum Surety's flat-rate premium.
+                your required bond amount and Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum).
                 No login. No email required.
               </p>
               <Link href="/title-bond-calculator">
@@ -404,7 +404,7 @@ export default function TexasTitleBondCost2026() {
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <p className="font-bold text-indigo-900">
-                    Typical Total (vehicle under $10,000)
+                    Typical Total (vehicle under about $4,400)
                   </p>
                   <p className="text-sm text-indigo-700 mt-1">
                     Bond premium $100 + VTR fee $15 + title fee $30 + county
@@ -432,7 +432,7 @@ export default function TexasTitleBondCost2026() {
         </p>
         <p className="text-gray-700 leading-relaxed mb-4">
           Quantum Surety has streamlined Texas title bonds specifically. Our
-          pricing is flat-rate:
+          pricing is a fixed rate:
         </p>
         <ul className="space-y-2 mb-6">
           {[
@@ -441,7 +441,7 @@ export default function TexasTitleBondCost2026() {
             "Same-day bond certificate delivery (digital, printable)",
             "Online application takes 2–3 minutes",
             "TDI-licensed Texas agency #3480229 — legally authorized to write this bond",
-            "$100 minimum premium — set by RLI, our underwriting carrier — covers every bond up to $22,500 (most vehicles under $15,000 value)",
+            "$100 minimum premium — set by RLI, our underwriting carrier — covers every bond up to about $6,667 (vehicles worth up to about $4,400); above that, the premium is 1.5% of the bond amount",
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-2 mb-2 text-gray-700">
               <CheckCircle className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
@@ -516,7 +516,7 @@ export default function TexasTitleBondCost2026() {
           {[
             {
               q: "How much does a Texas title bond cost?",
-              a: "Texas title bonds start at a $100 minimum premium from Quantum Surety — RLI, our underwriting carrier, does not go below $100 regardless of the calculated rate. The bond premium then scales with the required bond amount (1.5x vehicle value) once it exceeds that floor. Use the Title Bond Calculator at quantumsurety.bond/title-bond-calculator for your exact quote.",
+              a: "Texas title bonds start at a $100 minimum premium from Quantum Surety — RLI, our underwriting carrier, does not go below $100 regardless of the calculated rate. Above that floor the premium is 1.5% of the required bond amount (which is 1.5x the vehicle value). Use the Title Bond Calculator at quantumsurety.bond/title-bond-calculator for your exact quote.",
             },
             {
               q: "Why does TxDMV require a bond at 1.5 times vehicle value?",
@@ -532,7 +532,7 @@ export default function TexasTitleBondCost2026() {
             },
             {
               q: "Does my credit score affect the cost of a Texas title bond?",
-              a: "No. Quantum Surety does not run a credit check for Texas certificate of title bonds. Pricing is flat-rate based on the bond amount only. Your credit history has no effect on approval or cost.",
+              a: "No. Quantum Surety does not run a credit check for Texas certificate of title bonds. The premium is a fixed 1.5% of the bond amount. Your credit history has no effect on approval or cost.",
             },
           ].map((item, i) => (
             <div

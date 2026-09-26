@@ -22,7 +22,7 @@ const FAQ_SCHEMA = {
   "mainEntity": [
     { "@type": "Question", "name": "What is a Texas bonded title?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas bonded title (officially called a 'Certificate of Title — Surety Bond') is a vehicle title issued by TxDMV when the original title is unavailable. The vehicle owner purchases a surety bond equal to 1.5 times the vehicle's appraised value. If a prior owner later claims the vehicle, the bond compensates them up to the bond amount." } },
     { "@type": "Question", "name": "Who needs a bonded title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "You may need a bonded title if you purchased a vehicle without receiving the title, inherited a vehicle with no title, lost your original title, bought a vehicle at auction without proper documentation, or have a title with a lien that cannot be released." } },
-    { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "The bond amount is 1.5 times the vehicle's appraised value as determined by TxDMV. Quantum Surety's premium is typically $100–$200 for most personal vehicles ($100 minimum), depending on the bond amount required. Commercial or high-value vehicles may cost more." } },
+    { "@type": "Question", "name": "How much does a Texas bonded title bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "The bond amount is 1.5 times the vehicle's appraised value as determined by TxDMV. Quantum Surety's premium is 1.5% of the bond amount with a $100 minimum, which is what RLI, our underwriting carrier, charges. A $15,000 vehicle needs a $22,500 bond, which costs $338." } },
     { "@type": "Question", "name": "How long does a bonded title last in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "The bond must remain in force for 3 years. After 3 years with no title claims filed against the bond, TxDMV will remove the bonded notation and issue a clear, regular title. You cannot sell the vehicle with a bonded title in most cases until the 3-year period is complete." } },
     { "@type": "Question", "name": "What is the process to get a bonded title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Step 1: Get the vehicle appraised by a TxDMV-approved appraiser. Step 2: Purchase a surety bond for 1.5x the appraised value from a TDI-licensed agency like Quantum Surety. Step 3: File Form VTR-130-SOF with TxDMV along with the bond, appraisal, and application fee. TxDMV will issue a title with a bonded notation." } },
     { "@type": "Question", "name": "Can I sell a car with a bonded title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Generally no — most buyers and lenders will not accept a vehicle with a bonded title during the 3-year bonding period. After 3 years, TxDMV removes the bonded notation and issues a clear title that can be transferred normally." } }
@@ -32,7 +32,7 @@ const FAQ_SCHEMA = {
 const faqs = [
   { q: "What is a Texas bonded title?", a: "A Texas bonded title (officially called a 'Certificate of Title — Surety Bond') is a vehicle title issued by TxDMV when the original title is unavailable. The vehicle owner purchases a surety bond equal to 1.5 times the vehicle's appraised value. If a prior owner later claims the vehicle, the bond compensates them up to the bond amount." },
   { q: "Who needs a bonded title in Texas?", a: "You may need a bonded title if you purchased a vehicle without receiving the title, inherited a vehicle with no title, lost your original title, bought a vehicle at auction without proper documentation, or have a title with a lien that cannot be released." },
-  { q: "How much does a Texas bonded title bond cost?", a: "The bond amount is 1.5 times the vehicle's appraised value as determined by TxDMV. Quantum Surety's premium is typically $100–$200 for most personal vehicles ($100 minimum), depending on the bond amount required. Commercial or high-value vehicles may cost more." },
+  { q: "How much does a Texas bonded title bond cost?", a: "The bond amount is 1.5 times the vehicle's appraised value as determined by TxDMV. Quantum Surety's premium is 1.5% of the bond amount with a $100 minimum, which is what RLI, our underwriting carrier, charges. A $15,000 vehicle needs a $22,500 bond, which costs $338." },
   { q: "How long does a bonded title last in Texas?", a: "The bond must remain in force for 3 years. After 3 years with no title claims filed against the bond, TxDMV will remove the bonded notation and issue a clear, regular title. You cannot sell the vehicle with a bonded title in most cases until the 3-year period is complete." },
   { q: "What is the process to get a bonded title in Texas?", a: "Step 1: Get the vehicle appraised by a TxDMV-approved appraiser. Step 2: Purchase a surety bond for 1.5x the appraised value from a TDI-licensed agency like Quantum Surety. Step 3: File Form VTR-130-SOF with TxDMV along with the bond, appraisal, and application fee. TxDMV will issue a title with a bonded notation." },
   { q: "Can I sell a car with a bonded title in Texas?", a: "Generally no — most buyers and lenders will not accept a vehicle with a bonded title during the 3-year bonding period. After 3 years, TxDMV removes the bonded notation and issues a clear title that can be transferred normally." },
@@ -213,7 +213,7 @@ export default function BondedTitleTexas() {
               {
                 step: "3",
                 title: "Purchase your surety bond from Quantum Surety",
-                body: "Provide the vehicle details, appraisal, and your contact information. Quantum Surety issues the bond through an A-rated carrier accepted by TxDMV. Typical premium for most personal vehicles: $100–$200 depending on the bond amount ($100 minimum).",
+                body: "Provide the vehicle details, appraisal, and your contact information. Quantum Surety issues the bond through an A-rated carrier accepted by TxDMV. The premium is 1.5% of the bond amount, with a $100 minimum.",
               },
               {
                 step: "4",
@@ -245,9 +245,9 @@ export default function BondedTitleTexas() {
           <p className="text-gray-600 text-sm mb-8">Bond amount = 1.5× vehicle appraised value. Quantum Surety's premium is typically a small percentage of the bond amount.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { appraised: "$5,000 vehicle", bond: "$7,500 bond", premium: "$100 (minimum)" },
-              { appraised: "$15,000 vehicle", bond: "$22,500 bond", premium: "$100" },
-              { appraised: "$30,000 vehicle", bond: "$45,000 bond", premium: "$250" },
+              { appraised: "$4,000 vehicle", bond: "$6,000 bond", premium: "$100 (minimum)" },
+              { appraised: "$15,000 vehicle", bond: "$22,500 bond", premium: "$338" },
+              { appraised: "$30,000 vehicle", bond: "$45,000 bond", premium: "$675" },
             ].map((item) => (
               <div key={item.appraised} className="bg-white rounded-lg p-5 border border-indigo-200 text-left">
                 <p className="text-sm text-gray-500 mb-1">{item.appraised}</p>
@@ -329,7 +329,7 @@ export default function BondedTitleTexas() {
                 <Calculator className="w-5 h-5 text-teal-600" />
               </div>
               <p className="font-bold text-gray-900 mb-1">Title Bond Calculator</p>
-              <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">Enter your vehicle value (or decode by VIN) and instantly see the exact TxDMV bond amount and Quantum Surety's flat-rate premium. Prevents overbonding and county office rejection.</p>
+              <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">Enter your vehicle value (or decode by VIN) and instantly see the exact TxDMV bond amount and Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum). Prevents overbonding and county office rejection.</p>
               <Link href="/title-bond-calculator">
                 <button className="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
                   <Calculator className="w-4 h-4" /> Calculate My Cost

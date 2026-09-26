@@ -14,7 +14,7 @@ const HOWTO_SCHEMA = {
     { "@type": "HowToStep", "position": 1, "name": "Determine which title path you need", "text": "Decide if you need a simple duplicate title (Form VTR-34, $2) or a bonded title (Form VTR-130-SOF, $15). If you're the original owner and your Texas title is just lost, use VTR-34. If you bought a car without a title or can't prove ownership, you'll need a bonded title." },
     { "@type": "HowToStep", "position": 2, "name": "Get a simple duplicate title (if applicable)", "text": "If you held a Texas title that is now lost or destroyed, complete Form VTR-34 (Application for Certified Copy of Title) and submit it by mail with $2 or in person at a TxDMV Regional Service Center for $5.45." },
     { "@type": "HowToStep", "position": 3, "name": "Apply for a bonded title determination", "text": "If a bonded title is needed, complete Form VTR-130-SOF and submit to TxDMV with the $15 fee. TxDMV will send you a Notice of Determination with the required bond amount (1.5x vehicle value)." },
-    { "@type": "HowToStep", "position": 4, "name": "Purchase your surety bond from Quantum Surety", "text": "Purchase a Texas title bond from Quantum Surety equal to 1.5x the vehicle's appraised value. Quantum Surety is a TDI-licensed agency (#3480229) — same-day approval, flat-rate pricing, and the bond is delivered ready to file with TxDMV." },
+    { "@type": "HowToStep", "position": 4, "name": "Purchase your surety bond from Quantum Surety", "text": "Purchase a Texas title bond from Quantum Surety equal to 1.5x the vehicle's appraised value. Quantum Surety is a TDI-licensed agency (#3480229) — same-day approval, one fixed rate (1.5% of the bond), and the bond is delivered ready to file with TxDMV." },
     { "@type": "HowToStep", "position": 5, "name": "File with your county tax office and get your title", "text": "Within 30 days of receiving your bond, submit the original surety bond (VTR-130-SB), Form 130-U, and VTR-130-SOF to your county tax assessor-collector. TxDMV will issue a bonded title. After 3 years with no claims, it converts to a clean regular title." },
   ],
   "publisher": { "@type": "Organization", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
@@ -25,7 +25,7 @@ const FAQ_SCHEMA = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "What is the difference between a duplicate title and a bonded title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A duplicate title (Form VTR-34) is a copy of a title you already held — used when your existing Texas title is lost or destroyed. A bonded title is required when you never had clear ownership documentation in the first place, such as buying a car with no title. The bonded title requires a surety bond equal to 1.5x the vehicle's value." } },
-    { "@type": "Question", "name": "How much does it cost to get a lost car title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A duplicate title costs $2 by mail or $5.45 in person. A bonded title costs $15 for the TxDMV application plus the surety bond premium (a $100 minimum, typically $100–$250 for personal vehicles at Quantum Surety) plus county registration fees." } },
+    { "@type": "Question", "name": "How much does it cost to get a lost car title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A duplicate title costs $2 by mail or $5.45 in person. A bonded title costs $15 for the TxDMV application plus the surety bond premium (1.5% of the bond amount with a $100 minimum at Quantum Surety; $338 for a $15,000 vehicle) plus county registration fees." } },
     { "@type": "Question", "name": "How long does it take to get a replacement car title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A duplicate title by mail typically takes 2–4 weeks. An in-person appointment at a TxDMV Regional Service Center can provide same-day processing. A bonded title takes longer — 2 to 6 weeks after you have the bond and file with your county." } },
     { "@type": "Question", "name": "What is the bond amount for a Texas bonded title?", "acceptedAnswer": { "@type": "Answer", "text": "The bond must equal 1.5 times the vehicle's value as determined by TxDMV. For example, a $10,000 car requires a $15,000 bond. Quantum Surety's premium for a $15,000 bond is typically around $100–$150 flat." } },
     { "@type": "Question", "name": "Can I sell a car with a bonded title in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Generally no — most buyers, lenders, and dealers will not accept a vehicle with a bonded title during the 3-year bonding period. After 3 years with no claims filed against the bond, TxDMV removes the bonded notation and issues a clean, transferable title." } },
@@ -171,7 +171,7 @@ If someone later proves a legitimate ownership claim on the vehicle within 3 yea
 
 **1. Get a quote** — Visit [quantumsurety.bond/bonds/bonded-title-texas](/bonds/bonded-title-texas) or click "Get Your Bond" below. Enter the bond amount from your TxDMV Notice of Determination.
 
-**2. Flat-rate pricing** — We price title bonds at a flat rate based on the bond amount, with a **$100 minimum premium** set by our underwriting carrier. Most personal vehicles ($10,000–$30,000 value) result in bonds of $15,000–$45,000, with premiums typically ranging from **$100 to $250**.
+**2. Simple pricing** — The premium is **1.5% of the bond amount**, with a **$100 minimum**, which is what RLI, our underwriting carrier, charges. A vehicle valued at $10,000–$30,000 needs a $15,000–$45,000 bond, so the premium is **$225 to $675**.
 
 **3. Same-day approval** — No credit check delays. Most title bonds are approved and issued the same day you apply.
 
@@ -237,7 +237,7 @@ const faqs = [
   },
   {
     q: "How much does it cost to replace a lost car title in Texas?",
-    a: "A duplicate title costs $2 by mail or $5.45 in person. A bonded title involves the $15 TxDMV application fee, a surety bond premium (a $100 minimum, typically $100–$250 for personal vehicles through Quantum Surety), and your county's registration fees. The bond amount itself (1.5x vehicle value) is not a cost — it's a guarantee.",
+    a: "A duplicate title costs $2 by mail or $5.45 in person. A bonded title involves the $15 TxDMV application fee, a surety bond premium (1.5% of the bond amount with a $100 minimum through Quantum Surety; $338 for a $15,000 vehicle), and your county's registration fees. The bond amount itself (1.5x vehicle value) is not a cost — it's a guarantee.",
   },
   {
     q: "How long do I have to file a bonded title after getting the bond?",
@@ -477,11 +477,11 @@ export default function BlogLostCarTitleTexas() {
                 <div className="text-xs font-mono tracking-widest text-teal-300 mb-2">QUANTUM SURETY · TDI LICENSE #3480229</div>
                 <h2 className="text-2xl font-bold mb-3">Need a Texas Title Bond? We Make It Fast and Simple.</h2>
                 <p className="text-indigo-100 mb-5 max-w-xl">
-                  Quantum Surety is a Texas Department of Insurance licensed surety bond agency. We issue title bonds same day — flat-rate pricing, no credit check delays, and the completed Form VTR-130-SB delivered ready to file with your county.
+                  Quantum Surety is a Texas Department of Insurance licensed surety bond agency. We issue title bonds same day — one fixed rate (1.5% of the bond), no credit check delays, and the completed Form VTR-130-SB delivered ready to file with your county.
                 </p>
                 <div className="grid sm:grid-cols-3 gap-4 mb-6">
                   {[
-                    { label: "Typical Premium", value: "$100 – $250", sub: "most personal vehicles" },
+                    { label: "Premium", value: "1.5% of bond", sub: "$100 minimum" },
                     { label: "Approval Time", value: "Same Day", sub: "in most cases" },
                     { label: "Bond Term", value: "3 Years", sub: "as required by TxDMV" },
                   ].map(item => (

@@ -13,12 +13,11 @@ const COMPARISON = [
   // Verified against suretybonds.com Aug 2026: they charge $50 for the 4-year term, the
   // same as us, with the $21 SOS filing fee quoted separately exactly as we do. The old
   // "$65–$79 (variable)" overstated a named competitor's price. We do not win on price here.
-  { feature: "Texas Notary Bond",        qs: "$50 flat (4-yr)",    them: "$50 flat (4-yr)",     winner: "tie" },
-  { feature: "TDLR Contractor Bond",     qs: "$75/yr same-day",   them: "$99–$150/yr",          winner: "qs" },
-  { feature: "TX GDN Dealer Bond",       qs: "$250 / 2 yrs",       them: "$150–$250/yr",         winner: "qs" },
+  { feature: "Texas Notary Bond",        qs: "$50 (4-yr term)",   them: "Quote-based: check their site", winner: "tie" },
+  { feature: "TDLR Contractor Bond",     qs: "from $100",         them: "Quote-based: check their site", winner: "tie" },
+  { feature: "TX GDN Dealer Bond",       qs: "$250 / 2 yrs",      them: "Quote-based: check their site", winner: "tie" },
   { feature: "Texas-Specific Expertise", qs: "HQ in Wylie, TX",   them: "Missouri-based",       winner: "qs" },
   { feature: "Certificate Speed",        qs: "Instant PDF",        them: "1–3 business days",    winner: "qs" },
-  { feature: "TDI Licensed",             qs: "#3480229",           them: "Not TX-licensed",      winner: "qs" },
   { feature: "Live Texas Agent",         qs: "(214) 666-8718",     them: "Call center",          winner: "qs" },
   { feature: "Bond Verify Portal",       qs: "Free public lookup", them: "None",                 winner: "qs" },
   { feature: "Online Checkout",          qs: "Yes",                them: "Yes",                  winner: "tie" },
@@ -109,7 +108,7 @@ export default function CompareSuretyBonds() {
         {/* CTA */}
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-8 text-center mb-12">
           <p className="text-xl font-bold text-slate-900 mb-2">Ready to get bonded the Texas way?</p>
-          <p className="text-slate-600 mb-6">TDI-licensed. Instant certificates. Lowest prices in Texas.</p>
+          <p className="text-slate-600 mb-6">TDI-licensed. Instant certificates. Prices published up front.</p>
           <Link href="/get-bond" className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-lg transition-colors text-lg">
             Get My Texas Bond →
           </Link>

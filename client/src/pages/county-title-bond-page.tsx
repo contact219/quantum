@@ -6,15 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, MapPin, Phone, Clock, FileText, Shield, ArrowRight, Car } from "lucide-react";
 import { COUNTY_TITLE_BOND_DATA } from "@/data/county-title-bonds";
+import { titleBondPremiumLabel } from "@shared/title-bond-pricing";
 
 function getPremium(bondAmt: number): string {
-  // RLI enforces a $100 minimum premium on every title bond regardless of the
-  // computed rate, so no bracket below that floor can ever be quoted.
-  if (bondAmt <= 22500) return "$100";
-  if (bondAmt <= 37500) return "$150";
-  if (bondAmt <= 75000) return "$250";
-  if (bondAmt <= 150000) return "$400";
-  return "Call for quote";
+  // 1.5% of the bond amount, $100 minimum (RLI's actual pricing; see shared/title-bond-pricing.ts).
+  return titleBondPremiumLabel(bondAmt);
 }
 
 const REQUIRED_DOCS = [
@@ -127,7 +123,7 @@ export default function CountyTitleBondPage() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-4 gap-4 text-center">
           {[
             { label: "Bond amount", value: "1.5x value" },
-            { label: "Typical premium", value: "$100-$200" },
+            { label: "Premium", value: "1.5% of bond ($100 min)" },
             { label: "Bond term", value: "3 years" },
             { label: "File at", value: `${data.county} Co. Tax Office` },
           ].map((item) => (
@@ -451,7 +447,7 @@ export default function CountyTitleBondPage() {
               },
               {
                 q: `How much does a certificate of title bond cost in ${data.name}?`,
-                a: "The bond amount is 1.5 times your vehicle appraised value. Quantum Surety's premium starts at a $100 minimum for most personal vehicles and ranges up to $400 depending on the bond amount required.",
+                a: "The bond amount is 1.5 times your vehicle appraised value. Quantum Surety's premium is 1.5% of the bond amount with a $100 minimum, which is what RLI, our underwriting carrier, charges.",
               },
             ].map((faq) => (
               <div key={faq.q} className="border border-gray-200 rounded-xl overflow-hidden">

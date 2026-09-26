@@ -58,7 +58,7 @@ const FAQ_SCHEMA = {
       name: "What does the Title Bond Calculator do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Title Bond Calculator at quantumsurety.bond/title-bond-calculator lets you enter your vehicle's value (or decode by VIN) and instantly shows the required bond amount under TxDMV's 1.5x rule, along with Quantum Surety's flat-rate premium. It prevents you from buying the wrong bond amount or overpaying.",
+        text: "The Title Bond Calculator at quantumsurety.bond/title-bond-calculator lets you enter your vehicle's value (or decode by VIN) and instantly shows the required bond amount under TxDMV's 1.5x rule, along with Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum). It prevents you from buying the wrong bond amount or overpaying.",
       },
     },
     {
@@ -254,7 +254,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             Enter your vehicle's estimated value (or decode by VIN for an
             automatic NADA-based lookup) and the calculator instantly shows the
             required bond amount under TxDMV's 1.5x rule and Quantum Surety's
-            flat-rate premium.
+            fixed-rate premium (1.5% of the bond, $100 minimum).
           </p>
         </div>
         <p className="text-gray-700 leading-relaxed mb-4">
@@ -290,7 +290,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
           {[
             "Vehicle value input (manual entry or VIN decode)",
             "Calculated bond amount (vehicle value × 1.5, min $5,000)",
-            "Quantum Surety's flat-rate premium for that bond amount",
+            "Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum) for that bond amount",
             "Total estimated cost including TxDMV and county fees",
             "One-click button to apply directly",
           ].map((item, i) => (
@@ -390,7 +390,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
               <ul className="space-y-1 mb-4 text-sm text-gray-700">
                 {[
                   "Takes approximately 2 minutes to complete",
-                  "No credit check — flat-rate pricing",
+                  "No credit check — one fixed rate for everyone",
                   "Bond certificate delivered digitally same day",
                   "Printable VTR-130-SB format accepted by all Texas counties",
                   "Secure application via mybondapp.com",
@@ -500,8 +500,8 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             },
             {
               icon: <Calculator className="w-5 h-5 text-amber-600" />,
-              title: "$100 Minimum, Flat-Rate Pricing",
-              desc: "No credit check. No income verification. Pricing is flat-rate starting at a $100 minimum for the most common vehicle values.",
+              title: "$100 Minimum, Fixed 1.5% Rate",
+              desc: "No credit check. No income verification. The premium is a fixed 1.5% of the bond amount, with a $100 minimum for the most common vehicle values.",
             },
             {
               icon: <Phone className="w-5 h-5 text-green-600" />,
@@ -778,7 +778,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             },
             {
               q: "What does the Title Bond Calculator do?",
-              a: "The Title Bond Calculator (quantumsurety.bond/title-bond-calculator) lets you enter your vehicle's value (or decode by VIN) and instantly shows the required bond amount under TxDMV's 1.5x rule along with Quantum Surety's flat-rate premium. It prevents overbonding and ensures you buy the correct bond amount the first time.",
+              a: "The Title Bond Calculator (quantumsurety.bond/title-bond-calculator) lets you enter your vehicle's value (or decode by VIN) and instantly shows the required bond amount under TxDMV's 1.5x rule along with Quantum Surety's premium (a fixed 1.5% of the bond, $100 minimum). It prevents overbonding and ensures you buy the correct bond amount the first time.",
             },
             {
               q: "Does Quantum Surety serve my Texas county?",

@@ -1,3 +1,4 @@
+import { titleBondPremiumLabel } from "@shared/title-bond-pricing";
 import { useState } from "react";
 import { Link } from "wouter";
 import { useSEO, useSchema } from "@/hooks/useSEO";
@@ -71,13 +72,8 @@ const TX_COUNTIES_REST = [
 const ALL_COUNTIES = [...TX_COUNTIES_TOP, ...TX_COUNTIES_REST];
 
 function getPremium(bondAmt: number): string {
-  // RLI enforces a $100 minimum premium on every title bond regardless of the
-  // computed rate, so no bracket below that floor can ever be quoted.
-  if (bondAmt <= 22500) return "$100";
-  if (bondAmt <= 37500) return "$150";
-  if (bondAmt <= 75000) return "$250";
-  if (bondAmt <= 150000) return "$400";
-  return "Call for quote";
+  // 1.5% of the bond amount, $100 minimum (RLI's actual pricing; see shared/title-bond-pricing.ts).
+  return titleBondPremiumLabel(bondAmt);
 }
 
 interface WizardData {

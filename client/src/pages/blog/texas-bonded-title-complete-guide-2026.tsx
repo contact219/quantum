@@ -52,7 +52,7 @@ const FAQ_SCHEMA = {
       name: "Do I need good credit to get a Texas title bond?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Quantum Surety issues Texas certificate of title bonds with no credit check. The bond is flat-rate and starts at a $100 minimum regardless of your credit history.",
+        text: "No. Quantum Surety issues Texas certificate of title bonds with no credit check. The premium is 1.5% of the bond amount with a $100 minimum, regardless of your credit history.",
       },
     },
     {
@@ -318,22 +318,22 @@ export default function TexasBondedTitleCompleteGuide2026() {
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$5,000</td>
                 <td className="p-3 text-gray-700">$7,500</td>
-                <td className="p-3 font-semibold text-teal-700">$100 (min)</td>
+                <td className="p-3 font-semibold text-teal-700">$113</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="p-3 text-gray-700">$10,000</td>
                 <td className="p-3 text-gray-700">$15,000</td>
-                <td className="p-3 font-semibold text-teal-700">$100 (min)</td>
+                <td className="p-3 font-semibold text-teal-700">$225</td>
               </tr>
               <tr className="border-b border-gray-100 bg-gray-50">
                 <td className="p-3 text-gray-700">$15,000</td>
                 <td className="p-3 text-gray-700">$22,500</td>
-                <td className="p-3 font-semibold text-teal-700">$100 (min)</td>
+                <td className="p-3 font-semibold text-teal-700">$338</td>
               </tr>
               <tr>
                 <td className="p-3 text-gray-700">$20,000</td>
                 <td className="p-3 text-gray-700">$30,000</td>
-                <td className="p-3 font-semibold text-teal-700">$150</td>
+                <td className="p-3 font-semibold text-teal-700">$450</td>
               </tr>
             </tbody>
           </table>
@@ -373,7 +373,7 @@ export default function TexasBondedTitleCompleteGuide2026() {
             {
               step: "Step 3",
               title: "Get Your Surety Bond from Quantum Surety",
-              desc: "Once TxDMV approves you for a bonded title, they'll specify the required bond amount (1.5x vehicle value). Apply for your certificate of title bond with Quantum Surety — same-day issuance, no credit check, flat-rate pricing starting at a $100 minimum. You'll receive the bond certificate digitally the same day.",
+              desc: "Once TxDMV approves you for a bonded title, they'll specify the required bond amount (1.5x vehicle value). Apply for your certificate of title bond with Quantum Surety — same-day issuance, no credit check, one fixed rate (1.5% of the bond) starting at a $100 minimum. You'll receive the bond certificate digitally the same day.",
             },
             {
               step: "Step 4",
@@ -614,7 +614,7 @@ export default function TexasBondedTitleCompleteGuide2026() {
             },
             {
               q: "Do I need good credit to get a Texas title bond?",
-              a: "No. Quantum Surety issues Texas certificate of title bonds with no credit check. Pricing is flat-rate starting at a $100 minimum.",
+              a: "No. Quantum Surety issues Texas certificate of title bonds with no credit check. The premium is 1.5% of the bond amount, with a $100 minimum.",
             },
             {
               q: "What TxDMV form do I need to start the bonded title process?",

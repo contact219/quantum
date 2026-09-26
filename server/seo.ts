@@ -1355,6 +1355,8 @@ export const PAGE_META: Record<string, PageMeta> = {
         "@context": "https://schema.org",
         "@type": "Product",
         name: "Texas Notary Public Surety Bond",
+        // image is required for merchant listings; without it Search Console flagged this item invalid.
+        image: `${BASE_URL}/QS_OG_2.png`,
         description: "Required 4-year $10,000 Texas notary surety bond. The $50 premium covers the entire commission term. The Texas Secretary of State charges a separate $21 filing fee, so being commissioned costs $71.",
         offers: {
           "@type": "Offer",
@@ -1513,6 +1515,8 @@ export const PAGE_META: Record<string, PageMeta> = {
           <li>Receive your commission from the Secretary of State and take the oath of office on the form it arrives with — any current notary can administer it. Then order your seal, after you have the commission, so the expiry date on it is right.</li>
           <li>Record your expiry date somewhere you will see it in four years. A lapsed commission cannot be renewed; you start the application over.</li>
         </ol>
+        <h3 id="renew">Renewing your Texas notary commission</h3>
+        <p>Renewal follows the same steps as a first application. You apply for reappointment through the Texas SOS Portal Notary System with a new $10,000 bond for the new 4-year term, and pay the state's $21 filing fee there. For applications submitted on or after January 1, 2026, that includes the SB693 two-hour course and assessment, because reappointment counts. Apply before your current commission expires: a lapsed commission cannot be renewed, and you start over as a new applicant.</p>
         <p>Starting from zero rather than mid-application? The <a href="/become-a-texas-notary">complete guide to becoming a Texas notary</a> walks every step &mdash; eligibility, the state course and assessment, filing, seal, record-keeping, renewal &mdash; with every cost itemized and who each dollar goes to.</p>
       </section>
 
@@ -5714,42 +5718,6 @@ export const PAGE_META: Record<string, PageMeta> = {
       </section>
       <a href="/quote">Get My Waco Contractor Bond</a>
     </main>`,
-  },
-
-  "/bonds/notary-bond-renewal-texas": {
-    title: "Texas Notary Bond Renewal Online | Quantum Surety",
-    description: "Renew your Texas notary bond online. $10,000 bond, $50 flat fee, instant PDF download. SB693 compliant. TDI-licensed agency — renew before your commission.",
-    canonical: `${BASE_URL}/bonds/notary-bond-renewal-texas`,
-    structuredData: [
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Texas Notary Bond Renewal",
-        "serviceType": "Surety Bond",
-        "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
-        "areaServed": { "@type": "State", "name": "Texas" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "SB693-compliant 4-year Texas notary bond renewal for $50" },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          { "@type": "Question", "name": "When should I renew my Texas notary bond?", "acceptedAnswer": { "@type": "Answer", "text": "You should renew your Texas notary bond when you apply for a new notary commission with the Texas Secretary of State. Under SB693 (effective September 1, 2023), Texas notary commissions run for 4 years — your bond must cover the full 4-year term. When your commission expires, you must purchase a new 4-year bond to apply for a new commission. Do not wait until your bond expires — start the renewal process 30–60 days before your commission expires." }},
-          { "@type": "Question", "name": "How much does Texas notary bond renewal cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas notary bond renewal costs $50 for a new 4-year, $10,000 SB693-compliant bond. The price is a flat $50 regardless of credit — there is no credit check for Texas notary bonds. Quantum Surety issues renewal bonds instantly online with same-day PDF delivery, making the renewal process simple and fast." }},
-          { "@type": "Question", "name": "What changed with Texas notary bond renewal after SB693?", "acceptedAnswer": { "@type": "Answer", "text": "Senate Bill 693 passed in the 2025 session, took effect on September 1, 2025, and applies to applications for appointment or reappointment submitted on or after January 1, 2026. From that date every renewing Texas notary must complete a two-hour education course provided by the Secretary of State before the commission can be issued. SB 693 also set the record retention period at ten years from the date of notarization and created a criminal offence for notarising when the signer is not personally present. It did not change the bond: the commission term was already four years and the bond has been $10,000 throughout. A renewal bond is $50 for the full four-year term, plus the $21 Secretary of State filing fee." }},
-          { "@type": "Question", "name": "Can I renew my Texas notary bond before it expires?", "acceptedAnswer": { "@type": "Answer", "text": "Texas notary bonds are tied to your notary commission — they expire when your commission expires. You purchase a new bond when you apply for a new commission. If you are renewing your commission, you purchase a new 4-year bond as part of the Texas Secretary of State application process. The bond takes effect when your new commission begins and runs for the full 4-year term." }}
-        ],
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantumsurety.bond" },
-          { "@type": "ListItem", "position": 2, "name": "Texas Notary Bond Renewal", "item": "https://quantumsurety.bond/bonds/notary-bond-renewal-texas" },
-        ],
-      },
-    ],
-        content: `<main><h1>Texas Notary Bond Renewal</h1><p>Renew your Texas notary bond online in under 5 minutes. $10,000 coverage for your 4-year commission term. $50 flat fee, instant PDF, SB693 compliant.</p><a href="/get-bond?type=notary">Renew My Notary Bond</a></main>`,
   },
 
   "/get-bond": {

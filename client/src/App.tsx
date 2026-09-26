@@ -58,7 +58,6 @@ const GDNBondDallas = lazy(() => import("@/pages/gdn-bond-dallas"));
 const GDNBondHouston = lazy(() => import("@/pages/gdn-bond-houston"));
 const GDNBondAustin = lazy(() => import("@/pages/gdn-bond-austin"));
 const GDNBondSanAntonio = lazy(() => import("@/pages/gdn-bond-san-antonio"));
-const NotaryBondRenewalTexas = lazy(() => import("@/pages/notary-bond-renewal-texas"));
 const MBEContractorBondTexas = lazy(() => import("@/pages/mbe-contractor-bond-texas"));
 const AuctioneerBondTexas = lazy(() => import("@/pages/auctioneer-bond-texas"));
 const MortgageBrokerBondTexas = lazy(() => import("@/pages/mortgage-broker-bond-texas"));
@@ -535,7 +534,10 @@ function Router() {
       <Route path="/bonds/gdn-bond-plano" component={GDNBondPlano} />
       <Route path="/bonds/gdn-bond-arlington" component={GDNBondArlington} />
       <Route path="/bonds/gdn-bond-el-paso" component={GDNBondElPaso} />
-      <Route path="/bonds/notary-bond-renewal-texas" component={NotaryBondRenewalTexas} />
+      {/* Merged into the main notary page 2026-09-25 (Google ranked this thin page instead of it). Server 301s too. */}
+      <Route path="/bonds/notary-bond-renewal-texas">
+        <ClientRedirect to="/bonds/notary-bond-texas#renew" />
+      </Route>
 
       {/* City contractor bond pages */}
       <Route path="/bonds/contractor-bond-dallas" component={ContractorBondDallas} />

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { useSEO, useSchema } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
@@ -196,6 +197,7 @@ const QUESTIONS = [
   { id: "what-i-paid", q: "What do other Texas notaries actually pay?" },
   { id: "price-honesty", q: "Is $50 a good price, or a gimmick?" },
   { id: "steps", q: "What's the full order of operations?" },
+  { id: "renew", q: "Renewing? What's different?" },
   { id: "requirements", q: "What are the 2026 requirements?" },
   { id: "sb693", q: "What did SB693 change?" },
   { id: "verify", q: "How do I check my commission or expiry date?" },
@@ -209,6 +211,14 @@ export default function NotaryBondTexas() {
       "Texas notary bond: $50 for the full 4-year term, plus the state's unavoidable $21 filing fee — $71 commissioned. What the bond does and does not cover, how it differs from E&O insurance, and what our last 73 Texas notaries actually paid. TDI licensed agency #3480229.",
     canonical: "/bonds/notary-bond-texas",
   });
+  // The page renders client-side, so the browser cannot jump to a #fragment on load by
+  // itself. Needed for /bonds/notary-bond-renewal-texas, which now 301s to #renew.
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const t = setTimeout(() => document.getElementById(id)?.scrollIntoView(), 150);
+    return () => clearTimeout(t);
+  }, []);
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
   useSchema(FAQ_SCHEMA, "ld-json-FAQ");
   useSchema(BREADCRUMB_SCHEMA, "ld-json-Breadcrumb");
@@ -900,6 +910,17 @@ export default function NotaryBondTexas() {
               </li>
             ))}
           </ol>
+          <div id="renew" className="mt-8 bg-indigo-50/60 border border-indigo-100 rounded-xl p-5 scroll-mt-4">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Renewing your Texas notary commission</h3>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Renewal follows the same steps as a first application. You apply for reappointment through the
+              Texas SOS Portal Notary System with a new $10,000 bond for the new 4-year term, and pay the
+              state's $21 filing fee there. For applications submitted on or after January 1, 2026, that
+              includes the SB693 two-hour course and assessment, because reappointment counts. Apply before
+              your current commission expires: a lapsed commission cannot be renewed, and you start over as
+              a new applicant.
+            </p>
+          </div>
           <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-700 leading-relaxed">
             Starting from zero rather than mid-application? The{" "}
             <Link href="/become-a-texas-notary">

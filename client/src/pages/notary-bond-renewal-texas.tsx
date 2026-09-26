@@ -18,7 +18,7 @@ export default function NotaryBondRenewalTexas() {
   useSEO({
     title: "Texas Notary Bond Renewal 2026 | Renew Your $10,000 Notary Bond | Quantum Surety",
     description: "Renewing your Texas notary commission in 2026? Get your new $10,000 notary bond instantly for $50. SB693 compliant. Instant PDF — ready to file with the Texas Secretary of State today.",
-    canonical: "/bonds/notary-bond-renewal-texas",
+    canonical: "/bonds/notary-bond-texas#renew",
   });
 
   return (

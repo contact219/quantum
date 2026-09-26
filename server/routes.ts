@@ -151,6 +151,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     "/notary-bond-sb693":  "/sb-693-notary-bond-requirements-2026",
     "/notary-bonds":       "/bonds/notary-bond-texas",
     "/notary-bond":        "/bonds/notary-bond-texas",
+    // Thin page that Google preferred over the main notary page for notary searches,
+    // splitting their signals (Search Console, Mar–Sep 2026: this page 531 impressions
+    // at position ~67, the main page 0). Merged; the renewal steps live at #renew.
+    "/bonds/notary-bond-renewal-texas": "/bonds/notary-bond-texas#renew",
     // Orphan duplicate of the established /bonded-title-texas page (same component,
     // zero inbound internal links) — consolidate link equity instead of splitting it.
     "/bonds/texas-vehicle-title-bond": "/bonded-title-texas",

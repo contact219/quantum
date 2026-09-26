@@ -187,7 +187,7 @@ export default function NotaryBondDallas() {
             {[
               { href: "/bonds/notary-bond-houston", title: "Notary Bond — Houston", tag: "Houston" },
               { href: "/bonds/notary-bond-texas", title: "Texas Notary Bond Overview", tag: "Statewide" },
-              { href: "/bonds/notary-bond-renewal-texas", title: "Notary Bond Renewal", tag: "Renewal" },
+              { href: "/bonds/notary-bond-texas#renew", title: "Notary Bond Renewal", tag: "Renewal" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">

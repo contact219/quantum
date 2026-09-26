@@ -210,7 +210,7 @@ export default function NotaryBondCorpusChristi() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { href: "/bonds/notary-bond-texas", label: "Texas Notary Bond", desc: "Statewide guide — $50" },
-              { href: "/bonds/notary-bond-renewal-texas", label: "Notary Bond Renewal", desc: "Renewing your commission" },
+              { href: "/bonds/notary-bond-texas#renew", label: "Notary Bond Renewal", desc: "Renewing your commission" },
               { href: "/bonds/notary-eo-insurance", label: "Notary E&O Insurance", desc: "Add errors & omissions coverage" },
             ].map((item) => (
               <Link key={item.href} href={item.href}>

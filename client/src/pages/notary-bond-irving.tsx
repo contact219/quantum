@@ -119,7 +119,7 @@ export default function NotaryBondIrving() {
         <div className="mt-10">
           <h3 className="text-lg font-bold text-gray-900 mb-4">Related pages</h3>
           <div className="grid sm:grid-cols-3 gap-4">
-            {[{ href: "/bonds/notary-bond-fort-worth", title: "Notary Bond  Fort Worth", tag: "Fort Worth" }, { href: "/bonds/notary-bond-texas", title: "Texas Notary Bond Overview", tag: "Statewide" }, { href: "/bonds/notary-bond-renewal-texas", title: "Notary Bond Renewal", tag: "Renewal" }].map((item) => (
+            {[{ href: "/bonds/notary-bond-fort-worth", title: "Notary Bond  Fort Worth", tag: "Fort Worth" }, { href: "/bonds/notary-bond-texas", title: "Texas Notary Bond Overview", tag: "Statewide" }, { href: "/bonds/notary-bond-texas#renew", title: "Notary Bond Renewal", tag: "Renewal" }].map((item) => (
               <Link key={item.href} href={item.href}>
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer">
                   <span className="text-xs font-semibold text-indigo-600 mb-1 block">{item.tag}</span>

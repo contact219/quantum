@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useSEO, useSchema } from "@/hooks/useSEO";
 import { BlogAuthor } from "@/components/BlogAuthor";
 import { Link } from "wouter";
 
@@ -24,18 +24,18 @@ export default function TexasAutoDealerBondCompliance2026() {
     "keywords": "Texas GDN bond, auto dealer surety bond Texas, TxDMV bond compliance, car dealer bond expired, consumer protection Texas"
   };
 
+  // react-helmet-async 3 targets React 19 and renders nothing on this React 18 app, so the
+  // <Helmet> block never applied; useSEO/useSchema are what the rest of the site uses.
+  useSEO({
+    title: "1,777 Texas Dealer Bonds Past Expiration in TxDMV Records | Quantum Surety",
+    description: "In June 2026, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. How to check a dealer's bond before you buy.",
+    canonical: "/blog/texas-auto-dealer-bond-compliance-jun2026",
+    ogType: "article",
+  });
+  useSchema(jsonLd, "ld-json-NewsArticle");
+
   return (
     <>
-      <Helmet>
-        <title>1,777 Texas Dealer Bonds Past Expiration in TxDMV Records | Quantum Surety</title>
-        <meta name="description" content="In June 2026, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. How to check a dealer's bond before you buy." />
-        <link rel="canonical" href="https://quantumsurety.bond/blog/texas-auto-dealer-bond-compliance-jun2026" />
-        <meta property="og:title" content="1,777 Texas Dealer Bonds Past Expiration in TxDMV Records" />
-        <meta property="og:description" content="In June 2026, 1,777 Texas GDN dealer records showed an expired surety bond. How to check before you buy." />
-        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content={PUBLISHED} />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
 
       <article style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px 80px", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", color: "#1e293b", lineHeight: 1.8 }}>
 

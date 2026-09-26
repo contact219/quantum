@@ -15,7 +15,7 @@ const COMPARISON = [
   // "$65–$79 (variable)" overstated a named competitor's price. We do not win on price here.
   { feature: "Texas Notary Bond",        qs: "$50 flat (4-yr)",    them: "$50 flat (4-yr)",     winner: "tie" },
   { feature: "TDLR Contractor Bond",     qs: "$75/yr same-day",   them: "$99–$150/yr",          winner: "qs" },
-  { feature: "TX GDN Dealer Bond",       qs: "$100/yr",            them: "$150–$250/yr",         winner: "qs" },
+  { feature: "TX GDN Dealer Bond",       qs: "$250 / 2 yrs",       them: "$150–$250/yr",         winner: "qs" },
   { feature: "Texas-Specific Expertise", qs: "HQ in Wylie, TX",   them: "Missouri-based",       winner: "qs" },
   { feature: "Certificate Speed",        qs: "Instant PDF",        them: "1–3 business days",    winner: "qs" },
   { feature: "TDI Licensed",             qs: "#3480229",           them: "Not TX-licensed",      winner: "qs" },

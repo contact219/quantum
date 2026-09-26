@@ -134,7 +134,7 @@ export default function BlogWhatIsASuretyBond() {
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               { type: "Notary Bond ($10,000)", cost: "$50 flat / 4 years", note: "No credit check" },
-              { type: "GDN Dealer Bond ($50,000)", cost: "$100–$300/yr", note: "Credit-based" },
+              { type: "GDN Dealer Bond ($50,000)", cost: "from $250 / 2 yrs", note: "RLI minimum premium" },
               { type: "Contractor License Bond ($10K–$25K)", cost: "$75–$300/yr", note: "Credit-based" },
               { type: "Construction Bond ($500K contract)", cost: "$2,500–$15,000", note: "Full underwriting" },
             ].map((r) => (

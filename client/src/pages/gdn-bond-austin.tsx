@@ -7,7 +7,7 @@ const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
   { q: "Do Austin auto dealers need a GDN bond?", a: "Yes. All Texas motor vehicle dealers — including Austin and Travis County dealers — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033 as a condition of holding a TxDMV dealer license." },
-  { q: "How much does a GDN bond cost for an Austin dealer?", a: "Austin dealers typically pay $100–$300/year depending on personal credit score. Good credit (720+) qualifies for the lowest rates — approximately $100–$150/year." },
+  { q: "How much does a GDN bond cost for an Austin dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "I'm opening a new dealership in Austin — can I get bonded before my lot is ready?", a: "Yes. Your GDN bond can be purchased before your lot is fully operational. You'll need the bond certificate as part of your initial TxDMV GDN license application, which is typically submitted before you open." },
   { q: "Does the GDN bond cover wholesale dealers in the Austin area?", a: "Yes. The $50,000 GDN bond requirement applies to all six Texas dealer license types — including wholesale dealers — regardless of city or county." },
   { q: "How do I submit my GDN bond to TxDMV in Austin?", a: "After purchasing, you receive an instant PDF certificate. Upload it through TxDMV's eLICENSING portal at txdmv.gov as part of your GDN license application or annual renewal." },
@@ -16,7 +16,7 @@ const faqs = [
 export default function GDNBondAustin() {
   useSEO({
     title: "GDN Bond Austin TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Travis County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Travis County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: "/bonds/gdn-bond-austin",
   });
 
@@ -49,7 +49,7 @@ export default function GDNBondAustin() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
+          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>
@@ -104,7 +104,7 @@ export default function GDNBondAustin() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Austin GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

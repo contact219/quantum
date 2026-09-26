@@ -66,7 +66,7 @@ export default function BlogGBPGuide() {
       num: "4",
       title: "Add Products and Services",
       items: [
-        { done: false, text: "Add each bond type as a Service in GBP: Notary Bond ($50), GDN Dealer Bond (from $100/yr), Contractor License Bond (from $75/yr), Construction Bonds, Bid Bonds, Performance Bonds, Payment Bonds" },
+        { done: false, text: "Add each bond type as a Service in GBP: Notary Bond ($50), GDN Dealer Bond (from $250 for 2 years), Contractor License Bond (from $75/yr), Construction Bonds, Bid Bonds, Performance Bonds, Payment Bonds" },
         { done: false, text: "For each service: add a description (2–3 sentences), add a price or price range, link to the relevant page on quantumsurety.bond" },
         { done: false, text: "Priority services to add first: Notary Bond — Texas ($50), GDN Bond — Texas (from $100/yr)" },
       ],
@@ -124,7 +124,7 @@ export default function BlogGBPGuide() {
         { done: false, text: "Seed your own Q&A: Anyone can ask and answer questions. Ask (and answer) your own most common questions using a second Google account or ask a team member." },
         { done: false, text: "Questions to seed: 'How much does a Texas notary bond cost?' → 'A Texas notary bond costs $50 for the full 4-year term at Quantum Surety. No credit check, instant PDF delivery. Get yours at quantumsurety.bond'" },
         { done: false, text: "Questions to seed: 'Do I need a surety bond to get a Texas notary commission?' → 'Yes. Texas Government Code §406.010 requires a $10,000 surety bond for every Texas notary public. Quantum Surety issues it for $50 — instant PDF, no credit check.'" },
-        { done: false, text: "Questions to seed: 'What is a GDN bond in Texas?' → 'A GDN bond is a $50,000 surety bond required by TxDMV for all motor vehicle dealers under §503.033. Quantum Surety issues GDN bonds from $100/yr with same-day PDF delivery.'" },
+        { done: false, text: "Questions to seed: 'What is a GDN bond in Texas?' → 'A GDN bond is a $50,000 surety bond required by TxDMV for all motor vehicle dealers under §503.033. Quantum Surety issues GDN bonds from $250 for the 2-year term with same-day PDF delivery.'" },
         { done: false, text: "Monitor Q&A weekly — anyone can answer your questions, including competitors. Flag incorrect answers and respond with the correct information." },
       ],
     },
@@ -250,7 +250,7 @@ export default function BlogGBPGuide() {
             {[
               { week: "Week 1", topic: "Notary bond introduction", text: "Texas notaries: your $10,000 surety bond is required before the Secretary of State will issue your commission. Get yours for $50 — instant PDF, no credit check, SB693 compliant.", link: "/bonds/notary-bond-texas" },
               { week: "Week 2", topic: "SB693 education requirement", text: "Starting January 1, 2026, new Texas notary applicants must complete a 2-hour education course under SB693. Here's exactly what that means for your commission application.", link: "/blog/texas-notary-bond-sb693-2026-requirements" },
-              { week: "Week 3", topic: "GDN bond for Texas dealers", text: "Texas motor vehicle dealers: your $50,000 GDN bond must be active before TxDMV will issue or renew your dealer license. We issue same-day from $100/yr.", link: "/bonds/gdn-bond-texas" },
+              { week: "Week 3", topic: "GDN bond for Texas dealers", text: "Texas motor vehicle dealers: your $50,000 GDN bond must be active before TxDMV will issue or renew your dealer license. We issue same-day from $250 for the 2-year term.", link: "/bonds/gdn-bond-texas" },
               { week: "Week 4", topic: "Construction bond explainer", text: "Texas contractors: public projects over $25,000 require a performance bond AND a payment bond under the Texas Little Miller Act. We issue both together.", link: "/blog/bid-bond-vs-performance-bond-vs-payment-bond" },
             ].map((p) => (
               <div key={p.week} className="border border-gray-200 rounded-xl p-4 flex gap-4">

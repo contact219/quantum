@@ -7,7 +7,7 @@ const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
   { q: "Do San Antonio auto dealers need a GDN bond?", a: "Yes. All Texas motor vehicle dealers — including those in San Antonio and Bexar County — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033 before TxDMV will issue or renew a dealer license." },
-  { q: "How much does a GDN bond cost for a San Antonio dealer?", a: "San Antonio dealers typically pay $100–$300 per year. Rates are based on personal credit score. Dealers with good credit (660+) commonly pay $100–$200/year for $50,000 in coverage." },
+  { q: "How much does a GDN bond cost for a San Antonio dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "I operate a BHPH lot in San Antonio — do I still need the full $50,000 bond?", a: "Yes. Buy Here Pay Here dealers in San Antonio are subject to the same $50,000 GDN bond requirement as all other TxDMV dealer license types. The bond amount is uniform under §503.033 regardless of dealership size or financing model." },
   { q: "Can military personnel or veterans get any discount on a GDN bond in San Antonio?", a: "Bond pricing is credit-based and set by the underwriting carrier — there are no military-specific discounts on surety bond premiums. However, strong credit history from stable military employment often qualifies for the lowest rate tiers." },
   { q: "How do I renew my GDN bond in San Antonio?", a: "Quantum Surety sends renewal reminders 60 and 30 days before your bond expires. When you renew, you receive an updated PDF certificate to upload to TxDMV's eLICENSING portal. Same-day renewal is available." },
@@ -16,7 +16,7 @@ const faqs = [
 export default function GDNBondSanAntonio() {
   useSEO({
     title: "GDN Bond San Antonio TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all Bexar County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in San Antonio same-day. Required under §503.033 for all Bexar County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: "/bonds/gdn-bond-san-antonio",
   });
 
@@ -49,7 +49,7 @@ export default function GDNBondSanAntonio() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
+          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>
@@ -104,7 +104,7 @@ export default function GDNBondSanAntonio() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your San Antonio GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

@@ -291,7 +291,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h2>Bond Types We Quote Instantly</h2>
         <ul>
           <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, $50 flat + $21 state fee, instant PDF</li>
-          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, from $100/yr, TxDMV accepted</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, from $250 for the 2-year term, TxDMV accepted</li>
           <li><a href="/bonds/contractor-license-bond-texas">Texas Contractor License Bond</a> — TDLR required, from $75/yr</li>
           <li><a href="/bonds/bid-bond-texas">Texas Bid Bond</a> — construction contract bid bonds, same-day</li>
           <li><a href="/bonds/performance-bond-texas">Texas Performance Bond</a> — contract performance guarantee</li>
@@ -468,7 +468,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h2>Common Texas Commercial Surety Bonds</h2>
         <ul>
           <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, Texas Secretary of State, $50 flat + $21 state fee</li>
-          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, TxDMV, from $100/yr</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, TxDMV, from $250 for the 2-year term</li>
           <li><a href="/bonds/contractor-license-bond-texas">TDLR Contractor License Bond</a> — TDLR required, from $75/yr</li>
           <li><a href="/bonds/mortgage-broker-bond-texas">Texas Mortgage Broker Bond</a> — $50,000–$250,000, TDSML</li>
           <li><a href="/bonds/collection-agency-bond-texas">Texas Collection Agency Bond</a> — $10,000, OCCC</li>
@@ -568,7 +568,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h2>Bond Products We Issue</h2>
         <ul>
           <li><a href="/bonds/notary-bond-texas">Texas Notary Bonds</a> — $50 flat + $21 state fee, instant PDF</li>
-          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bonds</a> — TxDMV required, from $100/yr</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bonds</a> — TxDMV required, from $250 for the 2-year term</li>
           <li><a href="/bonds/contractor-license-bond-texas">TDLR Contractor License Bonds</a> — from $75/yr</li>
           <li><a href="/bonds/bid-bond-texas">Construction Bid Bonds</a> — same-day issuance</li>
           <li><a href="/bonds/performance-bond-texas">Performance &amp; Payment Bonds</a> — for public contracts</li>
@@ -1298,7 +1298,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h2>Texas License Bonds by Agency</h2>
         <ul>
           <li><a href="/bonds/notary-bond-texas">Texas Notary Bond</a> — $10,000, Secretary of State, $50 flat + $21 state fee</li>
-          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, TxDMV, from $100/yr</li>
+          <li><a href="/bonds/gdn-bond-texas">Texas GDN Dealer Bond</a> — $50,000, TxDMV, from $250 for the 2-year term</li>
           <li><a href="/bonds/auctioneer-bond-texas">Texas Auctioneer Bond</a> — $10,000, TDLR, from $100/yr</li>
           <li><a href="/bonds/home-inspector-bond-texas">Texas Home Inspector Bond</a> — TREC-required, from $75/yr</li>
           <li><a href="/bonds/locksmith-bond-texas">Texas Locksmith Bond</a> — DPS-required, from $75/yr</li>
@@ -2505,7 +2505,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/bonds/auto-dealer-bond-texas": {
     title: "Texas Auto Dealer Bond | Motor Vehicle | Quantum Surety",
     description:
-      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
+      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/auto-dealer-bond-texas`,
     structuredData: [
       {
@@ -2515,14 +2515,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "State", "name": "Texas" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bonds from $100/year" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bonds from $250 for the 2-year term" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "What bond do auto dealers need in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas auto dealers must maintain a $50,000 General Distinguishing Number (GDN) surety bond with the Texas Department of Motor Vehicles (TxDMV) as a condition of their dealer license under Texas Transportation Code §503.033. The GDN bond protects consumers and the state from dealer fraud, title violations, odometer rollback, and failure to remit sales tax. All dealer license categories require the same $50,000 bond amount." }},
-          { "@type": "Question", "name": "How much does a Texas auto dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas GDN dealer bond ($50,000) costs $100–$300 per year depending on credit score and dealership history. Well-qualified dealers with strong credit pay around $100/year (0.2% of the bond amount). Quantum Surety issues GDN dealer bonds same-day with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Texas auto dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "Do all types of Texas auto dealers need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All TxDMV dealer license categories require a $50,000 GDN surety bond, including: independent (used) dealers, franchised (new car) dealers, wholesale dealers, salvage dealers, motorcycle dealers, and trailer dealers. The bond amount is the same ($50,000) regardless of dealership size or vehicle type." }},
           { "@type": "Question", "name": "What happens if my Texas dealer bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your dealer license. Without an active license, you cannot legally buy, sell, or title vehicles in Texas as a dealer. Continued operation without a valid license and bond is a Class A misdemeanor. Renewing your GDN bond before expiration is critical — Quantum Surety sends renewal reminders 60 days in advance." }}
         ],
@@ -2555,9 +2555,9 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/bonds/gdn-bond-texas": {
-    title: "Texas GDN Bond | $50,000 from $100/yr | Quantum Surety",
+    title: "Texas GDN Bond | $50,000 from $250 for the 2-year term | Quantum Surety",
     description:
-      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
+      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-texas`,
     ogType: "website",
     structuredData: [
@@ -2581,7 +2581,7 @@ export const PAGE_META: Record<string, PageMeta> = {
           "@type": "Offer",
           priceCurrency: "USD",
           price: "100",
-          description: "Starting at $100/year for qualified dealers",
+          description: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.",
           availability: "https://schema.org/InStock",
         },
       },
@@ -2602,7 +2602,7 @@ export const PAGE_META: Record<string, PageMeta> = {
             name: "How much does a Texas GDN bond cost?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Most Texas dealers pay $100–$300 per year for a $50,000 GDN bond. Your exact rate depends on your credit profile. Dealers with good credit typically pay 0.5–1% of the bond amount annually.",
+              text: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.",
             },
           },
           {
@@ -3885,7 +3885,7 @@ export const PAGE_META: Record<string, PageMeta> = {
 
   "/bonds/gdn-bond-dallas": {
     title: "GDN Bond Dallas TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
+    description: "Get your Texas GDN dealer bond in Dallas same-day. Required under §503.033 for all DFW motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-dallas`,
     structuredData: [
       {
@@ -3895,14 +3895,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Dallas" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Dallas" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Dallas" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Dallas need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Dallas and Dallas County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Dallas GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Dallas auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Dallas County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Dallas GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Dallas GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Dallas dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Dallas County dealers never have a coverage gap." }}
         ],
@@ -3921,7 +3921,7 @@ export const PAGE_META: Record<string, PageMeta> = {
 
   "/bonds/gdn-bond-houston": {
     title: "GDN Bond Houston TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Houston-area motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term.",
     canonical: `${BASE_URL}/bonds/gdn-bond-houston`,
     structuredData: [
       {
@@ -3931,14 +3931,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Houston" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Houston" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Houston" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Houston need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Houston and Harris County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Houston GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Houston auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Harris County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Houston GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Houston GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Houston dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Harris County dealers never have a coverage gap." }}
         ],
@@ -3957,7 +3957,7 @@ export const PAGE_META: Record<string, PageMeta> = {
 
   "/bonds/gdn-bond-austin": {
     title: "GDN Bond Austin TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Austin-area motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term.",
     canonical: `${BASE_URL}/bonds/gdn-bond-austin`,
     structuredData: [
       {
@@ -3967,14 +3967,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Austin" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Austin" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Austin" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Austin need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Austin and Travis County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Austin GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Austin auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Travis County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Austin GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Austin GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Austin dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Travis County dealers never have a coverage gap." }}
         ],
@@ -4003,14 +4003,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "San Antonio" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in San Antonio" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in San Antonio" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in San Antonio need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including San Antonio and Bexar County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a San Antonio GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "San Antonio auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Bexar County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a San Antonio GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my San Antonio GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your San Antonio dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Bexar County dealers never have a coverage gap." }}
         ],
@@ -4308,14 +4308,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Fort Worth" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Fort Worth" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Fort Worth" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Fort Worth need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Fort Worth and Tarrant County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Fort Worth GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Fort Worth auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Tarrant County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Fort Worth GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Fort Worth GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Fort Worth dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Tarrant County dealers never have a coverage gap." }}
         ],
@@ -4340,7 +4340,7 @@ export const PAGE_META: Record<string, PageMeta> = {
 
   "/bonds/gdn-bond-plano": {
     title: "GDN Bond Plano TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    description: "Get your Texas GDN dealer bond in Plano same-day. Required under §503.033 for all Collin County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term.",
     canonical: `${BASE_URL}/bonds/gdn-bond-plano`,
     structuredData: [
       {
@@ -4350,14 +4350,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Plano" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Plano" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Plano" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Plano need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Plano and Collin County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Plano GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Plano auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Collin County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Plano GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Plano GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Plano dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Collin County dealers never have a coverage gap." }}
         ],
@@ -4375,14 +4375,14 @@ export const PAGE_META: Record<string, PageMeta> = {
       <h1>GDN Bond — Plano, Texas Motor Vehicle Dealers</h1>
       <p>Plano and Collin County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
       <h2>GDN Bond Requirements for Plano Dealers</h2>
-      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. From $250 for the 2-year term.</p>
       <a href="/get-bond?type=dealer">Get My Plano GDN Bond</a>
     </main>`,
   },
 
   "/bonds/gdn-bond-arlington": {
     title: "GDN Bond Arlington TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Arlington same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-arlington`,
     structuredData: [
       {
@@ -4392,14 +4392,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Arlington" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Arlington" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Arlington" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Arlington need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Arlington and Tarrant County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a Arlington GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Arlington auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified Tarrant County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a Arlington GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my Arlington GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your Arlington dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so Tarrant County dealers never have a coverage gap." }}
         ],
@@ -4417,14 +4417,14 @@ export const PAGE_META: Record<string, PageMeta> = {
       <h1>GDN Bond — Arlington, Texas Motor Vehicle Dealers</h1>
       <p>Arlington and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate.</p>
       <h2>GDN Bond Requirements for Arlington Dealers</h2>
-      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. From $250 for the 2-year term.</p>
       <a href="/get-bond?type=dealer">Get My Arlington GDN Bond</a>
     </main>`,
   },
 
   "/bonds/gdn-bond-el-paso": {
     title: "GDN Bond El Paso TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in El Paso same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    description: "Get your Texas GDN dealer bond in El Paso same-day. Required under §503.033 for motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: `${BASE_URL}/bonds/gdn-bond-el-paso`,
     structuredData: [
       {
@@ -4434,14 +4434,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "El Paso" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in El Paso" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in El Paso" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in El Paso need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including El Paso and El Paso County dealers, must maintain a $50,000 General Distinguishing Number (GDN) surety bond with TxDMV as a condition of their dealer license under Texas Transportation Code §503.033. The bond requirement applies to all dealer license categories — independent, franchised, wholesale, salvage, and motorcycle dealers." }},
-          { "@type": "Question", "name": "How much does a El Paso GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "El Paso auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on your credit score and dealership history. Well-qualified El Paso County dealers with strong credit pay around $100/year. Quantum Surety issues same-day GDN bonds with instant PDF delivery accepted by TxDMV for new license applications and annual renewals." }},
+          { "@type": "Question", "name": "How much does a El Paso GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." }},
           { "@type": "Question", "name": "What is a GDN bond and what does it cover?", "acceptedAnswer": { "@type": "Answer", "text": "A GDN (General Distinguishing Number) bond is a $50,000 surety bond required by TxDMV for all Texas auto dealer license holders. It protects consumers and the state from losses caused by dealer misconduct — including odometer fraud, title washing, failure to remit sales tax, selling vehicles without proper title, and misrepresentation. Consumers can file a claim against the bond to recover losses." }},
           { "@type": "Question", "name": "What happens if my El Paso GDN bond lapses?", "acceptedAnswer": { "@type": "Answer", "text": "If your GDN dealer bond lapses, TxDMV will deactivate your El Paso dealer license. Without an active license and bond, you cannot legally buy, sell, or title vehicles in Texas. Renewing before your bond expires is critical. Quantum Surety sends renewal reminders 60 days before expiration so El Paso County dealers never have a coverage gap." }}
         ],
@@ -4459,7 +4459,7 @@ export const PAGE_META: Record<string, PageMeta> = {
       <h1>GDN Bond — El Paso, Texas Motor Vehicle Dealers</h1>
       <p>El Paso motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. Same-day instant PDF certificate, accepted by TxDMV eLICENSING.</p>
       <h2>GDN Bond Requirements for El Paso Dealers</h2>
-      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. Rates from $100/yr based on credit score.</p>
+      <p>All TxDMV dealer categories require a $50,000 GDN bond under Texas Occupations Code §503.033. From $250 for the 2-year term.</p>
       <a href="/get-bond?type=dealer">Get My El Paso GDN Bond</a>
     </main>`,
   },
@@ -5749,7 +5749,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         <section>
           <h2>Bond Types Available</h2>
           <ul>
-            <li>Texas GDN Dealer Bond — $50,000 bond from $100/yr, same-day certificate</li>
+            <li>Texas GDN Dealer Bond — $50,000 bond from $250 for the 2-year term, same-day certificate</li>
             <li>Texas Notary Bond — $10,000 bond, $50 flat fee, instant download</li>
             <li>Texas Contractor License Bond — $10,000–$25,000 bond from $100/yr</li>
           </ul>
@@ -6334,7 +6334,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-corpus-christi": {
     title: "GDN Bond Corpus Christi TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    description: "Get your Texas GDN dealer bond in Corpus Christi same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term.",
     canonical: `${BASE_URL}/bonds/gdn-bond-corpus-christi`,
     structuredData: [
       {
@@ -6344,14 +6344,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Corpus Christi" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Corpus Christi" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Corpus Christi" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Corpus Christi need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Corpus Christi and Nueces County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Corpus Christi GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Corpus Christi auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Corpus Christi GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6367,7 +6367,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-laredo": {
     title: "GDN Bond Laredo TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Laredo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Laredo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-laredo`,
     structuredData: [
       {
@@ -6377,14 +6377,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Laredo" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Laredo" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Laredo" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Laredo need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Laredo and Webb County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Laredo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Laredo auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Laredo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6400,7 +6400,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-lubbock": {
     title: "GDN Bond Lubbock TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-lubbock`,
     structuredData: [
       {
@@ -6410,14 +6410,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Lubbock" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Lubbock" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Lubbock" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Lubbock need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Lubbock and Lubbock County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Lubbock GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Lubbock auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Lubbock GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6433,7 +6433,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-mcallen": {
     title: "GDN Bond McAllen TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in McAllen same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in McAllen same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-mcallen`,
     structuredData: [
       {
@@ -6443,14 +6443,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "McAllen" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in McAllen" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in McAllen" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in McAllen need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including McAllen and Hidalgo County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a McAllen GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "McAllen auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a McAllen GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6466,7 +6466,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-brownsville": {
     title: "GDN Bond Brownsville TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Brownsville same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant.",
+    description: "Get your Texas GDN dealer bond in Brownsville same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant.",
     canonical: `${BASE_URL}/bonds/gdn-bond-brownsville`,
     structuredData: [
       {
@@ -6476,14 +6476,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Brownsville" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Brownsville" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Brownsville" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Brownsville need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Brownsville and Cameron County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Brownsville GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Brownsville auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Brownsville GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6499,7 +6499,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-frisco": {
     title: "GDN Bond Frisco TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Frisco same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Frisco same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-frisco`,
     structuredData: [
       {
@@ -6509,14 +6509,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Frisco" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Frisco" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Frisco" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Frisco need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Frisco and Collin County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Frisco GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Frisco auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Frisco GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6532,7 +6532,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-mckinney": {
     title: "GDN Bond McKinney TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in McKinney same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in McKinney same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-mckinney`,
     structuredData: [
       {
@@ -6542,14 +6542,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "McKinney" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in McKinney" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in McKinney" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in McKinney need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including McKinney and Collin County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a McKinney GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "McKinney auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a McKinney GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6565,7 +6565,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-irving": {
     title: "GDN Bond Irving TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Irving same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Irving same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-irving`,
     structuredData: [
       {
@@ -6575,14 +6575,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Irving" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Irving" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Irving" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Irving need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Irving and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Irving GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Irving auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Irving GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6598,7 +6598,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-garland": {
     title: "GDN Bond Garland TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Garland same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Garland same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-garland`,
     structuredData: [
       {
@@ -6608,14 +6608,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Garland" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Garland" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Garland" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Garland need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Garland and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Garland GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Garland auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Garland GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6631,7 +6631,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-grand-prairie": {
     title: "GDN Bond Grand Prairie TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Grand Prairie same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr.",
+    description: "Get your Texas GDN dealer bond in Grand Prairie same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term.",
     canonical: `${BASE_URL}/bonds/gdn-bond-grand-prairie`,
     structuredData: [
       {
@@ -6641,14 +6641,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Grand Prairie" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Grand Prairie" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Grand Prairie" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Grand Prairie need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Grand Prairie and Dallas County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Grand Prairie GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Grand Prairie auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Grand Prairie GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6664,7 +6664,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-denton": {
     title: "GDN Bond Denton TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Denton same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Denton same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-denton`,
     structuredData: [
       {
@@ -6674,14 +6674,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Denton" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Denton" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Denton" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Denton need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Denton and Denton County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Denton GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Denton auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Denton GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {
@@ -6697,7 +6697,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   "/bonds/gdn-bond-amarillo": {
     title: "GDN Bond Amarillo TX | $50,000 TxDMV | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Amarillo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Amarillo same-day. Required under §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: `${BASE_URL}/bonds/gdn-bond-amarillo`,
     structuredData: [
       {
@@ -6707,14 +6707,14 @@ export const PAGE_META: Record<string, PageMeta> = {
         "serviceType": "Surety Bond",
         "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
         "areaServed": { "@type": "City", "name": "Amarillo" },
-        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $100/year in Amarillo" },
+        "offers": { "@type": "Offer", "priceCurrency": "USD", "description": "$50,000 TxDMV GDN dealer bond from $250 for the 2-year term in Amarillo" },
       },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Do auto dealers in Amarillo need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Texas auto dealers, including Amarillo and Potter County dealers, must maintain a $50,000 GDN surety bond with TxDMV under Texas Transportation Code §503.033." } },
-          { "@type": "Question", "name": "How much does a Amarillo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Amarillo auto dealers typically pay $100–$300 per year for a $50,000 GDN dealer bond. The exact premium depends on credit score and dealership history." } },
+          { "@type": "Question", "name": "How much does a Amarillo GDN dealer bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." } },
         ],
       },
       {

@@ -64,7 +64,7 @@ const WEBSITE_SCHEMA = {
 
 const trustMetrics = [
   { value: "$50 flat", label: "Notary bond — instant PDF" },
-  { value: "From $100", label: "GDN dealer bond / yr" },
+  { value: "From $250", label: "GDN dealer bond / 2 yrs" },
   { value: "Same-day", label: "Most bonds issued" },
 ];
 
@@ -305,7 +305,7 @@ export default function Home() {
               className="mt-8 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl"
               data-testid="text-hero-subheadline"
             >
-              Notary bonds $50 flat for the full 4-year term. Bonded titles from $100. Dealer bonds from $100/yr. TDI-licensed, A-rated carriers, no credit check on standard bonds.
+              Notary bonds $50 for the full 4-year term, plus the state's $21 fee. Bonded titles from $100. Dealer bonds from $250 for the 2-year term. TDI-licensed, A-rated carriers, no credit check on standard bonds.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -384,7 +384,7 @@ export default function Home() {
                 >
                   <div>
                     <div className="font-semibold text-white">Auto Dealer (GDN) Bond</div>
-                    <div className="text-sm text-slate-400">From $100/yr — $50,000 TxDMV-required bond</div>
+                    <div className="text-sm text-slate-400">From $250 for the 2-year term — $50,000 TxDMV-required bond</div>
                   </div>
                   <ArrowRight className="h-5 w-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1" />
                 </Link>
@@ -523,7 +523,7 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                  Texas Auto Dealer GDN Bond — From $100/yr
+                  Texas Auto Dealer GDN Bond — From $250 per 2-yr term
                 </h2>
                 <p className="text-slate-300 text-lg leading-relaxed mb-7 max-w-xl">
                   Every Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Occupations Code §503.033. Quantum Surety gets you bonded same-day with instant PDF delivery — accepted by TxDMV.

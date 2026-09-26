@@ -37,7 +37,7 @@ const faqs = [
 
 export default function GDNBondBeaumont() {
   useSEO({
-    title: "Texas GDN Dealer Bond — Beaumont | From $100 | Texas Surety Bond | Quantum Surety",
+    title: "Texas GDN Dealer Bond — Beaumont | From $250 | Texas Surety Bond | Quantum Surety",
     description: "Texas GDN dealer bond for Beaumont auto dealers — required by TxDMV for your General Distinguishing Number license. Instant approval, same-day certificate.",
     canonical: "/bonds/gdn-bond-beaumont",
   });
@@ -68,7 +68,7 @@ export default function GDNBondBeaumont() {
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GET_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
-                Get My Bond — From $100 <ArrowRight className="w-4 h-4 ml-2" />
+                Get My Bond — From $250 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
             <a href="tel:2146668718">

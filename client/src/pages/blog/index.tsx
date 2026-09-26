@@ -278,7 +278,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-gdn-bond-cost-2026",
     title: "Texas GDN Bond Cost 2026: Pricing for Every Dealer Type",
-    description: "How much does a Texas GDN dealer bond cost in 2026? Pricing by dealer category, what affects your rate, and why Quantum Surety starts at $100/year.",
+    description: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.",
     date: "2026-04-25",
     readTime: "6 min read",
     category: "Texas Auto Dealers",

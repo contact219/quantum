@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "How much does a Texas auto dealer bond cost?",
-    a: "For a $50,000 GDN bond, most dealers pay $100–$300 per year. Your premium is based primarily on your credit score. Dealers with good credit typically pay about 0.5–1% of the bond amount annually.",
+    a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.",
   },
   {
     q: "What is the required bond amount for a Texas auto dealer?",
@@ -43,7 +43,7 @@ export default function AutoDealerBondTexas() {
   useSEO({
     title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
     description:
-      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $100/yr. Instant PDF delivery.",
+      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: "/bonds/auto-dealer-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -91,7 +91,7 @@ export default function AutoDealerBondTexas() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
             { label: "Bond amount", value: "$50,000", sub: "TxDMV standard requirement" },
-            { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
+            { label: "Cost", value: "From $250", sub: "for the 2-year term" },
             { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
@@ -185,7 +185,7 @@ export default function AutoDealerBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Auto Dealer Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=dealer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

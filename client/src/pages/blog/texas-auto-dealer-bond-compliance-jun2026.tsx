@@ -153,7 +153,7 @@ export default function TexasAutoDealerBondCompliance2026() {
         </p>
 
         <ul style={{ paddingLeft: 20, lineHeight: 2.2 }}>
-          <li>$50,000 GDN bond — <strong>from $100/year</strong></li>
+          <li>$50,000 GDN bond — <strong>from $250 for the 2-year term</strong></li>
           <li>Same-day issuance — certificate emailed immediately</li>
           <li>TDI-licensed, Texas-based agency</li>
           <li>No office visit required</li>

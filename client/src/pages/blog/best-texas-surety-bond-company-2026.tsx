@@ -22,7 +22,7 @@ const COMPANIES = [
     ours: true,
     notaryPrice: "$50 flat (4-yr)",
     contractorPrice: "from $75/yr",
-    dealerPrice: "from $100/yr",
+    dealerPrice: "from $250 for the 2-year term",
     speed: "Instant–same day",
     texasLicensed: true,
     onlineOnly: true,
@@ -157,7 +157,7 @@ export default function BestTexasSuretyBondCompany2026() {
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
             <strong>Bottom line:</strong> $50 for the full 4-year term is the going rate for a Texas notary bond, and several providers charge it — Quantum Surety among them. Add the $21 state filing fee and you are commissioned for $71. What separates providers is speed, whether a human has to be involved, and what you get afterwards. Quantum Surety issues instantly by PDF, is Texas-only, and is the only one here with a free bond verification portal and live TDLR license monitoring.
-            For TDLR contractor bonds, Quantum Surety starts at $75/yr with same-day approval. For GDN dealer bonds, from $100/yr.
+            For TDLR contractor bonds, Quantum Surety starts at $75/yr with same-day approval. For GDN dealer bonds, from $250 for the 2-year term.
           </p>
         </div>
       </div>
@@ -254,7 +254,7 @@ export default function BestTexasSuretyBondCompany2026() {
           {[
             { title: "Best for Texas Notaries", winner: "Quantum Surety", why: "$50 flat for 4 years — matches the best rate available, issued instantly by PDF. Texas SOS–compliant.", type: "notary" },
             { title: "Best for TDLR Contractors", winner: "Quantum Surety", why: "Starts at $75/yr. Same-day approval. Free TDLR license monitoring included.", type: "contractor" },
-            { title: "Best for GDN Dealers", winner: "Quantum Surety", why: "From $100/yr. TxDMV-accepted bond, 24-hr turnaround, no agent required.", type: "dealer" },
+            { title: "Best for GDN Dealers", winner: "Quantum Surety", why: "From $250 per 2-yr term. TxDMV-accepted bond, 24-hr turnaround, no agent required.", type: "dealer" },
           ].map((cat) => (
             <div key={cat.title} className="rounded-xl border border-amber-200 bg-amber-50 p-5">
               <div className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">{cat.title}</div>

@@ -7,7 +7,7 @@ const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
   { q: "Do Houston auto dealers need a GDN bond?", a: "Yes. All Texas motor vehicle dealers — including Houston and Harris County dealers — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033. TxDMV will not issue or renew a dealer license without a valid bond on file." },
-  { q: "How much does a GDN bond cost for a Houston dealer?", a: "Most Houston dealers pay $100–$300 per year depending on credit score. Dealers with strong credit typically qualify for the lowest tier — around $100–$150/year for $50,000 in coverage." },
+  { q: "How much does a GDN bond cost for a Houston dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "Can I get a GDN bond the same day in Houston?", a: "Yes. Quantum Surety issues GDN bonds same-day. Apply online, get instant approval, and receive your bond certificate as a PDF — ready to upload to TxDMV eLICENSING the same day." },
   { q: "Does the GDN bond requirement apply to BHPH dealers in Houston?", a: "Yes. Buy Here Pay Here dealers in Houston are subject to the same $50,000 GDN bond requirement as all other Texas dealer license types under §503.033." },
   { q: "What happens if my bond lapses?", a: "A lapsed bond means an invalid dealer license. Operating without a valid bond is a Class A misdemeanor — up to $4,000 fine and up to one year in jail. Quantum Surety sends proactive renewal reminders to prevent lapses." },
@@ -16,7 +16,7 @@ const faqs = [
 export default function GDNBondHouston() {
   useSEO({
     title: "GDN Bond Houston TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Harris County motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Houston same-day. Required under §503.033 for all Harris County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: "/bonds/gdn-bond-houston",
   });
 
@@ -49,7 +49,7 @@ export default function GDNBondHouston() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
+          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>
@@ -104,7 +104,7 @@ export default function GDNBondHouston() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Houston GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $100/yr · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

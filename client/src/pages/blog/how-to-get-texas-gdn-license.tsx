@@ -18,7 +18,7 @@ export default function BlogHowToGetTexasGDNLicense() {
     "step": [
       { "@type": "HowToStep", "position": 1, "name": "Determine your dealer license type", "text": "Texas has 6 GDN dealer license types: independent motor vehicle dealer, franchise dealer, motorcycle dealer, wholesale dealer, auction dealer, and mobility motor vehicle dealer." },
       { "@type": "HowToStep", "position": 2, "name": "Secure a qualified dealer location", "text": "TxDMV requires a permanent, enclosed business location with adequate display space and a dedicated office. Location must meet county zoning requirements." },
-      { "@type": "HowToStep", "position": 3, "name": "Obtain your $50,000 GDN surety bond", "text": "Purchase the mandatory $50,000 GDN surety bond required under Texas Transportation Code §503.033. Quantum Surety issues same-day from $100/yr." },
+      { "@type": "HowToStep", "position": 3, "name": "Obtain your $50,000 GDN surety bond", "text": "Purchase the mandatory $50,000 GDN surety bond required under Texas Transportation Code §503.033. Quantum Surety issues same-day from $250 for the 2-year term." },
       { "@type": "HowToStep", "position": 4, "name": "Complete the dealer education course", "text": "First-time applicants must complete a TxDMV-approved pre-licensing education course (typically 6 hours)." },
       { "@type": "HowToStep", "position": 5, "name": "Gather required documents", "text": "Collect your bond certificate, insurance certificate, assumed name certificate (if applicable), proof of location, and application fee." },
       { "@type": "HowToStep", "position": 6, "name": "Submit via TxDMV eLICENSING", "text": "Apply online at dmv.texas.gov through eLICENSING. Upload all documents and pay the application fee." },
@@ -29,7 +29,7 @@ export default function BlogHowToGetTexasGDNLicense() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much does a Texas GDN dealer license cost?", "acceptedAnswer": { "@type": "Answer", "text": "TxDMV application fees vary by license type: Independent Motor Vehicle Dealer (~$700), Wholesale Dealer (~$350), Motorcycle Dealer (~$350). Plus your $50,000 GDN bond (from $100/yr at Quantum Surety), and education course (~$100–$200)." } },
+      { "@type": "Question", "name": "How much does a Texas GDN dealer license cost?", "acceptedAnswer": { "@type": "Answer", "text": "TxDMV application fees vary by license type: Independent Motor Vehicle Dealer (~$700), Wholesale Dealer (~$350), Motorcycle Dealer (~$350). Plus your $50,000 GDN bond (from $250 for the 2-year term at Quantum Surety), and education course (~$100–$200)." } },
       { "@type": "Question", "name": "How long does it take to get a Texas GDN license?", "acceptedAnswer": { "@type": "Answer", "text": "TxDMV typically processes complete GDN applications in 4–8 weeks. Incomplete applications or location inspections that fail can extend the timeline. Having all documents ready before submitting is critical." } },
     ],
   }, "ld-json-FAQ");
@@ -44,7 +44,7 @@ export default function BlogHowToGetTexasGDNLicense() {
   ];
 
   const requirements = [
-    { item: "$50,000 GDN surety bond", detail: "Required under §503.033. From $100/yr at Quantum Surety — instant PDF same day." },
+    { item: "$50,000 GDN surety bond", detail: "Required under §503.033. From $250 per 2-yr term at Quantum Surety — instant PDF same day." },
     { item: "Dealer location", detail: "Permanent enclosed building with display space. Must pass TxDMV inspection." },
     { item: "General liability insurance", detail: "Minimum $100,000/$300,000 coverage naming TxDMV as certificate holder." },
     { item: "Pre-licensing education", detail: "6-hour TxDMV-approved dealer education course for first-time applicants." },
@@ -55,7 +55,7 @@ export default function BlogHowToGetTexasGDNLicense() {
 
   const faqs = [
     { q: "What does GDN stand for in Texas?", a: "GDN stands for General Distinguishing Number — the unique identifier assigned by TxDMV to each licensed motor vehicle dealer in Texas. Every licensed dealer must display their GDN on their dealer plate and signage. A GDN is the same as a Texas dealer license." },
-    { q: "How much does a Texas GDN dealer license cost?", a: "Expect to spend $1,000–$1,500 total for your initial GDN license: TxDMV application fee ($350–$700 depending on type), GDN surety bond premium ($100–$300/yr from Quantum Surety), pre-licensing education (~$100–$200), and dealer plates ($50–$100 each). Plus the cost of qualifying your dealer location." },
+    { q: "How much does a Texas GDN dealer license cost?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
     { q: "How long does it take to get a Texas GDN license?", a: "TxDMV typically processes complete GDN applications in 4–8 weeks. The most common delays are: incomplete documentation, failed location inspection, or background check issues. Having your bond certificate, insurance certificate, and education completion ready before you submit dramatically speeds up the process." },
     { q: "Do I need a physical lot to get a GDN license in Texas?", a: "Yes. TxDMV requires all GDN licensees to have a permanent, enclosed business location — not just a home address or parking lot. The location must have adequate display space for at least 5 vehicles and a dedicated business office. TxDMV will inspect your location before granting your license." },
     { q: "Can I sell cars from home with a Texas GDN license?", a: "No. Texas requires a qualifying dealer location that is separate from a personal residence and meets commercial zoning requirements. You cannot operate a licensed dealership from your home." },
@@ -133,7 +133,7 @@ export default function BlogHowToGetTexasGDNLicense() {
 
         <div className="bg-indigo-900 text-white rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your GDN Bond Same-Day</h2>
-          <p className="text-indigo-200 mb-5">$50,000 bond from $100/yr. Instant PDF certificate accepted by TxDMV eLICENSING. Apply in 5 minutes.</p>
+          <p className="text-indigo-200 mb-5">$50,000 bond from $250 for the 2-year term. Instant PDF certificate accepted by TxDMV eLICENSING. Apply in 5 minutes.</p>
           <a href="/get-bond?type=dealer">
             <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition-colors inline-flex items-center gap-2">
               Get My GDN Bond <ArrowRight className="w-4 h-4" />

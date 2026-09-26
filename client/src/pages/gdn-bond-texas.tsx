@@ -6,12 +6,12 @@ import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, AlertTrian
 const GDN_LINK = "/get-bond?type=dealer";
 
 const dealerTypes = [
-  { type: "New Motor Vehicle Dealer", description: "Franchised dealers selling new cars, trucks, and SUVs", amount: "$50,000", cost: "From $100/yr" },
-  { type: "Used Motor Vehicle Dealer", description: "Independent lots selling pre-owned vehicles", amount: "$50,000", cost: "From $100/yr" },
-  { type: "Wholesale Motor Vehicle Dealer", description: "Dealers who sell only to other licensed dealers", amount: "$50,000", cost: "From $100/yr" },
-  { type: "Motorcycle Dealer", description: "New and used motorcycle sales", amount: "$50,000", cost: "From $100/yr" },
-  { type: "Buy Here Pay Here (BHPH) Dealer", description: "In-house financing dealers who carry their own paper", amount: "$50,000", cost: "From $100/yr" },
-  { type: "Lease / Finance Company", description: "Companies that lease vehicles or arrange dealer financing", amount: "$50,000", cost: "From $100/yr" },
+  { type: "New Motor Vehicle Dealer", description: "Franchised dealers selling new cars, trucks, and SUVs", amount: "$50,000", cost: "From $250 per 2-yr term" },
+  { type: "Used Motor Vehicle Dealer", description: "Independent lots selling pre-owned vehicles", amount: "$50,000", cost: "From $250 per 2-yr term" },
+  { type: "Wholesale Motor Vehicle Dealer", description: "Dealers who sell only to other licensed dealers", amount: "$50,000", cost: "From $250 per 2-yr term" },
+  { type: "Motorcycle Dealer", description: "New and used motorcycle sales", amount: "$50,000", cost: "From $250 per 2-yr term" },
+  { type: "Buy Here Pay Here (BHPH) Dealer", description: "In-house financing dealers who carry their own paper", amount: "$50,000", cost: "From $250 per 2-yr term" },
+  { type: "Lease / Finance Company", description: "Companies that lease vehicles or arrange dealer financing", amount: "$50,000", cost: "From $250 per 2-yr term" },
 ];
 
 const faqs = [
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "How much does a Texas GDN bond cost?",
-    a: "Most Texas dealers pay $100–$300 per year for a $50,000 GDN bond. Your exact rate is based on your credit profile. Dealers with good credit typically pay 0.5–1% of the bond amount annually — making it one of the most affordable license requirements.",
+    a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.",
   },
   {
     q: "What is the required bond amount?",
@@ -43,9 +43,9 @@ const faqs = [
 
 export default function GDNBondTexas() {
   useSEO({
-    title: "Texas GDN Bond | $50,000 Dealer Bond from $100/yr | Same-Day | Quantum Surety",
+    title: "Texas GDN Bond | $50,000 Dealer Bond from $250 | Same-Day | Quantum Surety",
     description:
-      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+      "Get your Texas GDN bond same-day. Required under Texas Occupations Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: "/bonds/gdn-bond-texas",
   });
   useSchema({
@@ -56,7 +56,7 @@ export default function GDNBondTexas() {
     "url": "https://quantumsurety.bond/bonds/gdn-bond-texas",
     "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond", "telephone": "+12146668718" },
     "areaServed": { "@type": "State", "name": "Texas" },
-    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100", "description": "Starting at $100/year for qualified dealers", "availability": "https://schema.org/InStock" },
+    "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "100", "description": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay.", "availability": "https://schema.org/InStock" },
   }, "ld-json-Service");
   useSchema({
     "@context": "https://schema.org",
@@ -115,7 +115,7 @@ export default function GDNBondTexas() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
             { label: "Bond amount", value: "$50,000", sub: "Required under §503.033" },
-            { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
+            { label: "Cost", value: "From $250", sub: "for the 2-year term" },
             { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
@@ -209,7 +209,7 @@ export default function GDNBondTexas() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "1", title: "Select your dealer type", body: "Choose your GDN license category — new, used, wholesale, motorcycle, BHPH, or lease/finance. Takes under 2 minutes." },
-              { step: "2", title: "Instant approval", body: "Most Texas dealers are approved same-day. No financial statements required. Credit-based pricing starts at $100/year." },
+              { step: "2", title: "Instant approval", body: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
               { step: "3", title: "File with TxDMV", body: "Bond certificate emailed as an instant PDF. Submit with your GDN license application through TxDMV's eLICENSING portal." },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -245,7 +245,7 @@ export default function GDNBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All 6 GDN dealer types · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance · All 6 GDN dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

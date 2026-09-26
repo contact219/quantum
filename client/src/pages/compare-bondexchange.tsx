@@ -17,7 +17,7 @@ const COMPARISON = [
   // published rate is ours. We do not win this row.
   { feature: "Texas Notary Bond",          qs: "$50 flat (4-yr)",    them: "$50 flat (4-yr)",      winner: "tie" },
   { feature: "TDLR Contractor Bond",       qs: "$75/yr",             them: "$99–$175/yr",          winner: "qs" },
-  { feature: "TX GDN Dealer Bond",         qs: "$100/yr",            them: "$150–$299/yr",         winner: "qs" },
+  { feature: "TX GDN Dealer Bond",         qs: "$250 / 2 yrs",       them: "$150–$299/yr",         winner: "qs" },
   { feature: "Texas TDI Licensed",         qs: "Yes — #3480229",     them: "Agent network only",   winner: "qs" },
   { feature: "Certificate Delivery",       qs: "Instant PDF",        them: "Email, 24–48 hrs",     winner: "qs" },
   { feature: "Bond Lookup Portal",         qs: "Free public lookup", them: "None",                 winner: "qs" },

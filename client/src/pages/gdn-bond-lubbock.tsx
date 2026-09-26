@@ -7,7 +7,7 @@ const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
   { q: "Do Lubbock auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas  including dealers in Lubbock County and the South Plains  must carry a $50,000 GDN surety bond under Texas Occupations Code 503.033 before TxDMV will issue or renew a dealer license." },
-  { q: "How much does a GDN bond cost for a Lubbock dealer?", a: "Most Lubbock dealers pay $100$300 per year. Your exact rate is based on your personal credit score. Dealers with good credit (720+) typically pay around $100$150/year for $50,000 in coverage." },
+  { q: "How much does a GDN bond cost for a Lubbock dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "How fast can I get a GDN bond in Lubbock?", a: "Same-day. Apply online, get approved, and receive your bond certificate as an instant PDF  ready to submit to TxDMV's eLICENSING portal the same day." },
   { q: "What happens if my GDN bond lapses?", a: "A lapsed bond invalidates your dealer license. Operating without a valid bond is a Class A misdemeanor under Texas law  fines up to $4,000 and up to one year in jail. Quantum Surety sends renewal reminders so your coverage never lapses." },
 ];
@@ -15,7 +15,7 @@ const faqs = [
 export default function GDNBondLubbock() {
   useSEO({
     title: "GDN Bond Lubbock TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under 503.033 for all motor vehicle dealer licenses. $50,000 bond from $100/yr. Instant PDF delivery.",
+    description: "Get your Texas GDN dealer bond in Lubbock same-day. Required under 503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: "/bonds/gdn-bond-lubbock",
   });
 
@@ -44,7 +44,7 @@ export default function GDNBondLubbock() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$50,000", sub: "Required under 503.033" }, { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
+          {[{ label: "Bond amount", value: "$50,000", sub: "Required under 503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>
@@ -97,7 +97,7 @@ export default function GDNBondLubbock() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Lubbock GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance  All TxDMV dealer types  From $100/yr  TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Same-day issuance  All TxDMV dealer types  From $250 per 2-yr term  TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}><Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button></a>
             <a href="tel:2146668718"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8"><Phone className="w-4 h-4 mr-2" /> (214) 666-8718</Button></a>

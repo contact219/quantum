@@ -66,10 +66,12 @@ function buildEmail(lead) {
   const hi     = noName ? 'Hi,' : `Hi ${name},`;
   const bt     = (lead.bond_type || '').toLowerCase();
 
+  // 2026-09-26: the badge used to claim a star rating and a bond count we cannot support (no
+  // review source; roughly 600 bonds in our book). Keep it to verifiable facts only.
   const proof = `<div style="margin:16px 0;padding:16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px">
   <p style="margin:0;font-size:13px;color:#166534">
-    <strong>★ 4.9/5 from Texas bond buyers</strong> &nbsp;·&nbsp; TDI License #3480229
-    &nbsp;·&nbsp; Instant certificate delivery &nbsp;·&nbsp; 10,000+ bonds issued
+    <strong>TDI License #3480229</strong> &nbsp;·&nbsp; Bonds written by RLI
+    &nbsp;·&nbsp; Certificate emailed once issued
   </p>
 </div>`;
 
@@ -118,17 +120,17 @@ function buildEmail(lead) {
   if (bt.includes('dealer') || bt === 'dealer') {
     const url = `https://quantumsurety.bond/get-bond?type=dealer&utm_source=crm-reengage&utm_campaign=dealer-7day`;
     return {
-      subject: noName ? 'Your GDN dealer bond — still available from $100/yr' : `${name} — GDN dealer bond, still from $100/yr`,
+      subject: noName ? 'Your GDN dealer bond — from $250 for 2 years' : `${name} — GDN dealer bond, from $250 for 2 years`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Following up on your Texas GDN dealer bond inquiry. TxDMV requires the $25,000 bond to be active before they'll issue or renew your dealer plates. If your lot is waiting on the bond, here's how to get it done today.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Following up on your Texas GDN dealer bond inquiry. TxDMV requires a $50,000 bond for your GDN license. If your lot is waiting on the bond, you can apply today, and your exact premium is confirmed before you pay.</p>
   ${proof}
-  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:16px;margin-bottom:20px">Apply for GDN Bond — From $100/yr →</a>
+  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:16px;margin-bottom:20px">Apply for GDN Bond — From $250 →</a>
   <p style="color:#64748b;font-size:13px">Reply or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\nFollowing up on your Texas GDN dealer bond. TxDMV requires a $25,000 bond before they'll issue dealer plates.\n\nFrom $100/yr, 24-hr approval: ${url}\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nFollowing up on your Texas GDN dealer bond. TxDMV requires a $50,000 bond for your GDN license.\n\nFrom $250 for the 2-year term; your exact premium is confirmed before you pay: ${url}\n\nQuantum Surety | TDI #3480229`,
     };
   }
 

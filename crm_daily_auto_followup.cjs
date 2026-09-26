@@ -102,19 +102,19 @@ function buildEmail(lead) {
   if (bt.includes('dealer') || bt === 'dealer') {
     const url = `https://quantumsurety.bond/get-bond?type=dealer&utm_source=crm-daily&utm_campaign=dealer-auto`;
     return {
-      subject: noName ? 'Your Texas GDN dealer bond — from $100/yr' : `${name}, your Texas GDN dealer bond — from $100/yr`,
+      subject: noName ? 'Your Texas GDN dealer bond — from $250 for 2 years' : `${name}, your Texas GDN dealer bond — from $250 for 2 years`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Your Texas GDN dealer license requires a $25,000 surety bond — TxDMV won't activate your license without it. We specialize in dealer bonds and can get you approved fast.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Your Texas GDN dealer license requires a $50,000 surety bond on file with TxDMV. We write dealer bonds through RLI, and your exact premium is confirmed before you pay.</p>
   <div style="background:#f8fafc;border-left:4px solid #f59e0b;padding:16px;margin:0 0 20px;border-radius:4px">
-    <strong style="color:#0f172a">$25,000 bond · From $100/yr · 24-hr turnaround · TxDMV accepted</strong>
+    <strong style="color:#0f172a">$50,000 bond · From $250 for the 2-year term · TxDMV accepted</strong>
   </div>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Apply Now →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\nYour Texas GDN dealer license needs a $25,000 surety bond. From $100/yr, 24-hr approval.\n\nApply: ${url}\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nYour Texas GDN dealer license needs a $50,000 surety bond. From $250 for the 2-year term; your exact premium is confirmed before you pay.\n\nApply: ${url}\n\nQuantum Surety | TDI #3480229`,
     };
   }
 

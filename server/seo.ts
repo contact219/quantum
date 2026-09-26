@@ -7895,7 +7895,6 @@ try {
 // ─── Sitemap generator ────────────────────────────────────────────────────────
 
 export function generateSitemap(): string {
-  const today = new Date().toISOString().split("T")[0];
 
   function getPriority(p: string): string {
     if (p === "/") return "1.0";
@@ -7924,12 +7923,33 @@ export function generateSitemap(): string {
     return "monthly";
   }
 
+  // lastmod is emitted only when we have a real change date. Stamping today on
+  // every request taught Google to ignore the field sitewide (375 of 552 URLs
+  // claimed to change daily); an omitted lastmod is valid and honest.
+  const lastmodTag = (p: string) => {
+    const d = _sitemapLastmod[p]?.lastmod;
+    return d ? `\n    <lastmod>${d}</lastmod>` : "";
+  };
+
+  // Pages that canonicalise to another page share its <loc>. List each URL once,
+  // taking the entry whose canonical is itself so its date/priority are used.
+  const selfCanonical = new Set(
+    Object.entries(PAGE_META)
+      .filter(([p, meta]) => meta.canonical === `${BASE_URL}${p}`)
+      .map(([, meta]) => meta.canonical)
+  );
+  const seenLocs = new Set<string>();
   const urls = Object.entries(PAGE_META)
+    .filter(([p, meta]) => {
+      if (selfCanonical.has(meta.canonical) && meta.canonical !== `${BASE_URL}${p}`) return false;
+      if (seenLocs.has(meta.canonical)) return false;
+      seenLocs.add(meta.canonical);
+      return true;
+    })
     .map(
       ([p, meta]) => `
   <url>
-    <loc>${meta.canonical}</loc>
-    <lastmod>${_sitemapLastmod[p]?.lastmod ?? today}</lastmod>
+    <loc>${meta.canonical}</loc>${lastmodTag(p)}
     <changefreq>${getChangefreq(p)}</changefreq>
     <priority>${getPriority(p)}</priority>
   </url>`
@@ -7947,7 +7967,6 @@ export function generateSitemap(): string {
       (p) => `
   <url>
     <loc>${BASE_URL}${p}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>`
@@ -7961,7 +7980,6 @@ export function generateSitemap(): string {
       (p) => `
   <url>
     <loc>${BASE_URL}${p}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>`

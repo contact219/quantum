@@ -77,8 +77,8 @@ def main():
             cur.execute(
                 """INSERT INTO site_events
                    (session_id, event_type, page, element, value,
-                    utm_source, utm_campaign, referrer, ip, created_at)
-                   VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                    utm_source, utm_campaign, referrer, ip, user_agent, created_at)
+                   VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                 (
                     (ev.get("session_id") or "")[:64],
                     (ev.get("event_type") or "")[:50],
@@ -89,6 +89,7 @@ def main():
                     (ev.get("utm_campaign") or "")[:200],
                     ev.get("referrer") or "",
                     (ev.get("ip") or "")[:64],
+                    ev.get("user_agent") or "",
                     ev.get("time"),
                 ),
             )

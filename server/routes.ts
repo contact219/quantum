@@ -103,7 +103,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // unauthenticated /api/leads-log endpoint that exposed it. Leads persist via
   // storage.createLead() and are read through /api/admin/leads, which is behind isAdmin.
   // In-memory site event log for real-time CRM tracking
-  const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; time: string }[] = [];
+  const siteEvents: { session_id: string; event_type: string; page: string; element: string; value: string; utm_source: string; utm_campaign: string; referrer: string; ip: string; user_agent: string; time: string }[] = [];
   // IndexNow key verification file (must return plain text before SPA catch-all)
   app.get('/quantumsurety-indexnow-2026.txt', (_req, res) => {
     res.setHeader('Content-Type', 'text/plain');
@@ -788,7 +788,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { session_id, event_type, page, element, value, utm_source, utm_campaign, referrer } = req.body || {};
       if (!event_type) return res.json({ ok: false });
       const ip = (req.headers["x-forwarded-for"] as string || req.socket.remoteAddress || "").split(",")[0].trim();
-      const ev = { session_id: session_id || "", event_type, page: page || "", element: element || "", value: value || "", utm_source: utm_source || "", utm_campaign: utm_campaign || "", referrer: referrer || "", ip, time: new Date().toISOString() };
+      // user_agent lets reporting separate people from email link scanners and bots,
+      // which otherwise show up as one-page sessions and inflate campaign traffic.
+      const user_agent = ((req.headers["user-agent"] as string) || "").slice(0, 400);
+      const ev = { session_id: session_id || "", event_type, page: page || "", element: element || "", value: value || "", utm_source: utm_source || "", utm_campaign: utm_campaign || "", referrer: referrer || "", ip, user_agent, time: new Date().toISOString() };
       siteEvents.push(ev);
       if (siteEvents.length > 5000) siteEvents.splice(0, siteEvents.length - 5000);
       res.json({ ok: true });

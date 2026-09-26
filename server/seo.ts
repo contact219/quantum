@@ -8426,7 +8426,7 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
         ],
       },
     ],
-    content: `<main><h1>${name} — Texas ${licType} License</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. License status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} From Texas Department of Licensing and Regulation public records, updated monthly.</p><a href="/verify-contractor">Verify another Texas contractor</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Shareable verification link</a></main>`,
+    content: `<main><h1>${name} — Texas ${licType} License</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. License status: ${statusLabel}.${expDate ? (status === "expired" ? " Expired " : " Expires ") + expDate + "." : ""} From Texas Department of Licensing and Regulation public records, updated monthly.</p><a href="/verify-contractor">Verify another Texas contractor</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Shareable verification link</a></main>`,
   };
 }
 

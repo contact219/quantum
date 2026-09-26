@@ -7,6 +7,7 @@
 import { Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
+import { isCityBondPath, CITY_BOND_ROBOTS } from "@shared/city-bond-pages";
 
 // ─── Page metadata map ────────────────────────────────────────────────────────
 
@@ -1854,10 +1855,10 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/blog/texas-notary-bond-sb693-2026-requirements": {
-    title: "Texas Notary Bond SB693 2026 | Quantum Surety",
+    title: "Texas Notary SB 693: New 2-Hour Course to Renew (2026)",
     description:
-      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what.",
-    canonical: `${BASE_URL}/sb-693-notary-bond-requirements-2026`, // consolidated: this post split signal with the standalone page (13 vs 1,499 visits)
+      "SB 693 took effect Sept 1, 2025. Notary applications and renewals filed from Jan 1, 2026 need a 2-hour SOS course ($20). What changed, and what didn't.",
+    canonical: `${BASE_URL}/blog/texas-notary-bond-sb693-2026-requirements`, // self-canonical since 2026-09-25: pointing at the standalone SB693 page contradicted the React canonical, and Google ranked this URL anyway (pos 8.5 vs 15.7 in Search Console)
     ogType: "article",
     structuredData: [
       {
@@ -1865,9 +1866,9 @@ export const PAGE_META: Record<string, PageMeta> = {
         "@type": "Article",
         headline: "Texas Notary Bond Requirements 2026: What SB693 Changes for New and Renewing Notaries",
         description:
-          "Senate Bill 693 took effect January 1, 2026 and changed Texas notary law significantly — mandatory education, new criminal penalties, 10-year record retention.",
+          "SB 693 took effect September 1, 2025. Texas notary applications and renewals submitted on or after January 1, 2026 require a 2-hour Secretary of State course; records must be kept 10 years.",
         datePublished: "2026-03-15",
-        dateModified: "2026-03-15",
+        dateModified: "2026-09-25",
         inLanguage: "en-US",
         articleSection: "Notary Bonds",
         keywords: "Texas notary bond, SB693, 2026 notary requirements, Texas notary law, notary bond cost",
@@ -7818,6 +7819,11 @@ function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
 }
 
 function getMetaForPath(urlPath: string): PageMeta {
+  // Bond x city pages are noindexed whichever table defines them (see shared/city-bond-pages.ts).
+  if (isCityBondPath(urlPath)) {
+    const cityMeta = PAGE_META[urlPath] ?? getDynamicCityBondMeta(urlPath);
+    if (cityMeta) return { ...cityMeta, robots: CITY_BOND_ROBOTS };
+  }
   if (PAGE_META[urlPath]) return PAGE_META[urlPath];
   const dynamicMeta = getDynamicCityBondMeta(urlPath);
   if (dynamicMeta) return dynamicMeta;
@@ -7941,6 +7947,7 @@ export function generateSitemap(): string {
   const seenLocs = new Set<string>();
   const urls = Object.entries(PAGE_META)
     .filter(([p, meta]) => {
+      if (isCityBondPath(p)) return false; // noindexed; a sitemap must not list them
       if (selfCanonical.has(meta.canonical) && meta.canonical !== `${BASE_URL}${p}`) return false;
       if (seenLocs.has(meta.canonical)) return false;
       seenLocs.add(meta.canonical);
@@ -7962,7 +7969,7 @@ export function generateSitemap(): string {
     .flatMap((bondSlug) =>
       Object.keys(CITY_DATA).map((citySlug) => `/bonds/${bondSlug}-${citySlug}`)
     )
-    .filter((p) => !PAGE_META[p])
+    .filter((p) => !PAGE_META[p] && !isCityBondPath(p))
     .map(
       (p) => `
   <url>

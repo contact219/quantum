@@ -9,9 +9,9 @@ import {
 
 export default function BlogSB693() {
   useSEO({
-    title: "Texas Notary Bond 2026: What SB693 Changes for New & Renewing Notaries | Quantum Surety",
+    title: "Texas Notary SB 693: New 2-Hour Course to Renew (2026)",
     description:
-      "Senate Bill 693 took effect Jan 1, 2026 — mandatory 2-hour education, new criminal penalties, 10-year record retention. Here's exactly what changes, what stays the same, and how to get your notary bond today.",
+      "SB 693 took effect Sept 1, 2025. Notary applications and renewals filed from Jan 1, 2026 need a 2-hour SOS course ($20). What changed, and what didn't.",
     canonical: "/blog/texas-notary-bond-sb693-2026-requirements",
     ogType: "article",
   });

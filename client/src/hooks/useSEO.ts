@@ -14,6 +14,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import { isCityBondPath, CITY_BOND_ROBOTS } from "@shared/city-bond-pages";
 
 interface SEOProps {
   title: string;
@@ -81,6 +82,10 @@ export function useSEO({ title, description, canonical, noIndex = false, ogType 
     if (noIndex) {
       setMeta('meta[name="robots"]', "content", "noindex, nofollow");
       setMeta('meta[name="googlebot"]', "content", "noindex, nofollow");
+    } else if (isCityBondPath(window.location.pathname)) {
+      // Must match the server's tag, or rendering would flip these back to "index".
+      setMeta('meta[name="robots"]', "content", CITY_BOND_ROBOTS);
+      setMeta('meta[name="googlebot"]', "content", CITY_BOND_ROBOTS);
     } else {
       setMeta('meta[name="robots"]', "content", "index, follow");
       setMeta('meta[name="googlebot"]', "content", "index, follow");

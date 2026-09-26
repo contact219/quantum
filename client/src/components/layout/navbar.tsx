@@ -93,20 +93,6 @@ export function Navbar() {
       icon: null,
       external: true,
     },
-    {
-      href: "/qs-score",
-      label: "QS Score™",
-      description: "0–100 trust rating for every TX contractor",
-      icon: null,
-      external: false,
-    },
-    {
-      href: "/hoa-portal",
-      label: "HOA Vendor Portal",
-      description: "Monitor all your vendors' bond status",
-      icon: null,
-      external: false,
-    },
   ];
 
   return (

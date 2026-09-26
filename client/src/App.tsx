@@ -178,10 +178,7 @@ const BlogTitleBondCost = lazy(() => import("@/pages/blog/texas-certificate-of-t
 const BlogNoTitleTexas = lazy(() => import("@/pages/blog/bought-car-no-title-texas-bonded-title"));
 const BlogQSTitleBondTools = lazy(() => import("@/pages/blog/quantum-surety-texas-title-bond-tools-2026"));
 const TitleDocumentAnalyzer = lazy(() => import("@/pages/title-document-analyzer"));
-const QSScore = lazy(() => import("@/pages/qs-score"));
-const QSLeaderboard = lazy(() => import("@/pages/qs-leaderboard"));
 const PermitPilotLanding = lazy(() => import("@/pages/permit-pilot-landing"));
-const HOAPortal = lazy(() => import("@/pages/hoa-portal"));
 // Spanish pages
 const EsHome = lazy(() => import("@/pages/es/index"));
 const FianzaNotarioTexas = lazy(() => import("@/pages/es/fianza-notario-texas"));
@@ -266,8 +263,6 @@ const GDNBondOdessa = lazy(() => import("@/pages/gdn-bond-odessa"));
 
 const NotaryExpirationCheck = lazy(() => import("@/pages/notary-expiration-check"));
 const LinksPage = lazy(() => import("@/pages/links"));
-const BondHealthScore = lazy(() => import("@/pages/bond-health-score"));
-const ForAgencies = lazy(() => import("@/pages/for-agencies"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -664,11 +659,11 @@ function Router() {
       <Route path="/blog/bought-car-no-title-texas-bonded-title" component={BlogNoTitleTexas} />
       <Route path="/blog/quantum-surety-texas-title-bond-tools-2026" component={BlogQSTitleBondTools} />
       <Route path="/blog" component={BlogIndex} />
-      <Route path="/qs-score" component={QSScore} />
-      <Route path="/qs-leaderboard" component={QSLeaderboard} />
-      <Route path="/bond-health-score" component={BondHealthScore} />
+      <Route path="/qs-score"><ClientRedirect to="/verify-contractor" /></Route>
+      <Route path="/qs-leaderboard"><ClientRedirect to="/verify-contractor" /></Route>
+      <Route path="/bond-health-score"><ClientRedirect to="/verify-contractor" /></Route>
       <Route path="/permit-pilot" component={PermitPilotLanding} />
-      <Route path="/hoa-portal" component={HOAPortal} />
+      <Route path="/hoa-portal"><ClientRedirect to="/verify-contractor" /></Route>
 
       {/* Spanish pages */}
       <Route path="/es/fianza-notario-texas" component={FianzaNotarioTexas} />
@@ -717,7 +712,7 @@ function Router() {
       <Route path="/bonds/gdn-bond-midland" component={GDNBondMidland} />
       <Route path="/bonds/contractor-bond-odessa" component={ContractorBondOdessa} />
       <Route path="/bonds/gdn-bond-odessa" component={GDNBondOdessa} />
-      <Route path="/for-agencies" component={ForAgencies} />
+      <Route path="/for-agencies"><ClientRedirect to="/verify-contractor" /></Route>
       <Route path="/notary-expiration-check" component={NotaryExpirationCheck} />
       <Route path="/links" component={LinksPage} />
       <Route path="/bonds/texas-vehicle-title-bond" component={BondedTitleTexas} />

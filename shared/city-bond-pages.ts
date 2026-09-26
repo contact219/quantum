@@ -72,6 +72,14 @@ export const CONTRACTOR_LINE_NOINDEX = new Set<string>([
   "/bond-compliance-by-trade",
   "/bond-ticker",
   "/press",
+  // Retired 2026-09-26 (301 -> /verify-contractor) and the posts that promoted them.
+  "/qs-score",
+  "/qs-leaderboard",
+  "/bond-health-score",
+  "/hoa-portal",
+  "/for-agencies",
+  "/blog/what-is-qs-score-texas-bond-health",
+  "/blog/texas-hoa-contractor-bond-verification",
 ]);
 
 /** Every path that must carry `noindex, follow` and stay out of the sitemap. */

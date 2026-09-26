@@ -163,6 +163,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     "/bond-ticker":                 "/verify-contractor",
     // The press kit pitched the same false contractor-bond story to journalists.
     "/press":                       "/newsroom",
+    // Retired 2026-09-26: QS Score (a public 0-100 rating of named contractors that docked them
+    // for an "expired bond" TDLR does not require), the HOA vendor "bond status" portal (0
+    // accounts ever) and the For Agencies pitch built on both.
+    "/qs-score": "/verify-contractor",
+    "/qs-leaderboard": "/verify-contractor",
+    "/bond-health-score": "/verify-contractor",
+    "/hoa-portal": "/verify-contractor",
+    "/for-agencies": "/verify-contractor",
     // Orphan duplicate of the established /bonded-title-texas page (same component,
     // zero inbound internal links) — consolidate link equity instead of splitting it.
     "/bonds/texas-vehicle-title-bond": "/bonded-title-texas",

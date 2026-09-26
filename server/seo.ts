@@ -3196,22 +3196,22 @@ export const PAGE_META: Record<string, PageMeta> = {
     content: `<main><h1>SB693 Notary Compliance Checker — Is Your Texas Commission Ready?</h1><p>Texas Senate Bill 693 (effective 2026) adds new requirements for notary commissions: a 2-hour training course, journal maintenance, and updated penalty rules. Use this free checker to see if you're compliant before your next renewal.</p><a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX">Renew your notary bond — $50 same day</a></main>`,
   },
   "/verify-contractor": {
-    title: "Verify Texas Contractor License & Bond — Free TDLR Lookup | Quantum Surety",
-    description: "Free instant lookup: verify any Texas TDLR-licensed contractor's license status and surety bond before you hire. Search by name or license number. Updated daily from public TDLR records.",
+    title: "Verify a Texas Contractor License — Free TDLR Lookup | Quantum Surety",
+    description: "Free lookup: check any Texas TDLR-licensed contractor's license status before you hire. Search by name or license number. Updated monthly from public TDLR records.",
     canonical: `${BASE_URL}/verify-contractor`,
     structuredData: [
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        name: "Texas Contractor License & Bond Verifier",
-        description: "Free tool to verify Texas TDLR contractor license status and surety bond before hiring. Updated daily from public records.",
+        name: "Texas Contractor License Lookup",
+        description: "Free tool to check Texas TDLR contractor license status before hiring. Updated monthly from public records.",
         url: `${BASE_URL}/verify-contractor`,
         applicationCategory: "UtilityApplication",
         operatingSystem: "Web",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       },
     ],
-    content: `<main><h1>Verify Any Texas Contractor License & Bond — Free</h1><p>Before hiring a contractor in Texas, verify their TDLR license and surety bond status. Search by name or license number. Unverified contractors may be unlicensed, unbonded, or have expired credentials — putting homeowners at financial risk.</p></main>`,
+    content: `<main><h1>Verify Any Texas Contractor License — Free</h1><p>Before hiring a contractor in Texas, check that their TDLR license is active and matches the work. Search by name or license number. TDLR requires licensed contractors to carry liability insurance, not a surety bond, so also ask for a current certificate of insurance.</p></main>`,
   },
   "/for-agencies": {
     title: "Free Contractor Bond Verification for Texas Agencies | Quantum Surety",

@@ -680,11 +680,9 @@ export default function Home() {
               View all resources →
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { href: "/verify-contractor", label: "License Lookup", sub: "Check any TX contractor's TDLR license", icon: "", accent: true },
-              { href: "/hoa-portal", label: "HOA Vendor Portal", sub: "Monitor all your contractors free", icon: "🏠", accent: false },
-              { href: "/qs-score", label: "QS Score™", sub: "0–100 trust rating for every TX contractor", icon: "◉", accent: false },
               { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: false },
               { href: "/quote", label: "Bond Calculator", sub: "Estimate your premium", icon: "◈", accent: false },
               { href: "/sb-693-notary-bond-requirements-2026", label: "SB-693 2026 Guide", sub: "Texas notary bond compliance", icon: "◎", accent: false },

@@ -61,7 +61,6 @@ const bond = await res.json();
   "days_remaining": 651,
   "surety_company": "RLI Insurance",
   "city": "Austin",
-  "qs_score": 94,
   "api_requests_remaining": 9847
 }`;
 

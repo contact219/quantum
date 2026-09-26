@@ -137,29 +137,6 @@ export default function ContractorDetail() {
                 {licType} · TDLR #{license} · {city}, TX
               </p>
 
-              {/* QS Score */}
-              {contractor.qs_score !== undefined && (
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "14px 20px", marginBottom: 24 }}>
-                  <div style={{ position: "relative", width: 64, height: 64 }}>
-                    <svg width="64" height="64" viewBox="0 0 64 64" style={{ transform: "rotate(-90deg)" }}>
-                      <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="6" />
-                      <circle cx="32" cy="32" r="26" fill="none" stroke={contractor.qs_color} strokeWidth="6"
-                        strokeDasharray={`${(contractor.qs_score / 100) * 2 * Math.PI * 26} ${2 * Math.PI * 26}`} strokeLinecap="round" />
-                    </svg>
-                    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontSize: 16, fontWeight: 900, color: contractor.qs_color, lineHeight: 1 }}>{contractor.qs_score}</span>
-                      <span style={{ fontSize: 10, fontWeight: 800, color: contractor.qs_color }}>{contractor.qs_grade}</span>
-                    </div>
-                  </div>
-                  <div style={{ textAlign: "left" }}>
-                    <div style={{ fontSize: 11, color: "#64748b", fontFamily: "monospace", letterSpacing: 1, marginBottom: 2 }}>QS SCORE™</div>
-                    <div style={{ fontSize: 16, fontWeight: 800, color: contractor.qs_color }}>{contractor.qs_label}</div>
-                    <Link href="/qs-score">
-                      <span style={{ fontSize: 11, color: "#475569", cursor: "pointer", textDecoration: "underline" }}>How scoring works →</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
 
               {/* Detail grid */}
               <div style={{ background: "#161b22", border: "1px solid #21262d", borderRadius: 12, padding: 24, textAlign: "left", marginBottom: 20 }}>

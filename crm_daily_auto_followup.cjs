@@ -64,38 +64,38 @@ function buildEmail(lead) {
   if (bt.includes('notary')) {
     const url = `https://quantumsurety.bond/get-bond?type=notary&utm_source=crm-daily&utm_campaign=notary-auto`;
     return {
-      subject: noName ? 'Your Texas notary bond — from $27.50, instant certificate' : `${name}, your Texas notary bond — from $27.50, instant certificate`,
+      subject: noName ? 'Your Texas notary bond — $50, instant certificate' : `${name}, your Texas notary bond — $50, instant certificate`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You looked into a Texas notary bond. We haven't heard back — if you're still getting bonded, it takes under 5 minutes and your certificate is emailed instantly.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You looked into a Texas notary bond. We haven't heard back — if you're still getting bonded, it takes under 5 minutes and your certificate is instant.</p>
   <div style="background:#f8fafc;border-left:4px solid #f59e0b;padding:16px;margin:0 0 20px;border-radius:4px">
-    <strong style="color:#0f172a">From $27.50 · 4-year term · Instant PDF · TX SOS compliant</strong>
+    <strong style="color:#0f172a">$50 flat · 4-year term · Instant PDF · TX SOS compliant</strong>
   </div>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get My Notary Bond →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply here or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\nYou looked into a Texas notary bond. From $27.50 for a 4-year term — certificate emailed instantly.\n\nGet bonded: ${url}\n\nQuestions? Reply or call (214) 666-8718.\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nYou looked into a Texas notary bond. $50 flat for 4 years, instant certificate.\n\nGet bonded: ${url}\n\nQuestions? Reply or call (214) 666-8718.\n\nQuantum Surety | TDI #3480229`,
     };
   }
 
   if (bt.includes('contractor')) {
+  // Rewritten 2026-09-26: TDLR/TSBPE licenses require liability insurance, not a surety bond.
+  // Never claim a statewide bond requirement, TDLR suspension, penalties or compliance stats here.
     const url = `https://quantumsurety.bond/get-bond?type=contractor&utm_source=crm-daily&utm_campaign=contractor-auto`;
     return {
-      subject: noName ? 'Your TDLR contractor bond — same-day approval' : `${name}, your TDLR contractor bond — same-day approval`,
+      subject: noName ? 'Your Texas contractor bond request' : `${name}, your Texas contractor bond request`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Your TDLR contractor license requires an active surety bond. Without it, you're technically non-compliant — TDLR can suspend your license at any time.</p>
-  <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:16px;margin:0 0 20px;border-radius:4px">
-    <strong style="color:#92400e">Same-day approval · Starting at $75/yr · Instant digital certificate</strong>
-  </div>
-  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get Compliant Today →</a>
+  <p style="color:#475569;line-height:1.6;margin:0 0 12px">Thanks for asking about a contractor bond. One note so you buy the right thing: TDLR contractor licenses require liability insurance, not a surety bond. A bond is needed when a city or a project owner asks for one, and they set the amount.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">If you have that requirement in hand, reply with who is asking and the bond amount and we'll quote it. Premiums start at $100.</p>
+  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Request a quote →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\nYour TDLR contractor license requires a surety bond. Without it, TDLR can suspend your license.\n\nSame-day approval, starting at $75/yr.\n\nGet bonded: ${url}\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nThanks for asking about a contractor bond. TDLR contractor licenses require liability insurance, not a surety bond. A bond is needed when a city or a project owner asks for one, and they set the amount.\n\nIf you have that requirement, reply with who is asking and the amount and we'll quote it. Premiums start at $100.\n\nRequest a quote: ${url}\n\nQuantum Surety | TDI #3480229`,
     };
   }
 

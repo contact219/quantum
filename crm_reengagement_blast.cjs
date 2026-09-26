@@ -33,10 +33,10 @@ const FROM     = 'Theodore Sparks <administrator@quantumsurety.bond>';
 const REPLY_TO = 'contact@quantumsurety.bond';
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
 function loadSent() { try { return new Set(JSON.parse(fs.readFileSync(SENT_LOG,'utf8'))); } catch { return new Set(); } }
 function logSent(e, s) { s.add(e); fs.writeFileSync(SENT_LOG, JSON.stringify([...s])); }
+
+const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
 
 const BIZ_SUFFIXES = new Set(['llc','inc','corp','co','ltd','services','construction','group','solutions','consulting','management','associates','enterprises','company','industries','systems','technologies','contractors']);
 const KNOWN_NAMES  = new Set('james,john,robert,michael,william,david,richard,joseph,thomas,charles,christopher,daniel,matthew,anthony,mark,donald,steven,paul,andrew,joshua,kenneth,kevin,brian,george,edward,ronald,timothy,jason,jeffrey,ryan,gary,jacob,nicholas,eric,jonathan,stephen,larry,justin,scott,brandon,benjamin,samuel,frank,raymond,gregory,alexander,patrick,jack,dennis,jerry,tyler,henry,aaron,jose,adam,nathan,zachary,douglas,peter,kyle,noah,ethan,jeremy,walter,christian,keith,roger,terry,austin,sean,gerald,carl,harold,dylan,arthur,lawrence,jordan,jesse,bryan,billy,joe,bruce,gabriel,logan,albert,willie,alan,juan,wayne,elijah,randy,roy,vincent,ralph,eugene,russell,bobby,mason,philip,louis,omar,liam,oliver'.split(','));
@@ -97,23 +97,21 @@ function buildEmail(lead) {
   }
 
   if (bt.includes('contractor')) {
+  // Rewritten 2026-09-26: TDLR/TSBPE licenses require liability insurance, not a surety bond.
+  // Never claim a statewide bond requirement, TDLR suspension, penalties or compliance stats here.
     const url = `https://quantumsurety.bond/get-bond?type=contractor&utm_source=crm-reengage&utm_campaign=contractor-7day`;
     return {
-      subject: noName ? 'TDLR bond update — 46.9% of TX contractors are non-compliant' : `${name} — 46.9% of TX contractors have expired bonds. Are you one?`,
+      subject: noName ? 'Still need that contractor bond?' : `${name}, still need that contractor bond?`,
       html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 12px">Our analysis of TDLR public data found that <strong>29.3% of all Texas contractors have expired bonds right now</strong> — and 46.9% of electricians specifically are non-compliant. TDLR can suspend licenses with no advance notice when bond coverage lapses.</p>
-  <div style="background:#fef2f2;border-left:4px solid #ef4444;padding:14px;margin:0 0 16px;border-radius:4px">
-    <strong style="color:#991b1b">TDLR penalty for non-compliance: up to $10,000 per violation + license suspension</strong>
-  </div>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">Quantum Surety offers same-day approval starting at $75/yr. Your compliance is restored instantly when you get your bond — and we'll send renewal alerts so this never happens again.</p>
-  ${proof}
-  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:16px;margin-bottom:20px">Get Compliant Today — $75/yr →</a>
-  <p style="color:#64748b;font-size:13px">Reply or call <strong>(214) 666-8718</strong> with any questions.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 12px">Following up on your contractor bond request. If a city or a project owner has asked you for a bond, reply with who is asking and the amount and we'll quote it. Premiums start at $100.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">If nobody has asked for one, you may not need a bond at all: TDLR contractor licenses require liability insurance, not a surety bond.</p>
+  <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Request a quote →</a>
+  <p style="color:#64748b;font-size:13px;margin-top:20px">Reply or call <strong>(214) 666-8718</strong> with any questions.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-      text: `${hi}\n\n29.3% of Texas contractors have expired bonds right now. TDLR can suspend your license with no advance notice.\n\nSame-day approval, $75/yr. Get compliant: ${url}\n\nQuestions: (214) 666-8718\n\nQuantum Surety | TDI #3480229`,
+      text: `${hi}\n\nFollowing up on your contractor bond request. If a city or a project owner has asked you for a bond, reply with who is asking and the amount and we'll quote it. Premiums start at $100.\n\nIf nobody has asked for one, you may not need a bond at all: TDLR contractor licenses require liability insurance, not a surety bond.\n\nRequest a quote: ${url}\n\nQuestions: (214) 666-8718\n\nQuantum Surety | TDI #3480229`,
     };
   }
 

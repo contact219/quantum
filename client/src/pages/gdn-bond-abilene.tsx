@@ -21,18 +21,18 @@ const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Do auto dealers in Abilene need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $25,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." } },
-    { "@type": "Question", "name": "How much does a GDN bond cost in Abilene?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bond premiums start from around $100–$200 per year depending on your credit profile. Quantum Surety offers instant quotes with no obligation." } },
-    { "@type": "Question", "name": "How do I get a GDN bond in Abilene?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, receive instant approval, and get your $25,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." } },
-    { "@type": "Question", "name": "What is a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "A General Distinguishing Number (GDN) bond is a $25,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." } }
+    { "@type": "Question", "name": "Do auto dealers in Abilene need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $50,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." } },
+    { "@type": "Question", "name": "How much does a GDN bond cost in Abilene?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. Your exact premium is confirmed before you pay, with no obligation." } },
+    { "@type": "Question", "name": "How do I get a GDN bond in Abilene?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, receive instant approval, and get your $50,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." } },
+    { "@type": "Question", "name": "What is a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "A General Distinguishing Number (GDN) bond is a $50,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." } }
   ]
 };
 
 const faqs = [
-  { q: "Do auto dealers in Abilene need a GDN bond?", a: "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $25,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." },
-  { q: "How much does a GDN bond cost in Abilene?", a: "GDN dealer bond premiums start from around $100–$200 per year depending on your credit profile. Quantum Surety offers instant quotes with no obligation." },
-  { q: "How do I get a GDN bond in Abilene?", a: "Apply online at Quantum Surety, receive instant approval, and get your $25,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." },
-  { q: "What is a GDN bond?", a: "A General Distinguishing Number (GDN) bond is a $25,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." }
+  { q: "Do auto dealers in Abilene need a GDN bond?", a: "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $50,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." },
+  { q: "How much does a GDN bond cost in Abilene?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. Your exact premium is confirmed before you pay, with no obligation." },
+  { q: "How do I get a GDN bond in Abilene?", a: "Apply online at Quantum Surety, receive instant approval, and get your $50,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." },
+  { q: "What is a GDN bond?", a: "A General Distinguishing Number (GDN) bond is a $50,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." }
 ];
 
 export default function GDNBondAbilene() {
@@ -83,8 +83,8 @@ export default function GDNBondAbilene() {
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
           {[
-            { label: "Bond amount", value: "$25,000", sub: "Required by TxDMV" },
-            { label: "Starting at", value: "$100/yr", sub: "Competitive rates" },
+            { label: "Bond amount", value: "$50,000", sub: "Required by TxDMV" },
+            { label: "Starting at", value: "$250", sub: "for the 2-year term" },
             { label: "Turnaround", value: "Same day", sub: "Certificate emailed instantly" },
           ].map((item) => (
             <div key={item.label}>
@@ -100,7 +100,7 @@ export default function GDNBondAbilene() {
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Abilene businesses choose Quantum Surety</h2>
           <ul className="space-y-3 text-gray-700 text-sm">
-              <li key="$25,000 TxDMV-compliant coverage" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>$25,000 TxDMV-compliant coverage</span></li>
+              <li key="$50,000 TxDMV-compliant coverage" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>$50,000 TxDMV-compliant coverage</span></li>
               <li key="Instant approval available" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Instant approval available</span></li>
               <li key="Same-day certificate" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Same-day certificate</span></li>
               <li key="All dealer types covered" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>All dealer types covered</span></li>

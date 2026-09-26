@@ -122,12 +122,10 @@ const BOND_META: Record<string, BondMeta> = {
     redirectUrl: NOTARY_URL,
     keywords: "notary public commission sos sb693 stamp seal",
   },
-  // UNRESOLVED, 2026-08-13 — do not change this figure without checking TxDMV.
-  // This page has advertised the GDN bond at $50,000 for as long as it has existed, but
-  // every dealer bond in our own book (all 15, issued and saved) is $25,000 with premiums
-  // of $250–$300. Either Texas raised the statutory amount and our book is legacy, or this
-  // number is simply wrong. Left as-is deliberately rather than silently "corrected";
-  // flagged for Ted to confirm against the current TxDMV requirement.
+  // RESOLVED 2026-09-26: $50,000 is correct. TxDMV raised the independent dealer bond to
+  // $50,000 on 2021-09-01 (2-year term). The 2026-08-13 note here saw "$25,000" in our book
+  // while the RLI scraper was only reading 20 of 519 bonds; the full book now has 63 dealer
+  // bonds at $50,000 (premiums $250, one $375) and a single withdrawn $25,000 legacy record.
   dealer: {
     label: "Texas GDN Dealer Bond",
     amount: "$50,000",

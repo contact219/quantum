@@ -41,7 +41,7 @@ export default function TexasContractorLicenseBondCost() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> Most Texas contractor license bonds cost $100–$300/year for a $10,000 bond. Auto dealer bonds ($25,000) run $250–$500/year. You pay a small annual premium — not the full bond amount.
+            <strong>TL;DR:</strong> Most Texas contractor license bonds cost $100–$300/year for a $10,000 bond. Auto dealer (GDN) bonds are $50,000 and start at $250 for the 2-year term. You pay a small annual premium — not the full bond amount.
           </p>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function TexasContractorLicenseBondCost() {
                     ["Irrigator (TDLR)", "$10,000", "$100–$150", "$200–$300"],
                     ["Dallas City Contractor", "$10,000–$25,000", "$100–$250", "$250–$500"],
                     ["Houston City Contractor", "$10,000–$25,000", "$100–$250", "$250–$500"],
-                    ["Auto Dealer (TxDMV)", "$25,000", "$250–$350", "$400–$600"],
+                    ["Auto Dealer (TxDMV)", "$50,000", "$125/yr ($250 per 2-yr term)", "Quoted"],
                   ].map(([trade, amount, good, lower]) => (
                     <tr key={trade} className="border-b border-gray-200 hover:bg-gray-50">
                       <td className="p-3 border border-gray-200 text-gray-700">{trade}</td>

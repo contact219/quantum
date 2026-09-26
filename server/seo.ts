@@ -3346,7 +3346,7 @@ export const PAGE_META: Record<string, PageMeta> = {
     content: `
       <main>
         <h1>How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</h1>
-        <p>Most Texas contractor license bonds cost $100–$300/year for a $10,000 bond. Auto dealer bonds ($25,000) run $250–$500/year. You pay a small annual premium — not the full bond amount.</p>
+        <p>Most Texas contractor license bonds cost $100–$300/year for a $10,000 bond. Auto dealer (GDN) bonds are $50,000 and start at $250 for the 2-year term. You pay a small annual premium — not the full bond amount.</p>
         <section>
           <h2>Texas Contractor Bond Costs by Trade (2026)</h2>
           <ul>
@@ -3354,7 +3354,7 @@ export const PAGE_META: Record<string, PageMeta> = {
             <li>HVAC / AC (TDLR) — $10,000 bond, $100–$300/year</li>
             <li>Plumber (TSBPE) — $10,000 bond, $100–$300/year</li>
             <li>General Contractor (City) — $25,000 bond, $250–$500/year</li>
-            <li>Auto Dealer (TxDMV) — $25,000 bond, $250–$600/year</li>
+            <li>Auto Dealer (TxDMV) — $50,000 bond, from $250 for the 2-year term</li>
           </ul>
         </section>
         <a href="/quote?type=license&amp;state=TX">Get My Bond Quote</a>
@@ -8513,7 +8513,7 @@ async function _bondDataSSR(): Promise<PageMeta> {
   ${_rowsTable("Texas notary commissions expiring, next 12 months", ["Month", "Commissions expiring"], nExp, ["month", "expiring"])}
 
   <h2>GDN dealer licences expiring by month</h2>
-  <p>Texas General Distinguishing Number (GDN) licences renew annually and require a $25,000 dealer bond.</p>
+  <p>Texas General Distinguishing Number (GDN) licences require a $50,000 dealer bond.</p>
   ${_rowsTable("Texas GDN dealer licences expiring, next 12 months", ["Month", "Licences expiring"], dExp, ["month", "expiring"])}
 
   <h2>Notary commissions by city</h2>

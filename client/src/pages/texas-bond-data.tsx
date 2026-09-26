@@ -151,7 +151,7 @@ export default function TexasBondData() {
 
           <h2 className="mt-12 text-2xl font-bold text-slate-900">GDN dealer licences expiring by month</h2>
           <p className="mt-2 text-slate-600">
-            Texas GDN licences renew annually and require a $25,000 dealer bond.
+            Texas GDN licences require a $50,000 dealer bond.
           </p>
           <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5">
             <BarChart rows={dExp} label="licences" />

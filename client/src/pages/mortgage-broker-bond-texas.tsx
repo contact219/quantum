@@ -255,7 +255,7 @@ export default function MortgageBrokerBondTexas() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { href: "/bonds/notary-bond-texas", label: "Texas Notary Bond", desc: "$50 — 4-year term" },
-              { href: "/bonds/auto-dealer-bond-texas", label: "GDN / Auto Dealer Bond", desc: "$25,000 dealer bond" },
+              { href: "/bonds/auto-dealer-bond-texas", label: "GDN / Auto Dealer Bond", desc: "$50,000 dealer bond" },
               { href: "/bonds/license-bond-texas", label: "License & Permit Bond", desc: "General business license bonds" },
               { href: "/bonds/auctioneer-bond-texas", label: "Auctioneer Bond", desc: "$10,000 TDLR bond" },
             ].map((item) => (

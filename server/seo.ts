@@ -8392,10 +8392,10 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
   const status   = (d.status as string) || "unknown";
   const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Expired";
   const expRaw   = (d.expire_date as string) || "";
-  const expDate  = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  const expDate  = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }) : "";
   return {
     title: `${name} — ${licType} License Status | ${loc} | Quantum Surety`,
-    description: `${name} (TDLR #${license}) — ${licType} in ${loc}. License status: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. From TDLR public records via Quantum Surety.`,
+    description: `${name} (TDLR #${license}) — ${licType} in ${loc}. License status: ${statusLabel}${expDate ? (status === "expired" ? ". Expired " : ". Expires ") + expDate : ""}. From TDLR public records via Quantum Surety.`,
     canonical: `${BASE_URL}/contractor/${license}`,
     ogType: "profile",
     noIndex: false,

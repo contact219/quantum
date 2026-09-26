@@ -53,14 +53,14 @@ export default function ContractorDetail() {
   const name = contractor?.business_name || contractor?.owner_name || license;
   const city = contractor?.business_city?.split(" ")[0] || contractor?.business_county || "Texas";
   const licType = contractor?.license_type || "Contractor";
-  const expDate = contractor?.expire_date ? new Date(contractor.expire_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+  const expDate = contractor?.expire_date ? new Date(contractor.expire_date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }) : "";
   const isExpired = contractor?.status === "expired";
 
   const pageTitle = contractor
     ? `${name} — ${licType} License Status | ${city}, TX | Quantum Surety`
     : `Contractor License Status — License ${license} | Quantum Surety`;
   const pageDesc = contractor
-    ? `${name} (TDLR ${license}) — ${licType} in ${city}, Texas. License status: ${si.label}. Expires ${expDate}. Verified by Quantum Surety from TDLR public records.`
+    ? `${name} (TDLR ${license}) — ${licType} in ${city}, Texas. License status: ${si.label}. ${isExpired ? "Expired" : "Expires"} ${expDate}. From TDLR public records via Quantum Surety.`
     : `Look up license status for TDLR license ${license} — Texas contractor license verification.`;
 
   const embedCode = contractor

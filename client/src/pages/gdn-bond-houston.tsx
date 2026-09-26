@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, Al
 const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
-  { q: "Do Houston auto dealers need a GDN bond?", a: "Yes. All Texas motor vehicle dealers — including Houston and Harris County dealers — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033. TxDMV will not issue or renew a dealer license without a valid bond on file." },
+  { q: "Do Houston auto dealers need a GDN bond?", a: "Yes. All Texas motor vehicle dealers — including Houston and Harris County dealers — must carry a $50,000 GDN surety bond under Texas Transportation Code §503.033. TxDMV will not issue or renew a dealer license without a valid bond on file." },
   { q: "How much does a GDN bond cost for a Houston dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "Can I get a GDN bond the same day in Houston?", a: "Yes. Quantum Surety issues GDN bonds same-day. Apply online, get instant approval, and receive your bond certificate as a PDF — ready to upload to TxDMV eLICENSING the same day." },
   { q: "Does the GDN bond requirement apply to BHPH dealers in Houston?", a: "Yes. Buy Here Pay Here dealers in Houston are subject to the same $50,000 GDN bond requirement as all other Texas dealer license types under §503.033." },
@@ -81,7 +81,7 @@ export default function GDNBondHouston() {
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-2">Operating without a bond is a Class A misdemeanor</h2>
-              <p className="text-gray-700 text-sm leading-relaxed">Texas Occupations Code §503.033 requires every licensed motor vehicle dealer to maintain a valid GDN bond at all times. Operating without one is a Class A misdemeanor — up to $4,000 fine and up to one year in jail, plus license revocation by TxDMV.</p>
+              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 requires every licensed motor vehicle dealer to maintain a valid GDN bond at all times. Operating without one is a Class A misdemeanor — up to $4,000 fine and up to one year in jail, plus license revocation by TxDMV.</p>
             </div>
           </div>
         </section>

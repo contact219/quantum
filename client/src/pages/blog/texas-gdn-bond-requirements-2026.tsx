@@ -47,7 +47,7 @@ export default function BlogGDNBondRequirements2026() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">What is a Texas GDN bond?</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              A GDN bond — short for General Distinguishing Number bond — is a $50,000 surety bond required by the Texas Department of Motor Vehicles (TxDMV) as a condition of holding any motor vehicle dealer license in Texas. The requirement is codified in <strong>Texas Occupations Code §503.033</strong>.
+              A GDN bond — short for General Distinguishing Number bond — is a $50,000 surety bond required by the Texas Department of Motor Vehicles (TxDMV) as a condition of holding any motor vehicle dealer license in Texas. The requirement is codified in <strong>Texas Transportation Code §503.033</strong>.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
               The bond is not insurance for your business. It's a financial guarantee to the state and to consumers that you will operate your dealership lawfully. If you commit fraud, fail to transfer a vehicle title, misrepresent a vehicle's condition, or violate Texas dealer licensing rules, a harmed party can file a claim against your bond to recover their losses.
@@ -93,7 +93,7 @@ export default function BlogGDNBondRequirements2026() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-gray-400 mt-3">Source: Texas Occupations Code §503.033 / TxDMV dealer licensing requirements.</p>
+            <p className="text-xs text-gray-400 mt-3">Source: Texas Transportation Code §503.033 / TxDMV dealer licensing requirements.</p>
           </section>
 
           <section>
@@ -131,7 +131,7 @@ export default function BlogGDNBondRequirements2026() {
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 mb-3">Class A misdemeanor: operating without a valid GDN bond</h2>
                   <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                    Texas Occupations Code §503.033 makes it a <strong>Class A misdemeanor</strong> to operate as a motor vehicle dealer without a valid surety bond on file with TxDMV. A Class A misdemeanor in Texas carries penalties of:
+                    Texas Transportation Code §503.033 makes it a <strong>Class A misdemeanor</strong> to operate as a motor vehicle dealer without a valid surety bond on file with TxDMV. A Class A misdemeanor in Texas carries penalties of:
                   </p>
                   <ul className="space-y-2 mb-3">
                     {[
@@ -202,7 +202,7 @@ export default function BlogGDNBondRequirements2026() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Key facts summary</h2>
             <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
               {[
-                { label: "Governing law", value: "Texas Occupations Code §503.033" },
+                { label: "Governing law", value: "Texas Transportation Code §503.033" },
                 { label: "Issuing authority", value: "Texas Department of Motor Vehicles (TxDMV)" },
                 { label: "Required bond amount", value: "$50,000 — uniform for all 6 dealer types" },
                 { label: "Estimated annual cost", value: "$100–$300/year (credit-based)" },

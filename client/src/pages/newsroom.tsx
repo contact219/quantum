@@ -5,8 +5,8 @@ import { FileText, ExternalLink, Phone, Mail } from "lucide-react";
 const PRESS_RELEASES = [
   {
     date: "June 24, 2026",
-    headline: "More Than 1,700 Texas Auto Dealers Operating With Expired Surety Bonds, Data Analysis Reveals",
-    subhead: "Free online database lets Texans verify any dealer's bond status before signing; GDN compliance rates among worst in Texas.",
+    headline: "TxDMV Records Show 1,777 Texas Auto Dealer Surety Bonds Past Their Expiration Date",
+    subhead: "June 2026 snapshot of TxDMV records. Records can lag renewals, so buyers should confirm a dealer's bond before signing; a free lookup is available.",
     url: "/blog/texas-auto-dealer-bond-compliance-jun2026",
     tag: "Consumer Protection",
     tagColor: "#dc2626",

@@ -9,7 +9,7 @@ export default function TexasAutoDealerBondCompliance2026() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    "headline": "More Than 1,700 Texas Auto Dealers Operating With Expired Surety Bonds, Data Analysis Reveals",
+    "headline": "TxDMV Records Show 1,777 Texas Auto Dealer Surety Bonds Past Their Expiration Date",
     "datePublished": PUBLISHED,
     "dateModified": MODIFIED,
     "author": { "@type": "Person", "name": "Nice Shotwell-Sparks" },
@@ -18,7 +18,7 @@ export default function TexasAutoDealerBondCompliance2026() {
       "name": "Quantum Surety LLC",
       "logo": { "@type": "ImageObject", "url": "https://quantumsurety.bond/QS_Logo.png" }
     },
-    "description": "A new analysis of TxDMV public records shows 1,777+ Texas auto dealers are operating with expired surety bonds — bonds legally required to protect car buyers under Texas law.",
+    "description": "In a June 2026 snapshot of TxDMV public records, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. Here is what that does and does not mean for car buyers.",
     "mainEntityOfPage": "https://quantumsurety.bond/blog/texas-auto-dealer-bond-compliance-jun2026",
     "image": "https://quantumsurety.bond/QS_OG_2.png",
     "keywords": "Texas GDN bond, auto dealer surety bond Texas, TxDMV bond compliance, car dealer bond expired, consumer protection Texas"
@@ -27,11 +27,11 @@ export default function TexasAutoDealerBondCompliance2026() {
   return (
     <>
       <Helmet>
-        <title>1,700+ Texas Auto Dealers Have Expired Surety Bonds, Data Shows | Quantum Surety</title>
-        <meta name="description" content="TxDMV data shows 1,777 Texas auto dealers are operating with expired GDN surety bonds. Free dealer bond lookup at verify.quantumsurety.bond — protect yourself before you buy." />
+        <title>1,777 Texas Dealer Bonds Past Expiration in TxDMV Records | Quantum Surety</title>
+        <meta name="description" content="In June 2026, 1,777 Texas GDN dealer records showed a surety bond past its expiration date. How to check a dealer's bond before you buy." />
         <link rel="canonical" href="https://quantumsurety.bond/blog/texas-auto-dealer-bond-compliance-jun2026" />
-        <meta property="og:title" content="1,700+ Texas Auto Dealers Have Expired Surety Bonds — Car Buyers at Risk" />
-        <meta property="og:description" content="New data shows 1,777 Texas GDN dealers are operating with expired surety bonds. Find out how to check before you buy." />
+        <meta property="og:title" content="1,777 Texas Dealer Bonds Past Expiration in TxDMV Records" />
+        <meta property="og:description" content="In June 2026, 1,777 Texas GDN dealer records showed an expired surety bond. How to check before you buy." />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={PUBLISHED} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
@@ -50,7 +50,7 @@ export default function TexasAutoDealerBondCompliance2026() {
             CONSUMER ALERT
           </div>
           <h1 style={{ fontSize: "clamp(24px,4vw,38px)", fontWeight: 800, lineHeight: 1.2, color: "#0f172a", margin: "0 0 16px" }}>
-            More Than 1,700 Texas Auto Dealers Are Operating With Expired Surety Bonds
+            TxDMV Records Show 1,777 Texas Auto Dealer Surety Bonds Past Their Expiration Date
           </h1>
           <p style={{ fontSize: 16, color: "#475569", margin: "0 0 12px" }}>
             A free public lookup tool now lets Texas car buyers verify any dealer's bond status before they sign.
@@ -64,23 +64,22 @@ export default function TexasAutoDealerBondCompliance2026() {
         <div style={{ background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 12, padding: "20px 24px", marginBottom: 32 }}>
           <p style={{ fontWeight: 700, color: "#92400e", margin: "0 0 10px", fontSize: 15 }}>Key Findings — TxDMV Data, June 2026</p>
           <ul style={{ margin: 0, padding: "0 0 0 20px", color: "#78350f", fontSize: 14, lineHeight: 2 }}>
-            <li><strong>1,777</strong> Texas GDN-licensed auto dealers: surety bonds expired</li>
-            <li><strong>2,283</strong> Texas dealers: bonds expiring within 90 days</li>
-            <li><strong>~18.9%</strong> of all Texas GDN licensees: in or near non-compliance</li>
+            <li><strong>1,777</strong> Texas GDN dealer records: surety bond past its expiration date</li>
+            <li><strong>2,283</strong> Texas GDN dealer records: bond expiring within 90 days</li>
             <li>Texas law requires all GDN dealers to maintain a <strong>$50,000 surety bond</strong></li>
           </ul>
         </div>
 
         <p>
-          A new analysis of Texas Department of Motor Vehicles (TxDMV) licensing data shows that at least
-          <strong> 1,777 Texas auto dealers</strong> are currently operating with expired surety bonds —
-          bonds required by state law to protect consumers in vehicle transactions.
+          In a June 2026 snapshot of Texas Department of Motor Vehicles (TxDMV) licensing records,
+            <strong> 1,777 Texas GDN dealer records</strong> showed a surety bond past its expiration date.
+            The records alone do not show whether a dealer renewed late, closed, or is still selling.
         </p>
 
         <p>
           The findings come from a database maintained by <a href="https://quantumsurety.bond" style={{ color: "#2563eb" }}>Quantum Surety LLC</a>,
           a Texas-licensed surety bond agency (TDI License #3480229) that tracks 19,700+ Texas GDN dealer
-          records updated daily from TxDMV public records.
+          records from TxDMV public data.
         </p>
 
         <h2 style={{ fontSize: 22, fontWeight: 700, color: "#0f172a", margin: "36px 0 14px" }}>
@@ -89,24 +88,23 @@ export default function TexasAutoDealerBondCompliance2026() {
 
         <p>
           Under Texas Transportation Code § 503.033, all GDN license holders must maintain a $50,000 surety
-          bond as a condition of their dealer license. This bond functions as a consumer protection mechanism:
-          if a dealer commits fraud, fails to deliver a clean title, or takes your money and goes out of business,
-          you can file a claim against the bond to recover your financial loss.
+          bond as a condition of their dealer license. The bond is conditioned on the dealer paying its valid bank
+            drafts for vehicle purchases and transferring good title to each vehicle it sells, so a buyer left
+            without a clean title can file a claim against it.
         </p>
 
         <p>
-          The critical problem: <strong>a lapsed bond does not automatically trigger license suspension.</strong>
-          Dealers can and do continue operating after their bond expires. Their license remains "active" in the
-          TxDMV system while their consumer protection coverage has quietly disappeared.
+          An expiration date in the records is a reason to ask, not proof of wrongdoing: the dealer may have
+            renewed and the record not yet caught up. Before you buy, ask the dealer for their current bond or
+            check it yourself.
         </p>
 
         <div style={{ background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 10, padding: "18px 22px", margin: "24px 0" }}>
-          <p style={{ fontWeight: 700, color: "#0c4a6e", margin: "0 0 8px" }}>What happens when a dealer's bond lapses:</p>
+          <p style={{ fontWeight: 700, color: "#0c4a6e", margin: "0 0 8px" }}>If a dealer's bond shows as expired:</p>
           <ul style={{ margin: 0, padding: "0 0 0 18px", color: "#075985", fontSize: 14, lineHeight: 2 }}>
-            <li>The dealer's $50,000 consumer protection guarantee disappears</li>
-            <li>Claims for fraud, title failures, or unfulfilled contracts have no bond to recover from</li>
-            <li>The dealer's TxDMV license may still show as "Active"</li>
-            <li>The consumer has no way to know — unless they check</li>
+            <li>A bond that has truly lapsed cannot pay a title claim for a sale made after it ended</li>
+                <li>Records can lag a renewal, so confirm with the dealer</li>
+                <li>You can check a dealer's bond record before you sign</li>
           </ul>
         </div>
 
@@ -148,13 +146,13 @@ export default function TexasAutoDealerBondCompliance2026() {
         </h2>
 
         <p>
-          If you're a Texas auto dealer with an expired or expiring GDN bond, renewal is fast and affordable.
-          Quantum Surety issues GDN surety bonds same-day — certificate delivered by email, accepted by TxDMV immediately.
+          If you're a Texas auto dealer with an expired or expiring GDN bond, renewal is straightforward.
+          Quantum Surety writes GDN bonds through RLI. Once RLI approves your application, the certificate is emailed to you to file with TxDMV.
         </p>
 
         <ul style={{ paddingLeft: 20, lineHeight: 2.2 }}>
           <li>$50,000 GDN bond — <strong>from $250 for the 2-year term</strong></li>
-          <li>Same-day issuance — certificate emailed immediately</li>
+          <li>Certificate emailed once approved</li>
           <li>TDI-licensed, Texas-based agency</li>
           <li>No office visit required</li>
         </ul>

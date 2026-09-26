@@ -115,7 +115,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 mb-3">What happens if your GDN bond lapses</h2>
                   <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                    A lapsed bond — even by one day — makes your dealer license invalid under Texas Occupations Code §503.033. The consequences are immediate and can be severe:
+                    A lapsed bond — even by one day — makes your dealer license invalid under Texas Transportation Code §503.033. The consequences are immediate and can be severe:
                   </p>
                   <div className="space-y-2 mb-4">
                     {[

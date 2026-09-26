@@ -506,7 +506,7 @@ export default function Home() {
                   Texas Auto Dealer GDN Bond — From $250 per 2-yr term
                 </h2>
                 <p className="text-slate-300 text-lg leading-relaxed mb-7 max-w-xl">
-                  Every Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Occupations Code §503.033. Quantum Surety gets you bonded same-day with instant PDF delivery — accepted by TxDMV.
+                  Every Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Transportation Code §503.033. Quantum Surety gets you bonded same-day with instant PDF delivery — accepted by TxDMV.
                 </p>
 
                 <ul className="space-y-3 mb-8">

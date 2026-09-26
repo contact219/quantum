@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, Al
 const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
-  { q: "Do Fort Worth auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas — including dealers in Fort Worth / DFW — must carry a $50,000 GDN surety bond under Texas Occupations Code §503.033 before TxDMV will issue or renew a dealer license." },
+  { q: "Do Fort Worth auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas — including dealers in Fort Worth / DFW — must carry a $50,000 GDN surety bond under Texas Transportation Code §503.033 before TxDMV will issue or renew a dealer license." },
   { q: "How much does a GDN bond cost for a Fort Worth dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "How fast can I get a GDN bond in Fort Worth?", a: "Same-day. Apply online, get approved, and receive your bond certificate as an instant PDF — ready to submit to TxDMV's eLICENSING portal the same day." },
   { q: "Does a Fort Worth dealer need a city bond in addition to the GDN bond?", a: "The GDN bond is a state-level TxDMV requirement. Some municipalities may have additional local business license requirements, but the $50,000 GDN bond is the primary surety requirement for your dealer license." },
@@ -81,7 +81,7 @@ export default function GDNBondFortWorth() {
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-2">Operating without a bond is a Class A misdemeanor</h2>
-              <p className="text-gray-700 text-sm leading-relaxed">Texas Occupations Code §503.033 makes it a Class A misdemeanor to operate as a motor vehicle dealer without a valid GDN bond on file with TxDMV. Penalties include fines up to $4,000, up to one year in jail, and license revocation. A lapsed bond — even for a day — creates the same exposure.</p>
+              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 makes it a Class A misdemeanor to operate as a motor vehicle dealer without a valid GDN bond on file with TxDMV. Penalties include fines up to $4,000, up to one year in jail, and license revocation. A lapsed bond — even for a day — creates the same exposure.</p>
             </div>
           </div>
         </section>

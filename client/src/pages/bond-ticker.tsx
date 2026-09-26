@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link } from "wouter";
 
 const BOND_WATCH_API = "https://verify.quantumsurety.bond/api/bond-watch";

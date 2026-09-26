@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { CheckCircle, Bell, LayoutDashboard, RefreshCw, Zap, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -69,7 +69,7 @@ export default function BondGuardPro() {
     <>
       <Helmet>
         <title>Bond Guard Pro — Multi-Bond Compliance Dashboard for Texas Contractors | Quantum Surety</title>
-        <meta name="description" content="Track all your Texas contractor bonds and TDLR licenses in one dashboard. Automated 30-day and 7-day expiry alerts. 14-day free trial, then $19.99/month." />
+        <meta name="description" content="Track your Texas bonds and TDLR licenses in one dashboard. Automated 30-day and 7-day expiry alerts. 14-day free trial, then $19.99/month." />
         <link rel="canonical" href="https://quantumsurety.bond/bond-guard-pro" />
       </Helmet>
 

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { FileText, ExternalLink, Phone, Mail } from "lucide-react";
 
 const PRESS_RELEASES = [
@@ -36,7 +36,7 @@ export default function Newsroom() {
     <>
       <Helmet>
         <title>Newsroom — Quantum Surety Press Center | Texas Surety Bond Data & Research</title>
-        <meta name="description" content="Press resources, data reports, and research from Quantum Surety — Texas's leading surety bond agency tracking 816,000+ TDLR licenses and 558,000+ notary records." />
+        <meta name="description" content="Press resources and data from Quantum Surety, a Texas surety bond agency publishing public-records data on 816,000+ TDLR licenses and 558,000+ notary records." />
         <link rel="canonical" href="https://quantumsurety.bond/newsroom" />
       </Helmet>
 

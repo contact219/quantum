@@ -171,6 +171,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     "/bond-health-score": "/verify-contractor",
     "/hoa-portal": "/verify-contractor",
     "/for-agencies": "/verify-contractor",
+    // The "46.9% of electricians have expired bonds" report these pages were built from.
+    "/blog/texas-contractor-bond-compliance-report-2026": "/verify-contractor",
     // Orphan duplicate of the established /bonded-title-texas page (same component,
     // zero inbound internal links) — consolidate link equity instead of splitting it.
     "/bonds/texas-vehicle-title-bond": "/bonded-title-texas",

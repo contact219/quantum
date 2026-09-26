@@ -171,7 +171,6 @@ const BlogBidVsPerformanceVsPayment = lazy(() => import("@/pages/blog/bid-bond-v
 const BlogNotaryBondVsEO = lazy(() => import("@/pages/blog/texas-notary-bond-vs-eo-insurance"));
 const BlogGBPGuide = lazy(() => import("@/pages/blog/google-business-profile-texas-surety-bond"));
 const BlogLostCarTitleTexas = lazy(() => import("@/pages/blog/how-to-get-lost-car-title-texas"));
-const BlogContractorBondComplianceReport2026 = lazy(() => import("@/pages/blog/texas-contractor-bond-compliance-report-2026"));
 const BlogAutoDealerBondCompliance2026 = lazy(() => import("@/pages/blog/texas-auto-dealer-bond-compliance-jun2026"));
 const BlogBondedTitleGuide2026 = lazy(() => import("@/pages/blog/texas-bonded-title-complete-guide-2026"));
 const BlogTitleBondCost = lazy(() => import("@/pages/blog/texas-certificate-of-title-bond-cost"));
@@ -652,7 +651,7 @@ function Router() {
       <Route path="/blog/texas-notary-bond-vs-eo-insurance" component={BlogNotaryBondVsEO} />
       <Route path="/blog/google-business-profile-texas-surety-bond" component={BlogGBPGuide} />
       <Route path="/blog/how-to-get-lost-car-title-texas" component={BlogLostCarTitleTexas} />
-      <Route path="/blog/texas-contractor-bond-compliance-report-2026" component={BlogContractorBondComplianceReport2026} />
+      <Route path="/blog/texas-contractor-bond-compliance-report-2026"><ClientRedirect to="/verify-contractor" /></Route>
       <Route path="/blog/texas-auto-dealer-bond-compliance-jun2026" component={BlogAutoDealerBondCompliance2026} />
       <Route path="/blog/texas-bonded-title-complete-guide-2026" component={BlogBondedTitleGuide2026} />
       <Route path="/blog/texas-certificate-of-title-bond-cost" component={BlogTitleBondCost} />

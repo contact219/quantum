@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link } from "wouter";
 
 const BOND_WATCH_API = "https://verify.quantumsurety.bond/api/bond-watch";
@@ -72,14 +72,14 @@ export default function TexasBondWatch() {
   return (
     <>
       <Helmet>
-        <title>Texas Bond Watch — Contractor & Notary Bond Expiration Alerts | Quantum Surety</title>
+        <title>Texas Bond Watch — Notary Bond & Contractor License Expirations | Quantum Surety</title>
         <meta name="description" content={`Texas notary bond and contractor license expirations by county. ${summary ? fmt(summary.contractors.expiring_30d) + " Texas contractor licenses expire in the next 30 days." : "Protect your business — verify bond status before hiring."}`} />
-        <meta property="og:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
+        <meta property="og:title" content="Texas Bond Watch — Notary Bond & Contractor License Expirations" />
         <meta property="og:description" content="Texas notary bond and contractor license status. Updated monthly from state licensing data." />
         <meta property="og:url" content="https://quantumsurety.bond/texas-bond-watch" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
+        <meta name="twitter:title" content="Texas Bond Watch — Notary Bond & Contractor License Expirations" />
         <meta name="twitter:description" content="Tracking 775K+ Texas contractor licenses and notary commissions. Updated monthly from TDLR and Texas SOS." />
         <link rel="canonical" href="https://quantumsurety.bond/texas-bond-watch" />
         <script type="application/ld+json">{JSON.stringify({

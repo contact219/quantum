@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link, useSearch } from "wouter";
 
 export default function NotarySchoolPartner() {
@@ -19,7 +19,7 @@ function StudentView({ applyLink }: { applyLink: string }) {
     <>
       <Helmet>
         <title>Get Your Texas Notary Bond — Recommended by Your Training School | Quantum Surety</title>
-        <meta name="description" content="Your notary training school recommended Quantum Surety for your Texas notary bond. $50 flat, instant PDF certificate, SB693-compliant. Ready in 10 minutes." />
+        <meta name="description" content="Your notary training school recommended Quantum Surety for your Texas notary bond: $50 for the 4-year term plus the state's $21 filing fee, with an instant PDF certificate." />
         <link rel="canonical" href="https://quantumsurety.bond/notary-school-partner" />
       </Helmet>
 
@@ -121,7 +121,7 @@ function PartnerView() {
     <>
       <Helmet>
         <title>Notary Training School Partner Program — Quantum Surety Bonds</title>
-        <meta name="description" content="Earn 10% commission on every Texas notary bond your students purchase. Partner with Quantum Surety — Texas' leading same-day notary bond agency. No paperwork, instant setup." />
+        <meta name="description" content="Earn 10% commission on every Texas notary bond your students purchase. Partner with Quantum Surety, a Texas notary bond agency. No paperwork, instant setup." />
         <link rel="canonical" href="https://quantumsurety.bond/notary-school-partner" />
       </Helmet>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link } from "wouter";
 import { CheckCircle } from "lucide-react";
 
@@ -116,7 +116,7 @@ export default function CompareTool() {
     <>
       <Helmet>
         <title>Compare Texas Notary Bond Prices — Switch &amp; Save | Quantum Surety</title>
-        <meta name="description" content="Compare your Texas notary bond renewal price side-by-side. Western Surety, Merchants, Travelers, Markel, and more. $50 flat through Quantum Surety — instant same-day certificate." />
+        <meta name="description" content="Compare your Texas notary bond renewal price side-by-side. Western Surety, Merchants, Travelers, Markel, and more. $50 through Quantum Surety for the 4-year term, plus the state's $21 filing fee." />
         <link rel="canonical" href="https://quantumsurety.bond/compare" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

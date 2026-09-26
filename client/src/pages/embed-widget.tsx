@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 
 const EMBED_CONTRACTOR = `<!-- Texas Contractor License Verifier by Quantum Surety -->
 <div data-qs-widget data-qs-type="contractor"></div>
@@ -26,7 +26,7 @@ export default function EmbedWidget() {
     <>
       <Helmet>
         <title>Free Embeddable Texas License Verifier Widget | Quantum Surety</title>
-        <meta name="description" content="Add a live Texas contractor bond and notary commission verifier to your website with one line of code. Free, no API key required, covers 1.3M+ Texas licensees." />
+        <meta name="description" content="Add a Texas contractor license and notary commission lookup to your website with one line of code. Free, no API key required, built on public TDLR and Texas SOS records." />
         <link rel="canonical" href="https://quantumsurety.bond/embed-widget" />
       </Helmet>
 

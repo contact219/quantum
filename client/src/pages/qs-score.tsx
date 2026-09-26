@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link } from "wouter";
 
 const GRADES = [

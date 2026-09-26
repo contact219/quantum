@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Link } from "wouter";
 
 // Data from TDLR via data.texas.gov — Quantum Surety analysis, May 2026

@@ -1839,15 +1839,12 @@ export const PAGE_META: Record<string, PageMeta> = {
         <h1>Texas Surety Bond Blog</h1>
         <p>Straight-talk guides on Texas bond requirements, law changes, and licensing — written by Quantum Surety, a TDI-licensed Texas surety bond agency.</p>
         <ul>
-          <li><a href="/blog/texas-contractor-bond-crisis-june-2026">Texas Contractor Bond Crisis: 240,627 Expired Bonds — June 2026 Data</a></li>
           <li><a href="/blog/quantum-surety-tdi-licensed-agency-3480229">Quantum Surety Receives TDI Agency License #3480229</a></li>
           <li><a href="/blog/texas-contractor-bond-and-permits">Texas Contractors: Get Your Bond and Pull Your Permits in One Day</a></li>
           <li><a href="/blog/texas-notary-bond-sb693-renewal-2026">Texas Notary Bond Renewal Under SB693 2026: What Every Renewing Notary Must Do</a></li>
           <li><a href="/blog/texas-notary-bond-sb693-2026-requirements">Texas Notary Bond 2026: What SB693 Changes for New and Renewing Notaries</a></li>
           <li><a href="/blog/texas-notary-bond-cost-2026">How Much Does a Texas Notary Bond Cost in 2026?</a></li>
           <li><a href="/blog/texas-notary-vs-notary-signing-agent">Texas Notary vs. Notary Signing Agent: What's the Difference?</a></li>
-          <li><a href="/blog/texas-tdlr-contractor-bond-2026">Texas TDLR Contractor Bond 2026: Everything Licensed Tradespeople Need to Know</a></li>
-          <li><a href="/blog/texas-contractor-license-bond-cost">How Much Does a Texas Contractor License Bond Cost? (2026 Guide)</a></li>
           <li><a href="/blog/texas-electrical-contractor-bond-requirements">Texas Electrical Contractor Bond Requirements 2026</a></li>
           <li><a href="/blog/how-to-become-texas-notary-2026">How to Become a Texas Notary Public in 2026 (Complete Guide)</a></li>
           <li><a href="/blog/what-is-a-surety-bond-texas">What Is a Surety Bond? Texas Plain-Language Guide</a></li>

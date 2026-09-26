@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { CheckCircle, Shield, Bell, FileText, ArrowRight, Star } from "lucide-react";
 
 const FEATURES = [
@@ -46,7 +46,7 @@ export default function BondGuard() {
     <>
       <Helmet>
         <title>Bond Guard — Automated Texas Bond Renewal Monitoring | Quantum Surety</title>
-        <meta name="description" content="Never miss a Texas bond renewal again. Bond Guard monitors your notary or contractor bond and sends 9 reminders before expiry. $49/year or $5.99/month." />
+        <meta name="description" content="Never miss a Texas bond renewal again. Bond Guard monitors your notary bond or contractor license and sends 9 reminders before expiry. $49/year or $5.99/month." />
         <link rel="canonical" href="https://quantumsurety.bond/bond-guard" />
       </Helmet>
 

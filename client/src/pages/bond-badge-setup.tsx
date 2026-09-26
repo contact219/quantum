@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { Copy, Check } from "lucide-react";
 
 const VERIFY_BASE = "https://verify.quantumsurety.bond";

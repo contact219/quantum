@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { useRoute } from "wouter";
 
 const VERIFY_API = "https://verify.quantumsurety.bond/api";
@@ -46,14 +46,14 @@ export default function ContractorQR() {
 </div>`;
 
   const title = contractor
-    ? `${name} — Bond Verification QR Code | Quantum Surety`
-    : `Bond Verification QR Code — License ${license} | Quantum Surety`;
+    ? `${name} — License Verification QR Code | Quantum Surety`
+    : `License Verification QR Code — License ${license} | Quantum Surety`;
 
   return (
     <>
       <Helmet>
         <title>{title}</title>
-        <meta name="description" content={`Printable bond verification QR code for ${name} (TDLR ${license}). Scan to see live bond status from Texas public records.`} />
+        <meta name="description" content={`Printable license verification QR code for ${name} (TDLR ${license}). Scan to see license status from TDLR public records.`} />
         <link rel="canonical" href={`https://quantumsurety.bond/contractor/${license}/qr`} />
       </Helmet>
 

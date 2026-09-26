@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 import { CheckCircle, ArrowRight, Zap, Shield, Database, Code } from "lucide-react";
 
 const PLANS = [
@@ -87,7 +87,7 @@ export default function ApiAccess() {
     <>
       <Helmet>
         <title>Bond Verification API — Texas Notary & Contractor Data | Quantum Surety</title>
-        <meta name="description" content="Real-time Texas notary and contractor bond verification API. 504,000+ notaries, 19,000+ contractors. Used by title companies, lenders, and background check firms. Free tier available." />
+        <meta name="description" content="Texas notary commission and TDLR contractor license lookup API, built on public Texas Secretary of State and TDLR records. Free tier: 1,000 requests a day." />
         <link rel="canonical" href="https://quantumsurety.bond/api-access" />
       </Helmet>
 

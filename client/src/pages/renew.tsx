@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 
 const VERIFY_BASE = "https://verify.quantumsurety.bond/api";
 const LOOKUP_EMAIL = `${VERIFY_BASE}/notary-renew`;
@@ -115,8 +115,8 @@ export default function Renew() {
   return (
     <>
       <Helmet>
-        <title>Renew Your Texas Notary Bond — $50 Flat | Quantum Surety</title>
-        <meta name="description" content="Your Texas Notary Bond renewal, pre-filled and ready. $50 flat for a 4-year bond. RLI Insurance, same-day PDF certificate. No forms to fill out." />
+        <title>Renew Your Texas Notary Bond — $50 | Quantum Surety</title>
+        <meta name="description" content="Your Texas Notary Bond renewal, pre-filled and ready. $50 for the 4-year term, plus the state's $21 filing fee. RLI Insurance, same-day PDF certificate. No forms to fill out." />
         <link rel="canonical" href="https://quantumsurety.bond/renew" />
         <meta name="robots" content="noindex" />
       </Helmet>

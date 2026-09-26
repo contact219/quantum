@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/Head";
 
 const VERIFY_BASE = "https://verify.quantumsurety.bond";
 
@@ -26,7 +26,7 @@ export default function BadgePage() {
     <>
       <Helmet>
         <title>Free Bond Verification Badge — Texas Contractors & Notaries | Quantum Surety</title>
-        <meta name="description" content="Get a free live bond status badge for your Texas contractor or notary website. Updates daily from TDLR and TX SOS — shows your bond as Active, Expiring, or Lapsed." />
+        <meta name="description" content="Free status badge for Texas notaries (commission and bond) and contractors (TDLR license), refreshed monthly from Texas SOS and TDLR records. Shows Active, Expiring or Expired." />
         <link rel="canonical" href="https://quantumsurety.bond/badge" />
       </Helmet>
 

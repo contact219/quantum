@@ -41,3 +41,36 @@ export function isCityBondPath(path: string): boolean {
 }
 
 export const CITY_BOND_ROBOTS = "noindex, follow";
+
+// ─── Contractor license-bond line (noindexed 2026-09-26) ─────────────────────
+// These pages sell a "Texas contractor / HVAC / plumbing / electrical / TDLR bond" on the
+// premise of a statewide bond requirement that does not exist: TDLR (A/C, electrical) and
+// TSBPE (plumbing) licenses require liability insurance, not a surety bond (verified on
+// tdlr.texas.gov and tsbpe.texas.gov). The line has never made a sale. Pages stay live
+// for visitors; they are just kept out of search. Construction bonds (/bonds/texas-contractor,
+// MBE, bid/performance/payment) and the /contractor/:license lookup tool are NOT in this list.
+export const CONTRACTOR_LINE_NOINDEX = new Set<string>([
+  "/bonds/hvac-bond-texas",
+  "/bonds/electrical-contractor-bond-texas",
+  "/bonds/plumbing-contractor-bond-texas",
+  "/bonds/roofing-contractor-bond-texas",
+  "/bonds/tdlr-bond-texas",
+  "/bonds/general-contractor-bond-texas",
+  "/blog/texas-contractor-bond-and-permits",
+  "/blog/texas-contractor-bond-compliance-report-2026",
+  "/blog/texas-contractor-bond-crisis-june-2026",
+  "/blog/texas-contractor-bond-market-data-2026",
+  "/blog/texas-contractor-bond-requirements-by-city",
+  "/blog/texas-contractor-license-bond-cost",
+  "/blog/texas-electrical-contractor-bond-requirements",
+  "/blog/texas-hvac-contractor-bond-requirements",
+  "/blog/texas-plumbing-contractor-bond-requirements",
+  "/blog/texas-roofing-contractor-bond-requirements",
+  "/blog/texas-tdlr-contractor-bond-2026",
+]);
+
+/** Every path that must carry `noindex, follow` and stay out of the sitemap. */
+export function isNoindexedPath(path: string): boolean {
+  const p = path.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
+  return isCityBondPath(p) || CONTRACTOR_LINE_NOINDEX.has(p);
+}

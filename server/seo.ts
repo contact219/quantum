@@ -7,7 +7,7 @@
 import { Request, Response, NextFunction } from "express";
 import fs from "fs";
 import path from "path";
-import { isCityBondPath, CITY_BOND_ROBOTS } from "@shared/city-bond-pages";
+import { isCityBondPath, isNoindexedPath, CITY_BOND_ROBOTS } from "@shared/city-bond-pages";
 
 // ─── Page metadata map ────────────────────────────────────────────────────────
 
@@ -7808,10 +7808,18 @@ function getDynamicCityBondMeta(urlPath: string): PageMeta | null {
 }
 
 function getMetaForPath(urlPath: string): PageMeta {
-  // Bond x city pages are noindexed whichever table defines them (see shared/city-bond-pages.ts).
+  // Noindexed paths (bond x city pages, contractor license-bond line) keep their content
+  // but carry "noindex, follow" -- see shared/city-bond-pages.ts.
+  if (isNoindexedPath(urlPath)) {
+    return { ...resolveMetaForPath(urlPath), robots: CITY_BOND_ROBOTS };
+  }
+  return resolveMetaForPath(urlPath);
+}
+
+function resolveMetaForPath(urlPath: string): PageMeta {
   if (isCityBondPath(urlPath)) {
     const cityMeta = PAGE_META[urlPath] ?? getDynamicCityBondMeta(urlPath);
-    if (cityMeta) return { ...cityMeta, robots: CITY_BOND_ROBOTS };
+    if (cityMeta) return cityMeta;
   }
   if (PAGE_META[urlPath]) return PAGE_META[urlPath];
   const dynamicMeta = getDynamicCityBondMeta(urlPath);
@@ -7936,7 +7944,7 @@ export function generateSitemap(): string {
   const seenLocs = new Set<string>();
   const urls = Object.entries(PAGE_META)
     .filter(([p, meta]) => {
-      if (isCityBondPath(p)) return false; // noindexed; a sitemap must not list them
+      if (isNoindexedPath(p)) return false; // noindexed; a sitemap must not list them
       if (selfCanonical.has(meta.canonical) && meta.canonical !== `${BASE_URL}${p}`) return false;
       if (seenLocs.has(meta.canonical)) return false;
       seenLocs.add(meta.canonical);

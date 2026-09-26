@@ -243,9 +243,9 @@ export default function ContractorDetail() {
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <p style={{ fontSize: 11, color: "#334155", lineHeight: 1.6 }}>
             Data source: Texas Department of Licensing and Regulation (TDLR) via data.texas.gov. Updated monthly from TDLR public data, so a very recent renewal may not show yet. &nbsp;
-            <Link href="/bond-compliance-leaderboard"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>County Compliance Leaderboard</span></Link> &nbsp;·&nbsp;
+            
             <a href="https://verify.quantumsurety.bond" style={{ color: "#4C9AC9" }}>Search All Contractors</a> &nbsp;·&nbsp;
-            <Link href="/press"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Press Kit</span></Link>
+            <Link href="/newsroom"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Newsroom</span></Link>
           </p>
         </div>
       </section>

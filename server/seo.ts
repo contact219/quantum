@@ -7417,8 +7417,8 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 
   "/texas-bond-watch": {
-    title: "Texas Bond Watch — Contractor License Compliance Tracker by County | Quantum Surety",
-    description: "Live tracker of Texas contractor bond compliance rates by county. See active vs. expired TDLR-licensed contractors in Harris, Dallas, Tarrant, Travis, and 6 other major counties. Updated daily.",
+    title: "Texas Bond Watch — Notary Bond & Contractor License Expirations | Quantum Surety",
+    description: "Texas notary bond expirations and TDLR contractor license status by county: active vs. expired licenses in Harris, Dallas, Tarrant, Travis, and 6 other major counties. Updated monthly.",
     canonical: `${BASE_URL}/texas-bond-watch`,
   },
 

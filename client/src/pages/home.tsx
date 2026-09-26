@@ -155,32 +155,12 @@ function LiveBondPulse() {
       .then((r) => r.json())
       .then((d) => {
         const n = parseInt(d?.notaries?.expiring_30d || "0", 10);
-        const c = parseInt(d?.contractors?.expiring_30d || "0", 10);
-        if (n + c > 0) setExpiring30d(n + c);
+        if (n > 0) setExpiring30d(n);
       })
       .catch(() => {});
-    fetch(`${api}/recently-expired?days=3&limit=25`)
-      .then((r) => r.json())
-      .then((d) => {
-        const items = (d?.contractors || [])
-          .map((it: any) => {
-            const rawName = it.owner_name || it.business_name || "";
-            const m = rawName.match(/^([A-Z'-]+),\s*([A-Z'-]+)/i);
-            if (!m) return null;
-            const first = m[2].charAt(0) + m[2].slice(1).toLowerCase();
-            const lastInitial = m[1].charAt(0).toUpperCase();
-            const city = (it.business_city || "").split(/\s+TX\b/)[0].trim().toLowerCase()
-              .replace(/(^|\s)\S/g, (s: string) => s.toUpperCase());
-            const kind = (it.license_type || "license").replace(/\s*\(.*\)$/, "");
-            const ago = it.days_since_expiry === 0 ? "expired today"
-              : it.days_since_expiry === 1 ? "expired yesterday"
-              : `expired ${it.days_since_expiry} days ago`;
-            return `${first} ${lastInitial}.${city ? ` (${city})` : ""} — ${kind} bond ${ago}`;
-          })
-          .filter(Boolean);
-        setSamples(items.slice(0, 15));
-      })
-      .catch(() => {});
+    // 2026-09-26: no longer rotates named contractors ("X — Apprentice Electrician bond expired").
+    // Those are TDLR license expirations; TDLR requires insurance, not a bond, so the line was
+    // false and it named real people. The banner now counts notary commissions only.
   }, []);
 
   useEffect(() => {
@@ -195,7 +175,7 @@ function LiveBondPulse() {
   return (
     <div className="bg-[#060c1a] border-b border-white/[0.06]">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-5 gap-y-1 px-6 py-2.5 text-sm lg:px-8">
-        <Link href="/bond-ticker" className="flex min-w-0 flex-1 flex-wrap items-center gap-x-5 gap-y-1 hover:opacity-90">
+        <Link href="/bonds/notary-bond-texas#renew" className="flex min-w-0 flex-1 flex-wrap items-center gap-x-5 gap-y-1 hover:opacity-90">
           <span className="flex shrink-0 items-center gap-2 font-semibold text-red-400">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
@@ -204,7 +184,7 @@ function LiveBondPulse() {
             LIVE
           </span>
           <span className="shrink-0 text-slate-300">
-            <span className="font-semibold text-white">{expiring30d.toLocaleString()}</span> Texas bonds expire in the next 30 days
+            <span className="font-semibold text-white">{expiring30d.toLocaleString()}</span> Texas notary commissions expire in the next 30 days
           </span>
           {samples.length > 0 && (
             <span className="hidden min-w-0 truncate text-slate-400 md:inline" key={idx}>
@@ -702,7 +682,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
             {[
-              { href: "/bond-ticker", label: "🔴 Bond Ticker", sub: "Live TX bond expirations scrolling now", icon: "", accent: true },
+              { href: "/verify-contractor", label: "License Lookup", sub: "Check any TX contractor's TDLR license", icon: "", accent: true },
               { href: "/hoa-portal", label: "HOA Vendor Portal", sub: "Monitor all your contractors free", icon: "🏠", accent: false },
               { href: "/qs-score", label: "QS Score™", sub: "0–100 trust rating for every TX contractor", icon: "◉", accent: false },
               { href: "/ai-bond-finder", label: "AI Bond Finder", sub: "Find the right bond instantly", icon: "✦", accent: false },

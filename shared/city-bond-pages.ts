@@ -67,6 +67,11 @@ export const CONTRACTOR_LINE_NOINDEX = new Set<string>([
   "/blog/texas-plumbing-contractor-bond-requirements",
   "/blog/texas-roofing-contractor-bond-requirements",
   "/blog/texas-tdlr-contractor-bond-2026",
+  // Retired 2026-09-26 (301 -> /verify-contractor); listed so the sitemap drops them.
+  "/bond-compliance-leaderboard",
+  "/bond-compliance-by-trade",
+  "/bond-ticker",
+  "/press",
 ]);
 
 /** Every path that must carry `noindex, follow` and stay out of the sitemap. */

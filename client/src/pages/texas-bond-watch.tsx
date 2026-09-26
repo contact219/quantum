@@ -73,21 +73,21 @@ export default function TexasBondWatch() {
     <>
       <Helmet>
         <title>Texas Bond Watch — Contractor & Notary Bond Expiration Alerts | Quantum Surety</title>
-        <meta name="description" content={`Live tracking of Texas contractor and notary bond expirations. ${summary ? fmt(summary.contractors.expiring_30d) + " Texas contractors have bonds expiring in the next 30 days." : "Protect your business — verify bond status before hiring."}`} />
+        <meta name="description" content={`Texas notary bond and contractor license expirations by county. ${summary ? fmt(summary.contractors.expiring_30d) + " Texas contractor licenses expire in the next 30 days." : "Protect your business — verify bond status before hiring."}`} />
         <meta property="og:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
-        <meta property="og:description" content="Real-time Texas contractor and notary bond status. Updated daily from state licensing databases." />
+        <meta property="og:description" content="Texas notary bond and contractor license status. Updated monthly from state licensing data." />
         <meta property="og:url" content="https://quantumsurety.bond/texas-bond-watch" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Texas Bond Watch — Live Bond Expiration Tracker" />
-        <meta name="twitter:description" content="Real-time tracking of 775K+ Texas contractor and notary bond expirations. Updated daily from TDLR and Texas SOS." />
+        <meta name="twitter:description" content="Tracking 775K+ Texas contractor licenses and notary commissions. Updated monthly from TDLR and Texas SOS." />
         <link rel="canonical" href="https://quantumsurety.bond/texas-bond-watch" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Texas Bond Watch",
           "url": "https://quantumsurety.bond/texas-bond-watch",
-          "description": "Free real-time tracker of Texas contractor and notary bond expirations, updated daily from TDLR and Texas Secretary of State databases.",
+          "description": "Free tracker of Texas contractor license and notary bond expirations, updated monthly from TDLR and Texas Secretary of State databases.",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web",
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -117,16 +117,16 @@ export default function TexasBondWatch() {
             TEXAS BOND WATCH — LIVE DATA
           </div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 900, color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
-            Texas Contractor Bond<br />Expiration Tracker
+            Texas Notary Bond &amp; Contractor License<br />Expiration Tracker
           </h1>
           <p style={{ fontSize: 18, color: "#94a3b8", maxWidth: 600, margin: "0 auto 28px", lineHeight: 1.6 }}>
-            Live tracking of Texas contractor and notary bond expirations — updated daily from TDLR and Texas SOS databases.
+            Texas contractor license and notary bond expirations — updated monthly from TDLR and Texas SOS data.
             Know before you hire.
           </p>
           {summary && (
             <div style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.2)", borderRadius: 10, padding: "14px 24px", marginBottom: 24, display: "inline-block" }}>
               <span style={{ color: "#f59e0b", fontWeight: 800, fontSize: 18 }}>{fmt(summary.contractors.expiring_30d)}</span>
-              <span style={{ color: "#94a3b8", fontSize: 14, marginLeft: 8 }}>Texas contractors have bonds expiring in the next 30 days</span>
+              <span style={{ color: "#94a3b8", fontSize: 14, marginLeft: 8 }}>Texas contractor licenses expire in the next 30 days</span>
             </div>
           )}
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -139,7 +139,7 @@ export default function TexasBondWatch() {
               Verify a Bond →
             </a>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${summary ? fmt(summary.contractors.expiring_30d) : "34,480"} Texas contractors have bonds expiring in the next 30 days — is yours one of them? Free real-time tracker: https://quantumsurety.bond/texas-bond-watch #Texas #contractors`)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${summary ? fmt(summary.contractors.expiring_30d) : "34,480"} Texas contractor licenses expire in the next 30 days — is yours one of them? Free tracker: https://quantumsurety.bond/texas-bond-watch #Texas #contractors`)}`}
               target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-block", background: "#1DA1F2", color: "#fff", padding: "12px 20px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none" }}
             >
@@ -159,8 +159,8 @@ export default function TexasBondWatch() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 16 }}>
               {[
                 { label: "TX Contractors Tracked", value: fmt(summary.contractors.total), color: "#4C9AC9" },
-                { label: "Contractor Bonds Expiring (30d)", value: fmt(summary.contractors.expiring_30d), color: "#f59e0b" },
-                { label: "Contractor Bonds Expiring (90d)", value: fmt(summary.contractors.expiring_90d), color: "#fbbf24" },
+                { label: "Contractor Licenses Expiring (30d)", value: fmt(summary.contractors.expiring_30d), color: "#f59e0b" },
+                { label: "Contractor Licenses Expiring (90d)", value: fmt(summary.contractors.expiring_90d), color: "#fbbf24" },
                 { label: "TX Notaries Tracked", value: fmt(summary.notaries.total), color: "#4C9AC9" },
                 { label: "Notary Bonds Expiring (30d)", value: fmt(summary.notaries.expiring_30d), color: "#f59e0b" },
                 { label: "Notary Bonds Expired", value: fmt(summary.notaries.expired), color: "#f87171" },
@@ -181,7 +181,7 @@ export default function TexasBondWatch() {
       <section style={{ background: "#0d1117", padding: "40px 24px 56px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <h2 style={{ fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 8 }}>
-            Bonds Expiring This Month — By County
+            Contractor Licenses Expiring This Month — By County
           </h2>
           <p style={{ color: "#8b949e", fontSize: 14, marginBottom: 24 }}>
             Contractors whose bonds expire in the next 30 days. These businesses need to renew immediately to stay compliant.
@@ -203,8 +203,8 @@ export default function TexasBondWatch() {
 
           <div style={{ background: "#161b22", border: "1px solid #30363d", borderRadius: 10, overflow: "hidden" }}>
             <div style={{ padding: "12px 20px", borderBottom: "1px solid #30363d", fontSize: 12, color: "#8b949e", fontFamily: "monospace", display: "flex", justifyContent: "space-between" }}>
-              <span>{loadingExpiring ? "Loading…" : `${expiring.length} contractors with bonds expiring in ${COUNTY_NAME_MAP[selectedCounty] || ""} County within 30 days`}</span>
-              <Link href="/get-bond?type=contractor"><span style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 700, cursor: "pointer" }}>Renew Your Bond →</span></Link>
+              <span>{loadingExpiring ? "Loading…" : `${expiring.length} contractors with licenses expiring in ${COUNTY_NAME_MAP[selectedCounty] || ""} County within 30 days`}</span>
+              <a href="https://www.tdlr.texas.gov/" target="_blank" rel="noopener noreferrer" style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 700 }}>Renew with TDLR →</a>
             </div>
             {!loadingExpiring && expiring.length > 0 && (
               <div style={{ overflowX: "auto" }}>
@@ -280,9 +280,9 @@ export default function TexasBondWatch() {
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 8 }}>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "#fff", margin: 0 }}>Browse by County</h2>
-            <Link href="/bond-compliance-leaderboard">
+            <Link href="/verify-contractor">
               <span style={{ display: "inline-block", background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)", borderRadius: 8, padding: "8px 16px", fontSize: 12, color: "#f59e0b", fontWeight: 700, cursor: "pointer", fontFamily: "monospace" }}>
-                All 254 Counties → Full Leaderboard
+                Look up any contractor →
               </span>
             </Link>
           </div>
@@ -326,9 +326,8 @@ export default function TexasBondWatch() {
             out of compliance — and you may have no recourse if something goes wrong on your project.
           </p>
           <p style={{ color: "#8b949e", lineHeight: 1.8, fontSize: 15, marginBottom: 16 }}>
-            Texas Bond Watch tracks over 775,000 licensed contractors and 558,000 commissioned notaries across the state, updated
-            daily from TDLR and the Texas Secretary of State office. We surface bonds expiring in the next 30–90 days so contractors
-            can renew on time and consumers can hire with confidence.
+            Texas Bond Watch tracks over 775,000 licensed contractors and 558,000 commissioned notaries across the state, updated monthly from TDLR and the Texas Secretary of State office. We surface notary bonds and contractor licenses expiring
+            in the next 30–90 days so people can renew on time and consumers can hire with confidence.
           </p>
           <p style={{ color: "#8b949e", lineHeight: 1.8, fontSize: 15 }}>
             Need to get or renew a bond? Quantum Surety issues same-day Texas surety bonds starting at $50. No broker, no waiting room.

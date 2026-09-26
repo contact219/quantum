@@ -148,15 +148,11 @@ const CityBondPage = lazy(() => import("@/pages/city-bond-page"));
 const Renew = lazy(() => import("@/pages/renew"));
 const BadgePage = lazy(() => import("@/pages/badge"));
 const CountyBondWatch = lazy(() => import("@/pages/county-bond-watch"));
-const BondComplianceLeaderboard = lazy(() => import("@/pages/bond-compliance-leaderboard"));
-const Press = lazy(() => import("@/pages/press"));
 const Newsroom = lazy(() => import("@/pages/newsroom"));
 const ContractorDetail = lazy(() => import("@/pages/contractor-detail"));
 const ContractorQR = lazy(() => import("@/pages/contractor-qr"));
-const BondTicker = lazy(() => import("@/pages/bond-ticker"));
 const NotaryDetail = lazy(() => import("@/pages/notary-detail"));
 const NotaryQR = lazy(() => import("@/pages/notary-qr"));
-const BondComplianceByTrade = lazy(() => import("@/pages/bond-compliance-by-trade"));
 const EmbedWidget = lazy(() => import("@/pages/embed-widget"));
 const NotarySigningCert = lazy(() => import("@/pages/notary-signing-cert"));
 const BlogGDNBondRequirements2026 = lazy(() => import("@/pages/blog/texas-gdn-bond-requirements-2026"));
@@ -467,16 +463,16 @@ function Router() {
       {/* Texas Bond Watch — live bond expiration tracker */}
       <Route path="/texas-bond-watch" component={TexasBondWatch} />
       <Route path="/texas-bond-watch/:county" component={CountyBondWatch} />
-      <Route path="/bond-compliance-leaderboard" component={BondComplianceLeaderboard} />
-      <Route path="/press" component={Press} />
+      <Route path="/bond-compliance-leaderboard"><ClientRedirect to="/verify-contractor" /></Route>
+      <Route path="/press"><ClientRedirect to="/newsroom" /></Route>
       <Route path="/newsroom" component={Newsroom} />
-      <Route path="/bond-ticker" component={BondTicker} />
+      <Route path="/bond-ticker"><ClientRedirect to="/verify-contractor" /></Route>
       <Route path="/contractor/:license/qr" component={ContractorQR} />
       <Route path="/contractor/:license" component={ContractorDetail} />
       <Route path="/notary/:id/qr" component={NotaryQR} />
       <Route path="/notary/:id/cert" component={NotarySigningCert} />
       <Route path="/notary/:id" component={NotaryDetail} />
-      <Route path="/bond-compliance-by-trade" component={BondComplianceByTrade} />
+      <Route path="/bond-compliance-by-trade"><ClientRedirect to="/verify-contractor" /></Route>
       <Route path="/embed-widget" component={EmbedWidget} />
       {/* Texas SEO landing pages */}
       <Route path="/bonds/texas-contractor" component={TexasContractorBonds} />

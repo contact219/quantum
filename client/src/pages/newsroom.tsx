@@ -11,18 +11,10 @@ const PRESS_RELEASES = [
     tag: "Consumer Protection",
     tagColor: "#dc2626",
   },
-  {
-    date: "May 27, 2026",
-    headline: "Nearly Half of Texas Apprentice Electricians Have Expired Surety Bonds, TDLR Data Shows",
-    subhead: "29.3% of all TDLR licensees found non-compliant statewide. New free tool lets any consumer check contractor bond status before hiring.",
-    url: "/blog/texas-contractor-bond-compliance-report-2026",
-    tag: "Data Report",
-    tagColor: "#2563eb",
-  },
 ];
 
 const KEY_FACTS = [
-  { stat: "816,000+", label: "TDLR contractor licenses tracked in real time" },
+  { stat: "816,000+", label: "TDLR contractor licenses in a free public lookup (updated monthly)" },
   { stat: "558,000+", label: "Texas notary commissions in free public database" },
   { stat: "19,700+", label: "Texas auto dealer records monitored" },
   { stat: "TDI #3480229", label: "Active Texas insurance agency license" },
@@ -32,28 +24,10 @@ const KEY_FACTS = [
 
 const DATA_TOOLS = [
   {
-    label: "TDLR Contractor Compliance by Trade",
-    sub: "A–F compliance grades for 22 TDLR license categories",
-    href: "/bond-compliance-by-trade",
-    external: false,
-  },
-  {
     label: "Free Bond Verification Database",
-    sub: "Look up any TX contractor, notary, or dealer bond status",
+    sub: "Look up Texas notary bonds, dealer records and contractor licenses",
     href: "https://verify.quantumsurety.bond",
     external: true,
-  },
-  {
-    label: "Live Bond Expiration Ticker",
-    sub: "Real-time feed of Texas bonds expiring and recently lapsed",
-    href: "/bond-ticker",
-    external: false,
-  },
-  {
-    label: "TX Contractor Bond Compliance Report 2026",
-    sub: "Full data analysis — 29.3% of all TDLR licensees non-compliant",
-    href: "/blog/texas-contractor-bond-compliance-report-2026",
-    external: false,
   },
 ];
 
@@ -76,7 +50,7 @@ export default function Newsroom() {
               Quantum Surety Press Center
             </h1>
             <p style={{ fontSize: 17, color: "#94a3b8", maxWidth: 640, lineHeight: 1.7, margin: 0 }}>
-              Texas's only surety bond agency with a live statewide compliance database —
+              A Texas surety bond agency with a free statewide lookup —
               816,000+ contractor licenses, 558,000+ notary records, 19,700+ auto dealer records.
               Original data and research available to journalists on request.
             </p>
@@ -113,7 +87,7 @@ export default function Newsroom() {
               ))}
             </div>
             <p style={{ marginTop: 14, fontSize: 12, color: "#94a3b8" }}>
-              Data sourced from Texas TDLR (data.texas.gov), Texas Secretary of State, and TxDMV public records. Updated daily.
+              Data sourced from Texas TDLR (data.texas.gov), Texas Secretary of State, and TxDMV public records. TDLR and Secretary of State data refresh monthly.
               Raw data available to credentialed journalists on request.
             </p>
           </section>
@@ -169,9 +143,9 @@ export default function Newsroom() {
               Quantum Surety LLC (TDI License #3480229) is a Texas-based surety bond agency and operator of
               Texas's most comprehensive free public bond verification database. The company issues surety bonds
               same-day for contractors, notaries, auto dealers, and businesses across all 254 Texas counties,
-              backed by A-rated carriers including RLI Insurance Company (A+, S&P). Quantum Surety's compliance
-              database tracks 816,000+ TDLR contractor licenses, 558,000+ Texas notary commissions, and 19,700+
-              Texas auto dealer records, updated daily from public state records.
+              backed by A-rated carriers including RLI Insurance Company (A+, S&P). Quantum Surety's public records
+              database covers 816,000+ TDLR contractor licenses, 558,000+ Texas notary commissions, and 19,700+
+              Texas auto dealer records from public state data.
             </p>
             <p style={{ marginTop: 12, fontSize: 14, color: "#475569" }}>
               <strong>Website:</strong>{" "}

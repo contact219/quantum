@@ -1087,7 +1087,7 @@ export default function NotaryDetail() {
           <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>
             <a href="https://verify.quantumsurety.bond" style={{ color: "#4C9AC9" }}>Search All Notaries</a> &nbsp;·&nbsp;
             <Link href="/bonds/notary-bond-texas"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Texas Notary Bond</span></Link> &nbsp;·&nbsp;
-            <Link href="/press"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Press Kit</span></Link>
+            <Link href="/newsroom"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Newsroom</span></Link>
           </p>
         </div>
       </section>

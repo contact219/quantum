@@ -155,6 +155,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     // splitting their signals (Search Console, Mar–Sep 2026: this page 531 impressions
     // at position ~67, the main page 0). Merged; the renewal steps live at #renew.
     "/bonds/notary-bond-renewal-texas": "/bonds/notary-bond-texas#renew",
+    // Retired 2026-09-26: these presented TDLR *license* expirations as contractors "operating
+    // with expired bonds" and named people. TDLR requires insurance, not a bond, and an expired
+    // license often means someone left the trade. The license lookup tool is the honest version.
+    "/bond-compliance-leaderboard": "/verify-contractor",
+    "/bond-compliance-by-trade":    "/verify-contractor",
+    "/bond-ticker":                 "/verify-contractor",
+    // The press kit pitched the same false contractor-bond story to journalists.
+    "/press":                       "/newsroom",
     // Orphan duplicate of the established /bonded-title-texas page (same component,
     // zero inbound internal links) — consolidate link equity instead of splitting it.
     "/bonds/texas-vehicle-title-bond": "/bonded-title-texas",

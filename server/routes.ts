@@ -759,10 +759,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // CRM sync endpoint — pulls recent leads for the local CRM to consume
+  // CRM sync endpoint — pulls recent leads for the local CRM to consume.
+  // Until 2026-09-25 this fell back to a hardcoded secret that is visible in this
+  // public repo, and production's .env held that same value, so anyone could pull
+  // every lead's name, email and phone. Now fails CLOSED: an unset CRM_SYNC_SECRET
+  // denies. The token travels in a header so it stays out of access logs, and a
+  // miss answers 404 so the endpoint does not advertise that it exists.
   app.get("/api/sync/leads", async (req, res) => {
-    const SYNC_SECRET = process.env.CRM_SYNC_SECRET || "QsSync2026!";
-    if (req.query.secret !== SYNC_SECRET) return res.status(401).json({ error: "unauthorized" });
+    const expected = process.env.CRM_SYNC_SECRET;
+    const given = (req.headers["x-sync-token"] as string) || "";
+    if (!expected || given !== expected) {
+      return res.status(404).json({ error: "Not found" });
+    }
     try {
       const since = req.query.since as string;
       const leads = await storage.getAllLeads();

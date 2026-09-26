@@ -24,9 +24,9 @@ interface Contractor {
 }
 
 function statusInfo(s: string) {
-  if (s === "active") return { label: "BOND ACTIVE", color: "#059669", bg: "rgba(5,150,105,0.1)" };
+  if (s === "active") return { label: "LICENSE ACTIVE", color: "#059669", bg: "rgba(5,150,105,0.1)" };
   if (s === "expiring") return { label: "EXPIRING SOON", color: "#d97706", bg: "rgba(217,119,6,0.1)" };
-  if (s === "expired") return { label: "BOND LAPSED", color: "#dc2626", bg: "rgba(220,38,38,0.1)" };
+  if (s === "expired") return { label: "LICENSE EXPIRED", color: "#dc2626", bg: "rgba(220,38,38,0.1)" };
   return { label: "UNKNOWN", color: "#6b7280", bg: "rgba(107,114,128,0.1)" };
 }
 
@@ -57,27 +57,27 @@ export default function ContractorDetail() {
   const isExpired = contractor?.status === "expired";
 
   const pageTitle = contractor
-    ? `${name} — ${licType} Bond Status | ${city}, TX | Quantum Surety`
-    : `Contractor Bond Status — License ${license} | Quantum Surety`;
+    ? `${name} — ${licType} License Status | ${city}, TX | Quantum Surety`
+    : `Contractor License Status — License ${license} | Quantum Surety`;
   const pageDesc = contractor
-    ? `${name} (TDLR ${license}) — ${licType} in ${city}, Texas. Bond status: ${si.label}. Expires ${expDate}. Verified by Quantum Surety from TDLR public records.`
-    : `Look up bond status for TDLR license ${license} — Texas contractor bond verification.`;
+    ? `${name} (TDLR ${license}) — ${licType} in ${city}, Texas. License status: ${si.label}. Expires ${expDate}. Verified by Quantum Surety from TDLR public records.`
+    : `Look up license status for TDLR license ${license} — Texas contractor license verification.`;
 
   const embedCode = contractor
-    ? `<a href="https://verify.quantumsurety.bond/verify/contractor/${license}" target="_blank">\n  <img src="https://verify.quantumsurety.bond/api/badge/contractor/${license}" alt="Bond Status — ${name}" width="280" height="56">\n</a>`
+    ? `<a href="https://verify.quantumsurety.bond/verify/contractor/${license}" target="_blank">\n  <img src="https://verify.quantumsurety.bond/api/badge/contractor/${license}" alt="License Status — ${name}" width="280" height="56">\n</a>`
     : "";
 
   const tweetText = contractor && contractor.status === "active"
-    ? `✅ ${name} (TDLR #${license}) has an active surety bond — verified by @QuantumSurety. https://quantumsurety.bond/contractor/${license}`
+    ? `✅ ${name} (TDLR #${license}) has an active TDLR license, per TDLR public records via @QuantumSurety. https://quantumsurety.bond/contractor/${license}`
     : contractor
-    ? `⚠️ ${name} (TDLR #${license}) — bond status: ${si.label}. Check Texas contractor bonds: https://quantumsurety.bond/contractor/${license}`
+    ? `⚠️ ${name} (TDLR #${license}) — license status: ${si.label}. Check Texas licenses: https://quantumsurety.bond/contractor/${license}`
     : "";
 
   const jsonLd = contractor ? {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": name,
-    "description": `${licType} licensed by TDLR in ${city}, Texas. Bond status: ${si.label}.`,
+    "description": `${licType} licensed by TDLR in ${city}, Texas. License status: ${si.label}.`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": city,
@@ -111,7 +111,7 @@ export default function ContractorDetail() {
       <section style={{ background: "linear-gradient(135deg,#0a0f1e 0%,#111827 100%)", padding: "48px 24px 36px", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <div style={{ display: "inline-block", background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.4)", borderRadius: 6, padding: "4px 12px", fontSize: 11, fontFamily: "monospace", letterSpacing: 3, color: "#f59e0b", marginBottom: 20 }}>
-            TDLR LICENSE BOND VERIFICATION
+            TDLR LICENSE VERIFICATION
           </div>
 
           {loading && (
@@ -170,7 +170,7 @@ export default function ContractorDetail() {
                     { label: "License Subtype", value: contractor.license_subtype || "—" },
                     { label: "County", value: contractor.business_county || "—" },
                     { label: "City", value: city },
-                    { label: "Bond Expiration", value: expDate, color: si.color },
+                    { label: "License Expiration", value: expDate, color: si.color },
                     ...(contractor.days_until_expiry > 0 ? [{ label: "Days Until Expiry", value: `${contractor.days_until_expiry} days`, color: si.color }] : []),
                     { label: "Phone", value: contractor.business_phone || "—" },
                   ].map(f => (
@@ -185,19 +185,24 @@ export default function ContractorDetail() {
               {/* CTA */}
               {isExpired && (
                 <div style={{ background: "rgba(220,38,38,0.08)", border: "1px solid rgba(220,38,38,0.25)", borderRadius: 10, padding: "16px 20px", marginBottom: 20 }}>
-                  <div style={{ fontWeight: 800, color: "#dc2626", marginBottom: 6 }}>Bond Lapsed — Renew in Under 24 Hours</div>
-                  <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, marginBottom: 12 }}>TDLR requires an active surety bond to maintain your license. Renew online in minutes — instant electronic bond certificate.</p>
+                  <div style={{ fontWeight: 800, color: "#dc2626", marginBottom: 6 }}>License Expired — Renew with TDLR</div>
+                  <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, marginBottom: 12 }}>
+                    Texas licenses are renewed through TDLR. TDLR requires liability insurance for contractor
+                    licenses, not a surety bond. If a city or a project owner separately requires a bond, we can write it.
+                  </p>
+                  <a href="https://www.tdlr.texas.gov/" target="_blank" rel="noopener noreferrer"
+                    style={{ display: "inline-block", background: "#dc2626", color: "#fff", fontWeight: 700, fontSize: 13, padding: "10px 20px", borderRadius: 8, textDecoration: "none", marginRight: 12 }}>
+                    Renew with TDLR →
+                  </a>
                   <Link href={`/get-bond?type=contractor&license=${license}&src=contractor-detail`}>
-                    <span style={{ display: "inline-block", background: "#dc2626", color: "#fff", fontWeight: 700, fontSize: 13, padding: "10px 20px", borderRadius: 8, textDecoration: "none", cursor: "pointer" }}>
-                      Renew Bond Now — from $50 →
-                    </span>
+                    <span style={{ color: "#e2e8f0", fontSize: 13, textDecoration: "underline", cursor: "pointer" }}>Need a bond for a city or project?</span>
                   </Link>
                 </div>
               )}
 
               {/* Embed + share */}
               <div style={{ background: "#161b22", border: "1px solid #21262d", borderRadius: 12, padding: 20, textAlign: "left" }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#f59e0b", marginBottom: 12 }}>Share & Embed Your Bond Status</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#f59e0b", marginBottom: 12 }}>Share & Embed Your License Status</div>
                 <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
                   <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`}
                     target="_blank" rel="noopener noreferrer"
@@ -226,7 +231,7 @@ export default function ContractorDetail() {
                   style={{ background: "#0d1117", border: "1px solid #30363d", borderRadius: 6, padding: "10px 12px", fontFamily: "monospace", fontSize: 10, color: "#4C9AC9", whiteSpace: "pre-wrap", wordBreak: "break-all", cursor: "pointer" }}>
                   {embedCode}
                 </div>
-                <p style={{ fontSize: 11, color: "#475569", marginTop: 6 }}>Click to copy · Shows live bond status from TDLR public records</p>
+                <p style={{ fontSize: 11, color: "#475569", marginTop: 6 }}>Click to copy · Shows live license status from TDLR public records</p>
               </div>
             </>
           )}
@@ -237,7 +242,7 @@ export default function ContractorDetail() {
       <section style={{ background: "#0a0f1e", padding: "24px", borderTop: "1px solid #1e293b", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <p style={{ fontSize: 11, color: "#334155", lineHeight: 1.6 }}>
-            Data source: Texas Department of Licensing and Regulation (TDLR) via data.texas.gov. Updated daily. Bond status may have a 24-hour lag. &nbsp;
+            Data source: Texas Department of Licensing and Regulation (TDLR) via data.texas.gov. Updated monthly from TDLR public data, so a very recent renewal may not show yet. &nbsp;
             <Link href="/bond-compliance-leaderboard"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>County Compliance Leaderboard</span></Link> &nbsp;·&nbsp;
             <a href="https://verify.quantumsurety.bond" style={{ color: "#4C9AC9" }}>Search All Contractors</a> &nbsp;·&nbsp;
             <Link href="/press"><span style={{ color: "#4C9AC9", cursor: "pointer" }}>Press Kit</span></Link>

@@ -8390,12 +8390,12 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
   const licType  = (d.license_type as string) || "Contractor";
   const phone    = (d.business_phone as string) || "";
   const status   = (d.status as string) || "unknown";
-  const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Bond Lapsed";
+  const statusLabel = status === "active" ? "Active" : status === "expiring" ? "Expiring Soon" : "Expired";
   const expRaw   = (d.expire_date as string) || "";
   const expDate  = expRaw ? new Date(expRaw).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
   return {
-    title: `${name} — ${licType} Bond Status | ${loc} | Quantum Surety`,
-    description: `${name} (TDLR #${license}) — ${licType} in ${loc}. Bond status: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. Verified from TDLR public records by Quantum Surety.`,
+    title: `${name} — ${licType} License Status | ${loc} | Quantum Surety`,
+    description: `${name} (TDLR #${license}) — ${licType} in ${loc}. License status: ${statusLabel}${expDate ? ". Expires " + expDate : ""}. From TDLR public records via Quantum Surety.`,
     canonical: `${BASE_URL}/contractor/${license}`,
     ogType: "profile",
     noIndex: false,
@@ -8404,7 +8404,7 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": name,
-        "description": `${licType} licensed by TDLR in ${loc}. Bond status: ${statusLabel}.`,
+        "description": `${licType} licensed by TDLR in ${loc}. License status: ${statusLabel}.`,
         "address": { "@type": "PostalAddress", "addressLocality": city, "addressRegion": "TX", "addressCountry": "US" },
         ...(phone ? { "telephone": phone } : {}),
         "hasCredential": {
@@ -8421,12 +8421,12 @@ function _contractorSSRMeta(license: string, d: Record<string, unknown>): PageMe
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Quantum Surety", "item": BASE_URL },
-          { "@type": "ListItem", "position": 2, "name": "Texas Contractor Bond", "item": `${BASE_URL}/bonds/contractor-bond-texas` },
+          { "@type": "ListItem", "position": 2, "name": "Verify a Texas Contractor", "item": `${BASE_URL}/verify-contractor` },
           { "@type": "ListItem", "position": 3, "name": name, "item": `${BASE_URL}/contractor/${license}` },
         ],
       },
     ],
-    content: `<main><h1>${name} — Texas ${licType} Bond</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. Bond status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} Verified from Texas Department of Licensing and Regulation public records.</p><a href="/bonds/contractor-bond-texas">Get a Texas Contractor Bond</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Public Bond Verification</a></main>`,
+    content: `<main><h1>${name} — Texas ${licType} License</h1><p>TDLR License #${license}. Type: ${licType}. Location: ${loc}. License status: ${statusLabel}.${expDate ? " Expires " + expDate + "." : ""} From Texas Department of Licensing and Regulation public records, updated monthly.</p><a href="/verify-contractor">Verify another Texas contractor</a> &middot; <a href="https://verify.quantumsurety.bond/verify/contractor/${license}">Shareable verification link</a></main>`,
   };
 }
 
@@ -8656,7 +8656,7 @@ export function seoMiddleware(distDir: string) {
       const indexPath = path.join(distDir, "index.html");
       if (fs.existsSync(indexPath)) {
         const d = await _ssrFetch(`https://verify.quantumsurety.bond/api/contractor/lookup/${encodeURIComponent(licenseId)}`);
-        const meta = d ? _contractorSSRMeta(licenseId, d) : { title: `TDLR License #${licenseId} Bond Status | Quantum Surety`, description: `Look up bond status for TDLR license ${licenseId} — Texas contractor bond verification by Quantum Surety.`, canonical: `${BASE_URL}/contractor/${licenseId}`, noIndex: true } as PageMeta;
+        const meta = d ? _contractorSSRMeta(licenseId, d) : { title: `TDLR License #${licenseId} License Status | Quantum Surety`, description: `Look up the status of TDLR license ${licenseId} — Texas contractor license verification by Quantum Surety.`, canonical: `${BASE_URL}/contractor/${licenseId}`, noIndex: true } as PageMeta;
         let html = fs.readFileSync(indexPath, "utf-8");
         html = html.replace(/<title>[\s\S]*?<\/title>/, "").replace(/<link\s[^>]*rel=["'"]canonical["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]description["'"][^>]*>/gi, "").replace(/<meta\s[^>]*name=["'"]robots["'"][^>]*>/gi, "").replace(/<meta\s[^>]*property=["'"]og:[^"'"]*["'"][^>]*>/gi, "").replace(/<script\s+type=["'"]application\/ld\+json["'"]>[\s\S]*?<\/script>/gi, "");
         html = html.replace("</head>", `${buildMetaTags(meta)}\n</head>`);

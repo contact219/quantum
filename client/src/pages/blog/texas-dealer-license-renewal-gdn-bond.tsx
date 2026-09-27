@@ -36,7 +36,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
             Texas Dealer License Renewal 2026: GDN Bond Checklist & TxDMV Steps
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed">
-            Your Texas dealer license and GDN bond must be renewed together every year. Miss either one and your license is invalid. Here's the complete renewal checklist — with timing, common mistakes, and what a bond lapse actually means for your dealership.
+            Your Texas dealer license and GDN bond must be renewed together every 2 years. Miss either one and your license is invalid. Here's the complete renewal checklist — with timing, common mistakes, and what a bond lapse actually means for your dealership.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">How Texas dealer license renewal works</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Texas motor vehicle dealer licenses (GDN licenses) are issued on an annual basis by TxDMV. Your renewal date is tied to your original license issue date — not a fixed calendar date. TxDMV sends renewal notices approximately 90 days before expiration via the eLICENSING system.
+              Texas independent motor vehicle dealer licenses (GDN licenses) run for a 2-year term, and TxDMV says renewals must be received before the expiration date for you to keep operating. Your $50,000 dealer bond has to be valid for the full new term, starting on the first day of the month (TxDMV Independent GDN eLICENSING guide).
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
               The GDN bond is a separate item that must be current as of your license renewal date. Your bond is not automatically renewed when you renew your license — you need to coordinate both. If your bond expires before your license renewal is processed, your license becomes invalid even if TxDMV has received your renewal application.
@@ -69,7 +69,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
                 {
                   timing: "60 days before expiration",
                   task: "Renew your GDN bond",
-                  detail: "Contact your bond provider to initiate renewal. Quantum Surety sends renewal reminders at 60 days. Same-day renewal is available — you receive your updated bond certificate as an instant PDF. Don't wait until the last week.",
+                  detail: "Contact your bond provider to start the renewal. The carrier reviews the application and sets your premium before you pay, and some applications are declined, so leave time to try another carrier. Don't wait until the last week.",
                 },
                 {
                   timing: "60 days before expiration",
@@ -79,7 +79,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
                 {
                   timing: "30 days before expiration",
                   task: "Complete license renewal application in eLICENSING",
-                  detail: "Log into txdmv.gov eLICENSING and complete your annual renewal application. Verify your business address, lot information, and any other required fields. Pay the renewal fee (currently $700 for standard GDN licenses).",
+                  detail: "Log into txdmv.gov eLICENSING and complete your renewal application. Verify your business address, lot information, and any other required fields, and pay the renewal fee TxDMV shows for your license type.",
                 },
                 {
                   timing: "Before expiration date",
@@ -225,7 +225,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
               {[
                 {
                   q: "How far in advance can I renew my GDN bond?",
-                  a: "You can renew your GDN bond up to 90 days before it expires without creating a gap in coverage. The new bond term typically starts on the day after the current one ends, ensuring continuous coverage.",
+                  a: "Start well before your license expires: TxDMV requires the renewal to be received before the expiration date, and the new bond must cover the full 2-year term starting on the first day of the month. Ask your bond provider when they can issue the renewal bond for your dates.",
                 },
                 {
                   q: "Will my bond premium change at renewal?",

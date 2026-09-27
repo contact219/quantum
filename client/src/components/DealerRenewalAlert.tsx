@@ -4,8 +4,8 @@ import { useState } from "react";
  * DealerRenewalAlert — GDN dealer licence renewal reminders.
  *
  * The notary version of this proved the pattern; dealers are the better market
- * for it. GDN licences renew ANNUALLY (notary commissions run four years), so a
- * dealer subscriber comes back around 4x more often. 18,811 Texas dealers, all
+ * for it. GDN licences run 2 years (notary commissions run four), so a dealer
+ * subscriber comes back about twice as often. 18,811 Texas dealers, all
  * with expiration dates on file, and no competitor offers them a reminder.
  *
  * Backed by /api/dealer-search + /api/dealer-alerts/subscribe on the Bond Verify
@@ -32,7 +32,7 @@ function fmtDate(iso: string) {
 
 export default function DealerRenewalAlert({
   heading = "When does your GDN licence expire?",
-  blurb = "Texas dealer licences renew every year, and a lapsed GDN means you can't legally sell. Look up your dealership and we'll email you a free reminder before it's due.",
+  blurb = "Texas dealer licences renew every 2 years, and a lapsed GDN means you can't legally sell. Look up your dealership and we'll email you a free reminder before it's due.",
 }: {
   heading?: string;
   blurb?: string;

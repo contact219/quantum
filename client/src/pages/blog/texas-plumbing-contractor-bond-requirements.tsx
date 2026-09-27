@@ -54,7 +54,7 @@ export default function TexasPlumbingContractorBondRequirements() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> Texas plumbing contractors need a surety bond for their TSBPE or TDLR license, plus city-specific bonds in Houston, Dallas, and other major markets. Annual cost per bond: $100–$300. Same-day issuance available from Quantum Surety.
+            <strong>TL;DR:</strong> Texas plumbing contractors need a surety bond for their TSBPE or TDLR license, plus city-specific bonds in Houston, Dallas, and other major markets. Annual cost per bond: $100–$300. Online application from Quantum Surety.
           </p>
         </div>
       </div>
@@ -119,7 +119,7 @@ export default function TexasPlumbingContractorBondRequirements() {
               <li><strong>Named obligee:</strong> TSBPE or TDLR, as applicable</li>
             </ul>
             <p className="text-gray-700 leading-relaxed mt-4">
-              If your bond lapses, your plumbing contractor license will be considered inactive, and you may not legally supervise or perform plumbing work as a licensed contractor. Apply for your <Link href="/bonds/plumbing-contractor-bond-texas" className="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">Texas plumbing contractor bond</Link> through Quantum Surety — most applicants receive same-day approval and a certificate in their inbox within the hour.
+              If your bond lapses, your plumbing contractor license will be considered inactive, and you may not legally supervise or perform plumbing work as a licensed contractor. Apply for your <Link href="/bonds/plumbing-contractor-bond-texas" className="text-indigo-600 underline underline-offset-2 hover:text-indigo-800">Texas plumbing contractor bond</Link> through Quantum Surety — you apply online, and the carrier reviews your application and shows your premium before you pay.
             </p>
           </section>
 
@@ -233,7 +233,7 @@ export default function TexasPlumbingContractorBondRequirements() {
                 {
                   n: "3",
                   t: "Get approved and receive your certificate(s)",
-                  b: "Most plumbing contractor bond applications are approved instantly. Your bond certificate will arrive by email as a PDF — typically within minutes of approval.",
+                  b: "The carrier reviews your application and shows your premium before you pay. Once the bond is issued, the certificate arrives by email as a PDF.",
                 },
                 {
                   n: "4",
@@ -321,7 +321,7 @@ export default function TexasPlumbingContractorBondRequirements() {
                 },
                 {
                   q: "How long does it take to get bonded?",
-                  a: "Most plumbing contractor bond applications are approved instantly, and your certificate arrives by email within minutes. Same-day issuance is standard for standard $10,000 bonds.",
+                  a: "Apply online; the carrier reviews your application and shows your premium before you pay, and your certificate arrives by email once the bond is issued.",
                 },
                 {
                   q: "Does a plumbing contractor bond cover my employees?",
@@ -345,7 +345,7 @@ export default function TexasPlumbingContractorBondRequirements() {
         {/* CTA */}
         <div className="mt-14 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Plumbing Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · TSBPE, TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · TSBPE, TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

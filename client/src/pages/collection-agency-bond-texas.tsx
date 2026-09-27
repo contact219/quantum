@@ -65,7 +65,7 @@ const FAQ_SCHEMA = {
 export default function CollectionAgencyBondTexas() {
   useSEO({
     title: "Texas Collection Agency Bond | $100/yr | OCCC Required | Quantum Surety",
-    description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Instant online approval, same-day certificate. File with OCCC through NMLS.",
+    description: "Get your OCCC-required $10,000 Texas collection agency surety bond for $100/year. Online application, premium shown before you pay. File with OCCC through NMLS.",
     canonical: "https://quantumsurety.bond/bonds/collection-agency-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -99,7 +99,7 @@ export default function CollectionAgencyBondTexas() {
           {[
             { icon: <DollarSign className="w-5 h-5" />, label: "Annual premium", value: "$100/yr" },
             { icon: <FileText className="w-5 h-5" />, label: "Bond amount", value: "$10,000" },
-            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Same day" },
+            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Once approved" },
             { icon: <Shield className="w-5 h-5" />, label: "Regulator", value: "OCCC" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">
@@ -164,7 +164,7 @@ export default function CollectionAgencyBondTexas() {
             {[
               { step: "1", title: "Apply Online — 5 Minutes", desc: "Complete our secure online form with your agency name, NMLS ID, and basic information. No in-person visit required." },
               { step: "2", title: "Instant Approval", desc: "Most applicants receive an instant decision. Pay $100 by credit or debit card online." },
-              { step: "3", title: "Receive Certificate — Same Day", desc: "We email your signed PDF bond certificate immediately. Upload it directly to your NMLS collection agency application." },
+              { step: "3", title: "Receive Certificate Once Approved", desc: "We email your signed PDF bond certificate immediately. Upload it directly to your NMLS collection agency application." },
             ].map((s) => (
               <div key={s.step} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
                 <div className="w-10 h-10 bg-slate-700 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{s.step}</div>
@@ -206,7 +206,7 @@ export default function CollectionAgencyBondTexas() {
         {/* CTA */}
         <section className="bg-slate-800 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Collection Agency Bond — $100/yr</h2>
-          <p className="text-slate-300 mb-6">Same-day certificate. File through NMLS with your OCCC application today.</p>
+          <p className="text-slate-300 mb-6">Online application. File through NMLS with your OCCC application today.</p>
           <Link href="/get-bond?type=collection-agency">
             <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 font-semibold px-8">
               Apply Now <ArrowRight className="ml-2 w-5 h-5" />

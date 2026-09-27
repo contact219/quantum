@@ -64,7 +64,7 @@ const FAQ_SCHEMA = {
       "name": "How long does it take to get the bond certificate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most applicants receive their bond certificate the same day after completing our online application and payment. We email the signed PDF immediately and can overnight the original if TDSML requires a wet signature."
+        "text": "Once the carrier approves your online application and you pay, we email the signed PDF and can overnight the original if TDSML requires a wet signature."
       }
     }
   ]
@@ -73,7 +73,7 @@ const FAQ_SCHEMA = {
 export default function MortgageBrokerBondTexas() {
   useSEO({
     title: "Texas Mortgage Company Bond | TDSML Required | $500/yr | Quantum Surety",
-    description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Instant approval, same-day certificate.",
+    description: "Get your Texas mortgage company surety bond required by TDSML (Finance Code Ch. 156). $50K–$250K bonds from $500/year. Online application, premium shown before you pay.",
     canonical: "https://quantumsurety.bond/bonds/mortgage-broker-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -89,7 +89,7 @@ export default function MortgageBrokerBondTexas() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Texas Mortgage Company Bond</h1>
           <p className="text-xl text-indigo-200 mb-8 max-w-2xl mx-auto">
-            TDSML-required surety bond for Texas mortgage company license applicants. $50,000–$250,000 bonds. Same-day certificate.
+            TDSML-required surety bond for Texas mortgage company license applicants. $50,000–$250,000 bonds. Online application.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/get-bond?type=mortgage">
@@ -106,7 +106,7 @@ export default function MortgageBrokerBondTexas() {
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { icon: <DollarSign className="w-5 h-5" />, label: "Starting at", value: "$500/yr" },
-            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Same day" },
+            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Once approved" },
             { icon: <Shield className="w-5 h-5" />, label: "Bond amounts", value: "$50K–$250K" },
             { icon: <CheckCircle className="w-5 h-5" />, label: "Obligee", value: "TDSML" },
           ].map((s) => (
@@ -194,7 +194,7 @@ export default function MortgageBrokerBondTexas() {
           <div className="space-y-4">
             {[
               { step: "1", title: "Apply Online (5 minutes)", desc: "Complete our secure online application. We ask for your business name, NMLS ID, projected origination volume, and basic personal/credit information." },
-              { step: "2", title: "Same-Day Approval", desc: "Most applicants receive an instant approval decision. We review credit and business history to determine your exact premium rate." },
+              { step: "2", title: "Online Application", desc: "Most applicants receive an instant approval decision. We review credit and business history to determine your exact premium rate." },
               { step: "3", title: "Receive Bond Certificate", desc: "We email your signed bond certificate immediately after payment. Upload the PDF to NMLS or email it directly to TDSML as required." },
             ].map((s) => (
               <div key={s.step} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
@@ -241,7 +241,7 @@ export default function MortgageBrokerBondTexas() {
         {/* CTA */}
         <section className="bg-indigo-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Mortgage Company Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day certificate. Upload to NMLS and file with TDSML immediately.</p>
+          <p className="text-indigo-200 mb-6">Online application. Upload to NMLS and file with TDSML immediately.</p>
           <Link href="/get-bond?type=mortgage">
             <Button size="lg" className="bg-white text-indigo-600 hover:bg-indigo-50 font-semibold px-8">
               Apply Now — Takes 5 Minutes <ArrowRight className="ml-2 w-5 h-5" />

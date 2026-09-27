@@ -13,7 +13,7 @@ const SERVICE_SCHEMA = {
   "url": "https://quantumsurety.bond/bonds/gdn-bond-pearland",
   "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
   "areaServed": [{ "@type": "City", "name": "Pearland" }, { "@type": "State", "name": "Texas" }],
-  "description": "Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Instant approval, same-day certificate.",
+  "description": "Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Online application, premium shown before you pay.",
   "offers": { "@type": "Offer", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
 };
 
@@ -23,7 +23,7 @@ const FAQ_SCHEMA = {
   "mainEntity": [
     { "@type": "Question", "name": "Do auto dealers in Pearland need a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $50,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." } },
     { "@type": "Question", "name": "How much does a GDN bond cost in Pearland?", "acceptedAnswer": { "@type": "Answer", "text": "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. Your exact premium is confirmed before you pay, with no obligation." } },
-    { "@type": "Question", "name": "How do I get a GDN bond in Pearland?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, receive instant approval, and get your $50,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." } },
+    { "@type": "Question", "name": "How do I get a GDN bond in Pearland?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online at Quantum Surety, and once RLI approves your application, get your $50,000 GDN bond certificate emailed once RLI approves your application — ready to submit with your TxDMV dealer license application." } },
     { "@type": "Question", "name": "What is a GDN bond?", "acceptedAnswer": { "@type": "Answer", "text": "A General Distinguishing Number (GDN) bond is a $50,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." } }
   ]
 };
@@ -31,14 +31,14 @@ const FAQ_SCHEMA = {
 const faqs = [
   { q: "Do auto dealers in Pearland need a GDN bond?", a: "Yes. Texas law requires all licensed motor vehicle dealers to obtain a $50,000 GDN surety bond through TxDMV as a condition of receiving or renewing a General Distinguishing Number (GDN) license." },
   { q: "How much does a GDN bond cost in Pearland?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. Your exact premium is confirmed before you pay, with no obligation." },
-  { q: "How do I get a GDN bond in Pearland?", a: "Apply online at Quantum Surety, receive instant approval, and get your $50,000 GDN bond certificate emailed the same day — ready to submit with your TxDMV dealer license application." },
+  { q: "How do I get a GDN bond in Pearland?", a: "Apply online at Quantum Surety, and once RLI approves your application, get your $50,000 GDN bond certificate emailed once RLI approves your application — ready to submit with your TxDMV dealer license application." },
   { q: "What is a GDN bond?", a: "A General Distinguishing Number (GDN) bond is a $50,000 surety bond required by TxDMV for all Texas motor vehicle dealers. It protects consumers from dealer fraud or failure to transfer titles properly." }
 ];
 
 export default function GDNBondPearland() {
   useSEO({
     title: "Texas GDN Dealer Bond — Pearland | From $250 | Texas Surety Bond | Quantum Surety",
-    description: "Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Instant approval, same-day certificate.",
+    description: "Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Online application, premium shown before you pay.",
     canonical: "/bonds/gdn-bond-pearland",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -63,7 +63,7 @@ export default function GDNBondPearland() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas GDN Dealer Bond — Pearland</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Instant approval, same-day certificate.
+            Texas GDN dealer bond for Pearland auto dealers — required by TxDMV for your General Distinguishing Number license. Online application, premium shown before you pay.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GET_LINK}>
@@ -85,7 +85,7 @@ export default function GDNBondPearland() {
           {[
             { label: "Bond amount", value: "$50,000", sub: "Required by TxDMV" },
             { label: "Starting at", value: "$250", sub: "for the 2-year term" },
-            { label: "Turnaround", value: "Same day", sub: "Certificate emailed instantly" },
+            { label: "Turnaround", value: "Once approved", sub: "Certificate emailed instantly" },
           ].map((item) => (
             <div key={item.label}>
               <div className="text-2xl font-bold text-indigo-900">{item.value}</div>
@@ -102,7 +102,7 @@ export default function GDNBondPearland() {
           <ul className="space-y-3 text-gray-700 text-sm">
               <li key="$50,000 TxDMV-compliant coverage" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>$50,000 TxDMV-compliant coverage</span></li>
               <li key="Instant approval available" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Instant approval available</span></li>
-              <li key="Same-day certificate" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Same-day certificate</span></li>
+              <li key="Online application" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Online application</span></li>
               <li key="All dealer types covered" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>All dealer types covered</span></li>
               <li key="TDI Licensed #3480229" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>TDI Licensed #3480229</span></li>
               <li key="No hidden fees" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>No hidden fees</span></li>

@@ -59,7 +59,7 @@ export default function BlogHowToGetTexasGDNLicense() {
     { q: "How long does it take to get a Texas GDN license?", a: "TxDMV typically processes complete GDN applications in 4–8 weeks. The most common delays are: incomplete documentation, failed location inspection, or background check issues. Having your bond certificate, insurance certificate, and education completion ready before you submit dramatically speeds up the process." },
     { q: "Do I need a physical lot to get a GDN license in Texas?", a: "Yes. TxDMV requires all GDN licensees to have a permanent, enclosed business location — not just a home address or parking lot. The location must have adequate display space for at least 5 vehicles and a dedicated business office. TxDMV will inspect your location before granting your license." },
     { q: "Can I sell cars from home with a Texas GDN license?", a: "No. Texas requires a qualifying dealer location that is separate from a personal residence and meets commercial zoning requirements. You cannot operate a licensed dealership from your home." },
-    { q: "What happens if I operate without a GDN bond?", a: "Operating as a motor vehicle dealer without a valid GDN bond is a Class A misdemeanor under Texas law — punishable by fines up to $4,000 and up to one year in jail. TxDMV can also revoke your license immediately upon discovering a lapsed bond." },
+    { q: "What happens if I operate without a GDN bond?", a: "Dealing without a valid GDN and bond is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095)." },
   ];
 
   return (
@@ -90,8 +90,8 @@ export default function BlogHowToGetTexasGDNLicense() {
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <p className="font-bold text-gray-900 text-sm mb-1">Operating without a GDN is a Class A misdemeanor</p>
-              <p className="text-gray-700 text-sm">Texas Transportation Code §503.033 makes it a Class A misdemeanor to act as a motor vehicle dealer without a valid GDN license and bond — fines up to $4,000 and up to one year in jail.</p>
+              <p className="font-bold text-gray-900 text-sm mb-1">Operating without a GDN is a criminal offense</p>
+              <p className="text-gray-700 text-sm">Acting as a dealer without a valid GDN and bond is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).</p>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function BlogHowToGetTexasGDNLicense() {
         </section>
 
         <div className="bg-indigo-900 text-white rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-2">Get Your GDN Bond Same-Day</h2>
+          <h2 className="text-2xl font-bold mb-2">Get Your GDN Bond</h2>
           <p className="text-indigo-200 mb-5">$50,000 bond from $250 for the 2-year term. Instant PDF certificate accepted by TxDMV eLICENSING. Apply in 5 minutes.</p>
           <a href="/get-bond?type=dealer">
             <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition-colors inline-flex items-center gap-2">

@@ -39,7 +39,7 @@ export default function HVACBondTexas() {
   useSEO({
     title: "HVAC Contractor Bond Texas | AC License Bond | TACLA | Quantum Surety",
     description:
-      "Get your Texas HVAC contractor bond same-day. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF delivery.",
+      "Apply online for your Texas HVAC contractor bond. Required for TACLA air conditioning licenses and city HVAC permits. $10,000 bond from $100/yr. Instant PDF delivery.",
     canonical: "/bonds/hvac-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -63,13 +63,13 @@ export default function HVACBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">TACLA / TDLR License Bond</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas HVAC Contractor Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by TDLR for TACLA air conditioning and refrigeration contractor licenses, and by most Texas cities for HVAC permit-pulling privileges. Get bonded same-day — instant PDF delivery.
+            Required by TDLR for TACLA air conditioning and refrigeration contractor licenses, and by most Texas cities for HVAC permit-pulling privileges. Apply online — PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
@@ -92,7 +92,7 @@ export default function HVACBondTexas() {
           {[
             { label: "Bond amount", value: "$10,000", sub: "Standard TDLR & city requirement" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -185,7 +185,7 @@ export default function HVACBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas HVAC Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · TACLA & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · TACLA & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

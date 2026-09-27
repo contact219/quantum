@@ -227,7 +227,7 @@ export default function TexasContractorBondMarketData2026() {
           <Shield className="w-10 h-10 text-indigo-300 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-3">Get your Texas contractor bond today</h2>
           <p className="text-indigo-200 mb-6 max-w-md mx-auto">
-            Same-day approval for most TDLR trades. TDI-licensed. Instant digital certificate.
+            Online application for most TDLR trades. TDI-licensed. Instant digital certificate.
             Starting at $75/yr — the best rate in Texas.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

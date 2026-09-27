@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "What bonds do MBE contractors need for public contracts?",
-    a: "Public contracts in Texas typically require three bonds: a Bid Bond (submitted with your proposal, guarantees you'll honor your bid), a Performance Bond (guarantees you'll complete the contract), and a Payment Bond (guarantees you'll pay subcontractors and suppliers). All three are issued same-day by Quantum Surety.",
+    a: "Public contracts in Texas typically require three bonds: a Bid Bond (submitted with your proposal, guarantees you'll honor your bid), a Performance Bond (guarantees you'll complete the contract), and a Payment Bond (guarantees you'll pay subcontractors and suppliers). Quantum Surety writes all three; timing depends on the carrier's underwriting.",
   },
   {
     q: "How quickly can I get a surety bond as an MBE contractor?",
@@ -61,7 +61,7 @@ export default function MBEContractorBondTexas() {
   useSEO({
     title: "Surety Bonds for MBE Contractors Texas | HUB & DBE Certified | Quantum Surety",
     description:
-      "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee Program available. Same-day certificates.",
+      "Surety bonds for minority-owned (MBE), HUB-certified, and DBE-certified Texas contractors. Bid bonds, performance bonds, payment bonds. SBA Bond Guarantee Program available. Online application.",
     canonical: "/bonds/mbe-contractor-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -82,7 +82,7 @@ export default function MBEContractorBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">HUB · DBE · MBE Certified</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Surety Bonds for Minority Contractors in Texas
@@ -111,7 +111,7 @@ export default function MBEContractorBondTexas() {
           {[
             { label: "Certifications served", value: "HUB · DBE · MBE", sub: "Texas Comptroller & federal programs" },
             { label: "SBA Bond Guarantee", value: "70–90%", sub: "For contractors who don't qualify traditionally" },
-            { label: "Turnaround", value: "Same-day", sub: "Bid, performance & payment bonds" },
+            { label: "Turnaround", value: "Once approved", sub: "Bid, performance & payment bonds" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-xl font-bold text-gray-900">{item.value}</p>
@@ -223,7 +223,7 @@ export default function MBEContractorBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your MBE Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · HUB · DBE · MBE · SBA program available · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · HUB · DBE · MBE · SBA program available · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

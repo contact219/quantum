@@ -30,7 +30,7 @@ const COMPANIES = [
     tdlrMonitor: true,
     voiceAgent: true,
     rating: 5,
-    summary: "Texas-only surety agency built for speed. Matches the best flat-rate notary pricing available ($50 for the 4-year term, plus the $21 state filing fee everyone charges), same-day approval for contractors and dealers, and the only agency here with a free bond verification portal and live TDLR monitoring.",
+    summary: "Texas-only surety agency built for speed. Matches the best flat-rate notary pricing available ($50 for the 4-year term, plus the $21 state filing fee everyone charges), online applications for contractors and dealers, and the only agency here with a free bond verification portal and live TDLR monitoring.",
   },
   {
     name: "Western Surety Company",
@@ -157,7 +157,7 @@ export default function BestTexasSuretyBondCompany2026() {
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
             <strong>Bottom line:</strong> $50 for the full 4-year term is the going rate for a Texas notary bond, and several providers charge it — Quantum Surety among them. Add the $21 state filing fee and you are commissioned for $71. What separates providers is speed, whether a human has to be involved, and what you get afterwards. Quantum Surety issues instantly by PDF, is Texas-only, and is the only one here with a free bond verification portal and live TDLR license monitoring.
-            For TDLR contractor bonds, Quantum Surety starts at $75/yr with same-day approval. For GDN dealer bonds, from $250 for the 2-year term.
+            For TDLR contractor bonds, Quantum Surety starts at $75/yr with an online application. For GDN dealer bonds, from $250 for the 2-year term.
           </p>
         </div>
       </div>
@@ -253,7 +253,7 @@ export default function BestTexasSuretyBondCompany2026() {
         <div className="grid sm:grid-cols-3 gap-4 mb-12">
           {[
             { title: "Best for Texas Notaries", winner: "Quantum Surety", why: "$50 flat for 4 years — matches the best rate available, issued instantly by PDF. Texas SOS–compliant.", type: "notary" },
-            { title: "Best for TDLR Contractors", winner: "Quantum Surety", why: "Starts at $75/yr. Same-day approval. Free TDLR license monitoring included.", type: "contractor" },
+            { title: "Best for TDLR Contractors", winner: "Quantum Surety", why: "Starts at $75/yr. Online application. Free TDLR license monitoring included.", type: "contractor" },
             { title: "Best for GDN Dealers", winner: "Quantum Surety", why: "From $250 per 2-yr term. TxDMV-accepted bond, 24-hr turnaround, no agent required.", type: "dealer" },
           ].map((cat) => (
             <div key={cat.title} className="rounded-xl border border-amber-200 bg-amber-50 p-5">
@@ -326,7 +326,7 @@ export default function BestTexasSuretyBondCompany2026() {
             },
             {
               q: "What is the best surety bond company for TDLR contractors in Texas?",
-              a: "For TDLR contractor license bonds, Quantum Surety offers same-day approval starting at $75/yr with a digital certificate filed directly. The agency also monitors TDLR license data and sends renewal alerts — no other Texas agency offers this."
+              a: "For TDLR contractor license bonds, Quantum Surety offers an online application starting at $75/yr with a digital certificate filed directly. The agency also monitors TDLR license data and sends renewal alerts — no other Texas agency offers this."
             },
           ].map((item) => (
             <div key={item.q} className="border-b border-gray-100 pb-6">

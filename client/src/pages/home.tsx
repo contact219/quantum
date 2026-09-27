@@ -65,7 +65,7 @@ const WEBSITE_SCHEMA = {
 const trustMetrics = [
   { value: "$50 flat", label: "Notary bond — instant PDF" },
   { value: "From $250", label: "GDN dealer bond / 2 yrs" },
-  { value: "Same-day", label: "Most bonds issued" },
+  { value: "Once approved", label: "Most bonds issued" },
 ];
 
 const TRUST_ITEMS = [
@@ -274,7 +274,7 @@ export default function Home() {
               className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
               data-testid="text-hero-headline"
             >
-              Texas Surety Bonds, Issued Same Day
+              Texas Surety Bonds, Applied for Online
             </h1>
 
             <div className="mt-6">
@@ -294,7 +294,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-300 px-7 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.18)] transition hover:-translate-y-0.5 hover:bg-cyan-200"
                 data-testid="link-hero-primary-cta"
               >
-                Get My Bond — Same Day
+                Get My Bond
               </Link>
               <a
                 href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX"
@@ -498,7 +498,7 @@ export default function Home() {
                     §503.033 Required
                   </span>
                   <span className="bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
-                    <Clock className="w-3 h-3" /> Same-Day Issuance
+                    <Clock className="w-3 h-3" /> Online Application
                   </span>
                 </div>
 
@@ -513,7 +513,7 @@ export default function Home() {
                   {[
                     "$50,000 GDN bond — covers all 6 dealer license types (new, used, wholesale, motorcycle, BHPH, lease/finance)",
                     "Operating without a valid bond is a Class A misdemeanor under Texas law",
-                    "Same-day certificate — apply online, receive your PDF bond within minutes",
+                    "Online application — apply online, receive your PDF bond within minutes",
                     "Renewal reminders included — never risk a lapsed license",
                     "TDI-licensed agency — Quantum Surety License #3480229",
                   ].map((item) => (
@@ -587,7 +587,7 @@ export default function Home() {
                     Certificate of Title Bond
                   </span>
                   <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background: "rgba(255,255,255,0.08)", color: "#e2e8f0"}}>
-                    Same-Day Issuance
+                    Online Application
                   </span>
                   <span className="text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1" style={{background: "rgba(255,255,255,0.06)", color: "#94a3b8"}}>
                     All 254 TX Counties
@@ -600,7 +600,7 @@ export default function Home() {
                 </h2>
                 <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-xl">
                   Got a car, truck, or trailer with a missing or rejected title? A Texas Certificate of Title Bond
-                  lets you legally own and register it through TxDMV — same-day issuance from a TDI-licensed agency.
+                  lets you legally own and register it through TxDMV — apply online with a TDI-licensed agency.
                 </p>
 
                 <ul className="space-y-3 mb-8">
@@ -643,7 +643,7 @@ export default function Home() {
                     { label: "Bond amount", value: "1.5x value" },
                     { label: "Bond term", value: "3 years" },
                     { label: "Credit check", value: "None" },
-                    { label: "Delivery", value: "Same-day" },
+                    { label: "Delivery", value: "Once approved" },
                   ].map((row) => (
                     <div key={row.label} className="flex justify-between text-sm pb-2" style={{borderBottom: "1px solid rgba(255,255,255,0.07)"}}>
                       <span className="text-slate-400">{row.label}</span>

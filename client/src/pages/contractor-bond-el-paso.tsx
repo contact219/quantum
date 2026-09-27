@@ -39,7 +39,7 @@ export default function ContractorBondElPaso() {
   useSEO({
     title: "Contractor Bond El Paso TX | El Paso Contractor License Bond | Quantum Surety",
     description:
-      "Contractor bond in El Paso, TX — required for city contractor licenses. Same-day issuance. TDI-licensed surety agency. Get your free El Paso bond quote today.",
+      "Contractor bond in El Paso, TX — required for city contractor licenses. Online application. TDI-licensed surety agency. Get your free El Paso bond quote today.",
     canonical: "/bonds/contractor-bond-el-paso",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "City", "name": "El Paso", "containedInPlace": { "@type": "State", "name": "Texas" } } }, "ld-json-Service");
@@ -63,13 +63,13 @@ export default function ContractorBondElPaso() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1"><MapPin className="w-3 h-3" /> El Paso, TX</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Contractor Bond — El Paso, Texas
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by the City of El Paso Development Services for licensed contractors in general contracting, electrical, plumbing, HVAC, and mechanical trades. Texas's 4th largest city with booming construction across military, healthcare, and residential sectors. Get bonded same-day with instant PDF delivery.
+            Required by the City of El Paso Development Services for licensed contractors in general contracting, electrical, plumbing, HVAC, and mechanical trades. Texas's 4th largest city with booming construction across military, healthcare, and residential sectors. Apply online; PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/quote">
@@ -92,7 +92,7 @@ export default function ContractorBondElPaso() {
           {[
             { label: "Bond amounts", value: "$5K–$25K", sub: "Varies by trade & license type" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -129,7 +129,7 @@ export default function ContractorBondElPaso() {
           <div className="grid sm:grid-cols-2 gap-6">
             {[
               { title: "TDI-Licensed Agency", body: "We are licensed by the Texas Department of Insurance (TDI License #3480229) to issue surety bonds in Texas — including all El Paso contractor license bonds." },
-              { title: "Same-Day Issuance", body: "Most El Paso contractors are approved and bonded the same day they apply. No waiting weeks for your bond certificate." },
+              { title: "Online Application", body: "Most El Paso contractors are approved and bonded the same day they apply. No waiting weeks for your bond certificate." },
               { title: "El Paso Market Knowledge", body: "We understand the unique construction landscape in El Paso — from Fort Bliss military projects to cross-border logistics facilities and West Texas residential growth." },
               { title: "All Trades Covered", body: "General contractor, electrical, plumbing, HVAC, mechanical, roofing — we bond every licensed trade required by the City of El Paso Development Services." },
             ].map((item) => (
@@ -183,7 +183,7 @@ export default function ContractorBondElPaso() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your El Paso Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All El Paso trades · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All El Paso trades · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

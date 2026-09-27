@@ -7,7 +7,7 @@ const SERVICE_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Texas Property Tax Consultant Bond",
-  "description": "TDLR-required $5,000 surety bond for Texas property tax consultant license applicants. Instant approval, same-day certificate, $50/year.",
+  "description": "TDLR-required $5,000 surety bond for Texas property tax consultant license applicants. Online application, premium shown before you pay, $50/year.",
   "provider": {
     "@type": "Organization",
     "name": "Quantum Surety",
@@ -73,7 +73,7 @@ const FAQ_SCHEMA = {
 export default function PropertyTaxConsultantBondTexas() {
   useSEO({
     title: "Texas Property Tax Consultant Bond | $50/yr | TDLR Required | Quantum Surety",
-    description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Instant online approval, same-day certificate. Covers full 2-year license term.",
+    description: "Get your TDLR-required $5,000 Texas property tax consultant surety bond for $50/year. Online application, premium shown before you pay. Covers full 2-year license term.",
     canonical: "https://quantumsurety.bond/bonds/property-tax-consultant-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -107,7 +107,7 @@ export default function PropertyTaxConsultantBondTexas() {
           {[
             { icon: <DollarSign className="w-5 h-5" />, label: "Annual premium", value: "$50/yr" },
             { icon: <FileText className="w-5 h-5" />, label: "Bond amount", value: "$5,000" },
-            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Same day" },
+            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Once approved" },
             { icon: <Shield className="w-5 h-5" />, label: "Regulator", value: "TDLR" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">
@@ -175,7 +175,7 @@ export default function PropertyTaxConsultantBondTexas() {
             {[
               { step: "1", title: "Apply Online — 5 Minutes", desc: "Enter your name, license type (RPTC or SPTC), and contact information. No credit check required for the standard $50/year rate." },
               { step: "2", title: "Pay Securely Online", desc: "Pay $50 by credit or debit card. We accept all major cards. Your payment is processed immediately and securely." },
-              { step: "3", title: "Receive Certificate — Same Day", desc: "Your signed bond certificate is emailed as a PDF immediately. Download it and upload directly to TDLR's online licensing portal." },
+              { step: "3", title: "Receive Certificate Once Approved", desc: "Your signed bond certificate is emailed as a PDF immediately. Download it and upload directly to TDLR's online licensing portal." },
             ].map((s) => (
               <div key={s.step} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
                 <div className="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{s.step}</div>
@@ -221,7 +221,7 @@ export default function PropertyTaxConsultantBondTexas() {
         {/* CTA */}
         <section className="bg-emerald-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Property Tax Consultant Bond — $50</h2>
-          <p className="text-emerald-200 mb-6">Instant approval. Same-day certificate. File with TDLR today.</p>
+          <p className="text-emerald-200 mb-6">Instant approval. Online application. File with TDLR today.</p>
           <Link href="/get-bond?type=property-tax-consultant">
             <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold px-8">
               Get My TDLR Bond <ArrowRight className="ml-2 w-5 h-5" />

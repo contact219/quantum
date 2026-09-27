@@ -19,7 +19,7 @@ const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How long does it take to get a performance bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Simple projects under $500,000 can often be approved same-day or next business day. Larger or more complex projects ($1M+) typically take 2–5 business days and require financial statements." } },
+    { "@type": "Question", "name": "How long does it take to get a performance bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Timing depends on the carrier's underwriting and the size of the project. Larger or more complex projects ($1M+) typically take 2–5 business days and require financial statements." } },
     { "@type": "Question", "name": "What do I need to qualify for a Texas performance bond?", "acceptedAnswer": { "@type": "Answer", "text": "Carriers evaluate credit, capacity (your ability to handle the project's size), and character (your track record). For bonds under $350,000, personal credit score and years in business are the main factors. For larger bonds, financial statements are typically required." } },
     { "@type": "Question", "name": "Can I get a performance bond with bad credit in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but options are more limited. Specialty markets exist for contractors with credit challenges — these bonds typically come at higher rates (2%–5%) and may require collateral." } },
     { "@type": "Question", "name": "What's the difference between a performance bond and a payment bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A performance bond guarantees you'll complete the project. A payment bond guarantees you'll pay your subcontractors and suppliers. Texas law requires both on public contracts over $25,000." } },
@@ -68,7 +68,7 @@ export default function PerformanceBondTexas() {
   const faqs = [
     {
       q: "How long does it take to get a performance bond in Texas?",
-      a: "Simple projects under $500,000 can often be approved same-day or next business day. Larger or more complex projects ($1M+) typically take 2–5 business days and require financial statements. Our AI pre-screening identifies what's needed upfront so there are no surprises.",
+      a: "Timing depends on the carrier's underwriting and the size of the project. Larger or more complex projects ($1M+) typically take 2–5 business days and require financial statements. Our AI pre-screening identifies what's needed upfront so there are no surprises.",
     },
     {
       q: "What do I need to qualify for a Texas performance bond?",

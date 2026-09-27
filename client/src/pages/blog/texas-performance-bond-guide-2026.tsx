@@ -484,7 +484,7 @@ export default function BlogTexasPerformanceBondGuide2026() {
         {/* CTA card */}
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm mb-5">
-            <DollarSign className="w-4 h-4" /> Fast quotes — same-day approval available
+            <DollarSign className="w-4 h-4" /> Fast quotes — an online application available
           </div>
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Performance Bond Quote</h2>
           <p className="text-indigo-200 mb-6">

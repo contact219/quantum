@@ -79,7 +79,7 @@ export default function CompareWesternSurety() {
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 mb-10">
           <div className="flex flex-wrap gap-3">
             <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
-              <Button>Renew for $50 — Same Day <ArrowRight className="w-4 h-4 ml-1" /></Button>
+              <Button>Renew for $50 online <ArrowRight className="w-4 h-4 ml-1" /></Button>
             </a>
             <a href="https://verify.quantumsurety.bond" target="_blank" rel="noreferrer">
               <Button variant="outline">Not due yet? Set a free renewal reminder</Button>

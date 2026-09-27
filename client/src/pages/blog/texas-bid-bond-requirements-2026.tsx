@@ -77,7 +77,7 @@ export default function BlogTexasBidBondRequirements2026() {
               Texas law (Gov. Code § 2253) requires a bid bond on most public construction contracts.
               The bond is typically <strong>5% or 10% of the bid amount</strong> and costs{" "}
               <strong>nothing extra</strong> when you have a surety relationship — the premium is rolled
-              into your performance bond when you win. No surety relationship yet? Same-day approval
+              into your performance bond when you win. No surety relationship yet? Online application
               is available at{" "}
               <Link href="/quote">
                 <span className="underline cursor-pointer">quantumsurety.bond/quote</span>
@@ -516,7 +516,7 @@ export default function BlogTexasBidBondRequirements2026() {
               },
               {
                 href: "/bonds/bid-bond-texas",
-                title: "Texas Bid Bond — Same-Day Approval",
+                title: "Texas Bid Bond — Online Application",
                 tag: "Product Page",
               },
               {

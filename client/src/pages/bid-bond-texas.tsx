@@ -21,7 +21,7 @@ const FAQ_SCHEMA = {
   "mainEntity": [
     { "@type": "Question", "name": "What is a bid bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "A bid bond is a guarantee that a contractor will enter into a contract at the bid price if awarded the project. If the contractor fails to do so, the surety pays the difference between the bid and the next lowest bid, up to the bond penalty." } },
     { "@type": "Question", "name": "How much does a Texas bid bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most bid bonds are issued at no charge — the cost is built into the performance and payment bond premium if you win the project. For standalone bid bonds, typical cost is $100–$250 depending on the bid amount." } },
-    { "@type": "Question", "name": "How quickly can I get a bid bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Quantum Surety issues bid bonds same-day for most qualified contractors. Submit before noon and receive your bond documents the same business day in most cases." } },
+    { "@type": "Question", "name": "How quickly can I get a bid bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Timing depends on the carrier's underwriting, so apply as early as you can before the bid date. Timing depends on the carrier's underwriting, so apply as early as you can before the bid date." } },
     { "@type": "Question", "name": "What projects require bid bonds in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas public projects over $25,000 generally require bid bonds under state law. Federal projects over $150,000 require them under the Miller Act. Many private owners and general contractors also require bid bonds from subcontractors." } },
     { "@type": "Question", "name": "What information do I need to get a bid bond?", "acceptedAnswer": { "@type": "Answer", "text": "You'll need your company name, years in business, the project name and owner, the bid amount, and the bid due date. For larger bids (over $500k), we may request financial statements." } }
   ]
@@ -31,7 +31,7 @@ export default function BidBondTexas() {
   useSEO({
     title: "Bid Bonds Texas | Same-Day Bid Bond for TX Contractors | Quantum Surety",
     description:
-      "Texas bid bonds for public and private construction projects. Same-day issuance, all bond amounts. Required on public projects over $25,000. TDI-licensed agency. Free quote.",
+      "Texas bid bonds for public and private construction projects. Online application, all bond amounts. Required on public projects over $25,000. TDI-licensed agency. Free quote.",
     canonical: "/bonds/bid-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -54,7 +54,7 @@ export default function BidBondTexas() {
     },
     {
       q: "How quickly can I get a bid bond in Texas?",
-      a: "Quantum Surety issues bid bonds same-day for most qualified contractors. Submit before noon and receive your bond documents the same business day in most cases.",
+      a: "Timing depends on the carrier's underwriting, so apply as early as you can before the bid date. Timing depends on the carrier's underwriting, so apply as early as you can before the bid date.",
     },
     {
       q: "What projects require bid bonds in Texas?",
@@ -73,14 +73,14 @@ export default function BidBondTexas() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm mb-6">
             <Clock className="w-4 h-4" />
-            Same-Day Bid Bond Issuance
+            Bid Bond Applications
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Texas Bid Bonds — Fast, Simple, Reliable
           </h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Need a bid bond for a Texas construction project? Quantum Surety issues bid bonds
-            same-day for qualified contractors. No delays, no runaround — just fast answers.
+            for qualified contractors, with timing set by the carrier's underwriting. No runaround, just straight answers.
           </p>
           <Link href="/quote">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">
@@ -117,7 +117,7 @@ export default function BidBondTexas() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: DollarSign, label: "Typical cost", value: "$0–$250", note: "Most bids are free" },
-              { icon: Clock, label: "Turnaround", value: "Same day", note: "For qualified contractors" },
+              { icon: Clock, label: "Turnaround", value: "Once approved", note: "For qualified contractors" },
               { icon: FileText, label: "Typical penalty", value: "5–10%", note: "Of the bid amount" },
             ].map((fact) => (
               <div key={fact.label} className="bg-white rounded-xl p-6 border border-gray-200 text-center">

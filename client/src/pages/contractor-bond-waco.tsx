@@ -14,7 +14,7 @@ const bondTypes = [
 const faqs = [
   { q: "Does Waco require a contractor bond?", a: "Yes. The City of Waco Development Services department requires licensed contractors to maintain a surety bond as a condition of city contractor registration. Requirements apply to general contractors and specialty trades including electrical, plumbing, HVAC, and roofing." },
   { q: "Why is Waco such an active construction market right now?", a: "Waco has undergone a dramatic revitalization driven by tourism centered on Magnolia Market at the Silos, continued expansion at Baylor University, and a surge of new hotel, restaurant, and retail development in the downtown corridor. The city's growing national profile has attracted significant residential and commercial investment, creating strong ongoing demand for licensed, bonded contractors." },
-  { q: "How much does a Waco contractor bond cost?", a: "Most Waco contractors pay $100–$250/year for a $10,000 bond, and $200–$450/year for a $25,000 bond. Your premium is determined primarily by your personal credit score. Qualified applicants receive same-day approval at the best available rate with no lengthy underwriting process for standard bond amounts." },
+  { q: "How much does a Waco contractor bond cost?", a: "Most Waco contractors pay $100–$250/year for a $10,000 bond, and $200–$450/year for a $25,000 bond. Your premium is determined primarily by your personal credit score. Qualified applicants can apply online for the best available rate with no lengthy underwriting process for standard bond amounts." },
   { q: "Do I need a Waco city bond AND a TDLR bond?", a: "Yes, if you hold a TDLR license (electrical, plumbing, HVAC/mechanical). TDLR requires a state-level license bond, and the City of Waco requires a separate city registration bond. Quantum Surety can issue both simultaneously — tell us your trade and we'll identify everything you need." },
   { q: "Can I use my Waco contractor bond for projects in Temple or Austin?", a: "No. Each city maintains its own contractor licensing and bonding requirements. If you operate in multiple Central Texas markets — including Temple, Austin, or Dallas — you will need a separate bond for each jurisdiction. Quantum Surety can issue multi-city bonds through a single application, keeping the process fast and simple." },
 ];
@@ -33,7 +33,7 @@ const SERVICE_SCHEMA = {
 export default function ContractorBondWaco() {
   useSEO({
     title: "Contractor Bond Waco TX | Waco Contractor License Bond | Quantum Surety",
-    description: "Contractor bond in Waco, TX — required for city contractor licenses. Same-day issuance. TDI-licensed surety agency. Get your free Waco bond quote today.",
+    description: "Contractor bond in Waco, TX — required for city contractor licenses. Online application. TDI-licensed surety agency. Get your free Waco bond quote today.",
     canonical: "/bonds/contractor-bond-waco",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -47,7 +47,7 @@ export default function ContractorBondWaco() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contractor Bond — Waco, Texas</h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get your City of Waco contractor license bond same-day. Waco's rapid revitalization is driving
+            Apply online for your City of Waco contractor license bond. Waco's rapid revitalization is driving
             one of Central Texas's strongest construction markets. TDI-licensed, A-rated carriers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -112,7 +112,7 @@ export default function ContractorBondWaco() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Shield className="w-6 h-6 text-indigo-600" />, title: "TDI-Licensed Agency", body: "Licensed by the Texas Department of Insurance (#3480229). Your bond is backed by A-rated surety carriers approved in Texas." },
-              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Same-Day Issuance", body: "Standard contractor bonds approved and delivered same-day. Keep Waco's fast-moving revitalization projects on schedule." },
+              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Online Application", body: "Apply online; the carrier reviews each application. Keep Waco's fast-moving revitalization projects on schedule." },
               { icon: <CheckCircle className="w-6 h-6 text-green-600" />, title: "Multi-City Bonds", body: "Work across Waco, Austin, Dallas, and Temple? We issue bonds for multiple cities simultaneously." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 border border-gray-200 text-center">
@@ -163,7 +163,7 @@ export default function ContractorBondWaco() {
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Waco Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-8">Same-day issuance. TDI-licensed agency. A-rated carriers. Stay competitive in Waco's booming construction market.</p>
+          <p className="text-indigo-200 mb-8">Online application. TDI-licensed agency. A-rated carriers. Stay competitive in Waco's booming construction market.</p>
           <Link href="/quote">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
               Get My Free Bond Quote <ArrowRight className="w-4 h-4 ml-2" />

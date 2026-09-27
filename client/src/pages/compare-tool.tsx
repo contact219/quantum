@@ -93,7 +93,7 @@ const ROWS: Array<{ label: string; key: keyof Carrier; quantum: string }> = [
   { label: "Accepted by Texas Secretary of State", key: "marketShare", quantum: "Yes" },
   { label: "Term", key: "delivery", quantum: "4 years" },
   { label: "Price", key: "price", quantum: "$50 bond + $21 state fee = $71" },
-  { label: "Certificate delivery", key: "delivery", quantum: "Instant PDF by email, same day" },
+  { label: "Certificate delivery", key: "delivery", quantum: "PDF by email once issued" },
   { label: "Required add-ons", key: "addons", quantum: "None — bond only" },
   { label: "Underwriter", key: "underwriter", quantum: "RLI Insurance Company (A-rated)" },
 ];
@@ -103,7 +103,7 @@ const TABLE_ROWS = [
   { label: "Accepted by Texas Secretary of State", getTheirs: () => "Yes", quantum: "Yes" },
   { label: "Term", getTheirs: () => "4 years", quantum: "4 years" },
   { label: "Price", getTheirs: (c: Carrier) => c.price, quantum: "$50 bond + $21 state fee = $71" },
-  { label: "Certificate delivery", getTheirs: (c: Carrier) => c.delivery, quantum: "Instant PDF by email, same day" },
+  { label: "Certificate delivery", getTheirs: (c: Carrier) => c.delivery, quantum: "PDF by email once issued" },
   { label: "Required add-ons", getTheirs: (c: Carrier) => c.addons, quantum: "None — bond only" },
   { label: "Underwriter", getTheirs: (c: Carrier) => c.underwriter, quantum: "RLI Insurance Company (A-rated)" },
 ];

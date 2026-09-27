@@ -121,7 +121,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
                     {[
                       { severity: "Immediate", consequence: "Your dealer license becomes technically invalid — you cannot legally sell vehicles" },
                       { severity: "Short-term", consequence: "TxDMV may flag your license and require reinstatement documentation before you can operate" },
-                      { severity: "Legal", consequence: "Any sales conducted during the lapse period may be subject to challenge — and expose you to Class A misdemeanor liability" },
+                      { severity: "Legal", consequence: "Any sales conducted during the lapse period may be subject to challenge — and expose you to criminal and civil penalties (Tex. Transp. Code §§503.094–503.095)" },
                       { severity: "Financial", consequence: "Claims filed during a lapse period may not be covered by the surety — leaving you personally liable" },
                     ].map((row) => (
                       <div key={row.severity} className="flex gap-3 text-sm">
@@ -150,7 +150,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
                   {[
                     "Renewal reminder sent 60 days before expiration",
                     "Second reminder sent 30 days before expiration",
-                    "Same-day renewal — new certificate in your inbox within hours",
+                    "Renewal application online, premium shown before you pay",
                     "Continuous coverage — no gap between old and new bond term",
                     "Updated certificate ready to upload to eLICENSING immediately",
                     "Support from a TDI-licensed Texas agency if TxDMV has questions",
@@ -257,7 +257,7 @@ export default function BlogDealerLicenseRenewalGDNBond() {
         {/* CTA */}
         <div className="mt-12 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Renew Your Texas GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day certificate · Renewal reminders included · From $250 per 2-yr term · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · Renewal reminders included · From $250 per 2-yr term · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

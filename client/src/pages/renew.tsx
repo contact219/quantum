@@ -169,7 +169,7 @@ export default function Renew() {
               <span style={{ fontSize: 24, fontWeight: 900, color: "#059669" }}>$50</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, fontSize: 12, color: "#475569" }}>
-              {["✅ RLI Insurance (A-rated)", "✅ Same-day issuance", "✅ Instant PDF certificate", "✅ Paper copy by mail"].map(f => (
+              {["✅ RLI Insurance (A-rated)", "✅ Online application", "✅ Instant PDF certificate", "✅ Paper copy by mail"].map(f => (
                 <span key={f}>{f}</span>
               ))}
             </div>

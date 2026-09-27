@@ -21,8 +21,8 @@ const FAQ_SCHEMA = {
   "mainEntity": [
     { "@type": "Question", "name": "What is a Texas license and permit bond?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas license and permit (L&P) bond is a surety bond required by a Texas state agency, county, or municipality as a condition of issuing a business license or permit. It guarantees the licensed business will comply with applicable laws and regulations. If the business causes harm, injured parties can file a claim against the bond to recover damages." } },
     { "@type": "Question", "name": "Who requires license and permit bonds in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Multiple Texas agencies require L&P bonds: TDLR (contractor, electrician, HVAC, plumber, irrigator licenses), TDI (insurance adjuster and agency bonds), TDHCA (mortgage company bonds), the Texas Comptroller (sales tax bonds), TABC (mixed beverage permit bonds), and hundreds of individual city and county licensing authorities." } },
-    { "@type": "Question", "name": "How much does a Texas L&P bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas L&P bonds cost $50–$300 per year. Standard amounts ($10,000–$50,000) can often be issued instantly with a simple application. Larger bonds or applicants with credit challenges may require underwriting review. Quantum Surety offers same-day issuance for most standard L&P bond amounts." } },
-    { "@type": "Question", "name": "How long does a Texas license bond last?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas L&P bonds run on a one-year term, coinciding with the annual license renewal cycle. Some bonds (such as mortgage company bonds) run on the same term as the license period and may be 1–2 years. Quantum Surety sends renewal reminders before your bond expires so your license stays in good standing." } },
+    { "@type": "Question", "name": "How much does a Texas L&P bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas L&P bonds cost $50–$300 per year. Standard amounts ($10,000–$50,000) can often be issued instantly with a simple application. Larger bonds or applicants with credit challenges may require underwriting review. Quantum Surety offers an online application for most standard L&P bond amounts." } },
+    { "@type": "Question", "name": "How long does a Texas license bond last?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas L&P bonds run on a one-year term, coinciding with the annual license renewal cycle. Some bonds (such as mortgage company bonds) run on the same term as the license period and may be 1–2 years. Quantum Surety offers free renewal reminders before your bond expires so your license stays in good standing." } },
     { "@type": "Question", "name": "Can I get a Texas L&P bond with bad credit?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most standard Texas L&P bonds up to $50,000 are issued on a credit-approved basis, but specialty markets exist for applicants with poor credit. Rates for lower credit scores are higher but bonds are still available in most cases. Contact Quantum Surety to discuss your options." } },
     { "@type": "Question", "name": "What is the difference between a license bond and a permit bond?", "acceptedAnswer": { "@type": "Answer", "text": "A license bond is required to obtain a state or city business license (e.g., contractor's license, insurance adjuster license). A permit bond is required to obtain a specific work permit (e.g., a street excavation permit). In practice, both function identically as surety bonds and are often referred to together as L&P bonds." } }
   ]
@@ -93,8 +93,8 @@ const agencyRequirements = [
 const faqs = [
   { q: "What is a Texas license and permit bond?", a: "A Texas license and permit (L&P) bond is a surety bond required by a Texas state agency, county, or municipality as a condition of issuing a business license or permit. It guarantees the licensed business will comply with applicable laws and regulations. If the business causes harm, injured parties can file a claim against the bond to recover damages." },
   { q: "Who requires license and permit bonds in Texas?", a: "Multiple Texas agencies require L&P bonds: TDLR (contractor, electrician, HVAC, plumber, irrigator licenses), TDI (insurance adjuster and agency bonds), TDHCA (mortgage company bonds), the Texas Comptroller (sales tax bonds), TABC (mixed beverage permit bonds), and hundreds of individual city and county licensing authorities." },
-  { q: "How much does a Texas L&P bond cost?", a: "Most Texas L&P bonds cost $50–$300 per year. Standard amounts ($10,000–$50,000) can often be issued instantly with a simple application. Larger bonds or applicants with credit challenges may require underwriting review. Quantum Surety offers same-day issuance for most standard L&P bond amounts." },
-  { q: "How long does a Texas license bond last?", a: "Most Texas L&P bonds run on a one-year term, coinciding with the annual license renewal cycle. Some bonds (such as mortgage company bonds) run on the same term as the license period and may be 1–2 years. Quantum Surety sends renewal reminders before your bond expires so your license stays in good standing." },
+  { q: "How much does a Texas L&P bond cost?", a: "Most Texas L&P bonds cost $50–$300 per year. Standard amounts ($10,000–$50,000) can often be issued instantly with a simple application. Larger bonds or applicants with credit challenges may require underwriting review. Quantum Surety offers an online application for most standard L&P bond amounts." },
+  { q: "How long does a Texas license bond last?", a: "Most Texas L&P bonds run on a one-year term, coinciding with the annual license renewal cycle. Some bonds (such as mortgage company bonds) run on the same term as the license period and may be 1–2 years. Quantum Surety offers free renewal reminders before your bond expires so your license stays in good standing." },
   { q: "Can I get a Texas L&P bond with bad credit?", a: "Yes. Most standard Texas L&P bonds up to $50,000 are issued on a credit-approved basis, but specialty markets exist for applicants with poor credit. Rates for lower credit scores are higher but bonds are still available in most cases." },
   { q: "What is the difference between a license bond and a permit bond?", a: "A license bond is required to obtain a state or city business license (e.g., contractor's license, insurance adjuster license). A permit bond is required to obtain a specific work permit (e.g., a street excavation permit). Both function identically as surety bonds and are often grouped as L&P bonds." },
 ];
@@ -125,7 +125,7 @@ export default function LicensePermitBondTexas() {
             Bonds required by TDLR, TDI, TDHCA, TABC, the Texas Comptroller, and local licensing authorities — for contractors, adjusters, mortgage companies, and more.
           </p>
           <p className="text-indigo-200 text-sm mb-8">
-            From $50/yr · Same-day issuance on standard amounts · TDI Licensed #3480229
+            From $50/yr · Online application on standard amounts · TDI Licensed #3480229
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote?type=license">
@@ -147,7 +147,7 @@ export default function LicensePermitBondTexas() {
         <div className="max-w-4xl mx-auto grid sm:grid-cols-4 gap-4 text-center">
           {[
             { label: "Starting price", value: "From $50/yr" },
-            { label: "Issuance", value: "Same-day" },
+            { label: "Issuance", value: "Once approved" },
             { label: "Agencies covered", value: "TDLR · TDI · TABC" },
             { label: "TDI License", value: "#3480229" },
           ].map((item) => (
@@ -238,7 +238,7 @@ export default function LicensePermitBondTexas() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "1", title: "Tell us your license type", body: "Select your agency (TDLR, TDI, TABC, city, etc.) and tell us the bond amount required. Most L&P applications take under 5 minutes." },
-              { step: "2", title: "Instant or same-day approval", body: "Standard bond amounts ($10,000–$50,000) are often approved instantly online. Larger or specialty bonds are reviewed same-day in most cases." },
+              { step: "2", title: "Instant or an online application", body: "Standard bond amounts ($10,000–$50,000) are often approved instantly online. Larger or specialty bonds are reviewed same-day in most cases." },
               { step: "3", title: "Receive your bond certificate", body: "Your bond PDF is emailed immediately upon approval. We file directly with the agency on your behalf when required." },
             ].map((s) => (
               <div key={s.step} className="bg-indigo-50 border border-indigo-100 rounded-xl p-6">
@@ -335,7 +335,7 @@ export default function LicensePermitBondTexas() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Texas License &amp; Permit Bond Today</h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            Same-day issuance on most standard amounts · All Texas regulatory agencies · From $50/yr · TDI Licensed #3480229
+            Online application on most standard amounts · All Texas regulatory agencies · From $50/yr · TDI Licensed #3480229
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote?type=license">

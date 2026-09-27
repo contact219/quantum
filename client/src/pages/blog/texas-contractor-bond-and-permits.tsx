@@ -19,7 +19,7 @@ export default function BlogTexasContractorBondAndPermits() {
           <p className="text-indigo-300 text-sm font-medium mb-3 uppercase tracking-widest">Contractor Workflow</p>
           <h1 className="text-4xl font-bold mb-4">Texas Contractors: Get Your Bond and Pull Your Permits in One Day</h1>
           <p className="text-indigo-100 text-lg max-w-3xl">
-            If you&apos;re a contractor in DFW, your contractor license bond and permit plan should be handled together. Here&apos;s a practical same-day workflow.
+            If you&apos;re a contractor in DFW, your contractor license bond and permit plan should be handled together. Here&apos;s a practical workflow.
           </p>
         </div>
       </section>

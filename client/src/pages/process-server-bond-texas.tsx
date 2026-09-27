@@ -22,7 +22,7 @@ const FAQ_SCHEMA = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Do process servers need a bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Texas Supreme Court Order governing certified process servers requires applicants to maintain a $1,000 surety bond as part of the certification process with the Office of Court Administration (OCA). The bond must remain active throughout the certification period." } },
-    { "@type": "Question", "name": "How much does a Texas process server bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas process server bond ($1,000 coverage) typically costs $50–$75 per year. This is one of the most affordable professional bonds in Texas. Instant online issuance with same-day PDF delivery." } },
+    { "@type": "Question", "name": "How much does a Texas process server bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "A Texas process server bond ($1,000 coverage) typically costs $50–$75 per year. This is one of the most affordable professional bonds in Texas. Online application, PDF certificate once issued." } },
     { "@type": "Question", "name": "Who certifies process servers in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "The Office of Court Administration (OCA) certifies process servers in Texas through the Judicial Branch Certification Commission (JBCC). Certification is required for process servers who serve process under Texas Rule of Civil Procedure 103 and 536a as an authorized person." } },
     { "@type": "Question", "name": "What does a process server bond cover?", "acceptedAnswer": { "@type": "Answer", "text": "A process server bond protects parties in legal proceedings from financial harm caused by a process server's negligence, fraud, or improper service of process. If a process server's misconduct causes a judgment to be set aside or delays a legal proceeding, the bond provides compensation." } }
   ]
@@ -30,7 +30,7 @@ const FAQ_SCHEMA = {
 
 const faqs = [
   { q: "Do process servers need a bond in Texas?", a: "Yes. The Texas Supreme Court Order governing certified process servers requires applicants to maintain a $1,000 surety bond as part of the certification process with the Office of Court Administration (OCA). The bond must remain active throughout the certification period." },
-  { q: "How much does a Texas process server bond cost?", a: "A Texas process server bond ($1,000 coverage) typically costs $50–$75 per year. This is one of the most affordable professional bonds in Texas. Instant online issuance with same-day PDF delivery." },
+  { q: "How much does a Texas process server bond cost?", a: "A Texas process server bond ($1,000 coverage) typically costs $50–$75 per year. This is one of the most affordable professional bonds in Texas. Online application, PDF certificate once issued." },
   { q: "Who certifies process servers in Texas?", a: "The Office of Court Administration (OCA) certifies process servers in Texas through the Judicial Branch Certification Commission (JBCC). Certification is required for process servers who serve process under Texas Rule of Civil Procedure 103 and 536a as an authorized person." },
   { q: "What does a process server bond cover?", a: "A process server bond protects parties in legal proceedings from financial harm caused by a process server's negligence, fraud, or improper service of process. If a process server's misconduct causes a judgment to be set aside or delays a legal proceeding, the bond provides compensation." },
   { q: "How long is a Texas process server certification?", a: "Texas process server certifications are issued for two-year terms and must be renewed biennially with the JBCC. Your $1,000 surety bond must remain active throughout the certification period to maintain your certification." },
@@ -56,7 +56,7 @@ export default function ProcessServerBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">OCA / JBCC Certification Requirement</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas Process Server Bond — OCA Certification Requirement</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
@@ -78,7 +78,7 @@ export default function ProcessServerBondTexas() {
           {[
             { label: "Bond amount", value: "$1,000", sub: "OCA certification requirement" },
             { label: "Annual cost", value: "From $50/yr", sub: "Flat-rate pricing" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" }
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>

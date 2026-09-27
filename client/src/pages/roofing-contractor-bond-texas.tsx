@@ -72,7 +72,7 @@ const FAQ_SCHEMA = {
       "name": "How quickly can I get my roofing contractor bond?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Same-day. Once approved, your bond certificate is emailed as a PDF — ready to submit with your city license application or permit application. Most approvals are instant with no financials required for standard bond amounts."
+        "text": "Once the carrier approves your application and you pay, the bond certificate is emailed as a PDF, ready to submit with your city license or permit application."
       }
     }
   ]
@@ -106,7 +106,7 @@ const faqs = [
   },
   {
     q: "How quickly can I get my roofing contractor bond?",
-    a: "Same-day. Once approved, your bond certificate is emailed as a PDF — ready to submit with your city license application or permit application. Most approvals are instant with no financials required for standard bond amounts.",
+    a: "Once the carrier approves your application and you pay, the bond certificate is emailed as a PDF, ready to submit with your city license or permit application.",
   },
 ];
 
@@ -135,13 +135,13 @@ export default function RoofingContractorBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">City License Bond</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas Roofing Contractor Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by Houston, Dallas, San Antonio, Austin, Fort Worth, and many other Texas cities before a roofing contractor can obtain a license or pull permits. Get bonded same-day — instant PDF delivery.
+            Required by Houston, Dallas, San Antonio, Austin, Fort Worth, and many other Texas cities before a roofing contractor can obtain a license or pull permits. Apply online — PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/quote">
@@ -164,7 +164,7 @@ export default function RoofingContractorBondTexas() {
           {[
             { label: "Typical bond amount", value: "$5,000–$20,000", sub: "Varies by city requirement" },
             { label: "Annual cost", value: "From $50/yr", sub: "No credit check for standard amounts" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -223,7 +223,7 @@ export default function RoofingContractorBondTexas() {
                 Texas sits in the heart of "Hail Alley" — the corridor stretching from the Texas Panhandle through North Texas — making it one of the most active hail states in the country. Major storm events in the Dallas-Fort Worth metroplex, San Antonio, and Houston routinely generate thousands of roofing insurance claims in a single season, drawing large numbers of out-of-state contractors.
               </p>
               <p className="text-gray-700 text-sm leading-relaxed">
-                Texas cities have significantly increased enforcement of roofing contractor licensing and bonding requirements in the aftermath of storm seasons. Contractors operating without a valid bond risk permit denials, stop-work orders, and fines. Getting bonded before storm season ensures you can work immediately when opportunity arises — same-day issuance means no delays.
+                Texas cities have significantly increased enforcement of roofing contractor licensing and bonding requirements in the aftermath of storm seasons. Contractors operating without a valid bond risk permit denials, stop-work orders, and fines. Getting bonded before storm season ensures you can work immediately when opportunity arises — an online application keeps things moving.
               </p>
             </div>
           </div>
@@ -310,7 +310,7 @@ export default function RoofingContractorBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Roofing Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All Texas cities · Rates from $50/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All Texas cities · Rates from $50/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

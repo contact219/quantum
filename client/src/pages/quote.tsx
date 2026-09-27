@@ -107,7 +107,7 @@ function QuoteTrustPanel() {
       <div className="space-y-3">
         {[
           { icon: "🏛️", title: "TDI Licensed Agency",    desc: "License #3480229 · Texas Dept. of Insurance", color: "text-emerald-300" },
-          { icon: "⚡", title: "Same-Day Approval",       desc: "Most applicants approved in minutes",         color: "text-cyan-300"    },
+          { icon: "⚡", title: "Online Application",       desc: "Most applicants approved in minutes",         color: "text-cyan-300"    },
           { icon: "🛡️", title: "A-Rated Carrier",         desc: "Bonds backed by top-rated surety carriers",  color: "text-indigo-300"  },
           { icon: "🔒", title: "Secure & Confidential",   desc: "Your information is never sold or shared",   color: "text-slate-300"   },
         ].map((item) => (

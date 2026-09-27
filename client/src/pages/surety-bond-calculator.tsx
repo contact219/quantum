@@ -256,7 +256,7 @@ export default function SuretyBondCalculator() {
 
         {/* Trust row */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", color: "#94a3b8", fontSize: 13, marginBottom: 40 }}>
-          {["TDI-licensed agency #3480229", "Bonds written by RLI (A+ rated)", "Same-day certificates"].map((t) => (
+          {["TDI-licensed agency #3480229", "Bonds written by RLI (A+ rated)", "Online application"].map((t) => (
             <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
               <CheckCircle size={14} color="#4ade80" /> {t}
             </span>

@@ -23,7 +23,7 @@ const FAQ_SCHEMA = {
     { "@type": "Question", "name": "Do I need a GC bond to work in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas does not have a statewide general contractor license, but many cities and counties require GC registration or licensing with a surety bond. Austin, Dallas, Houston, San Antonio, and Fort Worth all have local requirements. TDLR requires bonds for specific licensed trades (electricians, plumbers, HVAC, etc.)." } },
     { "@type": "Question", "name": "How much does a Texas general contractor bond cost?", "acceptedAnswer": { "@type": "Answer", "text": "For typical GC license bond amounts of $5,000–$25,000, annual premiums range from $50–$300. Most contractors with standard credit qualify at the low end of this range. Bonds under $25,000 can often be issued without a credit check at a flat rate." } },
     { "@type": "Question", "name": "Can I get a Texas GC bond with bad credit?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. For GC license bonds under $25,000, credit is generally not a barrier — many carriers offer instant-issue bonds at a flat rate regardless of credit score. For larger bond amounts, credit is evaluated but options still exist for contractors with challenged credit." } },
-    { "@type": "Question", "name": "How fast can I get a general contractor bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (214) 666-8718 for urgent same-day requests." } }
+    { "@type": "Question", "name": "How fast can I get a general contractor bond in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Smaller bonds are often issued quickly once the carrier approves the application. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office." } }
   ]
 };
 
@@ -102,7 +102,7 @@ export default function GeneralContractorBondTexas() {
     },
     {
       q: "How fast can I get a general contractor bond in Texas?",
-      a: "For bonds under $25,000, same-day issuance is standard. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office. Call (214) 666-8718 for urgent same-day requests.",
+      a: "Smaller bonds are often issued quickly once the carrier approves the application. Complete the application online and receive your bond document electronically, ready to submit to your city or county licensing office.",
     },
   ];
 
@@ -119,7 +119,7 @@ export default function GeneralContractorBondTexas() {
             Texas General Contractor Bond
           </h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get the GC license bond your city or county requires — same-day issuance available,
+            Get the GC license bond your city or county requires — an online application available,
             no credit check for bonds under $25,000. TDI-licensed and A-rated carrier partners.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -220,7 +220,7 @@ export default function GeneralContractorBondTexas() {
             How to Get Your Texas GC Bond — Same Day
           </h2>
           <p className="text-gray-600 mb-10 max-w-2xl">
-            The process is straightforward. Most contractors have their bond in hand the same day they apply.
+            The process is straightforward. The carrier reviews each application and shows your premium before you pay.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((s) => (
@@ -281,7 +281,7 @@ export default function GeneralContractorBondTexas() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Texas GC License Bond Today</h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            Same-day issuance for bonds under $25,000. No credit check required.
+            Online application for bonds under $25,000. No credit check required.
             TDI-licensed agency — A-rated carrier partners.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

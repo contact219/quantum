@@ -56,11 +56,11 @@ export default function ManufacturedHomeDealerBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">Texas Occupations Code Ch. 1201</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas Manufactured Home Dealer Bond — TDHCA Requirement</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            The Texas Department of Housing and Community Affairs (TDHCA) requires all manufactured home retailers, installers, and developers to maintain a surety bond under Texas Occupations Code Chapter 1201. Get bonded same-day — instant PDF certificate accepted by TDHCA.
+            The Texas Department of Housing and Community Affairs (TDHCA) requires all manufactured home retailers, installers, and developers to maintain a surety bond under Texas Occupations Code Chapter 1201. Apply online — PDF certificate once approved accepted by TDHCA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={QUOTE_LINK}>
@@ -78,7 +78,7 @@ export default function ManufacturedHomeDealerBondTexas() {
           {[
             { label: "Bond amount", value: "$10K–$100K", sub: "Based on sales volume" },
             { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" },
-            { label: "Delivery", value: "Same-day", sub: "TDHCA-accepted PDF" }
+            { label: "Delivery", value: "Once approved", sub: "TDHCA-accepted PDF" }
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -96,7 +96,7 @@ export default function ManufacturedHomeDealerBondTexas() {
             The <strong>Texas Department of Housing and Community Affairs (TDHCA)</strong> Manufactured Housing Division licenses and regulates all manufactured home retailers, installers, and developers under <strong>Texas Occupations Code Chapter 1201</strong>. A surety bond is required as a condition of licensure and must remain active throughout the license term.
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
-            Bond amounts vary based on your license category and annual sales volume. Quantum Surety issues all three tiers same-day with instant PDF delivery accepted by TDHCA.
+            Bond amounts vary based on your license category and annual sales volume. Quantum Surety offers all three tiers with an online application; the certificate is delivered as a PDF once issued.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -175,7 +175,7 @@ export default function ManufacturedHomeDealerBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Manufactured Home Dealer Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · TDHCA-accepted · $10K–$100K bonds · From $100/yr · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · TDHCA-accepted · $10K–$100K bonds · From $100/yr · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={QUOTE_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

@@ -54,7 +54,7 @@ export default function TexasRoofingContractorBondRequirements() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> Texas does not license roofers at the state level, so bond requirements are set by individual cities. DFW-area cities and Houston typically require $5,000–$10,000 surety bonds. Annual cost: $100–$200. Same-day issuance available.
+            <strong>TL;DR:</strong> Texas does not license roofers at the state level, so bond requirements are set by individual cities. DFW-area cities and Houston typically require $5,000–$10,000 surety bonds. Annual cost: $100–$200. Online application.
           </p>
         </div>
       </div>
@@ -226,7 +226,7 @@ export default function TexasRoofingContractorBondRequirements() {
                 {
                   n: "3",
                   t: "Receive your bond certificate by email",
-                  b: "After approval — typically instant — your bond certificate arrives as a PDF. It will include the bond amount, the named obligee (the city or licensing authority), the effective date, and the term. Most roofing bonds are issued the same day you apply.",
+                  b: "After the carrier approves your application and you pay, your bond certificate arrives as a PDF. It will include the bond amount, the named obligee (the city or licensing authority), the effective date, and the term. The carrier reviews each application and shows your premium before you pay.",
                 },
                 {
                   n: "4",
@@ -304,7 +304,7 @@ export default function TexasRoofingContractorBondRequirements() {
                 },
                 {
                   q: "How quickly can I get a roofing contractor bond?",
-                  a: "Same-day issuance is standard for roofing contractor bonds. Apply online, get approved instantly (in most cases), and receive your bond certificate by email within the hour. This is especially useful when a storm hits and you need to start pulling permits immediately.",
+                  a: "Apply online; the carrier reviews your application and shows your premium before you pay, and your bond certificate arrives by email once issued. This is especially useful when a storm hits and you need to start pulling permits immediately.",
                 },
               ].map((item) => (
                 <div key={item.q} className="border border-gray-200 rounded-xl overflow-hidden">
@@ -324,7 +324,7 @@ export default function TexasRoofingContractorBondRequirements() {
         {/* CTA */}
         <div className="mt-14 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Roofing Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · Dallas, Houston, Fort Worth &amp; all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · Dallas, Houston, Fort Worth &amp; all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

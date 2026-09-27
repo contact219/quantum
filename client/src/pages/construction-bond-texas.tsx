@@ -23,7 +23,7 @@ const FAQ_SCHEMA = {
     { "@type": "Question", "name": "How much does a construction bond cost in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Texas construction bond rates typically range from 0.5% to 3% of the contract value annually. A $500,000 bond usually costs $2,500–$15,000. Bid bonds are frequently issued at no charge or a nominal fee when a performance bond is also quoted." } },
     { "@type": "Question", "name": "What is the Texas Little Miller Act?", "acceptedAnswer": { "@type": "Answer", "text": "The Texas Little Miller Act (Government Code § 2253) requires performance and payment bonds on public construction contracts over $25,000. It mirrors the federal Miller Act, which applies to federal projects over $150,000, but governs state, county, and municipal projects in Texas." } },
     { "@type": "Question", "name": "Can I get a construction bond with bad credit?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Specialty surety markets exist for contractors with credit challenges. Rates will be higher (2%–5%) and collateral may be required. Quantum Surety works with multiple carriers to find options for most credit profiles." } },
-    { "@type": "Question", "name": "How long does it take to get a Texas construction bond?", "acceptedAnswer": { "@type": "Answer", "text": "Bonds under $500,000 can often be approved same-day or next business day. Projects over $1M typically require financial statements and take 2–5 business days. Submit early to avoid delays during the bid process." } },
+    { "@type": "Question", "name": "How long does it take to get a Texas construction bond?", "acceptedAnswer": { "@type": "Answer", "text": "Timing depends on the carrier's underwriting and the size of the project. Projects over $1M typically require financial statements and take 2–5 business days. Submit early to avoid delays during the bid process." } },
     { "@type": "Question", "name": "Do I need a separate bond for each Texas project?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Construction bonds are project-specific — each contract requires its own performance, payment, and bid bonds. Quantum Surety handles as many projects simultaneously as your bonding capacity supports." } }
   ]
 };
@@ -72,14 +72,14 @@ const faqs = [
   { q: "How much does a construction bond cost in Texas?", a: "Texas construction bond rates typically range from 0.5% to 3% of the contract value annually. A $500,000 bond usually costs $2,500–$15,000. Bid bonds are frequently issued at no charge or a nominal fee when a performance bond is also quoted." },
   { q: "What is the Texas Little Miller Act?", a: "The Texas Little Miller Act (Government Code § 2253) requires performance and payment bonds on public construction contracts over $25,000. It mirrors the federal Miller Act, which applies to federal projects over $150,000, but governs state, county, and municipal projects in Texas." },
   { q: "Can I get a construction bond with bad credit?", a: "Yes. Specialty surety markets exist for contractors with credit challenges. Rates will be higher (2%–5%) and collateral may be required. Quantum Surety works with multiple carriers to find options for most credit profiles." },
-  { q: "How long does it take to get a Texas construction bond?", a: "Bonds under $500,000 can often be approved same-day or next business day. Projects over $1M typically require financial statements and take 2–5 business days. Submit early to avoid delays during the bid process." },
+  { q: "How long does it take to get a Texas construction bond?", a: "Timing depends on the carrier's underwriting and the size of the project. Projects over $1M typically require financial statements and take 2–5 business days. Submit early to avoid delays during the bid process." },
   { q: "Do I need a separate bond for each Texas project?", a: "Yes. Construction bonds are project-specific — each contract requires its own performance, payment, and bid bonds. Quantum Surety handles as many projects simultaneously as your bonding capacity supports." },
 ];
 
 export default function ConstructionBondTexas() {
   useSEO({
     title: "Texas Construction Bonds | Bid, Performance & Payment Bonds | Quantum Surety",
-    description: "Get Texas construction bonds fast — bid bonds, performance bonds, and payment bonds. Required under Texas Little Miller Act § 2253 for public contracts over $25,000. TDI-licensed, A-rated carriers, same-day approvals.",
+    description: "Get Texas construction bonds fast — bid bonds, performance bonds, and payment bonds. Required under Texas Little Miller Act § 2253 for public contracts over $25,000. TDI-licensed, A-rated carriers, an online application.",
     canonical: "/bonds/construction-bond-texas",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -125,7 +125,7 @@ export default function ConstructionBondTexas() {
           {[
             { label: "Typical rate", value: "0.5%–3%" },
             { label: "Public contract threshold", value: "$25,000+" },
-            { label: "Approval time", value: "Same day" },
+            { label: "Approval time", value: "Once approved" },
             { label: "TDI License", value: "#3480229" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-4 border border-teal-100">
@@ -231,7 +231,7 @@ export default function ConstructionBondTexas() {
               {
                 step: "2",
                 title: "Underwriting & approval",
-                body: "Quantum Surety's AI-assisted underwriting pre-screens your application across multiple A-rated carriers. Simple projects get same-day approval; complex ones 2–5 business days.",
+                body: "Quantum Surety's AI-assisted underwriting pre-screens your application across multiple A-rated carriers. Timing depends on the carrier's underwriting and the size of the project.",
               },
               {
                 step: "3",
@@ -363,7 +363,7 @@ export default function ConstructionBondTexas() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Texas Construction Bond</h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            Submit your project details and get a same-day quote on bid, performance, and payment bonds.
+            Submit your project details and get a quote on bid, performance, and payment bonds.
             A-rated carriers · TDI Licensed #3480229 · All 254 Texas Counties.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

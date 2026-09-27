@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How much does an electrical contractor bond cost in Texas?",
-    a: "For a $10,000 bond, most electricians pay $100–$250 per year. Your exact premium is based on your credit profile. Most applicants are approved same-day with no financials required.",
+    a: "For a $10,000 bond, most electricians pay $100–$250 per year. Your exact premium is based on your credit profile. Apply online; the carrier reviews your application and shows your premium before you pay. with no financials required.",
   },
   {
     q: "Do I need a new bond for each city I work in?",
@@ -39,7 +39,7 @@ export default function ElectricalContractorBondTexas() {
   useSEO({
     title: "Electrical Contractor Bond Texas | City & TDLR License Bond | Quantum Surety",
     description:
-      "Get your Texas electrical contractor bond same-day. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr. Instant PDF.",
+      "Get your Texas electrical contractor bond online. Required for city electrical licenses (Dallas, Houston, Austin) and TDLR. $10,000 bond from $100/yr. Instant PDF.",
     canonical: "/bonds/electrical-contractor-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -59,13 +59,13 @@ export default function ElectricalContractorBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">City & TDLR License Bond</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas Electrical Contractor Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required for licensed electricians operating in Texas — both at the city level (Dallas, Houston, Austin) and through TDLR. Get bonded same-day with instant PDF delivery.
+            Required for licensed electricians operating in Texas — both at the city level (Dallas, Houston, Austin) and through TDLR. Apply online; PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
@@ -88,7 +88,7 @@ export default function ElectricalContractorBondTexas() {
           {[
             { label: "Bond amount", value: "$10,000", sub: "Standard TX requirement" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -184,7 +184,7 @@ export default function ElectricalContractorBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Electrical Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All Texas cities & TDLR · Rates from $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All Texas cities & TDLR · Rates from $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote?type=license&state=TX">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

@@ -106,7 +106,7 @@ export default function BondBadgeSetup() {
                 Questions? Call (214) 666-8718
               </a>
               <p style={{ fontSize: 12, color: "#64748b", textAlign: "center", margin: "0 0 8px" }}>
-                Same-day approval · Starting at $75/yr · Instant digital certificate
+                Online application · Starting at $75/yr · Instant digital certificate
               </p>
             </>
           ) : next ? (

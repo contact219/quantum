@@ -13,7 +13,7 @@ const SERVICE_SCHEMA = {
   "url": "https://quantumsurety.bond/bonds/contractor-bond-league-city",
   "provider": { "@type": "LocalBusiness", "name": "Quantum Surety", "url": "https://quantumsurety.bond" },
   "areaServed": [{ "@type": "City", "name": "League City" }, { "@type": "State", "name": "Texas" }],
-  "description": "Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Instant approval, same-day certificate.",
+  "description": "Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Online application, premium shown before you pay.",
   "offers": { "@type": "Offer", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
 };
 
@@ -22,23 +22,23 @@ const FAQ_SCHEMA = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Do contractors in League City need a surety bond?", "acceptedAnswer": { "@type": "Answer", "text": "Most Texas contractors must carry a surety bond to obtain or renew a license through TDLR or their local municipality. League City contractors should verify requirements with Galveston County and TDLR before beginning licensed work." } },
-    { "@type": "Question", "name": "How much does a contractor bond cost in League City?", "acceptedAnswer": { "@type": "Answer", "text": "Contractor bond premiums start from $100 per year depending on bond amount and credit. Quantum Surety offers instant quotes and same-day certificate issuance." } },
+    { "@type": "Question", "name": "How much does a contractor bond cost in League City?", "acceptedAnswer": { "@type": "Answer", "text": "Contractor bond premiums start from $100 per year depending on bond amount and credit. Quantum Surety offers an online application, and the carrier shows your premium before you pay." } },
     { "@type": "Question", "name": "What bond amount do League City contractors need?", "acceptedAnswer": { "@type": "Answer", "text": "TDLR-licensed contractors in Texas typically need bonds ranging from $5,000 to $25,000 depending on license type. Contact Quantum Surety to confirm the exact requirement for your trade." } },
-    { "@type": "Question", "name": "How fast can I get a contractor bond in League City?", "acceptedAnswer": { "@type": "Answer", "text": "Most approvals are instant. Your bond certificate can be emailed within minutes of application — ready to submit to TDLR or your local licensing authority the same day." } }
+    { "@type": "Question", "name": "How fast can I get a contractor bond in League City?", "acceptedAnswer": { "@type": "Answer", "text": "Apply online; the carrier reviews your application and shows your premium before you pay. Once the bond is issued, the certificate is emailed to you, ready to submit to your local licensing authority." } }
   ]
 };
 
 const faqs = [
   { q: "Do contractors in League City need a surety bond?", a: "Most Texas contractors must carry a surety bond to obtain or renew a license through TDLR or their local municipality. League City contractors should verify requirements with Galveston County and TDLR before beginning licensed work." },
-  { q: "How much does a contractor bond cost in League City?", a: "Contractor bond premiums start from $100 per year depending on bond amount and credit. Quantum Surety offers instant quotes and same-day certificate issuance." },
+  { q: "How much does a contractor bond cost in League City?", a: "Contractor bond premiums start from $100 per year depending on bond amount and credit. Quantum Surety offers an online application, and the carrier shows your premium before you pay." },
   { q: "What bond amount do League City contractors need?", a: "TDLR-licensed contractors in Texas typically need bonds ranging from $5,000 to $25,000 depending on license type. Contact Quantum Surety to confirm the exact requirement for your trade." },
-  { q: "How fast can I get a contractor bond in League City?", a: "Most approvals are instant. Your bond certificate can be emailed within minutes of application — ready to submit to TDLR or your local licensing authority the same day." }
+  { q: "How fast can I get a contractor bond in League City?", a: "Apply online; the carrier reviews your application and shows your premium before you pay. Once the bond is issued, the certificate is emailed to you, ready to submit to your local licensing authority." }
 ];
 
 export default function ContractorBondLeagueCity() {
   useSEO({
     title: "Texas Contractor Bond — League City | From $100 | Texas Surety Bond | Quantum Surety",
-    description: "Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Instant approval, same-day certificate.",
+    description: "Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Online application, premium shown before you pay.",
     canonical: "/bonds/contractor-bond-league-city",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -63,7 +63,7 @@ export default function ContractorBondLeagueCity() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas Contractor Bond — League City</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Instant approval, same-day certificate.
+            Texas contractor license bond for League City businesses — meet TDLR and city licensing requirements quickly. Online application, premium shown before you pay.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GET_LINK}>
@@ -85,7 +85,7 @@ export default function ContractorBondLeagueCity() {
           {[
             { label: "Coverage", value: "Up to $25K", sub: "Meets TDLR requirements" },
             { label: "Starting at", value: "$100/yr", sub: "Instant approval available" },
-            { label: "Turnaround", value: "Same day", sub: "Certificate emailed instantly" },
+            { label: "Turnaround", value: "Once approved", sub: "Certificate emailed instantly" },
           ].map((item) => (
             <div key={item.label}>
               <div className="text-2xl font-bold text-indigo-900">{item.value}</div>
@@ -102,7 +102,7 @@ export default function ContractorBondLeagueCity() {
           <ul className="space-y-3 text-gray-700 text-sm">
               <li key="TDLR-compliant coverage" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>TDLR-compliant coverage</span></li>
               <li key="Instant approval available" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Instant approval available</span></li>
-              <li key="Same-day certificate" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Same-day certificate</span></li>
+              <li key="Online application" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>Online application</span></li>
               <li key="All contractor trades covered" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>All contractor trades covered</span></li>
               <li key="TDI Licensed #3480229" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>TDI Licensed #3480229</span></li>
               <li key="No hidden fees" className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-teal-500 shrink-0" /><span>No hidden fees</span></li>

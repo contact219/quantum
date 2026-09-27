@@ -54,7 +54,7 @@ export default function TexasHvacContractorBondRequirements() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> Texas HVAC contractors need a $10,000 TDLR surety bond for their state license. Dallas, Houston, Austin, and San Antonio also require separate city bonds to pull local permits. Annual cost per bond: $100–$300. Same-day issuance available.
+            <strong>TL;DR:</strong> Texas HVAC contractors need a $10,000 TDLR surety bond for their state license. Dallas, Houston, Austin, and San Antonio also require separate city bonds to pull local permits. Annual cost per bond: $100–$300. Online application.
           </p>
         </div>
       </div>
@@ -222,7 +222,7 @@ export default function TexasHvacContractorBondRequirements() {
                 {
                   n: "3",
                   t: "Receive your bond certificate(s)",
-                  b: "After approval — which is typically instant for applicants with satisfactory credit — your bond certificate arrives by email as a PDF. Same-day issuance is standard.",
+                  b: "After the carrier approves your application and you pay, your bond certificate arrives by email as a PDF.",
                 },
                 {
                   n: "4",
@@ -300,7 +300,7 @@ export default function TexasHvacContractorBondRequirements() {
                 },
                 {
                   q: "Can I get bonded if I just started my HVAC business?",
-                  a: "Yes. New HVAC businesses qualify routinely. For $10,000 bonds, underwriters primarily review your personal credit score, not your years in business or annual revenue. As long as you have no major adverse credit events, expect same-day approval.",
+                  a: "Yes. New HVAC businesses qualify routinely. For $10,000 bonds, underwriters primarily review your personal credit score, not your years in business or annual revenue. As long as you have no major adverse credit events, expect an online application.",
                 },
                 {
                   q: "What happens if a claim is filed against my bond?",
@@ -332,7 +332,7 @@ export default function TexasHvacContractorBondRequirements() {
         {/* CTA */}
         <div className="mt-14 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas HVAC Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

@@ -131,7 +131,7 @@ export default function ForAgencies() {
           <h2 className="text-xl font-bold text-slate-900 mb-3">When your contractor needs a bond</h2>
           <p className="text-slate-600 max-w-xl mx-auto mb-6 text-sm leading-relaxed">
             If a contractor fails verification, send them to <strong>quantumsurety.bond</strong>.
-            We issue Texas contractor bonds and performance bonds same day —
+            We write Texas contractor bonds and performance bonds —
             $50 flat for notary bonds, competitive rates on all commercial bonds.
             TDI-Licensed Agency #3480229.
           </p>

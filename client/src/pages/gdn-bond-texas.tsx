@@ -29,11 +29,11 @@ const faqs = [
   },
   {
     q: "What happens if I operate without a GDN bond?",
-    a: "Operating as a motor vehicle dealer in Texas without a valid GDN bond is a Class A misdemeanor under Texas Transportation Code §503.033. Penalties can include fines up to $4,000 and up to one year in jail, in addition to license suspension or revocation by TxDMV.",
+    a: "The bond is a condition of a Texas dealer license (Transp. Code §503.033), and dealing without a valid license and bond is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).",
   },
   {
     q: "When does my GDN bond renew?",
-    a: "Texas GDN bonds are typically issued on an annual basis and must be renewed before your dealer license renewal date with TxDMV. Quantum Surety sends renewal reminders so your coverage never lapses — a lapsed bond means an invalid dealer license.",
+    a: "Texas GDN bonds are typically issued on an annual basis and must be renewed before your dealer license renewal date with TxDMV. Quantum Surety offers free renewal reminders so your coverage doesn't lapse — a lapsed bond means an invalid dealer license.",
   },
   {
     q: "How quickly can I get my GDN bond?",
@@ -45,7 +45,7 @@ export default function GDNBondTexas() {
   useSEO({
     title: "Texas GDN Bond | $50,000 Dealer Bond from $250 | Same-Day | Quantum Surety",
     description:
-      "Get your Texas GDN bond same-day. Required under Texas Transportation Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF delivery.",
+      "Get your Texas GDN bond online. Required under Texas Transportation Code §503.033 for all motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: "/bonds/gdn-bond-texas",
   });
   useSchema({
@@ -87,7 +87,7 @@ export default function GDNBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">Texas Transportation Code §503.033</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas GDN Bond — General Distinguishing Number Dealer Bond
@@ -116,7 +116,7 @@ export default function GDNBondTexas() {
           {[
             { label: "Bond amount", value: "$50,000", sub: "Required under §503.033" },
             { label: "Cost", value: "From $250", sub: "for the 2-year term" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -136,7 +136,7 @@ export default function GDNBondTexas() {
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-2">Legally Required — Texas Transportation Code §503.033</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                Every Texas motor vehicle dealer must maintain a valid $50,000 GDN surety bond as a condition of holding a dealer license issued by TxDMV. Operating without a valid bond is a <strong>Class A misdemeanor</strong> — punishable by a fine up to $4,000 and up to one year in county jail, plus potential license revocation.
+                Every Texas motor vehicle dealer must maintain a valid $50,000 GDN surety bond as a condition of holding a dealer license issued by TxDMV. Dealing without a valid bond is a <strong>misdemeanor</strong> punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).
               </p>
               <p className="text-gray-600 text-sm">
                 The bond requirement applies to all GDN license types and must remain active throughout the license term. A lapse in bond coverage renders your dealer license invalid.
@@ -184,12 +184,12 @@ export default function GDNBondTexas() {
             <div>
               <h2 className="text-xl font-bold text-gray-900 mb-3">Never Miss Your GDN Bond Renewal</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                Your GDN bond must be renewed annually — a lapsed bond means an invalid dealer license with TxDMV. Unlike most competitors, Quantum Surety sends proactive renewal reminders before your expiration date so your coverage and your license stay active.
+                Your GDN bond must be renewed annually — a lapsed bond means an invalid dealer license with TxDMV. Unlike most competitors, Quantum Surety offers free renewal reminders before your expiration date so your coverage and your license stay active.
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   "Renewal reminders sent 60 and 30 days before expiration",
-                  "Same-day reissuance — bond renewed in minutes, not days",
+                  "Renewal application online, premium shown before you pay",
                   "Continuous coverage with no gaps in your dealer license",
                   "TxDMV-accepted bond certificate delivered by email",
                 ].map((item) => (
@@ -245,7 +245,7 @@ export default function GDNBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All 6 GDN dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All 6 GDN dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

@@ -14,7 +14,7 @@ const bondTypes = [
 const faqs = [
   { q: "Does Denton require a contractor bond?", a: "Yes. The City of Denton Development Services department requires licensed contractors to maintain a surety bond as a condition of city contractor registration. Requirements apply to general contractors and specialty trades including electrical, plumbing, HVAC, and roofing." },
   { q: "Why is Denton such a strong construction market?", a: "Denton is one of the fastest-growing cities in the DFW Metroplex, driven by its position as a university town home to the University of North Texas and Texas Woman's University, combined with its status as a growing bedroom community for Fort Worth and Dallas. The resulting demand for student housing, multi-family development, and commercial construction creates consistent work for licensed, bonded contractors throughout the city." },
-  { q: "How much does a Denton contractor bond cost?", a: "Most Denton contractors pay $100–$250/year for a $10,000 bond, and $200–$450/year for a $25,000 bond. Premiums are set primarily by your personal credit score. Qualified applicants receive same-day approval at the lowest available rate — no lengthy underwriting for standard bond amounts." },
+  { q: "How much does a Denton contractor bond cost?", a: "Most Denton contractors pay $100–$250/year for a $10,000 bond, and $200–$450/year for a $25,000 bond. Premiums are set primarily by your personal credit score. Qualified applicants can apply online for the lowest available rate — no lengthy underwriting for standard bond amounts." },
   { q: "Do I need a Denton city bond AND a TDLR bond?", a: "Yes, if you hold a TDLR license (electrical, plumbing, HVAC/mechanical). TDLR requires a state-level license bond, and the City of Denton requires a separate city registration bond. Quantum Surety can issue both at the same time — tell us your trade and we'll confirm exactly what's needed." },
   { q: "Can I use my Denton contractor bond for projects in Fort Worth, Frisco, or McKinney?", a: "No. Each city sets its own contractor licensing and bonding requirements. If you work across multiple DFW-area cities, you'll need a separate bond for each jurisdiction. Quantum Surety can issue bonds for Denton, Fort Worth, Frisco, McKinney, and other DFW cities simultaneously — one process, multiple bonds." },
 ];
@@ -33,7 +33,7 @@ const SERVICE_SCHEMA = {
 export default function ContractorBondDenton() {
   useSEO({
     title: "Contractor Bond Denton TX | Denton Contractor License Bond | Quantum Surety",
-    description: "Contractor bond in Denton, TX — required for city contractor licenses. Same-day issuance. TDI-licensed surety agency. Get your free Denton bond quote today.",
+    description: "Contractor bond in Denton, TX — required for city contractor licenses. Online application. TDI-licensed surety agency. Get your free Denton bond quote today.",
     canonical: "/bonds/contractor-bond-denton",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -47,7 +47,7 @@ export default function ContractorBondDenton() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contractor Bond — Denton, Texas</h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get your City of Denton contractor license bond same-day. A fast-growing DFW suburb with two
+            Apply online for your City of Denton contractor license bond. A fast-growing DFW suburb with two
             major universities driving strong construction demand. TDI-licensed, A-rated carriers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -113,7 +113,7 @@ export default function ContractorBondDenton() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Shield className="w-6 h-6 text-indigo-600" />, title: "TDI-Licensed Agency", body: "Licensed by the Texas Department of Insurance (#3480229). Your bond is backed by A-rated surety carriers approved in Texas." },
-              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Same-Day Issuance", body: "Standard contractor bonds approved and delivered same-day. Keep your Denton projects on schedule without bonding delays." },
+              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Online Application", body: "Apply online; the carrier reviews each application. Keep your Denton projects on schedule without bonding delays." },
               { icon: <CheckCircle className="w-6 h-6 text-green-600" />, title: "Multi-City Bonds", body: "Work across Denton, Fort Worth, Frisco, and McKinney? We issue bonds for multiple DFW cities simultaneously." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 border border-gray-200 text-center">
@@ -164,7 +164,7 @@ export default function ContractorBondDenton() {
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Denton Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-8">Same-day issuance. TDI-licensed agency. A-rated carriers. Stay competitive in Denton's growing construction market.</p>
+          <p className="text-indigo-200 mb-8">Online application. TDI-licensed agency. A-rated carriers. Stay competitive in Denton's growing construction market.</p>
           <Link href="/quote">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
               Get My Free Bond Quote <ArrowRight className="w-4 h-4 ml-2" />

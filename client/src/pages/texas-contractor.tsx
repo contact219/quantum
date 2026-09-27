@@ -27,7 +27,7 @@ export default function TexasContractorBonds() {
     {
       name: "Bid Bonds",
       description:
-        "Required on most Texas public construction projects. Guarantees you will enter the contract at your bid price if selected. We issue bid bonds same-day for qualified Texas contractors.",
+        "Required on most Texas public construction projects. Guarantees you will enter the contract at your bid price if selected. We write bid bonds for Texas contractors.",
       href: "/bonds/bid-bond-texas",
     },
     {
@@ -78,7 +78,7 @@ export default function TexasContractorBonds() {
           </h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Fast, AI-powered bond approvals for general contractors and subcontractors across Texas.
-            Bid bonds, performance bonds, payment bonds, and license bonds — issued same-day for qualified contractors.
+            Bid bonds, performance bonds, payment bonds, and license bonds — written for qualified contractors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">

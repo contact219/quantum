@@ -56,7 +56,7 @@ export default function BlogGBPGuide() {
       title: "Write a High-Converting Business Description",
       items: [
         { done: false, text: "Lead with what you do and who you serve: 'Quantum Surety is a Texas-licensed surety bond agency issuing notary bonds, GDN dealer bonds, contractor bonds, and construction bonds across all 254 Texas counties.'" },
-        { done: false, text: "Include key differentiators: instant PDF delivery, no credit check (notary bonds), same-day approval" },
+        { done: false, text: "Include key differentiators: instant PDF delivery, no credit check (notary bonds), an online application" },
         { done: false, text: "Include your TDI license number (#3480229) — adds trust and matches regulatory mentions on your site" },
         { done: false, text: "Include bond types: notary bond, GDN dealer bond, bid bond, performance bond, payment bond, contractor license bond" },
         { done: false, text: "End with a CTA phrase: 'Apply in 5 minutes at quantumsurety.bond'" },
@@ -212,7 +212,7 @@ export default function BlogGBPGuide() {
           <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5">
             <p className="text-xs font-bold text-gray-500 uppercase mb-3">Copy, customize, and paste into your GBP description (750 char max):</p>
             <p className="text-sm text-gray-800 leading-relaxed font-mono bg-white border border-gray-200 rounded-xl p-4">
-              Quantum Surety is a Texas-licensed surety bond agency (TDI License #3480229) issuing notary bonds, GDN dealer bonds, contractor license bonds, bid bonds, performance bonds, and payment bonds across all 254 Texas counties. Notary bonds: $50 flat, instant PDF, no credit check. GDN dealer bonds: from $100/yr, same-day issuance. Construction bonds: A-rated carriers, fast approval. All bonds SB693 compliant. Apply in minutes at quantumsurety.bond.
+              Quantum Surety is a Texas-licensed surety bond agency (TDI License #3480229) issuing notary bonds, GDN dealer bonds, contractor license bonds, bid bonds, performance bonds, and payment bonds across all 254 Texas counties. Notary bonds: $50 flat, instant PDF, no credit check. GDN dealer bonds: from $100/yr, an online application. Construction bonds: A-rated carriers, fast approval. All bonds SB693 compliant. Apply in minutes at quantumsurety.bond.
             </p>
             <p className="text-xs text-gray-400 mt-2">~480 characters — room to add a specific city or bond type if relevant.</p>
           </div>

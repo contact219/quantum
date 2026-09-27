@@ -33,7 +33,7 @@ const SERVICE_SCHEMA = {
 export default function ContractorBondFrisco() {
   useSEO({
     title: "Contractor Bond Frisco TX | Frisco Contractor License Bond | Quantum Surety",
-    description: "Contractor bond in Frisco, TX — one of Texas's fastest-growing cities. Same-day issuance. TDI-licensed surety agency. Get your free Frisco bond quote today.",
+    description: "Contractor bond in Frisco, TX — one of Texas's fastest-growing cities. Online application. TDI-licensed surety agency. Get your free Frisco bond quote today.",
     canonical: "/bonds/contractor-bond-frisco",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -47,7 +47,7 @@ export default function ContractorBondFrisco() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contractor Bond — Frisco, Texas</h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get your City of Frisco contractor license bond same-day. One of Texas's fastest-growing construction
+            Apply online for your City of Frisco contractor license bond. One of Texas's fastest-growing construction
             markets requires licensed, bonded contractors. TDI-licensed, A-rated carriers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -112,7 +112,7 @@ export default function ContractorBondFrisco() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Shield className="w-6 h-6 text-indigo-600" />, title: "TDI-Licensed Agency", body: "Licensed by the Texas Department of Insurance (#3480229). Your bond is backed by A-rated surety carriers approved in Texas." },
-              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Same-Day Issuance", body: "Standard contractor bonds approved and delivered same-day. Perfect for Frisco's fast-moving construction market." },
+              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Online Application", body: "Apply online; the carrier reviews each application. Perfect for Frisco's fast-moving construction market." },
               { icon: <CheckCircle className="w-6 h-6 text-green-600" />, title: "Multi-City Bonds", body: "Work across Frisco, Plano, McKinney, and Dallas? We issue bonds for multiple cities simultaneously." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 border border-gray-200 text-center">
@@ -163,7 +163,7 @@ export default function ContractorBondFrisco() {
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Frisco Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-8">Same-day issuance. TDI-licensed agency. A-rated carriers. Stay competitive in Frisco's booming construction market.</p>
+          <p className="text-indigo-200 mb-8">Online application. TDI-licensed agency. A-rated carriers. Stay competitive in Frisco's booming construction market.</p>
           <Link href="/quote">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">
               Get My Free Bond Quote <ArrowRight className="w-4 h-4 ml-2" />

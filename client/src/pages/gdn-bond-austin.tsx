@@ -16,7 +16,7 @@ const faqs = [
 export default function GDNBondAustin() {
   useSEO({
     title: "GDN Bond Austin TX | Texas Motor Vehicle Dealer Bond | Quantum Surety",
-    description: "Get your Texas GDN dealer bond in Austin same-day. Required under §503.033 for all Travis County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
+    description: "Get your Texas GDN dealer bond in Austin online. Required under §503.033 for all Travis County motor vehicle dealer licenses. $50,000 bond from $250 for the 2-year term. Instant PDF.",
     canonical: "/bonds/gdn-bond-austin",
   });
 
@@ -30,7 +30,7 @@ export default function GDNBondAustin() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1"><MapPin className="w-3 h-3" /> Austin, TX</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">GDN Bond — Austin, Texas Motor Vehicle Dealers</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
@@ -49,7 +49,7 @@ export default function GDNBondAustin() {
 
       <section className="bg-teal-50 border-b border-teal-100 py-8 px-4">
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-center">
-          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }].map((item) => (
+          {[{ label: "Bond amount", value: "$50,000", sub: "Required under §503.033" }, { label: "Cost", value: "From $250", sub: "for the 2-year term" }, { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" }].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
               <p className="text-xs text-gray-500 mt-1">{item.label}</p>
@@ -80,8 +80,8 @@ export default function GDNBondAustin() {
           <div className="flex items-start gap-4">
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <h2 className="text-lg font-bold text-gray-900 mb-2">Operating without a bond is a Class A misdemeanor</h2>
-              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 requires all licensed motor vehicle dealers to maintain a valid GDN bond. Operating without one is a Class A misdemeanor — fines up to $4,000, up to one year in jail, and potential license revocation by TxDMV.</p>
+              <h2 className="text-lg font-bold text-gray-900 mb-2">Operating without a bond is a criminal offense</h2>
+              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 requires all licensed motor vehicle dealers to maintain a valid GDN bond. Operating without one is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).</p>
             </div>
           </div>
         </section>
@@ -104,7 +104,7 @@ export default function GDNBondAustin() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Austin GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My GDN Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

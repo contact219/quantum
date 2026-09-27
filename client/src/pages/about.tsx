@@ -72,7 +72,7 @@ export default function About() {
           <h1 className="text-4xl font-bold text-white">Texas's leading surety bond agency — and the only one with a live statewide compliance database.</h1>
           <p className="text-slate-300 leading-relaxed max-w-3xl">
             Quantum Surety is a TDI-licensed Texas surety bond agency (License #3480229) serving contractors,
-            notaries, auto dealers, and businesses across all 254 Texas counties. We issue bonds same-day through
+            notaries, auto dealers, and businesses across all 254 Texas counties. We write bonds through
             A-rated carriers — and we're the only Texas agency that tracks 816,000+ TDLR contractor licenses,
             558,000+ notary commissions, and 19,700+ auto dealer records in a free public verification database
             updated daily from state records.

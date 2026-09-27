@@ -41,7 +41,7 @@ export default function TexasElectricalContractorBondRequirements() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> Texas electricians need a $10,000 TDLR bond for their state license. Many cities require a separate city bond to pull permits. Total annual cost: $100–$300 per bond. Same-day issuance available.
+            <strong>TL;DR:</strong> Texas electricians need a $10,000 TDLR bond for their state license. Many cities require a separate city bond to pull permits. Total annual cost: $100–$300 per bond. Online application.
           </p>
         </div>
       </div>
@@ -207,7 +207,7 @@ export default function TexasElectricalContractorBondRequirements() {
         {/* CTA */}
         <div className="mt-14 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Electrical Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · TDLR & all Texas cities · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

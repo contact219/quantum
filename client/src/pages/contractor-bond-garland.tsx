@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "How much does a Garland contractor bond cost?",
-    a: "For a $5,000–$10,000 bond, most Garland contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Rates depend on your personal credit score. Most applicants are approved same-day with no financial statements required for standard bond amounts.",
+    a: "For a $5,000–$10,000 bond, most Garland contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Rates depend on your personal credit score. Apply online; the carrier reviews your application and shows your premium before you pay.",
   },
   {
     q: "Do I need a Garland city bond AND a TDLR license bond?",
@@ -48,7 +48,7 @@ const SERVICE_SCHEMA = {
 export default function ContractorBondGarland() {
   useSEO({
     title: "Contractor Bond Garland TX | Garland Contractor License Bond | Quantum Surety",
-    description: "Contractor bond in Garland, TX — required for city contractor licenses. Same-day issuance. TDI-licensed surety agency. Get your free Garland bond quote today.",
+    description: "Contractor bond in Garland, TX — required for city contractor licenses. Online application. TDI-licensed surety agency. Get your free Garland bond quote today.",
     canonical: "/bonds/contractor-bond-garland",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -62,7 +62,7 @@ export default function ContractorBondGarland() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contractor Bond — Garland, Texas</h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get your City of Garland contractor license bond same-day. Garland is a major Dallas suburb with
+            Apply online for your City of Garland contractor license bond. Garland is a major Dallas suburb with
             active industrial and residential growth — licensed, bonded contractors stay competitive.
             TDI-licensed, A-rated carriers.
           </p>
@@ -114,7 +114,7 @@ export default function ContractorBondGarland() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Shield className="w-6 h-6 text-indigo-600" />, title: "TDI-Licensed Agency", body: "Licensed by the Texas Department of Insurance (#3480229). Your bond is backed by A-rated surety carriers approved in Texas." },
-              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Same-Day Issuance", body: "Standard contractor bonds approved and delivered same-day. Instant PDF so you can file with Garland Building Inspection immediately." },
+              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Online Application", body: "Apply online; the carrier reviews each application. Instant PDF so you can file with Garland Building Inspection immediately." },
               { icon: <CheckCircle className="w-6 h-6 text-green-600" />, title: "DFW-Wide Coverage", body: "Working across Garland, Dallas, Plano, or McKinney? We issue bonds for multiple cities simultaneously — one process, all cities." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 border border-gray-200 text-center">
@@ -167,7 +167,7 @@ export default function ContractorBondGarland() {
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Garland Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-8">Same-day issuance. TDI-licensed agency. A-rated carriers. Stay licensed and competitive in Garland's growing construction market.</p>
+          <p className="text-indigo-200 mb-8">Online application. TDI-licensed agency. A-rated carriers. Stay licensed and competitive in Garland's growing construction market.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">

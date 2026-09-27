@@ -39,7 +39,7 @@ export default function TDLRBondTexas() {
   useSEO({
     title: "TDLR Contractor Bond Texas | Electrician, HVAC & License Bonds | Quantum Surety",
     description:
-      "Get your Texas TDLR contractor bond same-day. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr. Instant PDF delivery.",
+      "Apply online for your Texas TDLR contractor bond. Required for electricians, HVAC techs, irrigators, and other TDLR-licensed trades. Rates from $100/yr. Instant PDF delivery.",
     canonical: "/bonds/tdlr-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -59,13 +59,13 @@ export default function TDLRBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">TDLR License Bond</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas TDLR Contractor Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by the Texas Department of Licensing and Regulation for electricians, HVAC technicians, irrigators, and dozens of other licensed trades. Get your bond same-day — delivered by email, ready to file with TDLR.
+            Required by the Texas Department of Licensing and Regulation for electricians, HVAC technicians, irrigators, and dozens of other licensed trades. Apply online — certificate delivered by email, ready to file with TDLR.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
@@ -88,7 +88,7 @@ export default function TDLRBondTexas() {
           {[
             { label: "Bond amount", value: "$10,000", sub: "Standard TDLR requirement" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -163,7 +163,7 @@ export default function TDLRBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your TDLR Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · Rates from $100/yr · All TDLR trades covered · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · Rates from $100/yr · All TDLR trades covered · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

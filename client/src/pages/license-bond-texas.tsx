@@ -206,7 +206,7 @@ export default function LicenseBondTexas() {
           </h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Get your Texas contractor license bond fast. TDLR bonds, city license bonds,
-            and permit bonds for all trades — issued same-day, delivered by email.
+            and permit bonds for all trades — applied for online, with the certificate delivered by email.
             Rates start at $75/year.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -224,7 +224,7 @@ export default function LicenseBondTexas() {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6 text-center">
             {[
-              { icon: Clock, label: "Same-day issuance", body: "Bond documents delivered by email — ready to submit to TDLR or city licensing offices immediately" },
+              { icon: Clock, label: "Online application", body: "Bond documents delivered by email — ready to submit to TDLR or city licensing offices immediately" },
               { icon: DollarSign, label: "Rates from $75/yr", body: "License bonds are among the most affordable surety bonds — most Texas contractors pay under $300/year" },
               { icon: Award, label: "All trades covered", body: "We issue bonds for every trade TDLR and Texas cities regulate — electrical, plumbing, HVAC, roofing, and more" },
             ].map((item) => (
@@ -342,7 +342,7 @@ export default function LicenseBondTexas() {
             Get Your Texas License Bond Today
           </h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            Same-day issuance. Rates from $75/year. All Texas trades covered.
+            Online application. Rates from $75/year. All Texas trades covered.
           </p>
           <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
             <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">

@@ -41,7 +41,7 @@ export default function TexasTDLRContractorBond2026() {
       <div className="bg-amber-50 border-y border-amber-200 py-4 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-amber-900 text-sm font-medium">
-            <strong>TL;DR:</strong> TDLR requires a $10,000 surety bond for most contractor license types. It costs $100–$300/year. You get it from a licensed surety agency, file the certificate with TDLR, and you're done. Most applicants are approved same-day.
+            <strong>TL;DR:</strong> TDLR requires a $10,000 surety bond for most contractor license types. It costs $100–$300/year. You get it from a licensed surety agency, file the certificate with TDLR, and you're done. Apply online; the carrier reviews your application and shows your premium before you pay.
           </p>
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function TexasTDLRContractorBond2026() {
         {/* CTA */}
         <div className="mt-14 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your TDLR Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TDLR trades · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All TDLR trades · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

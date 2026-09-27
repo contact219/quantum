@@ -142,7 +142,7 @@ export default function Newsroom() {
             <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, maxWidth: 720 }}>
               Quantum Surety LLC (TDI License #3480229) is a Texas-based surety bond agency and operator of
               Texas's most comprehensive free public bond verification database. The company issues surety bonds
-              same-day for contractors, notaries, auto dealers, and businesses across all 254 Texas counties,
+              for contractors, notaries, auto dealers, and businesses across all 254 Texas counties,
               backed by A-rated carriers including RLI Insurance Company (A+, S&P). Quantum Surety's public records
               database covers 816,000+ TDLR contractor licenses, 558,000+ Texas notary commissions, and 19,700+
               Texas auto dealer records from public state data.

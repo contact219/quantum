@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle, Phone, Truck } from "lucide-react";
 
 export default function OversizePermitBond() {
   useSEO({
-    title: "Texas Oversize/Overweight Permit Bond ($15,000) — Same Day | Quantum Surety",
+    title: "Texas Oversize/Overweight Permit Bond ($15,000) — Apply Online | Quantum Surety",
     description:
       "TxDMV requires a $15,000 surety bond for many oversize/overweight hauling permits (Transportation Code Ch. 623). Annual term, same-day online issuance for Texas heavy haulers. TDI #3480229.",
     canonical: "/bonds/oversize-permit-bond-texas",
@@ -20,7 +20,7 @@ export default function OversizePermitBond() {
             <Truck className="w-4 h-4" /> For Texas Heavy Haulers
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Texas Oversize/Overweight Permit Bond — Issued Same Day
+            Texas Oversize/Overweight Permit Bond — Apply Online
           </h1>
           <p className="text-indigo-200 text-lg leading-relaxed">
             Hauling superheavy or oversize loads in Texas? TxDMV requires a <strong>$15,000 surety bond</strong> on file
@@ -69,17 +69,17 @@ export default function OversizePermitBond() {
         <h2 className="text-2xl font-bold mb-4">How it works</h2>
         <ol className="list-decimal pl-6 text-gray-700 leading-relaxed mb-8 space-y-2">
           <li>Apply online — company info and a few minutes of your time</li>
-          <li>Bond issued same day by an A-rated carrier; certificate arrives by email</li>
+          <li>Bond issued by an A-rated carrier once approved; certificate arrives by email</li>
           <li>File with TxDMV and pull permits without delay — renew annually</li>
         </ol>
 
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 mb-10">
           <h3 className="text-lg font-bold mb-2">Keep your permits moving</h3>
           <p className="text-gray-700 text-sm mb-4">
-            Most oversize permit bonds are approved instantly — no credit check for standard applicants.
+            Apply online; the carrier reviews your application and shows your premium before you pay.
           </p>
           <Link href="/get-bond?type=oversize-permit">
-            <Button>Start My Bond — Same Day <ArrowRight className="w-4 h-4 ml-1" /></Button>
+            <Button>Start My Bond <ArrowRight className="w-4 h-4 ml-1" /></Button>
           </Link>
         </div>
 
@@ -100,7 +100,7 @@ export default function OversizePermitBond() {
         </div>
 
         <div className="space-y-2">
-          {["TDI-licensed Texas agency #3480229", "A-rated carrier", "Same-day certificate by email"].map((t) => (
+          {["TDI-licensed Texas agency #3480229", "A-rated carrier", "Online application by email"].map((t) => (
             <div key={t} className="flex items-center gap-2 text-sm text-gray-600">
               <CheckCircle className="w-4 h-4 text-green-500 shrink-0" /> {t}
             </div>

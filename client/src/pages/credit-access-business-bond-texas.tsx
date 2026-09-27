@@ -99,7 +99,7 @@ export default function CreditAccessBusinessBondTexas() {
           {[
             { icon: <DollarSign className="w-5 h-5" />, label: "Starting premium", value: "$250/yr" },
             { icon: <FileText className="w-5 h-5" />, label: "Bond amount", value: "$25,000" },
-            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Same day" },
+            { icon: <Clock className="w-5 h-5" />, label: "Certificate", value: "Once approved" },
             { icon: <Shield className="w-5 h-5" />, label: "Per", value: "Location" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">
@@ -122,7 +122,7 @@ export default function CreditAccessBusinessBondTexas() {
             Every CAB must register each physical location with OCCC. As part of that registration, a <strong>$25,000 surety bond</strong> is required per location. The bond protects Texas consumers from losses caused by unlawful practices — misrepresentation of fees, unauthorized charges, or failure to comply with Chapter 393 disclosure requirements.
           </p>
           <p className="text-gray-600 leading-relaxed">
-            Texas has thousands of licensed CAB locations statewide. Whether you're opening a new location or renewing an existing one, Quantum Surety can issue your bond the same day.
+            Texas has thousands of licensed CAB locations statewide. Whether you're opening a new location or renewing an existing one, you can apply online, and the carrier shows your premium before you pay.
           </p>
         </section>
 
@@ -208,7 +208,7 @@ export default function CreditAccessBusinessBondTexas() {
 
         {/* CTA */}
         <section className="bg-orange-700 rounded-2xl p-8 text-white text-center">
-          <h2 className="text-2xl font-bold mb-2">Get Your CAB Bond — Same Day</h2>
+          <h2 className="text-2xl font-bold mb-2">Get Your CAB Bond</h2>
           <p className="text-orange-200 mb-6">Instant approval. Certificate emailed immediately. File with OCCC today.</p>
           <Link href="/get-bond?type=credit-access-business">
             <Button size="lg" className="bg-white text-orange-700 hover:bg-orange-50 font-semibold px-8">

@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "How much does an Irving contractor bond cost?",
-    a: "For a $5,000–$10,000 bond, most Irving contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Rates depend on your personal credit score. Most applicants are approved same-day with no financial statements required for standard bond amounts.",
+    a: "For a $5,000–$10,000 bond, most Irving contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Rates depend on your personal credit score. Apply online; the carrier reviews your application and shows your premium before you pay.",
   },
   {
     q: "Do I need an Irving city bond AND a TDLR license bond?",
@@ -48,7 +48,7 @@ const SERVICE_SCHEMA = {
 export default function ContractorBondIrving() {
   useSEO({
     title: "Contractor Bond Irving TX | Irving Contractor License Bond | Quantum Surety",
-    description: "Contractor bond in Irving, TX — required for city contractor licenses. Same-day issuance. TDI-licensed surety agency. Get your free Irving bond quote today.",
+    description: "Contractor bond in Irving, TX — required for city contractor licenses. Online application. TDI-licensed surety agency. Get your free Irving bond quote today.",
     canonical: "/bonds/contractor-bond-irving",
   });
   useSchema(SERVICE_SCHEMA, "ld-json-Service");
@@ -62,7 +62,7 @@ export default function ContractorBondIrving() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contractor Bond — Irving, Texas</h1>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-            Get your City of Irving contractor license bond same-day. Irving is home to major corporate campuses
+            Apply online for your City of Irving contractor license bond. Irving is home to major corporate campuses
             and DFW Airport — a strong commercial construction market that requires licensed, bonded contractors.
             TDI-licensed, A-rated carriers.
           </p>
@@ -114,7 +114,7 @@ export default function ContractorBondIrving() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Shield className="w-6 h-6 text-indigo-600" />, title: "TDI-Licensed Agency", body: "Licensed by the Texas Department of Insurance (#3480229). Your bond is backed by A-rated surety carriers approved in Texas." },
-              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Same-Day Issuance", body: "Standard contractor bonds approved and delivered same-day. Instant PDF so you can file with Irving Building Inspection and get to work fast." },
+              { icon: <ArrowRight className="w-6 h-6 text-teal-600" />, title: "Online Application", body: "Apply online; the carrier reviews each application. Instant PDF so you can file with Irving Building Inspection and get to work fast." },
               { icon: <CheckCircle className="w-6 h-6 text-green-600" />, title: "Commercial Market Ready", body: "Irving's Las Colinas and airport corridor demand bonded pros. We understand the commercial construction market and get you bonded quickly." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl p-6 border border-gray-200 text-center">
@@ -167,7 +167,7 @@ export default function ContractorBondIrving() {
       <section className="py-16 px-4 bg-indigo-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Get Your Irving Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-8">Same-day issuance. TDI-licensed agency. A-rated carriers. Stay licensed and competitive in Irving's thriving commercial construction market.</p>
+          <p className="text-indigo-200 mb-8">Online application. TDI-licensed agency. A-rated carriers. Stay licensed and competitive in Irving's thriving commercial construction market.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/quote">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-10">

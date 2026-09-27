@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How quickly can I get my auto dealer bond?",
-    a: "Same-day. Once your application is approved, your bond certificate is emailed instantly as a PDF. You can submit it to TxDMV with your dealer license application on the same day.",
+    a: "Once RLI approves your application and you pay, the bond certificate is emailed as a PDF, ready to submit to TxDMV. RLI reviews each dealer application and some are declined, so apply well before your licence expires.",
   },
   {
     q: "Can I get an auto dealer bond with bad credit?",
@@ -43,7 +43,7 @@ export default function AutoDealerBondTexas() {
   useSEO({
     title: "Texas Auto Dealer Bond | Motor Vehicle Dealer License Bond | Quantum Surety",
     description:
-      "Get your Texas auto dealer bond same-day. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $250 for the 2-year term. Instant PDF delivery.",
+      "Get your Texas auto dealer bond online. Required by TxDMV for all motor vehicle dealer licenses. $50,000 GDN bond from $250 for the 2-year term. Instant PDF delivery.",
     canonical: "/bonds/auto-dealer-bond-texas",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -63,13 +63,13 @@ export default function AutoDealerBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">TxDMV Dealer License Bond</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Texas Auto Dealer Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by the Texas Department of Motor Vehicles (TxDMV) for all motor vehicle dealer licenses — independent, franchise, wholesale, and used car dealers. Get bonded same-day with instant PDF delivery.
+            Required by the Texas Department of Motor Vehicles (TxDMV) for all motor vehicle dealer licenses — independent, franchise, wholesale, and used car dealers. Apply online; PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/get-bond?type=dealer">
@@ -92,7 +92,7 @@ export default function AutoDealerBondTexas() {
           {[
             { label: "Bond amount", value: "$50,000", sub: "TxDMV standard requirement" },
             { label: "Cost", value: "From $250", sub: "for the 2-year term" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -149,7 +149,7 @@ export default function AutoDealerBondTexas() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "1", title: "Tell us your dealer type", body: "Select Texas auto dealer bond and your license type (independent, franchise, wholesale, used car). Takes 2 minutes." },
-              { step: "2", title: "Fast approval", body: "Most dealers are approved same-day. No financial statements required for standard $50,000 bonds." },
+              { step: "2", title: "Fast approval", body: "RLI reviews each dealer application and shows your premium before you pay. Some applications are declined, so apply well before your licence expires." },
               { step: "3", title: "File with TxDMV", body: "Bond certificate emailed instantly as a PDF. Submit to TxDMV with your eLICENSING application." },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -185,7 +185,7 @@ export default function AutoDealerBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Auto Dealer Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All TxDMV dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=dealer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

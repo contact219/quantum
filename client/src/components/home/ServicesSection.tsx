@@ -7,7 +7,7 @@ const services = [
     category: "Construction",
     title: "Contract Surety Bonds",
     description:
-      "Bid bonds, performance bonds, and payment bonds for general contractors and subcontractors. Required on Texas public projects over $25,000 and federal projects over $150,000. Same-day bid bonds for qualified contractors.",
+      "Bid bonds, performance bonds, and payment bonds for general contractors and subcontractors. Required on Texas public projects over $25,000 and federal projects over $150,000. Bid bonds for qualified contractors, with timing set by the carrier's underwriting.",
     bullets: ["Bid bonds", "Performance bonds", "Payment bonds"],
     href: "/construction",
     cta: "Construction bonds",
@@ -18,7 +18,7 @@ const services = [
     category: "License & Permit",
     title: "License & Permit Bonds",
     description:
-      "TDLR bonds, contractor license bonds, electrical bonds, plumbing bonds, HVAC bonds, and city permit bonds across Texas. Most license bonds issued same-day with instant approval for good-credit applicants.",
+      "TDLR bonds, contractor license bonds, electrical bonds, plumbing bonds, HVAC bonds, and city permit bonds across Texas. Apply online; the carrier reviews each application and shows your premium before you pay.",
     bullets: ["TDLR contractor bonds", "Electrical & plumbing bonds", "City permit bonds"],
     href: "/bonds/license-bond-texas",
     cta: "License bonds",

@@ -119,7 +119,7 @@ export const BOND_TYPES: Record<string, BondType> = {
     faqs: [
       { q: (c) => `Do ${c.name} contractors need a surety bond?`, a: (c) => `Yes. Contractors in ${c.name} holding a TDLR license — including electricians, HVAC technicians, and general contractors — must maintain a surety bond as a condition of their Texas license.` },
       { q: (_) => "How much does a Texas contractor bond cost?", a: (_) => "Texas contractor bonds start at $75/year through Quantum Surety, depending on the required bond amount and license type. Most TDLR bonds range from $10,000 to $25,000." },
-      { q: (_) => "What happens if a contractor's bond lapses?", a: (_) => "A lapsed bond triggers automatic TDLR license suspension. Quantum Surety sends renewal reminders so your bond stays active continuously." },
+      { q: (_) => "What happens if a contractor's bond lapses?", a: (_) => "A lapsed bond triggers automatic TDLR license suspension. Quantum Surety offers free renewal reminders so your bond stays active continuously." },
       { q: (c) => `Can I get a contractor bond for ${c.name} online?`, a: (_) => "Yes — the entire process is online. Apply, pay, and receive your bond certificate by email within minutes, ready to file with TDLR." },
     ],
   },
@@ -140,7 +140,7 @@ export const BOND_TYPES: Record<string, BondType> = {
       { q: (c) => `Do ${c.name} car dealers need a surety bond?`, a: (c) => `Yes. Every licensed motor vehicle dealer in ${c.name} and ${c.county} County must maintain a $50,000 GDN surety bond under Texas Transportation Code §503.033 as a condition of their TxDMV dealer license.` },
       { q: (_) => "How much does a Texas GDN dealer bond cost?", a: (_) => "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
       { q: (_) => "What does a GDN bond cover?", a: (_) => "A GDN surety bond protects consumers and TxDMV from financial harm caused by dealer fraud, misrepresentation, or failure to pay required taxes and fees on vehicle sales." },
-      { q: (_) => "How quickly can I get a GDN bond certificate?", a: (_) => "Same day. Apply online through Quantum Surety, and your $50,000 GDN bond certificate is emailed within minutes — accepted by TxDMV statewide." },
+      { q: (_) => "How quickly can I get a GDN bond certificate?", a: (_) => "Once RLI approves your application and you pay, your $50,000 GDN bond certificate is emailed as a PDF, accepted by TxDMV. RLI reviews each dealer application and some are declined, so apply well before your licence expires." },
     ],
   },
   "mortgage-bond": {
@@ -160,7 +160,7 @@ export const BOND_TYPES: Record<string, BondType> = {
       { q: (c) => `Do ${c.name} mortgage brokers need a surety bond?`, a: (c) => `Yes. Mortgage brokers and bankers operating in ${c.name} and throughout Texas must maintain a $50,000 surety bond with the Texas Department of Savings and Mortgage Lending under Texas Finance Code §156.204.` },
       { q: (_) => "How much does a Texas mortgage broker bond cost?", a: (_) => "Texas mortgage broker bonds start at $375/year through Quantum Surety. Rates vary based on credit and license history." },
       { q: (_) => "Who requires the Texas mortgage broker bond?", a: (_) => "The Texas Department of Savings and Mortgage Lending (SML) requires the bond as a condition of issuing a mortgage broker or mortgage banker license." },
-      { q: (_) => "How quickly can I get a mortgage broker bond?", a: (_) => "Same day. Apply online and receive your bond certificate by email within minutes — ready to file with Texas SML." },
+      { q: (_) => "How quickly can I get a mortgage broker bond?", a: (_) => "Apply online; once the carrier approves the application and you pay, the bond certificate is emailed to you, ready to file with Texas SML." },
     ],
   },
   "hvac-bond": {

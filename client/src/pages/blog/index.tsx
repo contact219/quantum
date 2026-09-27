@@ -58,7 +58,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-bonded-title-complete-guide-2026",
     title: "Texas Bonded Title: Complete 2026 Guide (Requirements, Process & Cost)",
-    description: "Everything you need to know about getting a bonded title in Texas — when it's required, step-by-step process, what it costs, required TxDMV forms, and how to get bonded same day.",
+    description: "Everything you need to know about getting a bonded title in Texas — when it's required, step-by-step process, what it costs, required TxDMV forms, and how to get bonded.",
     date: "2026-06-05",
     readTime: "9 min read",
     category: "Texas Vehicle Titles",
@@ -98,7 +98,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "how-to-get-lost-car-title-texas",
     title: "How to Get a Lost Car Title in Texas in 5 Easy Steps (2026)",
-    description: "Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded same day.",
+    description: "Lost your Texas car title? Here are 5 steps to get a replacement — including when you need a bonded title, the TxDMV forms required, and how Quantum Surety can get you bonded.",
     date: "2026-05-18",
     readTime: "8 min read",
     category: "Texas Vehicle Titles",
@@ -178,7 +178,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-bid-bond-requirements-2026",
     title: "Texas Bid Bond Requirements 2026: What Contractors Need to Know",
-    description: "Texas bid bond requirements for 2026: who needs one, when it's required, how much it costs, and how to get same-day approval.",
+    description: "Texas bid bond requirements for 2026: who needs one, when it's required, how much it costs, and how to apply.",
     date: "2026-04-25",
     readTime: "7 min read",
     category: "Construction Bonds",
@@ -188,7 +188,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-gdn-bond-requirements-2026",
     title: "Texas GDN Bond Requirements 2026: What Dealers Need to Know",
-    description: "Texas GDN bond requirements for auto dealers in 2026 — bond amounts by dealer type, who needs one, what it costs, and how to get same-day approval.",
+    description: "Texas GDN bond requirements for auto dealers in 2026 — bond amounts by dealer type, who needs one, what it costs, and how to apply.",
     date: "2026-04-25",
     readTime: "8 min read",
     category: "Texas Auto Dealers",
@@ -228,7 +228,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "texas-notary-bond-cost-2026",
     title: "Texas Notary Bond Cost 2026: Why It's $50 Flat (No Credit Check)",
-    description: "How much does a Texas notary bond cost in 2026? It's $50 flat from Quantum Surety — no credit check, no hidden fees, same-day issue. Here's why and what's included.",
+    description: "How much does a Texas notary bond cost in 2026? It's $50 flat from Quantum Surety — no credit check, no hidden fees, an online application. Here's why and what's included.",
     date: "2026-04-25",
     readTime: "5 min read",
     category: "Texas Notary",

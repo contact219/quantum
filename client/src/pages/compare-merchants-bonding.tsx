@@ -8,7 +8,7 @@ const ROWS = [
   { label: "Accepted by the Texas Secretary of State", merchants: "Yes", quantum: "Yes" },
   { label: "Term", merchants: "4 years", quantum: "4 years" },
   { label: "Price", merchants: "Varies — often $65–85 when bundled via notary supply vendors", quantum: "$50 bond + $21 state fee = $71" },
-  { label: "Certificate delivery", merchants: "3–5 business days by mail (some vendors)", quantum: "Instant PDF by email, same day" },
+  { label: "Certificate delivery", merchants: "3–5 business days by mail (some vendors)", quantum: "PDF by email once issued" },
   { label: "Required add-ons", merchants: "Frequently bundled with notary supply packages", quantum: "None — bond only" },
   { label: "Underwriter", merchants: "Merchants Bonding Company (Iowa)", quantum: "RLI Insurance Company (A-rated)" },
 ];
@@ -75,7 +75,7 @@ export default function CompareMerchantsBonding() {
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 mb-10">
           <div className="flex flex-wrap gap-3">
             <a href="https://www.mybondapp.com/329034247/DirectNavBond?BondType=N4208MBA2&State=TX" target="_blank" rel="noreferrer">
-              <Button>Renew for $50 — Same Day <ArrowRight className="w-4 h-4 ml-1" /></Button>
+              <Button>Renew for $50 online <ArrowRight className="w-4 h-4 ml-1" /></Button>
             </a>
             <a href="https://verify.quantumsurety.bond" target="_blank" rel="noreferrer">
               <Button variant="outline">Not due yet? Set a free renewal reminder</Button>

@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How much does a San Antonio contractor bond cost?",
-    a: "For a $10,000 bond, most San Antonio contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Your rate is based on your credit score. Most applicants are approved same-day.",
+    a: "For a $10,000 bond, most San Antonio contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Your rate is based on your credit score. Apply online; the carrier reviews your application and shows your premium before you pay.",
   },
   {
     q: "Is San Antonio's bond requirement different from TDLR?",
@@ -39,7 +39,7 @@ export default function ContractorBondSanAntonio() {
   useSEO({
     title: "Contractor Bond San Antonio TX | City License Bond | Quantum Surety",
     description:
-      "Get your San Antonio contractor bond same-day. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
+      "Apply online for your San Antonio contractor bond. Required by the City of San Antonio for general, electrical, HVAC, plumbing, and roofing contractor licenses. From $100/yr. Instant PDF.",
     canonical: "/bonds/contractor-bond-san-antonio",
   });
   useSchema({ "@context": "https://schema.org", "@type": "Service", "serviceType": "Surety Bond", "provider": { "@type": "LocalBusiness", "name": "Quantum Surety Bonds", "url": "https://quantumsurety.bond" }, "areaServed": { "@type": "State", "name": "Texas" } }, "ld-json-Service");
@@ -59,13 +59,13 @@ export default function ContractorBondSanAntonio() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1"><MapPin className="w-3 h-3" /> San Antonio, TX</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Contractor Bond — San Antonio, Texas
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by the City of San Antonio Development Services for contractor licenses across all trades. Get bonded same-day with instant PDF delivery — ready to file with the city.
+            Required by the City of San Antonio Development Services for contractor licenses across all trades. Apply online; PDF certificate once approved — ready to file with the city.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
@@ -88,7 +88,7 @@ export default function ContractorBondSanAntonio() {
           {[
             { label: "Bond amounts", value: "$10K–$25K", sub: "Varies by trade & license type" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -161,7 +161,7 @@ export default function ContractorBondSanAntonio() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your San Antonio Contractor Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All San Antonio trades · From $100/yr · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All San Antonio trades · From $100/yr · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/get-bond?type=contractor" target="_blank" rel="noreferrer">
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

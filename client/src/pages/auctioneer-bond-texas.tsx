@@ -55,11 +55,11 @@ export default function AuctioneerBondTexas() {
           </div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="bg-indigo-700 text-indigo-100 text-xs font-semibold px-3 py-1 rounded-full">Texas Occupations Code §1802.254</span>
-            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Same-day issuance</span>
+            <span className="text-indigo-300 text-sm flex items-center gap-1"><Clock className="w-3 h-3" /> Online application</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Texas Auctioneer Bond — TDLR License Requirement</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            All Texas-licensed auctioneers must maintain a $10,000 surety bond with TDLR under Texas Occupations Code §1802.254. Get bonded same-day — instant PDF certificate, accepted by the Texas Department of Licensing and Regulation.
+            All Texas-licensed auctioneers must maintain a $10,000 surety bond with TDLR under Texas Occupations Code §1802.254. Apply online — PDF certificate once approved, accepted by the Texas Department of Licensing and Regulation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={QUOTE_LINK}>
@@ -77,7 +77,7 @@ export default function AuctioneerBondTexas() {
           {[
             { label: "Bond amount", value: "$10,000", sub: "Required under §1802.254" },
             { label: "Annual cost", value: "From $100/yr", sub: "Credit-based pricing" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" }
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" }
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>
@@ -144,7 +144,7 @@ export default function AuctioneerBondTexas() {
       <div className="max-w-4xl mx-auto px-4 pb-16">
         <div className="bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas Auctioneer Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · $10,000 TDLR-accepted bond · From $100/yr · TDI Licensed #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · $10,000 TDLR-accepted bond · From $100/yr · TDI Licensed #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={QUOTE_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">Get My Auctioneer Bond <ArrowRight className="w-4 h-4 ml-2" /></Button>

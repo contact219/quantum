@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How much does a Corpus Christi contractor bond cost?",
-    a: "For a $10,000 bond, most Corpus Christi contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Premium is based primarily on your personal credit score. Most applicants are approved same-day.",
+    a: "For a $10,000 bond, most Corpus Christi contractors pay $100–$250/year. For a $25,000 bond, expect $250–$500/year. Premium is based primarily on your personal credit score. Apply online; the carrier reviews your application and shows your premium before you pay.",
   },
   {
     q: "Does coastal or storm-hardening construction require a special bond?",
@@ -92,7 +92,7 @@ export default function ContractorBondCorpusChristi() {
           {[
             { label: "Bond amounts", value: "$10K–$25K", sub: "Varies by trade & license type" },
             { label: "Annual cost", value: "From $100/yr", sub: "Based on credit profile" },
-            { label: "Delivery", value: "Same-day", sub: "Instant PDF by email" },
+            { label: "Delivery", value: "Once approved", sub: "Instant PDF by email" },
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-xl p-5 border border-teal-100">
               <p className="text-2xl font-bold text-gray-900">{item.value}</p>

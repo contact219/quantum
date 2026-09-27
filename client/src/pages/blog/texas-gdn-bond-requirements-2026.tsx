@@ -129,15 +129,14 @@ export default function BlogGDNBondRequirements2026() {
               <div className="flex items-start gap-4">
                 <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-3">Class A misdemeanor: operating without a valid GDN bond</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">Criminal and civil penalties: operating without a valid GDN bond</h2>
                   <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                    Texas Transportation Code §503.033 makes it a <strong>Class A misdemeanor</strong> to operate as a motor vehicle dealer without a valid surety bond on file with TxDMV. A Class A misdemeanor in Texas carries penalties of:
+                    Texas Transportation Code §503.033 requires the bond, and violating the dealer chapter is a <strong>misdemeanor</strong> (§503.094). The penalties are:
                   </p>
                   <ul className="space-y-2 mb-3">
                     {[
-                      "Fine up to $4,000",
-                      "Up to one year in county jail",
-                      "Potential license suspension or permanent revocation by TxDMV",
+                      "A fine of $50 to $5,000, which a court can triple for a wilful violation (§503.094)",
+                      "A civil penalty of $50 to $1,000 for each violation, and each day counts separately (§503.095)",
                       "Civil liability to any consumer harmed during the unlicensed period",
                     ].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
@@ -207,7 +206,7 @@ export default function BlogGDNBondRequirements2026() {
                 { label: "Required bond amount", value: "$50,000 — uniform for all 6 dealer types" },
                 { label: "Estimated annual cost", value: "$100–$300/year (credit-based)" },
                 { label: "Bond term", value: "Annual — must be renewed each license year" },
-                { label: "Penalty for non-compliance", value: "Class A misdemeanor — up to $4,000 fine + jail" },
+                { label: "Penalty for non-compliance", value: "Misdemeanor: fine up to $5,000 (tripled if wilful) + civil penalties" },
                 { label: "Certificate delivery", value: "Instant PDF via email — same-day filing possible" },
               ].map((row, i) => (
                 <div key={row.label} className={`flex gap-4 px-5 py-3.5 border-b border-gray-100 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
@@ -223,7 +222,7 @@ export default function BlogGDNBondRequirements2026() {
         {/* CTA */}
         <div className="mt-12 bg-indigo-900 rounded-2xl p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">Get Your Texas GDN Bond Today</h2>
-          <p className="text-indigo-200 mb-6">Same-day issuance · All 6 dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
+          <p className="text-indigo-200 mb-6">Online application · All 6 dealer types · From $250 per 2-yr term · TDI Licensed Agency #3480229</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={GDN_LINK}>
               <Button size="lg" className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8">

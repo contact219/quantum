@@ -152,7 +152,7 @@ export default function BlogBidVsPerformanceVsPayment() {
 
         <div className="bg-indigo-900 text-white rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-2">Get All Three Bonds in One Application</h2>
-          <p className="text-indigo-200 mb-5">Quantum Surety issues bid bonds, performance bonds, and payment bonds together. A-rated carriers, TDI Licensed #3480229, same-day approval on smaller projects.</p>
+          <p className="text-indigo-200 mb-5">Quantum Surety issues bid bonds, performance bonds, and payment bonds together. A-rated carriers, TDI Licensed #3480229, an online application on smaller projects.</p>
           <Link href="/quote?type=bid">
             <button className="bg-white text-indigo-900 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition-colors inline-flex items-center gap-2">
               Get a Construction Bond Quote <ArrowRight className="w-4 h-4" />

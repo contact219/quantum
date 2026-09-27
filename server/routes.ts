@@ -75,13 +75,26 @@ function getBondverifyPool(): mysql.Pool | null {
 }
 async function recentRecipient(email: string): Promise<boolean> {
   const bv = getBondverifyPool();
-  if (!bv) return false;
-  const [rows]: any = await bv.execute(
-    `SELECT 1 FROM renewal_outreach WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
-     UNION ALL
-     SELECT 1 FROM notary_campaign_sends WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
-     LIMIT 1`, [email, email]);
-  return rows.length > 0;
+  if (bv) {
+    const [rows]: any = await bv.execute(
+      `SELECT 1 FROM renewal_outreach WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
+       UNION ALL
+       SELECT 1 FROM notary_campaign_sends WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
+       LIMIT 1`, [email, email]);
+    if (rows.length > 0) return true;
+  }
+  // The CRM senders (lead follow-ups, re-engagement, bond recovery, dealer mail) keep no send log
+  // here, so for them "our recipient" means an address we hold as a lead, a bond or a dealer.
+  const crm = getCrmUnsubPool();
+  if (crm) {
+    const { rows } = await crm.query(
+      `SELECT 1 FROM leads WHERE lower(email) = $1
+       UNION ALL SELECT 1 FROM bk_bonds WHERE lower(insured_email) = $1
+       UNION ALL SELECT 1 FROM auto_dealers WHERE lower(email) = $1
+       LIMIT 1`, [email]);
+    if (rows.length > 0) return true;
+  }
+  return false;
 }
 
 // CRM Postgres pool. Added originally for the shared email suppression list; it now

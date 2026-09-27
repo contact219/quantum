@@ -98,9 +98,12 @@ export default async function runApp(
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
+  // Production sets HOST=127.0.0.1 so only Caddy can reach the app: on 0.0.0.0 anyone could hit
+  // :3000 directly, bypass Caddy and forge X-Forwarded-For (trust proxy is 1), which defeats
+  // every per-IP limit.
   server.listen({
     port,
-    host: "0.0.0.0",
+    host: process.env.HOST || "0.0.0.0",
     reusePort: true,
   }, () => {
     log(`serving on port ${port}`);

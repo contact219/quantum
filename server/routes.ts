@@ -10,6 +10,79 @@ import { evaluateRiskModel, generateSyntheticCreditScore } from "./risk-scoring"
 import multer from "multer";
 import OpenAI from "openai";
 import { Pool as PgPool } from "pg";
+import mysql from "mysql2/promise";
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+// ── Unsubscribe tokens ──────────────────────────────────────────────────────────
+// Link: /api/unsubscribe?e=<email>&t=<first 16 hex of HMAC-SHA256(QS_UNSUB_SECRET, lower(email))>
+// The secret lives only in .env (this repo is public). The same value must be set in
+// /var/www/bondverify/.env for the senders that build the links.
+// Only a verified HMAC token can write. No token is ever handed out by a GET.
+const HEX16 = /^[0-9a-f]{16}$/;
+function unsubToken(email: string): string | null {
+  const secret = process.env.QS_UNSUB_SECRET;
+  if (!secret) return null;
+  return createHmac("sha256", secret).update(email.trim().toLowerCase()).digest("hex").slice(0, 16);
+}
+function unsubTokenOk(email: string, token: unknown): boolean {
+  // Validate shape FIRST: arrays (t[]=x), objects, multibyte or overlong strings never reach
+  // timingSafeEqual, which throws on unequal BYTE lengths (a crash found in review).
+  if (typeof token !== "string" || !HEX16.test(token)) return false;
+  const want = unsubToken(email);
+  if (!want) return false;
+  return timingSafeEqual(Buffer.from(token, "hex"), Buffer.from(want, "hex"));  // both exactly 8 bytes
+}
+
+// Legacy links (mail sent before signed links existed carry ?email= and no token). CAN-SPAM
+// expects an opt-out link to keep working for 30 days after the send, so a legacy confirmation
+// POST is still honoured, but only (1) until LEGACY_UNSUB_UNTIL (deploy date + 45 days, then the
+// path retires itself), (2) for an address that actually received one of our emails in the last
+// 45 days, and (3) at most 5 legacy POSTs per IP per hour. The response is identical whether or
+// not the address matched, so the path can't be used to test who is on our list.
+const LEGACY_MAX_PER_HOUR = 5;
+const legacyHits = new Map<string, number[]>();
+function legacyRateOk(ip: string): boolean {
+  const now = Date.now();
+  const recent = (legacyHits.get(ip) || []).filter((t) => now - t < 3_600_000);
+  if (recent.length >= LEGACY_MAX_PER_HOUR) { legacyHits.set(ip, recent); return false; }
+  recent.push(now);
+  legacyHits.delete(ip);          // re-insert so Map order is least-recently-used first
+  legacyHits.set(ip, recent);
+  // Bound memory by evicting the oldest IPs; never clear() everything, which would let a flood
+  // reset every bucket.
+  while (legacyHits.size > 10_000) legacyHits.delete(legacyHits.keys().next().value as string);
+  return true;
+}
+function legacyPathOpen(): boolean {
+  const until = Date.parse(process.env.LEGACY_UNSUB_UNTIL || "");
+  return Number.isFinite(until) && Date.now() < until;
+}
+
+// bondverify MariaDB (same host). Its `unsubscribes` table is the list the bondverify
+// senders check, so an opt-out must land there as well as in the CRM. It also holds the
+// send logs used to check legacy requests.
+let bvPool: mysql.Pool | null = null;
+function getBondverifyPool(): mysql.Pool | null {
+  if (!process.env.BV_DB_USER || !process.env.BV_DB_PASS) return null;
+  if (!bvPool) {
+    bvPool = mysql.createPool({
+      host: process.env.BV_DB_HOST || "127.0.0.1", // never 'localhost': mysql2 resolves it to ::1
+      user: process.env.BV_DB_USER, password: process.env.BV_DB_PASS,
+      database: process.env.BV_DB_NAME || "bondverify", connectionLimit: 2,
+    });
+  }
+  return bvPool;
+}
+async function recentRecipient(email: string): Promise<boolean> {
+  const bv = getBondverifyPool();
+  if (!bv) return false;
+  const [rows]: any = await bv.execute(
+    `SELECT 1 FROM renewal_outreach WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
+     UNION ALL
+     SELECT 1 FROM notary_campaign_sends WHERE email = ? AND sent_at >= NOW() - INTERVAL 45 DAY
+     LIMIT 1`, [email, email]);
+  return rows.length > 0;
+}
 
 // CRM Postgres pool. Added originally for the shared email suppression list; it now
 // also carries the PRIMARY lead write (see saveLeadToCrm below). Same database either
@@ -110,40 +183,114 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.send('quantumsurety-indexnow-2026');
   });
 
-  // ── Email unsubscribe (one-click, writes to CRM suppression list) ──────────
-  // GET renders a confirmation page; POST supports RFC 8058 List-Unsubscribe-Post.
-  const handleUnsubscribe = async (req: any, res: any) => {
-    const email = String(req.query.e || req.query.email || req.body?.email || "")
-      .trim().toLowerCase();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
-    if (valid) {
-      try {
-        const pool = getCrmUnsubPool();
-        if (pool) {
-          await pool.query(
-            `INSERT INTO unsubscribes (email, source) VALUES ($1, 'link')
-             ON CONFLICT (email) DO NOTHING`,
-            [email],
-          );
-        } else {
-          console.error("[unsubscribe] CRM_UNSUB_DB_URL not configured — request not recorded:", email);
-        }
-      } catch (err: any) {
-        console.error("[unsubscribe] failed to record:", err.message);
-      }
-    }
-    if (req.method === "POST") return res.status(200).send("OK");
-    res.setHeader("Content-Type", "text/html");
-    res.send(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Unsubscribed — Quantum Surety</title></head>
+  // ── Email unsubscribe: signed link, GET never writes, POST writes both lists ─────
+  // Why: link scanners open ~91% of our emails in the send hour. The old handler wrote
+  // on GET with no token, so a scanner (or anyone) could unsubscribe any address, and it
+  // wrote only the CRM list, which the bondverify senders never read.
+  //   GET  /api/unsubscribe?e=&t=  (and legacy ?email=, alias /unsubscribe)
+  //        -> confirmation page with a button that POSTs. Never writes. Never issues a token.
+  //   POST with a valid t (RFC 8058 body "List-Unsubscribe=One-Click" from a mail client,
+  //        or our confirmation form carrying t) -> write both lists.
+  //   POST from our form with NO valid t (legacy links only) -> write only while the legacy
+  //        window is open, for a recent recipient, within the per-IP rate limit (see top).
+  //   Anything else -> 403. A failed write -> 500. Every handler body is wrapped: an exception
+  //        returns 500 and can never escape as an unhandled rejection.
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
+  const unsubPage = (title: string, bodyHtml: string) =>
+    `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${title} — Quantum Surety</title></head>
 <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;margin:0;padding:40px 16px;">
 <div style="max-width:480px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:32px;text-align:center;">
-<h1 style="font-size:20px;color:#0f172a;margin:0 0 12px;">You've been unsubscribed</h1>
-<p style="color:#475569;font-size:14px;line-height:1.6;">${valid ? "We won't send any more marketing emails to <strong>" + email.replace(/</g, "&lt;") + "</strong>." : "We couldn't read that email address — reply to any of our emails with \"unsubscribe\" and we'll take care of it."}</p>
+<h1 style="font-size:20px;color:#0f172a;margin:0 0 12px;">${title}</h1>${bodyHtml}
 <p style="color:#94a3b8;font-size:12px;margin-top:24px;">Quantum Surety LLC · 1416 Bessie Drive, Wylie, TX 75098 · TDI License #3480229</p>
-</div></body></html>`);
+</div></body></html>`;
+  const para = (s: string) => `<p style="color:#475569;font-size:14px;line-height:1.6;">${s}</p>`;
+  const REPLY = `reply to any of our emails with "unsubscribe" and we'll take care of it`;
+  // Only plain strings are accepted; arrays/objects from ?e[]= or t[]= become "".
+  const str = (v: unknown) => (typeof v === "string" ? v : "");
+  const readEmail = (req: any) =>
+    (str(req.query.e) || str(req.query.email) || str(req.body?.e) || str(req.body?.email)).trim().toLowerCase();
+  const readToken = (req: any) => str(req.query.t) || str(req.body?.t);
+  const emailOk = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 254;
+  const FAILED_BODY = para(`We couldn't record your request. Please ${REPLY}, and we'll remove you by hand.`);
+
+  async function recordUnsubscribe(email: string, source: string): Promise<boolean> {
+    const crm = getCrmUnsubPool();
+    const bv = getBondverifyPool();
+    if (!crm || !bv) {
+      console.error("[unsubscribe] NOT RECORDED, pool not configured (CRM_UNSUB_DB_URL / BV_DB_*):", email);
+      return false;
+    }
+    const results = await Promise.allSettled([
+      crm.query(`INSERT INTO unsubscribes (email, source) VALUES ($1, $2) ON CONFLICT (email) DO NOTHING`, [email, source]),
+      bv.execute(`INSERT IGNORE INTO unsubscribes (email) VALUES (?)`, [email]),
+    ]);
+    results.forEach((r, i) => {
+      if (r.status === "rejected") console.error(`[unsubscribe] ${i === 0 ? "CRM" : "bondverify"} write FAILED for ${email}:`, (r.reason as any)?.message);
+    });
+    return results.every((r) => r.status === "fulfilled");
+  }
+
+  const htmlOut = (res: any, status: number, title: string, body: string) => {
+    res.setHeader("Content-Type", "text/html");
+    res.setHeader("Cache-Control", "no-store");
+    return res.status(status).send(unsubPage(title, body));
   };
-  app.get("/api/unsubscribe", handleUnsubscribe);
-  app.post("/api/unsubscribe", handleUnsubscribe);
+
+  app.get(["/api/unsubscribe", "/unsubscribe"], (req: any, res: any) => {
+    try {
+      // Never writes. /unsubscribe is an alias because some senders already link there
+      // (it used to fall through to the SPA shell and record nothing).
+      const email = readEmail(req);
+      if (!emailOk(email)) return htmlOut(res, 200, "Unsubscribe", para(`We couldn't read an email address in that link. Please ${REPLY}.`));
+      const t = readToken(req);
+      const signed = unsubTokenOk(email, t);
+      if (!signed && !legacyPathOpen()) {
+        return htmlOut(res, 200, "Unsubscribe", para(`This unsubscribe link has expired. Please use the link in our most recent email, or ${REPLY}.`));
+      }
+      return htmlOut(res, 200, "Unsubscribe?", para(`Stop marketing emails from Quantum Surety to <strong>${esc(email)}</strong>?`) + `
+<form method="POST" action="/api/unsubscribe" style="margin-top:20px;">
+<input type="hidden" name="e" value="${esc(email)}"><input type="hidden" name="confirm" value="1">${signed ? `<input type="hidden" name="t" value="${t}">` : ""}
+<button type="submit" style="background:#0f172a;color:#fff;border:0;border-radius:6px;padding:12px 28px;font-size:15px;cursor:pointer;">Unsubscribe</button>
+</form>`);
+    } catch (err: any) {
+      console.error("[unsubscribe] GET error:", err?.message);
+      return res.status(500).send("Error");
+    }
+  });
+
+  app.post("/api/unsubscribe", async (req: any, res: any) => {
+    try {
+      const email = readEmail(req);
+      const oneClick = str(req.body?.["List-Unsubscribe"]) === "One-Click";
+      const fromForm = str(req.body?.confirm) === "1";
+      if (!emailOk(email)) return res.status(403).send("Forbidden");
+
+      if (unsubTokenOk(email, readToken(req))) {
+        if (!(await recordUnsubscribe(email, oneClick ? "one-click" : "link"))) {
+          return fromForm ? htmlOut(res, 500, "Something went wrong", FAILED_BODY) : res.status(500).send("Error");
+        }
+        if (!fromForm) return res.status(200).send("OK");
+        return htmlOut(res, 200, "You've been unsubscribed", para(`We won't send any more marketing emails to <strong>${esc(email)}</strong>.`));
+      }
+
+      if (fromForm && !oneClick && legacyPathOpen()) {
+        if (!legacyRateOk(String(req.ip || req.socket?.remoteAddress || ""))) {
+          return htmlOut(res, 429, "Too many requests", para(`Please try again later, or ${REPLY}.`));
+        }
+        // Same page whether or not the address matched: no list-membership oracle.
+        if (await recentRecipient(email)) {
+          if (!(await recordUnsubscribe(email, "legacy-link"))) return htmlOut(res, 500, "Something went wrong", FAILED_BODY);
+        }
+        return htmlOut(res, 200, "Request received", para(`If <strong>${esc(email)}</strong> is on our list, it has been removed and won't get any more marketing emails from us.`));
+      }
+
+      if (!fromForm) return res.status(403).send("Forbidden");
+      return htmlOut(res, 403, "We couldn't confirm that link", para(`Please use the unsubscribe link in our most recent email, or ${REPLY}.`));
+    } catch (err: any) {
+      console.error("[unsubscribe] POST error:", err?.message);
+      if (!res.headersSent) return res.status(500).send("Error");
+    }
+  });
 
   // â”€â”€ Permanent URL redirects (301) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const REDIRECTS: Record<string, string> = {

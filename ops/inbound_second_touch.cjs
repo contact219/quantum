@@ -23,7 +23,7 @@
  *   node inbound_second_touch.cjs --dry-run
  *   node inbound_second_touch.cjs
  */
-const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
+const { SESClient, SendEmailCommand, unsubUrl } = require('/root/lib/qs_ses.cjs');  // signed one-click unsubscribe (2026-09-26)
 const { Client } = require('pg');
 
 const DRY_RUN = process.argv.includes('--dry-run');
@@ -76,7 +76,7 @@ function buildEmail(lead) {
 <p>If you got stuck on something, or you'd just rather I walk you through it, reply to this email or call or text me directly at <strong>(214) 666-8718</strong>. Happy to help either way.</p>
 <p style="margin-top:20px;">&mdash; Ted</p>
 <p style="color:#64748b;font-size:13px;border-top:1px solid #e2e8f0;padding-top:14px;margin-top:8px;">Theodore Sparks &middot; Quantum Surety LLC &middot; TDI License #3480229<br><a href="tel:+12146668718" style="color:#2563eb;">(214) 666-8718</a> &middot; ted@quantumsurety.bond</p>
-<p style="font-size:11px;color:#94a3b8;margin-top:10px;">Don't want these emails? <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8;">Unsubscribe</a></p>
+<p style="font-size:11px;color:#94a3b8;margin-top:10px;">Don't want these emails? <a href="${unsubUrl(lead.email)}" style="color:#94a3b8;">Unsubscribe</a></p>
 </div>`;
 
   const text = `${hi}

@@ -13,7 +13,7 @@
  *   node crm_daily_auto_followup.cjs --hours 72   -- extend lookback window
  */
 
-const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
+const { SESClient, SendEmailCommand, unsubUrl } = require('/root/lib/qs_ses.cjs');  // signed one-click unsubscribe (2026-09-26)
 const { Client } = require('pg');
 
 const DRY_RUN  = process.argv.includes('--dry-run');
@@ -31,7 +31,7 @@ const REPLY_TO = 'contact@quantumsurety.bond';
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="https://quantumsurety.bond/api/unsubscribe?e=${encodeURIComponent(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
+const unsubFooter = e => `<p style="font-size:11px;color:#94a3b8;margin-top:16px;">Don't want these emails? <a href="${unsubUrl(e)}" style="color:#94a3b8;">Unsubscribe</a></p>`;
 
 const BIZ_SUFFIXES = new Set(['llc','inc','corp','co','ltd','services','construction','group','solutions','consulting','management','associates','enterprises','company','industries','systems','technologies','contractors']);
 const KNOWN_NAMES  = new Set('james,john,robert,michael,william,david,richard,joseph,thomas,charles,christopher,daniel,matthew,anthony,mark,donald,steven,paul,andrew,joshua,kenneth,kevin,brian,george,edward,ronald,timothy,jason,jeffrey,ryan,gary,jacob,nicholas,eric,jonathan,stephen,larry,justin,scott,brandon,benjamin,samuel,frank,raymond,gregory,alexander,patrick,jack,dennis,jerry,tyler,henry,aaron,jose,adam,nathan,zachary,douglas,peter,kyle,noah,ethan,jeremy,walter,christian,keith,roger,terry,austin,sean,gerald,carl,harold,dylan,arthur,lawrence,jordan,jesse,bryan,billy,joe,bruce,gabriel,logan,albert,willie,alan,juan,wayne,elijah,randy,roy,vincent,ralph,eugene,russell,bobby,mason,philip,louis,omar,liam,oliver'.split(','));
@@ -74,7 +74,7 @@ function buildEmail(lead) {
   </div>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get My Notary Bond →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply here or call <strong>(214) 666-8718</strong>.</p>
-  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
+  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="${unsubUrl(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
       text: `${hi}\n\nYou looked into a Texas notary bond. $50 flat for 4 years, instant certificate.\n\nGet bonded: ${url}\n\nQuestions? Reply or call (214) 666-8718.\n\nQuantum Surety | TDI #3480229`,
     };
@@ -93,7 +93,7 @@ function buildEmail(lead) {
   <p style="color:#475569;line-height:1.6;margin:0 0 16px">If you have that requirement in hand, reply with who is asking and the bond amount and we'll quote it. Premiums start at $100.</p>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Request a quote →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
-  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
+  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="${unsubUrl(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
       text: `${hi}\n\nThanks for asking about a contractor bond. TDLR contractor licenses require liability insurance, not a surety bond. A bond is needed when a city or a project owner asks for one, and they set the amount.\n\nIf you have that requirement, reply with who is asking and the amount and we'll quote it. Premiums start at $100.\n\nRequest a quote: ${url}\n\nQuantum Surety | TDI #3480229`,
     };
@@ -112,7 +112,7 @@ function buildEmail(lead) {
   </div>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Apply Now →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
-  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
+  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="${unsubUrl(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
       text: `${hi}\n\nYour Texas GDN dealer license needs a $50,000 surety bond. From $250 for the 2-year term; your exact premium is confirmed before you pay.\n\nApply: ${url}\n\nQuantum Surety | TDI #3480229`,
     };
@@ -128,7 +128,7 @@ function buildEmail(lead) {
   <p style="color:#475569;line-height:1.6;margin:0 0 16px">You recently looked into a Texas surety bond. We're here when you're ready — same-day approval for most bond types, TDI-licensed, instant certificates.</p>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get My Free Quote →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
-  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="https://quantumsurety.bond/unsubscribe?email=${encodeURIComponent(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
+  <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="${unsubUrl(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
     text: `${hi}\n\nYou looked into a Texas surety bond. Same-day approval, instant certificates.\n\nGet a quote: ${url}\n\nQuantum Surety | TDI #3480229`,
   };

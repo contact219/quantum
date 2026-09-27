@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, Al
 const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
-  { q: "Do El Paso auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas — including dealers in El Paso — must carry a $50,000 GDN surety bond under Texas Transportation Code §503.033 before TxDMV will issue or renew a dealer license." },
+  { q: "Do El Paso auto dealers need a GDN bond?", a: "Yes. Every licensed independent motor vehicle dealer in Texas — including dealers in El Paso — must carry a $50,000 GDN surety bond under Texas Transportation Code §503.033 before TxDMV will issue or renew a dealer license." },
   { q: "How much does a GDN bond cost for a El Paso dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "How fast can I get a GDN bond in El Paso?", a: "RLI reviews each dealer application and shows your premium before you pay. Once it is approved and paid, your bond certificate is emailed as a PDF, ready to upload to TxDMV eLICENSING. Some applications are declined, so apply well before your licence expires." },
   { q: "Does a El Paso dealer need a city bond in addition to the GDN bond?", a: "The GDN bond is a state-level TxDMV requirement. Some municipalities may have additional local business license requirements, but the $50,000 GDN bond is the primary surety requirement for your dealer license." },

@@ -135,9 +135,9 @@ export const BOND_TYPES: Record<string, BondType> = {
     applyUrl: "/get-bond?type=gdn",
     applyType: "gdn",
     color: "blue",
-    description: "Every Texas motor vehicle dealer holding a General Distinguishing Number (GDN) license must post a $50,000 surety bond with TxDMV under Texas Transportation Code §503.033.",
+    description: "Every independent Texas motor vehicle dealer holding a General Distinguishing Number (GDN) license must post a $50,000 surety bond with TxDMV under Texas Transportation Code §503.033.",
     faqs: [
-      { q: (c) => `Do ${c.name} car dealers need a surety bond?`, a: (c) => `Yes. Every licensed motor vehicle dealer in ${c.name} and ${c.county} County must maintain a $50,000 GDN surety bond under Texas Transportation Code §503.033 as a condition of their TxDMV dealer license.` },
+      { q: (c) => `Do ${c.name} car dealers need a surety bond?`, a: (c) => `Yes. Every licensed independent motor vehicle dealer in ${c.name} and ${c.county} County must maintain a $50,000 GDN surety bond under Texas Transportation Code §503.033 as a condition of their TxDMV dealer license.` },
       { q: (_) => "How much does a Texas GDN dealer bond cost?", a: (_) => "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
       { q: (_) => "What does a GDN bond cover?", a: (_) => "A GDN surety bond protects consumers and TxDMV from financial harm caused by dealer fraud, misrepresentation, or failure to pay required taxes and fees on vehicle sales." },
       { q: (_) => "How quickly can I get a GDN bond certificate?", a: (_) => "Once RLI approves your application and you pay, your $50,000 GDN bond certificate is emailed as a PDF, accepted by TxDMV. RLI reviews each dealer application and some are declined, so apply well before your licence expires." },

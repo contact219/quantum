@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "What is the required bond amount?",
-    a: "Texas Transportation Code §503.033 sets the required bond amount at $50,000 for all GDN license holders. This applies uniformly across all six dealer license types — new, used, wholesale, motorcycle, BHPH, and lease/finance.",
+    a: "Texas Transportation Code §503.033 sets the bond at $50,000. It applies to independent dealer licences (used vehicles, wholesale, motorcycle, trailer and similar categories); franchised dealers are exempt under §503.033(i).",
   },
   {
     q: "What happens if I operate without a GDN bond?",
@@ -93,7 +93,7 @@ export default function GDNBondTexas() {
             Texas GDN Bond — General Distinguishing Number Dealer Bond
           </h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Required by TxDMV for every motor vehicle dealer license in Texas. The $50,000 GDN surety bond is mandated under Texas Transportation Code §503.033 and covers all six dealer license types — new, used, wholesale, motorcycle, BHPH, and lease/finance.
+            Required by TxDMV for independent motor vehicle dealer licenses in Texas. The $50,000 GDN surety bond is mandated under Texas Transportation Code §503.033; franchised dealers are exempt under §503.033(i).
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GDN_LINK}>
@@ -136,7 +136,7 @@ export default function GDNBondTexas() {
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-2">Legally Required — Texas Transportation Code §503.033</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                Every Texas motor vehicle dealer must maintain a valid $50,000 GDN surety bond as a condition of holding a dealer license issued by TxDMV. Dealing without a valid bond is a <strong>misdemeanor</strong> punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).
+                Every independent Texas motor vehicle dealer must maintain a valid $50,000 GDN surety bond as a condition of holding a dealer license issued by TxDMV. Dealing without a valid bond is a <strong>misdemeanor</strong> punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).
               </p>
               <p className="text-gray-600 text-sm">
                 The bond requirement applies to all GDN license types and must remain active throughout the license term. A lapse in bond coverage renders your dealer license invalid.
@@ -208,7 +208,7 @@ export default function GDNBondTexas() {
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Get Your GDN Bond in 3 Steps</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { step: "1", title: "Select your dealer type", body: "Choose your GDN license category — new, used, wholesale, motorcycle, BHPH, or lease/finance. Takes under 2 minutes." },
+              { step: "1", title: "Select your dealer type", body: "Choose your GDN license category (used vehicles, wholesale, motorcycle, trailer and so on). Franchised dealers don't need this bond." },
               { step: "2", title: "Instant approval", body: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
               { step: "3", title: "File with TxDMV", body: "Bond certificate emailed as an instant PDF. Submit with your GDN license application through TxDMV's eLICENSING portal." },
             ].map((s) => (

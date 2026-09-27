@@ -34,7 +34,7 @@ export default function GDNBondSanAntonio() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">GDN Bond — San Antonio, Texas Motor Vehicle Dealers</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            San Antonio is one of Texas's largest auto markets. Every licensed motor vehicle dealer in San Antonio and Bexar County needs a $50,000 GDN surety bond from TxDMV. Apply online — PDF certificate once approved.
+            San Antonio is one of Texas's largest auto markets. Every licensed independent motor vehicle dealer in San Antonio and Bexar County needs a $50,000 GDN surety bond from TxDMV. Apply online — PDF certificate once approved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GDN_LINK}>

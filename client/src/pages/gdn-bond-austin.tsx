@@ -34,7 +34,7 @@ export default function GDNBondAustin() {
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">GDN Bond — Austin, Texas Motor Vehicle Dealers</h1>
           <p className="text-indigo-100 text-lg leading-relaxed mb-8 max-w-2xl">
-            Austin's fast-growing auto market means more dealers — and more GDN bond requirements. Every licensed motor vehicle dealer in Austin and Travis County needs a $50,000 GDN surety bond. Get yours same-day.
+            Austin's fast-growing auto market means more dealers — and more GDN bond requirements. Every licensed independent motor vehicle dealer in Austin and Travis County needs a $50,000 GDN surety bond. Get yours same-day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href={GDN_LINK}>

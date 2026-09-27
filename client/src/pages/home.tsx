@@ -506,15 +506,15 @@ export default function Home() {
                   Texas Auto Dealer GDN Bond — From $250 per 2-yr term
                 </h2>
                 <p className="text-slate-300 text-lg leading-relaxed mb-7 max-w-xl">
-                  Every Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Transportation Code §503.033. Quantum Surety gets you bonded same-day with instant PDF delivery — accepted by TxDMV.
+                  Every independent Texas motor vehicle dealer license requires a $50,000 GDN surety bond under Texas Transportation Code §503.033. Apply online with Quantum Surety: RLI reviews each application and shows your premium before you pay, and the bond certificate is emailed as a PDF once issued.
                 </p>
 
                 <ul className="space-y-3 mb-8">
                   {[
-                    "$50,000 GDN bond — covers all 6 dealer license types (new, used, wholesale, motorcycle, BHPH, lease/finance)",
-                    "Operating without a valid bond is a Class A misdemeanor under Texas law",
-                    "Online application — apply online, receive your PDF bond within minutes",
-                    "Renewal reminders included — never risk a lapsed license",
+                    "$50,000 GDN bond for independent dealers — franchised dealers don't need one (Transp. Code §503.033(i))",
+                    "Dealing without a valid bond is a misdemeanor with fines up to $5,000 (§503.094), plus civil penalties (§503.095)",
+                    "Online application — premium shown before you pay",
+                    "Free renewal reminders before your licence is due",
                     "TDI-licensed agency — Quantum Surety License #3480229",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-slate-200 text-sm">

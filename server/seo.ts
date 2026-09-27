@@ -3971,7 +3971,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-        content: `<main><h1>GDN Bond — Dallas, Texas</h1><p>Every licensed motor vehicle dealer in Dallas and the DFW metroplex must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Dallas GDN Bond</a></main>`,
+        content: `<main><h1>GDN Bond — Dallas, Texas</h1><p>Every licensed independent motor vehicle dealer in Dallas and the DFW metroplex must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Dallas GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-houston": {
@@ -4007,7 +4007,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-        content: `<main><h1>GDN Bond — Houston, Texas</h1><p>Every licensed motor vehicle dealer in Houston must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Houston GDN Bond</a></main>`,
+        content: `<main><h1>GDN Bond — Houston, Texas</h1><p>Every licensed independent motor vehicle dealer in Houston must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Houston GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-austin": {
@@ -4043,7 +4043,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-        content: `<main><h1>GDN Bond — Austin, Texas</h1><p>Every licensed motor vehicle dealer in Austin must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Austin GDN Bond</a></main>`,
+        content: `<main><h1>GDN Bond — Austin, Texas</h1><p>Every licensed independent motor vehicle dealer in Austin must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Austin GDN Bond</a></main>`,
   },
 
   "/bonds/gdn-bond-san-antonio": {
@@ -4079,7 +4079,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-        content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
+        content: `<main><h1>GDN Bond — San Antonio, Texas</h1><p>Every licensed independent motor vehicle dealer in San Antonio must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My San Antonio GDN Bond</a></main>`,
   },
 
   "/bonds/mbe-contractor-bond-texas": {
@@ -4388,7 +4388,7 @@ export const PAGE_META: Record<string, PageMeta> = {
       <h1>GDN Bond — Fort Worth, Texas Motor Vehicle Dealers</h1>
       <p>Fort Worth and Tarrant County motor vehicle dealers need a $50,000 GDN surety bond before TxDMV will issue or renew a dealer license. PDF certificate once issued.</p>
       <h2>Fort Worth Dealer License Types Requiring a GDN Bond</h2>
-      <p>All TxDMV dealer categories — new, used, wholesale, motorcycle, BHPH, and lease/finance — require a $50,000 GDN bond under Texas Transportation Code §503.033.</p>
+      <p>Independent TxDMV dealer licences (used vehicles, wholesale, motorcycle, trailer and similar categories) require a $50,000 GDN bond under Texas Transportation Code §503.033. Franchised dealers are exempt under §503.033(i).</p>
       <a href="/get-bond?type=dealer">Get My Fort Worth GDN Bond</a>
     </main>`,
   },
@@ -6418,7 +6418,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Corpus Christi, Texas</h1><p>Every licensed motor vehicle dealer in Corpus Christi must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Corpus Christi GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Corpus Christi, Texas</h1><p>Every licensed independent motor vehicle dealer in Corpus Christi must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Corpus Christi GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-laredo": {
     title: "GDN Bond Laredo TX | $50,000 TxDMV | Quantum Surety",
@@ -6451,7 +6451,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Laredo, Texas</h1><p>Every licensed motor vehicle dealer in Laredo must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Laredo GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Laredo, Texas</h1><p>Every licensed independent motor vehicle dealer in Laredo must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Laredo GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-lubbock": {
     title: "GDN Bond Lubbock TX | $50,000 TxDMV | Quantum Surety",
@@ -6484,7 +6484,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Lubbock, Texas</h1><p>Every licensed motor vehicle dealer in Lubbock must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Lubbock GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Lubbock, Texas</h1><p>Every licensed independent motor vehicle dealer in Lubbock must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Lubbock GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-mcallen": {
     title: "GDN Bond McAllen TX | $50,000 TxDMV | Quantum Surety",
@@ -6517,7 +6517,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — McAllen, Texas</h1><p>Every licensed motor vehicle dealer in McAllen must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My McAllen GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — McAllen, Texas</h1><p>Every licensed independent motor vehicle dealer in McAllen must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My McAllen GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-brownsville": {
     title: "GDN Bond Brownsville TX | $50,000 TxDMV | Quantum Surety",
@@ -6550,7 +6550,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Brownsville, Texas</h1><p>Every licensed motor vehicle dealer in Brownsville must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Brownsville GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Brownsville, Texas</h1><p>Every licensed independent motor vehicle dealer in Brownsville must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Brownsville GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-frisco": {
     title: "GDN Bond Frisco TX | $50,000 TxDMV | Quantum Surety",
@@ -6583,7 +6583,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Frisco, Texas</h1><p>Every licensed motor vehicle dealer in Frisco must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Frisco GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Frisco, Texas</h1><p>Every licensed independent motor vehicle dealer in Frisco must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Frisco GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-mckinney": {
     title: "GDN Bond McKinney TX | $50,000 TxDMV | Quantum Surety",
@@ -6616,7 +6616,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — McKinney, Texas</h1><p>Every licensed motor vehicle dealer in McKinney must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My McKinney GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — McKinney, Texas</h1><p>Every licensed independent motor vehicle dealer in McKinney must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My McKinney GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-irving": {
     title: "GDN Bond Irving TX | $50,000 TxDMV | Quantum Surety",
@@ -6649,7 +6649,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Irving, Texas</h1><p>Every licensed motor vehicle dealer in Irving must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Irving GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Irving, Texas</h1><p>Every licensed independent motor vehicle dealer in Irving must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Irving GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-garland": {
     title: "GDN Bond Garland TX | $50,000 TxDMV | Quantum Surety",
@@ -6682,7 +6682,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Garland, Texas</h1><p>Every licensed motor vehicle dealer in Garland must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Garland GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Garland, Texas</h1><p>Every licensed independent motor vehicle dealer in Garland must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Garland GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-grand-prairie": {
     title: "GDN Bond Grand Prairie TX | $50,000 TxDMV | Quantum Surety",
@@ -6715,7 +6715,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Grand Prairie, Texas</h1><p>Every licensed motor vehicle dealer in Grand Prairie must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Grand Prairie GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Grand Prairie, Texas</h1><p>Every licensed independent motor vehicle dealer in Grand Prairie must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Grand Prairie GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-denton": {
     title: "GDN Bond Denton TX | $50,000 TxDMV | Quantum Surety",
@@ -6748,7 +6748,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Denton, Texas</h1><p>Every licensed motor vehicle dealer in Denton must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Denton GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Denton, Texas</h1><p>Every licensed independent motor vehicle dealer in Denton must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Denton GDN Bond</a></main>`,
   },
   "/bonds/gdn-bond-amarillo": {
     title: "GDN Bond Amarillo TX | $50,000 TxDMV | Quantum Surety",
@@ -6781,7 +6781,7 @@ export const PAGE_META: Record<string, PageMeta> = {
         ],
       },
     ],
-    content: `<main><h1>GDN Bond — Amarillo, Texas</h1><p>Every licensed motor vehicle dealer in Amarillo must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Amarillo GDN Bond</a></main>`,
+    content: `<main><h1>GDN Bond — Amarillo, Texas</h1><p>Every licensed independent motor vehicle dealer in Amarillo must hold a $50,000 GDN surety bond under Texas Transportation Code §503.033. Online application.</p><a href="/get-bond?type=dealer">Get My Amarillo GDN Bond</a></main>`,
   },
   "/bonds/notary-bond-laredo": {
     title: "Notary Bond Laredo TX | $50 | Quantum Surety",
@@ -7605,7 +7605,7 @@ interface DynBondMeta {
 const DYN_BOND_META: Record<string, DynBondMeta> = {
   "notary-bond":     { name: "Texas Notary Bond",              shortName: "Notary Bond",          amount: "$10,000",         cost: "$50",            costNote: "for the 4-year term, plus the state's $21 filing fee", legal: "Texas Government Code §406.010",      issuer: "Texas Secretary of State",                            applyUrl: "/get-bond?type=notary",     description: "Every Texas notary public must hold a $10,000 surety bond before the Texas Secretary of State will issue or renew a notary commission." },
   "contractor-bond": { name: "Texas Contractor Bond",          shortName: "Contractor Bond",      amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (no statewide TDLR bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TDLR licenses require liability insurance, not a surety bond. A contractor bond is needed when a city or a project owner requires one, and they set the amount." },
-  "gdn-bond":        { name: "Texas GDN Auto Dealer Bond",     shortName: "GDN Dealer Bond",      amount: "$50,000",         cost: "from $250",      costNote: "for the 2-year term",           legal: "Texas Transportation Code §503.033",      issuer: "Texas Department of Motor Vehicles (TxDMV)",          applyUrl: "/get-bond?type=gdn",        description: "Every Texas motor vehicle dealer holding a GDN license must post a $50,000 surety bond with TxDMV under Texas Transportation Code §503.033." },
+  "gdn-bond":        { name: "Texas GDN Auto Dealer Bond",     shortName: "GDN Dealer Bond",      amount: "$50,000",         cost: "from $250",      costNote: "for the 2-year term",           legal: "Texas Transportation Code §503.033",      issuer: "Texas Department of Motor Vehicles (TxDMV)",          applyUrl: "/get-bond?type=gdn",        description: "Every independent Texas motor vehicle dealer holding a GDN license must post a $50,000 surety bond with TxDMV under Texas Transportation Code §503.033." },
   "mortgage-bond":   { name: "Texas Mortgage Broker Bond",     shortName: "Mortgage Broker Bond", amount: "$50,000",         cost: "from $375/year", costNote: "annual renewal",                 legal: "Texas Finance Code §156.204",          issuer: "Texas Dept. of Savings and Mortgage Lending (SML)",   applyUrl: "/get-bond?type=mortgage",   description: "Texas mortgage brokers and mortgage bankers must post a $50,000 surety bond with the Texas SML under Texas Finance Code §156.204 as a condition of licensure." },
   "hvac-bond":       { name: "Texas HVAC Contractor Bond",     shortName: "HVAC Bond",            amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (TDLR requires insurance, not a bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TDLR's air conditioning and refrigeration contractor license requires commercial general liability insurance, not a surety bond. A bond is needed only when a city or a project owner requires one, and they set the amount." },
   "plumber-bond":    { name: "Texas Plumbing Contractor Bond", shortName: "Plumber Bond",         amount: "Amount varies",       cost: "from $100",   costNote: "RLI minimum premium",            legal: "Local ordinance or contract terms (TSBPE requires insurance, not a bond)", issuer: "your city or project owner", applyUrl: "/get-bond?type=contractor", description: "TSBPE requires a Responsible Master Plumber to carry at least $300,000 of liability insurance, not a surety bond. A bond is needed only when a city or a project owner requires one, and they set the amount." },

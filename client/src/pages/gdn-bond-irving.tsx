@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Clock, Shield, Phone, ChevronRight, MapPin, Al
 const GDN_LINK = "/get-bond?type=dealer";
 
 const faqs = [
-  { q: "Do Irving auto dealers need a GDN bond?", a: "Yes. Every licensed motor vehicle dealer in Texas  including dealers in Dallas County and the DFW metroplex  must carry a $50,000 GDN surety bond under Texas Occupations Code 503.033 before TxDMV will issue or renew a dealer license." },
+  { q: "Do Irving auto dealers need a GDN bond?", a: "Yes. Every licensed independent motor vehicle dealer in Texas  including dealers in Dallas County and the DFW metroplex  must carry a $50,000 GDN surety bond under Texas Occupations Code 503.033 before TxDMV will issue or renew a dealer license." },
   { q: "How much does a GDN bond cost for a Irving dealer?", a: "GDN dealer bonds through Quantum Surety start at $250 for the full 2-year term, which is RLI's minimum premium. RLI prices each bond, and your exact premium is confirmed before you pay." },
   { q: "How fast can I get a GDN bond in Irving?", a: "RLI reviews each dealer application and shows your premium before you pay. Once it is approved and paid, your bond certificate is emailed as a PDF, ready to upload to TxDMV eLICENSING. Some applications are declined, so apply well before your licence expires." },
   { q: "What happens if my GDN bond lapses?", a: "A lapsed bond invalidates your dealer license. Dealing without a valid bond is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095). Quantum Surety offers free renewal reminders so your coverage doesn't lapse." },

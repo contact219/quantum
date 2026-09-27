@@ -60,7 +60,7 @@ export default function BlogGDNBondRequirements2026() {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Who is required to carry a GDN bond?</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              Every Texas motor vehicle dealer that holds an active GDN license is required to maintain a valid $50,000 surety bond. This requirement applies across all six dealer license categories:
+              Every independent Texas motor vehicle dealer that holds an active GDN license is required to maintain a valid $50,000 surety bond. This requirement applies across all six dealer license categories:
             </p>
             <div className="overflow-x-auto rounded-xl border border-gray-200">
               <table className="w-full text-sm">

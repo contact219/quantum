@@ -81,7 +81,7 @@ export default function GDNBondHouston() {
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-2">Operating without a bond is a criminal offense</h2>
-              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 requires every licensed motor vehicle dealer to maintain a valid GDN bond at all times. Operating without one is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).</p>
+              <p className="text-gray-700 text-sm leading-relaxed">Texas Transportation Code §503.033 requires every licensed independent motor vehicle dealer to maintain a valid GDN bond at all times. Operating without one is a misdemeanor punishable by a fine of up to $5,000, which a court can triple if it was wilful (Tex. Transp. Code §503.094), plus civil penalties of up to $1,000 per violation, per day (§503.095).</p>
             </div>
           </div>
         </section>

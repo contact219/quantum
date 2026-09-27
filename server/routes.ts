@@ -207,8 +207,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const REPLY = `reply to any of our emails with "unsubscribe" and we'll take care of it`;
   // Only plain strings are accepted; arrays/objects from ?e[]= or t[]= become "".
   const str = (v: unknown) => (typeof v === "string" ? v : "");
+  // Old renewal-outreach links (verify.quantumsurety.bond/unsubscribe, 307'd here by Caddy)
+  // carry e=<base64 of the address>; decode those, leave plain addresses alone.
+  // The old links never URL-encoded the base64, so a "+" in it arrives as a space.
+  const fromB64 = (v: string) => {
+    const b = v.replace(/ /g, "+");
+    if (v.includes("@") || !/^[A-Za-z0-9+/_-]+={0,2}$/.test(b) || b.length > 400) return v;
+    try { const d = Buffer.from(b, "base64").toString("utf8"); return d.includes("@") ? d : v; } catch { return v; }
+  };
   const readEmail = (req: any) =>
-    (str(req.query.e) || str(req.query.email) || str(req.body?.e) || str(req.body?.email)).trim().toLowerCase();
+    fromB64(str(req.query.e) || str(req.query.email) || str(req.body?.e) || str(req.body?.email)).trim().toLowerCase();
   const readToken = (req: any) => str(req.query.t) || str(req.body?.t);
   const emailOk = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 254;
   const FAILED_BODY = para(`We couldn't record your request. Please ${REPLY}, and we'll remove you by hand.`);

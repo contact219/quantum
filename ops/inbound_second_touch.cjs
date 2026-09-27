@@ -131,6 +131,7 @@ async function main() {
         )
         AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
         AND NOT EXISTS (SELECT 1 FROM inbound_second_touch_sends s WHERE s.lead_id = leads.id)
+        AND coalesce(bond_type,'') NOT ILIKE '%title%'  -- title leads: handled by title_inbound_followup.cjs on the main VPS (2026-09-27)
     ),
     norm_bonds AS (
       SELECT bname,

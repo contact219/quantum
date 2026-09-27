@@ -501,13 +501,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const TITLE_APPLY_URL = "https://www.mybondapp.com/329034247/DirectNavBond?BondType=R42DAMBA2&State=TX";
       let leadIntro: string;
       let leadCta = "";
+      // Copy corrected 2026-09-27 (outreach gauntlet): the notary line hid the $21 SOS fee, the dealer
+      // line still said "$100/year" ($50,000 bond, from $250 for the 2-year term), and the title line
+      // promised "under 10 minutes" without saying the bond isn't issued until the RLI application is done.
       if (rawBondType === "notary") {
-        leadIntro = `Your Texas Notary Bond is $50 flat for the full 4-year term, underwritten by RLI Insurance — most bonds are issued same day.`;
+        leadIntro = `Your Texas Notary Bond is $50 for the full 4-year term, underwritten by RLI Insurance; the Secretary of State charges its own $21 filing fee. Your bond certificate is emailed to you, typically within minutes of checkout.`;
       } else if (rawBondType === "title" || rawBondType === "bonded-title") {
-        leadIntro = `Good news — you don't have to wait on us. You can complete your Certificate of Title Bond application online right now and most applicants finish in under 10 minutes.`;
-        leadCta = `<p style="margin:24px 0;"><a href="${TITLE_APPLY_URL}" style="background:#0d9488;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;">Apply for Your Title Bond Now</a></p>`;
+        leadIntro = `One thing to know first: sending the form doesn't buy the bond. It is issued once you finish the application with our carrier, RLI, which you can do online right now. Texas sets the bond at 1.5 times the vehicle's value as determined by TxDMV, and it runs 3 years. Our premium estimate is 1.5% of the bond amount, $100 minimum, paid once; the exact premium is shown on the application before you pay.`;
+        leadCta = `<p style="margin:24px 0;"><a href="${TITLE_APPLY_URL}" style="background:#0d9488;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;">Finish My Title Bond Application</a></p>`;
       } else if (rawBondType === "dealer" || rawBondType === "gdn") {
-        leadIntro = `Texas GDN Dealer Bonds start at $100/year, underwritten by RLI Insurance. A bond specialist is reviewing your request now.`;
+        leadIntro = `The Texas GDN dealer bond is $50,000, and premiums start at $250 for the 2-year term, underwritten by RLI Insurance. RLI sets your exact premium after reviewing the application, and you see it before you pay.`;
       } else {
         leadIntro = `A licensed bond specialist is reviewing your request now and will reach out shortly with your quote.`;
       }
@@ -517,8 +520,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           <p>Thanks for requesting your <strong>${bondLabel}</strong> — we received it just now.</p>
           <p>${leadIntro}</p>
           ${leadCta}
-          <p>Have a question or want to get it done over the phone? Call us anytime — our line is answered 24/7:</p>
-          <p style="font-size:20px;font-weight:bold;margin:12px 0;"><a href="tel:+12146668718" style="color:#1d4ed8;text-decoration:none;">(214) 666-8718</a></p>
+          <p>Questions? Just reply to this email and it comes to us. Our automated phone assistant also answers any time at <a href="tel:+12146668718" style="color:#1d4ed8;text-decoration:none;">(214) 666-8718</a>.</p>
           <p>Talk soon,<br/>The Quantum Surety Team<br/><a href="https://quantumsurety.bond" style="color:#1d4ed8;">quantumsurety.bond</a></p>
           <p style="font-size:12px;color:#6b7280;margin-top:24px;">Quantum Surety — Texas-licensed surety bond agency. Bonds underwritten by RLI Insurance Company.</p>
         </div>`;

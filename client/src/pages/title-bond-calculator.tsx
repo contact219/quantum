@@ -520,7 +520,7 @@ export default function TitleBondCalculator() {
                 </h2>
               </div>
               <p style={{ fontSize: 14, color: "#64748b", marginBottom: 24 }}>
-                We&rsquo;ll review your vehicle details and send your bond certificate within 1 business day.
+                Send us your details, then finish the short application with our carrier, RLI. Your bond is issued once that application is complete, and the exact premium is shown before you pay.
               </p>
 
               {/* Summary card */}
@@ -659,11 +659,13 @@ export default function TitleBondCalculator() {
                 Request Received!
               </h2>
               <p style={{ fontSize: 15, color: "#94a3b8", marginBottom: 32 }}>
-                We&rsquo;ll be in touch shortly. Here&rsquo;s what happens next:
+                One step left: your bond isn&rsquo;t issued until you finish the application. Here&rsquo;s what happens next:
               </p>
               <div style={{ textAlign: "left", display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
                 {[
-                  { n: 1, text: "We'll email your bond certificate within 1 business day." },
+                  // Was "We'll email your bond certificate within 1 business day", which nothing did: the
+                  // bond is only issued when the RLI application is finished (outreach gauntlet, 2026-09-27).
+                  { n: 1, text: "Finish your bond application with our carrier, RLI, using the button below (the link is in your email too). The exact premium is shown before you pay, and your bond is issued when the application is complete." },
                   { n: 2, text: "Gather your vehicle appraisal for TxDMV Form VTR-130-SOF." },
                   { n: 3, text: "File at your county tax assessor-collector's office." },
                 ].map(item => (
@@ -692,7 +694,7 @@ export default function TitleBondCalculator() {
                     borderRadius:8, fontWeight:800, fontSize:16, textDecoration:"none",
                   }}
                 >
-                  <ArrowRight size={18} /> Apply Directly Now
+                  <ArrowRight size={18} /> Finish My Bond Application
                 </a>
                 <a href="/" style={{
                   display: "inline-flex", alignItems: "center", gap: 6,

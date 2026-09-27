@@ -168,6 +168,7 @@ async function main() {
       AND updated_at >= NOW() - INTERVAL '21 days'
       AND updated_at < NOW() - INTERVAL '6 days'
       AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
+      AND coalesce(bond_type,'') NOT ILIKE '%title%'  -- title leads: handled by title_inbound_followup.cjs on the main VPS (2026-09-27)
       AND NOT (lower(coalesce(bond_type,'')) LIKE '%dealer%' AND EXISTS (SELECT 1 FROM auto_dealers d WHERE lower(d.email) = lower(leads.email) AND d.license_type ILIKE '%franchise%') AND NOT EXISTS (SELECT 1 FROM auto_dealers d WHERE lower(d.email) = lower(leads.email) AND d.license_type NOT ILIKE '%franchise%'))  -- franchise-pause 2026-09-26
     ORDER BY updated_at ASC
   `);

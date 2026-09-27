@@ -28,7 +28,7 @@ const FAQ_SCHEMA = {
       name: "How long does the Texas bonded title process take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The full bonded title process typically takes 2–6 weeks. Getting the surety bond from Quantum Surety can be done the same day. TxDMV's title determination review takes 2–4 weeks. Once approved, your county tax office issues the bonded title, usually within a few business days.",
+        text: "The full bonded title process typically takes 2–6 weeks. The surety bond itself is issued as soon as you finish the online application, often the same day. TxDMV's title determination review takes 2–4 weeks. Once approved, your county tax office issues the bonded title, usually within a few business days.",
       },
     },
     {
@@ -373,7 +373,7 @@ export default function TexasBondedTitleCompleteGuide2026() {
             {
               step: "Step 3",
               title: "Get Your Surety Bond from Quantum Surety",
-              desc: "Once TxDMV approves you for a bonded title, they'll specify the required bond amount (1.5x vehicle value). Apply for your certificate of title bond with Quantum Surety — same-day issuance, no credit check, one fixed rate (1.5% of the bond) starting at a $100 minimum. You'll receive the bond certificate digitally the same day.",
+              desc: "Once TxDMV approves you for a bonded title, they'll specify the required bond amount (1.5x vehicle value). Apply for your certificate of title bond with Quantum Surety — same-day issuance, no credit check, one fixed rate (1.5% of the bond) starting at a $100 minimum. You'll receive the bond certificate digitally as soon as you finish the application, often the same day.",
             },
             {
               step: "Step 4",
@@ -602,7 +602,7 @@ export default function TexasBondedTitleCompleteGuide2026() {
             },
             {
               q: "How long does the Texas bonded title process take?",
-              a: "The full process typically takes 2–6 weeks. Your surety bond from Quantum Surety is issued the same day. TxDMV's title determination review takes 2–4 weeks. County title issuance is usually a few additional business days after you file.",
+              a: "The full process typically takes 2–6 weeks. Your surety bond is issued as soon as you finish the online application, often the same day. TxDMV's title determination review takes 2–4 weeks. County title issuance is usually a few additional business days after you file.",
             },
             {
               q: "How is the bond amount calculated for a Texas title bond?",

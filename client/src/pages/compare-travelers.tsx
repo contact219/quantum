@@ -82,7 +82,7 @@ export default function CompareTravelers() {
             </a>
           </div>
           <p className="text-gray-600 text-sm mt-4 flex items-center gap-2">
-            <Phone className="w-4 h-4" /> Questions? (214) 666-8718 — answered 24/7.
+            <Phone className="w-4 h-4" /> Questions? (214) 666-8718 — automated assistant, any time.
           </p>
         </div>
 

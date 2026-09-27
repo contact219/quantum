@@ -256,7 +256,7 @@ export default function CountyTitleBondPage() {
               {
                 n: "2",
                 title: "Purchase your bond from Quantum Surety",
-                body: "Provide your vehicle details, appraisal, and contact information. We issue your bond certificate through an A-rated carrier accepted by TxDMV. Most bonds are issued same-day."
+                body: "Provide your vehicle details, appraisal, and contact information. You finish a short online application with our carrier, RLI, and the bond is issued when it's complete. Most of our title customers finish the same day they start."
               },
               {
                 n: "3",
@@ -340,7 +340,7 @@ export default function CountyTitleBondPage() {
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your {data.name} Title Bond</h2>
           <p className="text-gray-500 text-sm mb-8">
-            Fill out the form and we will confirm your bond amount and have your certificate ready — usually same-day.
+            Fill out the form and we'll send you the application link. Your bond is issued when you finish it, often the same day.
           </p>
           {submitted ? (
             <div className="bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
@@ -439,7 +439,7 @@ export default function CountyTitleBondPage() {
               },
               {
                 q: "How quickly can I get my bond certificate?",
-                a: "Quantum Surety typically issues bond certificates same-day for vehicles under $50,000. Once you submit your vehicle information and appraisal, we will email your certificate - usually within 1-2 hours during business hours.",
+                a: "Often the same day. Your bond is issued online by our carrier, RLI, as soon as you finish the application, and most of our title customers finish the day they start. The exact premium is shown before you pay.",
               },
               {
                 q: "Do I need good credit to get a bonded title bond?",

@@ -34,7 +34,7 @@ const FAQ_SCHEMA = {
       name: "How fast can I get a Texas title bond from Quantum Surety?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Same day. Once you apply through the direct apply link, Quantum Surety issues the bond certificate digitally the same business day. You receive a printable bond certificate in the VTR-130-SB format that TxDMV and your county tax office will accept.",
+        text: "Often the same day. The bond is issued online by our carrier, RLI, as soon as you finish the application through the direct apply link, and most of our title customers finish the day they start. You receive a printable bond certificate in the VTR-130-SB format that TxDMV and your county tax office will accept.",
       },
     },
     {
@@ -496,7 +496,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             {
               icon: <Zap className="w-5 h-5 text-teal-600" />,
               title: "Same-Day Bond Issuance",
-              desc: "Bond certificates issued digitally the same business day you apply. No waiting for mail.",
+              desc: "The bond is issued online when you finish the application, often the same day. No waiting for mail.",
             },
             {
               icon: <Calculator className="w-5 h-5 text-amber-600" />,
@@ -766,7 +766,7 @@ export default function QuantumSuretyTexasTitleBondTools2026() {
             },
             {
               q: "How fast can I get a Texas title bond from Quantum Surety?",
-              a: "Same day. Once you complete the online application, Quantum Surety issues your bond certificate digitally the same business day. The certificate is in the VTR-130-SB format required by TxDMV and accepted at all Texas county tax offices.",
+              a: "Often the same day. Once you complete the online application, our carrier, RLI, issues the bond and you get a printable certificate. The certificate is in the VTR-130-SB format required by TxDMV and accepted at all Texas county tax offices.",
             },
             {
               q: "Is Quantum Surety licensed to issue title bonds in Texas?",

@@ -232,7 +232,7 @@ export default function CompareTool() {
                   Not due yet? Set a free reminder
                 </a>
               </div>
-              <p className="text-gray-500 text-xs mt-4">📞 Questions? (214) 666-8718 — answered 24/7.</p>
+              <p className="text-gray-500 text-xs mt-4">📞 Questions? (214) 666-8718 — automated assistant, any time.</p>
             </div>
           </div>
         )}

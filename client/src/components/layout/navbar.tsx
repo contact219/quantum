@@ -104,7 +104,7 @@ export function Navbar() {
       >
         <Phone className="w-3.5 h-3.5" />
         <span>
-          Call now — answered 24/7: <span className="font-bold underline underline-offset-2">{phoneNumber}</span>
+          Automated phone assistant, any time: <span className="font-bold underline underline-offset-2">{phoneNumber}</span>
         </span>
       </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

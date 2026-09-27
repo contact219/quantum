@@ -369,7 +369,7 @@ export default function BondedTitleTexas() {
       <section id="apply" className="py-14 px-4 bg-white">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your Certificate of Title Bond in 24 Hours</h2>
-          <p className="text-gray-500 text-sm mb-6">Tell us about your vehicle and we will confirm your bond amount and have your certificate ready same-day.</p>
+          <p className="text-gray-500 text-sm mb-6">Tell us about your vehicle and we'll send you the application link. Your bond is issued when you finish it, often the same day.</p>
           {bondSubmitted ? (
             <div className="bg-teal-50 border border-teal-200 rounded-2xl p-8 text-center">
               <CheckCircle className="w-10 h-10 text-teal-500 mx-auto mb-3" />

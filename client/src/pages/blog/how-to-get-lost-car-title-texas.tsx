@@ -173,7 +173,7 @@ If someone later proves a legitimate ownership claim on the vehicle within 3 yea
 
 **2. Simple pricing** — The premium is **1.5% of the bond amount**, with a **$100 minimum**, which is what RLI, our underwriting carrier, charges. A vehicle valued at $10,000–$30,000 needs a $15,000–$45,000 bond, so the premium is **$225 to $675**.
 
-**3. Same-day approval** — No credit check delays. Most title bonds are approved and issued the same day you apply.
+**3. Often same day** — Most of our title customers finish the online application and get their bond the day they start.
 
 **4. Bond delivered ready to file** — We provide the completed Form VTR-130-SB with our TDI-licensed agent signature, surety seal, and all required information filled in and ready to file with your county tax office.
 
@@ -253,7 +253,7 @@ const faqs = [
   },
   {
     q: "How do I get a bonded title bond fast?",
-    a: "Quantum Surety provides same-day approval for Texas title bonds. Visit quantumsurety.bond/bonds/bonded-title-texas or call us, provide your vehicle information and bond amount from your TxDMV Notice of Determination, and we'll issue the completed Form VTR-130-SB ready to file the same day.",
+    a: "Apply online at quantumsurety.bond/bonds/bonded-title-texas with your vehicle information and the bond amount from your TxDMV Notice of Determination. Our carrier, RLI, issues the bond as soon as you finish the application, often the same day, and you get the completed Form VTR-130-SB ready to file.",
   },
 ];
 

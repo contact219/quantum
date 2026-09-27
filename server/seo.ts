@@ -2704,7 +2704,7 @@ export const PAGE_META: Record<string, PageMeta> = {
             <dt>What happens if I operate without a GDN bond?</dt>
             <dd>Operating without a valid GDN bond is a Class A misdemeanor under Texas Transportation Code §503.033 — fines up to $4,000 and up to one year in jail, plus license revocation by TxDMV.</dd>
             <dt>Can I get my certificate the same day?</dt>
-            <dd>Yes. Quantum Surety issues instant PDF bond certificates by email. Apply online, get approved, download your certificate — all in under 10 minutes.</dd>
+            <dd>Sometimes. Our carrier, RLI, reviews each dealer application and sets the premium before you pay; once it is approved and paid, the bond certificate is issued online. Some applications are declined, so apply well before your licence expires.</dd>
           </dl>
         </section>
         <section>

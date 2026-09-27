@@ -381,7 +381,7 @@ export default function Home() {
                 </Link>
               </div>
               <p className="mt-5 text-center text-sm text-slate-400">
-                Not sure? Call <a href="tel:+12146668718" className="font-semibold text-cyan-200 hover:underline">(214) 666-8718</a> — answered 24/7.
+                Not sure? Call <a href="tel:+12146668718" className="font-semibold text-cyan-200 hover:underline">(214) 666-8718</a>; our automated phone assistant answers any time.
               </p>
             </div>
           </div>

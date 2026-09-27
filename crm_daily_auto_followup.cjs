@@ -151,6 +151,7 @@ async function main() {
       AND created_at >= NOW() - INTERVAL '${LOOKBACK} hours'
       AND created_at < NOW() - INTERVAL '4 hours'
       AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))
+      AND NOT (lower(coalesce(bond_type,'')) LIKE '%dealer%' AND EXISTS (SELECT 1 FROM auto_dealers d WHERE lower(d.email) = lower(leads.email) AND d.license_type ILIKE '%franchise%') AND NOT EXISTS (SELECT 1 FROM auto_dealers d WHERE lower(d.email) = lower(leads.email) AND d.license_type NOT ILIKE '%franchise%'))  -- franchise-pause 2026-09-26
     ORDER BY created_at ASC
   `);
 

@@ -52,3 +52,7 @@ __pycache__/
 /*.log
 /*.zip
 /*.b64
+
+# OAuth client secrets (Google Cloud downloads) must never enter this public repo
+client_secret*.json
+*.apps.googleusercontent.com.json

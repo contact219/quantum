@@ -52,7 +52,8 @@ const EXCLUDE_LEAD_IDS = new Set([56829]);
 const siteEnv = {};
 for (const line of fs.readFileSync('/var/www/quantumsurety/.env', 'utf8').split('\n')) {
   const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)$/);
-  if (m) siteEnv[m[1]] = m[2].trim().replace(/^"(.*)"$/, '$1');
+  // Values may be wrapped in double OR single quotes (ZOHO_APP_PASSWORD is single-quoted); strip either.
+  if (m) siteEnv[m[1]] = m[2].trim().replace(/^(["'])(.*)\1$/, '$2');
 }
 
 const pool = mysql.createPool({ host: process.env.DB_HOST, user: process.env.DB_USER,
@@ -129,6 +130,13 @@ Or reply and I'll help you finish it. If you've already sorted it out, no reply 
 }
 
 async function main() {
+  if (process.argv.includes('--check-zoho')) {   // test the Zoho login only; sends nothing
+    const t = nodemailer.createTransport({ host: 'smtp.zoho.com', port: 465, secure: true,
+      auth: { user: siteEnv.ZOHO_EMAIL, pass: siteEnv.ZOHO_APP_PASSWORD } });
+    try { await t.verify(); console.log('[title-followup] Zoho login OK'); }
+    catch (e) { console.log('[title-followup] Zoho login FAILED: ' + e.message); }
+    await pool.end(); return;
+  }
   await pool.query(`CREATE TABLE IF NOT EXISTS title_followup_sends (
     id INT AUTO_INCREMENT PRIMARY KEY, lead_id INT NOT NULL, lead_email VARCHAR(255) NOT NULL,
     touch_number TINYINT NOT NULL, channel VARCHAR(10) NOT NULL, subject VARCHAR(255),
@@ -167,6 +175,11 @@ async function main() {
 
   const zoho = nodemailer.createTransport({ host: 'smtp.zoho.com', port: 465, secure: true,
     auth: { user: siteEnv.ZOHO_EMAIL, pass: siteEnv.ZOHO_APP_PASSWORD } });
+
+  if (SEND) {
+    try { await zoho.verify(); }
+    catch (e) { console.error('[title-followup] Zoho login failed, touches 2-3 will not send: ' + e.message); }
+  }
 
   const now = Date.now();
   let done = 0, skipped = 0, failed = 0;

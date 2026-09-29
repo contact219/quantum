@@ -18,7 +18,10 @@ const { Client } = require('pg');
 
 const DRY_RUN  = process.argv.includes('--dry-run');
 const HRS_IDX  = process.argv.indexOf('--hours');
-const LOOKBACK = HRS_IDX >= 0 ? parseInt(process.argv[HRS_IDX + 1]) : 48;
+// 96h, not 48h: this runs weekdays only and skips leads under 4h old, so with 48h the Friday
+// lead-gen batch (12:35 UTC, after the 13:30 cutoff's 4h rule) was older than 48h by Monday and was
+// never emailed (33 leads on 2026-09-25). Safe to widen: sent leads are marked 'contacted'.
+const LOOKBACK = HRS_IDX >= 0 ? parseInt(process.argv[HRS_IDX + 1]) : 96;
 const RATE_MS  = 150;
 
 const ses = new SESClient({

@@ -89,7 +89,10 @@ async function main() {
   let st = {};
   try { st = JSON.parse(fs.readFileSync('/var/www/bondverify/.notary_feed_state.json', 'utf8')); } catch (_) {}
   const rel = Number(st.imported_rows_updated_at || 0);
-  if (rel <= LAST_KNOWN_RELEASE) {
+  // --july-cohort (Ted approved 2026-10-01, option B): the July 15 release itself confirms no renewal
+  // for commissions that ended BEFORE it (May 16 - Jul 14), so that group may be sent from July data.
+  const JULY = process.argv.includes('--july-cohort') && rel === LAST_KNOWN_RELEASE;
+  if (rel <= LAST_KNOWN_RELEASE && !JULY) {
     console.log(`[${CAMPAIGN}] waiting: newest imported state release is ${rel ? new Date(rel * 1000).toISOString().slice(0, 10) : 'unknown'}; need one after 2026-07-15. Nothing sent.`);
     if (!PREVIEW) { await pool.end(); return; }
     console.log(`[${CAMPAIGN}] --preview: showing what the July data would select (NOT sendable).`);

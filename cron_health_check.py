@@ -97,13 +97,15 @@ JOBS = [
     ("Morning call list (M-F)",        "/tmp/morning-calllist.log",       80),
     ("Lead-gen agent (M-F)",           "/var/log/qs-lead-gen.log",        80),
     ("ESBD commercial monitor (M-F)",  "/tmp/esbd_commercial.log",        80),
-    ("Notary wave (M-F)",              "/tmp/notary-wave.log",            80),
     # "Hub contractor blast" and "TDLR renewal target" removed 2026-10-04: both
     # crons were deliberately commented out on 2026-09-26 (commit 04563bc) --
     # they sold contractors a bond TDLR/TSBPE licensing doesn't require. They
     # kept alerting STALE daily. Re-add here only if either is recronned with
     # corrected copy.
-    ("GDN bond blast (M-F)",           "/tmp/gdn-blast.log",              80),
+    # "Notary wave" and "GDN bond blast" removed 2026-10-04: both retired from
+    # crontab 2026-09-26 in the outreach gauntlet (notary: 4 AM Central sends,
+    # no dedupe, stale lists; GDN: 5,084 sent, 0 leads, "EXPIRED" copy on stale
+    # data). Backup: /root/crontab.bak-20260926-gauntlet on the CRM VPS.
     # "Saved bond recovery" removed 2026-07-30: both saved_bond_recovery.cjs and
     # .._v2.cjs were commented out of crontab on 2026-07-27 (0/39 email
     # conversion, replaced by phone outreach -- see call sheet from that date).

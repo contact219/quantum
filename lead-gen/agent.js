@@ -38,7 +38,7 @@ contractor outbound calls, resources redirected elsewhere. Do not call any TDLR 
 tool even if one appears available.
 
 WORKFLOW — follow exactly in this order:
-1. Call get_dealer_urgent_renewals(days_ahead=60)
+1. Call get_dealer_urgent_renewals(days_ahead=90)
 2. Call search_craigslist_title_listings()
 3. Call get_txsos_new_filings(days_back=14)
 4. INSERT BUDGET — respect these per-source caps (ensures all verticals are represented).

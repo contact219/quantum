@@ -16,11 +16,11 @@ const TOOLS = [
     name: 'get_dealer_urgent_renewals',
     description:
       'Returns Texas GDN auto dealer license holders whose license/bond expires '
-      + 'within days_ahead days. These dealers need a $25K surety bond renewal.',
+      + 'within days_ahead days. Independent dealers renewing need a $50,000 GDN surety bond (window 21-90 days out; franchised dealers need none).',
     inputSchema: {
       type: 'object',
       properties: {
-        days_ahead: { type: 'number', description: 'Days ahead to look (default 60)' },
+        days_ahead: { type: 'number', description: 'Days ahead to look (default 90; the window starts at 21)' },
         limit:      { type: 'number', description: 'Max results (default 50)' }
       }
     }

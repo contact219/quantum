@@ -164,7 +164,7 @@ async function main() {
     WHERE status = 'contacted'
       AND email IS NOT NULL AND email != ''
       AND email NOT LIKE '%noemail.quantumsurety%'
-      AND source NOT IN ('TxSmartBuy Bid Monitor', 'TxSmartBuy Monitor', 'ESBD Monitor')
+      AND source NOT IN ('TxSmartBuy Bid Monitor', 'TxSmartBuy Monitor', 'ESBD Monitor', 'gdn_urgent_renewals')  -- gdn lead-gen paused 2026-10-04: 1,222 leads / 60d, 0 sales
       AND updated_at >= NOW() - INTERVAL '21 days'
       AND updated_at < NOW() - INTERVAL '6 days'
       AND NOT EXISTS (SELECT 1 FROM unsubscribes u WHERE lower(u.email) = lower(leads.email))

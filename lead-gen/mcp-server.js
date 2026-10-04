@@ -6,25 +6,13 @@ import {
   ListToolsRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
 
-import { getDealerUrgentRenewals }       from './tools/dealers.js';
+// get_dealer_urgent_renewals removed 2026-10-04: 1,222 GDN renewal leads in 60 days, 0 sales.
+// tools/dealers.js is kept; re-add the import, TOOLS entry and switch case to restore it.
 import { searchCraigslistTitleListings } from './tools/craigslist.js';
 import { getTxSosNewFilings }            from './tools/txsos.js';
 import { checkLeadExists, insertLead }   from './tools/leads.js';
 
 const TOOLS = [
-  {
-    name: 'get_dealer_urgent_renewals',
-    description:
-      'Returns Texas GDN auto dealer license holders whose license/bond expires '
-      + 'within days_ahead days. Independent dealers renewing need a $50,000 GDN surety bond (window 21-90 days out; franchised dealers need none).',
-    inputSchema: {
-      type: 'object',
-      properties: {
-        days_ahead: { type: 'number', description: 'Days ahead to look (default 90; the window starts at 21)' },
-        limit:      { type: 'number', description: 'Max results (default 50)' }
-      }
-    }
-  },
   {
     name: 'search_craigslist_title_listings',
     description:
@@ -105,8 +93,6 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
   try {
     let result;
     switch (name) {
-      case 'get_dealer_urgent_renewals':
-        result = await getDealerUrgentRenewals(args); break;
       case 'search_craigslist_title_listings':
         result = await searchCraigslistTitleListings(args); break;
       case 'get_txsos_new_filings':

@@ -98,7 +98,11 @@ JOBS = [
     ("Lead-gen agent (M-F)",           "/var/log/qs-lead-gen.log",        80),
     ("ESBD commercial monitor (M-F)",  "/tmp/esbd_commercial.log",        80),
     ("Notary wave (M-F)",              "/tmp/notary-wave.log",            80),
-    ("Hub contractor blast (M-F)",     "/tmp/hub-contractor-blast.log",   80),
+    # "Hub contractor blast" and "TDLR renewal target" removed 2026-10-04: both
+    # crons were deliberately commented out on 2026-09-26 (commit 04563bc) --
+    # they sold contractors a bond TDLR/TSBPE licensing doesn't require. They
+    # kept alerting STALE daily. Re-add here only if either is recronned with
+    # corrected copy.
     ("GDN bond blast (M-F)",           "/tmp/gdn-blast.log",              80),
     # "Saved bond recovery" removed 2026-07-30: both saved_bond_recovery.cjs and
     # .._v2.cjs were commented out of crontab on 2026-07-27 (0/39 email
@@ -109,7 +113,6 @@ JOBS = [
     ("crm-api health (2x daily)",     "/var/log/crm-api-health.log",     26),
     ("Re-engagement blast (Mon)",      "/tmp/crm-reengagement.log",      192),
     ("Inbound second touch (Mon)",     "/tmp/inbound-second-touch.log",  192),
-    ("TDLR renewal target (Mon)",      "/tmp/tdlr_renewal.log",          192),
 ]
 
 MAX_READ = 200_000  # cap per log, in case something spews

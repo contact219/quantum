@@ -128,12 +128,12 @@ function buildEmail(lead) {
     html: `<div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:28px;background:#fff">
   <img src="https://quantumsurety.bond/QS_Logo.png" width="32" style="margin-bottom:16px">
   <p style="font-size:16px;color:#0f172a;font-weight:700;margin:0 0 8px">${hi}</p>
-  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You recently looked into a Texas surety bond. We're here when you're ready — same-day approval for most bond types, TDI-licensed, instant certificates.</p>
+  <p style="color:#475569;line-height:1.6;margin:0 0 16px">You recently looked into a Texas surety bond. When you're ready, apply online: the carrier reviews your application and shows your premium before you pay. We're TDI-licensed and here to help if you get stuck.</p>
   <a href="${url}" style="display:inline-block;background:#f59e0b;color:#000;padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px">Get My Free Quote →</a>
   <p style="color:#64748b;font-size:13px;margin-top:20px">Questions? Reply or call <strong>(214) 666-8718</strong>.</p>
   <p style="color:#94a3b8;font-size:11px;margin-top:16px">Quantum Surety LLC · TDI #3480229 · <a href="${unsubUrl(lead.email)}" style="color:#94a3b8">Unsubscribe</a></p>
 </div>`,
-    text: `${hi}\n\nYou looked into a Texas surety bond. Same-day approval, instant certificates.\n\nGet a quote: ${url}\n\nQuantum Surety | TDI #3480229`,
+    text: `${hi}\n\nYou looked into a Texas surety bond. Apply online: the carrier reviews your application and shows your premium before you pay.\n\nGet a quote: ${url}\n\nQuantum Surety | TDI #3480229`,
   };
 }
 
